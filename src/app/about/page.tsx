@@ -204,7 +204,43 @@ export default function AboutPage() {
           </p>
 
           <div className="grid md:grid-cols-2 gap-10 mt-12">
-            {/* Tejas */}
+            {/* Jigar */}
+            <div className="bg-white border rounded-2xl p-8 shadow-sm">
+              <div className="flex items-start gap-5">
+                <Image
+                  src="/team/jigar.jpg"
+                  alt="Jigar Dhabalia"
+                  width={96}
+                  height={96}
+                  className="rounded-xl object-cover"
+                />
+                <div className="flex-1">
+                  <div className="text-xl font-semibold text-slate-900">Jigar Dhabalia</div>
+                  <div className="text-sm text-slate-600">Co-founder and Principal Consultant</div>
+                  <div className="mt-3 text-sm text-slate-600">
+                    Expert in Corporate Sustainability, partnering with leadership teams to build robust reporting capabilities, structured operating cadence, and measurable control systems. Brings cross-industry experience spanning B2B, Manufacturing, Oil & Gas, Chemical and Energy & Utilities.
+                  </div>
+
+                  <ul className="mt-4 text-sm text-slate-600 list-disc list-inside space-y-1">
+                    <li>Design Sustainability to enable repeatable and audit-ready Corporate reporting</li>
+                    <li>Translating ESG requirements into practical operating systems with clear ownership</li>
+                    <li>Strengthening leadership visibility through disciplined measurement frameworks</li>
+                  </ul>
+
+                  <div className="mt-5">
+                    <a
+                      href={site.linkedin.jigar}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-indigo-700 font-medium"
+                    >
+                      LinkedIn profile →
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+			{/* Tejas */}
             <div className="bg-white border rounded-2xl p-8 shadow-sm">
               <div className="flex items-start gap-5">
                 <Image
@@ -231,45 +267,6 @@ export default function AboutPage() {
                   <div className="mt-5">
                     <a
                       href={site.linkedin.tejas}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-indigo-700 font-medium"
-                    >
-                      LinkedIn profile →
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Jigar */}
-            <div className="bg-white border rounded-2xl p-8 shadow-sm">
-              <div className="flex items-start gap-5">
-                <Image
-                  src="/team/jigar.jpg"
-                  alt="Jigar Dhabalia"
-                  width={96}
-                  height={96}
-                  className="rounded-xl object-cover"
-                />
-                <div className="flex-1">
-                  <div className="text-xl font-semibold text-slate-900">Jigar Dhabalia</div>
-                  <div className="text-sm text-slate-600">Co-founder and Principal Consultant</div>
-                  <div className="mt-3 text-sm text-slate-600">
-                    Specialises in ESG readiness and RevOps governance. Works with leadership teams to build reporting capability,
-                    operating cadence, and measurable control systems.
-                    Industry exposure includes B2B, manufacturing, and oil and gas.
-                  </div>
-
-                  <ul className="mt-4 text-sm text-slate-600 list-disc list-inside space-y-1">
-                    <li>Governance and control design for repeatable reporting</li>
-                    <li>Bridges ESG requirements with operating systems and ownership</li>
-                    <li>Supports leadership visibility through disciplined measurement models</li>
-                  </ul>
-
-                  <div className="mt-5">
-                    <a
-                      href={site.linkedin.jigar}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 text-indigo-700 font-medium"
