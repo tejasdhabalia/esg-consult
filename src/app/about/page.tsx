@@ -208,7 +208,7 @@ export default function AboutPage() {
             <div className="bg-white border rounded-2xl p-8 shadow-sm">
               <div className="flex items-start gap-5">
                 <Image
-                  src="/team/jigar.jpg"
+                  src="/team/jigard.jpg"
                   alt="Jigar Dhabalia"
                   width={96}
                   height={96}
