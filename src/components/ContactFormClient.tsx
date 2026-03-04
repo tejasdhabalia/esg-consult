@@ -1,7 +1,7 @@
 "use client";
 
 import Script from "next/script";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import { site } from "@/lib/site";
 
 declare global {
@@ -14,11 +14,8 @@ type SubmitState = "idle" | "submitting" | "success" | "error";
 
 export default function ContactFormClient() {
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+  const action = "contact_submit";
 
-  const captchaContainerRef = useRef<HTMLDivElement | null>(null);
-  const widgetIdRef = useRef<number | null>(null);
-
-  const [captchaToken, setCaptchaToken] = useState<string>("");
   const [status, setStatus] = useState<SubmitState>("idle");
   const [errorMsg, setErrorMsg] = useState<string>("");
 
@@ -33,39 +30,20 @@ export default function ContactFormClient() {
   const canSubmit = useMemo(() => {
     if (!form.email || !form.message) return false;
     if (!siteKey) return false;
-    if (!captchaToken) return false;
     if (status === "submitting") return false;
     return true;
-  }, [form.email, form.message, siteKey, captchaToken, status]);
+  }, [form.email, form.message, siteKey, status]);
 
-  useEffect(() => {
-    // If script is already loaded, render immediately
-    if (!siteKey) return;
+  async function getRecaptchaToken(): Promise<string> {
+    if (!siteKey) throw new Error("reCAPTCHA site key missing.");
+    if (!window.grecaptcha) throw new Error("reCAPTCHA not loaded.");
 
-    const tryRender = () => {
-      if (!window.grecaptcha || !captchaContainerRef.current) return;
-      if (widgetIdRef.current !== null) return;
-
-      widgetIdRef.current = window.grecaptcha.render(captchaContainerRef.current, {
-        sitekey: siteKey,
-        theme: "light",
-        callback: (token: string) => {
-          setCaptchaToken(token);
-          setErrorMsg("");
-        },
-        "expired-callback": () => {
-          setCaptchaToken("");
-        },
-        "error-callback": () => {
-          setCaptchaToken("");
-          setErrorMsg("reCAPTCHA could not be verified. Please try again.");
-        },
-      });
-    };
-
-    const interval = setInterval(tryRender, 150);
-    return () => clearInterval(interval);
-  }, [siteKey]);
+    // Wait for grecaptcha to be ready then execute
+    await window.grecaptcha.ready(() => {});
+    const token = await window.grecaptcha.execute(siteKey, { action });
+    if (!token) throw new Error("reCAPTCHA token missing.");
+    return token;
+  }
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -73,12 +51,15 @@ export default function ContactFormClient() {
     setErrorMsg("");
 
     try {
+      const captchaToken = await getRecaptchaToken();
+
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
           ...form,
           captchaToken,
+          captchaAction: action,
         }),
       });
 
@@ -87,26 +68,24 @@ export default function ContactFormClient() {
       if (!res.ok || !data?.ok) {
         setStatus("error");
         setErrorMsg(data?.error || "Submission failed. Please try again.");
-        // Reset captcha so bot attempts do not loop
-        if (window.grecaptcha && widgetIdRef.current !== null) {
-          window.grecaptcha.reset(widgetIdRef.current);
-        }
-        setCaptchaToken("");
         return;
       }
 
       setStatus("success");
-    } catch {
+    } catch (err: any) {
       setStatus("error");
-      setErrorMsg("Submission failed due to a network error. Please try again.");
+      setErrorMsg(err?.message || "Submission failed. Please try again.");
     }
   }
 
   return (
     <div>
-      {/* Load reCAPTCHA script only if configured */}
+      {/* Load reCAPTCHA v3 script only if configured */}
       {siteKey ? (
-        <Script src="https://www.google.com/recaptcha/api.js?render=explicit" strategy="afterInteractive" />
+        <Script
+          src={`https://www.google.com/recaptcha/api.js?render=${siteKey}`}
+          strategy="afterInteractive"
+        />
       ) : null}
 
       <div className="font-semibold text-slate-900">Share your context</div>
@@ -118,8 +97,7 @@ export default function ContactFormClient() {
         <div className="mt-4 bg-white border rounded-xl p-4 text-sm text-slate-700">
           reCAPTCHA is not configured yet. Add{" "}
           <span className="font-medium">NEXT_PUBLIC_RECAPTCHA_SITE_KEY</span> and{" "}
-          <span className="font-medium">RECAPTCHA_SECRET_KEY</span> to enable submissions.
-          You can still be reached at{" "}
+          <span className="font-medium">RECAPTCHA_SECRET_KEY</span>. You can still email{" "}
           <a className="underline" href={`mailto:${site.emails.general}`}>
             {site.emails.general}
           </a>
@@ -171,7 +149,9 @@ export default function ContactFormClient() {
           </div>
 
           <div>
-            <label className="text-sm font-medium text-slate-700">What do you need help with?</label>
+            <label className="text-sm font-medium text-slate-700">
+              What do you need help with?
+            </label>
             <select
               value={form.interest}
               onChange={(e) => setForm({ ...form, interest: e.target.value })}
@@ -195,12 +175,8 @@ export default function ContactFormClient() {
             />
           </div>
 
-          {/* reCAPTCHA container */}
-          <div className="pt-2">
-            <div ref={captchaContainerRef} />
-            <div className="mt-2 text-xs text-slate-500">
-              This site is protected by reCAPTCHA. Google Privacy Policy and Terms of Service apply.
-            </div>
+          <div className="text-xs text-slate-500">
+            This site is protected by reCAPTCHA. Google Privacy Policy and Terms of Service apply.
           </div>
 
           {status === "error" ? (

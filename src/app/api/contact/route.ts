@@ -11,6 +11,7 @@ export async function POST(req: Request) {
       interest = "",
       message = "",
       captchaToken = "",
+      captchaAction = "",
     } = body || {};
 
     if (!email || !message) {
@@ -19,14 +20,16 @@ export async function POST(req: Request) {
 
     const secret = process.env.RECAPTCHA_SECRET_KEY;
     if (!secret) {
-      return NextResponse.json(
-        { ok: false, error: "reCAPTCHA is not configured on the server." },
-        { status: 500 }
-      );
+      return NextResponse.json({ ok: false, error: "reCAPTCHA is not configured on the server." }, { status: 500 });
     }
 
     if (!captchaToken) {
       return NextResponse.json({ ok: false, error: "reCAPTCHA token missing." }, { status: 400 });
+    }
+
+    const expectedAction = "contact_submit";
+    if (captchaAction !== expectedAction) {
+      return NextResponse.json({ ok: false, error: "Invalid reCAPTCHA action." }, { status: 400 });
     }
 
     // Verify token with Google
@@ -40,19 +43,28 @@ export async function POST(req: Request) {
       body: params.toString(),
     });
 
-    const verifyData = await verifyRes.json();
+    const verifyData: any = await verifyRes.json();
 
     if (!verifyData?.success) {
-      return NextResponse.json(
-        { ok: false, error: "reCAPTCHA verification failed." },
-        { status: 400 }
-      );
+      return NextResponse.json({ ok: false, error: "reCAPTCHA verification failed." }, { status: 400 });
     }
 
-    // At this point captcha is valid.
-    // For now we simply accept and return ok.
-    // Later you can: push to CRM, send email via provider, store in DB, etc.
-    console.log("Contact submission:", { name, email, company, interest, message });
+    // reCAPTCHA v3 adds score and action
+    const score = typeof verifyData.score === "number" ? verifyData.score : 0;
+    const action = verifyData.action || "";
+
+    if (action !== expectedAction) {
+      return NextResponse.json({ ok: false, error: "reCAPTCHA action mismatch." }, { status: 400 });
+    }
+
+    // Tune threshold as you prefer. 0.5 is a common starting point.
+    const threshold = 0.5;
+    if (score < threshold) {
+      return NextResponse.json({ ok: false, error: "Submission blocked as suspicious." }, { status: 403 });
+    }
+
+    // Accepted. Later: send email, push to CRM, store in DB, etc.
+    console.log("Contact submission accepted:", { name, email, company, interest, message, score });
 
     return NextResponse.json({ ok: true });
   } catch {
