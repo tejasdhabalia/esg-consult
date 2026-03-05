@@ -28,7 +28,7 @@ export default function HomePage() {
         acceptedAnswer: {
           "@type": "Answer",
           text:
-            "DS Consulting supports leaders with ESG readiness and revenue visibility through advisory plus implementation. We build governed systems across ESG reporting, marketing automation, CRM governance, and measurement discipline.",
+            "DS Consulting supports leaders with ESG readiness and Revenue Visibility through advisory plus implementation. We build governed systems across ESG reporting, marketing automation, CRM governance, and measurement discipline.",
         },
       },
       {
@@ -55,7 +55,7 @@ export default function HomePage() {
         acceptedAnswer: {
           "@type": "Answer",
           text:
-            "Two outcomes are prioritised most strongly: ESG readiness and revenue visibility. ESG readiness means defensible reporting systems with governance, controls and evidence trails. Revenue visibility means lifecycle definitions, CRM discipline, and dashboards leaders can trust.",
+            "Two outcomes are prioritised most strongly: ESG readiness and revenue visibility. ESG readiness means defensible reporting systems with governance, controls and evidence trails. Revenue Visibility means lifecycle definitions, CRM discipline, and dashboards leaders can trust.",
         },
       },
       {
@@ -127,7 +127,7 @@ export default function HomePage() {
 
             <div className="bg-slate-50 border rounded-2xl p-10">
               <h3 className="text-2xl font-semibold text-indigo-700">
-                Revenue visibility
+                Revenue Visibility
               </h3>
               <p className="mt-4 text-slate-600">
                 Lifecycle definitions, CRM discipline, automation workflows, and measurement governance so leaders can trust dashboards.
@@ -141,13 +141,13 @@ export default function HomePage() {
 
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link href="/services/marketing-automation" className="text-indigo-700 font-medium">
-                  Explore marketing automation →
+                  Explore Marketing Automation →
                 </Link>
                 <Link
                   href="/services/marketing-automation/revenue-analytics"
                   className="underline text-slate-700"
                 >
-                  Revenue analytics
+                  Revenue Analytics
                 </Link>
               </div>
             </div>

@@ -7,7 +7,7 @@ import { absUrl } from "@/lib/url";
 export const metadata = {
   title: `About | ${site.legalName}`,
   description:
-    "Why DS Consulting exists and how we deliver. Scalable transformation partner for ESG readiness and revenue visibility through advisory plus implementation.",
+    "Why DS Consulting exists and how we deliver. Scalable transformation partner for ESG readiness and Revenue visibility through advisory plus implementation.",
   alternates: { canonical: absUrl("/about") },
 };
 
@@ -85,7 +85,7 @@ export default function AboutPage() {
         acceptedAnswer: {
           "@type": "Answer",
           text:
-            "Two outcomes are prioritised most strongly: ESG readiness and revenue visibility. ESG readiness means defensible reporting systems with governance, controls and evidence trails. Revenue visibility means lifecycle definitions, CRM discipline, and dashboards leaders can trust.",
+            "Two outcomes are prioritised most strongly: ESG readiness and Revenue Visibility. ESG readiness means defensible reporting systems with governance, controls and evidence trails. Revenue Visibility means lifecycle definitions, CRM discipline, and dashboards leaders can trust.",
         },
       },
     ],

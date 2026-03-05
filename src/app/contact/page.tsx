@@ -16,7 +16,7 @@ export default function ContactPage() {
     "@type": "ContactPage",
     name: `Contact ${site.legalName}`,
     url: absUrl("/contact"),
-    about: "Contact DS Consulting for ESG readiness and revenue visibility consulting.",
+    about: "Contact DS Consulting for ESG readiness and Revenue visibility consulting.",
     mainEntity: {
       "@type": "Organization",
       name: site.legalName,
@@ -28,7 +28,7 @@ export default function ContactPage() {
     <div>
       <PageHero
         title="Contact"
-        subtitle="For potential clients, use the form below. For partnerships and talent, use the dedicated email routes so inquiries are routed correctly."
+        subtitle="For our services, use the form below. For partnerships and talent, use the dedicated email routes so inquiries are routed correctly."
         primaryAction={{ label: "Explore services", href: "/services" }}
         secondaryAction={{ label: "Read insights", href: "/insights" }}
         imageSrc="/hero/contact.jpg"
