@@ -56,7 +56,7 @@ export default function InsightsHubClient({ items }: { items: InsightItem[] }) {
                 className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm"
               />
               <div className="mt-2 text-xs text-slate-500">
-                These are short practical guides. We will expand them over time.
+                Use search and filters to find the most relevant items.
               </div>
             </div>
 
@@ -168,21 +168,6 @@ export default function InsightsHubClient({ items }: { items: InsightItem[] }) {
                 </div>
               </Link>
             ))}
-          </div>
-
-          <div className="mt-12 bg-white border rounded-2xl p-8">
-            <div className="font-semibold text-slate-900">
-              Add more insights later
-            </div>
-            <p className="mt-2 text-sm text-slate-600 max-w-3xl">
-              To add a new article, create a new page under{" "}
-              <span className="font-medium">
-                src/app/insights/&lt;slug&gt;/page.tsx
-              </span>{" "}
-              and add one item to the list in{" "}
-              <span className="font-medium">src/app/insights/page.tsx</span>.
-              Search and filters will work automatically.
-            </p>
           </div>
         </div>
       </section>

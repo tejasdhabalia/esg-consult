@@ -29,7 +29,7 @@ export default function Page() {
         primaryAction={{ label: "CSRD advisory services", href: "/services/esg-advisory/csrd-advisory" }}
         secondaryAction={{ label: "Back to Regulatory hub", href: "/regulatory-hub" }}
         note="Note: We do not provide statutory audit or assurance."
-        imageSrc="/hero/csrd.jpg"
+        imageSrc="/hero/csrd-in-scope.jpg"
         imageAlt="CSRD scoping and timeline"
       />
 

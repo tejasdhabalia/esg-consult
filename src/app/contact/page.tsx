@@ -35,10 +35,10 @@ export default function ContactPage() {
         imageAlt="Contact and collaboration"
       />
 
-      {/* Potential clients form */}
+      {/* Additional questions? Submit our form */}
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold">For potential clients</h2>
+          <h2 className="text-3xl font-semibold">Additional questions? Submit our form</h2>
           <p className="mt-4 text-slate-600 max-w-3xl">
             Share your context and timeline. We will respond with clarifying questions and a suggested approach.
           </p>
@@ -87,10 +87,10 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Partners and talent */}
+      {/* Partnerships and Careers */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold">Partnerships and talent</h2>
+          <h2 className="text-3xl font-semibold">Partnerships and Careers</h2>
           <p className="mt-4 text-slate-600 max-w-3xl">
             Please use the email routes below so your inquiry reaches the right team quickly.
           </p>
@@ -120,20 +120,7 @@ export default function ContactPage() {
                   {site.emails.talent}
                 </a>
               </div>
-            </div>
-
-            <div className="bg-white border rounded-2xl p-8 shadow-sm">
-              <div className="font-semibold text-slate-900">General inquiries</div>
-              <p className="mt-3 text-sm text-slate-600">
-                Everything else. If you are a client, the form above is the fastest route.
-              </p>
-              <div className="mt-5 text-sm">
-                <span className="font-medium text-slate-900">Email:</span>{" "}
-                <a className="underline text-slate-700" href={`mailto:${site.emails.general}`}>
-                  {site.emails.general}
-                </a>
-              </div>
-            </div>
+            </div>        
           </div>
         </div>
       </section>

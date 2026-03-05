@@ -72,7 +72,7 @@ export default function PageHero({
                 alt={imageAlt}
                 fill
                 priority
-                className="object-cover object-right"
+                className="object-cover"
               />
               {/* Overlay to keep brand look consistent */}
               <div className="absolute inset-0 bg-gradient-to-tr from-slate-900/65 via-slate-900/25 to-transparent" />

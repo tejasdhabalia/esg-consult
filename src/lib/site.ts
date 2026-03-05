@@ -7,7 +7,7 @@ export const site = {
 
   // Domain (change once here)
   domain: "consult-ds.com",
-  baseUrl: "https://consult-ds.com",
+  baseUrl: "https://www.consult-ds.com",
 
   // Default SEO
   defaultTitle: "DS Consulting Advisory | Strategy to Systems. Delivered.",
@@ -22,8 +22,8 @@ export const site = {
 
   // Default contact placeholders
   emails: {
-    general: "contact@dsconsultingadvisory.com",
-    partners: "partners@dsconsultingadvisory.com",
-    talent: "talent@dsconsultingadvisory.com",
+    general: "contact@consult-ds.com",
+    partners: "partners@consult-ds.com",
+    talent: "talent@consult-ds.com",
   },
 };

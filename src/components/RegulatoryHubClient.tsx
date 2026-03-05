@@ -26,20 +26,27 @@ export default function RegulatoryHubClient({
     RegulatoryCategory | "All"
   >("All");
 
+  const categories: Array<RegulatoryCategory | "All"> = [
+    "All",
+    "CSRD",
+    "BRSR",
+    "UK Climate",
+  ];
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-
     return items
-      .filter((item) => (activeCategory === "All" ? true : item.category === activeCategory))
+      .filter((item) =>
+        activeCategory === "All" ? true : item.category === activeCategory
+      )
       .filter((item) => {
         if (!q) return true;
-        const haystack =
-          `${item.title} ${item.summary} ${item.category} ${item.topics.join(" ")} ${item.audience}`.toLowerCase();
+        const haystack = `${item.title} ${item.summary} ${item.category} ${item.topics.join(
+          " "
+        )} ${item.audience}`.toLowerCase();
         return haystack.includes(q);
       });
   }, [items, query, activeCategory]);
-
-  const categories: Array<RegulatoryCategory | "All"> = ["All", "CSRD", "BRSR", "UK Climate"];
 
   return (
     <div>
@@ -49,21 +56,23 @@ export default function RegulatoryHubClient({
           <div className="grid md:grid-cols-3 gap-6 items-end">
             <div className="md:col-span-2">
               <label className="text-sm font-medium text-slate-700">
-                Search regulations and readiness topics
+                Search regulatory content
               </label>
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Try: double materiality, value chain, metrics and targets, evidence trail"
+                placeholder="Try: timeline, evidence trails, controls, value chain, metrics and targets"
                 className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm"
               />
               <div className="mt-2 text-xs text-slate-500">
-                This hub is designed to help leaders translate regulation into practical operating steps.
+                Use search and filters to find the most relevant items.
               </div>
             </div>
 
             <div className="md:col-span-1">
-              <div className="text-sm font-medium text-slate-700">Filter by regulation</div>
+              <div className="text-sm font-medium text-slate-700">
+                Filter by regulation
+              </div>
               <div className="mt-2 flex flex-wrap gap-2">
                 {categories.map((c) => {
                   const active = c === activeCategory;
@@ -95,10 +104,16 @@ export default function RegulatoryHubClient({
               ESG advisory services
             </Link>
             <Link
+              href="/services"
+              className="border px-5 py-3 rounded-lg font-medium text-center"
+            >
+              All services
+            </Link>
+            <Link
               href="/contact"
               className="border px-5 py-3 rounded-lg font-medium text-center"
             >
-              Discuss your reporting timeline
+              Talk to us
             </Link>
           </div>
         </div>
@@ -109,14 +124,18 @@ export default function RegulatoryHubClient({
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex items-end justify-between gap-6">
             <div>
-              <h2 className="text-3xl font-semibold">Starter library</h2>
+              <h2 className="text-3xl font-semibold">Latest guidance</h2>
               <p className="mt-3 text-slate-600 max-w-3xl">
-                Short, practical guides that help you decide what to do first, what to govern, and how to create evidence trails
-                that leadership can rely on.
+                Practical guides designed for scoping clarity, governance,
+                controls, and evidence trails.
               </p>
             </div>
             <div className="text-sm text-slate-600">
-              Showing <span className="font-semibold text-slate-900">{filtered.length}</span> items
+              Showing{" "}
+              <span className="font-semibold text-slate-900">
+                {filtered.length}
+              </span>{" "}
+              items
             </div>
           </div>
 
@@ -154,18 +173,10 @@ export default function RegulatoryHubClient({
                 </div>
 
                 <div className="mt-5 text-sm font-medium text-indigo-700">
-                  Read guide →
+                  Read →
                 </div>
               </Link>
             ))}
-          </div>
-
-          <div className="mt-12 bg-white border rounded-2xl p-8">
-            <div className="font-semibold text-slate-900">Add more content later</div>
-            <p className="mt-2 text-sm text-slate-600 max-w-3xl">
-              To add a new guide, create a new page under <span className="font-medium">src/app/regulatory-hub/&lt;slug&gt;/page.tsx</span>
-              and add one item to the content list in the hub page. Search and filters will work automatically.
-            </p>
           </div>
         </div>
       </section>
