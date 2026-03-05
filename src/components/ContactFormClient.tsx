@@ -90,7 +90,7 @@ export default function ContactFormClient() {
 
       <div className="font-semibold text-slate-900">Share your context</div>
       <p className="mt-2 text-sm text-slate-600">
-        Required fields: work email and message. This form is protected by reCAPTCHA.
+        Fields marked with an asterisk (*) are required.
       </p>
 
       {!siteKey ? (
@@ -115,7 +115,7 @@ export default function ContactFormClient() {
       ) : (
         <form onSubmit={onSubmit} className="mt-6 space-y-4">
           <div>
-            <label className="text-sm font-medium text-slate-700">Name</label>
+            <label className="text-sm font-medium text-slate-700">Name*</label>
             <input
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -126,7 +126,7 @@ export default function ContactFormClient() {
           </div>
 
           <div>
-            <label className="text-sm font-medium text-slate-700">Work email</label>
+            <label className="text-sm font-medium text-slate-700">Work email*</label>
             <input
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -150,7 +150,7 @@ export default function ContactFormClient() {
 
           <div>
             <label className="text-sm font-medium text-slate-700">
-              What do you need help with?
+              What do you need help with*?
             </label>
             <select
               value={form.interest}
@@ -165,7 +165,7 @@ export default function ContactFormClient() {
           </div>
 
           <div>
-            <label className="text-sm font-medium text-slate-700">Message</label>
+            <label className="text-sm font-medium text-slate-700">Message*</label>
             <textarea
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
@@ -198,13 +198,7 @@ export default function ContactFormClient() {
             {status === "submitting" ? "Submitting..." : "Submit"}
           </button>
 
-          <p className="text-xs text-slate-500">
-            Prefer email? Write to{" "}
-            <a className="underline" href={`mailto:${site.emails.general}`}>
-              {site.emails.general}
-            </a>
-            .
-          </p>
+          
         </form>
       )}
     </div>
