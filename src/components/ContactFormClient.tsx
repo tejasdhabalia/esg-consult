@@ -150,7 +150,7 @@ export default function ContactFormClient() {
 
           <div>
             <label className="text-sm font-medium text-slate-700">
-              What do you need help with*?
+              What do you need help with?*
             </label>
             <select
               value={form.interest}

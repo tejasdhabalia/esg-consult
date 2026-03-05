@@ -27,7 +27,7 @@ export default function ContactPage() {
   return (
     <div>
       <PageHero
-        title="Contact"
+        title="Contact us"
         subtitle="For our services, use the form below. For partnerships and talent, use the dedicated email routes so inquiries are routed correctly."
         primaryAction={{ label: "Explore services", href: "/services" }}
         secondaryAction={{ label: "Read insights", href: "/insights" }}
