@@ -6,8 +6,8 @@ export const site = {
   taglineSecondary: "Delivered.",
 
   // Domain (change once here)
-  domain: "dsconsultingadvisory.com",
-  baseUrl: "https://dsconsultingadvisory.com",
+  domain: "consult-ds.com",
+  baseUrl: "https://consult-ds.com",
 
   // Default SEO
   defaultTitle: "DS Consulting Advisory | Strategy to Systems. Delivered.",
