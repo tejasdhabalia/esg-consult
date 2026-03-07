@@ -55,7 +55,7 @@ export default function HomePage() {
         acceptedAnswer: {
           "@type": "Answer",
           text:
-            "Two outcomes are prioritised most strongly: ESG readiness and revenue visibility. ESG readiness means defensible reporting systems with governance, controls and evidence trails. Revenue Visibility means lifecycle definitions, CRM discipline, and dashboards leaders can trust.",
+            "Two outcomes are prioritised most strongly: ESG readiness and Revenue Visibility. ESG readiness means defensible reporting systems with governance, controls and evidence trails. Revenue Visibility means lifecycle definitions, CRM discipline, and dashboards leaders can trust.",
         },
       },
       {
@@ -82,7 +82,7 @@ export default function HomePage() {
   return (
     <div>
       <PageHero
-        title="Scalable transformation for ESG readiness and revenue visibility"
+        title="Scalable transformation for ESG readiness and Revenue Visibility"
         subtitle="DS Consulting helps leadership teams turn fragmented tools and requirements into governed systems with measurable execution. Advisory plus implementation across ESG reporting systems, marketing automation, CRM governance, and AI-enabled operating models."
         primaryAction={{ label: "Book a consultation", href: "/contact" }}
         secondaryAction={{ label: "Explore services", href: "/services" }}
@@ -245,7 +245,7 @@ export default function HomePage() {
             <div>
               <h2 className="text-3xl font-semibold">Insights</h2>
               <p className="mt-3 text-slate-600 max-w-3xl">
-                Practical guidance for leaders building ESG readiness and revenue visibility.
+                Practical guidance for leaders building ESG readiness and Revenue Visibility.
               </p>
             </div>
             <Link href="/insights" className="text-indigo-700 font-medium">
@@ -284,7 +284,7 @@ export default function HomePage() {
           Ready to turn complexity into execution?
         </h2>
         <p className="mt-4 text-slate-300 max-w-2xl mx-auto">
-          If your priority is ESG readiness or revenue visibility, we can help you structure the operating model
+          If your priority is ESG readiness or Revenue Visibility, we can help you structure the operating model
           and implement the systems that teams can run.
         </p>
 
