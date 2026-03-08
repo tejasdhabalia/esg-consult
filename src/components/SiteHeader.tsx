@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
@@ -25,6 +26,14 @@ export default function SiteHeader() {
       <div className="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
         {/* Brand */}
         <Link href="/" className="flex items-center gap-3">
+          <Image
+            src="/brand/DSConsulting-mark.png"
+            alt="DS Consulting logo"
+            width={34}
+            height={34}
+            priority
+          />
+
           <span className="text-xl font-semibold text-slate-900">
             DS Consulting
           </span>
@@ -55,7 +64,7 @@ export default function SiteHeader() {
             </button>
 
             {servicesOpen && (
-              <div className="absolute left-0 top-full mt-3 w-[320px] max-w-[calc(100vw-2rem)]rounded-xl border border-slate-200 bg-white shadow-lg p-3">
+              <div className="absolute left-0 top-full mt-3 w-[320px] max-w-[calc(100vw-2rem)] rounded-xl border border-slate-200 bg-white shadow-lg p-3">
                 <Link
                   href="/services"
                   className="block rounded-lg px-3 py-2 hover:bg-slate-50"
@@ -97,7 +106,7 @@ export default function SiteHeader() {
 
                 <div className="my-2 border-t border-slate-100" />
                 <div className="px-3 py-2 text-xs text-slate-500">
-                  Additional capabilities: AI & Data • Growth Strategy • Location Intelligence
+                  Additional capabilities: AI & Data, Growth Strategy, Location Intelligence
                 </div>
               </div>
             )}
@@ -108,9 +117,6 @@ export default function SiteHeader() {
           </Link>
           <Link href="/insights" className="hover:text-slate-900">
             Insights
-          </Link>
-          <Link href="/case-studies" className="hover:text-slate-900">
-            Case Studies
           </Link>
           <Link href="/about" className="hover:text-slate-900">
             About
@@ -182,9 +188,6 @@ export default function SiteHeader() {
             </Link>
             <Link href="/insights" onClick={() => setMobileOpen(false)}>
               Insights
-            </Link>
-            <Link href="/case-studies" onClick={() => setMobileOpen(false)}>
-              Case Studies
             </Link>
             <Link href="/about" onClick={() => setMobileOpen(false)}>
               About
