@@ -119,7 +119,7 @@ export default function SiteFooter() {
               >
                 <IconLinkedIn />
               </a>
-			  /*
+			  {/*
               <a
                 href="#"
                 aria-label="Company Twitter or X (placeholder)"
@@ -134,7 +134,7 @@ export default function SiteFooter() {
               >
                 <IconYouTube />
               </a>
-			  */
+			  */}
             </div>
           </div>
 
