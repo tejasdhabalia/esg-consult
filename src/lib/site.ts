@@ -1,6 +1,6 @@
 export const site = {
   // Brand
-  legalName: "DS Consulting Advisory",
+  legalName: "DS Consulting",
   displayName: "DS Consulting",
   taglinePrimary: "Strategy to Systems.",
   taglineSecondary: "Delivered.",
@@ -10,9 +10,9 @@ export const site = {
   baseUrl: "https://www.consult-ds.com",
 
   // Default SEO
-  defaultTitle: "DS Consulting Advisory | Strategy to Systems. Delivered.",
+  defaultTitle: "DS Consulting| Strategy to Systems. Delivered.",
   defaultDescription:
-    "Scalable transformation partner for ESG readiness and revenue visibility. Advisory plus implementation across ESG reporting systems, marketing automation, CRM governance, and AI-enabled operating models.",
+    "Scalable transformation partner for ESG readiness and Revenue Visibility. Advisory plus implementation across ESG reporting systems, marketing automation, CRM governance, and AI-enabled operating models.",
 
   // Social
   linkedin: {

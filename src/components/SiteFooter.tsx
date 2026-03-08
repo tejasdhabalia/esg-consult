@@ -46,7 +46,7 @@ export default function SiteFooter() {
             <span className="text-white font-bold">{site.taglineSecondary}</span>
           </div>
           <p className="text-slate-400 mt-3">
-            ESG readiness and revenue visibility through advisory plus implementation.
+            ESG readiness and Revenue Visibility through advisory plus implementation.
           </p>
         </div>
 
@@ -113,12 +113,13 @@ export default function SiteFooter() {
             <div className="text-xs text-slate-500">Follow us</div>
             <div className="flex items-center gap-3 text-slate-400">
               <a
-                href="#"
-                aria-label="Company LinkedIn (placeholder)"
+                href="https://www.linkedin.com/company/consult-ds"
+                aria-label="Company LinkedIn"
                 className="hover:text-white"
               >
                 <IconLinkedIn />
               </a>
+			  /*
               <a
                 href="#"
                 aria-label="Company Twitter or X (placeholder)"
@@ -133,12 +134,11 @@ export default function SiteFooter() {
               >
                 <IconYouTube />
               </a>
+			  */
             </div>
           </div>
 
-          <div className="text-xs text-slate-500 md:text-right">
-            Prim Rose Tower, Azad Nagar Lane No. 3, Off Veera Desai Road, Andheri (W), Mumbai, Maharashtra 400058, India
-          </div>
+          
         </div>
       </div>
     </footer>
