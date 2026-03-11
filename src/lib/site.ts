@@ -10,9 +10,9 @@ export const site = {
   baseUrl: "https://www.consult-ds.com",
 
   // Default SEO
-  defaultTitle: "DS Consulting| Strategy to Systems. Delivered.",
+  defaultTitle: "ESG Readiness & Revenue Visibility Consulting | DS Consulting",
   defaultDescription:
-    "Scalable transformation partner for ESG readiness and Revenue Visibility. Advisory plus implementation across ESG reporting systems, marketing automation, CRM governance, and AI-enabled operating models.",
+    "DS Consulting helps leadership teams build governed ESG reporting systems and revenue visibility through advisory plus implementation. CSRD, BRSR, UK Climate, CRM governance.",
 
   // Social
   linkedin: {

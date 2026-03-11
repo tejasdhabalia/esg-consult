@@ -1,5 +1,7 @@
 import RegulatoryHubClient, { RegulatoryContentItem } from "@/components/RegulatoryHubClient";
 import PageHero from "@/components/PageHero";
+import LeadMagnetBanner from "@/components/LeadMagnetBanner";
+import NewsletterSignup from "@/components/NewsletterSignup";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
 
@@ -95,10 +97,18 @@ export default function RegulatoryHubPage() {
         secondaryAction={{ label: "Talk to us", href: "/contact" }}
         note="Note: We do not provide statutory audit or assurance."
         imageSrc="/hero/regulatory.jpg"
-        imageAlt="Regulatory and compliance readiness"
+        imageAlt="CSRD, BRSR and UK climate regulatory compliance guidance for CFOs and CSOs"
       />
 
       <RegulatoryHubClient items={items} />
+
+      <section className="max-w-6xl mx-auto px-6">
+        <LeadMagnetBanner />
+      </section>
+
+      <section className="max-w-3xl mx-auto px-6 pb-16">
+        <NewsletterSignup />
+      </section>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
     </div>

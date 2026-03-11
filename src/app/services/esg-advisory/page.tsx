@@ -1,5 +1,6 @@
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import LeadMagnetBanner from "@/components/LeadMagnetBanner";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
 
@@ -273,6 +274,11 @@ export default function ESGAdvisoryPage() {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* LEAD MAGNET */}
+      <section className="max-w-6xl mx-auto px-6">
+        <LeadMagnetBanner />
       </section>
 
       {/* JSON-LD */}

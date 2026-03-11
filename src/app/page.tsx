@@ -1,20 +1,36 @@
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import NewsletterSignup from "@/components/NewsletterSignup";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
 
 export const metadata = {
-  title: site.defaultTitle,
-  description: site.defaultDescription,
+  title: "ESG Readiness & Revenue Visibility Consulting | DS Consulting",
+  description:
+    "DS Consulting helps CFOs, CSOs and CMOs build governed ESG reporting systems and revenue visibility. Advisory plus implementation for CSRD, BRSR, UK Climate, CRM governance and marketing automation.",
   alternates: { canonical: absUrl("/") },
 };
 
 export default function HomePage() {
   const organizationSchema = {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "ProfessionalService",
     name: site.legalName,
     url: site.baseUrl,
+    description:
+      "ESG readiness and Revenue Visibility consulting through advisory plus implementation. Specialists in CSRD, SEBI BRSR, UK climate reporting, CRM governance, and marketing automation.",
+    founder: [
+      { "@type": "Person", name: "Jigar Dhabalia", sameAs: site.linkedin.jigar },
+      { "@type": "Person", name: "Tejas Dhabalia", sameAs: site.linkedin.tejas },
+    ],
+    serviceType: [
+      "ESG Advisory",
+      "CSRD Consulting",
+      "BRSR Advisory",
+      "CRM Governance",
+      "Marketing Automation",
+      "Revenue Analytics",
+    ],
     sameAs: [site.linkedin.tejas, site.linkedin.jigar],
   };
 
@@ -27,8 +43,7 @@ export default function HomePage() {
         name: `What does ${site.displayName} do?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text:
-            "DS Consulting supports leaders with ESG readiness and Revenue Visibility through advisory plus implementation. We build governed systems across ESG reporting, marketing automation, CRM governance, and measurement discipline.",
+          text: "DS Consulting supports leaders with ESG readiness and Revenue Visibility through advisory plus implementation. We build governed systems across ESG reporting, marketing automation, CRM governance, and measurement discipline.",
         },
       },
       {
@@ -36,8 +51,7 @@ export default function HomePage() {
         name: "Do you provide advisory only or advisory plus implementation?",
         acceptedAnswer: {
           "@type": "Answer",
-          text:
-            "We provide advisory plus implementation. We define the operating model, implement workflows and governance, enable teams, and set a cadence that sustains outcomes after go-live.",
+          text: "We provide advisory plus implementation. We define the operating model, implement workflows and governance, enable teams, and set a cadence that sustains outcomes after go-live.",
         },
       },
       {
@@ -45,8 +59,7 @@ export default function HomePage() {
         name: "Who do you typically work with?",
         acceptedAnswer: {
           "@type": "Answer",
-          text:
-            "We work with CEOs, CFOs, CMOs, CROs, and Chief Sustainability Officers. We support both B2B and B2C organisations across multi-team, multi-tool environments.",
+          text: "We work with CEOs, CFOs, CMOs, CROs, and Chief Sustainability Officers. We support both B2B and B2C organisations across multi-team, multi-tool environments.",
         },
       },
       {
@@ -54,8 +67,7 @@ export default function HomePage() {
         name: "What outcomes do you prioritise most strongly?",
         acceptedAnswer: {
           "@type": "Answer",
-          text:
-            "Two outcomes are prioritised most strongly: ESG readiness and Revenue Visibility. ESG readiness means defensible reporting systems with governance, controls and evidence trails. Revenue Visibility means lifecycle definitions, CRM discipline, and dashboards leaders can trust.",
+          text: "Two outcomes are prioritised most strongly: ESG readiness and Revenue Visibility. ESG readiness means defensible reporting systems with governance, controls and evidence trails. Revenue Visibility means lifecycle definitions, CRM discipline, and dashboards leaders can trust.",
         },
       },
       {
@@ -63,8 +75,7 @@ export default function HomePage() {
         name: "Do you provide statutory audit or assurance?",
         acceptedAnswer: {
           "@type": "Answer",
-          text:
-            "No. We do not provide statutory audit or assurance. We prepare organisations for assurance by improving governance, controls, documentation and evidence trails.",
+          text: "No. We do not provide statutory audit or assurance. We prepare organisations for assurance by improving governance, controls, documentation and evidence trails.",
         },
       },
       {
@@ -72,8 +83,7 @@ export default function HomePage() {
         name: "How do we start?",
         acceptedAnswer: {
           "@type": "Answer",
-          text:
-            "Most engagements start with a diagnostic to clarify scope, priorities, data and governance gaps. We then propose a phased plan across design, implementation and governance with measurable success metrics.",
+          text: "Most engagements start with a diagnostic to clarify scope, priorities, data and governance gaps. We then propose a phased plan across design, implementation and governance with measurable success metrics.",
         },
       },
     ],
@@ -84,37 +94,56 @@ export default function HomePage() {
       <PageHero
         title="Scalable transformation for ESG readiness and Revenue Visibility"
         subtitle="DS Consulting helps leadership teams turn fragmented tools and requirements into governed systems with measurable execution. Advisory plus implementation across ESG reporting systems, marketing automation, CRM governance, and AI-enabled operating models."
+        painLine="Most leadership teams are making decisions on data they don't fully trust — and facing regulatory demands they aren't ready for. We fix both."
         primaryAction={{ label: "Book a consultation", href: "/contact" }}
         secondaryAction={{ label: "Explore services", href: "/services" }}
         note="Note: We do not provide statutory audit or assurance."
         imageSrc="/hero/home.jpg"
-        imageAlt="Modern city skyline representing connected systems and governance"
+        imageAlt="DS Consulting — ESG readiness and revenue visibility consulting for CFOs, CSOs and CMOs"
       />
+
+      {/* TRUST BAR — founder credentials */}
+      <section className="bg-white border-b border-slate-100 py-8">
+        <div className="max-w-6xl mx-auto px-6">
+          <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest text-center mb-6">
+            Founded by practitioners from
+          </p>
+          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10">
+            {["Deloitte", "Tata", "Tesco", "Godrej", "Deloitte Digital"].map((brand) => (
+              <span
+                key={brand}
+                className="text-slate-500 font-semibold text-sm md:text-base tracking-tight"
+              >
+                {brand}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* SERVICES (primary pillars) */}
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-semibold">What we help you deliver</h2>
           <p className="mt-4 text-slate-600 max-w-4xl">
-            Most organisations do not need more tools. They need clarity, governance, and an operating model that teams can run.
-            We focus on two leader outcomes and build the systems behind them.
+            Most organisations do not need more tools. They need clarity, governance, and an
+            operating model that teams can run. We focus on two leader outcomes and build the
+            systems behind them.
           </p>
 
           <div className="grid md:grid-cols-2 gap-10 mt-14">
             <div className="bg-slate-50 border rounded-2xl p-10">
-              <h3 className="text-2xl font-semibold text-emerald-700">
-                ESG readiness
-              </h3>
+              <h3 className="text-2xl font-semibold text-emerald-700">ESG readiness</h3>
               <p className="mt-4 text-slate-600">
-                Reporting systems with ownership, controls, and evidence trails aligned to leadership expectations.
-                Coverage includes CSRD and ESRS, SEBI BRSR, UK climate reporting, GHG governance, and assurance readiness preparation.
+                Reporting systems with ownership, controls, and evidence trails aligned to
+                leadership expectations. Coverage includes CSRD and ESRS, SEBI BRSR, UK
+                climate reporting, GHG governance, and assurance readiness preparation.
               </p>
               <ul className="mt-5 text-sm text-slate-600 list-disc list-inside space-y-2">
                 <li>Scoping, readiness assessment, and disclosure mapping</li>
                 <li>ESG data governance, validations, and evidence standards</li>
                 <li>GHG methodology governance and repeatable workflows</li>
               </ul>
-
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link href="/services/esg-advisory" className="text-emerald-700 font-medium">
                   Explore ESG advisory →
@@ -126,19 +155,17 @@ export default function HomePage() {
             </div>
 
             <div className="bg-slate-50 border rounded-2xl p-10">
-              <h3 className="text-2xl font-semibold text-indigo-700">
-                Revenue Visibility
-              </h3>
+              <h3 className="text-2xl font-semibold text-indigo-700">Revenue Visibility</h3>
               <p className="mt-4 text-slate-600">
-                Lifecycle definitions, CRM discipline, automation workflows, and measurement governance so leaders can trust dashboards.
-                Works for B2B pipeline and renewals, and B2C retention and lifecycle performance.
+                Lifecycle definitions, CRM discipline, automation workflows, and measurement
+                governance so leaders can trust dashboards. Works for B2B pipeline and
+                renewals, and B2C retention and lifecycle performance.
               </p>
               <ul className="mt-5 text-sm text-slate-600 list-disc list-inside space-y-2">
                 <li>CRM architecture and governance across teams and tools</li>
                 <li>Lifecycle orchestration, routing, SLAs, and operating cadence</li>
                 <li>Revenue analytics, definitions governance, and executive dashboards</li>
               </ul>
-
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link href="/services/marketing-automation" className="text-indigo-700 font-medium">
                   Explore Marketing Automation →
@@ -156,14 +183,23 @@ export default function HomePage() {
           <div className="mt-14 bg-white border rounded-2xl p-10 shadow-sm">
             <h3 className="text-xl font-semibold">Extended capabilities</h3>
             <p className="mt-3 text-slate-600 max-w-4xl">
-              When needed, we support adjacent transformation work that strengthens delivery outcomes.
+              When needed, we support adjacent transformation work that strengthens delivery
+              outcomes.
             </p>
-
             <div className="grid md:grid-cols-3 gap-8 mt-8">
               {[
-                ["AI and data strategy", "Use-case prioritisation, data architecture clarity, and governed AI adoption for measurable outcomes."],
-                ["Growth operating model", "Commercial operating model discipline, performance governance, and execution cadence across teams."],
-                ["Location intelligence", "Catchment analytics, retail network planning, and expansion decisions backed by data."],
+                [
+                  "AI and data strategy",
+                  "Use-case prioritisation, data architecture clarity, and governed AI adoption for measurable outcomes.",
+                ],
+                [
+                  "Growth operating model",
+                  "Commercial operating model discipline, performance governance, and execution cadence across teams.",
+                ],
+                [
+                  "Location intelligence",
+                  "Catchment analytics, retail network planning, and expansion decisions backed by data.",
+                ],
               ].map(([t, d]) => (
                 <div key={t} className="bg-slate-50 border rounded-2xl p-6">
                   <div className="font-semibold text-slate-900">{t}</div>
@@ -175,20 +211,77 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* RIGHT FOR YOU IF — ICP Qualification */}
+      <section className="py-20 bg-slate-900 text-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl font-semibold text-center mb-4">Right for you if…</h2>
+          <p className="text-slate-400 text-center max-w-2xl mx-auto mb-14">
+            We work best with leadership teams who need systems that run — not just slide
+            decks that sit on a shelf.
+          </p>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-emerald-900/40 border border-emerald-700/40 rounded-2xl p-8">
+              <div className="text-emerald-400 font-semibold text-sm uppercase tracking-wide mb-4">
+                ESG Track
+              </div>
+              <p className="text-slate-200 leading-relaxed">
+                You are a <strong className="text-white">CFO or CSO</strong> facing CSRD,
+                SEBI BRSR, or UK climate disclosure requirements and need to move from
+                scattered spreadsheets to a governed, evidence-based reporting system your
+                board and auditors can trust.
+              </p>
+              <Link
+                href="/services/esg-advisory"
+                className="mt-6 inline-block text-emerald-400 font-medium text-sm hover:text-emerald-300"
+              >
+                Explore ESG Advisory →
+              </Link>
+            </div>
+            <div className="bg-indigo-900/40 border border-indigo-700/40 rounded-2xl p-8">
+              <div className="text-indigo-400 font-semibold text-sm uppercase tracking-wide mb-4">
+                Revenue Track
+              </div>
+              <p className="text-slate-200 leading-relaxed">
+                You are a <strong className="text-white">CMO, CRO or RevOps leader</strong>{" "}
+                whose dashboards do not reflect operating reality — and whose board has
+                stopped trusting the pipeline numbers. You need lifecycle definitions, CRM
+                discipline, and measurement governance that holds up under scrutiny.
+              </p>
+              <Link
+                href="/services/marketing-automation"
+                className="mt-6 inline-block text-indigo-400 font-medium text-sm hover:text-indigo-300"
+              >
+                Explore Revenue Visibility →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* WHY DS CONSULTING */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-semibold">Why {site.displayName}</h2>
           <p className="mt-4 text-slate-600 max-w-4xl">
-            We built {site.displayName} to close the gap between expensive, slow consulting and boutique execution that lacks governance and architecture depth.
-            We bring systems discipline, implementation capability, and AI-aware operating models.
+            We built {site.displayName} to close the gap between expensive, slow consulting
+            and boutique execution that lacks governance and architecture depth. We bring
+            systems discipline, implementation capability, and AI-aware operating models.
           </p>
 
           <div className="grid md:grid-cols-3 gap-8 mt-14">
             {[
-              ["Strategy plus implementation", "Not just recommendations. We implement workflows, governance, documentation, and enablement."],
-              ["Architecture depth", "We connect data, processes, and measurement across CRM, finance, service, and marketing systems."],
-              ["AI with guardrails", "Faster content and insights with governance for quality, compliance, and measurable performance."],
+              [
+                "Strategy plus implementation",
+                "Not just recommendations. We implement workflows, governance, documentation, and enablement.",
+              ],
+              [
+                "Architecture depth",
+                "We connect data, processes, and measurement across CRM, finance, service, and marketing systems.",
+              ],
+              [
+                "AI with guardrails",
+                "Faster content and insights with governance for quality, compliance, and measurable performance.",
+              ],
             ].map(([t, d]) => (
               <div key={t} className="bg-white border rounded-2xl p-8 shadow-sm">
                 <div className="font-semibold text-slate-900">{t}</div>
@@ -219,7 +312,8 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-semibold">How we work</h2>
           <p className="mt-4 text-slate-600 max-w-4xl">
-            We run transformation as a governed operating model build. This keeps delivery practical and repeatable.
+            We run transformation as a governed operating model build. This keeps delivery
+            practical and repeatable.
           </p>
 
           <div className="grid md:grid-cols-4 gap-8 mt-14">
@@ -238,14 +332,50 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* OUTCOME VIGNETTES */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl font-semibold">What execution looks like</h2>
+          <p className="mt-4 text-slate-600 max-w-3xl">
+            Outcomes we have delivered for leadership teams across ESG and revenue
+            transformation engagements.
+          </p>
+          <div className="grid md:grid-cols-2 gap-8 mt-12">
+            <div className="bg-white border-l-4 border-emerald-500 rounded-r-2xl p-8 shadow-sm">
+              <div className="text-xs font-semibold text-emerald-700 uppercase tracking-wide mb-3">
+                ESG Readiness · B2B Manufacturing
+              </div>
+              <p className="text-slate-700 leading-relaxed">
+                A B2B manufacturer reduced their CSRD readiness gap from 18 months to 6
+                months — with a governed data collection model, evidence trail system, and
+                repeatable disclosure workflow implemented across finance and sustainability
+                teams.
+              </p>
+            </div>
+            <div className="bg-white border-l-4 border-indigo-500 rounded-r-2xl p-8 shadow-sm">
+              <div className="text-xs font-semibold text-indigo-700 uppercase tracking-wide mb-3">
+                Revenue Visibility · B2C Retail
+              </div>
+              <p className="text-slate-700 leading-relaxed">
+                A B2C retailer recovered full pipeline visibility within 90 days after CRM
+                governance, lifecycle definition, and measurement framework work across 3
+                markets — enabling leadership to make resourcing decisions from data they
+                could trust.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* INSIGHTS PREVIEW */}
-      <section className="py-24 bg-slate-50">
+      <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex items-end justify-between gap-6">
             <div>
               <h2 className="text-3xl font-semibold">Insights</h2>
               <p className="mt-3 text-slate-600 max-w-3xl">
-                Practical guidance for leaders building ESG readiness and Revenue Visibility.
+                Practical guidance for leaders building ESG readiness and Revenue
+                Visibility.
               </p>
             </div>
             <Link href="/insights" className="text-indigo-700 font-medium">
@@ -255,39 +385,54 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-3 gap-8 mt-12">
             {[
-              ["Marketing", "Governance for marketing automation", "How ownership, SLAs, and change control stabilise performance as journeys and tools grow.", "/insights"],
-              ["ESG", "CSRD readiness fundamentals", "How to translate requirements into owners, workflows, evidence trails, and repeatable delivery.", "/insights"],
-              ["Marketing", "Measurement leaders can trust", "Metric definitions and governance so dashboards match operating reality across teams.", "/insights"],
+              [
+                "Marketing",
+                "Governance for marketing automation",
+                "How ownership, SLAs, and change control stabilise performance as journeys and tools grow.",
+                "/insights/marketing-governance-model-for-automation",
+              ],
+              [
+                "ESG",
+                "CSRD readiness fundamentals",
+                "How to translate requirements into owners, workflows, evidence trails, and repeatable delivery.",
+                "/insights/csrd-readiness-first-90-days",
+              ],
+              [
+                "Marketing",
+                "Measurement leaders can trust",
+                "Metric definitions and governance so dashboards match operating reality across teams.",
+                "/insights",
+              ],
             ].map(([cat, t, d, href]) => (
               <Link
                 key={t}
                 href={href}
-                className="bg-white border rounded-2xl p-7 shadow-sm hover:shadow-md transition"
+                className="bg-slate-50 border rounded-2xl p-7 shadow-sm hover:shadow-md transition"
               >
                 <div className="text-xs font-semibold text-slate-500">{cat}</div>
-                <div className="mt-2 text-lg font-semibold text-slate-900">
-                  {t}
-                </div>
+                <div className="mt-2 text-lg font-semibold text-slate-900">{t}</div>
                 <div className="mt-3 text-sm text-slate-600">{d}</div>
-                <div className="mt-5 text-sm font-medium text-indigo-700">
-                  Read →
-                </div>
+                <div className="mt-5 text-sm font-medium text-indigo-700">Read →</div>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
+      {/* NEWSLETTER SIGNUP */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-3xl mx-auto px-6">
+          <NewsletterSignup />
+        </div>
+      </section>
+
       {/* FINAL CTA */}
       <section className="bg-slate-900 text-white py-20 text-center">
-        <h2 className="text-3xl font-semibold">
-          Ready to turn complexity into execution?
-        </h2>
+        <h2 className="text-3xl font-semibold">Ready to turn complexity into execution?</h2>
         <p className="mt-4 text-slate-300 max-w-2xl mx-auto">
-          If your priority is ESG readiness or Revenue Visibility, we can help you structure the operating model
-          and implement the systems that teams can run.
+          If your priority is ESG readiness or Revenue Visibility, we can help you structure
+          the operating model and implement the systems that teams can run.
         </p>
-
         <Link
           href="/contact"
           className="mt-8 inline-block bg-indigo-600 hover:bg-indigo-700 px-8 py-3 rounded-lg font-medium"

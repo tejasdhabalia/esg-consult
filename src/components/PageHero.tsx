@@ -8,6 +8,7 @@ type HeroAction = { label: string; href: string };
 export default function PageHero({
   title,
   subtitle,
+  painLine,
   primaryAction,
   secondaryAction,
   note,
@@ -16,10 +17,11 @@ export default function PageHero({
 }: {
   title: string;
   subtitle: string;
+  painLine?: string;
   primaryAction?: HeroAction;
   secondaryAction?: HeroAction;
   note?: string;
-  imageSrc: string; // example: "/hero/home.jpg"
+  imageSrc: string;
   imageAlt: string;
 }) {
   return (
@@ -32,13 +34,15 @@ export default function PageHero({
           <div className="md:col-span-7">
             <TaglineBadge />
 
-            <h1 className="mt-8 text-5xl font-bold leading-tight max-w-4xl">
-              {title}
-            </h1>
+            <h1 className="mt-8 text-5xl font-bold leading-tight max-w-4xl">{title}</h1>
 
-            <p className="mt-6 text-lg text-slate-300 max-w-4xl">
-              {subtitle}
-            </p>
+            <p className="mt-6 text-lg text-slate-300 max-w-4xl">{subtitle}</p>
+
+            {painLine && (
+              <p className="mt-5 text-base text-indigo-300 font-medium max-w-2xl border-l-2 border-indigo-500 pl-4">
+                {painLine}
+              </p>
+            )}
 
             {(primaryAction || secondaryAction) && (
               <div className="mt-10 flex flex-col sm:flex-row gap-4">
@@ -74,7 +78,6 @@ export default function PageHero({
                 priority
                 className="object-cover"
               />
-              {/* Overlay to keep brand look consistent */}
               <div className="absolute inset-0 bg-gradient-to-tr from-slate-900/65 via-slate-900/25 to-transparent" />
               <div className="absolute inset-0 ring-1 ring-white/10" />
             </div>
