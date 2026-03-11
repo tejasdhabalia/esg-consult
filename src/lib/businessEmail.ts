@@ -114,7 +114,7 @@ export function validateBusinessEmail(email: string): BusinessEmailValidation {
   if (
     BLOCKED_LOCAL_PARTS.has(localPart) ||
     /^(test|demo|dummy|fake|sample)[._-]?\d*$/i.test(localPart) ||
-    /^[a-z]\1{3,}$/i.test(localPart) ||
+    /^[a-z]([a-z])\1{3,}$/i.test(localPart) ||
     localPart.includes("noreply") ||
     localPart.includes("no-reply")
   ) {
