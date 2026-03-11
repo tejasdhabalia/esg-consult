@@ -10,6 +10,39 @@ export const metadata = {
 };
 
 export default function TeamPage() {
+  const teamSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "DS Consulting Leadership Team",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        item: {
+          "@type": "Person",
+          name: "Jigar Dhabalia",
+          jobTitle: "Co-founder and Principal Consultant",
+          description: "Expert in Corporate Sustainability, partnering with leadership teams to build robust reporting capabilities, structured operating cadence, and measurable control systems. Cross-industry experience spanning B2B, Manufacturing, Oil and Gas, Chemical and Energy and Utilities.",
+          worksFor: { "@type": "Organization", name: "DS Consulting", url: "https://www.consult-ds.com" },
+          sameAs: "https://www.linkedin.com/in/jigardhabalia/",
+          knowsAbout: ["ESG reporting", "CSRD", "SEBI BRSR", "Sustainability governance", "GHG methodology"],
+        },
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        item: {
+          "@type": "Person",
+          name: "Tejas Dhabalia",
+          jobTitle: "Co-founder and Principal Consultant",
+          description: "Marketing Ops and MarTech leader with experience across Deloitte, Tata, Tesco, and Godrej. Focused on marketing automation, AI architecture, retail analytics, and lead management.",
+          worksFor: { "@type": "Organization", name: "DS Consulting", url: "https://www.consult-ds.com" },
+          sameAs: "https://www.linkedin.com/in/tejasdhabalia/",
+          knowsAbout: ["Marketing automation", "CRM governance", "Revenue operations", "AI architecture", "Location intelligence"],
+        },
+      },
+    ],
+  };
   return (
     <div>
       <PageHero
@@ -90,6 +123,8 @@ export default function TeamPage() {
           </div>
         </div>
       </section>
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(teamSchema) }} />
     </div>
   );
 }

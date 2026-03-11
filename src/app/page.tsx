@@ -1,6 +1,5 @@
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
-import NewsletterSignup from "@/components/NewsletterSignup";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
 
@@ -94,22 +93,22 @@ export default function HomePage() {
       <PageHero
         title="Scalable transformation for ESG readiness and Revenue Visibility"
         subtitle="DS Consulting helps leadership teams turn fragmented tools and requirements into governed systems with measurable execution. Advisory plus implementation across ESG reporting systems, marketing automation, CRM governance, and AI-enabled operating models."
-        painLine="Most leadership teams are making decisions on data they don't fully trust — and facing regulatory demands they aren't ready for. We fix both."
+        painLine="Most leadership teams are making decisions on data they do not fully trust, and are facing regulatory demands they are not ready for. We fix both."
         primaryAction={{ label: "Book a consultation", href: "/contact" }}
         secondaryAction={{ label: "Explore services", href: "/services" }}
         note="Note: We do not provide statutory audit or assurance."
         imageSrc="/hero/home.jpg"
-        imageAlt="DS Consulting — ESG readiness and revenue visibility consulting for CFOs, CSOs and CMOs"
+        imageAlt="DS Consulting: ESG readiness and revenue visibility consulting for CFOs, CSOs and CMOs"
       />
 
-      {/* TRUST BAR — founder credentials */}
+      {/* TRUST BAR: founder credentials */}
       <section className="bg-white border-b border-slate-100 py-8">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest text-center mb-6">
             Founded by practitioners from
           </p>
           <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10">
-            {["Deloitte", "Tata", "Tesco", "Godrej", "Deloitte Digital"].map((brand) => (
+            {["Deloitte", "Tata", "Tesco", "Godrej", "Reliance Industries", "Lenzing Group"].map((brand) => (
               <span
                 key={brand}
                 className="text-slate-500 font-semibold text-sm md:text-base tracking-tight"
@@ -211,12 +210,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* RIGHT FOR YOU IF — ICP Qualification */}
+      {/* RIGHT FOR YOU IF: ICP Qualification */}
       <section className="py-20 bg-slate-900 text-white">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-semibold text-center mb-4">Right for you if…</h2>
           <p className="text-slate-400 text-center max-w-2xl mx-auto mb-14">
-            We work best with leadership teams who need systems that run — not just slide
+            We work best with leadership teams who need systems that run, not just slide
             decks that sit on a shelf.
           </p>
           <div className="grid md:grid-cols-2 gap-8">
@@ -243,7 +242,7 @@ export default function HomePage() {
               </div>
               <p className="text-slate-200 leading-relaxed">
                 You are a <strong className="text-white">CMO, CRO or RevOps leader</strong>{" "}
-                whose dashboards do not reflect operating reality — and whose board has
+                whose dashboards do not reflect operating reality, and whose board has
                 stopped trusting the pipeline numbers. You need lifecycle definitions, CRM
                 discipline, and measurement governance that holds up under scrutiny.
               </p>
@@ -347,7 +346,7 @@ export default function HomePage() {
               </div>
               <p className="text-slate-700 leading-relaxed">
                 A B2B manufacturer reduced their CSRD readiness gap from 18 months to 6
-                months — with a governed data collection model, evidence trail system, and
+                months, with a governed data collection model, evidence trail system, and
                 repeatable disclosure workflow implemented across finance and sustainability
                 teams.
               </p>
@@ -359,7 +358,7 @@ export default function HomePage() {
               <p className="text-slate-700 leading-relaxed">
                 A B2C retailer recovered full pipeline visibility within 90 days after CRM
                 governance, lifecycle definition, and measurement framework work across 3
-                markets — enabling leadership to make resourcing decisions from data they
+                markets, enabling leadership to make resourcing decisions from data they
                 could trust.
               </p>
             </div>
@@ -416,13 +415,6 @@ export default function HomePage() {
               </Link>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* NEWSLETTER SIGNUP */}
-      <section className="py-16 bg-slate-50">
-        <div className="max-w-3xl mx-auto px-6">
-          <NewsletterSignup />
         </div>
       </section>
 

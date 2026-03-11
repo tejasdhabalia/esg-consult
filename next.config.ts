@@ -1,6 +1,8 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  // keep ESLint strict during builds (or temporarily allow builds to pass with warnings):
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  // Uncomment to skip ESLint during builds:
   // eslint: { ignoreDuringBuilds: true },
 };
-module.exports = nextConfig;
+
+export default nextConfig;

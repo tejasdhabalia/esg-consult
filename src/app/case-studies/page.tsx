@@ -1,3 +1,13 @@
+import { site } from "@/lib/site";
+import { absUrl } from "@/lib/url";
+
+export const metadata = {
+  title: `Case Studies | ${site.legalName}`,
+  description:
+    "Selected engagement experience from DS Consulting. ESG readiness and revenue visibility outcomes delivered for leadership teams across B2B and B2C organisations.",
+  alternates: { canonical: absUrl("/case-studies") },
+};
+
 export default function CaseStudiesPage() {
   return (
     <div className="max-w-6xl mx-auto px-6 py-20">

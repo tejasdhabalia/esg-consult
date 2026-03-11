@@ -41,6 +41,45 @@ export default function CRMGovernancePage() {
     url: absUrl("/services/marketing-automation/crm-architecture-governance"),
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What does CRM governance consulting involve?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "CRM governance consulting defines and implements the data model, taxonomy, change control process, and reporting standards that keep your CRM accurate and trustworthy over time. We fix the root causes of dirty data and unreliable dashboards.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Which CRM platforms do you work with?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "We are platform-agnostic. We design the governance framework and data model, then implement within your existing CRM including Salesforce, HubSpot, Microsoft Dynamics, and others.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How long does a CRM governance engagement take?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Most engagements begin with a diagnostic to assess current data quality, definition gaps, and integration issues. A phased implementation typically runs over 8 to 16 weeks depending on complexity and the number of integrated systems.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What is the difference between CRM architecture and CRM governance?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Architecture covers the structural design: objects, fields, relationships, and integrations. Governance covers the operational controls: who owns what, change approval, data quality rules, and how the system evolves. Both are required for lasting CRM reliability.",
+        },
+      },
+    ],
+  };
+
   return (
     <div>
       <PageHero
@@ -94,6 +133,7 @@ export default function CRMGovernancePage() {
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
     </div>
   );
 }

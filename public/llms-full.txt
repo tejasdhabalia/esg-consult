@@ -1,0 +1,209 @@
+# DS Consulting — Full Content Index
+
+> This file is intended for AI language models and search agents.
+> It provides structured access to all substantive content on consult-ds.com.
+
+---
+
+## Homepage
+
+URL: https://www.consult-ds.com/
+Title: ESG Readiness & Revenue Visibility Consulting | DS Consulting
+
+DS Consulting helps leadership teams turn fragmented tools and regulatory requirements
+into governed systems with measurable execution. Advisory plus implementation across
+ESG reporting systems, marketing automation, CRM governance, and AI-enabled operating models.
+
+Core message: Most leadership teams are making decisions on data they do not fully trust,
+and are facing regulatory demands they are not ready for. We fix both.
+
+---
+
+## Services Overview
+
+URL: https://www.consult-ds.com/services
+
+Two primary service lines:
+1. ESG Advisory — governance, reporting systems, evidence trails for CSRD, BRSR, UK climate
+2. Marketing Automation and RevOps — CRM governance, lifecycle, measurement, revenue visibility
+
+Five capability pillars: ESG readiness, Revenue visibility, AI and data architecture,
+Growth operating model, Location intelligence.
+
+Engagement model: Diagnose, Design, Implement, Govern.
+
+---
+
+## ESG Advisory
+
+URL: https://www.consult-ds.com/services/esg-advisory
+
+Advisory plus implementation for ESG readiness. Coverage:
+- CSRD and ESRS: scoping, double materiality, ESRS disclosure mapping, controls, evidence trails
+- SEBI BRSR: KPI mapping, controls, value chain data collection, assurance readiness
+- UK climate reporting: governance, risk management, metrics and targets, evidence standards
+- GHG governance: Scope 1, 2, 3 methodology, emissions data controls, repeatable workflows
+- Assurance readiness preparation (we do not provide statutory audit or assurance)
+
+Key deliverables: readiness assessment, disclosure mapping, data ownership model,
+evidence trail design, governance cadence, documentation standards.
+
+### CSRD Advisory
+URL: https://www.consult-ds.com/services/esg-advisory/csrd-advisory
+Covers: CSRD scoping, double materiality assessment support, ESRS mapping,
+data governance, controls, evidence trails, first-cycle reporting workflow.
+
+### BRSR Advisory
+URL: https://www.consult-ds.com/services/esg-advisory/brsr-advisory
+Covers: SEBI BRSR applicability, KPI inventory, value chain data, controls,
+evidence trails, governance cadence for India-listed companies.
+
+### UK Climate Reporting
+URL: https://www.consult-ds.com/services/esg-advisory/uk-climate-reporting
+Covers: TCFD-aligned governance, risk and opportunity identification,
+metrics and targets, GHG data, evidence trails, SECR compliance.
+
+---
+
+## Marketing Automation and RevOps
+
+URL: https://www.consult-ds.com/services/marketing-automation
+
+Advisory plus implementation for revenue visibility. Covers:
+- CRM architecture and governance
+- Lifecycle and lead management
+- Revenue analytics and measurement
+- Omnichannel automation workflows
+- AI-enabled content and insights with governance
+
+Works for B2B pipeline and renewals, and B2C retention and lifecycle performance.
+
+### CRM Architecture and Governance
+URL: https://www.consult-ds.com/services/marketing-automation/crm-architecture-governance
+Covers: data model and taxonomy, source of truth, identity discipline, integrations
+across finance and service, permissions, change control, data quality controls,
+reporting definitions governance.
+
+### Lifecycle and Lead Management
+URL: https://www.consult-ds.com/services/marketing-automation/lifecycle-lead-management
+Covers: lifecycle stage definitions, routing rules, SLAs, journey orchestration framework,
+segmentation and personalisation governance, prioritisation logic, measurement and cadence.
+
+### Revenue Analytics and Measurement
+URL: https://www.consult-ds.com/services/marketing-automation/revenue-analytics
+Covers: funnel and lifecycle taxonomy, metric definitions governance, pipeline and
+retention reporting, CRM to finance alignment, attribution governance, insights workflow.
+
+---
+
+## Regulatory Hub
+
+URL: https://www.consult-ds.com/regulatory-hub
+
+Searchable guides for CSRD and ESRS, SEBI BRSR, and UK climate reporting.
+Built for leaders who need scoping clarity, governance, evidence trails, and
+repeatable reporting workflows.
+
+### CSRD Scoping and Timeline
+URL: https://www.consult-ds.com/regulatory-hub/csrd-in-scope-and-timeline
+Topics: in-scope entity determination, reporting timeline, group boundary decisions,
+first-cycle readiness priorities.
+
+### Double Materiality and ESRS Mapping
+URL: https://www.consult-ds.com/regulatory-hub/csrd-double-materiality-and-esrs-mapping
+Topics: double materiality process, impact and financial materiality, ESRS topic mapping,
+disclosure planning, evidence trail design.
+
+### BRSR Readiness: KPI Mapping and Controls
+URL: https://www.consult-ds.com/regulatory-hub/brsr-core-readiness-kpis-controls
+Topics: BRSR KPI inventory, data ownership, validation controls, evidence trails,
+governance cadence.
+
+### BRSR Value Chain Data Collection
+URL: https://www.consult-ds.com/regulatory-hub/brsr-value-chain-data-collection
+Topics: Scope 3 and value chain prioritisation, supplier data workflows,
+assumptions documentation, cycle-by-cycle improvement.
+
+### UK Climate Governance and Risk Management
+URL: https://www.consult-ds.com/regulatory-hub/uk-climate-governance-and-risk-management
+Topics: board oversight structure, climate risk identification, decision rights,
+risk linkage to strategy, evidence trails.
+
+### UK Climate Metrics and Targets
+URL: https://www.consult-ds.com/regulatory-hub/uk-climate-metrics-targets-and-evidence
+Topics: emissions metrics, near and long-term targets, GHG data governance,
+controls, documentation, review cadence.
+
+---
+
+## Insights
+
+URL: https://www.consult-ds.com/insights
+
+Practical guides for leaders building ESG readiness and revenue visibility.
+
+### CSRD Readiness in the First 90 Days
+URL: https://www.consult-ds.com/insights/csrd-readiness-first-90-days
+Audience: CFO, CSO, CEO
+A practical plan from scoping to owners, disclosure mapping, evidence trails,
+and a reporting workflow that can repeat.
+
+### The Governance Model Behind Marketing Automation That Actually Scales
+URL: https://www.consult-ds.com/insights/marketing-governance-model-for-automation
+Audience: CMO, CRO, RevOps, CEO
+Why automation breaks as teams grow, and how to implement ownership, definitions,
+SLAs, and change control that protects performance.
+
+---
+
+## About DS Consulting
+
+URL: https://www.consult-ds.com/about
+
+DS Consulting was built to close the gap between expensive, slow consulting and
+boutique execution that lacks governance and architecture depth.
+
+Our principle: Excellence in execution (Yogah karmasu kausalam).
+
+### Why we exist
+Big consulting can be expensive and slow. Boutique agencies can execute but often
+lack governance and architecture depth. Tool sprawl across CRM, finance, service
+and contact centre signals creates fragmented execution. AI increases expectations
+and risk for quality, compliance, and differentiation.
+
+### What makes us different
+- Advisory plus implementation: we define the operating model AND implement it
+- Governance depth: we connect data, processes, and measurement across systems
+- AI with guardrails: speed and insight with governance for quality and compliance
+- Practitioner backgrounds: Deloitte, Tata, Tesco, Godrej, Deloitte Digital
+
+---
+
+## Team
+
+URL: https://www.consult-ds.com/team
+
+### Jigar Dhabalia — Co-founder and Principal Consultant
+Expert in Corporate Sustainability. Designs sustainability programmes to enable
+repeatable and audit-ready corporate reporting. Translates ESG requirements into
+practical operating systems with clear ownership. Cross-industry experience:
+B2B, Manufacturing, Oil and Gas, Chemical, Energy and Utilities.
+LinkedIn: https://www.linkedin.com/in/jigardhabalia/
+
+### Tejas Dhabalia — Co-founder and Principal Consultant
+Marketing Ops and MarTech leader. Experience across Deloitte, Tata, Tesco, and Godrej.
+Standardised omnichannel operating processes across 25 markets. Reduced campaign
+delivery cost by simplifying journey complexity. Built conversion-led execution systems
+across B2B and B2C environments.
+LinkedIn: https://www.linkedin.com/in/tejasdhabalia/
+
+---
+
+## Contact
+
+URL: https://www.consult-ds.com/contact
+Email: contact@consult-ds.com
+For partnerships: partners@consult-ds.com
+For talent: talent@consult-ds.com
+
+Note: DS Consulting does not provide statutory audit or assurance services.

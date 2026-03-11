@@ -1,7 +1,6 @@
 import RegulatoryHubClient, { RegulatoryContentItem } from "@/components/RegulatoryHubClient";
 import PageHero from "@/components/PageHero";
 import LeadMagnetBanner from "@/components/LeadMagnetBanner";
-import NewsletterSignup from "@/components/NewsletterSignup";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
 
@@ -104,10 +103,6 @@ export default function RegulatoryHubPage() {
 
       <section className="max-w-6xl mx-auto px-6">
         <LeadMagnetBanner />
-      </section>
-
-      <section className="max-w-3xl mx-auto px-6 pb-16">
-        <NewsletterSignup />
       </section>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />

@@ -10,6 +10,19 @@ export const metadata = {
   title: site.defaultTitle,
   description: site.defaultDescription,
   metadataBase: new URL(site.baseUrl),
+  openGraph: {
+    type: "website",
+    siteName: site.legalName,
+    title: site.defaultTitle,
+    description: site.defaultDescription,
+    url: site.baseUrl,
+    locale: "en_GB",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.defaultTitle,
+    description: site.defaultDescription,
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -1,0 +1,73 @@
+# DS Consulting
+
+> Strategy to Systems. Delivered.
+
+DS Consulting is a boutique advisory and implementation firm specialising in two outcomes:
+**ESG readiness** and **Revenue Visibility**.
+
+We help leadership teams turn fragmented tools and regulatory requirements into governed
+systems with measurable execution. We provide advisory plus implementation — not just
+recommendations.
+
+## Who we work with
+
+- CFOs and CSOs facing CSRD, SEBI BRSR, or UK climate disclosure mandates
+- CMOs, CROs, and RevOps leaders whose dashboards do not reflect operating reality
+- CEOs of scaling organisations who need commercial operating model discipline
+- Audit committees and boards overseeing ESG governance readiness
+
+## Services
+
+### ESG Advisory
+- CSRD and ESRS readiness: scoping, double materiality, disclosure mapping, evidence trails
+- SEBI BRSR advisory: KPI mapping, controls, value chain data, assurance readiness
+- UK climate reporting: governance, risk management, metrics, targets, evidence standards
+- GHG methodology governance and repeatable reporting workflows
+
+### Marketing Automation and RevOps
+- CRM architecture and governance: data model, taxonomy, integrations, change control
+- Lifecycle and lead management: stage definitions, routing, SLAs, journey orchestration
+- Revenue analytics and measurement: metric governance, CRM-to-finance alignment, dashboards
+
+### Extended Capabilities
+- AI and data strategy: use-case prioritisation, governed AI adoption
+- Growth operating model: commercial discipline, performance governance
+- Location intelligence: catchment analytics, retail network planning
+
+## Our approach
+
+We work in four phases: Diagnose, Design, Implement, Govern.
+We do not provide statutory audit or assurance. We prepare organisations for assurance
+through governance, controls, documentation and evidence trail readiness.
+
+## Founders
+
+- **Jigar Dhabalia** — Co-founder. Expert in Corporate Sustainability and ESG reporting
+  governance. Cross-industry experience spanning B2B, Manufacturing, Oil and Gas, and
+  Energy and Utilities.
+- **Tejas Dhabalia** — Co-founder. Marketing Ops and MarTech leader. Experience across
+  Deloitte, Tata, Tesco, and Godrej. Focused on marketing automation, AI architecture,
+  and revenue operations.
+
+## Key resources
+
+- Services: https://www.consult-ds.com/services
+- ESG Advisory: https://www.consult-ds.com/services/esg-advisory
+- Marketing Automation: https://www.consult-ds.com/services/marketing-automation
+- Regulatory Hub: https://www.consult-ds.com/regulatory-hub
+- Insights: https://www.consult-ds.com/insights
+- About: https://www.consult-ds.com/about
+- Contact: https://www.consult-ds.com/contact
+
+## Regulatory coverage
+
+- CSRD and ESRS (EU Corporate Sustainability Reporting Directive)
+- SEBI BRSR (Business Responsibility and Sustainability Report, India)
+- UK climate reporting (TCFD-aligned, SECR)
+- GHG Protocol: Scope 1, 2, and 3 methodology
+
+## Contact
+
+Website: https://www.consult-ds.com
+Email: contact@consult-ds.com
+LinkedIn: https://www.linkedin.com/company/consult-ds

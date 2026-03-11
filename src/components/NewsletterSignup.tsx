@@ -19,12 +19,12 @@ export default function NewsletterSignup({ className = "" }: { className?: strin
       </h3>
       <p className="mt-2 text-indigo-200 text-sm">
         Monthly briefing for ESG and revenue leaders. Regulatory updates, governance
-        frameworks, and practical guides — straight to your inbox.
+        frameworks, and practical guides delivered straight to your inbox.
       </p>
 
       {submitted ? (
         <div className="mt-5 bg-indigo-800/60 rounded-lg px-5 py-4 text-indigo-100 text-sm font-medium">
-          ✓ You&apos;re on the list. First issue coming soon.
+          You are on the list. First issue coming soon.
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="mt-5 flex flex-col sm:flex-row gap-3">

@@ -22,6 +22,64 @@ export default function RevenueAnalyticsPage() {
     ],
   };
 
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Revenue Analytics and Measurement",
+    description:
+      "Advisory plus implementation for revenue analytics and measurement. Funnel and lifecycle definitions, metric governance, CRM to finance alignment, retention analytics, and dashboards leaders can trust.",
+    provider: { "@type": "Organization", name: site.legalName, url: site.baseUrl },
+    areaServed: ["EU", "United Kingdom", "India"],
+    serviceType: [
+      "Funnel and lifecycle taxonomy",
+      "Metric definitions governance",
+      "Pipeline and retention reporting",
+      "CRM to finance alignment",
+      "Attribution governance",
+      "Executive insights workflow",
+    ],
+    url: absUrl("/services/marketing-automation/revenue-analytics"),
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Why do revenue dashboards become unreliable over time?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Dashboards fail when stage definitions drift, attribution rules change without governance, CRM and finance use different identifiers, and there is no change control process. We fix the root cause by implementing taxonomy, metric governance, and reporting controls.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What does revenue analytics consulting involve?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "We define funnel stages, metric taxonomy, and reporting rules. We align CRM data to finance systems, implement retention and pipeline views, and establish a governance cadence so dashboards remain accurate as the business changes.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is this relevant for B2C as well as B2B?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. B2B analytics focuses on pipeline, velocity, conversion and account retention. B2C analytics covers cohort retention, repeat purchase, LTV, and journey performance. We adapt the framework to your operating model.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do you build dashboards or govern existing ones?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Both. We define the measurement model and can implement within your existing BI tools, CRM reporting layers, or help you select and configure the right tooling. Governance of existing dashboards is often the fastest path to reliable reporting.",
+        },
+      },
+    ],
+  };
+
   return (
     <div>
       <PageHero
@@ -30,7 +88,7 @@ export default function RevenueAnalyticsPage() {
         primaryAction={{ label: "Book a consultation", href: "/contact" }}
         secondaryAction={{ label: "Back to Marketing Automation", href: "/services/marketing-automation" }}
         imageSrc="/hero/revenue.jpg"
-        imageAlt="Revenue analytics and executive measurement theme"
+        imageAlt="Revenue analytics and executive dashboard measurement for B2B and B2C organisations"
       />
 
       <section className="py-24 bg-white">
@@ -83,6 +141,8 @@ export default function RevenueAnalyticsPage() {
       </section>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
     </div>
   );
 }
