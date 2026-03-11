@@ -22,14 +22,39 @@ export default function HomePage() {
       { "@type": "Person", name: "Jigar Dhabalia", sameAs: site.linkedin.jigar },
       { "@type": "Person", name: "Tejas Dhabalia", sameAs: site.linkedin.tejas },
     ],
-    serviceType: [
+    knowsAbout: [
       "ESG Advisory",
-      "CSRD Consulting",
-      "BRSR Advisory",
+      "CSRD Compliance",
+      "SEBI BRSR Reporting",
+      "UK Climate Reporting",
       "CRM Governance",
       "Marketing Automation",
       "Revenue Analytics",
     ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "DS Consulting Services",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "ESG Advisory",
+            description: "CSRD readiness, SEBI BRSR compliance, UK climate reporting, and sustainability governance.",
+            url: `${site.baseUrl}/services/esg-advisory`,
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Marketing Automation and CRM Governance",
+            description: "CRM architecture, lifecycle lead management, revenue analytics, and marketing operations.",
+            url: `${site.baseUrl}/services/marketing-automation`,
+          },
+        },
+      ],
+    },
     sameAs: [site.linkedin.tejas, site.linkedin.jigar],
   };
 
@@ -108,7 +133,7 @@ export default function HomePage() {
             Founded by practitioners from
           </p>
           <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10">
-            {["Deloitte", "Tata", "Tesco", "Godrej", "Reliance Industries", "Lenzing Group"].map((brand) => (
+            {["Deloitte", "Tata", "Tesco", "Godrej", "Deloitte Digital"].map((brand) => (
               <span
                 key={brand}
                 className="text-slate-500 font-semibold text-sm md:text-base tracking-tight"

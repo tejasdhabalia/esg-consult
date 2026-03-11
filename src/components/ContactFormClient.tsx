@@ -37,8 +37,6 @@ export default function ContactFormClient() {
   async function getRecaptchaToken(): Promise<string> {
     if (!siteKey) throw new Error("reCAPTCHA site key missing.");
     if (!window.grecaptcha) throw new Error("reCAPTCHA not loaded.");
-
-    // Wait for grecaptcha to be ready then execute
     await window.grecaptcha.ready(() => {});
     const token = await window.grecaptcha.execute(siteKey, { action });
     if (!token) throw new Error("reCAPTCHA token missing.");
@@ -56,11 +54,7 @@ export default function ContactFormClient() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          ...form,
-          captchaToken,
-          captchaAction: action,
-        }),
+        body: JSON.stringify({ ...form, captchaToken, captchaAction: action }),
       });
 
       const data = await res.json();
@@ -80,7 +74,6 @@ export default function ContactFormClient() {
 
   return (
     <div>
-      {/* Load reCAPTCHA v3 script only if configured */}
       {siteKey ? (
         <Script
           src={`https://www.google.com/recaptcha/api.js?render=${siteKey}`}
@@ -114,48 +107,67 @@ export default function ContactFormClient() {
         </div>
       ) : (
         <form onSubmit={onSubmit} className="mt-6 space-y-4">
+
           <div>
-            <label className="text-sm font-medium text-slate-700">Name*</label>
+            <label htmlFor="contact-name" className="text-sm font-medium text-slate-700">
+              Name*
+            </label>
             <input
+              id="contact-name"
+              type="text"
+              name="name"
+              autoComplete="name"
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
-              type="text"
               placeholder="Your name"
-              className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm"
+              className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>
 
           <div>
-            <label className="text-sm font-medium text-slate-700">Work email*</label>
+            <label htmlFor="contact-email" className="text-sm font-medium text-slate-700">
+              Work email*
+            </label>
             <input
+              id="contact-email"
+              type="email"
+              name="email"
+              autoComplete="email"
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
-              type="email"
               placeholder="name@company.com"
-              className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm"
               required
+              className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>
 
           <div>
-            <label className="text-sm font-medium text-slate-700">Company</label>
+            <label htmlFor="contact-company" className="text-sm font-medium text-slate-700">
+              Company
+            </label>
             <input
+              id="contact-company"
+              type="text"
+              name="company"
+              autoComplete="organization"
               value={form.company}
               onChange={(e) => setForm({ ...form, company: e.target.value })}
-              type="text"
               placeholder="Company name"
-              className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm"
+              className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>
 
           <div>
-            <label className="text-sm font-medium text-slate-700">
+            <label htmlFor="contact-interest" className="text-sm font-medium text-slate-700">
               What do you need help with?*
             </label>
             <select
+              id="contact-interest"
+              name="interest"
+              autoComplete="off"
               value={form.interest}
               onChange={(e) => setForm({ ...form, interest: e.target.value })}
-              className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm"
+              className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
               <option>ESG readiness</option>
               <option>Marketing automation and RevOps</option>
@@ -165,13 +177,18 @@ export default function ContactFormClient() {
           </div>
 
           <div>
-            <label className="text-sm font-medium text-slate-700">Message*</label>
+            <label htmlFor="contact-message" className="text-sm font-medium text-slate-700">
+              Message*
+            </label>
             <textarea
+              id="contact-message"
+              name="message"
+              autoComplete="off"
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
               placeholder="Tell us what is happening, timeline, and what is not working today."
-              className="mt-2 w-full min-h-[120px] rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm"
               required
+              className="mt-2 w-full min-h-[120px] rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>
 
@@ -198,7 +215,6 @@ export default function ContactFormClient() {
             {status === "submitting" ? "Submitting..." : "Submit"}
           </button>
 
-          
         </form>
       )}
     </div>

@@ -473,8 +473,12 @@ export default function LeakyFunnelAuditPage() {
                 </div>
               ) : (
                 <div className="flex gap-3">
+                  <label htmlFor="audit-report-email" className="sr-only">Email address</label>
                   <input
+                    id="audit-report-email"
                     type="email"
+                    name="email"
+                    autoComplete="email"
                     placeholder="your@email.com"
                     value={email}
                     onChange={e => setEmail(e.target.value)}

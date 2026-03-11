@@ -28,9 +28,15 @@ export default function NewsletterSignup({ className = "" }: { className?: strin
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="mt-5 flex flex-col sm:flex-row gap-3">
+          <label htmlFor="newsletter-email" className="sr-only">
+            Email address
+          </label>
           <input
+            id="newsletter-email"
             type="email"
+            name="email"
             required
+            autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="your@email.com"
