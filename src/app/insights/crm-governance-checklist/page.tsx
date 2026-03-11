@@ -269,20 +269,40 @@ export default function CRMGovernanceChecklistPage() {
             {/* Stats context */}
             <div className="mb-10">
               <h2 className="text-2xl font-bold text-slate-900 mb-4">Why this matters</h2>
-              <p className="text-slate-600 leading-relaxed mb-4">
-                According to Gartner, poor data quality costs organisations an average of $12.9 million per year
-                <sup className="text-indigo-600 text-xs ml-0.5">[1]</sup>.
-                Forrester research found that 44% of B2B marketers cite data quality as their biggest challenge in
-                personalisation and measurement
-                <sup className="text-indigo-600 text-xs ml-0.5">[2]</sup>.
-                And a 2023 Ops-Stars survey found that 67% of RevOps leaders reported undocumented CRM changes as
-                the primary cause of reporting errors in the previous 12 months
-                <sup className="text-indigo-600 text-xs ml-0.5">[3]</sup>.
-              </p>
               <p className="text-slate-600 leading-relaxed">
-                These are not abstract statistics. I have seen the exact same patterns play out in organisations of
-                50 people and organisations of 50,000. The failure mode is always the same: governance is treated
-                as a post-launch concern rather than a design requirement.
+                Recent{" "}
+                <a
+                  href="https://www.ibm.com/thought-leadership/institute-business-value/report/2025-cdo?utm_source=www.consult-ds.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-indigo-700 hover:text-indigo-800 underline underline-offset-4"
+                >
+                  IBM’s 2025–2026 research
+                </a>{" "}
+                shows that poor data quality is still a major commercial risk. IBM says more than a quarter of
+                organizations now estimate annual losses of over USD 5 million from poor data quality, while{" "}
+                <a
+                  href="https://www.salesforce.com/marketing/resources/state-of-marketing-report/?utm_source=www.consult-ds.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-indigo-700 hover:text-indigo-800 underline underline-offset-4"
+                >
+                  Salesforce reports
+                </a>{" "}
+                that siloed systems and poor data quality remain the top barriers to AI-driven personalization.
+                At the execution level, only one in four marketers are satisfied with how they use data for
+                personalized engagement, and{" "}
+                <a
+                  href="https://www.validity.com/resource-center/the-state-of-crm-data-management-in-2025/?utm_source=www.consult-ds.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-indigo-700 hover:text-indigo-800 underline underline-offset-4"
+                >
+                  Validity
+                </a>{" "}
+                found that 76% of CRM users say less than half of their CRM data is accurate and complete.
+                This checklist is the operating model I use when I start a CRM governance engagement. It is the
+                minimum you need to stop the bleeding and build something sustainable.
               </p>
             </div>
 
@@ -339,15 +359,6 @@ export default function CRMGovernanceChecklistPage() {
                   </div>
                 ))}
               </div>
-            </div>
-
-            {/* Citations */}
-            <div className="mt-10 p-4 bg-slate-50 rounded-xl">
-              <p className="text-xs text-slate-500 leading-relaxed">
-                <strong>Citations:</strong> [1] Gartner, "How to Stop Data Quality Undermining Your Business," 2021.
-                [2] Forrester, "The State of B2B Data," 2022.
-                [3] Ops-Stars, "State of Revenue Operations Survey," 2023.
-              </p>
             </div>
           </div>
 
@@ -413,15 +424,17 @@ export default function CRMGovernanceChecklistPage() {
 
               {/* Audit tool CTA */}
               <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5">
-                <h4 className="font-semibold text-slate-900 text-sm mb-2">Not sure where you stand?</h4>
-                <p className="text-xs text-slate-600 mb-3">Take the Leaky Funnel Audit to get your Revenue Visibility Score in under 5 minutes.</p>
-                <Link
-                  href="/insights/leaky-funnel-audit"
-                  className="inline-block bg-amber-600 hover:bg-amber-700 text-white text-xs font-medium px-4 py-2 rounded-lg"
-                >
-                  Take the audit
-                </Link>
-              </div>
+				  <h4 className="font-semibold text-slate-900 text-sm mb-2">Not sure where you stand?</h4>
+				  <p className="text-xs text-slate-600 mb-3">
+					Take the Leaky Funnel Audit to get your Revenue Visibility Score in under 5 minutes.
+				  </p>
+				  <Link
+					href="/insights/leaky-funnel-audit"
+					className="inline-flex items-center justify-center bg-slate-900 hover:bg-slate-800 text-white no-underline text-xs font-medium px-4 py-2 rounded-lg transition-colors"
+				  >
+					Take the audit
+				  </Link>
+				</div>
             </div>
           </div>
         </div>

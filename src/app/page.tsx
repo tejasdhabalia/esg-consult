@@ -2,6 +2,7 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { getLatestInsights } from "@/lib/insights";
 
 export const metadata = {
   title: "ESG Readiness & Revenue Visibility Consulting | DS Consulting",
@@ -11,6 +12,8 @@ export const metadata = {
 };
 
 export default function HomePage() {
+  const latestInsights = getLatestInsights(3);
+
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
@@ -40,7 +43,8 @@ export default function HomePage() {
           itemOffered: {
             "@type": "Service",
             name: "ESG Advisory",
-            description: "CSRD readiness, SEBI BRSR compliance, UK climate reporting, and sustainability governance.",
+            description:
+              "CSRD readiness, SEBI BRSR compliance, UK climate reporting, and sustainability governance.",
             url: `${site.baseUrl}/services/esg-advisory`,
           },
         },
@@ -49,7 +53,8 @@ export default function HomePage() {
           itemOffered: {
             "@type": "Service",
             name: "Marketing Automation and CRM Governance",
-            description: "CRM architecture, lifecycle lead management, revenue analytics, and marketing operations.",
+            description:
+              "CRM architecture, lifecycle lead management, revenue analytics, and marketing operations.",
             url: `${site.baseUrl}/services/marketing-automation`,
           },
         },
@@ -133,14 +138,16 @@ export default function HomePage() {
             Founded by practitioners from
           </p>
           <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10">
-            {["Deloitte", "Tata", "Tesco", "Godrej", "Deloitte Digital"].map((brand) => (
-              <span
-                key={brand}
-                className="text-slate-500 font-semibold text-sm md:text-base tracking-tight"
-              >
-                {brand}
-              </span>
-            ))}
+            {["Deloitte", "Tata", "Tesco", "Godrej", "Reliance Industries", "Lenzing Group"].map(
+              (brand) => (
+                <span
+                  key={brand}
+                  className="text-slate-500 font-semibold text-sm md:text-base tracking-tight"
+                >
+                  {brand}
+                </span>
+              )
+            )}
           </div>
         </div>
       </section>
@@ -191,7 +198,10 @@ export default function HomePage() {
                 <li>Revenue analytics, definitions governance, and executive dashboards</li>
               </ul>
               <div className="mt-6 flex flex-wrap gap-3">
-                <Link href="/services/marketing-automation" className="text-indigo-700 font-medium">
+                <Link
+                  href="/services/marketing-automation"
+                  className="text-indigo-700 font-medium"
+                >
                   Explore Marketing Automation →
                 </Link>
                 <Link
@@ -342,10 +352,22 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-4 gap-8 mt-14">
             {[
-              ["Diagnose", "Clarify scope, priorities, gaps, and risks across systems, data and governance."],
-              ["Design", "Define operating model, owners, controls, workflows, and success metrics."],
-              ["Implement", "Hands-on execution, enablement, documentation, and rollout support."],
-              ["Govern", "Cadence, controls, measurement discipline, and continuous improvement."],
+              [
+                "Diagnose",
+                "Clarify scope, priorities, gaps, and risks across systems, data and governance.",
+              ],
+              [
+                "Design",
+                "Define operating model, owners, controls, workflows, and success metrics.",
+              ],
+              [
+                "Implement",
+                "Hands-on execution, enablement, documentation, and rollout support.",
+              ],
+              [
+                "Govern",
+                "Cadence, controls, measurement discipline, and continuous improvement.",
+              ],
             ].map(([t, d]) => (
               <div key={t} className="bg-slate-50 border rounded-2xl p-8">
                 <div className="font-semibold text-slate-900">{t}</div>
@@ -392,57 +414,103 @@ export default function HomePage() {
       </section>
 
       {/* INSIGHTS PREVIEW */}
-      <section className="py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex items-end justify-between gap-6">
-            <div>
-              <h2 className="text-3xl font-semibold">Insights</h2>
-              <p className="mt-3 text-slate-600 max-w-3xl">
-                Practical guidance for leaders building ESG readiness and Revenue
-                Visibility.
-              </p>
-            </div>
-            <Link href="/insights" className="text-indigo-700 font-medium">
-              View all insights →
-            </Link>
-          </div>
+	{/* INSIGHTS PREVIEW */}
+	<section className="py-24 bg-gradient-to-b from-slate-50 to-white">
+	  <div className="max-w-6xl mx-auto px-6">
+		<div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+		  <div>
+			<div className="inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-600">
+			  Latest thinking
+			</div>
+			<h2 className="mt-4 text-3xl font-semibold text-slate-900">Insights</h2>
+			<p className="mt-3 text-slate-600 max-w-3xl">
+			  Practical guidance for leaders building ESG readiness and Revenue Visibility.
+			  
+			</p>
+		  </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mt-12">
-            {[
-              [
-                "Marketing",
-                "Governance for marketing automation",
-                "How ownership, SLAs, and change control stabilise performance as journeys and tools grow.",
-                "/insights/marketing-governance-model-for-automation",
-              ],
-              [
-                "ESG",
-                "CSRD readiness fundamentals",
-                "How to translate requirements into owners, workflows, evidence trails, and repeatable delivery.",
-                "/insights/csrd-readiness-first-90-days",
-              ],
-              [
-                "Marketing",
-                "Measurement leaders can trust",
-                "Metric definitions and governance so dashboards match operating reality across teams.",
-                "/insights",
-              ],
-            ].map(([cat, t, d, href]) => (
-              <Link
-                key={t}
-                href={href}
-                className="bg-slate-50 border rounded-2xl p-7 shadow-sm hover:shadow-md transition"
-              >
-                <div className="text-xs font-semibold text-slate-500">{cat}</div>
-                <div className="mt-2 text-lg font-semibold text-slate-900">{t}</div>
-                <div className="mt-3 text-sm text-slate-600">{d}</div>
-                <div className="mt-5 text-sm font-medium text-indigo-700">Read →</div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+		  <Link
+			href="/insights"
+			className="inline-flex items-center text-indigo-700 font-medium hover:text-indigo-800"
+		  >
+			View all insights <span className="ml-1">→</span>
+		  </Link>
+		</div>
 
+		<div className="grid md:grid-cols-3 gap-8 mt-12">
+		  {latestInsights.map((item, index) => {
+			const isESG = item.category === "ESG";
+
+			return (
+			  <Link
+				key={item.slug}
+				href={`/insights/${item.slug}`}
+				className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
+			  >
+				<div
+				  className={`h-1.5 w-full ${
+					isESG ? "bg-emerald-500" : "bg-indigo-500"
+				  }`}
+				/>
+
+				<div className="p-7">
+				  <div className="flex items-center justify-between gap-3">
+					<span
+					  className={`inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide ${
+						isESG
+						  ? "bg-emerald-50 text-emerald-700"
+						  : "bg-indigo-50 text-indigo-700"
+					  }`}
+					>
+					  {item.category}
+					</span>
+
+					{index === 0 ? (
+					  <span className="text-[11px] font-medium text-slate-500">
+						Latest
+					  </span>
+					) : null}
+				  </div>
+
+				  <h3 className="mt-4 text-xl font-semibold text-slate-900 leading-snug group-hover:text-slate-950">
+					{item.title}
+				  </h3>
+
+				  <p className="mt-3 text-sm leading-relaxed text-slate-600">
+					{item.summary}
+				  </p>
+
+				  <div className="mt-5 flex flex-wrap gap-2">
+					{item.topics.slice(0, 3).map((topic) => (
+					  <span
+						key={topic}
+						className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] text-slate-700"
+					  >
+						{topic}
+					  </span>
+					))}
+				  </div>
+
+				  <div className="mt-6 flex items-center justify-between gap-4">
+					<div className="text-xs text-slate-500">
+					  {item.readTime} · Updated {item.updated}
+					</div>
+
+					<div
+					  className={`text-sm font-medium transition-transform duration-200 group-hover:translate-x-1 ${
+						isESG ? "text-emerald-700" : "text-indigo-700"
+					  }`}
+					>
+					  Read →
+					</div>
+				  </div>
+				</div>
+			  </Link>
+			);
+		  })}
+		</div>
+	  </div>
+	</section>
       {/* FINAL CTA */}
       <section className="bg-slate-900 text-white py-20 text-center">
         <h2 className="text-3xl font-semibold">Ready to turn complexity into execution?</h2>
@@ -458,7 +526,6 @@ export default function HomePage() {
         </Link>
       </section>
 
-      {/* JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}

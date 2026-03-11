@@ -1,6 +1,9 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import Script from "next/script";
+import { validateBusinessEmail } from "@/lib/businessEmail";
+import { getRecaptchaToken } from "@/lib/recaptcha-client";
 
 // ─── Types ────────────────────────────────────────────────────────────────
 interface AuditData {
@@ -130,6 +133,12 @@ export default function LeakyFunnelAuditPage() {
   const [showResults, setShowResults] = useState(false);
   const [email, setEmail] = useState("");
   const [emailSent, setEmailSent] = useState(false);
+  const [emailStatus, setEmailStatus] = useState<"idle" | "sending" | "error">("idle");
+  const [emailError, setEmailError] = useState("");
+
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+  const action = "audit_report_submit";
+  const emailValidation = validateBusinessEmail(email);
 
   const scores = computeScores(data);
 
@@ -149,9 +158,43 @@ export default function LeakyFunnelAuditPage() {
     scores.revenueVisibility >= 45 ? "bg-amber-50 border-amber-200" : "bg-red-50 border-red-200";
 
   async function sendReport() {
-    if (!email.trim()) return;
-    await new Promise(r => setTimeout(r, 800));
-    setEmailSent(true);
+    setEmailError("");
+
+    if (!emailValidation.ok) {
+      setEmailStatus("error");
+      setEmailError(emailValidation.message);
+      return;
+    }
+
+    setEmailStatus("sending");
+
+    try {
+      const captchaToken = await getRecaptchaToken(siteKey || "", action);
+      const res = await fetch("/api/lead-capture", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          formType: "audit_report",
+          email: emailValidation.normalizedEmail,
+          captchaToken,
+          captchaAction: action,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data?.ok) {
+        setEmailStatus("error");
+        setEmailError(data?.error || "Failed to send report. Please try again.");
+        return;
+      }
+
+      setEmailSent(true);
+      setEmailStatus("idle");
+    } catch (err: unknown) {
+      setEmailStatus("error");
+      setEmailError(err instanceof Error ? err.message : "Failed to send report. Please try again.");
+    }
   }
 
   const inputCls = "w-full border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500";
@@ -159,6 +202,7 @@ export default function LeakyFunnelAuditPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+      {siteKey ? <Script src={`https://www.google.com/recaptcha/api.js?render=${siteKey}`} strategy="afterInteractive" /> : null}
       {/* Header */}
       <div className="bg-indigo-950 text-white px-6 py-16">
         <div className="max-w-3xl mx-auto text-center">
@@ -340,7 +384,7 @@ export default function LeakyFunnelAuditPage() {
                   <p className="text-xs text-amber-800">
                     <strong>Note:</strong> Stack coverage affects revenue visibility directly. A CRM without a MAP
                     creates attribution blind spots. A CRM without a finance link means your board pipeline number
-                    and your CFO's revenue forecast will never fully reconcile.
+                    and your CFO&apos;s revenue forecast will never fully reconcile.
                   </p>
                 </div>
               </div>
@@ -472,24 +516,42 @@ export default function LeakyFunnelAuditPage() {
                   <p className="font-semibold">Report on its way. Check your inbox.</p>
                 </div>
               ) : (
-                <div className="flex gap-3">
-                  <label htmlFor="audit-report-email" className="sr-only">Email address</label>
-                  <input
-                    id="audit-report-email"
-                    type="email"
-                    name="email"
-                    autoComplete="email"
-                    placeholder="your@email.com"
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                    className="flex-1 rounded-lg px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-white"
-                  />
-                  <button
-                    onClick={sendReport}
-                    className="bg-white text-indigo-700 font-semibold text-sm px-5 py-2 rounded-lg hover:bg-indigo-50 whitespace-nowrap"
-                  >
-                    Send report
-                  </button>
+                <div className="space-y-3">
+                  <div className="flex gap-3">
+                    <label htmlFor="audit-report-email" className="sr-only">Email address</label>
+                    <input
+                      id="audit-report-email"
+                      type="email"
+                      name="email"
+                      autoComplete="email"
+                      placeholder="name@company.com"
+                      value={email}
+                      onChange={e => setEmail(e.target.value)}
+                      className="flex-1 rounded-lg px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-white"
+                    />
+                    <button
+                      onClick={sendReport}
+                      disabled={!siteKey || !emailValidation.ok || emailStatus === "sending"}
+                      className="bg-white text-indigo-700 font-semibold text-sm px-5 py-2 rounded-lg hover:bg-indigo-50 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {emailStatus === "sending" ? "Sending..." : "Send report"}
+                    </button>
+                  </div>
+                  {email && !emailValidation.ok ? (
+                    <p className="text-sm text-indigo-100">{emailValidation.message}</p>
+                  ) : null}
+                  {emailStatus === "error" && emailError ? (
+                    <p className="text-sm text-indigo-100">{emailError}</p>
+                  ) : null}
+                  {!siteKey ? (
+                    <p className="text-xs text-indigo-200">
+                      reCAPTCHA is not configured yet. Add NEXT_PUBLIC_RECAPTCHA_SITE_KEY and RECAPTCHA_SECRET_KEY.
+                    </p>
+                  ) : (
+                    <p className="text-xs text-indigo-200">
+                      This form is protected by reCAPTCHA. Google Privacy Policy and Terms of Service apply.
+                    </p>
+                  )}
                 </div>
               )}
             </div>
@@ -497,7 +559,7 @@ export default function LeakyFunnelAuditPage() {
             {/* Restart + CTA */}
             <div className="flex flex-col sm:flex-row gap-4">
               <button
-                onClick={() => { setShowResults(false); setStep(1); setData(DEFAULT); }}
+                onClick={() => { setShowResults(false); setStep(1); setData(DEFAULT); setEmail(""); setEmailSent(false); setEmailStatus("idle"); setEmailError(""); }}
                 className="flex-1 border border-slate-300 text-slate-600 text-sm font-medium py-3 rounded-xl hover:bg-slate-50"
               >
                 Start over

@@ -3,12 +3,8 @@
 import Script from "next/script";
 import { useMemo, useState } from "react";
 import { site } from "@/lib/site";
-
-declare global {
-  interface Window {
-    grecaptcha?: any;
-  }
-}
+import { validateBusinessEmail } from "@/lib/businessEmail";
+import { getRecaptchaToken } from "@/lib/recaptcha-client";
 
 type SubmitState = "idle" | "submitting" | "success" | "error";
 
@@ -25,36 +21,44 @@ export default function ContactFormClient() {
     company: "",
     interest: "ESG readiness",
     message: "",
+    website: "",
   });
+
+  const emailValidation = useMemo(() => validateBusinessEmail(form.email), [form.email]);
+  const emailError = form.email && !emailValidation.ok ? emailValidation.message : "";
 
   const canSubmit = useMemo(() => {
     if (!form.email || !form.message) return false;
+    if (!emailValidation.ok) return false;
     if (!siteKey) return false;
     if (status === "submitting") return false;
     return true;
-  }, [form.email, form.message, siteKey, status]);
-
-  async function getRecaptchaToken(): Promise<string> {
-    if (!siteKey) throw new Error("reCAPTCHA site key missing.");
-    if (!window.grecaptcha) throw new Error("reCAPTCHA not loaded.");
-    await window.grecaptcha.ready(() => {});
-    const token = await window.grecaptcha.execute(siteKey, { action });
-    if (!token) throw new Error("reCAPTCHA token missing.");
-    return token;
-  }
+  }, [emailValidation.ok, form.email, form.message, siteKey, status]);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setStatus("submitting");
     setErrorMsg("");
 
+    if (!emailValidation.ok) {
+      setStatus("error");
+      setErrorMsg(emailValidation.message);
+      return;
+    }
+
+    setStatus("submitting");
+
     try {
-      const captchaToken = await getRecaptchaToken();
+      const captchaToken = await getRecaptchaToken(siteKey || "", action);
 
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ ...form, captchaToken, captchaAction: action }),
+        body: JSON.stringify({
+          ...form,
+          email: emailValidation.normalizedEmail,
+          captchaToken,
+          captchaAction: action,
+        }),
       });
 
       const data = await res.json();
@@ -66,9 +70,9 @@ export default function ContactFormClient() {
       }
 
       setStatus("success");
-    } catch (err: any) {
+    } catch (err: unknown) {
       setStatus("error");
-      setErrorMsg(err?.message || "Submission failed. Please try again.");
+      setErrorMsg(err instanceof Error ? err.message : "Submission failed. Please try again.");
     }
   }
 
@@ -107,6 +111,16 @@ export default function ContactFormClient() {
         </div>
       ) : (
         <form onSubmit={onSubmit} className="mt-6 space-y-4">
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            value={form.website}
+            onChange={(e) => setForm({ ...form, website: e.target.value })}
+            className="hidden"
+            aria-hidden="true"
+          />
 
           <div>
             <label htmlFor="contact-name" className="text-sm font-medium text-slate-700">
@@ -139,6 +153,9 @@ export default function ContactFormClient() {
               required
               className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
+            {emailError ? (
+              <p className="mt-2 text-sm text-red-600">{emailError}</p>
+            ) : null}
           </div>
 
           <div>
@@ -214,7 +231,6 @@ export default function ContactFormClient() {
           >
             {status === "submitting" ? "Submitting..." : "Submit"}
           </button>
-
         </form>
       )}
     </div>
