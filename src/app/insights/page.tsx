@@ -6,7 +6,7 @@ import { absUrl } from "@/lib/url";
 export const metadata = {
   title: `Insights | ${site.legalName}`,
   description:
-    "Searchable insights covering ESG readiness and marketing automation. Practical guides for leaders building governance, evidence trails, and measurable systems.",
+    "Searchable insights across ESG readiness and marketing automation. Practical guides, checklists, and tools for leaders who want governed execution and measurable outcomes.",
   alternates: { canonical: absUrl("/insights") },
 };
 
@@ -34,6 +34,28 @@ export default function InsightsPage() {
       readTime: "3 min read",
       updated: "Feb 2026",
     },
+    {
+      slug: "crm-governance-checklist",
+      category: "Marketing",
+      title: "The CRM Governance SOP Template",
+      summary:
+        "A practitioner checklist for teams who are done with dirty data, broken dashboards, and pipeline numbers that do not match reality.",
+      topics: ["CRM governance", "Data quality", "Definitions", "Change control"],
+      audience: "RevOps, Sales Ops, Marketing Ops, CIO",
+      readTime: "5 min read",
+      updated: "Mar 2026",
+    },
+    {
+      slug: "leaky-funnel-audit",
+      category: "Marketing",
+      title: "Leaky Funnel Audit Tool",
+      summary:
+        "An interactive audit to quantify funnel leakage and identify the highest-impact levers across MQL, SQL, win rate, and deal size.",
+      topics: ["Funnel audit", "Conversion", "Pipeline", "Lead quality"],
+      audience: "CMO, CRO, RevOps, CEO",
+      readTime: "Interactive tool",
+      updated: "Mar 2026",
+    },
   ];
 
   const itemListSchema = {
@@ -52,7 +74,7 @@ export default function InsightsPage() {
     <div>
       <PageHero
         title="Insights"
-        subtitle="Practical guides for leaders building ESG readiness and revenue visibility. Designed for decision-making, governance, and repeatable execution."
+        subtitle="Practical guides and tools for leaders building ESG readiness and revenue visibility. Designed for decision-making, governance, and repeatable execution."
         primaryAction={{ label: "Explore services", href: "/services" }}
         secondaryAction={{ label: "Talk to us", href: "/contact" }}
         imageSrc="/hero/insights.jpg"
