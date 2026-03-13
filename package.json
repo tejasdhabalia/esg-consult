@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "predev": "node scripts/generate-llms-manifest.mjs",
+    "predev": "node scripts/generate-llms-manifest.mjs && node scripts/generate-sitemap.mjs",
     "dev": "next dev",
-    "prebuild": "node scripts/generate-llms-manifest.mjs",
+    "prebuild": "node scripts/generate-llms-manifest.mjs && node scripts/generate-sitemap.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
