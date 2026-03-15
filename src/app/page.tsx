@@ -403,10 +403,7 @@ export default function HomePage() {
                 Revenue Visibility · B2C Retail
               </div>
               <p className="text-slate-700 leading-relaxed">
-                A B2C retailer recovered full pipeline visibility within 90 days after CRM
-                governance, lifecycle definition, and measurement framework work across 3
-                markets, enabling leadership to make resourcing decisions from data they
-                could trust.
+                A premium food and lifestyle retailer achieved double-digit sales growth by consolidating fragmented channel data across physical stores, digital, and phone into a governed measurement model, giving leadership the confidence to allocate budget and resource without relying on conflicting reports from each channel.
               </p>
             </div>
           </div>
