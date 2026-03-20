@@ -33,23 +33,25 @@ function routeFromPageFile(filePath) {
   const route = cleaned ? `/${cleaned}` : "/";
   return route.replace(/\/+$/, "") || "/";
 }
-
 function extractBaseUrl() {
-  // 1) env vars (optional)
-  const env =
-    process.env.NEXT_PUBLIC_SITE_URL ||
+  // 1) Explicit env var wins (recommended)
+  const explicit =
     process.env.SITE_URL ||
-    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "");
-  if (env) return env.replace(/\/+$/, "");
+    process.env.NEXT_PUBLIC_SITE_URL;
 
-  // 2) parse src/lib/site.ts for baseUrl: "..."
+  if (explicit) return explicit.replace(/\/+$/, "");
+
+  // 2) Parse src/lib/site.ts for baseUrl: "..."
   try {
     const src = fs.readFileSync(SITE_FILE, "utf8");
     const m = src.match(/baseUrl:\s*["'`](.*?)["'`]/);
     if (m?.[1]) return m[1].replace(/\/+$/, "");
   } catch {}
 
-  // 3) fallback
+  // 3) Last fallback: Vercel deployment URL
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+
+  // 4) Local fallback
   return "http://localhost:3000";
 }
 
