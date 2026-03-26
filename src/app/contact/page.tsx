@@ -40,7 +40,7 @@ export default function ContactPage() {
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-semibold">Additional questions? Submit our form</h2>
           <p className="mt-4 text-slate-600 max-w-3xl">
-            Share your context and timeline. We will respond with clarifying questions and a suggested approach.
+            Fill in your details, pick a date and time, and book a 45-minute consultation appointment in one step. Tell us what you are working on and we will come prepared.
           </p>
 
           <div className="grid md:grid-cols-2 gap-10 mt-12">

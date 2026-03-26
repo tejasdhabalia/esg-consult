@@ -254,14 +254,13 @@ export default function AboutPage() {
                   <div className="text-xl font-semibold text-slate-900">Tejas Dhabalia</div>
                   <div className="text-sm text-slate-600">Co-founder and Principal Consultant</div>
                   <div className="mt-3 text-sm text-slate-600">
-                    Marketing Ops and MarTech leader with experience across Deloitte, Tata, Tesco, and Godrej.
-                    Focused on marketing automation, AI architecture, retail analytics, and lead management.
+                    Former IBM mainframe engineer (COBOL, DB2, CICS, VSAM) turned CMO. Operated at Tata-Tesco with an ₹800Cr revenue portfolio and built the customer intelligence and omnichannel systems at Nature&apos;s Basket across 1M+ customers and 25 markets. Now leading the IBM watsonx AI marketing practice at DS Consulting for regulated enterprises.
                   </div>
 
                   <ul className="mt-4 text-sm text-slate-600 list-disc list-inside space-y-1">
-                    <li>Standardised omnichannel operating process across 25 markets</li>
-                    <li>Reduced campaign delivery cost by simplifying journey complexity</li>
-                    <li>Built conversion-led execution systems across B2B and B2C environments</li>
+                    <li>Built in-house CRM and 360-degree customer view systems integrating purchase history, survey data, and Nielsen market share data at scale</li>
+                    <li>Led location strategy across 75+ cities in India, recommending store viability, optimal size, and category assortment for each market</li>
+                    <li>Created a premium gifting brand and restructured merchandise to shift from festival-driven to occasion-driven sales, sustaining revenue year-round</li>
                   </ul>
 
                   <div className="mt-5">

@@ -220,7 +220,7 @@ export default function HomePage() {
               When needed, we support adjacent transformation work that strengthens delivery
               outcomes.
             </p>
-            <div className="grid md:grid-cols-3 gap-8 mt-8">
+            <div className="grid md:grid-cols-4 gap-8 mt-8">
               {[
                 [
                   "AI and data strategy",
@@ -232,7 +232,11 @@ export default function HomePage() {
                 ],
                 [
                   "Location intelligence",
-                  "Catchment analytics, retail network planning, and expansion decisions backed by data.",
+                  "Catchment analytics and retail network planning built on direct market mapping. We have assessed over 75 geographies across India for location viability, store size, and category assortment fit.",
+                ],
+                [
+                  "AI marketing on existing infrastructure",
+                  "AI-powered marketing built on your existing data, whether that data lives in IBM infrastructure, HubSpot, Salesforce, or all three simultaneously. Built for regulated enterprises where compliance and governance are not optional.",
                 ],
               ].map(([t, d]) => (
                 <div key={t} className="bg-slate-50 border rounded-2xl p-6">

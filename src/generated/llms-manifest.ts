@@ -1,5 +1,5 @@
 export const llmsManifest = {
-  "generatedAt": "2026-03-13T12:57:29.735Z",
+  "generatedAt": "2026-03-26T09:57:48.329Z",
   "pageCount": 36,
   "pages": [
     {
@@ -325,7 +325,7 @@ export const llmsManifest = {
     {
       "route": "/services/marketing-automation",
       "url": "https://www.consult-ds.com/services/marketing-automation",
-      "title": "Marketing Automation and RevOps | DS Consulting",
+      "title": "Marketing Automation, RevOps and AI Marketing Systems | DS Consulting",
       "description": "Advisory plus implementation for marketing automation and revenue operations. Lifecycle orchestration, CRM governance, omnichannel automation, AI-enabled content workflows, and measurement leaders can trust across B2B and B2C.",
       "section": "services",
       "priority": 0.9,

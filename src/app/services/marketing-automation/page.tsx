@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
 
 export const metadata = {
-  title: `Marketing Automation and RevOps | ${site.legalName}`,
+  title: `Marketing Automation, RevOps and AI Marketing Systems | ${site.legalName}`,
   description:
     "Advisory plus implementation for marketing automation and revenue operations. Lifecycle orchestration, CRM governance, omnichannel automation, AI-enabled content workflows, and measurement leaders can trust across B2B and B2C.",
   alternates: { canonical: absUrl("/services/marketing-automation") },
@@ -107,20 +107,61 @@ export default function MarketingAutomationPage() {
             "Start with a diagnostic audit of lifecycle definitions, CRM governance, routing and SLAs, automation workflows, and measurement. The output is a prioritised roadmap with owners and measurable outcomes.",
         },
       },
+      {
+        "@type": "Question",
+        name: "Do you work with IBM watsonx or only standard martech platforms?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text:
+            "Yes. We run an IBM watsonx AI marketing practice for regulated enterprises. We also work across HubSpot, Salesforce, Zoho, and in-house CRM builds. Most clients have a mix. We design the AI layer to work on top of the data and infrastructure already in place, not to replace it.",
+        },
+      },
     ],
   };
 
   return (
     <div>
       <PageHero
-        title="Marketing automation and RevOps"
-        subtitle="We help leadership teams turn fragmented martech into a governed revenue system. Lifecycle orchestration, CRM discipline, omnichannel automation, AI-enabled content workflows, and measurement that supports decision-making."
+        title="Marketing automation, RevOps, and AI marketing systems"
+        subtitle="We help leadership teams turn fragmented martech into a governed revenue system. Lifecycle orchestration, CRM discipline, omnichannel automation, AI marketing on IBM watsonx, and measurement that supports decision-making."
         primaryAction={{ label: "Book a consultation", href: "/contact" }}
         secondaryAction={{ label: "Back to Services", href: "/services" }}
         imageSrc="/hero/marketing.jpg"
         imageAlt="Marketing automation and analytics theme"
       />
-
+	  <section className="py-16 bg-indigo-50 border-y border-indigo-100">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+            <div>
+              <div className="text-xs font-semibold text-indigo-600 uppercase tracking-widest mb-3">
+                AI marketing for regulated enterprises
+              </div>
+              <h2 className="text-2xl font-semibold text-slate-900">
+                AI-powered marketing built on your existing data
+              </h2>
+              <p className="mt-4 text-slate-600">
+                Whether that data lives in IBM infrastructure, HubSpot, Salesforce, or all three simultaneously, we design and implement AI marketing systems that work on top of what you already have.
+              </p>
+              <p className="mt-4 text-slate-600">
+                We run an IBM watsonx AI marketing practice for enterprises where governance, auditability, and compliance are non-negotiable. This is not a generic AI bolt-on. It is governed adoption built on the infrastructure your teams already operate.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                ["IBM watsonx", "AI marketing on enterprise-grade infrastructure with auditability and compliance built in."],
+                ["HubSpot", "CRM architecture, lifecycle design, automation workflows, and governed reporting."],
+                ["Salesforce", "Data model discipline, lead management governance, and measurement frameworks."],
+                ["In-house and hybrid stacks", "360-degree customer view design integrating purchase history, survey data, and third-party sources like Nielsen."],
+              ].map(([t, d]) => (
+                <div key={t} className="bg-white border rounded-2xl p-5 shadow-sm">
+                  <div className="font-semibold text-indigo-700 text-sm">{t}</div>
+                  <div className="mt-2 text-xs text-slate-600">{d}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-semibold">Key service pathways</h2>
@@ -178,7 +219,7 @@ export default function MarketingAutomationPage() {
               ["CRM discipline and data model", "Field standards, naming conventions, permissions, data hygiene rules, and source of truth alignment."],
               ["Omnichannel lifecycle orchestration", "Email, SMS, WhatsApp, web, app and service signals coordinated into journeys."],
               ["Content operations and AI workflows", "Faster content creation with brand guardrails, controlled personalisation, and measurable performance."],
-              ["Implementation and enablement", "Hands-on configuration, documentation, training, and rollout support."],
+              ["Implementation and enablement", "Hands-on configuration, documentation, training, and rollout support. Platform experience includes IBM watsonx, HubSpot, Salesforce, Zoho, and in-house CRM builds with 360-degree customer view design."],
               ["Measurement governance", "Metric definitions and reporting rules that remain stable across teams and cycles."],
             ].map(([t, d]) => (
               <div key={t} className="bg-white border rounded-2xl p-8 shadow-sm">
