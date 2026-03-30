@@ -138,7 +138,7 @@ export default function HomePage() {
             Founded by practitioners from
           </p>
           <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10">
-            {["Deloitte", "Tata", "Tesco", "Godrej", "Reliance Industries", "Lenzing Group"].map(
+            {["UN Global Compact Network","Deloitte", "Tata", "Tesco", "Godrej", "Reliance Industries", "Lenzing Group","Workdry International"].map(
               (brand) => (
                 <span
                   key={brand}
@@ -174,6 +174,7 @@ export default function HomePage() {
                 <li>Scoping, readiness assessment, and disclosure mapping</li>
                 <li>ESG data governance, validations, and evidence standards</li>
                 <li>GHG methodology governance and repeatable workflows</li>
+                <li>Carbon accounting: Scope 1, 2 and 3 inventory, net zero roadmaps, and SBTi-aligned targets</li>
               </ul>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link href="/services/esg-advisory" className="text-emerald-700 font-medium">

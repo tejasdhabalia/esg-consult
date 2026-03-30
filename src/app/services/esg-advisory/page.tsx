@@ -112,6 +112,24 @@ export default function ESGAdvisoryPage() {
             "Start with a readiness and gap assessment. It clarifies scope, priorities, critical data gaps, control design needs, and a practical delivery plan for the reporting cycle.",
         },
       },
+      {
+        "@type": "Question",
+        name: "Do you support Scope 1, 2 and 3 carbon accounting?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text:
+            "Yes. We deliver a complete GHG inventory across Scope 1, 2 and 3 aligned with the GHG Protocol Corporate Standard. This includes data collection, activity mapping, emissions factor application, and structured reports suitable for investors, regulators, and public disclosure.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can you help us build a net zero roadmap?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text:
+            "Yes. Once a carbon baseline is established, we develop SBTi-aligned science-based targets, identify priority reduction levers, and produce a costed, credible net zero roadmap your leadership team can act on.",
+        },
+      },
     ],
   };
 
@@ -137,6 +155,17 @@ export default function ESGAdvisoryPage() {
           </p>
 
           <div className="grid md:grid-cols-3 gap-8 mt-14">
+            <Link
+              href="/services/esg-advisory/carbon-accounting"
+              className="bg-emerald-50 border border-emerald-200 rounded-2xl p-8 shadow-sm hover:shadow-md transition"
+            >
+              <div className="text-lg font-semibold text-emerald-700">Carbon accounting and GHG inventory</div>
+              <p className="mt-3 text-sm text-slate-600">
+                Complete, defensible Scope 1, 2 and 3 carbon inventory aligned with the GHG Protocol Corporate Standard. Audit-ready reports, net zero roadmaps, and SBTi-aligned target setting.
+              </p>
+              <div className="mt-4 text-sm font-medium text-emerald-700">Explore carbon accounting →</div>
+            </Link>
+
             <Link
               href="/services/esg-advisory/csrd-advisory"
               className="bg-slate-50 border rounded-2xl p-8 shadow-sm hover:shadow-md transition"
@@ -204,6 +233,8 @@ export default function ESGAdvisoryPage() {
               ["ESG data governance and internal controls", "Validation checks, approvals, evidence standards and exception handling."],
               ["Reporting workflow and leadership cadence", "Templates, review rhythm, sign-off model, and change control so delivery is repeatable."],
               ["Assurance readiness preparation", "Controls and documentation improvements to reduce late-cycle rework and support external review readiness."],
+              ["Carbon accounting and GHG inventory", "Full Scope 1, 2 and 3 emissions assessment per GHG Protocol. Data collection, activity mapping, and emissions factor application to build a complete, defensible carbon baseline."],
+              ["Net zero roadmap and SBTi alignment", "Science-based targets, priority reduction levers, and a credible net zero roadmap that turns your carbon data into decisive action."],
             ].map(([title, desc]) => (
               <div key={title} className="bg-white border rounded-2xl p-8 shadow-sm">
                 <div className="font-semibold text-slate-900">{title}</div>

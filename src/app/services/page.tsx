@@ -30,6 +30,7 @@ export default function ServicesPage() {
       { "@type": "ListItem", position: 3, name: "AI and Data Architecture", url: absUrl("/services") },
       { "@type": "ListItem", position: 4, name: "Business Growth Operating Model", url: absUrl("/services") },
       { "@type": "ListItem", position: 5, name: "Location Intelligence", url: absUrl("/services") },
+      { "@type": "ListItem", position: 6, name: "Carbon Accounting and GHG Inventory", url: absUrl("/services/esg-advisory/carbon-accounting") },
     ],
   };
 
@@ -136,6 +137,7 @@ export default function ServicesPage() {
                 <li>Scoping, readiness assessment, and disclosure mapping</li>
                 <li>Data ownership model, validations, evidence trails</li>
                 <li>Governance cadence, review workflows, documentation standards</li>
+                <li>Carbon accounting: Scope 1, 2 and 3 GHG inventory, net zero roadmaps, and SBTi-aligned targets</li>
               </ul>
 
               <div className="mt-6 flex flex-wrap gap-4 text-sm">
@@ -193,7 +195,7 @@ export default function ServicesPage() {
 
           <div className="grid md:grid-cols-5 gap-6 mt-12">
             {[
-              ["ESG readiness", "Reporting systems with governance, controls, and evidence trails."],
+              ["ESG readiness", "Reporting systems with governance, controls, and evidence trails. Includes carbon accounting, GHG inventory, and net zero roadmaps."],
               ["Revenue visibility", "Lifecycle, CRM discipline, automation, and measurement that leaders trust."],
               ["AI and data architecture", "Use-case prioritisation, data model clarity, and governed AI adoption."],
               ["Business growth operating model", "Execution cadence, process governance, and measurable performance systems."],
