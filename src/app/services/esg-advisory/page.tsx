@@ -229,7 +229,6 @@ export default function ESGAdvisoryPage() {
             {[
               ["Readiness and gap assessment", "Clarify scope, timeline, current maturity, critical gaps, and a delivery roadmap."],
               ["Disclosure mapping and ownership model", "Translate requirements into disclosures, KPIs, owners, and data sources."],
-              ["GHG methodology and governance", "Define emissions data ownership, methodology documentation, and repeatable collection workflow."],
               ["ESG data governance and internal controls", "Validation checks, approvals, evidence standards and exception handling."],
               ["Reporting workflow and leadership cadence", "Templates, review rhythm, sign-off model, and change control so delivery is repeatable."],
               ["Assurance readiness preparation", "Controls and documentation improvements to reduce late-cycle rework and support external review readiness."],

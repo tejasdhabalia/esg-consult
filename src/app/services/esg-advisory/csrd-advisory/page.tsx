@@ -152,6 +152,10 @@ export default function CSRDAdvisoryPage() {
             <Link className="underline" href="/services/esg-advisory/uk-climate-reporting">
               UK climate reporting
             </Link>
+            . If you need to build or validate your carbon baseline first, see{" "}
+            <Link className="underline" href="/services/esg-advisory/carbon-accounting">
+              carbon accounting
+            </Link>
             .
           </p>
 

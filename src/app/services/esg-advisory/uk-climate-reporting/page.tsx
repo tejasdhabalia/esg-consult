@@ -141,6 +141,10 @@ export default function UKClimateReportingPage() {
             <Link className="underline" href="/services/esg-advisory/brsr-advisory">
               BRSR advisory
             </Link>
+            . If you need to build or validate your carbon baseline first, see{" "}
+            <Link className="underline" href="/services/esg-advisory/carbon-accounting">
+              carbon accounting
+            </Link>
             .
           </p>
 

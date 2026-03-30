@@ -144,6 +144,13 @@ export default function CarbonAccountingPage() {
           <p className="mt-4 text-slate-600">
             We build carbon inventories with technical rigour and practical clarity. Every engagement starts with understanding your business model and data landscape. We then work systematically to produce carbon accounts you can stand behind in any forum.
           </p>
+          <p className="mt-4 text-slate-600">
+            Carbon accounting is the measurement foundation that feeds regulatory disclosure. If your priority is reporting compliance, see{" "}
+            <Link className="underline" href="/services/esg-advisory/csrd-advisory">CSRD advisory</Link>,{" "}
+            <Link className="underline" href="/services/esg-advisory/brsr-advisory">BRSR advisory</Link>, or{" "}
+            <Link className="underline" href="/services/esg-advisory/uk-climate-reporting">UK climate reporting</Link>.
+            Both services can run in parallel or sequentially depending on where you are in your carbon journey.
+          </p>
 
           <div className="mt-10 grid md:grid-cols-4 gap-4">
             {[
