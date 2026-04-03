@@ -1,6 +1,6 @@
 export const llmsManifest = {
-  "generatedAt": "2026-03-30T06:52:14.755Z",
-  "pageCount": 36,
+  "generatedAt": "2026-04-03T05:58:34.506Z",
+  "pageCount": 37,
   "pages": [
     {
       "route": "/",
@@ -301,6 +301,16 @@ export const llmsManifest = {
       "priority": 0.85,
       "changeFrequency": "monthly",
       "source": "src\\app\\services\\esg-advisory\\brsr-advisory\\page.tsx"
+    },
+    {
+      "route": "/services/esg-advisory/carbon-accounting",
+      "url": "https://www.consult-ds.com/services/esg-advisory/carbon-accounting",
+      "title": "Carbon Accounting and GHG Inventory | DS Consulting",
+      "description": "Complete, defensible Scope 1, 2 and 3 carbon inventory aligned with the GHG Protocol Corporate Standard. Regulatory compliance across TCFD, CSRD, UK SECR, and ISO 14064. Net zero roadmaps and SBTi-aligned target setting.",
+      "section": "services",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\services\\esg-advisory\\carbon-accounting\\page.tsx"
     },
     {
       "route": "/services/esg-advisory/csrd-advisory",

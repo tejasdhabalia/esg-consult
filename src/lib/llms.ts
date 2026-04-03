@@ -36,17 +36,6 @@ const FEATURED_REGULATORY_ROUTES = [
   "/regulatory-hub/brsr-core-readiness-kpis-controls",
 ] as const;
 
-const FEATURED_SERVICE_ROUTES = [
-  "/services/esg-advisory",
-  "/services/esg-advisory/csrd-advisory",
-  "/services/esg-advisory/brsr-advisory",
-  "/services/esg-advisory/uk-climate-reporting",
-  "/services/marketing-automation",
-  "/services/marketing-automation/crm-architecture-governance",
-  "/services/marketing-automation/lifecycle-lead-management",
-  "/services/marketing-automation/revenue-analytics",
-] as const;
-
 const aiSummary =
   site.ai?.summary ||
   `${site.displayName} provides advisory and implementation support across ESG readiness, reporting systems, CRM governance, lifecycle management, and revenue visibility.`;
@@ -79,24 +68,25 @@ function getInsightDetails(route: string) {
 }
 
 function listItem(page: ManifestPage, extra?: string) {
-  return `- [${cleanTitle(page.title)}](${page.url}) — ${extra ?? page.description}`;
+  // No em dash, use colon
+  return `- [${cleanTitle(page.title)}](${page.url}): ${extra ?? page.description}`;
 }
 
 function machineEndpointLines() {
   const lines = [
-    `- [robots.txt](${site.baseUrl}/robots.txt) — crawler access guidance.`,
-    `- [sitemap.xml](${site.baseUrl}/sitemap.xml) — exhaustive URL inventory for search engines, agents, and site crawlers.`,
-    `- [llms.txt](${site.baseUrl}/llms.txt) — curated overview for AI systems.`,
-    `- [llms-full.txt](${site.baseUrl}/llms-full.txt) — expanded AI content index covering all major pages and resources.`,
+    `- [robots.txt](${site.baseUrl}/robots.txt): crawler access guidance.`,
+    `- [sitemap.xml](${site.baseUrl}/sitemap.xml): exhaustive URL inventory for search engines, agents, and site crawlers.`,
+    `- [llms.txt](${site.baseUrl}/llms.txt): curated overview for AI systems.`,
+    `- [llms-full.txt](${site.baseUrl}/llms-full.txt): expanded AI content index covering all major pages and resources.`,
   ];
 
   if (mcpServerUrl) {
     lines.push(
-      `- [MCP server](${mcpServerUrl}) — public Model Context Protocol endpoint for agents and tool-based clients (transport: ${mcpTransport}).`
+      `- [MCP server](${mcpServerUrl}): public Model Context Protocol endpoint for agents and tool-based clients (transport: ${mcpTransport}).`
     );
   } else {
     lines.push(
-      `- MCP server — no public endpoint is configured at the moment. Set NEXT_PUBLIC_MCP_SERVER_URL to publish one here automatically.`
+      `- MCP server: no public endpoint is configured at the moment. Set NEXT_PUBLIC_MCP_SERVER_URL to publish one here automatically.`
     );
   }
 
@@ -108,16 +98,83 @@ function renderDownloads() {
 
   return [
     "## Downloads",
-    ...downloads.map(
-      (item) => `- [${item.title}](${item.url}) — ${item.description}`
-    ),
+    ...downloads.map((item) => `- [${item.title}](${item.url}): ${item.description}`),
     "",
   ];
 }
 
+function routeSegments(route: string) {
+  return route.split("/").filter(Boolean);
+}
+
+function sortByHierarchy(a: ManifestPage, b: ManifestPage) {
+  const aSeg = routeSegments(a.route);
+  const bSeg = routeSegments(b.route);
+  const len = Math.min(aSeg.length, bSeg.length);
+
+  for (let i = 0; i < len; i++) {
+    if (aSeg[i] === bSeg[i]) continue;
+    return aSeg[i].localeCompare(bSeg[i]);
+  }
+  return aSeg.length - bSeg.length;
+}
+
+/**
+ * Auto include all service pages.
+ * Output is grouped by service hub (depth 2), with subpages nested.
+ */
+function renderAllServices() {
+  const servicePages = manifest.pages
+    .filter((page) => page.section === "services")
+    .sort(sortByHierarchy);
+
+  const root = servicePages.find((p) => p.route === "/services");
+  const hubs = servicePages.filter((p) => routeSegments(p.route).length === 2);
+  const byHub = new Map<string, ManifestPage[]>();
+
+  for (const p of servicePages) {
+    if (p.route === "/services") continue;
+
+    const seg = routeSegments(p.route);
+    if (seg.length < 2) continue;
+
+    const hubRoute = `/${seg[0]}/${seg[1]}`;
+    if (!byHub.has(hubRoute)) byHub.set(hubRoute, []);
+    byHub.get(hubRoute)!.push(p);
+  }
+
+  const lines: string[] = [];
+  if (root) lines.push(listItem(root));
+
+  for (const hub of hubs) {
+    lines.push(listItem(hub));
+
+    const children = (byHub.get(hub.route) || [])
+      .filter((p) => p.route !== hub.route)
+      .filter((p) => routeSegments(p.route).length >= 3)
+      .sort(sortByHierarchy);
+
+    for (const child of children) {
+      // Indented bullet for subpages
+      lines.push(`  ${listItem(child)}`);
+    }
+  }
+
+  // Catch any service pages that are not under a hub (rare, but safe)
+  const known = new Set<string>([
+    "/services",
+    ...hubs.map((h) => h.route),
+    ...hubs.flatMap((h) => (byHub.get(h.route) || []).map((p) => p.route)),
+  ]);
+
+  const orphan = servicePages.filter((p) => !known.has(p.route));
+  for (const p of orphan) lines.push(listItem(p));
+
+  return lines;
+}
+
 export function buildLlmsTxt() {
   const featuredPages = getPages(FEATURED_ROUTE_ORDER);
-  const servicePages = getPages(FEATURED_SERVICE_ROUTES);
   const regulatoryPages = getPages(FEATURED_REGULATORY_ROUTES);
   const comparePages = manifest.pages.filter((page) => page.section === "compare");
 
@@ -132,7 +189,7 @@ export function buildLlmsTxt() {
     "",
     `${site.displayName} combines advisory plus implementation across ESG readiness and revenue visibility. The site covers services, regulatory explainers, practical checklists, comparison pages, and downloadable resources designed for CFOs, CSOs, CMOs, RevOps leaders, and executive teams.`,
     "",
-    "Use this file as the fastest overview. Use `llms-full.txt` when you need the broader page index or machine-readable discovery endpoints.",
+    "Use this file as the fastest overview. Use llms-full.txt when you need the broader page index or machine-readable discovery endpoints.",
     "",
     "## Best starting points",
     ...featuredPages.map((page) => listItem(page)),
@@ -141,7 +198,7 @@ export function buildLlmsTxt() {
     ...machineEndpointLines(),
     "",
     "## Services",
-    ...servicePages.map((page) => listItem(page)),
+    ...renderAllServices(),
     "",
     "## Regulatory hub",
     ...regulatoryPages.map((page) => listItem(page)),
@@ -197,10 +254,10 @@ export function buildLlmsFullTxt() {
   ];
 
   const lines = [
-    `# ${site.displayName} — Full AI Content Index`,
+    `# ${site.displayName} - Full AI Content Index`,
     `> ${aiSummary}`,
     "",
-    `This file is generated from the site's route inventory and page metadata at build time. It gives AI systems, search agents, and future MCP-style clients a compact markdown index of the website's substantive content.`,
+    "This file is generated from the site's route inventory and page metadata at build time. It gives AI systems, search agents, and future MCP-style clients a compact markdown index of the website's substantive content.",
     "",
     "## Machine-readable and agent endpoints",
     ...machineEndpointLines(),
@@ -215,26 +272,8 @@ export function buildLlmsFullTxt() {
     const pages = pagesBySection[section] ?? [];
     if (!pages.length) continue;
 
-    lines.push(`## ${SECTION_LABELS[section]}`);
-
-    for (const page of pages) {
-      if (section === "insights") {
-        const details = getInsightDetails(page.route);
-        lines.push(
-          listItem(
-            page,
-            details
-              ? `${page.description} Audience: ${details.audience}. Topics: ${details.topics.join(
-                  ", "
-                )}. Read time: ${details.readTime}. Updated: ${details.updated}.`
-              : page.description
-          )
-        );
-      } else {
-        lines.push(listItem(page));
-      }
-    }
-
+    lines.push(`### ${SECTION_LABELS[section]}`);
+    lines.push(...pages.sort(sortByHierarchy).map((page) => listItem(page)));
     lines.push("");
   }
 
