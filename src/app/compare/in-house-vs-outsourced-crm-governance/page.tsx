@@ -1,43 +1,13 @@
 import Link from "next/link";
+import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
 
 export const metadata = {
-  title: `In-house vs Outsourced CRM Governance: Which is Right? | ${site.legalName}`,
+  title: `In house vs Outsourced CRM Governance: Which is Right? | ${site.legalName}`,
   description:
-    "A practical comparison of building CRM governance in-house vs working with an external advisory partner. Covers cost, speed, expertise depth, and the situations where each approach wins.",
+    "A practical comparison of building CRM governance in house vs outsourcing governance and implementation. Covers speed, cost, ownership, cross functional alignment, and how to stop CRM firefighting.",
   alternates: { canonical: absUrl("/compare/in-house-vs-outsourced-crm-governance") },
-};
-
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Should I build CRM governance in-house or use an external partner?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "It depends on your timeline, internal capability, and the scale of the governance gap. In-house works when you have a senior RevOps or CRM admin with governance design experience and 6-12 months of runway to build the model. External advisory makes more sense when you need to move in 8-12 weeks, when you lack internal precedent for what good looks like, or when you need to borrow credibility to drive cross-functional alignment.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What is the average cost of CRM governance consulting?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "CRM governance advisory engagements typically range from £20,000 to £80,000 depending on scope, platform complexity, and the number of integrated systems. A diagnostic and design engagement is at the lower end. Full implementation including change control design, lifecycle governance, and measurement framework typically sits in the £40,000–£80,000 range for a mid-market organisation.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How long does a CRM governance implementation take?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Most CRM governance implementations run 8 to 16 weeks depending on scope. A diagnostic and design phase typically takes 3-4 weeks. Implementation of the data model, lifecycle governance, and change control process takes a further 4-8 weeks. Measurement framework alignment with finance typically adds 2-4 weeks.",
-      },
-    },
-  ],
 };
 
 const breadcrumbSchema = {
@@ -46,206 +16,333 @@ const breadcrumbSchema = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: absUrl("/") },
     { "@type": "ListItem", position: 2, name: "Compare", item: absUrl("/compare") },
-    { "@type": "ListItem", position: 3, name: "In-house vs Outsourced CRM Governance", item: absUrl("/compare/in-house-vs-outsourced-crm-governance") },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "In house vs Outsourced CRM Governance",
+      item: absUrl("/compare/in-house-vs-outsourced-crm-governance"),
+    },
   ],
 };
 
-const COMPARISON = [
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What is CRM governance in practical terms?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "CRM governance is how lifecycle definitions, routing, permissions, required fields, change control, and measurement definitions are owned and maintained so the CRM remains reliable over time.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "When is in house governance the best choice?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "In house governance works when you have a senior owner with authority across teams, stable definitions, and the ability to enforce standards through a release cadence and change control.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "When is outsourced governance the best choice?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "Outsourced governance works when teams are firefighting, definitions are disputed, routing changes frequently, dashboards are not trusted, or you need fast stabilisation with implementation accountability.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Does DS Consulting implement or only advise?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "We do advisory plus implementation. We design the governance model, implement it, document it, and enable internal owners to run the cadence after go live.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How does governance connect to marketing automation?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "Marketing automation underperforms when lifecycle stages, routing, and definitions are unclear. Governance creates the stable foundation so marketing and sales stay aligned and automation becomes predictable.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How long does it take to stabilise governance?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "Early improvements often show within weeks once definitions, routing, and change control are stabilised. Sustainable reliability comes from a cadence that continues after implementation.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do you sell software licenses?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "No. We do not sell software licenses. We design and implement the operating model and systems around your stack.",
+      },
+    },
+  ],
+};
+
+type Winner = "inhouse" | "outsourced" | "depends";
+
+const COMPARISON: Array<{
+  factor: string;
+  inhouse: string;
+  outsourced: string;
+  winner: Winner;
+}> = [
   {
-    factor: "Speed to governance",
-    inhouse: "12–24 months. Building frameworks internally without precedent takes time — especially when competing with BAU priorities.",
-    outsourced: "8–12 weeks. An experienced partner brings a proven model, removes the blank-page problem, and can resource the build without competing priorities.",
+    factor: "Speed to stabilisation",
+    inhouse:
+      "Typically slower if there is no existing governance model. Competes with BAU priorities and cross team alignment takes time.",
+    outsourced:
+      "Typically faster because patterns, documentation, and change control mechanisms already exist. Implementation can run in a focused cycle.",
     winner: "outsourced",
   },
   {
-    factor: "Cost",
-    inhouse: "Appears cheaper — mainly internal headcount. Hidden costs: time-to-value delay, mistakes that require remediation, and opportunity cost of senior ops talent diverted from growth.",
-    outsourced: "Defined engagement cost of £20k–£80k depending on scope. ROI is measured by the leakage stopped, not the advisory fee paid.",
+    factor: "Cash cost",
+    inhouse:
+      "Lower visible cash outlay, but uses senior time and can delay improvements. Hidden cost is leakage and rework during the build period.",
+    outsourced:
+      "Higher visible cash cost, but can reduce leakage quickly and return time to teams. The right comparison is cost vs waste avoided.",
+    winner: "inhouse",
+  },
+  {
+    factor: "Governance design expertise",
+    inhouse:
+      "Strong only if you have a senior RevOps or CRM owner who has built governance models before.",
+    outsourced:
+      "Higher because you borrow proven playbooks for lifecycle definitions, routing, change control, and measurement discipline.",
+    winner: "outsourced",
+  },
+  {
+    factor: "Internal context and adoption",
+    inhouse:
+      "Strong because internal owners know the culture, constraints, and edge cases. Adoption can be better when the owner is trusted.",
+    outsourced:
+      "Can be strong when the partner runs enablement and co-creates decisions. Requires committed internal owners to sustain.",
+    winner: "inhouse",
+  },
+  {
+    factor: "Cross functional alignment",
+    inhouse:
+      "Can stall if the owner lacks authority across marketing, sales, service, and finance. Disputes about definitions can linger.",
+    outsourced:
+      "Often faster because an external partner provides structure, facilitation, and a neutral frame for decision making.",
+    winner: "outsourced",
+  },
+  {
+    factor: "Long term sustainability",
+    inhouse:
+      "Best long term model when there is a named owner, a release cadence, and enforcement of standards.",
+    outsourced:
+      "Best when external support stabilises quickly, then transitions to internal ownership with documentation and cadence.",
     winner: "depends",
   },
   {
-    factor: "Depth of governance expertise",
-    inhouse: "Depends entirely on whether you have a senior RevOps or CRM lead with governance design experience. Most organisations do not.",
-    outsourced: "Access to practitioners who have built governance models across multiple sectors and platforms. Pattern recognition is the primary value delivered.",
+    factor: "Measurement reliability",
+    inhouse:
+      "Possible, but requires disciplined definitions and reconciliation with finance. Many teams struggle to maintain this under pressure.",
+    outsourced:
+      "Often faster to stabilise because measurement discipline is designed as part of governance and implemented with controls.",
     winner: "outsourced",
   },
   {
-    factor: "Cross-functional alignment",
-    inhouse: "Internal champions often struggle to get sign-off from marketing, sales, and finance simultaneously. Governance changes are politically difficult without executive mandate.",
-    outsourced: "An external partner provides a neutral frame that makes alignment easier. Recommendations from a specialist carry weight that internal proposals sometimes do not.",
-    winner: "outsourced",
-  },
-  {
-    factor: "Institutional knowledge retention",
-    inhouse: "Governance built internally becomes part of the organisation's DNA over time — if the people who built it stay.",
-    outsourced: "A well-run engagement leaves behind documentation, training, and a governance model that does not depend on any individual. Retention depends on deliverable quality.",
-    winner: "inhouse",
-  },
-  {
-    factor: "Platform-specific depth",
-    inhouse: "An internal admin often has deep familiarity with your specific instance — field history, legacy decisions, technical debt.",
-    outsourced: "Strong for cross-platform governance design. Requires a diagnostic phase to understand your specific instance. Partner should be platform-agnostic.",
-    winner: "inhouse",
-  },
-  {
-    factor: "Ongoing governance cadence",
-    inhouse: "Once the model is built internally, ongoing governance becomes part of normal operations. No dependency on external resource.",
-    outsourced: "Implementation engagements deliver the model and transition ownership. Some organisations retain advisory support for quarterly governance reviews.",
-    winner: "inhouse",
-  },
-  {
-    factor: "Risk in a time-critical situation",
-    inhouse: "Building governance while also operating the CRM under pressure creates compounding risk — changes made without controls while trying to implement controls.",
-    outsourced: "A structured engagement with a clear diagnostic before any changes are made significantly reduces implementation risk.",
-    winner: "outsourced",
+    factor: "Change control and drift prevention",
+    inhouse:
+      "Strong when you can enforce approvals, release notes, and governance rituals. Weak when changes happen ad hoc.",
+    outsourced:
+      "Strong when the partner implements change control, documentation standards, and a governance calendar with owners.",
+    winner: "depends",
   },
 ];
 
 export default function InhouseVsOutsourcedPage() {
-  const outsourcedWins = COMPARISON.filter(c => c.winner === "outsourced").length;
-  const inhouseWins = COMPARISON.filter(c => c.winner === "inhouse").length;
+  const outsourcedWins = COMPARISON.filter((c) => c.winner === "outsourced").length;
+  const inhouseWins = COMPARISON.filter((c) => c.winner === "inhouse").length;
+  const dependsCount = COMPARISON.filter((c) => c.winner === "depends").length;
 
   return (
     <div className="bg-white">
-      <div className="bg-indigo-950 text-white px-6 py-16">
-        <div className="max-w-5xl mx-auto">
-          <nav className="text-sm text-indigo-300 mb-6">
-            <Link href="/" className="hover:text-white">Home</Link>
-            <span className="mx-2">/</span>
-            <span className="text-white">Compare</span>
-            <span className="mx-2">/</span>
-            <span className="text-indigo-200">In-house vs Outsourced CRM Governance</span>
-          </nav>
-          <div className="inline-block bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wide">
-            Comparison Guide
-          </div>
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">In-house vs Outsourced CRM Governance</h1>
-          <p className="text-indigo-200 text-lg max-w-2xl leading-relaxed">
-            A practical, honest breakdown of when to build governance capabilities internally and when
-            working with an external advisory partner delivers faster, more reliable results.
-          </p>
+      <PageHero
+        title="In house vs Outsourced CRM Governance"
+        subtitle="A decision guide for leaders who want a CRM that teams trust. Use this page to choose the right model for speed, ownership, and long term reliability."
+        painLine="If teams do not trust dashboards and handoffs are inconsistent, stabilise governance before adding more automation."
+        primaryAction={{ label: "Talk to us", href: "/contact" }}
+        secondaryAction={{ label: "Marketing automation services", href: "/services/marketing-automation" }}
+        imageSrc="/hero/crm.jpg"
+        imageAlt="CRM governance comparison for in house versus outsourced delivery"
+      />
+
+      {/* Back to compare */}
+      <section className="bg-white">
+        <div className="max-w-5xl mx-auto px-6 pt-6">
+          <Link href="/compare" className="text-sm font-medium text-indigo-700 hover:text-indigo-800">
+            Back to Compare
+          </Link>
         </div>
-      </div>
+      </section>
 
       <div className="max-w-5xl mx-auto px-6 py-12">
+        {/* Signals */}
+        <div className="grid sm:grid-cols-3 gap-4 mb-10">
+          <div className="bg-indigo-50 border border-indigo-200 rounded-2xl p-6">
+            <div className="text-xs font-bold text-indigo-700 uppercase tracking-wide mb-2">
+              Outsourced signals
+            </div>
+            <div className="text-3xl font-extrabold text-slate-900">{outsourcedWins}</div>
+            <div className="text-sm text-slate-600 mt-1">factors favour external support</div>
+          </div>
 
-        {/* Score summary */}
-        <div className="grid sm:grid-cols-3 gap-4 mb-12">
-          <div className="bg-indigo-50 border border-indigo-200 rounded-2xl p-6 text-center">
-            <div className="text-3xl font-black text-indigo-600 mb-1">{outsourcedWins}</div>
-            <div className="text-sm font-semibold text-slate-700">Factors favouring external</div>
+          <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-6">
+            <div className="text-xs font-bold text-emerald-700 uppercase tracking-wide mb-2">
+              In house signals
+            </div>
+            <div className="text-3xl font-extrabold text-slate-900">{inhouseWins}</div>
+            <div className="text-sm text-slate-600 mt-1">factors favour internal build</div>
           </div>
-          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 text-center">
-            <div className="text-3xl font-black text-slate-600 mb-1">{COMPARISON.filter(c => c.winner === "depends").length}</div>
-            <div className="text-sm font-semibold text-slate-700">Situation-dependent</div>
-          </div>
-          <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-6 text-center">
-            <div className="text-3xl font-black text-emerald-600 mb-1">{inhouseWins}</div>
-            <div className="text-sm font-semibold text-slate-700">Factors favouring in-house</div>
+
+          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+            <div className="text-xs font-bold text-slate-700 uppercase tracking-wide mb-2">
+              Depends on maturity
+            </div>
+            <div className="text-3xl font-extrabold text-slate-900">{dependsCount}</div>
+            <div className="text-sm text-slate-600 mt-1">factors depend on owners and cadence</div>
           </div>
         </div>
 
-        {/* Verdict callout */}
-        <div className="bg-indigo-600 rounded-2xl p-6 text-white mb-12">
-          <h2 className="font-bold text-lg mb-2">The honest answer</h2>
-          <p className="text-indigo-100 leading-relaxed text-sm">
-            For most organisations with a governance gap and a timeline shorter than 12 months, external
-            advisory delivers better outcomes faster. The exceptions are organisations with a senior RevOps leader
-            who has built governance models before, or organisations that have the luxury of a 12-month runway
-            without a burning revenue visibility problem. If your CEO cannot get a clean pipeline number before
-            the next board meeting, build it fast with people who have done it before.
+        {/* Verdict */}
+        <div className="bg-slate-900 text-white rounded-2xl p-8 mb-12">
+          <h2 className="text-2xl font-bold mb-3">The honest answer</h2>
+          <p className="text-indigo-100 text-sm leading-relaxed max-w-3xl">
+            In house governance is the best long term model when you have the right owner and enough runway to build.
+            Outsourced governance is often the fastest stabilisation path when teams are firefighting and leaders need
+            reliable revenue visibility quickly. A common approach is external stabilisation first, then transition to in house ownership.
           </p>
         </div>
 
         {/* Comparison table */}
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">Factor-by-factor comparison</h2>
+        <h2 className="text-2xl font-bold text-slate-900 mb-6">Factor by factor comparison</h2>
         <div className="space-y-4 mb-12">
-          {COMPARISON.map(({ factor, inhouse, outsourced, winner }) => (
+          {COMPARISON.map(({ factor, inhouse, outsourced }) => (
             <div key={factor} className="border border-slate-200 rounded-2xl overflow-hidden">
-              <div className="bg-slate-900 text-white px-6 py-3 flex items-center justify-between">
+              <div className="bg-slate-900 text-white px-6 py-3">
                 <span className="font-semibold text-sm">{factor}</span>
-                {winner === "outsourced" && <span className="text-xs bg-indigo-500 text-white px-2 py-0.5 rounded-full">Outsourced wins</span>}
-                {winner === "inhouse" && <span className="text-xs bg-emerald-500 text-white px-2 py-0.5 rounded-full">In-house wins</span>}
-                {winner === "depends" && <span className="text-xs bg-amber-500 text-white px-2 py-0.5 rounded-full">Situation-dependent</span>}
               </div>
               <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
-                <div className="p-5">
-                  <div className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2">In-house</div>
-                  <p className="text-sm text-slate-600 leading-relaxed">{inhouse}</p>
+                <div className="p-5 bg-white">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 flex-shrink-0" />
+                    <span className="text-xs font-bold text-emerald-700 uppercase tracking-wide">In house</span>
+                  </div>
+                  <p className="text-sm text-slate-700 leading-relaxed">{inhouse}</p>
                 </div>
-                <div className="p-5">
-                  <div className="text-xs font-bold text-indigo-600 uppercase tracking-wide mb-2">Outsourced</div>
-                  <p className="text-sm text-slate-600 leading-relaxed">{outsourced}</p>
+                <div className="p-5 bg-indigo-50">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="w-2 h-2 rounded-full bg-indigo-500 flex-shrink-0" />
+                    <span className="text-xs font-bold text-indigo-700 uppercase tracking-wide">Outsourced</span>
+                  </div>
+                  <p className="text-sm text-slate-700 leading-relaxed">{outsourced}</p>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* When to choose each */}
-        <div className="grid sm:grid-cols-2 gap-6 mb-12">
-          <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200">
-            <h3 className="font-bold text-slate-900 mb-4">Choose in-house when...</h3>
-            <ul className="space-y-2 text-sm text-slate-600">
-              {[
-                "You have a senior RevOps lead with governance design experience",
-                "Your timeline is 12+ months and BAU pressure allows it",
-                "Your governance gap is limited to one system or one process",
-                "You have already built the governance model and need to maintain it",
-                "Your organisation has strong internal project management capability",
-              ].map((item, i) => (
-                <li key={i} className="flex gap-2">
-                  <span className="text-emerald-500 flex-shrink-0 mt-0.5">✓</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="bg-indigo-50 rounded-2xl p-6 border border-indigo-200">
-            <h3 className="font-bold text-slate-900 mb-4">Choose external advisory when...</h3>
-            <ul className="space-y-2 text-sm text-slate-600">
-              {[
-                "You need results in 8–12 weeks, not 12 months",
-                "Your leadership team cannot agree on a shared definition of pipeline",
-                "You have tried to fix CRM governance internally before without success",
-                "You are planning a platform migration and need a clean architecture before you move",
-                "You need to borrow credibility to drive cross-functional alignment",
-              ].map((item, i) => (
-                <li key={i} className="flex gap-2">
-                  <span className="text-indigo-500 flex-shrink-0 mt-0.5">✓</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
+        {/* What governance includes */}
+        <div className="bg-white border border-slate-200 rounded-2xl p-8 mb-12">
+          <h2 className="text-2xl font-bold text-slate-900 mb-4">What good CRM governance includes</h2>
+          <p className="text-sm text-slate-600 max-w-3xl leading-relaxed">
+            Governance prevents drift. It protects lifecycle definitions, routing, and measurement over time so teams stop rework and leaders regain confidence.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-6 mt-8">
+            {[
+              "Lifecycle stages with entry and exit criteria",
+              "Routing rules, SLAs, and exception handling",
+              "Data ownership and required fields",
+              "Permissions model and change control",
+              "Release cadence and approval workflow",
+              "Documentation of definitions and decisions",
+              "Measurement definitions aligned with finance",
+              "Quality checks for duplicates and completeness",
+            ].map((t, idx) => (
+              <div key={idx} className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+                <div className="text-sm font-semibold text-slate-900">{t}</div>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* FAQ */}
+        {/* Where DS supports */}
+        <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8 mb-12">
+          <h2 className="text-2xl font-bold text-slate-900 mb-4">Where DS Consulting supports this work</h2>
+          <p className="text-sm text-slate-600 max-w-3xl leading-relaxed">
+            CRM governance is delivered through our Marketing Automation and RevOps services. Review the subpages if you want a concrete view of delivery.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-6 mt-8">
+            <div className="bg-white border border-slate-200 rounded-2xl p-6">
+              <div className="text-xs font-bold text-indigo-700 uppercase tracking-wide mb-2">
+                Marketing Automation and RevOps
+              </div>
+              <div className="grid gap-2 text-sm">
+                <Link className="underline" href="/services/marketing-automation">Marketing automation hub</Link>
+                <Link className="underline" href="/services/marketing-automation/crm-architecture-governance">CRM architecture and governance</Link>
+                <Link className="underline" href="/services/marketing-automation/lifecycle-lead-management">Lifecycle and lead management</Link>
+                <Link className="underline" href="/services/marketing-automation/revenue-analytics">Revenue analytics and measurement</Link>
+              </div>
+            </div>
+
+            <div className="bg-white border border-slate-200 rounded-2xl p-6">
+              <div className="text-xs font-bold text-slate-900 uppercase tracking-wide mb-2">
+                Tools and templates
+              </div>
+              <div className="grid gap-2 text-sm">
+                <Link className="underline" href="/insights/crm-governance-checklist">CRM Governance SOP Template</Link>
+                <Link className="underline" href="/insights/leaky-funnel-audit">Leaky Funnel Audit Tool</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* FAQs */}
         <h2 className="text-2xl font-bold text-slate-900 mb-6">Common questions</h2>
         <div className="space-y-5 mb-12">
-          {faqSchema.mainEntity.map((faq: {name: string; acceptedAnswer: {text: string}}, i: number) => (
-            <div key={i} className="border-b border-slate-100 pb-5">
-              <h3 className="font-semibold text-slate-900 mb-2">{faq.name}</h3>
-              <p className="text-slate-600 text-sm leading-relaxed">{faq.acceptedAnswer.text}</p>
-            </div>
-          ))}
+          {faqSchema.mainEntity.map(
+            (faq: { name: string; acceptedAnswer: { text: string } }, i: number) => (
+              <div key={i} className="border-b border-slate-100 pb-5">
+                <h3 className="font-semibold text-slate-900 mb-2">{faq.name}</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">{faq.acceptedAnswer.text}</p>
+              </div>
+            )
+          )}
         </div>
 
         {/* CTA */}
-        <div className="bg-indigo-950 rounded-2xl p-8 text-white text-center">
-          <h2 className="text-2xl font-bold mb-2">Not sure which approach is right?</h2>
+        <div className="bg-indigo-600 rounded-2xl p-8 text-white text-center">
+          <h2 className="text-2xl font-bold mb-2">Want a quick diagnostic?</h2>
           <p className="text-indigo-200 text-sm mb-6 max-w-lg mx-auto">
-            We offer a no-commitment diagnostic conversation where we assess your specific governance gap,
-            timeline, and whether external advisory genuinely makes sense for your situation.
+            We will assess your governance gap, timeline, and whether external stabilisation makes sense.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-indigo-700 font-bold px-6 py-3 rounded-xl hover:bg-indigo-50 text-sm">
-              Book a diagnostic conversation
-            </Link>
-            <Link href="/insights/leaky-funnel-audit" className="border border-indigo-500 text-white font-medium px-6 py-3 rounded-xl hover:bg-indigo-900 text-sm">
-              Take the Leaky Funnel Audit first
-            </Link>
-          </div>
+          <Link
+            href="/contact"
+            className="bg-white text-indigo-700 font-bold px-6 py-3 rounded-xl hover:bg-indigo-50 text-sm inline-block"
+          >
+            Book a diagnostic conversation
+          </Link>
         </div>
       </div>
 
