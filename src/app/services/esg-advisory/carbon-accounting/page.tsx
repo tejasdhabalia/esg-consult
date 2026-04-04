@@ -156,9 +156,9 @@ export default function CarbonAccountingPage() {
             {[
               ["GHG Protocol", "Corporate Standard and Scope 3"],
               ["ISO 14064-1", "Greenhouse gas accounting"],
-              ["TCFD / CSRD", "Climate financial disclosures"],
-              ["UK SECR", "Streamlined energy and carbon reporting"],
               ["SBTi", "Science-based targets initiative"],
+			  ["TCFD / CSRD", "Climate financial disclosures"],
+              ["UK SECR", "Streamlined energy and carbon reporting"],              
             ].map(([label, desc]) => (
               <div key={label} className="bg-emerald-50 border border-emerald-100 rounded-2xl p-5">
                 <div className="font-semibold text-emerald-800 text-sm">{label}</div>

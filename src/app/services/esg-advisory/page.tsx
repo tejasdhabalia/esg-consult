@@ -1,13 +1,12 @@
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
-import LeadMagnetBanner from "@/components/LeadMagnetBanner";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
 
 export const metadata = {
-  title: `ESG Advisory | ${site.legalName}`,
+  title: `ESG advisory | ${site.legalName}`,
   description:
-    "Advisory plus implementation for ESG readiness including CSRD and ESRS, SEBI BRSR, UK climate reporting, GHG governance, ESG data controls, evidence trails and assurance readiness preparation.",
+    "Advisory plus implementation for ESG readiness, carbon accounting, CSRD, BRSR, EcoVadis readiness, and UK SECR and SRS reporting. Governance, evidence trails, and reporting systems that stand up to scrutiny.",
   alternates: { canonical: absUrl("/services/esg-advisory") },
 };
 
@@ -18,28 +17,30 @@ export default function ESGAdvisoryPage() {
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: absUrl("/") },
       { "@type": "ListItem", position: 2, name: "Services", item: absUrl("/services") },
-      { "@type": "ListItem", position: 3, name: "ESG Advisory", item: absUrl("/services/esg-advisory") },
+      { "@type": "ListItem", position: 3, name: "ESG advisory", item: absUrl("/services/esg-advisory") },
     ],
   };
 
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "ESG Advisory",
+    name: "ESG advisory",
     description:
-      "Advisory plus implementation for ESG readiness including CSRD and ESRS, SEBI BRSR, UK climate reporting, GHG governance, ESG data controls, evidence trails and assurance readiness preparation.",
+      "Advisory plus implementation for ESG readiness, carbon accounting, CSRD, BRSR, EcoVadis readiness, and UK SECR and SRS reporting. Governance, evidence trails, and reporting systems that stand up to scrutiny.",
     provider: {
       "@type": "Organization",
       name: site.legalName,
       url: site.baseUrl,
     },
-    areaServed: ["EU", "United Kingdom", "India"],
+    areaServed: ["United Kingdom", "European Union", "India"],
     serviceType: [
-      "CSRD and ESRS readiness",
-      "BRSR readiness",
-      "UK climate reporting readiness",
-      "GHG governance and reporting systems",
-      "ESG data governance and internal controls",
+      "Carbon accounting",
+      "CSRD advisory",
+      "BRSR advisory",
+      "EcoVadis readiness",
+      "UK SECR reporting",
+      "UK SRS reporting",
+      "ESG data governance",
       "Assurance readiness preparation",
     ],
     url: absUrl("/services/esg-advisory"),
@@ -55,25 +56,52 @@ export default function ESGAdvisoryPage() {
         acceptedAnswer: {
           "@type": "Answer",
           text:
-            "We provide advisory plus implementation across scoping and readiness, disclosure mapping, data ownership, controls and evidence trails, emissions methodology governance, reporting workflow design, and assurance readiness preparation.",
+            "Our ESG advisory work covers readiness assessment, carbon accounting, reporting design, ESG data governance, policy and evidence mapping, controls, and assurance readiness preparation across the relevant reporting standard or assessment framework.",
         },
       },
       {
         "@type": "Question",
-        name: "Do you support CSRD and ESRS readiness?",
+        name: "Do you support both regulatory reporting and buyer assessments?",
         acceptedAnswer: {
           "@type": "Answer",
           text:
-            "Yes. We support CSRD readiness including scoping, double materiality support, ESRS disclosure mapping, owner and KPI mapping, controls, evidence trails, and repeatable reporting workflow.",
+            "Yes. We support regulatory reporting such as CSRD, BRSR, SECR, and SRS, and buyer or procurement-driven assessments such as EcoVadis.",
         },
       },
       {
         "@type": "Question",
-        name: "Do you support SEBI BRSR and BRSR Core readiness?",
+        name: "Do you support carbon accounting as a standalone service?",
         acceptedAnswer: {
           "@type": "Answer",
           text:
-            "Yes. We convert indicators into a KPI inventory with definitions, owners, data sources, validations, evidence trails, and governance cadence to make reporting repeatable.",
+            "Yes. Carbon accounting can be delivered as a focused service or as part of a broader ESG readiness programme.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How do you prepare teams for assurance or scrutiny?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text:
+            "We improve governance, clarify ownership, document methodology, strengthen controls, and create evidence trails so disclosures are more defensible and repeatable.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can one operating model support multiple ESG requirements?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text:
+            "Yes. Ownership, controls, evidence trails, and reporting cadence can be standardised across multiple regulations or assessments. The disclosure mapping changes, but the operating discipline can stay consistent.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Where should we start if our ESG setup is immature?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text:
+            "Start with a readiness and gap assessment. That clarifies priorities, missing data, policy gaps, and the implementation roadmap.",
         },
       },
       {
@@ -81,53 +109,7 @@ export default function ESGAdvisoryPage() {
         name: "Do you provide statutory audit or assurance?",
         acceptedAnswer: {
           "@type": "Answer",
-          text:
-            "No. We do not provide statutory audit or assurance. We prepare organisations for assurance by improving governance, controls, documentation and evidence trails, and we can coordinate early alignment with your assurance practitioner.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "How do you handle Scope 3 and value chain complexity?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "We take a practical phased approach. We prioritise material categories, define ownership, design supplier workflows, document assumptions, and improve data quality cycle by cycle through governance.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Can one ESG operating model support multiple regulations?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "Yes. Governance can be shared across regulations by standardising ownership, controls, evidence trails, and review cadence. Disclosure mapping changes by regulation but operating discipline remains consistent.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Where should we start?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "Start with a readiness and gap assessment. It clarifies scope, priorities, critical data gaps, control design needs, and a practical delivery plan for the reporting cycle.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Do you support Scope 1, 2 and 3 carbon accounting?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "Yes. We deliver a complete GHG inventory across Scope 1, 2 and 3 aligned with the GHG Protocol Corporate Standard. This includes data collection, activity mapping, emissions factor application, and structured reports suitable for investors, regulators, and public disclosure.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Can you help us build a net zero roadmap?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "Yes. Once a carbon baseline is established, we develop SBTi-aligned science-based targets, identify priority reduction levers, and produce a costed, credible net zero roadmap your leadership team can act on.",
+          text: "No. We do not provide statutory audit or assurance.",
         },
       },
     ],
@@ -136,128 +118,108 @@ export default function ESGAdvisoryPage() {
   return (
     <div>
       <PageHero
-        title="ESG readiness through governed reporting systems"
-        subtitle="Advisory plus implementation to translate regulatory expectations into operating reality. We build ESG reporting capability with data ownership, controls, evidence trails, and review cadence so reporting is repeatable and defensible."
-        primaryAction={{ label: "Book an ESG consultation", href: "/contact" }}
-        secondaryAction={{ label: "Explore services", href: "/services" }}
+        title="ESG advisory"
+        subtitle="Advisory plus implementation for organisations that need ESG readiness with real governance underneath it. We build the evidence trails, controls, and reporting systems that stand up to scrutiny."
+        primaryAction={{ label: "Book a consultation", href: "/contact" }}
+        secondaryAction={{ label: "Back to Services", href: "/services" }}
         note="Note: We do not provide statutory audit or assurance."
         imageSrc="/hero/esg.jpg"
-        imageAlt="Modern sustainability and governance theme"
+        imageAlt="ESG readiness, carbon accounting, EcoVadis, and reporting systems advisory"
       />
 
-      {/* KEY PATHWAYS */}
       <section className="py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold">Key ESG pathways</h2>
-          <p className="mt-4 text-slate-600 max-w-4xl">
-            Choose the route that best matches your reporting environment. Each pathway is designed around governance,
-            evidence trails, and repeatable delivery.
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-3xl font-semibold">Build ESG readiness that is defensible, repeatable, and useful to leadership</h2>
+          <p className="mt-6 text-slate-600">
+            ESG work underperforms when policy, data, evidence, and reporting cadence do not align. We help organisations move from fragmented activity to a structured operating model that leadership can rely on.
+          </p>
+          <p className="mt-4 text-slate-600">
+            Our work covers regulatory reporting, buyer-driven assessments, carbon accounting, and the governance needed to make disclosures credible.
           </p>
 
-          <div className="grid md:grid-cols-3 gap-8 mt-14">
-            <Link
-              href="/services/esg-advisory/carbon-accounting"
-              className="bg-emerald-50 border border-emerald-200 rounded-2xl p-8 shadow-sm hover:shadow-md transition"
-            >
-              <div className="text-lg font-semibold text-emerald-700">Carbon accounting and GHG inventory</div>
-              <p className="mt-3 text-sm text-slate-600">
-                Complete, defensible Scope 1, 2 and 3 carbon inventory aligned with the GHG Protocol Corporate Standard. Audit-ready reports, net zero roadmaps, and SBTi-aligned target setting.
-              </p>
-              <div className="mt-4 text-sm font-medium text-emerald-700">Explore carbon accounting →</div>
-            </Link>
-
-            <Link
-              href="/services/esg-advisory/csrd-advisory"
-              className="bg-slate-50 border rounded-2xl p-8 shadow-sm hover:shadow-md transition"
-            >
-              <div className="text-lg font-semibold text-emerald-700">CSRD and ESRS readiness</div>
-              <p className="mt-3 text-sm text-slate-600">
-                Scoping, double materiality support, ESRS mapping, data owners, controls and evidence trails.
-              </p>
-              <div className="mt-4 text-sm font-medium text-emerald-700">Explore CSRD advisory →</div>
-            </Link>
-
-            <Link
-              href="/services/esg-advisory/brsr-advisory"
-              className="bg-slate-50 border rounded-2xl p-8 shadow-sm hover:shadow-md transition"
-            >
-              <div className="text-lg font-semibold text-emerald-700">SEBI BRSR readiness</div>
-              <p className="mt-3 text-sm text-slate-600">
-                KPI mapping to indicators, data ownership, controls, evidence trails, and governance cadence.
-              </p>
-              <div className="mt-4 text-sm font-medium text-emerald-700">Explore BRSR advisory →</div>
-            </Link>
-
-            <Link
-              href="/services/esg-advisory/uk-climate-reporting"
-              className="bg-slate-50 border rounded-2xl p-8 shadow-sm hover:shadow-md transition"
-            >
-              <div className="text-lg font-semibold text-emerald-700">UK climate reporting</div>
-              <p className="mt-3 text-sm text-slate-600">
-                Governance, risk alignment, metrics and targets, controls and evidence trails for defensible reporting.
-              </p>
-              <div className="mt-4 text-sm font-medium text-emerald-700">Explore UK climate reporting →</div>
-            </Link>
-          </div>
-
-          <div className="mt-12 flex flex-col sm:flex-row gap-4">
-            <Link
-              href="/regulatory-hub"
-              className="border px-6 py-3 rounded-lg font-medium text-center"
-            >
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Link className="underline text-slate-700" href="/regulatory-hub">
               Regulatory hub
             </Link>
-            <Link
-              href="/contact"
-              className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium text-center"
-            >
-              Discuss your reporting timeline
+            <Link className="underline text-slate-700" href="/insights">
+              Insights
             </Link>
           </div>
         </div>
       </section>
 
-      {/* WHAT WE DELIVER */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold">What we deliver</h2>
+          <h2 className="text-3xl font-semibold">ESG service pathways</h2>
           <p className="mt-4 text-slate-600 max-w-4xl">
-            ESG delivery works when regulation connects to data, controls and governance. Engagements typically cover the following.
+            Choose the pathway that matches the disclosure, assessment, or governance challenge you need to solve first.
           </p>
 
           <div className="grid md:grid-cols-2 gap-8 mt-14">
             {[
-              ["Readiness and gap assessment", "Clarify scope, timeline, current maturity, critical gaps, and a delivery roadmap."],
-              ["Disclosure mapping and ownership model", "Translate requirements into disclosures, KPIs, owners, and data sources."],
-              ["ESG data governance and internal controls", "Validation checks, approvals, evidence standards and exception handling."],
-              ["Reporting workflow and leadership cadence", "Templates, review rhythm, sign-off model, and change control so delivery is repeatable."],
-              ["Assurance readiness preparation", "Controls and documentation improvements to reduce late-cycle rework and support external review readiness."],
-              ["Carbon accounting and GHG inventory", "Full Scope 1, 2 and 3 emissions assessment per GHG Protocol. Data collection, activity mapping, and emissions factor application to build a complete, defensible carbon baseline."],
-              ["Net zero roadmap and SBTi alignment", "Science-based targets, priority reduction levers, and a credible net zero roadmap that turns your carbon data into decisive action."],
-            ].map(([title, desc]) => (
-              <div key={title} className="bg-white border rounded-2xl p-8 shadow-sm">
-                <div className="font-semibold text-slate-900">{title}</div>
-                <div className="mt-3 text-sm text-slate-600">{desc}</div>
-              </div>
+              {
+                href: "/services/esg-advisory/carbon-accounting",
+                title: "Carbon accounting",
+                desc: "Emissions data, methodology, evidence mapping, and reporting governance for teams that need credible carbon numbers.",
+                accent: "text-emerald-700",
+              },
+              {
+                href: "/services/esg-advisory/csrd-advisory",
+                title: "CSRD advisory",
+                desc: "Readiness, disclosure mapping, governance, and evidence trails for CSRD and ESRS delivery.",
+                accent: "text-emerald-700",
+              },
+              {
+                href: "/services/esg-advisory/brsr-advisory",
+                title: "BRSR advisory",
+                desc: "KPI mapping, ownership, controls, evidence trails, and reporting workflow for India listed reporting.",
+                accent: "text-emerald-700",
+              },
+              {
+                href: "/services/esg-advisory/ecovadis-readiness",
+                title: "EcoVadis readiness",
+                desc: "Gap assessment, policy review, evidence mapping, scoring strategy, and submission support.",
+                accent: "text-emerald-700",
+              },
+              {
+                href: "/services/esg-advisory/uk-climate-reporting",
+                title: "UK SECR and SRS reporting",
+                desc: "SECR and Sustainability Reporting Standard support with methodology, data quality, and board-ready reporting.",
+                accent: "text-emerald-700",
+              },
+            ].map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="bg-white border rounded-2xl p-8 shadow-sm hover:shadow-md transition"
+              >
+                <div className={`text-lg font-semibold ${item.accent}`}>{item.title}</div>
+                <p className="mt-3 text-sm text-slate-600">{item.desc}</p>
+                <div className="mt-4 text-sm font-medium text-emerald-700">Explore →</div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* HOW WE WORK */}
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold">How we deliver ESG capability</h2>
-          <p className="mt-4 text-slate-600 max-w-4xl">
-            We run ESG readiness as an operating model build with governance, implementation, and measurable outcomes.
-          </p>
+          <h2 className="text-3xl font-semibold">What we deliver across ESG engagements</h2>
 
-          <div className="grid md:grid-cols-4 gap-8 mt-14">
+          <div className="grid md:grid-cols-3 gap-8 mt-12">
             {[
-              ["Diagnose", "Scoping and readiness assessment across obligations, data, controls and gaps."],
-              ["Design", "Disclosure mapping, owner model, controls, evidence standards, workflow and cadence."],
-              ["Implement", "Hands-on setup, enablement, documentation, and rollout support."],
-              ["Govern", "Quality checks, issue tracking, leadership review rhythm and continuous improvement."],
+              [
+                "Readiness and gap assessment",
+                "Clarify current state, policy gaps, data gaps, and the fastest route to a stronger reporting or assessment outcome.",
+              ],
+              [
+                "Governance and evidence trail design",
+                "Define ownership, controls, review cadence, evidence expectations, and change control.",
+              ],
+              [
+                "Reporting and submission support",
+                "Build the workflow so teams are not scrambling at the end of the cycle and leadership can rely on the output.",
+              ],
             ].map(([t, d]) => (
               <div key={t} className="bg-slate-50 border rounded-2xl p-8">
                 <div className="font-semibold text-slate-900">{t}</div>
@@ -265,53 +227,36 @@ export default function ESGAdvisoryPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl font-semibold">FAQs</h2>
+          <p className="mt-4 text-slate-600 max-w-4xl">
+            Common questions about ESG readiness, carbon accounting, reporting standards, buyer assessments, and assurance preparation.
+          </p>
+
+          <div className="mt-12 grid gap-6">
+            {faqSchema.mainEntity.map((q: any) => (
+              <details key={q.name} className="bg-white border rounded-2xl p-6">
+                <summary className="cursor-pointer font-semibold text-slate-900">{q.name}</summary>
+                <div className="mt-3 text-sm text-slate-600">{q.acceptedAnswer.text}</div>
+              </details>
+            ))}
+          </div>
 
           <div className="mt-12 flex flex-col sm:flex-row gap-4">
-            <Link
-              href="/contact"
-              className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium text-center"
-            >
-              Book an ESG consultation
+            <Link href="/contact" className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium text-center">
+              Book a consultation
             </Link>
-            <Link
-              href="/services"
-              className="border px-6 py-3 rounded-lg font-medium text-center"
-            >
+            <Link href="/services" className="border px-6 py-3 rounded-lg font-medium text-center">
               Back to Services
             </Link>
           </div>
         </div>
       </section>
 
-      {/* FAQs */}
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold">FAQs</h2>
-          <p className="mt-4 text-slate-600 max-w-4xl">
-            Common questions about ESG readiness, governance, evidence trails, and how engagements typically start.
-          </p>
-
-          <div className="mt-12 grid gap-6">
-            {faqSchema.mainEntity.map((q: any) => (
-              <details key={q.name} className="bg-white border rounded-2xl p-6">
-                <summary className="cursor-pointer font-semibold text-slate-900">
-                  {q.name}
-                </summary>
-                <div className="mt-3 text-sm text-slate-600">
-                  {q.acceptedAnswer.text}
-                </div>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* LEAD MAGNET */}
-      <section className="max-w-6xl mx-auto px-6">
-        <LeadMagnetBanner />
-      </section>
-
-      {/* JSON-LD */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />

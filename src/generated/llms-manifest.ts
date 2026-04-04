@@ -1,6 +1,6 @@
 export const llmsManifest = {
-  "generatedAt": "2026-04-03T05:58:34.506Z",
-  "pageCount": 37,
+  "generatedAt": "2026-04-04T09:01:17.483Z",
+  "pageCount": 42,
   "pages": [
     {
       "route": "/",
@@ -43,10 +43,20 @@ export const llmsManifest = {
       "source": "src\\app\\team\\page.tsx"
     },
     {
+      "route": "/compare",
+      "url": "https://www.consult-ds.com/compare",
+      "title": "Compare | DS Consulting",
+      "description": "Side by side comparisons to help leaders choose the right approach for ESG readiness and revenue visibility. Built for clarity, tradeoffs, and practical next steps.",
+      "section": "compare",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\compare\\page.tsx"
+    },
+    {
       "route": "/compare/ds-consulting-vs-generalist-agencies",
       "url": "https://www.consult-ds.com/compare/ds-consulting-vs-generalist-agencies",
       "title": "DS Consulting vs Generalist Agencies: Which Partner for ESG and RevOps? | DS Consulting",
-      "description": "A direct comparison of working with DS Consulting vs a generalist marketing or ESG agency. Understand the difference in governance depth, implementation capability, and how each approach performs for mid-market organisations.",
+      "description": "A direct comparison of working with DS Consulting vs a generalist marketing or ESG agency. Understand governance depth, implementation ownership, and how each approach performs for mid-market organisations across ESG readiness and revenue visibility.",
       "section": "compare",
       "priority": 0.75,
       "changeFrequency": "monthly",
@@ -55,8 +65,8 @@ export const llmsManifest = {
     {
       "route": "/compare/in-house-vs-outsourced-crm-governance",
       "url": "https://www.consult-ds.com/compare/in-house-vs-outsourced-crm-governance",
-      "title": "In-house vs Outsourced CRM Governance: Which is Right? | DS Consulting",
-      "description": "A practical comparison of building CRM governance in-house vs working with an external advisory partner. Covers cost, speed, expertise depth, and the situations where each approach wins.",
+      "title": "In house vs Outsourced CRM Governance: Which is Right? | DS Consulting",
+      "description": "A practical comparison of building CRM governance in house vs outsourcing governance and implementation. Covers speed, cost, ownership, cross functional alignment, and how to stop CRM firefighting.",
       "section": "compare",
       "priority": 0.75,
       "changeFrequency": "monthly",
@@ -71,6 +81,16 @@ export const llmsManifest = {
       "priority": 0.85,
       "changeFrequency": "weekly",
       "source": "src\\app\\insights\\page.tsx"
+    },
+    {
+      "route": "/insights/ai-marketing-readiness",
+      "url": "https://www.consult-ds.com/insights/ai-marketing-readiness",
+      "title": "AI Marketing Readiness Assessment | DS Consulting",
+      "description": "Find out whether your marketing stack, data, and team are ready for AI. Three sections covering data quality, integration, and governance. Covers lead scoring, personalisation, and content use cases.",
+      "section": "insights",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\insights\\ai-marketing-readiness\\page.tsx"
     },
     {
       "route": "/insights/crm-governance-checklist",
@@ -103,6 +123,16 @@ export const llmsManifest = {
       "source": "src\\app\\insights\\leaky-funnel-audit\\page.tsx"
     },
     {
+      "route": "/insights/marketing-automation-maturity",
+      "url": "https://www.consult-ds.com/insights/marketing-automation-maturity",
+      "title": "Marketing Automation Maturity Scorecard | DS Consulting",
+      "description": "Score your marketing automation against top-quartile industry benchmarks across data, platform, governance, and attribution. Free interactive tool from DS Consulting.",
+      "section": "insights",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\insights\\marketing-automation-maturity\\page.tsx"
+    },
+    {
       "route": "/insights/marketing-governance-model-for-automation",
       "url": "https://www.consult-ds.com/insights/marketing-governance-model-for-automation",
       "title": "Marketing automation governance that scales | DS Consulting",
@@ -111,6 +141,16 @@ export const llmsManifest = {
       "priority": 0.8,
       "changeFrequency": "monthly",
       "source": "src\\app\\insights\\marketing-governance-model-for-automation\\page.tsx"
+    },
+    {
+      "route": "/insights/revenue-attribution-readiness",
+      "url": "https://www.consult-ds.com/insights/revenue-attribution-readiness",
+      "title": "Revenue Attribution Readiness Check | DS Consulting",
+      "description": "Can your marketing team prove its contribution to revenue? Three sections covering attribution model, data connectivity, and reporting. Includes a board-confidence rating.",
+      "section": "insights",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\insights\\revenue-attribution-readiness\\page.tsx"
     },
     {
       "route": "/accessibility",
@@ -285,8 +325,8 @@ export const llmsManifest = {
     {
       "route": "/services/esg-advisory",
       "url": "https://www.consult-ds.com/services/esg-advisory",
-      "title": "ESG Advisory | DS Consulting",
-      "description": "Advisory plus implementation for ESG readiness including CSRD and ESRS, SEBI BRSR, UK climate reporting, GHG governance, ESG data controls, evidence trails and assurance readiness preparation.",
+      "title": "ESG advisory | DS Consulting",
+      "description": "Advisory plus implementation for ESG readiness, carbon accounting, CSRD, BRSR, EcoVadis readiness, and UK SECR and SRS reporting. Governance, evidence trails, and reporting systems that stand up to scrutiny.",
       "section": "services",
       "priority": 0.9,
       "changeFrequency": "monthly",
@@ -323,10 +363,20 @@ export const llmsManifest = {
       "source": "src\\app\\services\\esg-advisory\\csrd-advisory\\page.tsx"
     },
     {
+      "route": "/services/esg-advisory/ecovadis-readiness",
+      "url": "https://www.consult-ds.com/services/esg-advisory/ecovadis-readiness",
+      "title": "EcoVadis readiness advisory | DS Consulting",
+      "description": "EcoVadis readiness advisory for organisations that need a stronger score and a submission-ready evidence trail. We assess gaps, strengthen policies, map evidence, and review the submission before you hit send.",
+      "section": "services",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\services\\esg-advisory\\ecovadis-readiness\\page.tsx"
+    },
+    {
       "route": "/services/esg-advisory/uk-climate-reporting",
       "url": "https://www.consult-ds.com/services/esg-advisory/uk-climate-reporting",
-      "title": "UK Climate Reporting Advisory | DS Consulting",
-      "description": "Advisory plus implementation for UK climate reporting including governance, risk alignment, metrics and targets, emissions governance, controls, evidence trails and repeatable reporting workflows.",
+      "title": "UK SECR and SRS reporting | DS Consulting",
+      "description": "Advisory plus implementation for UK SECR and SRS reporting. Covers scoping, energy and carbon data, emissions methodology, KPI development, narrative drafting, evidence mapping, and improvement roadmap.",
       "section": "services",
       "priority": 0.85,
       "changeFrequency": "monthly",

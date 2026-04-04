@@ -264,10 +264,10 @@ export default function HomePage() {
                 ESG Track
               </div>
               <p className="text-slate-200 leading-relaxed">
-                You are a <strong className="text-white">CFO or CSO</strong> facing CSRD,
-                SEBI BRSR, or UK climate disclosure requirements and need to move from
-                scattered spreadsheets to a governed, evidence-based reporting system your
-                board and auditors can trust.
+                Whether you are a <strong className="text-white">CFO</strong> navigating financial reporting or a<strong className="text-white"> CSO</strong> driving sustainability strategy, meeting CSRD, SEBI BRSR, or UK climate mandates requires more than just data - it requires precision. 
+			 </p>
+			 <p className="text-slate-200 leading-relaxed">
+				From initial materiality assessments to board-ready disclosures, and from supply chain risk to social value, we provide the expertise and structural rigor to transform your ESG ambition into a verifiable, audit-grade narrative that commands stakeholder trust.
               </p>
               <Link
                 href="/services/esg-advisory"
@@ -397,10 +397,7 @@ export default function HomePage() {
                 ESG Readiness · B2B Manufacturing
               </div>
               <p className="text-slate-700 leading-relaxed">
-                A B2B manufacturer reduced their CSRD readiness gap from 18 months to 6
-                months, with a governed data collection model, evidence trail system, and
-                repeatable disclosure workflow implemented across finance and sustainability
-                teams.
+                A B2B manufacturer reduced their <strong>EcoVadis</strong> readiness gap from <strong>18 months to 6 months</strong>, with governed data collection model, policies design and implementation, evidence trail, and repeatable workflow implemented across Operation, HR and Procurement teams.
               </p>
             </div>
             <div className="bg-white border-l-4 border-indigo-500 rounded-r-2xl p-8 shadow-sm">

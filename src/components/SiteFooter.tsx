@@ -16,13 +16,13 @@ function IconLinkedIn() {
 export default function SiteFooter() {
   return (
     <footer className="bg-slate-900 text-white mt-20">
-      {/* Newsletter strip */}
+      {/* Newsletter strip 
       <div className="border-b border-slate-800">
         <div className="max-w-6xl mx-auto px-6 py-12">
           <NewsletterSignup />
         </div>
       </div>
-
+	  */}
       {/* Main links section */}
       <div className="max-w-6xl mx-auto px-6 py-10 grid md:grid-cols-4 gap-6 text-sm">
         <div>
