@@ -7,7 +7,7 @@ import { getLatestInsights } from "@/lib/insights";
 export const metadata = {
   title: "ESG Readiness & Revenue Visibility Consulting | DS Consulting",
   description:
-    "DS Consulting helps CFOs, CSOs and CMOs build governed ESG systems and revenue visibility. Advisory plus implementation for CSRD, BRSR, UK SECR and SRS, carbon accounting, EcoVadis, climate risk, CRM governance and marketing automation.",
+    "DS Consulting helps CFOs, CSOs and CMOs build governed ESG systems and revenue visibility. Advisory plus implementation across climate and carbon, reporting and assessment, strategy and execution support, plus CRM governance and marketing automation.",
   alternates: { canonical: absUrl("/") },
 };
 
@@ -20,7 +20,7 @@ export default function HomePage() {
     name: site.legalName,
     url: site.baseUrl,
     description:
-      "ESG readiness and Revenue Visibility consulting through advisory plus implementation. Specialists in CSRD, SEBI BRSR, UK SECR and SRS reporting, carbon accounting, climate risk, EcoVadis readiness, CRM governance, and marketing automation.",
+      "ESG readiness and Revenue Visibility consulting through advisory plus implementation. Specialists across climate and carbon, reporting and assessment, strategy and execution support, plus CRM governance and marketing automation.",
     founder: [
       { "@type": "Person", name: "Jigar Dhabalia", sameAs: site.linkedin.jigar },
       { "@type": "Person", name: "Tejas Dhabalia", sameAs: site.linkedin.tejas },
@@ -32,6 +32,10 @@ export default function HomePage() {
       "UK SECR and SRS Reporting",
       "Climate Risk",
       "Carbon Accounting",
+      "Net Zero and Decarbonisation",
+      "CDP Reporting",
+      "Supplier Engagement",
+      "Sustainability Strategy",
       "EcoVadis Readiness",
       "CRM Governance",
       "Marketing Automation",
@@ -174,18 +178,34 @@ export default function HomePage() {
             <div className="bg-slate-50 border rounded-2xl p-10">
               <h3 className="text-2xl font-semibold text-emerald-700">ESG readiness</h3>
               <p className="mt-4 text-slate-600">
-                Reporting, carbon, climate, and supplier programmes with clear ownership,
-                controls, and evidence trails aligned to leadership expectations. Coverage now
-                spans CSRD and ESRS, SEBI BRSR, UK SECR and SRS, carbon accounting,
-                EcoVadis readiness, CDP reporting, climate risk, and wider sustainability
-                execution support.
+                We support the full ESG pathway, from climate and carbon foundations, to
+                reporting and assessment readiness, to strategy and execution support. This is
+                built for leadership teams that need ESG programmes to run with clear ownership,
+                controls, and evidence trails, not just one-off reporting help.
               </p>
-              <ul className="mt-5 text-sm text-slate-600 list-disc list-inside space-y-2">
-                <li>Scoping, readiness assessment, disclosure mapping, and reporting support</li>
-                <li>ESG data governance, validations, controls, and evidence standards</li>
-                <li>Carbon accounting, Scope 1 to 3 baselines, and net zero roadmaps</li>
-                <li>Climate risk, supplier engagement, training, and outsourced ESG support</li>
-              </ul>
+
+              <div className="grid gap-4 mt-8">
+                {[
+                  [
+                    "Climate and carbon",
+                    "Carbon accounting, Scope 1 to 3 baselines, net zero and decarbonisation planning, climate risk, and supplier engagement.",
+                  ],
+                  [
+                    "Reporting and assessment",
+                    "CSRD and ESRS, SEBI BRSR, UK SECR and SRS, EcoVadis readiness, CDP reporting, disclosure mapping, and assessment support.",
+                  ],
+                  [
+                    "Strategy and execution support",
+                    "Sustainability strategy, training, outsourced sustainability management, product sustainability, and RFP or tender support.",
+                  ],
+                ].map(([title, description]) => (
+                  <div key={title} className="rounded-2xl border border-emerald-100 bg-white p-5">
+                    <div className="font-semibold text-slate-900">{title}</div>
+                    <div className="mt-2 text-sm text-slate-600">{description}</div>
+                  </div>
+                ))}
+              </div>
+
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link href="/services/esg-advisory" className="text-emerald-700 font-medium">
                   Explore ESG advisory →
@@ -279,16 +299,25 @@ export default function HomePage() {
                 ESG Track
               </div>
               <p className="text-slate-200 leading-relaxed">
-                Whether you are a <strong className="text-white">CFO</strong> navigating financial
-                reporting or a <strong className="text-white">CSO</strong> driving sustainability
-                strategy, meeting CSRD, SEBI BRSR, or UK SECR and SRS mandates requires more than just
-                data. It requires precision.
+                Right for you if you are a <strong className="text-white">CFO, CSO, procurement,
+                operations, or sustainability leader</strong> who needs an ESG programme that can
+                stand up to board, buyer, investor, and regulatory scrutiny.
               </p>
-              <p className="text-slate-200 leading-relaxed mt-4">
-                From materiality and board-ready disclosures to carbon accounting, climate risk,
-                supplier engagement, and net zero planning, we provide the structural rigor to
-                turn ESG ambition into a governed operating model leaders can defend.
-              </p>
+              <div className="mt-6 space-y-3 text-sm text-slate-200">
+                <div className="rounded-2xl border border-emerald-800/60 bg-slate-950/20 p-4">
+                  You need coverage across the full pathway, from <strong className="text-white">climate and carbon</strong>,
+                  to <strong className="text-white">reporting and assessment</strong>, to
+                  <strong className="text-white"> strategy and execution support</strong>.
+                </div>
+                <div className="rounded-2xl border border-emerald-800/60 bg-slate-950/20 p-4">
+                  You are preparing for <strong className="text-white">CSRD, SEBI BRSR, UK SECR and SRS, EcoVadis, or CDP</strong>,
+                  but your data, controls, and evidence trail are fragmented.
+                </div>
+                <div className="rounded-2xl border border-emerald-800/60 bg-slate-950/20 p-4">
+                  You need help with <strong className="text-white">carbon baselines, climate risk, supplier engagement, training, or interim ESG execution capacity</strong>,
+                  not just a disclosure document.
+                </div>
+              </div>
               <Link
                 href="/services/esg-advisory"
                 className="mt-6 inline-block text-emerald-400 font-medium text-sm hover:text-emerald-300"
