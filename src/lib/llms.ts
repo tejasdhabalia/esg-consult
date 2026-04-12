@@ -11,6 +11,7 @@ const SECTION_LABELS: Record<SectionKey, string> = {
   regulatory: "Regulatory hub",
   insights: "Insights and tools",
   compare: "Comparison pages",
+  partners: "Partners",
   company: "Company",
   legal: "Policies and trust",
   other: "Other pages",

@@ -1,5 +1,5 @@
 export const llmsManifest = {
-  "generatedAt": "2026-04-10T08:49:25.344Z",
+  "generatedAt": "2026-04-12T06:43:32.772Z",
   "pageCount": 43,
   "pages": [
     {
@@ -268,7 +268,7 @@ export const llmsManifest = {
       "title": "UK SECR and SRS governance and risk management | DS Consulting",
       "description": "How to structure oversight, decision rights, risk linkage, and evidence so SECR and SRS disclosures remain defensible and repeatable.",
       "section": "regulatory",
-      "priority": 0.5,
+      "priority": 0.8,
       "changeFrequency": "monthly",
       "source": "src\\app\\regulatory-hub\\uk-secr-srs-governance-and-risk-management\\page.tsx"
     },
@@ -278,7 +278,7 @@ export const llmsManifest = {
       "title": "UK SECR and SRS metrics and targets | DS Consulting",
       "description": "Practical decisions for metrics and targets, emissions data governance, controls and evidence trails that reduce late-cycle rework.",
       "section": "regulatory",
-      "priority": 0.5,
+      "priority": 0.8,
       "changeFrequency": "monthly",
       "source": "src\\app\\regulatory-hub\\uk-secr-srs-metrics-targets-and-evidence\\page.tsx"
     },
@@ -388,7 +388,7 @@ export const llmsManifest = {
       "title": "UK SECR and SRS reporting | DS Consulting",
       "description": "Advisory plus implementation for UK SECR and SRS reporting. Covers scoping, energy and carbon data, emissions methodology, KPI development, narrative drafting, evidence mapping, and improvement roadmap.",
       "section": "services",
-      "priority": 0.5,
+      "priority": 0.85,
       "changeFrequency": "monthly",
       "source": "src\\app\\services\\esg-advisory\\uk-secr-srs-reporting\\page.tsx"
     },

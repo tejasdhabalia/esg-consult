@@ -34,7 +34,8 @@ function stripGroupSegments(route) {
 
 function routeFromPageFile(filePath) {
   const rel = path.relative(APP_DIR, filePath).replaceAll('\\', '/');
-  const dir = rel.replace(/\/page\.(tsx|ts|jsx|js)$/, '');
+  const dir = rel.replace(/(^|\/)page\.(tsx|ts|jsx|js)$/, '');
+  
   const cleaned = stripGroupSegments(dir);
   const route = cleaned ? `/${cleaned}` : '/';
   return route.replace(/\/+$/, '') || '/';

@@ -26,7 +26,7 @@ const PRIORITY_OVERRIDES = {
   '/services/esg-advisory': { priority: 0.9, changeFrequency: 'monthly' },
   '/services/esg-advisory/csrd-advisory': { priority: 0.85, changeFrequency: 'monthly' },
   '/services/esg-advisory/brsr-advisory': { priority: 0.85, changeFrequency: 'monthly' },
-  '/services/esg-advisory/uk-climate-reporting': { priority: 0.85, changeFrequency: 'monthly' },
+  '/services/esg-advisory/uk-secr-srs-reporting': { priority: 0.85, changeFrequency: 'monthly' }, '/regulatory-hub/uk-secr-srs-governance-and-risk-management': { priority: 0.8, changeFrequency: 'monthly' }, '/regulatory-hub/uk-secr-srs-metrics-targets-and-evidence': { priority: 0.8, changeFrequency: 'monthly' },
   '/services/marketing-automation': { priority: 0.9, changeFrequency: 'monthly' },
   '/services/marketing-automation/crm-architecture-governance': { priority: 0.85, changeFrequency: 'monthly' },
   '/services/marketing-automation/lifecycle-lead-management': { priority: 0.85, changeFrequency: 'monthly' },
