@@ -8,6 +8,7 @@ export const PAGE_SECTIONS = [
   "regulatory",
   "insights",
   "compare",
+  "partners",
   "company",
   "legal",
   "other",
