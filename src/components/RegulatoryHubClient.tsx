@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
-export type RegulatoryCategory = "CSRD" | "BRSR" | "UK Climate";
+export type RegulatoryCategory = "CSRD" | "BRSR" | "UK SECR and SRS";
 
 export type RegulatoryContentItem = {
   slug: string;
@@ -30,7 +30,7 @@ export default function RegulatoryHubClient({
     "All",
     "CSRD",
     "BRSR",
-    "UK Climate",
+    "UK SECR and SRS",
   ];
 
   const filtered = useMemo(() => {

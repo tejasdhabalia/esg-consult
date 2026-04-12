@@ -7,7 +7,7 @@ import { absUrl } from "@/lib/url";
 export const metadata = {
   title: `Regulatory hub | ${site.legalName}`,
   description:
-    "Searchable regulatory hub with practical guides for CSRD and ESRS, SEBI BRSR, and UK climate reporting. Built for leaders who need scoping clarity, governance, evidence trails, and repeatable reporting workflows.",
+    "Searchable regulatory hub with practical guides for CSRD and ESRS, SEBI BRSR, and UK SECR and SRS reporting. Built for leaders who need scoping clarity, governance, evidence trails, and repeatable reporting workflows.",
   alternates: { canonical: absUrl("/regulatory-hub") },
 };
 
@@ -109,21 +109,21 @@ export default function RegulatoryHubPage() {
       updated: "Feb 2026",
     },
 
-    // UK Climate guides
+    // UK SECR and SRS guides
     {
-      slug: "uk-climate-governance-and-risk-management",
-      category: "UK Climate",
-      title: "UK climate disclosures: governance and risk management essentials",
+      slug: "uk-secr-srs-governance-and-risk-management",
+      category: "UK SECR and SRS",
+      title: "UK SECR and SRS disclosures: governance and risk management essentials",
       summary:
-        "How to structure oversight, decision rights, risk linkage, and evidence so climate disclosures remain defensible and repeatable.",
+        "How to structure oversight, decision rights, risk linkage, and evidence so SECR and SRS disclosures remain defensible and repeatable.",
       topics: ["Governance", "Risk management", "Evidence", "Operating model"],
       audience: "CFO, Risk lead, CSO",
       readTime: "3 min read",
       updated: "Feb 2026",
     },
     {
-      slug: "uk-climate-metrics-targets-and-evidence",
-      category: "UK Climate",
+      slug: "uk-secr-srs-metrics-targets-and-evidence",
+      category: "UK SECR and SRS",
       title: "Metrics and targets: emissions, targets, and evidence trails",
       summary:
         "Practical decisions for metrics and targets, emissions data governance, controls and evidence trails that reduce late-cycle rework.",
@@ -150,12 +150,12 @@ export default function RegulatoryHubPage() {
     <div>
       <PageHero
         title="Regulatory hub"
-        subtitle="Searchable guides for CSRD and ESRS, SEBI BRSR, and UK climate reporting. Built for leaders who need scoping clarity, governance, evidence trails, and repeatable reporting workflows."
+        subtitle="Searchable guides for CSRD and ESRS, SEBI BRSR, and UK SECR and SRS reporting. Built for leaders who need scoping clarity, governance, evidence trails, and repeatable reporting workflows."
         primaryAction={{ label: "ESG advisory services", href: "/services/esg-advisory" }}
         secondaryAction={{ label: "Talk to us", href: "/contact" }}
         note="Note: We do not provide statutory audit or assurance."
         imageSrc="/hero/regulatory.jpg"
-        imageAlt="CSRD, BRSR and UK climate regulatory compliance guidance for CFOs and CSOs"
+        imageAlt="CSRD, BRSR and UK SECR and SRS regulatory compliance guidance for CFOs and CSOs"
       />
 
       <RegulatoryHubClient items={items} />

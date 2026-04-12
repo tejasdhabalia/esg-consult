@@ -12,7 +12,7 @@ export const site = {
   // Default SEO
   defaultTitle: "ESG Readiness & Revenue Visibility Consulting | DS Consulting",
   defaultDescription:
-    "DS Consulting helps leadership teams build governed ESG reporting systems and revenue visibility through advisory plus implementation. CSRD, BRSR, UK Climate, CRM governance.",
+    "DS Consulting helps leadership teams build governed ESG reporting systems and revenue visibility through advisory plus implementation. CSRD, BRSR, UK SECR and SRS, CRM governance.",
 
   // Social
   linkedin: {

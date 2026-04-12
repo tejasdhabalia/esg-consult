@@ -182,7 +182,7 @@ export default function ESGAdvisoryPage() {
                 accent: "text-emerald-700",
               },
               {
-                href: "/services/esg-advisory/uk-climate-reporting",
+                href: "/services/esg-advisory/uk-secr-srs-reporting",
                 title: "UK SECR and SRS reporting",
                 desc: "SECR and Sustainability Reporting Standard support with methodology, data quality, and board-ready reporting.",
                 accent: "text-emerald-700",

@@ -7,7 +7,7 @@ export const metadata = {
   title: `UK SECR and SRS reporting | ${site.legalName}`,
   description:
     "Advisory plus implementation for UK SECR and SRS reporting. Covers scoping, energy and carbon data, emissions methodology, KPI development, narrative drafting, evidence mapping, and improvement roadmap.",
-  alternates: { canonical: absUrl("/services/esg-advisory/uk-climate-reporting") },
+  alternates: { canonical: absUrl("/services/esg-advisory/uk-secr-srs-reporting") },
 };
 
 const faqSchema = {
@@ -74,7 +74,7 @@ const faqSchema = {
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Carbon accounting often sits underneath SECR and other climate disclosures. We can support both as a joined-up workstream so the numbers and the narrative align.",
+          "Carbon accounting often sits underneath SECR & SRS and other climate disclosures. We can support both as a joined-up workstream so the numbers and the narrative align.",
       },
     },
   ],
@@ -92,7 +92,7 @@ export default function UKSecrSrsReportingPage() {
         "@type": "ListItem",
         position: 4,
         name: "UK SECR and SRS reporting",
-        item: absUrl("/services/esg-advisory/uk-climate-reporting"),
+        item: absUrl("/services/esg-advisory/uk-secr-srs-reporting"),
       },
     ],
   };
@@ -119,7 +119,7 @@ export default function UKSecrSrsReportingPage() {
       "KPI benchmarking",
       "Board-ready reporting",
     ],
-    url: absUrl("/services/esg-advisory/uk-climate-reporting"),
+    url: absUrl("/services/esg-advisory/uk-secr-srs-reporting"),
   };
 
   return (
@@ -204,7 +204,7 @@ export default function UKSecrSrsReportingPage() {
                 "When disclosures exist, but have not kept pace with scrutiny, evidence expectations, or year-on-year comparability.",
               ],
               [
-                "Joined-up climate reporting",
+                "Joined-up SECR and SRS reporting",
                 "When carbon accounting, reporting narrative, and board confidence all need to improve together.",
               ],
             ].map(([t, d]) => (

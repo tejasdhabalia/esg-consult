@@ -141,9 +141,9 @@ export default function BRSRAdvisoryPage() {
             <Link className="underline" href="/services/esg-advisory/csrd-advisory">
               CSRD advisory
             </Link>
-            . For UK climate reporting, see{" "}
-            <Link className="underline" href="/services/esg-advisory/uk-climate-reporting">
-              UK climate reporting
+            . For UK SECR and SRS reporting, see{" "}
+            <Link className="underline" href="/services/esg-advisory/uk-secr-srs-reporting">
+              UK SECR and SRS reporting
             </Link>
             . If you need to build or validate your carbon baseline first, see{" "}
             <Link className="underline" href="/services/esg-advisory/carbon-accounting">

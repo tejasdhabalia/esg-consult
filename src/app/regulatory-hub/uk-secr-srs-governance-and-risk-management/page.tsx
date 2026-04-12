@@ -4,32 +4,32 @@ import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
 
 export const metadata = {
-  title: `UK climate governance and risk management | ${site.legalName}`,
+  title: `UK SECR and SRS governance and risk management | ${site.legalName}`,
   description:
-    "How to structure oversight, decision rights, risk linkage, and evidence so climate disclosures remain defensible and repeatable.",
-  alternates: { canonical: absUrl("/regulatory-hub/uk-climate-governance-and-risk-management") },
+    "How to structure oversight, decision rights, risk linkage, and evidence so SECR and SRS disclosures remain defensible and repeatable.",
+  alternates: { canonical: absUrl("/regulatory-hub/uk-secr-srs-governance-and-risk-management") },
 };
 
 export default function Page() {
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: "UK climate disclosures: governance and risk management essentials",
+    headline: "UK SECR and SRS disclosures: governance and risk management essentials",
     dateModified: "2026-02-26",
     author: { "@type": "Organization", name: site.legalName },
     publisher: { "@type": "Organization", name: site.legalName, url: site.baseUrl },
-    mainEntityOfPage: absUrl("/regulatory-hub/uk-climate-governance-and-risk-management"),
+    mainEntityOfPage: absUrl("/regulatory-hub/uk-secr-srs-governance-and-risk-management"),
   };
 
   return (
     <div>
       <PageHero
-        title="UK climate governance and risk management"
-        subtitle="Climate reporting remains defensible when governance and risk processes are explicit: ownership, decision rights, cadence, escalation, and evidence trails."
-        primaryAction={{ label: "UK climate reporting services", href: "/services/esg-advisory/uk-climate-reporting" }}
+        title="UK SECR and SRS governance and risk management"
+        subtitle="SECR and SRS reporting remains defensible when governance and risk processes are explicit: ownership, decision rights, cadence, escalation, and evidence trails."
+        primaryAction={{ label: "UK SECR and SRS reporting services", href: "/services/esg-advisory/uk-secr-srs-reporting" }}
         secondaryAction={{ label: "Back to Regulatory hub", href: "/regulatory-hub" }}
         imageSrc="/hero/uk-climate.jpg"
-        imageAlt="UK climate governance and risk management"
+        imageAlt="UK SECR and SRS governance and risk management"
       />
 
       <section className="py-20 bg-white">
@@ -38,7 +38,7 @@ export default function Page() {
           <div className="grid md:grid-cols-2 gap-6 mt-8">
             {[
               ["Ownership and oversight", "Named owner, committee oversight, and defined decision rights for key disclosures."],
-              ["Risk linkage", "Climate risks mapped into ERM with owners, monitoring cadence, and escalation paths."],
+              ["Risk linkage", "SECR and SRS risks mapped into ERM with owners, monitoring cadence, and escalation paths."],
               ["Evidence trail", "Evidence standards for risk processes, assumptions, and decisions."],
               ["Change control", "A mechanism to track changes in assumptions and methodologies across cycles."],
             ].map(([t, d]) => (

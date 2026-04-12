@@ -49,6 +49,7 @@ const PRIORITY_OVERRIDES = {
   '/insights/marketing-governance-model-for-automation': { priority: 0.8, changeFrequency: 'monthly' },
   '/compare/ds-consulting-vs-generalist-agencies': { priority: 0.75, changeFrequency: 'monthly' },
   '/compare/in-house-vs-outsourced-crm-governance': { priority: 0.75, changeFrequency: 'monthly' },
+  '/partners': { priority: 0.75, changeFrequency: 'monthly' },
   '/about': { priority: 0.75, changeFrequency: 'monthly' },
   '/team': { priority: 0.7, changeFrequency: 'monthly' },
   '/contact': { priority: 0.8, changeFrequency: 'yearly' },
@@ -128,6 +129,8 @@ function sectionFromRoute(route) {
       return 'insights';
     case 'compare':
       return 'compare';
+    case 'partners':
+      return 'partners';
     case 'about':
     case 'team':
     case 'contact':
@@ -140,6 +143,19 @@ function sectionFromRoute(route) {
     default:
       return 'other';
   }
+}
+
+function defaultRoutingFor(route) {
+  const section = sectionFromRoute(route);
+  const depth = route.split('/').filter(Boolean).length;
+
+  if (section === 'partners') {
+    return depth <= 1
+      ? { priority: 0.75, changeFrequency: 'monthly' }
+      : { priority: 0.7, changeFrequency: 'monthly' };
+  }
+
+  return { priority: 0.5, changeFrequency: 'monthly' };
 }
 
 async function walk(dir) {
@@ -180,7 +196,7 @@ async function main() {
 
     const source = await fs.readFile(filePath, 'utf8');
     const overrides = PAGE_OVERRIDES[route] ?? {};
-    const routing = PRIORITY_OVERRIDES[route] ?? { priority: 0.5, changeFrequency: 'monthly' };
+    const routing = PRIORITY_OVERRIDES[route] ?? defaultRoutingFor(route);
     const title = overrides.title ?? readLiteralValue(source, 'title') ?? titleFromRoute(route);
     const description =
       overrides.description ??

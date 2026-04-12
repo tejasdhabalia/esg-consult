@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { llmsManifest } from "@/generated/llms-manifest";
 
-type ServicePage = (typeof llmsManifest.pages)[number];
+type SitePage = (typeof llmsManifest.pages)[number];
 
 type ServiceGroup = {
   hubRoute: string;
@@ -16,6 +16,12 @@ type ServiceGroup = {
     route: string;
     label: string;
   }>;
+};
+
+type PartnerItem = {
+  route: string;
+  label: string;
+  description: string;
 };
 
 function cleanTitle(title: string) {
@@ -33,7 +39,7 @@ function serviceLabelFromRoute(route: string, fallbackTitle: string) {
     "/services/esg-advisory/carbon-accounting": "Carbon Accounting",
     "/services/esg-advisory/csrd-advisory": "CSRD and ESRS Advisory",
     "/services/esg-advisory/brsr-advisory": "BRSR Advisory",
-    "/services/esg-advisory/uk-climate-reporting": "UK Climate Reporting",
+    "/services/esg-advisory/uk-secr-srs-reporting": "UK SECR and SRS Reporting",
     "/services/esg-advisory/ecovadis-readiness": "EcoVadis Readiness",
     "/services/marketing-automation": "Marketing Automation and RevOps",
     "/services/marketing-automation/crm-architecture-governance": "CRM Architecture and Governance",
@@ -57,7 +63,7 @@ function buildServiceGroups(): ServiceGroup[] {
   > = {
     "/services/esg-advisory": {
       label: "ESG and Sustainability",
-      description: "Carbon accounting, CSRD, BRSR, EcoVadis, UK climate reporting",
+      description: "Carbon accounting, CSRD, BRSR, EcoVadis, UK SECR and SRS reporting",
       accentClass: "text-emerald-700",
     },
     "/services/marketing-automation": {
@@ -87,20 +93,41 @@ function buildServiceGroups(): ServiceGroup[] {
   });
 }
 
+function buildPartnerItems(): PartnerItem[] {
+  return llmsManifest.pages
+    .filter((page) => page.route.startsWith("/partners/") && routeDepth(page.route) === 2)
+    .sort((a, b) => a.route.localeCompare(b.route))
+    .map((page) => ({
+      route: page.route,
+      label: cleanTitle(page.title),
+      description: page.description,
+    }));
+}
+
 export default function SiteHeader() {
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [partnersOpen, setPartnersOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const servicesDropdownRef = useRef<HTMLDivElement | null>(null);
+  const partnersDropdownRef = useRef<HTMLDivElement | null>(null);
 
   const serviceGroups = useMemo(() => buildServiceGroups(), []);
+  const partnerItems = useMemo(() => buildPartnerItems(), []);
+  const hasPartnerChildren = partnerItems.length > 0;
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
-      if (!dropdownRef.current) return;
-      if (!dropdownRef.current.contains(e.target as Node)) {
+      const target = e.target as Node;
+
+      if (servicesDropdownRef.current && !servicesDropdownRef.current.contains(target)) {
         setServicesOpen(false);
       }
+
+      if (partnersDropdownRef.current && !partnersDropdownRef.current.contains(target)) {
+        setPartnersOpen(false);
+      }
     }
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
@@ -108,7 +135,6 @@ export default function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-slate-200 relative">
       <div className="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
-        {/* Brand */}
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/brand/DSConsulting-mark.png"
@@ -128,18 +154,19 @@ export default function SiteHeader() {
           </span>
         </Link>
 
-        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-6 text-sm text-slate-700">
           <Link href="/" className="hover:text-slate-900">
             Home
           </Link>
 
-          {/* Services dropdown */}
-          <div className="relative" ref={dropdownRef}>
+          <div className="relative" ref={servicesDropdownRef}>
             <button
               type="button"
               className="flex items-center gap-1 hover:text-slate-900"
-              onClick={() => setServicesOpen((v) => !v)}
+              onClick={() => {
+                setServicesOpen((value) => !value);
+                setPartnersOpen(false);
+              }}
               aria-haspopup="true"
               aria-expanded={servicesOpen}
             >
@@ -207,6 +234,61 @@ export default function SiteHeader() {
           <Link href="/insights" className="hover:text-slate-900">
             Insights
           </Link>
+
+          <div className="relative" ref={partnersDropdownRef}>
+            {hasPartnerChildren ? (
+              <>
+                <button
+                  type="button"
+                  className="flex items-center gap-1 hover:text-slate-900"
+                  onClick={() => {
+                    setPartnersOpen((value) => !value);
+                    setServicesOpen(false);
+                  }}
+                  aria-haspopup="true"
+                  aria-expanded={partnersOpen}
+                >
+                  Partners <span className="text-slate-400">▾</span>
+                </button>
+
+                {partnersOpen && (
+                  <div className="absolute left-0 top-full mt-3 w-[420px] max-w-[calc(100vw-2rem)] rounded-2xl border border-slate-200 bg-white shadow-lg p-4">
+                    <Link
+                      href="/partners"
+                      className="block rounded-xl px-4 py-3 hover:bg-slate-50"
+                      onClick={() => setPartnersOpen(false)}
+                    >
+                      <div className="font-medium text-slate-900">All Partners</div>
+                      <div className="text-xs text-slate-500">
+                        Explore our partner ecosystem and collaboration models
+                      </div>
+                    </Link>
+
+                    <div className="my-3 border-t border-slate-100" />
+
+                    <div className="grid gap-3">
+                      {partnerItems.map((partner) => (
+                        <Link
+                          key={partner.route}
+                          href={partner.route}
+                          className="block rounded-xl border border-slate-100 bg-slate-50 px-4 py-3 hover:bg-slate-100"
+                          onClick={() => setPartnersOpen(false)}
+                        >
+                          <div className="font-semibold text-slate-900">{partner.label}</div>
+                          <div className="mt-1 text-xs text-slate-500">{partner.description}</div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </>
+            ) : (
+              <Link href="/partners" className="hover:text-slate-900">
+                Partners
+              </Link>
+            )}
+          </div>
+
           <Link href="/about" className="hover:text-slate-900">
             About
           </Link>
@@ -215,7 +297,6 @@ export default function SiteHeader() {
           </Link>
         </nav>
 
-        {/* CTA */}
         <Link
           href="/contact"
           className="hidden md:inline-flex bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-medium"
@@ -223,18 +304,16 @@ export default function SiteHeader() {
           Book Consultation
         </Link>
 
-        {/* Mobile toggle */}
         <button
           type="button"
           className="md:hidden px-3 py-2 border rounded-lg text-sm"
-          onClick={() => setMobileOpen((v) => !v)}
+          onClick={() => setMobileOpen((value) => !value)}
           aria-expanded={mobileOpen}
         >
           Menu
         </button>
       </div>
 
-      {/* Mobile menu */}
       {mobileOpen && (
         <div className="md:hidden bg-white border-t border-slate-200">
           <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-4 text-sm">
@@ -295,6 +374,31 @@ export default function SiteHeader() {
             <Link href="/insights" onClick={() => setMobileOpen(false)}>
               Insights
             </Link>
+
+            <div className="pt-2">
+              <div className="text-xs uppercase tracking-wide text-slate-500 mb-3">
+                Partners
+              </div>
+
+              <div className="grid gap-3">
+                <Link href="/partners" onClick={() => setMobileOpen(false)}>
+                  All Partners
+                </Link>
+
+                {partnerItems.map((partner) => (
+                  <Link
+                    key={partner.route}
+                    href={partner.route}
+                    className="rounded-xl border border-slate-200 bg-slate-50 p-4"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    <div className="font-semibold text-slate-900">{partner.label}</div>
+                    <div className="mt-1 text-xs text-slate-500">{partner.description}</div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
             <Link href="/about" onClick={() => setMobileOpen(false)}>
               About
             </Link>

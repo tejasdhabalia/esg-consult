@@ -148,7 +148,7 @@ export default function CarbonAccountingPage() {
             Carbon accounting is the measurement foundation that feeds regulatory disclosure. If your priority is reporting compliance, see{" "}
             <Link className="underline" href="/services/esg-advisory/csrd-advisory">CSRD advisory</Link>,{" "}
             <Link className="underline" href="/services/esg-advisory/brsr-advisory">BRSR advisory</Link>, or{" "}
-            <Link className="underline" href="/services/esg-advisory/uk-climate-reporting">UK climate reporting</Link>.
+            <Link className="underline" href="/services/esg-advisory/uk-secr-srs-reporting">UK SECR and SRS reporting</Link>.
             Both services can run in parallel or sequentially depending on where you are in your carbon journey.
           </p>
 
@@ -172,8 +172,8 @@ export default function CarbonAccountingPage() {
             <Link className="underline text-slate-700 text-sm" href="/services/esg-advisory/csrd-advisory">
               CSRD advisory
             </Link>
-            <Link className="underline text-slate-700 text-sm" href="/services/esg-advisory/uk-climate-reporting">
-              UK climate reporting
+            <Link className="underline text-slate-700 text-sm" href="/services/esg-advisory/uk-secr-srs-reporting">
+              UK SECR and SRS reporting
             </Link>
             <Link className="underline text-slate-700 text-sm" href="/regulatory-hub">
               Regulatory hub

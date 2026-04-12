@@ -1,12 +1,12 @@
 export const llmsManifest = {
-  "generatedAt": "2026-04-07T03:51:16.787Z",
-  "pageCount": 42,
+  "generatedAt": "2026-04-10T08:49:25.344Z",
+  "pageCount": 43,
   "pages": [
     {
       "route": "/",
       "url": "https://www.consult-ds.com",
       "title": "ESG Readiness & Revenue Visibility Consulting | DS Consulting",
-      "description": "DS Consulting helps CFOs, CSOs and CMOs build governed ESG reporting systems and revenue visibility. Advisory plus implementation for CSRD, BRSR, UK Climate, CRM governance and marketing automation.",
+      "description": "DS Consulting helps CFOs, CSOs and CMOs build governed ESG reporting systems and revenue visibility. Advisory plus implementation for CSRD, BRSR, UK SECR and SRS, CRM governance and marketing automation.",
       "section": "home",
       "priority": 1,
       "changeFrequency": "weekly",
@@ -203,10 +203,20 @@ export const llmsManifest = {
       "source": "src\\app\\case-studies\\page.tsx"
     },
     {
+      "route": "/partners/strategic-finance-partnership",
+      "url": "https://www.consult-ds.com/partners/strategic-finance-partnership",
+      "title": "Strategic finance partnership program | Partners | DS Consulting",
+      "description": "A strategic finance partnership program from DS Consulting for advisors, consultants, ERP partners, GCC advisors, and ecosystem operators who want structured referral fees or ongoing commission around dedicated India-based finance capacity.",
+      "section": "partners",
+      "priority": 0.7,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\partners\\strategic-finance-partnership\\page.tsx"
+    },
+    {
       "route": "/regulatory-hub",
       "url": "https://www.consult-ds.com/regulatory-hub",
       "title": "Regulatory hub | DS Consulting",
-      "description": "Searchable regulatory hub with practical guides for CSRD and ESRS, SEBI BRSR, and UK climate reporting. Built for leaders who need scoping clarity, governance, evidence trails, and repeatable reporting workflows.",
+      "description": "Searchable regulatory hub with practical guides for CSRD and ESRS, SEBI BRSR, and UK SECR and SRS reporting. Built for leaders who need scoping clarity, governance, evidence trails, and repeatable reporting workflows.",
       "section": "regulatory",
       "priority": 0.85,
       "changeFrequency": "weekly",
@@ -253,24 +263,24 @@ export const llmsManifest = {
       "source": "src\\app\\regulatory-hub\\csrd-in-scope-and-timeline\\page.tsx"
     },
     {
-      "route": "/regulatory-hub/uk-climate-governance-and-risk-management",
-      "url": "https://www.consult-ds.com/regulatory-hub/uk-climate-governance-and-risk-management",
-      "title": "UK climate governance and risk management | DS Consulting",
-      "description": "How to structure oversight, decision rights, risk linkage, and evidence so climate disclosures remain defensible and repeatable.",
+      "route": "/regulatory-hub/uk-secr-srs-governance-and-risk-management",
+      "url": "https://www.consult-ds.com/regulatory-hub/uk-secr-srs-governance-and-risk-management",
+      "title": "UK SECR and SRS governance and risk management | DS Consulting",
+      "description": "How to structure oversight, decision rights, risk linkage, and evidence so SECR and SRS disclosures remain defensible and repeatable.",
       "section": "regulatory",
-      "priority": 0.8,
+      "priority": 0.5,
       "changeFrequency": "monthly",
-      "source": "src\\app\\regulatory-hub\\uk-climate-governance-and-risk-management\\page.tsx"
+      "source": "src\\app\\regulatory-hub\\uk-secr-srs-governance-and-risk-management\\page.tsx"
     },
     {
-      "route": "/regulatory-hub/uk-climate-metrics-targets-and-evidence",
-      "url": "https://www.consult-ds.com/regulatory-hub/uk-climate-metrics-targets-and-evidence",
-      "title": "UK climate metrics and targets | DS Consulting",
+      "route": "/regulatory-hub/uk-secr-srs-metrics-targets-and-evidence",
+      "url": "https://www.consult-ds.com/regulatory-hub/uk-secr-srs-metrics-targets-and-evidence",
+      "title": "UK SECR and SRS metrics and targets | DS Consulting",
       "description": "Practical decisions for metrics and targets, emissions data governance, controls and evidence trails that reduce late-cycle rework.",
       "section": "regulatory",
-      "priority": 0.8,
+      "priority": 0.5,
       "changeFrequency": "monthly",
-      "source": "src\\app\\regulatory-hub\\uk-climate-metrics-targets-and-evidence\\page.tsx"
+      "source": "src\\app\\regulatory-hub\\uk-secr-srs-metrics-targets-and-evidence\\page.tsx"
     },
     {
       "route": "/regulatory-hub/what-is-csrd",
@@ -373,14 +383,14 @@ export const llmsManifest = {
       "source": "src\\app\\services\\esg-advisory\\ecovadis-readiness\\page.tsx"
     },
     {
-      "route": "/services/esg-advisory/uk-climate-reporting",
-      "url": "https://www.consult-ds.com/services/esg-advisory/uk-climate-reporting",
+      "route": "/services/esg-advisory/uk-secr-srs-reporting",
+      "url": "https://www.consult-ds.com/services/esg-advisory/uk-secr-srs-reporting",
       "title": "UK SECR and SRS reporting | DS Consulting",
       "description": "Advisory plus implementation for UK SECR and SRS reporting. Covers scoping, energy and carbon data, emissions methodology, KPI development, narrative drafting, evidence mapping, and improvement roadmap.",
       "section": "services",
-      "priority": 0.85,
+      "priority": 0.5,
       "changeFrequency": "monthly",
-      "source": "src\\app\\services\\esg-advisory\\uk-climate-reporting\\page.tsx"
+      "source": "src\\app\\services\\esg-advisory\\uk-secr-srs-reporting\\page.tsx"
     },
     {
       "route": "/services/marketing-automation",
