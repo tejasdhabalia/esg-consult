@@ -1,6 +1,6 @@
 export const llmsManifest = {
-  "generatedAt": "2026-04-12T06:51:37.498Z",
-  "pageCount": 43,
+  "generatedAt": "2026-04-12T07:59:10.050Z",
+  "pageCount": 53,
   "pages": [
     {
       "route": "/",
@@ -336,11 +336,21 @@ export const llmsManifest = {
       "route": "/services/esg-advisory",
       "url": "https://www.consult-ds.com/services/esg-advisory",
       "title": "ESG advisory | DS Consulting",
-      "description": "Advisory plus implementation for ESG readiness, carbon accounting, CSRD, BRSR, EcoVadis readiness, and UK SECR and SRS reporting. Governance, evidence trails, and reporting systems that stand up to scrutiny.",
+      "description": "Advisory plus implementation for ESG readiness across carbon accounting, net zero, climate risk, CSRD, BRSR, EcoVadis, CDP, supplier engagement, sustainability strategy, and UK SECR and SRS reporting.",
       "section": "services",
       "priority": 0.9,
       "changeFrequency": "monthly",
       "source": "src\\app\\services\\esg-advisory\\page.tsx"
+    },
+    {
+      "route": "/services/esg-advisory/b-corp-certification",
+      "url": "https://www.consult-ds.com/services/esg-advisory/b-corp-certification",
+      "title": "B Corp certification advisory | DS Consulting",
+      "description": "B Corp certification advisory for organisations that need a structured readiness plan, stronger evidence, and practical coordination across policy, data, and operating model changes.",
+      "section": "services",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\services\\esg-advisory\\b-corp-certification\\page.tsx"
     },
     {
       "route": "/services/esg-advisory/brsr-advisory",
@@ -363,6 +373,26 @@ export const llmsManifest = {
       "source": "src\\app\\services\\esg-advisory\\carbon-accounting\\page.tsx"
     },
     {
+      "route": "/services/esg-advisory/cdp-reporting",
+      "url": "https://www.consult-ds.com/services/esg-advisory/cdp-reporting",
+      "title": "CDP reporting advisory | DS Consulting",
+      "description": "CDP reporting advisory for organisations that need stronger climate disclosure, better evidence quality, and a more structured response process across data, governance, and narrative.",
+      "section": "services",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\services\\esg-advisory\\cdp-reporting\\page.tsx"
+    },
+    {
+      "route": "/services/esg-advisory/climate-risk",
+      "url": "https://www.consult-ds.com/services/esg-advisory/climate-risk",
+      "title": "Climate risk advisory | DS Consulting",
+      "description": "Climate risk advisory for organisations that need clearer visibility into physical and transition risks, stronger disclosure inputs, and a practical governance model for climate resilience.",
+      "section": "services",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\services\\esg-advisory\\climate-risk\\page.tsx"
+    },
+    {
       "route": "/services/esg-advisory/csrd-advisory",
       "url": "https://www.consult-ds.com/services/esg-advisory/csrd-advisory",
       "title": "CSRD and ESRS Advisory | DS Consulting",
@@ -381,6 +411,76 @@ export const llmsManifest = {
       "priority": 0.5,
       "changeFrequency": "monthly",
       "source": "src\\app\\services\\esg-advisory\\ecovadis-readiness\\page.tsx"
+    },
+    {
+      "route": "/services/esg-advisory/net-zero-and-decarbonisation",
+      "url": "https://www.consult-ds.com/services/esg-advisory/net-zero-and-decarbonisation",
+      "title": "Net zero and decarbonisation advisory | DS Consulting",
+      "description": "Net zero and decarbonisation advisory for organisations that need a credible reduction roadmap, target-setting discipline, and measurable delivery across operations and the value chain.",
+      "section": "services",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\services\\esg-advisory\\net-zero-and-decarbonisation\\page.tsx"
+    },
+    {
+      "route": "/services/esg-advisory/outsourced-sustainability-management",
+      "url": "https://www.consult-ds.com/services/esg-advisory/outsourced-sustainability-management",
+      "title": "Outsourced sustainability management | DS Consulting",
+      "description": "Outsourced sustainability management for organisations that need sustained ESG leadership capacity, programme coordination, and governance support without building a full in-house team immediately.",
+      "section": "services",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\services\\esg-advisory\\outsourced-sustainability-management\\page.tsx"
+    },
+    {
+      "route": "/services/esg-advisory/product-sustainability",
+      "url": "https://www.consult-ds.com/services/esg-advisory/product-sustainability",
+      "title": "Product sustainability advisory | DS Consulting",
+      "description": "Product sustainability advisory for organisations that need clearer insight into product impacts, stronger evidence for customers, and a more structured basis for product claims and improvement priorities.",
+      "section": "services",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\services\\esg-advisory\\product-sustainability\\page.tsx"
+    },
+    {
+      "route": "/services/esg-advisory/rfp-tender-support",
+      "url": "https://www.consult-ds.com/services/esg-advisory/rfp-tender-support",
+      "title": "RFP and tender sustainability support | DS Consulting",
+      "description": "RFP and tender sustainability support for organisations that need stronger responses to buyer sustainability requirements, clearer evidence, and a repeatable way to answer ESG questions under commercial deadlines.",
+      "section": "services",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\services\\esg-advisory\\rfp-tender-support\\page.tsx"
+    },
+    {
+      "route": "/services/esg-advisory/supplier-engagement",
+      "url": "https://www.consult-ds.com/services/esg-advisory/supplier-engagement",
+      "title": "Supplier engagement advisory | DS Consulting",
+      "description": "Supplier engagement advisory for organisations that need better sustainability data from the supply base, stronger procurement governance, and a more practical way to improve value chain readiness.",
+      "section": "services",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\services\\esg-advisory\\supplier-engagement\\page.tsx"
+    },
+    {
+      "route": "/services/esg-advisory/sustainability-strategy",
+      "url": "https://www.consult-ds.com/services/esg-advisory/sustainability-strategy",
+      "title": "Sustainability strategy advisory | DS Consulting",
+      "description": "Sustainability strategy advisory for leadership teams that need clearer priorities, a stronger operating model, and a practical route from ambition to governed execution.",
+      "section": "services",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\services\\esg-advisory\\sustainability-strategy\\page.tsx"
+    },
+    {
+      "route": "/services/esg-advisory/sustainability-training",
+      "url": "https://www.consult-ds.com/services/esg-advisory/sustainability-training",
+      "title": "Sustainability training and enablement | DS Consulting",
+      "description": "Sustainability training and enablement for organisations that need shared understanding, better decision quality, and stronger execution across leadership, functional teams, and programme owners.",
+      "section": "services",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\services\\esg-advisory\\sustainability-training\\page.tsx"
     },
     {
       "route": "/services/esg-advisory/uk-secr-srs-reporting",

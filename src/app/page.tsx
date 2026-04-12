@@ -7,7 +7,7 @@ import { getLatestInsights } from "@/lib/insights";
 export const metadata = {
   title: "ESG Readiness & Revenue Visibility Consulting | DS Consulting",
   description:
-    "DS Consulting helps CFOs, CSOs and CMOs build governed ESG reporting systems and revenue visibility. Advisory plus implementation for CSRD, BRSR, UK SECR and SRS, CRM governance and marketing automation.",
+    "DS Consulting helps CFOs, CSOs and CMOs build governed ESG systems and revenue visibility. Advisory plus implementation for CSRD, BRSR, UK SECR and SRS, carbon accounting, EcoVadis, climate risk, CRM governance and marketing automation.",
   alternates: { canonical: absUrl("/") },
 };
 
@@ -20,7 +20,7 @@ export default function HomePage() {
     name: site.legalName,
     url: site.baseUrl,
     description:
-      "ESG readiness and Revenue Visibility consulting through advisory plus implementation. Specialists in CSRD, SEBI BRSR, UK SECR and SRS reporting, CRM governance, and marketing automation.",
+      "ESG readiness and Revenue Visibility consulting through advisory plus implementation. Specialists in CSRD, SEBI BRSR, UK SECR and SRS reporting, carbon accounting, climate risk, EcoVadis readiness, CRM governance, and marketing automation.",
     founder: [
       { "@type": "Person", name: "Jigar Dhabalia", sameAs: site.linkedin.jigar },
       { "@type": "Person", name: "Tejas Dhabalia", sameAs: site.linkedin.tejas },
@@ -30,6 +30,9 @@ export default function HomePage() {
       "CSRD Compliance",
       "SEBI BRSR Reporting",
       "UK SECR and SRS Reporting",
+      "Climate Risk",
+      "Carbon Accounting",
+      "EcoVadis Readiness",
       "CRM Governance",
       "Marketing Automation",
       "Revenue Analytics",
@@ -171,22 +174,27 @@ export default function HomePage() {
             <div className="bg-slate-50 border rounded-2xl p-10">
               <h3 className="text-2xl font-semibold text-emerald-700">ESG readiness</h3>
               <p className="mt-4 text-slate-600">
-                Reporting systems with ownership, controls, and evidence trails aligned to
-                leadership expectations. Coverage includes CSRD and ESRS, SEBI BRSR, UK
-                SECR and SRS reporting, GHG governance, and assurance readiness preparation.
+                Reporting, carbon, climate, and supplier programmes with clear ownership,
+                controls, and evidence trails aligned to leadership expectations. Coverage now
+                spans CSRD and ESRS, SEBI BRSR, UK SECR and SRS, carbon accounting,
+                EcoVadis readiness, CDP reporting, climate risk, and wider sustainability
+                execution support.
               </p>
               <ul className="mt-5 text-sm text-slate-600 list-disc list-inside space-y-2">
-                <li>Scoping, readiness assessment, and disclosure mapping</li>
-                <li>ESG data governance, validations, and evidence standards</li>
-                <li>GHG methodology governance and repeatable workflows</li>
-                <li>
-                  Carbon accounting: Scope 1, 2 and 3 inventory, net zero roadmaps, and
-                  SBTi-aligned targets
-                </li>
+                <li>Scoping, readiness assessment, disclosure mapping, and reporting support</li>
+                <li>ESG data governance, validations, controls, and evidence standards</li>
+                <li>Carbon accounting, Scope 1 to 3 baselines, and net zero roadmaps</li>
+                <li>Climate risk, supplier engagement, training, and outsourced ESG support</li>
               </ul>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link href="/services/esg-advisory" className="text-emerald-700 font-medium">
                   Explore ESG advisory →
+                </Link>
+                <Link
+                  href="/services/esg-advisory/carbon-accounting"
+                  className="underline text-slate-700"
+                >
+                  Carbon accounting
                 </Link>
                 <Link href="/regulatory-hub" className="underline text-slate-700">
                   Regulatory hub
@@ -277,10 +285,9 @@ export default function HomePage() {
                 data. It requires precision.
               </p>
               <p className="text-slate-200 leading-relaxed mt-4">
-                From initial materiality assessments to board-ready disclosures, and from supply
-                chain risk to social value, we provide the expertise and structural rigor to
-                transform your ESG ambition into a verifiable, audit-grade narrative that commands
-                stakeholder trust.
+                From materiality and board-ready disclosures to carbon accounting, climate risk,
+                supplier engagement, and net zero planning, we provide the structural rigor to
+                turn ESG ambition into a governed operating model leaders can defend.
               </p>
               <Link
                 href="/services/esg-advisory"
