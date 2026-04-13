@@ -258,7 +258,8 @@ export default function ContactFormClient() {
                 <option>ESG readiness</option>
                 <option>Marketing automation and RevOps</option>
                 <option>Both ESG and revenue systems</option>
-                <option>Not sure yet</option>
+                <option>Partnership</option>
+				<option>Not sure yet</option>
               </select>
             </div>
 
