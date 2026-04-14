@@ -42,6 +42,48 @@ export const site = {
       description:
         "Downloadable CSRD readiness checklist covering scoping, double materiality, data governance, and assurance readiness.",
     },
+    {
+      title: "Net zero roadmap starter workbook",
+      url: "https://www.consult-ds.com/downloads/net-zero-roadmap-starter-workbook.pdf",
+      description:
+        "Working document for turning emissions baselines into owned decarbonisation workstreams.",
+    },
+    {
+      title: "Climate risk register template",
+      url: "https://www.consult-ds.com/downloads/climate-risk-register-template.pdf",
+      description:
+        "Board-ready climate risk register template with owners, evidence, and response actions.",
+    },
+    {
+      title: "Scope 3 supplier data request pack",
+      url: "https://www.consult-ds.com/downloads/scope-3-supplier-data-request-pack.pdf",
+      description:
+        "Supplier-facing pack for emissions data requests, evidence prompts, and escalation logic.",
+    },
+    {
+      title: "CDP response planning pack",
+      url: "https://www.consult-ds.com/downloads/cdp-response-planning-pack.pdf",
+      description:
+        "Planning pack for ownership, evidence, scoring priorities, and review cadence before CDP submission.",
+    },
+    {
+      title: "EcoVadis evidence matrix",
+      url: "https://www.consult-ds.com/downloads/ecovadis-evidence-matrix.pdf",
+      description:
+        "Submission-planning matrix covering policy, action, metrics, and evidence across EcoVadis themes.",
+    },
+    {
+      title: "Sustainability steering committee charter",
+      url: "https://www.consult-ds.com/downloads/sustainability-steering-committee-charter.pdf",
+      description:
+        "Governance charter defining cadence, decision rights, and escalation for ESG execution.",
+    },
+    {
+      title: "ESG tender response question bank",
+      url: "https://www.consult-ds.com/downloads/esg-tender-response-question-bank.pdf",
+      description:
+        "Reusable answer bank for commercial ESG questionnaires, tenders, and procurement forms.",
+    },
   ],
 
   // Default contact placeholders

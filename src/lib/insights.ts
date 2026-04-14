@@ -12,6 +12,90 @@ export type SiteInsightItem = {
 
 export const allInsights: SiteInsightItem[] = [
   {
+    slug: "net-zero-roadmap-starter",
+    category: "ESG",
+    title: "Net zero roadmap starter",
+    summary:
+      "A practical decision guide for leadership teams that need to move from emissions calculation to a credible decarbonisation roadmap with owners, sequencing, and delivery cadence.",
+    topics: ["Net zero", "Decarbonisation", "Roadmap", "Governance"],
+    audience: "CFO, CSO, COO, Sustainability lead",
+    readTime: "8 min read",
+    updated: "Apr 2026",
+    updatedAt: "2026-04-14",
+  },
+  {
+    slug: "climate-risk-register-template",
+    category: "ESG",
+    title: "Climate risk register template",
+    summary:
+      "A practical guide to structuring climate risk in a form leadership, finance, and operations teams can review, prioritise, and connect to action planning.",
+    topics: ["Climate risk", "Risk register", "Governance", "Reporting"],
+    audience: "CFO, CSO, Risk, Operations",
+    readTime: "7 min read",
+    updated: "Apr 2026",
+    updatedAt: "2026-04-13",
+  },
+  {
+    slug: "scope-3-supplier-data-request-pack",
+    category: "ESG",
+    title: "Scope 3 supplier data request pack",
+    summary:
+      "A working guide for leadership teams that need better supplier data without creating chaos across procurement, sustainability, and operations.",
+    topics: ["Scope 3", "Supplier engagement", "Carbon accounting", "Evidence"],
+    audience: "Procurement, CSO, Operations, CFO",
+    readTime: "9 min read",
+    updated: "Apr 2026",
+    updatedAt: "2026-04-12",
+  },
+  {
+    slug: "cdp-response-planning-pack",
+    category: "ESG",
+    title: "CDP response planning pack",
+    summary:
+      "A structured way to run CDP response preparation before deadlines compress the work and expose ownership gaps.",
+    topics: ["CDP", "Disclosure", "Evidence", "Ownership"],
+    audience: "CSO, CFO, Sustainability lead, Legal",
+    readTime: "7 min read",
+    updated: "Apr 2026",
+    updatedAt: "2026-04-11",
+  },
+  {
+    slug: "ecovadis-evidence-matrix",
+    category: "ESG",
+    title: "EcoVadis evidence matrix",
+    summary:
+      "A practical submission-planning guide for teams that need to organise policy, action, metrics, and supporting evidence before they start uploading documents.",
+    topics: ["EcoVadis", "Evidence matrix", "Sustainable procurement", "Submission"],
+    audience: "Procurement, CSO, Compliance, Operations",
+    readTime: "8 min read",
+    updated: "Apr 2026",
+    updatedAt: "2026-04-10",
+  },
+  {
+    slug: "sustainability-steering-committee-charter",
+    category: "ESG",
+    title: "Sustainability steering committee charter",
+    summary:
+      "A practical governance guide for leadership teams that need a real ESG operating cadence, not a vague cross-functional working group.",
+    topics: ["Governance", "Operating model", "Committee charter", "Execution"],
+    audience: "CEO, CFO, CSO, COO",
+    readTime: "8 min read",
+    updated: "Apr 2026",
+    updatedAt: "2026-04-09",
+  },
+  {
+    slug: "esg-tender-response-question-bank",
+    category: "ESG",
+    title: "ESG tender response question bank",
+    summary:
+      "A commercial-use guide for teams that keep answering ESG questions in customer tenders, procurement forms, and supplier questionnaires with no standard playbook behind them.",
+    topics: ["Tenders", "Customer questionnaires", "ESG commercial", "Evidence"],
+    audience: "Sales, Bid team, Procurement, Sustainability",
+    readTime: "7 min read",
+    updated: "Apr 2026",
+    updatedAt: "2026-04-08",
+  },
+  {
     slug: "csrd-readiness-first-90-days",
     category: "ESG",
     title: "CSRD Readiness Checklist",

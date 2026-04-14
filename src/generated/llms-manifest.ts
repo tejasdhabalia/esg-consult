@@ -1,12 +1,12 @@
 export const llmsManifest = {
-  "generatedAt": "2026-04-12T07:59:10.050Z",
-  "pageCount": 53,
+  "generatedAt": "2026-04-14T07:34:00.605Z",
+  "pageCount": 60,
   "pages": [
     {
       "route": "/",
       "url": "https://www.consult-ds.com",
       "title": "ESG Readiness & Revenue Visibility Consulting | DS Consulting",
-      "description": "DS Consulting helps CFOs, CSOs and CMOs build governed ESG reporting systems and revenue visibility. Advisory plus implementation for CSRD, BRSR, UK SECR and SRS, CRM governance and marketing automation.",
+      "description": "DS Consulting helps CFOs, CSOs and CMOs build governed ESG systems and revenue visibility. Advisory plus implementation across climate and carbon, reporting and assessment, strategy and execution support, plus CRM governance and marketing automation.",
       "section": "home",
       "priority": 1,
       "changeFrequency": "weekly",
@@ -93,6 +93,26 @@ export const llmsManifest = {
       "source": "src\\app\\insights\\ai-marketing-readiness\\page.tsx"
     },
     {
+      "route": "/insights/cdp-response-planning-pack",
+      "url": "https://www.consult-ds.com/insights/cdp-response-planning-pack",
+      "title": "${page.title} | DS Consulting",
+      "description": "/insights/cdp-response-planning-pack",
+      "section": "insights",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\insights\\cdp-response-planning-pack\\page.tsx"
+    },
+    {
+      "route": "/insights/climate-risk-register-template",
+      "url": "https://www.consult-ds.com/insights/climate-risk-register-template",
+      "title": "${page.title} | DS Consulting",
+      "description": "/insights/climate-risk-register-template",
+      "section": "insights",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\insights\\climate-risk-register-template\\page.tsx"
+    },
+    {
       "route": "/insights/crm-governance-checklist",
       "url": "https://www.consult-ds.com/insights/crm-governance-checklist",
       "title": "The CRM Governance SOP Template | DS Consulting",
@@ -111,6 +131,26 @@ export const llmsManifest = {
       "priority": 0.8,
       "changeFrequency": "monthly",
       "source": "src\\app\\insights\\csrd-readiness-first-90-days\\page.tsx"
+    },
+    {
+      "route": "/insights/ecovadis-evidence-matrix",
+      "url": "https://www.consult-ds.com/insights/ecovadis-evidence-matrix",
+      "title": "${page.title} | DS Consulting",
+      "description": "/insights/ecovadis-evidence-matrix",
+      "section": "insights",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\insights\\ecovadis-evidence-matrix\\page.tsx"
+    },
+    {
+      "route": "/insights/esg-tender-response-question-bank",
+      "url": "https://www.consult-ds.com/insights/esg-tender-response-question-bank",
+      "title": "${page.title} | DS Consulting",
+      "description": "/insights/esg-tender-response-question-bank",
+      "section": "insights",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\insights\\esg-tender-response-question-bank\\page.tsx"
     },
     {
       "route": "/insights/leaky-funnel-audit",
@@ -143,6 +183,16 @@ export const llmsManifest = {
       "source": "src\\app\\insights\\marketing-governance-model-for-automation\\page.tsx"
     },
     {
+      "route": "/insights/net-zero-roadmap-starter",
+      "url": "https://www.consult-ds.com/insights/net-zero-roadmap-starter",
+      "title": "${page.title} | DS Consulting",
+      "description": "/insights/net-zero-roadmap-starter",
+      "section": "insights",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\insights\\net-zero-roadmap-starter\\page.tsx"
+    },
+    {
       "route": "/insights/revenue-attribution-readiness",
       "url": "https://www.consult-ds.com/insights/revenue-attribution-readiness",
       "title": "Revenue Attribution Readiness Check | DS Consulting",
@@ -151,6 +201,26 @@ export const llmsManifest = {
       "priority": 0.5,
       "changeFrequency": "monthly",
       "source": "src\\app\\insights\\revenue-attribution-readiness\\page.tsx"
+    },
+    {
+      "route": "/insights/scope-3-supplier-data-request-pack",
+      "url": "https://www.consult-ds.com/insights/scope-3-supplier-data-request-pack",
+      "title": "${page.title} | DS Consulting",
+      "description": "/insights/scope-3-supplier-data-request-pack",
+      "section": "insights",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\insights\\scope-3-supplier-data-request-pack\\page.tsx"
+    },
+    {
+      "route": "/insights/sustainability-steering-committee-charter",
+      "url": "https://www.consult-ds.com/insights/sustainability-steering-committee-charter",
+      "title": "${page.title} | DS Consulting",
+      "description": "/insights/sustainability-steering-committee-charter",
+      "section": "insights",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\insights\\sustainability-steering-committee-charter\\page.tsx"
     },
     {
       "route": "/accessibility",
