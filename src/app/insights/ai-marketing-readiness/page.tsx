@@ -2,14 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 import AIReadinessTool from "./AIReadinessTool";
 
-export const metadata = {
-  title: `AI Marketing Readiness Assessment | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "AI Marketing Readiness Assessment",
   description:
-    "Find out whether your marketing stack, data, and team are ready for AI. Three sections covering data quality, integration, and governance. Covers lead scoring, personalisation, and content use cases.",
-  alternates: { canonical: absUrl("/insights/ai-marketing-readiness") },
-};
+    "Find out whether your marketing data, stack and team are ready for AI. Interactive assessment covering lead scoring, personalisation and AI content.",
+  path: "/insights/ai-marketing-readiness",
+});
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -38,15 +39,22 @@ const faqSchema = {
   ],
 };
 
-const articleSchema = {
+const toolSchema = {
   "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "AI Marketing Readiness Assessment",
-  description: "Find out whether your marketing stack, data, and team are ready for AI before you buy a tool. Covers lead scoring, personalisation, predictive analytics, and AI content use cases.",
+  "@type": "WebApplication",
+  name: "AI Marketing Readiness Assessment",
+  description: "Interactive assessment that evaluates whether your marketing data, stack and team are ready for AI tools. Covers lead scoring, personalisation, predictive analytics and AI content use cases.",
+  url: absUrl("/insights/ai-marketing-readiness"),
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD",
+  },
   author: { "@type": "Person", name: "Tejas Dhabalia", jobTitle: "Co-founder and Principal Consultant", url: absUrl("/team"), sameAs: site.linkedin.tejas },
   publisher: { "@type": "Organization", name: site.legalName, url: site.baseUrl },
-  url: absUrl("/insights/ai-marketing-readiness"),
-  datePublished: "2026-04-01",
+  dateCreated: "2026-04-01",
   dateModified: "2026-04-01",
 };
 
@@ -239,7 +247,7 @@ export default function AIMarketingReadinessPage() {
         </div>
       </div>
 
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(toolSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     </div>

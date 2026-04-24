@@ -1,6 +1,6 @@
 export const llmsManifest = {
-  "generatedAt": "2026-04-14T07:34:00.605Z",
-  "pageCount": 60,
+  "generatedAt": "2026-04-24T04:20:21.184Z",
+  "pageCount": 61,
   "pages": [
     {
       "route": "/",
@@ -85,8 +85,8 @@ export const llmsManifest = {
     {
       "route": "/insights/ai-marketing-readiness",
       "url": "https://www.consult-ds.com/insights/ai-marketing-readiness",
-      "title": "AI Marketing Readiness Assessment | DS Consulting",
-      "description": "Find out whether your marketing stack, data, and team are ready for AI. Three sections covering data quality, integration, and governance. Covers lead scoring, personalisation, and content use cases.",
+      "title": "AI Marketing Readiness Assessment",
+      "description": "Find out whether your marketing data, stack and team are ready for AI. Interactive assessment covering lead scoring, personalisation and AI content.",
       "section": "insights",
       "priority": 0.5,
       "changeFrequency": "monthly",
@@ -271,6 +271,16 @@ export const llmsManifest = {
       "priority": 0.3,
       "changeFrequency": "monthly",
       "source": "src\\app\\case-studies\\page.tsx"
+    },
+    {
+      "route": "/partners",
+      "url": "https://www.consult-ds.com/partners",
+      "title": "Partnerships | DS Consulting",
+      "description": "Partner with DS Consulting through referrals, ecosystem collaboration, or structured service alliances. Explore our finance capacity partnership model or contact us to discuss a fit.",
+      "section": "partners",
+      "priority": 0.75,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\partners\\page.tsx"
     },
     {
       "route": "/partners/strategic-finance-partnership",
