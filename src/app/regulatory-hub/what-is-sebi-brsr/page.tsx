@@ -1,13 +1,13 @@
 import Link from "next/link";
-import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `What is SEBI BRSR? Business Responsibility and Sustainability Report Explained | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "What is SEBI BRSR? A practical guide",
   description:
-    "SEBI BRSR is India's mandatory ESG disclosure framework for listed companies. Learn what BRSR Core is, who must report, what the 9 principles cover, and what assurance is required.",
-  alternates: { canonical: absUrl("/regulatory-hub/what-is-sebi-brsr") },
-};
+    "SEBI BRSR is India's mandatory ESG disclosure framework for listed companies. BRSR Core, who must report, the 9 principles and assurance requirements.",
+  path: "/regulatory-hub/what-is-sebi-brsr",
+});
 
 const definitionSchema = {
   "@context": "https://schema.org",

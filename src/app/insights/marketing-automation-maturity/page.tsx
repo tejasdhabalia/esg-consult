@@ -2,14 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 import MaturityTool from "./MaturityTool";
 
-export const metadata = {
-  title: `Marketing Automation Maturity Scorecard | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "Marketing automation maturity scorecard",
   description:
-    "Score your marketing automation against top-quartile industry benchmarks across data, platform, governance, and attribution. Free interactive tool from DS Consulting.",
-  alternates: { canonical: absUrl("/insights/marketing-automation-maturity") },
-};
+    "Score your marketing automation against top-quartile benchmarks across data, platform, governance and attribution. Free interactive tool from DS Consulting.",
+  path: "/insights/marketing-automation-maturity",
+});
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -50,10 +51,13 @@ const faqSchema = {
   ],
 };
 
-const articleSchema = {
+const toolSchema = {
   "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "Marketing Automation Maturity Scorecard",
+  "@type": "WebApplication",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  name: "Marketing Automation Maturity Scorecard",
   description: "Score your marketing automation maturity across data, platform, governance, and performance. Get your score vs top-quartile industry benchmarks in under 5 minutes.",
   author: {
     "@type": "Person",
@@ -64,7 +68,7 @@ const articleSchema = {
   },
   publisher: { "@type": "Organization", name: site.legalName, url: site.baseUrl },
   url: absUrl("/insights/marketing-automation-maturity"),
-  datePublished: "2026-04-01",
+  dateCreated: "2026-04-01",
   dateModified: "2026-04-01",
 };
 
@@ -262,7 +266,7 @@ export default function MarketingAutomationMaturityPage() {
         </div>
       </div>
 
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(toolSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     </div>

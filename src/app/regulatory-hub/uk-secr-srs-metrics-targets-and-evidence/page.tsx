@@ -2,13 +2,14 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `UK SECR and SRS metrics and targets | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "UK SECR and SRS metrics and targets",
   description:
-    "Practical decisions for metrics and targets, emissions data governance, controls and evidence trails that reduce late-cycle rework.",
-  alternates: { canonical: absUrl("/regulatory-hub/uk-secr-srs-metrics-targets-and-evidence") },
-};
+    "Practical decisions for SECR and SRS metrics, targets, emissions data governance, controls and evidence trails that reduce late-cycle rework.",
+  path: "/regulatory-hub/uk-secr-srs-metrics-targets-and-evidence",
+});
 
 export default function Page() {
   const articleSchema = {

@@ -2,13 +2,14 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `Value chain data collection approach | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "BRSR value chain data collection",
   description:
-    "A phased approach for value chain data: prioritisation, supplier workflows, assumptions documentation and cycle-by-cycle improvement through governance.",
-  alternates: { canonical: absUrl("/regulatory-hub/brsr-value-chain-data-collection") },
-};
+    "A phased BRSR value chain approach: prioritisation, supplier workflows, assumptions documentation and cycle-by-cycle improvement through governance.",
+  path: "/regulatory-hub/brsr-value-chain-data-collection",
+});
 
 export default function Page() {
   const articleSchema = {

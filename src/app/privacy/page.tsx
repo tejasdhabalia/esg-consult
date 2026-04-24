@@ -1,12 +1,14 @@
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `Privacy policy | ${site.legalName}`,
-  description: "How we handle personal data, cookies, and website analytics.",
-  alternates: { canonical: absUrl("/privacy") },
-};
+export const metadata = pageMetadata({
+  title: "Privacy policy",
+  description:
+    "How DS Consulting handles personal data, cookies and website analytics. Includes your rights and how to request access, correction or deletion.",
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (

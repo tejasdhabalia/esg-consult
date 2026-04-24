@@ -1,584 +1,253 @@
-"use client";
-import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import Script from "next/script";
-import { validateBusinessEmail } from "@/lib/businessEmail";
-import { getRecaptchaToken } from "@/lib/recaptcha-client";
+import { site } from "@/lib/site";
+import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
+import LeakyFunnelAuditTool from "./LeakyFunnelAuditTool";
 
-// ─── Types ────────────────────────────────────────────────────────────────
-interface AuditData {
-  // Volume
-  monthlyLeads: number;
-  mqlRate: number;       // % of leads → MQL
-  sqlRate: number;       // % of MQL → SQL
-  wonRate: number;       // % of SQL → Won
-  avgDealSize: number;   // £/$ average
-  // Governance
-  hasSingleMQLDef: boolean;
-  hasRouting: boolean;
-  hasChangeControl: boolean;
-  hasDashboard: boolean;
-  hasMetricDoc: boolean;
-  hasCRMOwner: boolean;
-  // Stack
-  hasCRM: boolean;
-  hasMAP: boolean;
-  hasBI: boolean;
-  hasFinanceLink: boolean;
-}
+export const metadata = pageMetadata({
+  title: "Leaky funnel audit",
+  description:
+    "Find where revenue is leaking from your funnel. Interactive audit across volumes, conversion rates, governance and stack, with a monthly leakage estimate.",
+  path: "/insights/leaky-funnel-audit",
+});
 
-interface Scores {
-  revenueVisibility: number;    // 0–100
-  leakageEstimate: number;      // £/month
-  governanceScore: number;      // 0–100
-  biggestGap: string;
-  recommendations: string[];
-}
-
-const DEFAULT: AuditData = {
-  monthlyLeads: 200,
-  mqlRate: 25,
-  sqlRate: 30,
-  wonRate: 20,
-  avgDealSize: 15000,
-  hasSingleMQLDef: false,
-  hasRouting: false,
-  hasChangeControl: false,
-  hasDashboard: false,
-  hasMetricDoc: false,
-  hasCRMOwner: false,
-  hasCRM: true,
-  hasMAP: false,
-  hasBI: false,
-  hasFinanceLink: false,
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What does Revenue Visibility Score mean?",
+      acceptedAnswer: { "@type": "Answer", text: "Revenue Visibility Score measures how confidently leadership can trust the numbers coming out of your funnel. It combines governance health, stack coverage and funnel conversion performance into a single 0-100 score. High scores mean pipeline numbers reconcile with finance, stage movement is reliable and forecast quality is defensible. Low scores mean disputed pipeline numbers, unreconciled CRM data and governance drift." },
+    },
+    {
+      "@type": "Question",
+      name: "How is the monthly revenue leakage estimate calculated?",
+      acceptedAnswer: { "@type": "Answer", text: "The leakage estimate takes your current monthly revenue (leads, conversion rates and deal size) and applies a leakage percentage based on governance and stack gaps. Each unaddressed governance item contributes around 12% leakage and each stack gap contributes around 6%, capped at 60% total. These coefficients are calibrated against patterns we see in mid-market B2B engagements." },
+    },
+    {
+      "@type": "Question",
+      name: "Why weight governance higher than stack or funnel rates?",
+      acceptedAnswer: { "@type": "Answer", text: "Governance problems create compounding revenue loss that tools alone cannot fix. Without a single MQL definition, routing SLAs, change control and metric ownership, every stack improvement and every conversion rate gain gets eroded by drift. Governance is weighted at 50% of the Revenue Visibility Score because it determines whether the other improvements stick." },
+    },
+    {
+      "@type": "Question",
+      name: "Is this a replacement for a full revenue operations review?",
+      acceptedAnswer: { "@type": "Answer", text: "No. This audit is a diagnostic, not a remediation plan. It surfaces where the largest gaps are so leadership teams can prioritise. A full revenue operations engagement includes data audit, architecture review, governance framework design, implementation and change control. The audit is a starting point for that conversation, not a substitute." },
+    },
+  ],
 };
 
-function computeScores(d: AuditData): Scores {
-  // Governance items (each worth ~16.7 points)
-  const govItems = [d.hasSingleMQLDef, d.hasRouting, d.hasChangeControl, d.hasDashboard, d.hasMetricDoc, d.hasCRMOwner];
-  const govScore = Math.round((govItems.filter(Boolean).length / 6) * 100);
+const toolSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "Leaky Funnel Audit",
+  description: "Interactive audit that quantifies monthly revenue leakage from your funnel. Assesses volumes, conversion rates, governance maturity and stack coverage to produce a Revenue Visibility Score.",
+  url: absUrl("/insights/leaky-funnel-audit"),
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  author: { "@type": "Person", name: "Tejas Dhabalia", jobTitle: "Co-founder and Principal Consultant", url: absUrl("/team"), sameAs: site.linkedin.tejas },
+  publisher: { "@type": "Organization", name: site.legalName, url: site.baseUrl },
+  dateCreated: "2026-04-01",
+  dateModified: "2026-04-01",
+};
 
-  // Stack score
-  const stackItems = [d.hasCRM, d.hasMAP, d.hasBI, d.hasFinanceLink];
-  const stackScore = Math.round((stackItems.filter(Boolean).length / 4) * 100);
-
-  // Funnel health — reward clean conversion rates, penalise very low rates
-  const funnelScore = Math.min(100, Math.round(
-    (Math.min(d.mqlRate, 40) / 40) * 30 +
-    (Math.min(d.sqlRate, 50) / 50) * 30 +
-    (Math.min(d.wonRate, 35) / 35) * 40
-  ));
-
-  const revenueVisibility = Math.round(govScore * 0.5 + stackScore * 0.2 + funnelScore * 0.3);
-
-  // Monthly won deals
-  const wonDeals = (d.monthlyLeads * (d.mqlRate / 100) * (d.sqlRate / 100) * (d.wonRate / 100));
-  const currentRevenue = wonDeals * d.avgDealSize;
-
-  // Leakage: governance gaps = ~15% revenue leak each; stack gaps = ~8% each
-  const govGaps = govItems.filter((b) => !b).length;
-  const stackGaps = stackItems.filter((b) => !b).length;
-  const leakagePct = Math.min(0.6, govGaps * 0.12 + stackGaps * 0.06);
-  const leakageEstimate = Math.round(currentRevenue * leakagePct);
-
-  // Biggest gap
-  const gaps: { label: string; score: number }[] = [
-    { label: "CRM governance and data quality controls", score: govScore },
-    { label: "Tool stack coverage and integration depth", score: stackScore },
-    { label: "Funnel conversion rates relative to benchmark", score: funnelScore },
-  ];
-  const biggestGap = gaps.sort((a, b) => a.score - b.score)[0].label;
-
-  // Recommendations
-  const recs: string[] = [];
-  if (!d.hasSingleMQLDef) recs.push("Define and align on a single written MQL definition across marketing, sales, and RevOps.");
-  if (!d.hasRouting) recs.push("Implement automated routing rules with SLAs. Unrouted leads are invisible — they exist in the system but in nobody's accountability.");
-  if (!d.hasChangeControl) recs.push("Establish a CRM change control register. Undocumented changes are the leading cause of reporting drift.");
-  if (!d.hasMetricDoc) recs.push("Publish a single metric definition document that all revenue stakeholders sign off on.");
-  if (!d.hasDashboard) recs.push("Build a weekly stage health report showing velocity and SLA adherence. It must run automatically, not manually.");
-  if (!d.hasFinanceLink) recs.push("Align CRM pipeline to your finance system with a monthly reconciliation cadence.");
-  if (recs.length === 0) recs.push("Your governance foundations are in place. Focus on optimising conversion rates and expanding automation coverage.");
-
-  return { revenueVisibility, leakageEstimate, governanceScore: govScore, biggestGap, recommendations: recs.slice(0, 4) };
-}
-
-function ScoreRing({ score, label, size = 96 }: { score: number; label: string; size?: number }) {
-  const r = size / 2 - 8;
-  const circ = 2 * Math.PI * r;
-  const offset = circ - (score / 100) * circ;
-  const color = score >= 70 ? "#059669" : score >= 45 ? "#D97706" : "#DC2626";
-  return (
-    <div className="flex flex-col items-center gap-1">
-      <svg width={size} height={size} className="-rotate-90">
-        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="#E2E8F0" strokeWidth="8" />
-        <circle
-          cx={size / 2} cy={size / 2} r={r}
-          fill="none" stroke={color} strokeWidth="8"
-          strokeDasharray={circ} strokeDashoffset={offset}
-          strokeLinecap="round"
-          style={{ transition: "stroke-dashoffset 0.8s ease" }}
-        />
-      </svg>
-      <div className="text-center -mt-16 mb-8">
-        <div className="text-2xl font-bold" style={{ color }}>{score}</div>
-        <div className="text-xs text-slate-500 leading-tight max-w-[80px] text-center">{label}</div>
-      </div>
-    </div>
-  );
-}
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home",     item: absUrl("/") },
+    { "@type": "ListItem", position: 2, name: "Insights", item: absUrl("/insights") },
+    { "@type": "ListItem", position: 3, name: "Leaky Funnel Audit", item: absUrl("/insights/leaky-funnel-audit") },
+  ],
+};
 
 export default function LeakyFunnelAuditPage() {
-  const [data, setData] = useState<AuditData>(DEFAULT);
-  const [step, setStep] = useState<1 | 2 | 3 | 4>(1);
-  const [showResults, setShowResults] = useState(false);
-  const [email, setEmail] = useState("");
-  const [emailSent, setEmailSent] = useState(false);
-  const [emailStatus, setEmailStatus] = useState<"idle" | "sending" | "error">("idle");
-  const [emailError, setEmailError] = useState("");
-
-  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
-  const action = "audit_report_submit";
-  const emailValidation = validateBusinessEmail(email);
-
-  const scores = computeScores(data);
-
-  const set = (key: keyof AuditData, value: number | boolean) =>
-    setData((d) => ({ ...d, [key]: value }));
-
-  const scoreLabel =
-    scores.revenueVisibility >= 70 ? "Governed" :
-    scores.revenueVisibility >= 45 ? "At Risk" : "Leaking";
-
-  const scoreColor =
-    scores.revenueVisibility >= 70 ? "text-emerald-600" :
-    scores.revenueVisibility >= 45 ? "text-amber-600" : "text-red-500";
-
-  const scoreBg =
-    scores.revenueVisibility >= 70 ? "bg-emerald-50 border-emerald-200" :
-    scores.revenueVisibility >= 45 ? "bg-amber-50 border-amber-200" : "bg-red-50 border-red-200";
-
-  async function sendReport() {
-    setEmailError("");
-
-    if (!emailValidation.ok) {
-      setEmailStatus("error");
-      setEmailError(emailValidation.message);
-      return;
-    }
-
-    setEmailStatus("sending");
-
-    try {
-      const captchaToken = await getRecaptchaToken(siteKey || "", action);
-      const res = await fetch("/api/lead-capture", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          formType: "audit_report",
-          email: emailValidation.normalizedEmail,
-          captchaToken,
-          captchaAction: action,
-        }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok || !data?.ok) {
-        setEmailStatus("error");
-        setEmailError(data?.error || "Failed to send report. Please try again.");
-        return;
-      }
-
-      setEmailSent(true);
-      setEmailStatus("idle");
-    } catch (err: unknown) {
-      setEmailStatus("error");
-      setEmailError(err instanceof Error ? err.message : "Failed to send report. Please try again.");
-    }
-  }
-
-  const inputCls = "w-full border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500";
-  const rangeCls = "w-full accent-indigo-600";
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
-      {siteKey ? <Script src={`https://www.google.com/recaptcha/api.js?render=${siteKey}`} strategy="afterInteractive" /> : null}
-      {/* Header */}
-      <div className="bg-indigo-950 text-white px-6 py-16">
-        <div className="max-w-3xl mx-auto text-center">
-          <div className="inline-block bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wide">
+    <div className="bg-white">
+      <div className="bg-violet-950 text-white px-6 py-20">
+        <div className="max-w-4xl mx-auto">
+          <nav className="text-sm text-violet-300 mb-6">
+            <Link href="/" className="hover:text-white">Home</Link>
+            <span className="mx-2">/</span>
+            <Link href="/insights" className="hover:text-white">Insights</Link>
+            <span className="mx-2">/</span>
+            <span className="text-violet-100">Leaky Funnel Audit</span>
+          </nav>
+          <div className="inline-block bg-violet-800 text-violet-200 text-xs font-medium px-3 py-1 rounded-full mb-4 uppercase tracking-wide">
             Free Audit Tool
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">The Leaky Funnel Audit</h1>
-          <p className="text-indigo-200 text-lg max-w-xl mx-auto mb-6">
-            Input your current lead volume, conversion rates, and governance setup.
-            Get your Revenue Visibility Score in under 5 minutes.
+          <h1 className="text-3xl md:text-4xl font-bold leading-tight mb-4">
+            Leaky Funnel Audit
+          </h1>
+          <p className="text-lg text-violet-200 max-w-2xl mb-8">
+            Quantify where revenue is leaking out of your funnel before the next board meeting.
+            Four short steps across volumes, governance and stack, with a Revenue Visibility Score,
+            an estimated monthly leakage figure and prioritised recommendations.
           </p>
-          <div className="flex items-center justify-center gap-6 text-sm text-indigo-300">
-            <span>4 short steps</span>
+          <div className="flex items-center gap-4 text-sm text-violet-300">
+            <div className="flex items-center gap-2">
+              <Image src="/team/tejas.jpg" alt="Tejas Dhabalia" width={32} height={32} className="rounded-full object-cover" />
+              <div>
+                <div className="text-white font-medium">Tejas Dhabalia</div>
+                <div className="text-violet-400 text-xs">Co-founder, DS Consulting</div>
+              </div>
+            </div>
             <span>·</span>
-            <span>No sign-up required</span>
+            <span>1 April 2026</span>
             <span>·</span>
-            <span>Instant results</span>
+            <span>Interactive tool</span>
           </div>
         </div>
       </div>
 
-      <div className="max-w-2xl mx-auto px-6 py-12">
+      <div className="max-w-6xl mx-auto px-6 py-16">
+        <div className="grid lg:grid-cols-3 gap-12">
+          <div className="lg:col-span-2">
 
-        {/* Progress */}
-        {!showResults && (
-          <div className="flex items-center gap-2 mb-8">
-            {([1, 2, 3, 4] as const).map((s) => (
-              <div key={s} className="flex items-center gap-2 flex-1">
-                <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 transition-colors ${
-                  step >= s ? "bg-indigo-600 text-white" : "bg-slate-200 text-slate-400"
-                }`}>{s}</div>
-                {s < 4 && <div className={`h-0.5 flex-1 transition-colors ${step > s ? "bg-indigo-600" : "bg-slate-200"}`} />}
-              </div>
-            ))}
-          </div>
-        )}
+            <div className="bg-violet-50 border border-violet-100 rounded-2xl p-6 mb-10">
+              <p className="text-slate-700 text-sm leading-relaxed italic">
+                &ldquo;The board asks why pipeline coverage is 4x and the forecast still misses.
+                The answer almost never sits in the funnel rates. It sits in the governance between them,
+                the unrouted leads, the drifting MQL definition, the missing reconciliation with finance.
+                That is where revenue actually leaks.&rdquo;
+              </p>
+              <p className="mt-3 text-sm font-semibold text-violet-700">Tejas Dhabalia, Co-founder, DS Consulting</p>
+            </div>
 
-        {!showResults && (
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
-
-            {/* Step 1: Funnel volumes */}
-            {step === 1 && (
-              <div>
-                <h2 className="text-xl font-bold text-slate-900 mb-1">Funnel volumes</h2>
-                <p className="text-slate-500 text-sm mb-6">Tell us about your current lead flow and deal value.</p>
-
-                <div className="space-y-5">
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">
-                      Monthly inbound leads (approximate)
-                      <span className="ml-2 font-bold text-indigo-600">{data.monthlyLeads.toLocaleString()}</span>
-                    </label>
-                    <input type="range" min={10} max={5000} step={10} value={data.monthlyLeads}
-                      onChange={e => set("monthlyLeads", +e.target.value)} className={rangeCls} />
-                    <div className="flex justify-between text-xs text-slate-400 mt-0.5"><span>10</span><span>5,000</span></div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">
-                      Lead → MQL conversion rate
-                      <span className="ml-2 font-bold text-indigo-600">{data.mqlRate}%</span>
-                      <span className="ml-1 text-xs text-slate-400">(industry avg: 20–25%)</span>
-                    </label>
-                    <input type="range" min={1} max={80} step={1} value={data.mqlRate}
-                      onChange={e => set("mqlRate", +e.target.value)} className={rangeCls} />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">
-                      MQL → SQL conversion rate
-                      <span className="ml-2 font-bold text-indigo-600">{data.sqlRate}%</span>
-                      <span className="ml-1 text-xs text-slate-400">(industry avg: 25–35%)</span>
-                    </label>
-                    <input type="range" min={1} max={80} step={1} value={data.sqlRate}
-                      onChange={e => set("sqlRate", +e.target.value)} className={rangeCls} />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">
-                      SQL → Won conversion rate
-                      <span className="ml-2 font-bold text-indigo-600">{data.wonRate}%</span>
-                      <span className="ml-1 text-xs text-slate-400">(B2B avg: 15–25%)</span>
-                    </label>
-                    <input type="range" min={1} max={70} step={1} value={data.wonRate}
-                      onChange={e => set("wonRate", +e.target.value)} className={rangeCls} />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">
-                      Average deal / transaction value
-                      <span className="ml-2 font-bold text-indigo-600">${data.avgDealSize.toLocaleString()}</span>
-                    </label>
-                    <input type="range" min={500} max={500000} step={500} value={data.avgDealSize}
-                      onChange={e => set("avgDealSize", +e.target.value)} className={rangeCls} />
-                    <div className="flex justify-between text-xs text-slate-400 mt-0.5"><span>$500</span><span>$500k</span></div>
-                  </div>
-                </div>
-
-                {/* Live mini preview */}
-                <div className="mt-6 bg-slate-50 rounded-xl p-4 grid grid-cols-3 gap-4 text-center">
-                  {[
-                    { label: "Monthly MQLs", value: Math.round(data.monthlyLeads * data.mqlRate / 100) },
-                    { label: "Monthly SQLs", value: Math.round(data.monthlyLeads * data.mqlRate / 100 * data.sqlRate / 100) },
-                    { label: "Monthly closes", value: Math.round(data.monthlyLeads * data.mqlRate / 100 * data.sqlRate / 100 * data.wonRate / 100) },
-                  ].map(({ label, value }) => (
-                    <div key={label}>
-                      <div className="text-xl font-bold text-indigo-600">{value}</div>
-                      <div className="text-xs text-slate-500">{label}</div>
+            <div className="mb-10">
+              <h2 className="text-2xl font-bold text-slate-900 mb-4">The audit framework</h2>
+              <p className="text-slate-600 leading-relaxed mb-4">
+                Revenue visibility is assessed across three dimensions, weighted by their impact on whether
+                your pipeline numbers are defensible. Governance receives the highest weight at 50% because
+                governance gaps compound over time and quietly erode the value of every other improvement.
+              </p>
+              <div className="space-y-3 mt-6">
+                {[
+                  { label: "Governance health",  weight: "50%", color: "bg-violet-100 text-violet-700",  desc: "Single MQL definition, routing and SLAs, change control, dashboards, metric ownership and a named CRM owner" },
+                  { label: "Funnel performance", weight: "30%", color: "bg-slate-100 text-slate-700",    desc: "Lead to MQL, MQL to SQL and SQL to Won conversion rates relative to B2B benchmarks" },
+                  { label: "Stack coverage",     weight: "20%", color: "bg-emerald-100 text-emerald-700", desc: "CRM, marketing automation, BI reporting layer and a finance system link with reconciliation" },
+                ].map(({ label, weight, color, desc }) => (
+                  <div key={label} className="flex items-start gap-4 bg-slate-50 border border-slate-200 rounded-xl p-4">
+                    <div className={`text-xs font-bold px-2 py-1 rounded-full flex-shrink-0 ${color}`}>{weight}</div>
+                    <div>
+                      <div className="font-semibold text-slate-900 text-sm mb-1">{label}</div>
+                      <p className="text-xs text-slate-500">{desc}</p>
                     </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Step 2: Governance */}
-            {step === 2 && (
-              <div>
-                <h2 className="text-xl font-bold text-slate-900 mb-1">Governance health</h2>
-                <p className="text-slate-500 text-sm mb-6">Be honest. These are the items that most directly affect revenue visibility.</p>
-
-                <div className="space-y-4">
-                  {([
-                    { key: "hasSingleMQLDef", label: "We have a single, written MQL definition that marketing, sales, and ops all agree on.", },
-                    { key: "hasRouting", label: "Lead routing rules are automated and documented with SLAs.", },
-                    { key: "hasChangeControl", label: "All CRM and automation changes are logged in a change register before deployment.", },
-                    { key: "hasDashboard", label: "A weekly pipeline health report runs automatically and goes to the revenue team.", },
-                    { key: "hasMetricDoc", label: "A metric definition document exists for MQL, SQL, Win Rate, CAC — and all teams use the same version.", },
-                    { key: "hasCRMOwner", label: "There is a named person accountable for CRM data quality and governance.", },
-                  ] as const).map(({ key, label }) => (
-                    <label key={key} className={`flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition-colors ${
-                      data[key] ? "bg-indigo-50 border-indigo-300" : "bg-white border-slate-200 hover:border-slate-300"
-                    }`}>
-                      <input
-                        type="checkbox"
-                        checked={data[key] as boolean}
-                        onChange={e => set(key, e.target.checked)}
-                        className="mt-0.5 accent-indigo-600 w-4 h-4 flex-shrink-0"
-                      />
-                      <span className="text-sm text-slate-700">{label}</span>
-                    </label>
-                  ))}
-                </div>
-
-                <div className="mt-4 text-center text-sm text-slate-500">
-                  {govItems(data)} / 6 governance items confirmed
-                </div>
-              </div>
-            )}
-
-            {/* Step 3: Stack */}
-            {step === 3 && (
-              <div>
-                <h2 className="text-xl font-bold text-slate-900 mb-1">Tool stack</h2>
-                <p className="text-slate-500 text-sm mb-6">Which tools are in active use and properly integrated?</p>
-
-                <div className="space-y-3">
-                  {([
-                    { key: "hasCRM", label: "CRM (Salesforce, HubSpot, Dynamics, etc.)", icon: "📊" },
-                    { key: "hasMAP", label: "Marketing Automation Platform (Marketo, Pardot, Braze, etc.)", icon: "⚙️" },
-                    { key: "hasBI", label: "BI / Reporting layer (Tableau, Looker, Power BI, etc.)", icon: "📈" },
-                    { key: "hasFinanceLink", label: "CRM is linked to your finance system with a reconciliation process", icon: "🔗" },
-                  ] as const).map(({ key, label, icon }) => (
-                    <label key={key} className={`flex items-center gap-3 p-4 rounded-xl border cursor-pointer transition-colors ${
-                      data[key] ? "bg-indigo-50 border-indigo-300" : "bg-white border-slate-200 hover:border-slate-300"
-                    }`}>
-                      <span className="text-xl flex-shrink-0">{icon}</span>
-                      <span className="text-sm text-slate-700 flex-1">{label}</span>
-                      <input
-                        type="checkbox"
-                        checked={data[key] as boolean}
-                        onChange={e => set(key, e.target.checked)}
-                        className="accent-indigo-600 w-4 h-4 flex-shrink-0"
-                      />
-                    </label>
-                  ))}
-                </div>
-
-                <div className="mt-6 bg-amber-50 border border-amber-200 rounded-xl p-4">
-                  <p className="text-xs text-amber-800">
-                    <strong>Note:</strong> Stack coverage affects revenue visibility directly. A CRM without a MAP
-                    creates attribution blind spots. A CRM without a finance link means your board pipeline number
-                    and your CFO&apos;s revenue forecast will never fully reconcile.
-                  </p>
-                </div>
-              </div>
-            )}
-
-            {/* Step 4: Context */}
-            {step === 4 && (
-              <div>
-                <h2 className="text-xl font-bold text-slate-900 mb-1">Final context</h2>
-                <p className="text-slate-500 text-sm mb-6">One last question to calibrate your results.</p>
-
-                <div className="space-y-4">
-                  <p className="text-sm font-medium text-slate-700">What is your primary challenge right now?</p>
-                  {[
-                    "Our pipeline numbers are disputed in leadership meetings",
-                    "We cannot attribute revenue reliably to marketing activities",
-                    "Our CRM data quality is deteriorating faster than we can clean it",
-                    "We are preparing for a new platform migration",
-                    "We need to improve funnel conversion rates",
-                  ].map((option) => (
-                    <label key={option} className="flex items-start gap-3 p-4 rounded-xl border border-slate-200 hover:border-indigo-300 cursor-pointer bg-white text-sm text-slate-700">
-                      <input type="radio" name="challenge" className="mt-0.5 accent-indigo-600 flex-shrink-0" />
-                      {option}
-                    </label>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Navigation */}
-            <div className="flex justify-between mt-8">
-              {step > 1 ? (
-                <button onClick={() => setStep((s) => (s - 1) as 1|2|3|4)}
-                  className="px-5 py-2 text-sm font-medium text-slate-600 border border-slate-300 rounded-lg hover:bg-slate-50">
-                  Back
-                </button>
-              ) : <div />}
-
-              {step < 4 ? (
-                <button onClick={() => setStep((s) => (s + 1) as 1|2|3|4)}
-                  className="px-6 py-2.5 text-sm font-semibold bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg">
-                  Next →
-                </button>
-              ) : (
-                <button onClick={() => setShowResults(true)}
-                  className="px-6 py-2.5 text-sm font-semibold bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg">
-                  Get my score →
-                </button>
-              )}
-            </div>
-          </div>
-        )}
-
-        {/* Results */}
-        {showResults && (
-          <div className="space-y-6">
-
-            {/* Score banner */}
-            <div className={`rounded-2xl border p-8 text-center ${scoreBg}`}>
-              <div className="text-5xl font-black mb-1">
-                <span className={scoreColor}>{scores.revenueVisibility}</span>
-                <span className="text-slate-400 text-2xl">/100</span>
-              </div>
-              <div className={`text-lg font-bold mb-2 ${scoreColor}`}>Revenue Visibility Score: {scoreLabel}</div>
-              <p className="text-slate-600 text-sm max-w-md mx-auto">
-                {scores.revenueVisibility >= 70
-                  ? "Your governance foundations are solid. Focus on optimising conversion rates and expanding automation depth."
-                  : scores.revenueVisibility >= 45
-                  ? "Visible governance gaps are costing you revenue. Prioritise the recommendations below."
-                  : "Your funnel has significant uncontrolled leakage. Every month without governance is compounding the cost."}
-              </p>
-            </div>
-
-            {/* 3 score rings */}
-            <div className="bg-white rounded-2xl border border-slate-200 p-6">
-              <h3 className="font-bold text-slate-900 mb-6">Score breakdown</h3>
-              <div className="flex justify-around">
-                <ScoreRing score={scores.revenueVisibility} label="Revenue Visibility" />
-                <ScoreRing score={scores.governanceScore} label="Governance" />
-                <ScoreRing score={Math.min(100, Math.round((data.hasCRM ? 25 : 0) + (data.hasMAP ? 25 : 0) + (data.hasBI ? 25 : 0) + (data.hasFinanceLink ? 25 : 0)))} label="Stack Coverage" />
-              </div>
-            </div>
-
-            {/* Leakage estimate */}
-            <div className="bg-red-50 border border-red-200 rounded-2xl p-6">
-              <div className="flex items-start gap-4">
-                <div className="text-3xl">🚰</div>
-                <div>
-                  <h3 className="font-bold text-slate-900 mb-1">Estimated monthly revenue leakage</h3>
-                  <div className="text-3xl font-black text-red-600 mb-2">
-                    ${scores.leakageEstimate.toLocaleString()}<span className="text-lg text-red-400">/month</span>
                   </div>
-                  <p className="text-sm text-slate-600">
-                    This estimate is based on your funnel volume, deal size, and the governance gaps identified above.
-                    It represents revenue that is currently invisible, misdirected, or lost to governance failures.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Biggest gap */}
-            <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5">
-              <h3 className="font-semibold text-slate-900 text-sm mb-1">Your biggest gap</h3>
-              <p className="text-amber-800 font-medium">{scores.biggestGap}</p>
-            </div>
-
-            {/* Recommendations */}
-            <div className="bg-white rounded-2xl border border-slate-200 p-6">
-              <h3 className="font-bold text-slate-900 mb-4">Top recommendations</h3>
-              <ol className="space-y-4">
-                {scores.recommendations.map((rec, i) => (
-                  <li key={i} className="flex gap-3">
-                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold flex items-center justify-center">{i + 1}</span>
-                    <p className="text-sm text-slate-700 leading-relaxed">{rec}</p>
-                  </li>
                 ))}
-              </ol>
+              </div>
             </div>
 
-            {/* Email report */}
-            <div className="bg-indigo-600 rounded-2xl p-6 text-white">
-              <h3 className="font-bold text-lg mb-1">Get the full PDF report</h3>
-              <p className="text-indigo-200 text-sm mb-4">
-                Receive a formatted PDF of your audit results, leakage estimate, and a 30-day action plan.
-                Includes the CRM Governance Checklist.
+            <LeakyFunnelAuditTool />
+
+            <div className="mt-14 pt-10 border-t border-slate-200 space-y-6">
+              <h2 className="text-2xl font-bold text-slate-900">Why funnels leak</h2>
+              <p className="text-slate-600 leading-relaxed">
+                Most leaky funnels are not broken at the conversion rates. They are broken at the seams.
+                Leads arrive and sit unrouted. Marketing and sales disagree on what an MQL is, so handoff
+                data is disputed. A CRM change goes live without a change register entry and half the pipeline
+                reports quietly stop matching reality. By the time leadership asks why the number moved,
+                no one can reconstruct what happened.
               </p>
-              {emailSent ? (
-                <div className="text-center py-2">
-                  <p className="font-semibold">Report on its way. Check your inbox.</p>
-                </div>
-              ) : (
-                <div className="space-y-3">
-                  <div className="flex gap-3">
-                    <label htmlFor="audit-report-email" className="sr-only">Email address</label>
-                    <input
-                      id="audit-report-email"
-                      type="email"
-                      name="email"
-                      autoComplete="email"
-                      placeholder="name@company.com"
-                      value={email}
-                      onChange={e => setEmail(e.target.value)}
-                      className="flex-1 rounded-lg px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-white"
-                    />
-                    <button
-                      onClick={sendReport}
-                      disabled={!siteKey || !emailValidation.ok || emailStatus === "sending"}
-                      className="bg-white text-indigo-700 font-semibold text-sm px-5 py-2 rounded-lg hover:bg-indigo-50 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                      {emailStatus === "sending" ? "Sending..." : "Send report"}
-                    </button>
-                  </div>
-                  {email && !emailValidation.ok ? (
-                    <p className="text-sm text-indigo-100">{emailValidation.message}</p>
-                  ) : null}
-                  {emailStatus === "error" && emailError ? (
-                    <p className="text-sm text-indigo-100">{emailError}</p>
-                  ) : null}
-                  {!siteKey ? (
-                    <p className="text-xs text-indigo-200">
-                      reCAPTCHA is not configured yet. Add NEXT_PUBLIC_RECAPTCHA_SITE_KEY and RECAPTCHA_SECRET_KEY.
-                    </p>
-                  ) : (
-                    <p className="text-xs text-indigo-200">
-                      This form is protected by reCAPTCHA. Google Privacy Policy and Terms of Service apply.
-                    </p>
-                  )}
-                </div>
-              )}
+              <h3 className="text-lg font-bold text-slate-900">Leakage compounds cycle over cycle</h3>
+              <p className="text-slate-600 leading-relaxed">
+                Each unaddressed governance gap creates a compounding cost. A missing MQL definition this
+                quarter becomes drifting metric definitions next quarter, then pipeline disputes the quarter
+                after that, then a forecast miss the quarter after that. The tools are usually fine.
+                The problem is that nobody owns the joins between them.
+              </p>
+              <p className="text-slate-600 leading-relaxed">
+                The audit is designed to put a number on that cost and surface the largest gap first,
+                so leadership teams can sequence the fix rather than trying to remediate everything at once.
+              </p>
             </div>
 
-            {/* Restart + CTA */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button
-                onClick={() => { setShowResults(false); setStep(1); setData(DEFAULT); setEmail(""); setEmailSent(false); setEmailStatus("idle"); setEmailError(""); }}
-                className="flex-1 border border-slate-300 text-slate-600 text-sm font-medium py-3 rounded-xl hover:bg-slate-50"
-              >
-                Start over
-              </button>
-              <Link
-                href="/contact"
-                className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold py-3 rounded-xl text-center"
-              >
-                Book a diagnostic conversation
-              </Link>
+            <div className="mt-14 pt-10 border-t border-slate-200">
+              <h2 className="text-2xl font-bold text-slate-900 mb-8">Frequently asked questions</h2>
+              <div className="space-y-6">
+                {faqSchema.mainEntity.map((q) => (
+                  <div key={q.name}>
+                    <h3 className="font-semibold text-slate-900 mb-2">{q.name}</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">{q.acceptedAnswer.text}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        )}
+
+          <div className="lg:col-span-1">
+            <div className="sticky top-8 space-y-6">
+
+              <div className="bg-violet-700 rounded-2xl p-6 text-white">
+                <h3 className="font-bold text-base mb-2">Get the full audit report</h3>
+                <p className="text-violet-200 text-sm mb-4">
+                  Complete the audit and enter your work email to receive the full PDF with your Revenue
+                  Visibility Score, leakage estimate and a prioritised 30-day action plan.
+                </p>
+                <Link href="#leaky-funnel-audit" className="block w-full bg-white text-violet-700 font-semibold text-sm px-4 py-2.5 rounded-lg hover:bg-violet-50 text-center">
+                  Run the audit
+                </Link>
+              </div>
+
+              <div className="bg-slate-50 rounded-2xl p-5 border border-slate-100">
+                <div className="flex items-start gap-4">
+                  <Image src="/team/tejas.jpg" alt="Tejas Dhabalia" width={64} height={64} className="rounded-xl object-cover flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-slate-900">Tejas Dhabalia</div>
+                    <div className="text-xs text-slate-500 mb-2">Co-founder, DS Consulting</div>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      Twenty years across marketing operations, RevOps and CRM governance. Leads the
+                      revenue operations practice at DS Consulting and has rebuilt funnel governance
+                      for mid-market B2B and B2C teams on Salesforce, HubSpot and Dynamics.
+                    </p>
+                    <a href={site.linkedin.tejas} target="_blank" rel="noopener noreferrer" className="inline-block mt-3 text-xs text-indigo-600 hover:underline font-medium">
+                      LinkedIn profile →
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white border border-slate-100 rounded-2xl p-5">
+                <h4 className="font-semibold text-slate-900 text-sm mb-3">Related services</h4>
+                <div className="space-y-2">
+                  {[
+                    { label: "Marketing Automation Services",   href: "/services/marketing-automation" },
+                    { label: "CRM Architecture and Governance", href: "/services/marketing-automation/crm-architecture-governance" },
+                    { label: "Revenue Analytics",               href: "/services/marketing-automation/revenue-analytics" },
+                  ].map((link) => (
+                    <Link key={link.href} href={link.href} className="block text-sm text-indigo-600 hover:underline">{link.label} →</Link>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5">
+                <h4 className="font-semibold text-slate-900 text-sm mb-3">Related tools</h4>
+                <div className="space-y-3">
+                  {[
+                    { label: "Revenue Attribution Readiness",  href: "/insights/revenue-attribution-readiness",  desc: "Can marketing prove its contribution?" },
+                    { label: "Marketing Automation Maturity",  href: "/insights/marketing-automation-maturity",  desc: "Benchmark your full automation setup" },
+                    { label: "AI Marketing Readiness",         href: "/insights/ai-marketing-readiness",         desc: "Is your stack ready for AI?" },
+                    { label: "CRM Governance Checklist",       href: "/insights/crm-governance-checklist",       desc: "Practitioner SOP template" },
+                  ].map((link) => (
+                    <Link key={link.href} href={link.href} className="block group">
+                      <span className="block text-sm font-medium text-slate-900 group-hover:text-violet-700">{link.label} →</span>
+                      <span className="block text-xs text-slate-500">{link.desc}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
       </div>
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(toolSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     </div>
   );
-}
-
-// Helper
-function govItems(d: AuditData): number {
-  return [d.hasSingleMQLDef, d.hasRouting, d.hasChangeControl, d.hasDashboard, d.hasMetricDoc, d.hasCRMOwner].filter(Boolean).length;
 }

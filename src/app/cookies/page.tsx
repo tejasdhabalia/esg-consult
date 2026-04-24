@@ -1,12 +1,13 @@
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
-import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `Cookies policy | ${site.legalName}`,
-  description: "How we use cookies and how you can control them.",
-  alternates: { canonical: absUrl("/cookies") },
-};
+export const metadata = pageMetadata({
+  title: "Cookies policy",
+  description:
+    "How DS Consulting uses cookies, which categories are set on this site, and how you can accept, reject or change your preferences at any time.",
+  path: "/cookies",
+});
 
 export default function CookiesPage() {
   return (

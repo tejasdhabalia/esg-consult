@@ -2,13 +2,14 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `Double materiality and ESRS mapping | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "Double materiality and ESRS mapping",
   description:
-    "How to run double materiality as a decision process and convert outcomes into disclosures, owners, KPIs, controls and evidence trails.",
-  alternates: { canonical: absUrl("/regulatory-hub/csrd-double-materiality-and-esrs-mapping") },
-};
+    "How to run double materiality as a decision process and convert outcomes into disclosures, owners, KPIs, controls and evidence trails under ESRS.",
+  path: "/regulatory-hub/csrd-double-materiality-and-esrs-mapping",
+});
 
 export default function Page() {
   const articleSchema = {

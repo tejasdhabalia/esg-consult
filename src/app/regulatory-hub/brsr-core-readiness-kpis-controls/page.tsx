@@ -2,13 +2,14 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `BRSR readiness: KPI mapping and controls | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "BRSR readiness: KPI mapping and controls",
   description:
-    "Convert BRSR indicators into a KPI inventory with owners, validations, evidence trails and a governance cadence leaders can rely on.",
-  alternates: { canonical: absUrl("/regulatory-hub/brsr-core-readiness-kpis-controls") },
-};
+    "Convert BRSR Core indicators into a KPI inventory with owners, validations, evidence trails and a governance cadence leaders can rely on each cycle.",
+  path: "/regulatory-hub/brsr-core-readiness-kpis-controls",
+});
 
 export default function Page() {
   const articleSchema = {

@@ -2,13 +2,14 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `CSRD scoping and timeline | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "CSRD scoping and timeline",
   description:
-    "A practical checklist to confirm CSRD scope, reporting timeline, group boundary decisions, and first-cycle readiness priorities.",
-  alternates: { canonical: absUrl("/regulatory-hub/csrd-in-scope-and-timeline") },
-};
+    "A practical checklist to confirm CSRD scope, reporting timelines, group boundary decisions and the first-cycle readiness priorities that matter most.",
+  path: "/regulatory-hub/csrd-in-scope-and-timeline",
+});
 
 export default function Page() {
   const articleSchema = {

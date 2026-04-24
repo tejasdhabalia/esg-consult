@@ -1,14 +1,15 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 import ChecklistDownloadForm from "@/components/ChecklistDownloadForm";
 
-export const metadata = {
-  title: `The CRM Governance SOP Template | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "The CRM governance SOP template",
   description:
-    "A practitioner checklist for teams who are done with dirty data, broken dashboards, and pipeline numbers that do not match reality. Written by Tejas Dhabalia, Co-founder of DS Consulting.",
-  alternates: { canonical: absUrl("/insights/crm-governance-checklist") },
-};
+    "A practitioner checklist for teams done with dirty data, broken dashboards and pipeline numbers that don't match reality. By Tejas Dhabalia, DS Consulting.",
+  path: "/insights/crm-governance-checklist",
+});
 
 const faqSchema = {
   "@context": "https://schema.org",

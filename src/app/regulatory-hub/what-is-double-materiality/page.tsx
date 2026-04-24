@@ -1,13 +1,13 @@
 import Link from "next/link";
-import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `What is Double Materiality? The CSRD Concept Explained | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "What is double materiality?",
   description:
-    "Double materiality requires companies to assess both their impact on sustainability topics and how sustainability topics affect their financial performance. A clear explanation of the concept required under CSRD and ESRS.",
-  alternates: { canonical: absUrl("/regulatory-hub/what-is-double-materiality") },
-};
+    "Double materiality requires companies to assess both their impact on sustainability topics and how sustainability topics affect financial performance.",
+  path: "/regulatory-hub/what-is-double-materiality",
+});
 
 const definitionSchema = {
   "@context": "https://schema.org",

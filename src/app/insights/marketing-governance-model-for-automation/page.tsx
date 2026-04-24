@@ -2,13 +2,14 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `Marketing automation governance that scales | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "Marketing automation governance model",
   description:
-    "Why marketing automation breaks as teams grow, and how governance with ownership, definitions, SLAs, and change control protects performance.",
-  alternates: { canonical: absUrl("/insights/marketing-governance-model-for-automation") },
-};
+    "Why marketing automation breaks as teams grow, and how governance with ownership, definitions, SLAs and change control protects performance.",
+  path: "/insights/marketing-governance-model-for-automation",
+});
 
 export default function Page() {
   const breadcrumbSchema = {

@@ -1,13 +1,13 @@
 import Link from "next/link";
-import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `What is CSRD? The Corporate Sustainability Reporting Directive Explained | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "What is CSRD? A practical explainer",
   description:
-    "CSRD (Corporate Sustainability Reporting Directive) is the EU regulation requiring large companies to report sustainability information under ESRS standards. Learn who is in scope, key timelines, and what it means for your organisation.",
-  alternates: { canonical: absUrl("/regulatory-hub/what-is-csrd") },
-};
+    "CSRD is the EU regulation requiring large companies to report sustainability information under ESRS. Who is in scope, key timelines and what it means for you.",
+  path: "/regulatory-hub/what-is-csrd",
+});
 
 const definitionSchema = {
   "@context": "https://schema.org",

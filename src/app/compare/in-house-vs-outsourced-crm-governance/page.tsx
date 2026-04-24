@@ -1,14 +1,14 @@
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
-import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `In house vs Outsourced CRM Governance: Which is Right? | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "In-house vs outsourced CRM governance",
   description:
-    "A practical comparison of building CRM governance in house vs outsourcing governance and implementation. Covers speed, cost, ownership, cross functional alignment, and how to stop CRM firefighting.",
-  alternates: { canonical: absUrl("/compare/in-house-vs-outsourced-crm-governance") },
-};
+    "Building CRM governance in-house vs outsourcing it. Speed, cost, ownership, cross-functional alignment and how to stop CRM firefighting for good.",
+  path: "/compare/in-house-vs-outsourced-crm-governance",
+});
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",

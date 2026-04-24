@@ -2,14 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 import AttributionTool from "./AttributionTool";
 
-export const metadata = {
-  title: `Revenue Attribution Readiness Check | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "Revenue attribution readiness check",
   description:
-    "Can your marketing team prove its contribution to revenue? Three sections covering attribution model, data connectivity, and reporting. Includes a board-confidence rating.",
-  alternates: { canonical: absUrl("/insights/revenue-attribution-readiness") },
-};
+    "Can your marketing team prove its contribution to revenue? Three sections on attribution model, data connectivity and reporting, with a board-ready rating.",
+  path: "/insights/revenue-attribution-readiness",
+});
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -38,15 +39,18 @@ const faqSchema = {
   ],
 };
 
-const articleSchema = {
+const toolSchema = {
   "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "Revenue Attribution Readiness Check",
+  "@type": "WebApplication",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  name: "Revenue Attribution Readiness Check",
   description: "A 3-step assessment that tells you whether your marketing team can prove its contribution to revenue, and what it would take to get there.",
   author: { "@type": "Person", name: "Tejas Dhabalia", jobTitle: "Co-founder and Principal Consultant", url: absUrl("/team"), sameAs: site.linkedin.tejas },
   publisher: { "@type": "Organization", name: site.legalName, url: site.baseUrl },
   url: absUrl("/insights/revenue-attribution-readiness"),
-  datePublished: "2026-04-01",
+  dateCreated: "2026-04-01",
   dateModified: "2026-04-01",
 };
 
@@ -230,7 +234,7 @@ export default function RevenueAttributionReadinessPage() {
         </div>
       </div>
 
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(toolSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     </div>

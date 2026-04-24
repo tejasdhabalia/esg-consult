@@ -1,12 +1,13 @@
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
-import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `Accessibility | ${site.legalName}`,
-  description: "Our accessibility commitment and how to request support.",
-  alternates: { canonical: absUrl("/accessibility") },
-};
+export const metadata = pageMetadata({
+  title: "Accessibility",
+  description:
+    "Our accessibility commitment and how to request support, raise accessibility concerns, or request content in alternate formats.",
+  path: "/accessibility",
+});
 
 export default function AccessibilityPage() {
   return (

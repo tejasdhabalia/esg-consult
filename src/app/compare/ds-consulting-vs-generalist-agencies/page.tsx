@@ -1,14 +1,14 @@
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
-import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `DS Consulting vs Generalist Agencies: Which Partner for ESG and RevOps? | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "DS Consulting vs generalist agencies",
   description:
-    "A direct comparison of working with DS Consulting vs a generalist marketing or ESG agency. Understand governance depth, implementation ownership, and how each approach performs for mid-market organisations across ESG readiness and revenue visibility.",
-  alternates: { canonical: absUrl("/compare/ds-consulting-vs-generalist-agencies") },
-};
+    "Which partner is right for ESG and RevOps: a specialist advisory like DS Consulting, or a generalist marketing or ESG agency? Governance, ownership, fit.",
+  path: "/compare/ds-consulting-vs-generalist-agencies",
+});
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",

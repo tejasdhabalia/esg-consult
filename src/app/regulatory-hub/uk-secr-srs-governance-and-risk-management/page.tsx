@@ -2,13 +2,14 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `UK SECR and SRS governance and risk management | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "UK SECR and SRS governance",
   description:
-    "How to structure oversight, decision rights, risk linkage, and evidence so SECR and SRS disclosures remain defensible and repeatable.",
-  alternates: { canonical: absUrl("/regulatory-hub/uk-secr-srs-governance-and-risk-management") },
-};
+    "Structure SECR and SRS oversight, decision rights, risk linkage and evidence so climate disclosures remain defensible and repeatable each cycle.",
+  path: "/regulatory-hub/uk-secr-srs-governance-and-risk-management",
+});
 
 export default function Page() {
   const articleSchema = {

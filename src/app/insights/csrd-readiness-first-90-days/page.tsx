@@ -1,14 +1,15 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 import ChecklistDownloadForm from "@/components/ChecklistDownloadForm";
 
-export const metadata = {
-  title: `CSRD Readiness Checklist | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "CSRD readiness: the first 90 days",
   description:
-    "A practical checklist for CFOs, CSOs, and leadership teams preparing for their first CSRD reporting cycle, from scoping and double materiality to data governance and assurance readiness.",
-  alternates: { canonical: absUrl("/insights/csrd-readiness-first-90-days") },
-};
+    "A practical checklist for CFOs and sustainability leaders preparing for their first CSRD reporting cycle. Scoping, double materiality, data, assurance.",
+  path: "/insights/csrd-readiness-first-90-days",
+});
 
 const faqSchema = {
   "@context": "https://schema.org",

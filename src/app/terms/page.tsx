@@ -1,12 +1,13 @@
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
-import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `Terms of use | ${site.legalName}`,
-  description: "Website terms, disclaimers, and acceptable use.",
-  alternates: { canonical: absUrl("/terms") },
-};
+export const metadata = pageMetadata({
+  title: "Terms of use",
+  description:
+    "Website terms of use, disclaimers and acceptable use covering content, attribution, third-party references and limits of liability.",
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (

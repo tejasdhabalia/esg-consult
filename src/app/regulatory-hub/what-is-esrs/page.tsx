@@ -1,13 +1,13 @@
 import Link from "next/link";
-import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `What is ESRS? European Sustainability Reporting Standards Explained | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "What is ESRS? The CSRD standards",
   description:
-    "ESRS (European Sustainability Reporting Standards) are the mandatory standards under which companies report under CSRD. Learn the full structure: ESRS 1, ESRS 2, and the topic-specific E, S, and G standards.",
-  alternates: { canonical: absUrl("/regulatory-hub/what-is-esrs") },
-};
+    "ESRS are the mandatory standards companies report under for CSRD. The full structure: ESRS 1, ESRS 2, plus the topic-specific E, S and G standards.",
+  path: "/regulatory-hub/what-is-esrs",
+});
 
 const definitionSchema = {
   "@context": "https://schema.org",
