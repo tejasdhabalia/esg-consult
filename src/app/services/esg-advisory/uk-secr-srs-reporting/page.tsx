@@ -2,13 +2,14 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `UK SECR and SRS reporting | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "UK SECR and SRS reporting",
   description:
-    "Advisory plus implementation for UK SECR and SRS reporting. Covers scoping, energy and carbon data, emissions methodology, KPI development, narrative drafting, evidence mapping, and improvement roadmap.",
-  alternates: { canonical: absUrl("/services/esg-advisory/uk-secr-srs-reporting") },
-};
+    "UK SECR and SRS reporting support. Scoping, energy and carbon data, emissions methodology, KPI development, narrative drafting and evidence mapping.",
+  path: "/services/esg-advisory/uk-secr-srs-reporting",
+});
 
 const faqSchema = {
   "@context": "https://schema.org",

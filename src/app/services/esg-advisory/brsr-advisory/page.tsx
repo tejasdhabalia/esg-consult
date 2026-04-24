@@ -2,13 +2,14 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `BRSR Advisory | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "BRSR advisory and readiness",
   description:
-    "Advisory plus implementation for SEBI BRSR readiness including KPI mapping, ESG data governance, controls, evidence trails, value chain approach and repeatable reporting workflows for India listed companies.",
-  alternates: { canonical: absUrl("/services/esg-advisory/brsr-advisory") },
-};
+    "SEBI BRSR readiness for listed companies in India. KPI mapping, ESG data governance, controls, evidence trails and repeatable reporting workflows.",
+  path: "/services/esg-advisory/brsr-advisory",
+});
 
 export default function BRSRAdvisoryPage() {
   const breadcrumbSchema = {

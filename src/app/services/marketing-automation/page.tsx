@@ -2,13 +2,14 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `Marketing Automation, RevOps and AI Marketing Systems | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "Marketing automation, RevOps and AI",
   description:
-    "Advisory plus implementation for marketing automation and revenue operations. Lifecycle orchestration, CRM governance, omnichannel automation, AI-enabled content workflows, and measurement leaders can trust across B2B and B2C.",
-  alternates: { canonical: absUrl("/services/marketing-automation") },
-};
+    "Marketing automation, CRM governance, lifecycle orchestration, AI-enabled content and revenue measurement leaders can trust, across B2B and B2C.",
+  path: "/services/marketing-automation",
+});
 
 export default function MarketingAutomationPage() {
   const breadcrumbSchema = {

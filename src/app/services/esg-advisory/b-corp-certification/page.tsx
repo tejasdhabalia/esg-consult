@@ -1,13 +1,13 @@
 import ESGServicePage from "@/components/ESGServicePage";
 import { esgServiceConfigs } from "@/lib/esgServiceConfigs";
-import { site } from "@/lib/site";
-import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `B Corp certification advisory | ${site.legalName}`,
-  description: "B Corp certification advisory for organisations that need a structured readiness plan, stronger evidence, and practical coordination across policy, data, and operating model changes.",
-  alternates: { canonical: absUrl("/services/esg-advisory/b-corp-certification") },
-};
+export const metadata = pageMetadata({
+  title: "B Corp certification advisory",
+  description:
+    "B Corp certification readiness. Structured assessment across policy, data, evidence trails and operating model, with practical coordination through submission.",
+  path: "/services/esg-advisory/b-corp-certification",
+});
 
 export default function Page() {
   return <ESGServicePage config={esgServiceConfigs.b_corp_certification} />;

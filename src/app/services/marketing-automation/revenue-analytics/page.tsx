@@ -2,13 +2,14 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `Revenue Analytics and Measurement | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "Revenue analytics and measurement",
   description:
-    "Advisory plus implementation for revenue analytics and measurement. Funnel and lifecycle definitions, metric governance, CRM to finance alignment, retention analytics, and dashboards leaders can trust.",
-  alternates: { canonical: absUrl("/services/marketing-automation/revenue-analytics") },
-};
+    "Funnel and lifecycle definitions, metric governance, CRM-to-finance alignment, retention analytics and dashboards leaders can trust. Built for B2B and B2C.",
+  path: "/services/marketing-automation/revenue-analytics",
+});
 
 export default function RevenueAnalyticsPage() {
   const breadcrumbSchema = {

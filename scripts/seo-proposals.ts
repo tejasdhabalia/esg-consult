@@ -10,6 +10,8 @@
  * - isInteractiveTool: true only for pages that are genuinely interactive tools
  *   (e.g., assessments, audits, calculators). Triggers articleSchema -> toolSchema
  *   swap in the page.tsx.
+ *
+ * The script is idempotent. Already-converted pages show "(no changes)" on re-run.
  */
 
 export type SeoProposal = {
@@ -74,7 +76,7 @@ export const proposals: Record<string, SeoProposal> = {
   },
 
   // ============================================================
-  // BATCH 2 - Service detail pages (20 pages)
+  // BATCH 2 - Service detail pages (20 pages, already applied)
   // ============================================================
   "/services/esg-advisory": {
     title: "ESG advisory and reporting services",
@@ -178,6 +180,157 @@ export const proposals: Record<string, SeoProposal> = {
   },
 
   // ============================================================
-  // BATCH 3 onwards - to be added
+  // BATCH 3 - Final batch: compare, regulatory hub, insights, legal
   // ============================================================
+
+  // Compare sub-pages (2)
+  "/compare/ds-consulting-vs-generalist-agencies": {
+    title: "DS Consulting vs generalist agencies",
+    description:
+      "Which partner is right for ESG and RevOps: a specialist advisory like DS Consulting, or a generalist marketing or ESG agency? Governance, ownership, fit.",
+  },
+  "/compare/in-house-vs-outsourced-crm-governance": {
+    title: "In-house vs outsourced CRM governance",
+    description:
+      "Building CRM governance in-house vs outsourcing it. Speed, cost, ownership, cross-functional alignment and how to stop CRM firefighting for good.",
+  },
+
+  // Regulatory hub sub-pages (10)
+  "/regulatory-hub/what-is-csrd": {
+    title: "What is CSRD? A practical explainer",
+    description:
+      "CSRD is the EU regulation requiring large companies to report sustainability information under ESRS. Who is in scope, key timelines and what it means for you.",
+  },
+  "/regulatory-hub/what-is-esrs": {
+    title: "What is ESRS? The CSRD standards",
+    description:
+      "ESRS are the mandatory standards companies report under for CSRD. The full structure: ESRS 1, ESRS 2, plus the topic-specific E, S and G standards.",
+  },
+  "/regulatory-hub/what-is-double-materiality": {
+    title: "What is double materiality?",
+    description:
+      "Double materiality requires companies to assess both their impact on sustainability topics and how sustainability topics affect financial performance.",
+  },
+  "/regulatory-hub/what-is-sebi-brsr": {
+    title: "What is SEBI BRSR? A practical guide",
+    description:
+      "SEBI BRSR is India's mandatory ESG disclosure framework for listed companies. BRSR Core, who must report, the 9 principles and assurance requirements.",
+  },
+  "/regulatory-hub/csrd-in-scope-and-timeline": {
+    title: "CSRD scoping and timeline",
+    description:
+      "A practical checklist to confirm CSRD scope, reporting timelines, group boundary decisions and the first-cycle readiness priorities that matter most.",
+  },
+  "/regulatory-hub/csrd-double-materiality-and-esrs-mapping": {
+    title: "Double materiality and ESRS mapping",
+    description:
+      "How to run double materiality as a decision process and convert outcomes into disclosures, owners, KPIs, controls and evidence trails under ESRS.",
+  },
+  "/regulatory-hub/brsr-core-readiness-kpis-controls": {
+    title: "BRSR readiness: KPI mapping and controls",
+    description:
+      "Convert BRSR Core indicators into a KPI inventory with owners, validations, evidence trails and a governance cadence leaders can rely on each cycle.",
+  },
+  "/regulatory-hub/brsr-value-chain-data-collection": {
+    title: "BRSR value chain data collection",
+    description:
+      "A phased BRSR value chain approach: prioritisation, supplier workflows, assumptions documentation and cycle-by-cycle improvement through governance.",
+  },
+  "/regulatory-hub/uk-secr-srs-governance-and-risk-management": {
+    title: "UK SECR and SRS governance",
+    description:
+      "Structure SECR and SRS oversight, decision rights, risk linkage and evidence so climate disclosures remain defensible and repeatable each cycle.",
+  },
+  "/regulatory-hub/uk-secr-srs-metrics-targets-and-evidence": {
+    title: "UK SECR and SRS metrics and targets",
+    description:
+      "Practical decisions for SECR and SRS metrics, targets, emissions data governance, controls and evidence trails that reduce late-cycle rework.",
+  },
+
+  // Insights (13 pages. /insights/ai-marketing-readiness already done manually.
+  // /insights/leaky-funnel-audit requires manual layout.tsx - see instructions.)
+  "/insights/cdp-response-planning-pack": {
+    title: "CDP response planning pack",
+    description:
+      "Run CDP response preparation in a structured way before deadlines compress the work. Ownership map, evidence workstream and defined review cadence.",
+  },
+  "/insights/climate-risk-register-template": {
+    title: "Climate risk register template",
+    description:
+      "A practical guide to structuring climate risk in a form leadership, finance and operations teams can review, prioritise and connect to action planning.",
+  },
+  "/insights/crm-governance-checklist": {
+    title: "The CRM governance SOP template",
+    description:
+      "A practitioner checklist for teams done with dirty data, broken dashboards and pipeline numbers that don't match reality. By Tejas Dhabalia, DS Consulting.",
+  },
+  "/insights/csrd-readiness-first-90-days": {
+    title: "CSRD readiness: the first 90 days",
+    description:
+      "A practical checklist for CFOs and sustainability leaders preparing for their first CSRD reporting cycle. Scoping, double materiality, data, assurance.",
+  },
+  "/insights/ecovadis-evidence-matrix": {
+    title: "EcoVadis evidence matrix",
+    description:
+      "A practical submission-planning matrix for teams that need to organise policy, action, metrics and supporting evidence before uploading documents.",
+  },
+  "/insights/esg-tender-response-question-bank": {
+    title: "ESG tender response question bank",
+    description:
+      "A commercial-use library for teams answering ESG questions in customer tenders, procurement forms and supplier questionnaires without a standard playbook.",
+  },
+  "/insights/marketing-automation-maturity": {
+    title: "Marketing automation maturity scorecard",
+    description:
+      "Score your marketing automation against top-quartile benchmarks across data, platform, governance and attribution. Free interactive tool from DS Consulting.",
+    isInteractiveTool: true,
+  },
+  "/insights/marketing-governance-model-for-automation": {
+    title: "Marketing automation governance model",
+    description:
+      "Why marketing automation breaks as teams grow, and how governance with ownership, definitions, SLAs and change control protects performance.",
+  },
+  "/insights/net-zero-roadmap-starter": {
+    title: "Net zero roadmap starter",
+    description:
+      "A practical decision guide for leadership teams ready to move from emissions calculation to a credible decarbonisation roadmap with owners and cadence.",
+  },
+  "/insights/revenue-attribution-readiness": {
+    title: "Revenue attribution readiness check",
+    description:
+      "Can your marketing team prove its contribution to revenue? Three sections on attribution model, data connectivity and reporting, with a board-ready rating.",
+    isInteractiveTool: true,
+  },
+  "/insights/scope-3-supplier-data-request-pack": {
+    title: "Scope 3 supplier data request pack",
+    description:
+      "A working guide for leadership teams that need better Scope 3 supplier data without creating chaos across procurement, sustainability and operations.",
+  },
+  "/insights/sustainability-steering-committee-charter": {
+    title: "Sustainability steering committee charter",
+    description:
+      "A practical governance guide for leadership teams that need a real ESG operating cadence, not a vague cross-functional working group meeting monthly.",
+  },
+
+  // Legal pages (4). Short descriptions are acceptable for these.
+  "/accessibility": {
+    title: "Accessibility",
+    description:
+      "Our accessibility commitment and how to request support, raise accessibility concerns, or request content in alternate formats.",
+  },
+  "/cookies": {
+    title: "Cookies policy",
+    description:
+      "How DS Consulting uses cookies, which categories are set on this site, and how you can accept, reject or change your preferences at any time.",
+  },
+  "/privacy": {
+    title: "Privacy policy",
+    description:
+      "How DS Consulting handles personal data, cookies and website analytics. Includes your rights and how to request access, correction or deletion.",
+  },
+  "/terms": {
+    title: "Terms of use",
+    description:
+      "Website terms of use, disclaimers and acceptable use covering content, attribution, third-party references and limits of liability.",
+  },
 };

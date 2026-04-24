@@ -1,13 +1,13 @@
 import ESGServicePage from "@/components/ESGServicePage";
 import { esgServiceConfigs } from "@/lib/esgServiceConfigs";
-import { site } from "@/lib/site";
-import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `Outsourced sustainability management | ${site.legalName}`,
-  description: "Outsourced sustainability management for organisations that need sustained ESG leadership capacity, programme coordination, and governance support without building a full in-house team immediately.",
-  alternates: { canonical: absUrl("/services/esg-advisory/outsourced-sustainability-management") },
-};
+export const metadata = pageMetadata({
+  title: "Outsourced sustainability management",
+  description:
+    "Sustained ESG leadership capacity, programme coordination and governance support without needing to build a full in-house sustainability team.",
+  path: "/services/esg-advisory/outsourced-sustainability-management",
+});
 
 export default function Page() {
   return <ESGServicePage config={esgServiceConfigs.outsourced_sustainability_management} />;

@@ -7,7 +7,7 @@ import { pageMetadata } from "@/lib/page-metadata";
 export const metadata = pageMetadata({
   title: "ESG readiness and revenue visibility",
   description:
-    "Governed ESG reporting and revenue visibility systems for leadership teams. Advisory plus implementation across CSRD, BRSR, SECR, Marketing Automation and CRM governance.",
+    "Governed ESG reporting and revenue visibility systems for leadership teams. Advisory plus implementation across CSRD, BRSR, marketing automation and CRM governance.",
   path: "/",
 });
 

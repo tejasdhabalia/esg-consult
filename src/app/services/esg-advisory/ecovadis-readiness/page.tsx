@@ -2,13 +2,14 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `EcoVadis readiness advisory | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "EcoVadis readiness advisory",
   description:
-    "EcoVadis readiness advisory for organisations that need a stronger score and a submission-ready evidence trail. We assess gaps, strengthen policies, map evidence, and review the submission before you hit send.",
-  alternates: { canonical: absUrl("/services/esg-advisory/ecovadis-readiness") },
-};
+    "A stronger EcoVadis score and a submission-ready evidence trail. We assess gaps, strengthen policies, map evidence and review before you hit send.",
+  path: "/services/esg-advisory/ecovadis-readiness",
+});
 
 const faqSchema = {
   "@context": "https://schema.org",

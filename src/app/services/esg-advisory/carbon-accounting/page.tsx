@@ -2,13 +2,14 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `Carbon Accounting and GHG Inventory | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "Carbon accounting and GHG inventory",
   description:
-    "Complete, defensible Scope 1, 2 and 3 carbon inventory aligned with the GHG Protocol Corporate Standard. Regulatory compliance across TCFD, CSRD, UK SECR, and ISO 14064. Net zero roadmaps and SBTi-aligned target setting.",
-  alternates: { canonical: absUrl("/services/esg-advisory/carbon-accounting") },
-};
+    "Defensible Scope 1, 2 and 3 carbon inventories aligned to the GHG Protocol. Compliance with TCFD, CSRD, UK SECR and ISO 14064, with SBTi-aligned targets.",
+  path: "/services/esg-advisory/carbon-accounting",
+});
 
 export default function CarbonAccountingPage() {
   const breadcrumbSchema = {

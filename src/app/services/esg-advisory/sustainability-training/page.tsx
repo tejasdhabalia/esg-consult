@@ -1,13 +1,13 @@
 import ESGServicePage from "@/components/ESGServicePage";
 import { esgServiceConfigs } from "@/lib/esgServiceConfigs";
-import { site } from "@/lib/site";
-import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `Sustainability training and enablement | ${site.legalName}`,
-  description: "Sustainability training and enablement for organisations that need shared understanding, better decision quality, and stronger execution across leadership, functional teams, and programme owners.",
-  alternates: { canonical: absUrl("/services/esg-advisory/sustainability-training") },
-};
+export const metadata = pageMetadata({
+  title: "Sustainability training and enablement",
+  description:
+    "ESG and sustainability training for leadership, functional teams and programme owners. Shared understanding, better decisions and stronger execution.",
+  path: "/services/esg-advisory/sustainability-training",
+});
 
 export default function Page() {
   return <ESGServicePage config={esgServiceConfigs.sustainability_training} />;

@@ -2,13 +2,14 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `CRM Architecture and Governance | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "CRM architecture and governance",
   description:
-    "Advisory plus implementation for CRM architecture and governance. Data model discipline, source of truth, integrations across finance and service, controls, evidence trails, and reporting definitions leaders can trust.",
-  alternates: { canonical: absUrl("/services/marketing-automation/crm-architecture-governance") },
-};
+    "CRM architecture and governance. Data model discipline, single source of truth, integrations with finance and service, controls and reporting definitions.",
+  path: "/services/marketing-automation/crm-architecture-governance",
+});
 
 export default function CRMGovernancePage() {
   const breadcrumbSchema = {

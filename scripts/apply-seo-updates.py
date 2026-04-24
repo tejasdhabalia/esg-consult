@@ -101,15 +101,51 @@ def route_to_filepath(route: str) -> Path:
 # ---------- File transformation ----------
 
 def find_metadata_block(content: str):
-    """Return (start_index, end_index) of the `export const metadata = { ... };` block,
-    or None if not found."""
-    m = re.search(r"export const metadata\s*=\s*\{", content)
-    if not m:
+    """Return (start_index, end_index) of the full `export const metadata = ...;` span.
+
+    Handles two patterns:
+      1. Plain:  export const metadata = { ... };
+      2. Helper: export const metadata = pageMetadata({ ... });
+
+    Returns None if no match.
+    """
+    # Pattern 2 (already using helper): detect first so we don't mis-match.
+    helper_m = re.search(r"export const metadata\s*=\s*pageMetadata\s*\(\s*\{", content)
+    if helper_m:
+        start = helper_m.start()
+        # Position of opening { of the object literal inside pageMetadata(
+        brace_pos = helper_m.end() - 1
+        depth = 0
+        i = brace_pos
+        while i < len(content):
+            c = content[i]
+            if c == "{":
+                depth += 1
+            elif c == "}":
+                depth -= 1
+                if depth == 0:
+                    end = i + 1
+                    # Expect closing ) and ;, with optional whitespace between
+                    while end < len(content) and content[end] in " \t":
+                        end += 1
+                    if end < len(content) and content[end] == ")":
+                        end += 1
+                    while end < len(content) and content[end] in " \t":
+                        end += 1
+                    if end < len(content) and content[end] == ";":
+                        end += 1
+                    return start, end
+            i += 1
         return None
-    start = m.start()
-    # Find matching brace from m.end()-1 (the '{')
-    i = m.end() - 1
+
+    # Pattern 1 (plain object literal)
+    plain_m = re.search(r"export const metadata\s*=\s*\{", content)
+    if not plain_m:
+        return None
+    start = plain_m.start()
+    brace_pos = plain_m.end() - 1
     depth = 0
+    i = brace_pos
     while i < len(content):
         c = content[i]
         if c == "{":
@@ -118,7 +154,6 @@ def find_metadata_block(content: str):
             depth -= 1
             if depth == 0:
                 end = i + 1
-                # Include trailing semicolon if present
                 if end < len(content) and content[end] == ";":
                     end += 1
                 return start, end
@@ -179,9 +214,16 @@ def swap_article_to_tool_schema(content: str) -> tuple[str, bool]:
     Swap articleSchema -> toolSchema (WebApplication type) for interactive tool pages.
     Returns (new_content, was_changed).
 
-    Only touches pages that have a clear articleSchema const and use it in a script tag.
+    Idempotent: if toolSchema already exists and articleSchema doesn't, returns unchanged.
     """
-    if "articleSchema" not in content:
+    has_tool = "toolSchema" in content
+    has_article = "articleSchema" in content
+
+    # Already converted
+    if has_tool and not has_article:
+        return content, False
+
+    if not has_article:
         return content, False
 
     # Rename the const declaration block. We need to find:
@@ -281,9 +323,12 @@ def apply_updates(content: str, route: str, proposal: dict) -> tuple[str, list]:
 
     # 3. Swap schema for interactive tool pages
     if proposal["isInteractiveTool"]:
+        had_tool_already = "toolSchema" in content and "articleSchema" not in content
         content, swapped = swap_article_to_tool_schema(content)
         if swapped:
             notes.append("swapped articleSchema -> toolSchema")
+        elif had_tool_already:
+            notes.append("toolSchema already present (skipped)")
         else:
             notes.append("isInteractiveTool=true but no articleSchema block found (skipped)")
 

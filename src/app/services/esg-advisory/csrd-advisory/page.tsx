@@ -2,13 +2,14 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `CSRD and ESRS Advisory | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "CSRD and ESRS readiness advisory",
   description:
-    "Advisory plus implementation for CSRD and ESRS readiness including scoping, double materiality support, ESRS disclosure mapping, ESG data governance, controls, evidence trails and assurance readiness preparation.",
-  alternates: { canonical: absUrl("/services/esg-advisory/csrd-advisory") },
-};
+    "CSRD and ESRS readiness. Scoping, double materiality, ESRS disclosure mapping, data governance, controls, evidence trails and assurance preparation.",
+  path: "/services/esg-advisory/csrd-advisory",
+});
 
 export default function CSRDAdvisoryPage() {
   const breadcrumbSchema = {

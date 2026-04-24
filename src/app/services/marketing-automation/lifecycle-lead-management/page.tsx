@@ -2,13 +2,14 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `Lifecycle and Lead Management | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "Lifecycle and lead management",
   description:
-    "Advisory plus implementation for lifecycle and lead management including journey orchestration, routing and SLAs, segmentation, prioritisation, omnichannel triggers, and governance for predictable execution across B2B and B2C.",
-  alternates: { canonical: absUrl("/services/marketing-automation/lifecycle-lead-management") },
-};
+    "Journey orchestration, lead routing and SLAs, segmentation, prioritisation and omnichannel triggers, with governance for predictable execution.",
+  path: "/services/marketing-automation/lifecycle-lead-management",
+});
 
 export default function LifecycleLeadManagementPage() {
   const breadcrumbSchema = {

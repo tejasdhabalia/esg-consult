@@ -7,7 +7,7 @@ import { pageMetadata } from "@/lib/page-metadata";
 export const metadata = pageMetadata({
   title: "Partner with DS Consulting",
   description:
-    "Referrals, ecosystem collaboration and structured service alliances. Includes a strategic finance partnership program with outsource accounting firm.",
+    "Referrals, ecosystem collaboration and structured service alliances. Includes a strategic finance partnership program with an outsourced accounting firm.",
   path: "/partners",
 });
 

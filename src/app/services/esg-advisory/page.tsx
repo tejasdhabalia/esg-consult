@@ -3,13 +3,14 @@ import PageHero from "@/components/PageHero";
 import { esgServicePathways } from "@/lib/esgServiceConfigs";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `ESG advisory | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "ESG advisory and reporting services",
   description:
-    "Advisory plus implementation for ESG readiness across carbon accounting, net zero, climate risk, CSRD, BRSR, EcoVadis, CDP, supplier engagement, sustainability strategy, and UK SECR and SRS reporting.",
-  alternates: { canonical: absUrl("/services/esg-advisory") },
-};
+    "ESG advisory spanning CSRD, BRSR, UK SECR, carbon accounting, net zero, climate risk, CDP, EcoVadis, supplier engagement and sustainability strategy.",
+  path: "/services/esg-advisory",
+});
 
 export default function ESGAdvisoryPage() {
   const breadcrumbSchema = {

@@ -1,13 +1,13 @@
 import ESGServicePage from "@/components/ESGServicePage";
 import { esgServiceConfigs } from "@/lib/esgServiceConfigs";
-import { site } from "@/lib/site";
-import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `CDP reporting advisory | ${site.legalName}`,
-  description: "CDP reporting advisory for organisations that need stronger climate disclosure, better evidence quality, and a more structured response process across data, governance, and narrative.",
-  alternates: { canonical: absUrl("/services/esg-advisory/cdp-reporting") },
-};
+export const metadata = pageMetadata({
+  title: "CDP reporting advisory",
+  description:
+    "Stronger CDP disclosure scores through better evidence quality and a structured response process across climate data, governance and narrative.",
+  path: "/services/esg-advisory/cdp-reporting",
+});
 
 export default function Page() {
   return <ESGServicePage config={esgServiceConfigs.cdp_reporting} />;

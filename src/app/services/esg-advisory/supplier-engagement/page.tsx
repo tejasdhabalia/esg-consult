@@ -1,13 +1,13 @@
 import ESGServicePage from "@/components/ESGServicePage";
 import { esgServiceConfigs } from "@/lib/esgServiceConfigs";
-import { site } from "@/lib/site";
-import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `Supplier engagement advisory | ${site.legalName}`,
-  description: "Supplier engagement advisory for organisations that need better sustainability data from the supply base, stronger procurement governance, and a more practical way to improve value chain readiness.",
-  alternates: { canonical: absUrl("/services/esg-advisory/supplier-engagement") },
-};
+export const metadata = pageMetadata({
+  title: "Supplier engagement advisory",
+  description:
+    "Better Scope 3 data from suppliers, stronger procurement governance and a practical way to improve value chain readiness across the supply base.",
+  path: "/services/esg-advisory/supplier-engagement",
+});
 
 export default function Page() {
   return <ESGServicePage config={esgServiceConfigs.supplier_engagement} />;
