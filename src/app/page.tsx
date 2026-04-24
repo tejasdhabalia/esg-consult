@@ -1,15 +1,15 @@
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
-import { absUrl } from "@/lib/url";
 import { getLatestInsights } from "@/lib/insights";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: "ESG Readiness & Revenue Visibility Consulting | DS Consulting",
+export const metadata = pageMetadata({
+  title: "ESG readiness and revenue visibility",
   description:
-    "DS Consulting helps CFOs, CSOs and CMOs build governed ESG systems and revenue visibility. Advisory plus implementation across climate and carbon, reporting and assessment, strategy and execution support, plus CRM governance and marketing automation.",
-  alternates: { canonical: absUrl("/") },
-};
+    "Governed ESG reporting and revenue visibility systems for leadership teams. Advisory plus implementation across CSRD, BRSR, SECR, Marketing Automation and CRM governance.",
+  path: "/",
+});
 
 export default function HomePage() {
   const latestInsights = getLatestInsights(3);

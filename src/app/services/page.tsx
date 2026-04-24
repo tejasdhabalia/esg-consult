@@ -2,13 +2,14 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `Services | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "ESG and RevOps advisory services",
   description:
-    "Advisory plus implementation across ESG readiness and revenue visibility. Services include ESG reporting systems, marketing automation and RevOps, AI and data architecture, growth operating models, and location intelligence.",
-  alternates: { canonical: absUrl("/services") },
-};
+    "The full service catalogue. ESG reporting systems, CRM governance, marketing automation and revenue operations, with governance built into every engagement.",
+  path: "/services",
+});
 
 export default function ServicesPage() {
   const breadcrumbSchema = {

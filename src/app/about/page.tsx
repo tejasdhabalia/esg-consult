@@ -3,13 +3,14 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `About | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "About our ESG and RevOps advisory",
   description:
-    "Why DS Consulting exists and how we deliver. Scalable transformation partner for ESG readiness and Revenue visibility through advisory plus implementation.",
-  alternates: { canonical: absUrl("/about") },
-};
+    "Why DS Consulting exists, who leads the firm and how we pair ESG readiness with revenue visibility through governed advisory plus implementation.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   const breadcrumbSchema = {

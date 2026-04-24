@@ -2,13 +2,14 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `Partnerships | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "Partner with DS Consulting",
   description:
-    "Partner with DS Consulting through referrals, ecosystem collaboration, or structured service alliances. Explore our finance capacity partnership model or contact us to discuss a fit.",
-  alternates: { canonical: absUrl("/partners") },
-};
+    "Referrals, ecosystem collaboration and structured service alliances. Includes a strategic finance partnership program with outsource accounting firm.",
+  path: "/partners",
+});
 
 const partnerTypes = [
   {

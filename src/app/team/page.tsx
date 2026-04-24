@@ -1,13 +1,14 @@
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
-import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `Team | ${site.legalName}`,
-  description: "Leadership and principal consultants at DS Consulting.",
-  alternates: { canonical: absUrl("/team") },
-};
+export const metadata = pageMetadata({
+  title: "Founders and principal consultants",
+  description:
+    "Meet the founders Tejas and Jigar Dhabalia, plus the principal consultants leading ESG advisory, CRM governance and revenue operations work.",
+  path: "/team",
+});
 
 export default function TeamPage() {
   const teamSchema = {

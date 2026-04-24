@@ -3,13 +3,14 @@ import PageHero from "@/components/PageHero";
 import LeadMagnetBanner from "@/components/LeadMagnetBanner";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `Regulatory hub | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "CSRD, BRSR and UK SECR regulatory hub",
   description:
-    "Searchable regulatory hub with practical guides for CSRD and ESRS, SEBI BRSR, and UK SECR and SRS reporting. Built for leaders who need scoping clarity, governance, evidence trails, and repeatable reporting workflows.",
-  alternates: { canonical: absUrl("/regulatory-hub") },
-};
+    "Practical guides for CSRD and ESRS, SEBI BRSR and UK SECR and SRS reporting. Covers scoping, governance, evidence trails and repeatable reporting workflows.",
+  path: "/regulatory-hub",
+});
 
 export default function RegulatoryHubPage() {
   const items: RegulatoryContentItem[] = [

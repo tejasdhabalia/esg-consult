@@ -1,12 +1,11 @@
-import { site } from "@/lib/site";
-import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `Case Studies | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "Engagement case studies",
   description:
-    "Selected engagement experience from DS Consulting. ESG readiness and revenue visibility outcomes delivered for leadership teams across B2B and B2C organisations.",
-  alternates: { canonical: absUrl("/case-studies") },
-};
+    "Selected engagements from DS Consulting. ESG readiness and revenue visibility outcomes for leadership teams across B2B and B2C organisations.",
+  path: "/case-studies",
+});
 
 export default function CaseStudiesPage() {
   return (

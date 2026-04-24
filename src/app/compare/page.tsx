@@ -2,13 +2,14 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `Compare | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "Compare approaches and partners",
   description:
-    "Side by side comparisons to help leaders choose the right approach for ESG readiness and revenue visibility. Built for clarity, tradeoffs, and practical next steps.",
-  alternates: { canonical: absUrl("/compare") },
-};
+    "Side-by-side comparisons to help leaders choose between approaches and partners for ESG readiness and revenue visibility. Clarity, tradeoffs, next steps.",
+  path: "/compare",
+});
 
 const comparePages = [
   {

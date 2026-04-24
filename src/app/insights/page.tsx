@@ -3,13 +3,14 @@ import InsightsHubClient from "@/components/InsightsHubClient";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
 import { getAllInsightsNewestFirst } from "@/lib/insights";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `Insights | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "Insights, guides and tools",
   description:
-    "Searchable insights across ESG readiness and marketing automation. Practical guides, checklists, and tools for leaders who want governed execution and measurable outcomes.",
-  alternates: { canonical: absUrl("/insights") },
-};
+    "Practical guides, interactive tools and checklists across ESG readiness, CRM governance and marketing automation. Built for governed execution.",
+  path: "/insights",
+});
 
 export default function InsightsPage() {
   const items = getAllInsightsNewestFirst();

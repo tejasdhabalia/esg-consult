@@ -2,13 +2,14 @@ import PageHero from "@/components/PageHero";
 import ContactFormClient from "@/components/ContactFormClient";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `Contact | ${site.legalName}`,
+export const metadata = pageMetadata({
+  title: "Start a conversation",
   description:
-    "Contact DS Consulting for ESG readiness and revenue visibility. For partnerships and talent, use the dedicated email routes.",
-  alternates: { canonical: absUrl("/contact") },
-};
+    "Get in touch about ESG readiness, CRM governance or revenue visibility engagements. Separate routes for partner inquiries and talent applications.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   const contactSchema = {
