@@ -7,7 +7,7 @@ import { pageMetadata } from "@/lib/page-metadata";
 export const metadata = pageMetadata({
   title: "ESG readiness and revenue visibility",
   description:
-    "Governed ESG reporting and revenue visibility systems for leadership teams. Advisory plus implementation across CSRD, BRSR, marketing automation and CRM governance.",
+    "Governed ESG reporting, revenue visibility and AI governance for leadership teams. CSRD, BRSR, CRM governance and AI readiness audits.",
   path: "/",
 });
 
@@ -20,7 +20,7 @@ export default function HomePage() {
     name: site.legalName,
     url: site.baseUrl,
     description:
-      "ESG readiness and Revenue Visibility consulting through advisory plus implementation. Specialists across climate and carbon, reporting and assessment, strategy and execution support, plus CRM governance and marketing automation.",
+      "ESG readiness, Revenue Visibility and AI governance consulting through advisory plus implementation. Specialists across climate and carbon, reporting and assessment, strategy and execution support, plus CRM governance, marketing automation and AI readiness audits.",
     founder: [
       { "@type": "Person", name: "Jigar Dhabalia", sameAs: site.linkedin.jigar },
       { "@type": "Person", name: "Tejas Dhabalia", sameAs: site.linkedin.tejas },
@@ -40,6 +40,8 @@ export default function HomePage() {
       "CRM Governance",
       "Marketing Automation",
       "Revenue Analytics",
+      "AI Governance",
+      "AI Readiness Audit",
     ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
@@ -65,6 +67,16 @@ export default function HomePage() {
             url: `${site.baseUrl}/services/marketing-automation`,
           },
         },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "AI Governance and Readiness Audit",
+            description:
+              "A four-week AI readiness audit for mid-market leadership teams. Cross-functional AI usage map, governance gap and risk findings and a board-ready plan with named owners.",
+            url: `${site.baseUrl}/services/ai-governance`,
+          },
+        },
       ],
     },
     sameAs: [site.linkedin.tejas, site.linkedin.jigar],
@@ -79,7 +91,7 @@ export default function HomePage() {
         name: `What does ${site.displayName} do?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: "DS Consulting supports leaders with ESG readiness and Revenue Visibility through advisory plus implementation. We build governed systems across ESG reporting, marketing automation, CRM governance, and measurement discipline.",
+          text: "DS Consulting supports leaders with ESG readiness, Revenue Visibility and AI governance through advisory plus implementation. We build governed systems across ESG reporting, marketing automation, CRM governance, AI readiness and measurement discipline.",
         },
       },
       {
@@ -103,7 +115,7 @@ export default function HomePage() {
         name: "What outcomes do you prioritise most strongly?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Two outcomes are prioritised most strongly: ESG readiness and Revenue Visibility. ESG readiness means defensible reporting systems with governance, controls and evidence trails. Revenue Visibility means lifecycle definitions, CRM discipline, and dashboards leaders can trust.",
+          text: "Three outcomes are prioritised most strongly: ESG readiness, Revenue Visibility, and AI governance. ESG readiness means defensible reporting systems with governance, controls and evidence trails. Revenue Visibility means lifecycle definitions, CRM discipline, and dashboards leaders can trust. AI governance is a four-week readiness audit that maps AI usage across functions and produces a board-ready plan.",
         },
       },
       {
@@ -170,82 +182,67 @@ export default function HomePage() {
           <h2 className="text-3xl font-semibold">What we help you deliver</h2>
           <p className="mt-4 text-slate-600 max-w-4xl">
             Most organisations do not need more tools. They need clarity, governance, and an
-            operating model that teams can run. We focus on two leader outcomes and build the
+            operating model that teams can run. We focus on three leader outcomes and build the
             systems behind them.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-10 mt-14">
-            <div className="bg-slate-50 border rounded-2xl p-10">
+          <div className="grid md:grid-cols-3 gap-8 mt-14">
+            <div className="bg-slate-50 border rounded-2xl p-8 flex flex-col">
               <h3 className="text-2xl font-semibold text-emerald-700">ESG readiness</h3>
               <p className="mt-4 text-slate-600">
-                We support the full ESG pathway, from climate and carbon foundations, to
-                reporting and assessment readiness, to strategy and execution support. This is
-                built for leadership teams that need ESG programmes to run with clear ownership,
-                controls, and evidence trails, not just one-off reporting help.
+                Defensible ESG reporting systems with governance, controls and evidence trails.
+                Built for leadership teams that need ESG programmes to run with clear ownership,
+                not just one-off reporting help.
               </p>
-
-              <div className="grid gap-4 mt-8">
-                {[
-                  [
-                    "Climate and carbon",
-                    "Carbon accounting, Scope 1 to 3 baselines, net zero and decarbonisation planning, climate risk, and supplier engagement.",
-                  ],
-                  [
-                    "Reporting and assessment",
-                    "CSRD and ESRS, SEBI BRSR, UK SECR and SRS, EcoVadis readiness, CDP reporting, disclosure mapping, and assessment support.",
-                  ],
-                  [
-                    "Strategy and execution support",
-                    "Sustainability strategy, training, outsourced sustainability management, product sustainability, and RFP or tender support.",
-                  ],
-                ].map(([title, description]) => (
-                  <div key={title} className="rounded-2xl border border-emerald-100 bg-white p-5">
-                    <div className="font-semibold text-slate-900">{title}</div>
-                    <div className="mt-2 text-sm text-slate-600">{description}</div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-6 flex flex-wrap gap-3">
+              <ul className="mt-5 text-sm text-slate-600 list-disc list-inside space-y-2">
+                <li>Climate and carbon, Scope 1 to 3 baselines, net zero planning</li>
+                <li>CSRD and ESRS, SEBI BRSR, UK SECR and SRS, EcoVadis, CDP</li>
+                <li>Sustainability strategy, training, outsourced management</li>
+              </ul>
+              <div className="mt-auto pt-6 flex flex-wrap gap-3">
                 <Link href="/services/esg-advisory" className="text-emerald-700 font-medium">
                   Explore ESG advisory →
-                </Link>
-                <Link
-                  href="/services/esg-advisory/carbon-accounting"
-                  className="underline text-slate-700"
-                >
-                  Carbon accounting
-                </Link>
-                <Link href="/regulatory-hub" className="underline text-slate-700">
-                  Regulatory hub
                 </Link>
               </div>
             </div>
 
-            <div className="bg-slate-50 border rounded-2xl p-10">
+            <div className="bg-slate-50 border rounded-2xl p-8 flex flex-col">
               <h3 className="text-2xl font-semibold text-indigo-700">Revenue Visibility</h3>
               <p className="mt-4 text-slate-600">
                 Lifecycle definitions, CRM discipline, automation workflows, and measurement
-                governance so leaders can trust dashboards. Works for B2B pipeline and
-                renewals, and B2C retention and lifecycle performance.
+                governance so leaders can trust dashboards. Works for B2B pipeline and renewals,
+                and B2C retention and lifecycle performance.
               </p>
               <ul className="mt-5 text-sm text-slate-600 list-disc list-inside space-y-2">
                 <li>CRM architecture and governance across teams and tools</li>
                 <li>Lifecycle orchestration, routing, SLAs, and operating cadence</li>
                 <li>Revenue analytics, definitions governance, and executive dashboards</li>
               </ul>
-              <div className="mt-6 flex flex-wrap gap-3">
+              <div className="mt-auto pt-6 flex flex-wrap gap-3">
                 <Link
                   href="/services/marketing-automation"
                   className="text-indigo-700 font-medium"
                 >
                   Explore Marketing Automation →
                 </Link>
-                <Link
-                  href="/services/marketing-automation/revenue-analytics"
-                  className="underline text-slate-700"
-                >
-                  Revenue Analytics
+              </div>
+            </div>
+
+            <div className="bg-slate-50 border rounded-2xl p-8 flex flex-col">
+              <h3 className="text-2xl font-semibold text-indigo-700">AI governance</h3>
+              <p className="mt-4 text-slate-600">
+                A four-week audit that maps AI usage across your functions, finds the governance
+                and spend gaps, and produces a board-ready plan with named owners. Built for
+                leadership teams whose AI usage has outgrown their AI policy.
+              </p>
+              <ul className="mt-5 text-sm text-slate-600 list-disc list-inside space-y-2">
+                <li>Cross-functional AI usage map and spend inventory</li>
+                <li>Governance gap, risk findings, and 90 day roadmap</li>
+                <li>Board-ready report and internal playbook your team owns</li>
+              </ul>
+              <div className="mt-auto pt-6 flex flex-wrap gap-3">
+                <Link href="/services/ai-governance" className="text-indigo-700 font-medium">
+                  Explore the AI audit →
                 </Link>
               </div>
             </div>
@@ -257,12 +254,8 @@ export default function HomePage() {
               When needed, we support adjacent transformation work that strengthens delivery
               outcomes.
             </p>
-            <div className="grid md:grid-cols-4 gap-8 mt-8">
+            <div className="grid md:grid-cols-3 gap-8 mt-8">
               {[
-                [
-                  "AI and data strategy",
-                  "Use-case prioritisation, data architecture clarity, and governed AI adoption for measurable outcomes.",
-                ],
                 [
                   "Growth operating model",
                   "Commercial operating model discipline, performance governance, and execution cadence across teams.",
@@ -366,8 +359,8 @@ export default function HomePage() {
                 "We connect data, processes, and measurement across CRM, finance, service, and marketing systems.",
               ],
               [
-                "AI with guardrails",
-                "Faster content and insights with governance for quality, compliance, and measurable performance.",
+                "Governance before model selection",
+                "Most AI initiatives in mid-market businesses stall on governance, not on the model. We map AI usage across functions, name the gaps and exposures, and produce a board-ready plan your team can fund and run.",
               ],
             ].map(([t, d]) => (
               <div key={t} className="bg-white border rounded-2xl p-8 shadow-sm">

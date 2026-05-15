@@ -43,6 +43,9 @@ export default function SiteFooter() {
               <Link href="/services/esg-advisory">ESG Advisory</Link>
             </li>
             <li>
+              <Link href="/services/ai-governance">AI Governance</Link>
+            </li>
+            <li>
               <Link href="/services/marketing-automation">Marketing Automation</Link>
             </li>
             <li>

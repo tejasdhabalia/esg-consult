@@ -1,12 +1,12 @@
 export const llmsManifest = {
-  "generatedAt": "2026-04-24T10:03:57.678Z",
-  "pageCount": 61,
+  "generatedAt": "2026-05-15T06:33:27.481Z",
+  "pageCount": 62,
   "pages": [
     {
       "route": "/",
       "url": "https://www.consult-ds.com",
       "title": "ESG readiness and revenue visibility",
-      "description": "Governed ESG reporting and revenue visibility systems for leadership teams. Advisory plus implementation across CSRD, BRSR, marketing automation and CRM governance.",
+      "description": "Governed ESG reporting, revenue visibility and AI governance for leadership teams. CSRD, BRSR, CRM governance and AI readiness audits.",
       "section": "home",
       "priority": 1,
       "changeFrequency": "weekly",
@@ -411,6 +411,16 @@ export const llmsManifest = {
       "priority": 0.9,
       "changeFrequency": "monthly",
       "source": "src\\app\\services\\page.tsx"
+    },
+    {
+      "route": "/services/ai-governance",
+      "url": "https://www.consult-ds.com/services/ai-governance",
+      "title": "AI governance and readiness audit",
+      "description": "A four-week AI readiness audit for mid-market leadership teams. Board-ready findings, governance gaps and three priorities for the next 90 days.",
+      "section": "services",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\services\\ai-governance\\page.tsx"
     },
     {
       "route": "/services/esg-advisory",
