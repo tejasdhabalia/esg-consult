@@ -8,7 +8,7 @@ export const metadata = pageMetadata({
   title: "Revenue analytics and measurement",
   description:
     "Funnel and lifecycle definitions, metric governance, CRM-to-finance alignment, retention analytics and dashboards leaders can trust. Built for B2B and B2C.",
-  path: "/services/marketing-automation/revenue-analytics",
+  path: "/services/crm-and-revenue-operations/revenue-analytics",
 });
 
 export default function RevenueAnalyticsPage() {
@@ -18,8 +18,8 @@ export default function RevenueAnalyticsPage() {
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: absUrl("/") },
       { "@type": "ListItem", position: 2, name: "Services", item: absUrl("/services") },
-      { "@type": "ListItem", position: 3, name: "Marketing Automation and RevOps", item: absUrl("/services/marketing-automation") },
-      { "@type": "ListItem", position: 4, name: "Revenue Analytics and Measurement", item: absUrl("/services/marketing-automation/revenue-analytics") },
+      { "@type": "ListItem", position: 3, name: "Marketing Automation and RevOps", item: absUrl("/services/crm-and-revenue-operations") },
+      { "@type": "ListItem", position: 4, name: "Revenue Analytics and Measurement", item: absUrl("/services/crm-and-revenue-operations/revenue-analytics") },
     ],
   };
 
@@ -39,7 +39,7 @@ export default function RevenueAnalyticsPage() {
       "Attribution governance",
       "Executive insights workflow",
     ],
-    url: absUrl("/services/marketing-automation/revenue-analytics"),
+    url: absUrl("/services/crm-and-revenue-operations/revenue-analytics"),
   };
 
   const faqSchema = {
@@ -87,7 +87,7 @@ export default function RevenueAnalyticsPage() {
         title="Revenue analytics and measurement"
         subtitle="Build measurement leaders can trust. Funnel and lifecycle definitions, metric governance, CRM to finance alignment, and dashboards aligned to operating reality across B2B and B2C."
         primaryAction={{ label: "Book a consultation", href: "/contact" }}
-        secondaryAction={{ label: "Back to Marketing Automation", href: "/services/marketing-automation" }}
+        secondaryAction={{ label: "Back to Marketing Automation", href: "/services/crm-and-revenue-operations" }}
         imageSrc="/hero/revenue.jpg"
         imageAlt="Revenue analytics and executive dashboard measurement for B2B and B2C organisations"
       />
@@ -101,10 +101,10 @@ export default function RevenueAnalyticsPage() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
-            <Link className="underline text-slate-700" href="/services/marketing-automation/crm-architecture-governance">
+            <Link className="underline text-slate-700" href="/services/crm-and-revenue-operations/crm-architecture-governance">
               CRM governance
             </Link>
-            <Link className="underline text-slate-700" href="/services/marketing-automation/lifecycle-lead-management">
+            <Link className="underline text-slate-700" href="/services/crm-and-revenue-operations/lifecycle-lead-management">
               Lifecycle and lead management
             </Link>
           </div>

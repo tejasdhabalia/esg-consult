@@ -8,7 +8,7 @@ export const metadata = pageMetadata({
   title: "Lifecycle and lead management",
   description:
     "Journey orchestration, lead routing and SLAs, segmentation, prioritisation and omnichannel triggers, with governance for predictable execution.",
-  path: "/services/marketing-automation/lifecycle-lead-management",
+  path: "/services/crm-and-revenue-operations/lifecycle-lead-management",
 });
 
 export default function LifecycleLeadManagementPage() {
@@ -18,8 +18,8 @@ export default function LifecycleLeadManagementPage() {
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: absUrl("/") },
       { "@type": "ListItem", position: 2, name: "Services", item: absUrl("/services") },
-      { "@type": "ListItem", position: 3, name: "Marketing Automation and RevOps", item: absUrl("/services/marketing-automation") },
-      { "@type": "ListItem", position: 4, name: "Lifecycle and Lead Management", item: absUrl("/services/marketing-automation/lifecycle-lead-management") },
+      { "@type": "ListItem", position: 3, name: "Marketing Automation and RevOps", item: absUrl("/services/crm-and-revenue-operations") },
+      { "@type": "ListItem", position: 4, name: "Lifecycle and Lead Management", item: absUrl("/services/crm-and-revenue-operations/lifecycle-lead-management") },
     ],
   };
 
@@ -39,7 +39,7 @@ export default function LifecycleLeadManagementPage() {
       "Lead scoring and prioritisation",
       "Lifecycle measurement and cadence",
     ],
-    url: absUrl("/services/marketing-automation/lifecycle-lead-management"),
+    url: absUrl("/services/crm-and-revenue-operations/lifecycle-lead-management"),
   };
 
   const faqSchema = {
@@ -87,7 +87,7 @@ export default function LifecycleLeadManagementPage() {
         title="Lifecycle and lead management"
         subtitle="Design and implementation of lifecycle stages, routing and SLAs, journey orchestration, segmentation and measurement so execution becomes predictable across marketing, sales and service."
         primaryAction={{ label: "Book a consultation", href: "/contact" }}
-        secondaryAction={{ label: "Back to Marketing Automation", href: "/services/marketing-automation" }}
+        secondaryAction={{ label: "Back to Marketing Automation", href: "/services/crm-and-revenue-operations" }}
         imageSrc="/hero/lifecycle.jpg"
         imageAlt="Lifecycle orchestration and lead management consulting for B2B and B2C organisations"
       />
@@ -101,10 +101,10 @@ export default function LifecycleLeadManagementPage() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
-            <Link className="underline text-slate-700" href="/services/marketing-automation/crm-architecture-governance">
+            <Link className="underline text-slate-700" href="/services/crm-and-revenue-operations/crm-architecture-governance">
               CRM governance
             </Link>
-            <Link className="underline text-slate-700" href="/services/marketing-automation/revenue-analytics">
+            <Link className="underline text-slate-700" href="/services/crm-and-revenue-operations/revenue-analytics">
               Revenue analytics and measurement
             </Link>
           </div>

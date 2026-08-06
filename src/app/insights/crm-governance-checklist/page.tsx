@@ -408,9 +408,9 @@ export default function CRMGovernanceChecklistPage() {
                 <h4 className="font-semibold text-slate-900 text-sm mb-3">Related services</h4>
                 <div className="space-y-2">
                   {[
-                    { label: "CRM Architecture and Governance", href: "/services/marketing-automation/crm-architecture-governance" },
-                    { label: "Lifecycle and Lead Management", href: "/services/marketing-automation/lifecycle-lead-management" },
-                    { label: "Revenue Analytics", href: "/services/marketing-automation/revenue-analytics" },
+                    { label: "CRM Architecture and Governance", href: "/services/crm-and-revenue-operations/crm-architecture-governance" },
+                    { label: "Lifecycle and Lead Management", href: "/services/crm-and-revenue-operations/lifecycle-lead-management" },
+                    { label: "Revenue Analytics", href: "/services/crm-and-revenue-operations/revenue-analytics" },
                   ].map((link) => (
                     <Link
                       key={link.href}

@@ -181,7 +181,7 @@ export default function InhouseVsOutsourcedPage() {
         subtitle="A decision guide for leaders who want a CRM that teams trust. Use this page to choose the right model for speed, ownership, and long term reliability."
         painLine="If teams do not trust dashboards and handoffs are inconsistent, stabilise governance before adding more automation."
         primaryAction={{ label: "Talk to us", href: "/contact" }}
-        secondaryAction={{ label: "Marketing automation services", href: "/services/marketing-automation" }}
+        secondaryAction={{ label: "Marketing automation services", href: "/services/crm-and-revenue-operations" }}
         imageSrc="/hero/crm.jpg"
         imageAlt="CRM governance comparison for in house versus outsourced delivery"
       />
@@ -299,10 +299,10 @@ export default function InhouseVsOutsourcedPage() {
                 Marketing Automation and RevOps
               </div>
               <div className="grid gap-2 text-sm">
-                <Link className="underline" href="/services/marketing-automation">Marketing automation hub</Link>
-                <Link className="underline" href="/services/marketing-automation/crm-architecture-governance">CRM architecture and governance</Link>
-                <Link className="underline" href="/services/marketing-automation/lifecycle-lead-management">Lifecycle and lead management</Link>
-                <Link className="underline" href="/services/marketing-automation/revenue-analytics">Revenue analytics and measurement</Link>
+                <Link className="underline" href="/services/crm-and-revenue-operations">Marketing automation hub</Link>
+                <Link className="underline" href="/services/crm-and-revenue-operations/crm-architecture-governance">CRM architecture and governance</Link>
+                <Link className="underline" href="/services/crm-and-revenue-operations/lifecycle-lead-management">Lifecycle and lead management</Link>
+                <Link className="underline" href="/services/crm-and-revenue-operations/revenue-analytics">Revenue analytics and measurement</Link>
               </div>
             </div>
 

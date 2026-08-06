@@ -42,7 +42,7 @@ export default function Page() {
       <PageHero
         title="The governance model behind marketing automation that actually scales"
         subtitle="Tools do not create scale. Governance does. This guide outlines what leadership should put in place so automation stays reliable as teams, channels, and journeys grow."
-        primaryAction={{ label: "Marketing automation services", href: "/services/marketing-automation" }}
+        primaryAction={{ label: "Marketing automation services", href: "/services/crm-and-revenue-operations" }}
         secondaryAction={{ label: "Back to Insights", href: "/insights" }}
         imageSrc="/hero/marketing.jpg"
         imageAlt="Marketing automation and governance"
@@ -80,10 +80,10 @@ export default function Page() {
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row gap-3">
-            <Link href="/services/marketing-automation/crm-architecture-governance" className="border px-6 py-3 rounded-lg font-medium text-center">
+            <Link href="/services/crm-and-revenue-operations/crm-architecture-governance" className="border px-6 py-3 rounded-lg font-medium text-center">
               CRM governance
             </Link>
-            <Link href="/services/marketing-automation/lifecycle-lead-management" className="border px-6 py-3 rounded-lg font-medium text-center">
+            <Link href="/services/crm-and-revenue-operations/lifecycle-lead-management" className="border px-6 py-3 rounded-lg font-medium text-center">
               Lifecycle management
             </Link>
             <Link href="/contact" className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium text-center">

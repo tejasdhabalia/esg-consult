@@ -8,7 +8,7 @@ export const metadata = pageMetadata({
   title: "CRM and revenue operations",
   description:
     "CRM architecture, lifecycle definitions, marketing automation and revenue reporting, built so the numbers in the board pack match the numbers in the system.",
-  path: "/services/marketing-automation",
+  path: "/services/crm-and-revenue-operations",
 });
 
 export default function MarketingAutomationPage() {
@@ -18,7 +18,7 @@ export default function MarketingAutomationPage() {
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: absUrl("/") },
       { "@type": "ListItem", position: 2, name: "Services", item: absUrl("/services") },
-      { "@type": "ListItem", position: 3, name: "Marketing Automation and RevOps", item: absUrl("/services/marketing-automation") },
+      { "@type": "ListItem", position: 3, name: "Marketing Automation and RevOps", item: absUrl("/services/crm-and-revenue-operations") },
     ],
   };
 
@@ -38,7 +38,7 @@ export default function MarketingAutomationPage() {
       "Content operations and AI workflows",
       "Revenue analytics and measurement governance",
     ],
-    url: absUrl("/services/marketing-automation"),
+    url: absUrl("/services/crm-and-revenue-operations"),
   };
 
   const faqSchema = {
@@ -176,7 +176,7 @@ export default function MarketingAutomationPage() {
 
           <div className="grid md:grid-cols-3 gap-8 mt-14">
             <Link
-              href="/services/marketing-automation/crm-architecture-governance"
+              href="/services/crm-and-revenue-operations/crm-architecture-governance"
               className="bg-slate-50 border rounded-2xl p-8 shadow-sm hover:shadow-md transition"
             >
               <div className="text-lg font-semibold text-indigo-700">CRM architecture and governance</div>
@@ -187,7 +187,7 @@ export default function MarketingAutomationPage() {
             </Link>
 
             <Link
-              href="/services/marketing-automation/lifecycle-lead-management"
+              href="/services/crm-and-revenue-operations/lifecycle-lead-management"
               className="bg-slate-50 border rounded-2xl p-8 shadow-sm hover:shadow-md transition"
             >
               <div className="text-lg font-semibold text-indigo-700">Lifecycle and lead management</div>
@@ -198,7 +198,7 @@ export default function MarketingAutomationPage() {
             </Link>
 
             <Link
-              href="/services/marketing-automation/revenue-analytics"
+              href="/services/crm-and-revenue-operations/revenue-analytics"
               className="bg-slate-50 border rounded-2xl p-8 shadow-sm hover:shadow-md transition"
             >
               <div className="text-lg font-semibold text-indigo-700">Revenue analytics and measurement</div>

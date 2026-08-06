@@ -8,7 +8,7 @@ export const metadata = pageMetadata({
   title: "CRM architecture and governance",
   description:
     "CRM architecture and governance. Data model discipline, single source of truth, integrations with finance and service, controls and reporting definitions.",
-  path: "/services/marketing-automation/crm-architecture-governance",
+  path: "/services/crm-and-revenue-operations/crm-architecture-governance",
 });
 
 export default function CRMGovernancePage() {
@@ -18,8 +18,8 @@ export default function CRMGovernancePage() {
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: absUrl("/") },
       { "@type": "ListItem", position: 2, name: "Services", item: absUrl("/services") },
-      { "@type": "ListItem", position: 3, name: "Marketing Automation and RevOps", item: absUrl("/services/marketing-automation") },
-      { "@type": "ListItem", position: 4, name: "CRM Architecture and Governance", item: absUrl("/services/marketing-automation/crm-architecture-governance") },
+      { "@type": "ListItem", position: 3, name: "Marketing Automation and RevOps", item: absUrl("/services/crm-and-revenue-operations") },
+      { "@type": "ListItem", position: 4, name: "CRM Architecture and Governance", item: absUrl("/services/crm-and-revenue-operations/crm-architecture-governance") },
     ],
   };
 
@@ -39,7 +39,7 @@ export default function CRMGovernancePage() {
       "Data quality controls and evidence trails",
       "Reporting definitions and dashboard governance",
     ],
-    url: absUrl("/services/marketing-automation/crm-architecture-governance"),
+    url: absUrl("/services/crm-and-revenue-operations/crm-architecture-governance"),
   };
 
   const faqSchema = {
@@ -87,7 +87,7 @@ export default function CRMGovernancePage() {
         title="CRM architecture and governance"
         subtitle="Build a CRM foundation leaders can trust. Data model discipline, source of truth, integrations across finance and service, controls, and reporting governance that keeps dashboards stable over time."
         primaryAction={{ label: "Book a consultation", href: "/contact" }}
-        secondaryAction={{ label: "Back to Marketing Automation", href: "/services/marketing-automation" }}
+        secondaryAction={{ label: "Back to Marketing Automation", href: "/services/crm-and-revenue-operations" }}
         imageSrc="/hero/crm.jpg"
         imageAlt="CRM governance and data architecture theme"
       />
@@ -101,10 +101,10 @@ export default function CRMGovernancePage() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
-            <Link className="underline text-slate-700" href="/services/marketing-automation/lifecycle-lead-management">
+            <Link className="underline text-slate-700" href="/services/crm-and-revenue-operations/lifecycle-lead-management">
               Lifecycle and lead management
             </Link>
-            <Link className="underline text-slate-700" href="/services/marketing-automation/revenue-analytics">
+            <Link className="underline text-slate-700" href="/services/crm-and-revenue-operations/revenue-analytics">
               Revenue analytics and measurement
             </Link>
           </div>

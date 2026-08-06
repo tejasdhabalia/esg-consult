@@ -1,5 +1,5 @@
 export const llmsManifest = {
-  "generatedAt": "2026-08-06T04:39:11.052Z",
+  "generatedAt": "2026-08-06T05:50:35.204Z",
   "pageCount": 65,
   "pages": [
     {
@@ -15,8 +15,8 @@ export const llmsManifest = {
     {
       "route": "/about",
       "url": "https://www.consult-ds.com/about",
-      "title": "About our ESG and RevOps advisory",
-      "description": "Why DS Consulting exists, who leads the firm and how we pair ESG readiness with revenue visibility through governed advisory plus implementation.",
+      "title": "About",
+      "description": "Why DS Consulting exists, who runs it, and how we combine hands-on systems knowledge with business depth on mid-market technology projects.",
       "section": "company",
       "priority": 0.75,
       "changeFrequency": "monthly",
@@ -25,8 +25,8 @@ export const llmsManifest = {
     {
       "route": "/contact",
       "url": "https://www.consult-ds.com/contact",
-      "title": "Start a conversation",
-      "description": "Get in touch about ESG readiness, CRM governance or revenue visibility engagements. Separate routes for partner inquiries and talent applications.",
+      "title": "Start with an assessment",
+      "description": "Two to four weeks at a fixed price, delivered as a decision document rather than a proposal. Tell us what you are working on and we will come prepared.",
       "section": "company",
       "priority": 0.8,
       "changeFrequency": "yearly",
@@ -35,8 +35,8 @@ export const llmsManifest = {
     {
       "route": "/team",
       "url": "https://www.consult-ds.com/team",
-      "title": "Founders and principal consultants",
-      "description": "Meet the founders Tejas and Jigar Dhabalia, plus the principal consultants leading ESG advisory, CRM governance and revenue operations work.",
+      "title": "Team",
+      "description": "The people who run DS Consulting. Tejas Dhabalia on systems, CRM and revenue operations, Jigar Dhabalia on ESG and CSRD reporting systems.",
       "section": "company",
       "priority": 0.7,
       "changeFrequency": "monthly",
@@ -263,16 +263,6 @@ export const llmsManifest = {
       "source": "src\\app\\terms\\page.tsx"
     },
     {
-      "route": "/case-studies",
-      "url": "https://www.consult-ds.com/case-studies",
-      "title": "Engagement case studies",
-      "description": "Selected engagements from DS Consulting. ESG readiness and revenue visibility outcomes for leadership teams across B2B and B2C organisations.",
-      "section": "other",
-      "priority": 0.3,
-      "changeFrequency": "monthly",
-      "source": "src\\app\\case-studies\\page.tsx"
-    },
-    {
       "route": "/partners",
       "url": "https://www.consult-ds.com/partners",
       "title": "Partner with DS Consulting",
@@ -403,6 +393,16 @@ export const llmsManifest = {
       "source": "src\\app\\regulatory-hub\\what-is-sebi-brsr\\page.tsx"
     },
     {
+      "route": "/services",
+      "url": "https://www.consult-ds.com/services",
+      "title": "Services",
+      "description": "Six service lines covering mid-market technology projects. Systems selection, delivery oversight, integration, CRM and revenue operations, AI in operations, and ESG reporting systems.",
+      "section": "services",
+      "priority": 0.9,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\services\\page.tsx"
+    },
+    {
       "route": "/services/ai-governance",
       "url": "https://www.consult-ds.com/services/ai-governance",
       "title": "AI governance and readiness audit",
@@ -418,9 +418,49 @@ export const llmsManifest = {
       "title": "AI in operations",
       "description": "Getting AI out of pilot and into operations for mid-market companies. Use case selection, data readiness, usage policy, accountability and a defined path to production.",
       "section": "services",
-      "priority": 0.5,
+      "priority": 0.9,
       "changeFrequency": "monthly",
       "source": "src\\app\\services\\ai-in-operations\\page.tsx"
+    },
+    {
+      "route": "/services/crm-and-revenue-operations",
+      "url": "https://www.consult-ds.com/services/crm-and-revenue-operations",
+      "title": "CRM and revenue operations",
+      "description": "CRM architecture, lifecycle definitions, marketing automation and revenue reporting, built so the numbers in the board pack match the numbers in the system.",
+      "section": "services",
+      "priority": 0.9,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\services\\crm-and-revenue-operations\\page.tsx"
+    },
+    {
+      "route": "/services/crm-and-revenue-operations/crm-architecture-governance",
+      "url": "https://www.consult-ds.com/services/crm-and-revenue-operations/crm-architecture-governance",
+      "title": "CRM architecture and governance",
+      "description": "CRM architecture and governance. Data model discipline, single source of truth, integrations with finance and service, controls and reporting definitions.",
+      "section": "services",
+      "priority": 0.85,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\services\\crm-and-revenue-operations\\crm-architecture-governance\\page.tsx"
+    },
+    {
+      "route": "/services/crm-and-revenue-operations/lifecycle-lead-management",
+      "url": "https://www.consult-ds.com/services/crm-and-revenue-operations/lifecycle-lead-management",
+      "title": "Lifecycle and lead management",
+      "description": "Journey orchestration, lead routing and SLAs, segmentation, prioritisation and omnichannel triggers, with governance for predictable execution.",
+      "section": "services",
+      "priority": 0.85,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\services\\crm-and-revenue-operations\\lifecycle-lead-management\\page.tsx"
+    },
+    {
+      "route": "/services/crm-and-revenue-operations/revenue-analytics",
+      "url": "https://www.consult-ds.com/services/crm-and-revenue-operations/revenue-analytics",
+      "title": "Revenue analytics and measurement",
+      "description": "Funnel and lifecycle definitions, metric governance, CRM-to-finance alignment, retention analytics and dashboards leaders can trust. Built for B2B and B2C.",
+      "section": "services",
+      "priority": 0.85,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\services\\crm-and-revenue-operations\\revenue-analytics\\page.tsx"
     },
     {
       "route": "/services/esg-advisory",
@@ -588,7 +628,7 @@ export const llmsManifest = {
       "title": "Implementation and delivery oversight",
       "description": "Independent oversight of ERP and CRM implementations. Scope control against the business case, acceptance testing, risk reporting and go-live readiness for mid-market companies.",
       "section": "services",
-      "priority": 0.5,
+      "priority": 0.9,
       "changeFrequency": "monthly",
       "source": "src\\app\\services\\implementation-oversight\\page.tsx"
     },
@@ -598,49 +638,9 @@ export const llmsManifest = {
       "title": "Integration",
       "description": "Systems integration for mid-market companies. Interface design across ERP, CRM and finance systems, middleware selection, data migration, error handling and reconciliation.",
       "section": "services",
-      "priority": 0.5,
-      "changeFrequency": "monthly",
-      "source": "src\\app\\services\\integration\\page.tsx"
-    },
-    {
-      "route": "/services/marketing-automation",
-      "url": "https://www.consult-ds.com/services/marketing-automation",
-      "title": "CRM and revenue operations",
-      "description": "CRM architecture, lifecycle definitions, marketing automation and revenue reporting, built so the numbers in the board pack match the numbers in the system.",
-      "section": "services",
       "priority": 0.9,
       "changeFrequency": "monthly",
-      "source": "src\\app\\services\\marketing-automation\\page.tsx"
-    },
-    {
-      "route": "/services/marketing-automation/crm-architecture-governance",
-      "url": "https://www.consult-ds.com/services/marketing-automation/crm-architecture-governance",
-      "title": "CRM architecture and governance",
-      "description": "CRM architecture and governance. Data model discipline, single source of truth, integrations with finance and service, controls and reporting definitions.",
-      "section": "services",
-      "priority": 0.85,
-      "changeFrequency": "monthly",
-      "source": "src\\app\\services\\marketing-automation\\crm-architecture-governance\\page.tsx"
-    },
-    {
-      "route": "/services/marketing-automation/lifecycle-lead-management",
-      "url": "https://www.consult-ds.com/services/marketing-automation/lifecycle-lead-management",
-      "title": "Lifecycle and lead management",
-      "description": "Journey orchestration, lead routing and SLAs, segmentation, prioritisation and omnichannel triggers, with governance for predictable execution.",
-      "section": "services",
-      "priority": 0.85,
-      "changeFrequency": "monthly",
-      "source": "src\\app\\services\\marketing-automation\\lifecycle-lead-management\\page.tsx"
-    },
-    {
-      "route": "/services/marketing-automation/revenue-analytics",
-      "url": "https://www.consult-ds.com/services/marketing-automation/revenue-analytics",
-      "title": "Revenue analytics and measurement",
-      "description": "Funnel and lifecycle definitions, metric governance, CRM-to-finance alignment, retention analytics and dashboards leaders can trust. Built for B2B and B2C.",
-      "section": "services",
-      "priority": 0.85,
-      "changeFrequency": "monthly",
-      "source": "src\\app\\services\\marketing-automation\\revenue-analytics\\page.tsx"
+      "source": "src\\app\\services\\integration\\page.tsx"
     },
     {
       "route": "/services/systems-selection",
@@ -648,7 +648,7 @@ export const llmsManifest = {
       "title": "Systems selection",
       "description": "Independent ERP, CRM and business systems selection for mid-market companies. Requirements, scored shortlist, structured demos and contract review. No vendor commissions.",
       "section": "services",
-      "priority": 0.5,
+      "priority": 0.9,
       "changeFrequency": "monthly",
       "source": "src\\app\\services\\systems-selection\\page.tsx"
     }

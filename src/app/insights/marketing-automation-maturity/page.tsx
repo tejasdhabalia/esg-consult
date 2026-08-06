@@ -234,10 +234,10 @@ export default function MarketingAutomationMaturityPage() {
                 <h4 className="font-semibold text-slate-900 text-sm mb-3">Related services</h4>
                 <div className="space-y-2">
                   {[
-                    { label: "CRM Architecture and Governance", href: "/services/marketing-automation/crm-architecture-governance" },
-                    { label: "Lifecycle and Lead Management",   href: "/services/marketing-automation/lifecycle-lead-management" },
-                    { label: "Revenue Analytics",              href: "/services/marketing-automation/revenue-analytics" },
-                    { label: "Marketing Automation Services",  href: "/services/marketing-automation" },
+                    { label: "CRM Architecture and Governance", href: "/services/crm-and-revenue-operations/crm-architecture-governance" },
+                    { label: "Lifecycle and Lead Management",   href: "/services/crm-and-revenue-operations/lifecycle-lead-management" },
+                    { label: "Revenue Analytics",              href: "/services/crm-and-revenue-operations/revenue-analytics" },
+                    { label: "Marketing Automation Services",  href: "/services/crm-and-revenue-operations" },
                   ].map((link) => (
                     <Link key={link.href} href={link.href} className="block text-sm text-indigo-600 hover:underline">{link.label} →</Link>
                   ))}

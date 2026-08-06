@@ -191,7 +191,7 @@ export default function CompareHubPage() {
               ESG advisory
             </Link>
             <Link
-              href="/services/marketing-automation"
+              href="/services/crm-and-revenue-operations"
               className="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-3 rounded-lg font-medium text-center"
             >
               Marketing automation and RevOps

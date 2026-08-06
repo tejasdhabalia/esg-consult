@@ -352,7 +352,7 @@ export default function AIGovernancePage() {
               </p>
             </Link>
             <Link
-              href="/services/marketing-automation"
+              href="/services/crm-and-revenue-operations"
               className="bg-slate-50 border rounded-2xl p-6 hover:border-indigo-200 transition-colors"
             >
               <div className="font-semibold text-slate-900">

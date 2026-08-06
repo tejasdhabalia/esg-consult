@@ -330,16 +330,16 @@ export default function DSConsultingVsGeneralistPage() {
                 Marketing Automation and RevOps
               </div>
               <div className="grid gap-2 text-sm">
-                <Link className="underline" href="/services/marketing-automation">
+                <Link className="underline" href="/services/crm-and-revenue-operations">
                   Marketing automation hub
                 </Link>
-                <Link className="underline" href="/services/marketing-automation/crm-architecture-governance">
+                <Link className="underline" href="/services/crm-and-revenue-operations/crm-architecture-governance">
                   CRM architecture and governance
                 </Link>
-                <Link className="underline" href="/services/marketing-automation/lifecycle-lead-management">
+                <Link className="underline" href="/services/crm-and-revenue-operations/lifecycle-lead-management">
                   Lifecycle and lead management
                 </Link>
-                <Link className="underline" href="/services/marketing-automation/revenue-analytics">
+                <Link className="underline" href="/services/crm-and-revenue-operations/revenue-analytics">
                   Revenue analytics and measurement
                 </Link>
               </div>

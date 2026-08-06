@@ -56,7 +56,7 @@ export const serviceLines: ServiceLine[] = [
     live: true,
   },
   {
-    route: "/services/marketing-automation",
+    route: "/services/crm-and-revenue-operations",
     label: "CRM and revenue operations",
     summary:
       "Lifecycle definitions, CRM architecture and reporting that survives contact with the sales team. Built so the numbers in the board pack match the numbers in the system.",

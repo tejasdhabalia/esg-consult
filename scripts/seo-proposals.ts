@@ -158,22 +158,22 @@ export const proposals: Record<string, SeoProposal> = {
     description:
       "UK SECR and SRS reporting support. Scoping, energy and carbon data, emissions methodology, KPI development, narrative drafting and evidence mapping.",
   },
-  "/services/marketing-automation": {
+  "/services/crm-and-revenue-operations": {
     title: "Marketing automation, RevOps and AI",
     description:
       "Marketing automation, CRM governance, lifecycle orchestration, AI-enabled content and revenue measurement leaders can trust, across B2B and B2C.",
   },
-  "/services/marketing-automation/crm-architecture-governance": {
+  "/services/crm-and-revenue-operations/crm-architecture-governance": {
     title: "CRM architecture and governance",
     description:
       "CRM architecture and governance. Data model discipline, single source of truth, integrations with finance and service, controls and reporting definitions.",
   },
-  "/services/marketing-automation/lifecycle-lead-management": {
+  "/services/crm-and-revenue-operations/lifecycle-lead-management": {
     title: "Lifecycle and lead management",
     description:
       "Journey orchestration, lead routing and SLAs, segmentation, prioritisation and omnichannel triggers, with governance for predictable execution.",
   },
-  "/services/marketing-automation/revenue-analytics": {
+  "/services/crm-and-revenue-operations/revenue-analytics": {
     title: "Revenue analytics and measurement",
     description:
       "Funnel and lifecycle definitions, metric governance, CRM-to-finance alignment, retention analytics and dashboards leaders can trust. Built for B2B and B2C.",
