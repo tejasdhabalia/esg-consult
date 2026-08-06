@@ -1,6 +1,6 @@
 import Link from "next/link";
-import NewsletterSignup from "@/components/NewsletterSignup";
 import { site } from "@/lib/site";
+import { serviceLines } from "@/lib/service-lines";
 
 function IconLinkedIn() {
   return (
@@ -16,40 +16,41 @@ function IconLinkedIn() {
 export default function SiteFooter() {
   return (
     <footer className="bg-slate-900 text-white mt-20">
-      {/* Newsletter strip 
-      <div className="border-b border-slate-800">
-        <div className="max-w-6xl mx-auto px-6 py-12">
-          <NewsletterSignup />
-        </div>
-      </div>
-	  */}
-      {/* Main links section */}
-      <div className="max-w-6xl mx-auto px-6 py-10 grid md:grid-cols-4 gap-6 text-sm">
+      <div className="max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-4 gap-8 text-sm">
         <div>
           <h4 className="font-semibold mb-2">{site.legalName}</h4>
           <div className="text-sm font-semibold">
             <span className="text-indigo-300 font-bold">{site.taglinePrimary}</span>{" "}
             <span className="text-white font-bold">{site.taglineSecondary}</span>
           </div>
-          <p className="text-slate-400 mt-3">
-            ESG readiness and Revenue Visibility through advisory plus implementation.
+          <p className="text-slate-400 mt-3 leading-relaxed">
+            Independent technology consulting and implementation for mid-market companies.
+          </p>
+          <p className="text-slate-400 mt-3 leading-relaxed">
+            {site.positioning.independenceShort}
           </p>
         </div>
 
         <div>
           <h4 className="font-semibold mb-2">Services</h4>
           <ul className="space-y-1 text-slate-400">
-            <li>
-              <Link href="/services/esg-advisory">ESG Advisory</Link>
-            </li>
-            <li>
-              <Link href="/services/ai-governance">AI Governance</Link>
-            </li>
-            <li>
-              <Link href="/services/marketing-automation">Marketing Automation</Link>
-            </li>
-            <li>
-              <Link href="/services">All Services</Link>
+            {serviceLines.map((line) =>
+              line.live ? (
+                <li key={line.route}>
+                  <Link href={line.route} className="hover:text-white">
+                    {line.label}
+                  </Link>
+                </li>
+              ) : (
+                <li key={line.route} className="text-slate-500">
+                  {line.label}
+                </li>
+              )
+            )}
+            <li className="pt-1">
+              <Link href="/services" className="hover:text-white">
+                All services
+              </Link>
             </li>
           </ul>
         </div>
@@ -58,16 +59,29 @@ export default function SiteFooter() {
           <h4 className="font-semibold mb-2">Company</h4>
           <ul className="space-y-1 text-slate-400">
             <li>
-              <Link href="/about">About</Link>
+              <Link href="/about" className="hover:text-white">
+                About
+              </Link>
             </li>
             <li>
-              <Link href="/insights">Insights</Link>
+              <Link href="/team" className="hover:text-white">
+                Team
+              </Link>
             </li>
             <li>
-              <Link href="/team">Team</Link>
+              <Link href="/insights" className="hover:text-white">
+                Insights
+              </Link>
             </li>
             <li>
-              <Link href="/contact">Contact</Link>
+              <Link href="/regulatory-hub" className="hover:text-white">
+                Regulatory hub
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact" className="hover:text-white">
+                Contact
+              </Link>
             </li>
           </ul>
         </div>
@@ -76,22 +90,29 @@ export default function SiteFooter() {
           <h4 className="font-semibold mb-2">Legal</h4>
           <ul className="space-y-1 text-slate-400">
             <li>
-              <Link href="/privacy">Privacy</Link>
+              <Link href="/privacy" className="hover:text-white">
+                Privacy
+              </Link>
             </li>
             <li>
-              <Link href="/terms">Terms</Link>
+              <Link href="/terms" className="hover:text-white">
+                Terms
+              </Link>
             </li>
             <li>
-              <Link href="/cookies">Cookies</Link>
+              <Link href="/cookies" className="hover:text-white">
+                Cookies
+              </Link>
             </li>
             <li>
-              <Link href="/accessibility">Accessibility</Link>
+              <Link href="/accessibility" className="hover:text-white">
+                Accessibility
+              </Link>
             </li>
           </ul>
         </div>
       </div>
 
-      {/* Bottom bar */}
       <div className="border-t border-slate-800">
         <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <div className="text-xs text-slate-500">
@@ -101,7 +122,7 @@ export default function SiteFooter() {
             <div className="text-xs text-slate-500">Follow us</div>
             <div className="flex items-center gap-3 text-slate-400">
               <a
-                href="https://www.linkedin.com/company/consult-ds"
+                href={site.linkedin.company}
                 aria-label="Company LinkedIn"
                 className="hover:text-white"
               >

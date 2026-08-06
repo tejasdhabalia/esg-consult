@@ -1,13 +1,14 @@
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
+import { serviceLines } from "@/lib/service-lines";
 import { absUrl } from "@/lib/url";
 import { pageMetadata } from "@/lib/page-metadata";
 
 export const metadata = pageMetadata({
-  title: "ESG and RevOps advisory services",
+  title: "Services",
   description:
-    "The full service catalogue. ESG reporting systems, CRM governance, marketing automation and revenue operations, with governance built into every engagement.",
+    "Six service lines covering mid-market technology projects. Systems selection, delivery oversight, integration, CRM and revenue operations, AI in operations, and ESG reporting systems.",
   path: "/services",
 });
 
@@ -25,14 +26,12 @@ export default function ServicesPage() {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: `${site.displayName} Services`,
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "ESG Advisory", url: absUrl("/services/esg-advisory") },
-      { "@type": "ListItem", position: 2, name: "Marketing Automation and RevOps", url: absUrl("/services/marketing-automation") },
-      { "@type": "ListItem", position: 3, name: "AI and Data Architecture", url: absUrl("/services") },
-      { "@type": "ListItem", position: 4, name: "Business Growth Operating Model", url: absUrl("/services") },
-      { "@type": "ListItem", position: 5, name: "Location Intelligence", url: absUrl("/services") },
-      { "@type": "ListItem", position: 6, name: "Carbon Accounting and GHG Inventory", url: absUrl("/services/esg-advisory/carbon-accounting") },
-    ],
+    itemListElement: serviceLines.map((line, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: line.label,
+      url: absUrl(line.route),
+    })),
   };
 
   const faqSchema = {
@@ -41,65 +40,58 @@ export default function ServicesPage() {
     mainEntity: [
       {
         "@type": "Question",
-        name: "Do you provide advisory only or advisory plus implementation?",
+        name: "Do you do the consulting and the implementation, or just one?",
         acceptedAnswer: {
           "@type": "Answer",
-          text:
-            "We provide advisory plus implementation. We define the operating model, implement workflows and governance, enable teams, and set a cadence that sustains outcomes after go-live.",
+          text: "Both. We scope the work and we deliver it. The people who scope your project are the people who deliver it, and anyone who will work on delivery is introduced to you during scoping.",
         },
       },
       {
         "@type": "Question",
-        name: "Which services should we start with if we want impact quickly?",
+        name: "What makes you different from a systems integrator?",
         acceptedAnswer: {
           "@type": "Answer",
-          text:
-            "Most teams start with a diagnostic. For ESG, that clarifies scope, data gaps, controls and evidence trails. For revenue systems, it clarifies lifecycle definitions, CRM governance, routing, and measurement reliability.",
+          text: "Depth on both sides. We have built these systems, so we can tell a configuration from a customisation and design an interface that survives contact with real data. We also read a business case, a close calendar and a board pack, so we can tell which requirement is load bearing and which is a preference.",
         },
       },
       {
         "@type": "Question",
-        name: "Do you work with both B2B and B2C organisations?",
+        name: "Can you come in halfway through a project that has already gone wrong?",
         acceptedAnswer: {
           "@type": "Answer",
-          text:
-            "Yes. B2B work focuses on lead and account lifecycle, routing and SLAs, pipeline visibility and renewals. B2C work focuses on omnichannel journeys, retention, repeat purchase, and content operations with governance.",
+          text: "Yes. Implementation and delivery oversight is often bought mid-project, once scope has drifted from the original business case. We start by establishing what was actually agreed and what has been built against it.",
         },
       },
       {
         "@type": "Question",
-        name: "Do you provide statutory audit or assurance for ESG reports?",
+        name: "Will you tell us which system to buy?",
         acceptedAnswer: {
           "@type": "Answer",
-          text:
-            "No. We do not provide statutory audit or assurance. We prepare organisations for assurance through governance, control design, documentation and evidence trail readiness.",
+          text: "Yes, and we will show you the scoring behind it. We take no commissions, referral fees, reseller margin or partner incentives from any software vendor, so there is nothing sitting between the recommendation and your interest.",
         },
       },
       {
         "@type": "Question",
-        name: "Do you offer fixed packages or custom consulting?",
+        name: "Do you provide IT support or manage our infrastructure?",
         acceptedAnswer: {
           "@type": "Answer",
-          text:
-            "We currently start with custom consulting. Once we understand your scope and constraints, we propose a phased plan with clear deliverables and measurable success metrics.",
+          text: "No. We do not provide IT support, help desk, networking or hardware, and we do not resell software.",
         },
       },
       {
         "@type": "Question",
-        name: "How do you use AI in your work?",
+        name: "Do you provide statutory audit or assurance on ESG reports?",
         acceptedAnswer: {
           "@type": "Answer",
-          text:
-            "We use AI to accelerate content workflows, improve segmentation and insights, and support decisioning. We implement governance so outputs remain compliant, measurable, and aligned to brand and stakeholder expectations.",
+          text: "No. We build the reporting system, the data ownership model, the controls and the evidence trail so that assurance can be performed by someone else.",
         },
       },
       {
         "@type": "Question",
-        name: "How do we engage DS Consulting?",
+        name: "How does an engagement start?",
         acceptedAnswer: {
           "@type": "Answer",
-          text:
-            "Most engagements begin with a diagnostic, then move into design, implementation and governance setup. Use the contact page to share your context and timeline.",
+          text: "With an assessment. Two to four weeks at a fixed price, delivered as a decision document rather than a proposal. You own the output whether or not you continue with us.",
         },
       },
     ],
@@ -108,129 +100,147 @@ export default function ServicesPage() {
   return (
     <div>
       <PageHero
-        title="Services built for measurable execution"
-        subtitle="We help leadership teams build governed systems that teams can run. Advisory plus implementation across ESG readiness, revenue visibility, and the operating models that connect tools, data, and delivery."
-        primaryAction={{ label: "Book a consultation", href: "/contact" }}
-        secondaryAction={{ label: "Explore insights", href: "/insights" }}
-        note="Note: We do not provide statutory audit or assurance."
+        title="Six service lines, one firm"
+        subtitle="Technology projects for mid-market companies. ERP, CRM, integration, data and AI. The same people take the work from the decision through to the build."
+        painLine={site.positioning.supporting}
+        primaryAction={{ label: site.assessment.label, href: "/contact" }}
+        secondaryAction={{ label: "Read our insights", href: "/insights" }}
         imageSrc="/hero/services.jpg"
-        imageAlt="Modern consulting workshop and collaboration"
+        imageAlt="DS Consulting services, technology consulting and implementation"
       />
 
-      {/* PRIMARY PILLARS */}
+      {/* SERVICE LINES */}
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold">Priority focus areas</h2>
-          <p className="mt-4 text-slate-600 max-w-4xl">
-            Two areas drive the majority of leadership demand today. We make them operational through governance, controls, and measurable delivery.
+          <h2 className="text-3xl font-semibold">What we do</h2>
+          <p className="mt-4 text-slate-600 max-w-3xl">
+            Each line covers both the thinking and the build. You are not handed to a delivery
+            team you have never met once the scope is signed.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-10 mt-14">
-            {/* ESG */}
-            <div className="bg-slate-50 border rounded-2xl p-10">
-              <h3 className="text-2xl font-semibold text-emerald-700">ESG Advisory</h3>
-              <p className="mt-4 text-slate-600">
-                ESG readiness through reporting systems, data governance, controls, and evidence trails.
-                We support CSRD and ESRS, SEBI BRSR, UK SECR and SRS reporting, GHG governance, and assurance readiness preparation.
-              </p>
+          <div className="grid md:grid-cols-2 gap-8 mt-14">
+            {serviceLines.map((line) => (
+              <div key={line.route} className="bg-slate-50 border rounded-2xl p-10">
+                <h3 className="text-2xl font-semibold text-slate-900">{line.label}</h3>
+                <p className="mt-4 text-slate-600 leading-relaxed">{line.summary}</p>
 
-              <ul className="mt-5 text-sm text-slate-600 list-disc list-inside space-y-2">
-                <li>Scoping, readiness assessment, and disclosure mapping</li>
-                <li>Data ownership model, validations, evidence trails</li>
-                <li>Governance cadence, review workflows, documentation standards</li>
-                <li>Carbon accounting: Scope 1, 2 and 3 GHG inventory, net zero roadmaps, and SBTi-aligned targets</li>
-              </ul>
+                <ul className="mt-6 text-sm text-slate-600 space-y-2">
+                  {line.bullets.map((bullet) => (
+                    <li key={bullet} className="flex gap-3">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-500" />
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
 
-              <div className="mt-6 flex flex-wrap gap-4 text-sm">
-                <Link className="text-emerald-700 font-medium" href="/services/esg-advisory">
-                  Explore ESG advisory →
-                </Link>
-                <Link className="underline text-slate-700" href="/services/esg-advisory/csrd-advisory">
-                  CSRD advisory
-                </Link>
-                <Link className="underline text-slate-700" href="/services/esg-advisory/brsr-advisory">
-                  BRSR advisory
-                </Link>
-              </div>
-            </div>
-
-            {/* Marketing */}
-            <div className="bg-slate-50 border rounded-2xl p-10">
-              <h3 className="text-2xl font-semibold text-indigo-700">
-                Marketing Automation and RevOps
-              </h3>
-              <p className="mt-4 text-slate-600">
-                Revenue visibility through lifecycle governance, CRM architecture discipline, automation workflows, and measurement that leaders can trust.
-                Works for B2B pipeline and renewals, and B2C retention and lifecycle performance.
-              </p>
-
-              <ul className="mt-5 text-sm text-slate-600 list-disc list-inside space-y-2">
-                <li>Lifecycle definitions, routing, SLAs, and operating cadence</li>
-                <li>CRM data model, hygiene rules, integrations and governance</li>
-                <li>Measurement discipline and executive reporting stability</li>
-              </ul>
-
-              <div className="mt-6 flex flex-wrap gap-4 text-sm">
-                <Link className="text-indigo-700 font-medium" href="/services/marketing-automation">
-                  Explore marketing automation →
-                </Link>
-                <Link className="underline text-slate-700" href="/services/marketing-automation/crm-architecture-governance">
-                  CRM governance
-                </Link>
-                <Link className="underline text-slate-700" href="/services/marketing-automation/revenue-analytics">
-                  Revenue analytics
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5 PILLAR STRUCTURE */}
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold">Our 5-pillar capability</h2>
-          <p className="mt-4 text-slate-600 max-w-4xl">
-            We focus on outcomes and build the systems behind them. These pillars support end-to-end transformation without losing governance.
-          </p>
-
-          <div className="grid md:grid-cols-5 gap-6 mt-12">
-            {[
-              ["ESG readiness", "Reporting systems with governance, controls, and evidence trails. Includes carbon accounting, GHG inventory, and net zero roadmaps."],
-              ["Revenue visibility", "Lifecycle, CRM discipline, automation, and measurement that leaders trust."],
-              ["AI and data architecture", "Use-case prioritisation, data model clarity, and governed AI adoption."],
-              ["Business growth operating model", "Execution cadence, process governance, and measurable performance systems."],
-              ["Location intelligence", "Catchment analytics, retail planning, and data-backed expansion decisions."],
-            ].map(([t, d]) => (
-              <div key={t} className="bg-white border rounded-2xl p-6 shadow-sm">
-                <div className="font-semibold text-slate-900">{t}</div>
-                <div className="mt-2 text-sm text-slate-600">{d}</div>
+                {line.live ? (
+                  <Link
+                    href={line.route}
+                    className="mt-7 inline-block text-indigo-700 font-medium hover:text-indigo-800"
+                  >
+                    Explore {line.label.toLowerCase()} →
+                  </Link>
+                ) : (
+                  <div className="mt-7 text-xs font-medium uppercase tracking-wide text-slate-400">
+                    Detail page in progress
+                  </div>
+                )}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* HOW WE WORK */}
+      {/* DEPTH */}
+      <section className="py-24 bg-slate-900 text-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl font-semibold max-w-3xl">What you are actually buying</h2>
+          <p className="mt-5 text-slate-300 max-w-3xl leading-relaxed">
+            The service lines describe the work. This describes the people doing it.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-6 mt-12">
+            {site.positioning.depth.map((item) => (
+              <div
+                key={item.title}
+                className="rounded-2xl border border-slate-700 bg-slate-800/40 p-8"
+              >
+                <h3 className="text-lg font-semibold text-white">{item.title}</h3>
+                <p className="mt-3 text-sm text-slate-300 leading-relaxed">{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* HOW WE DELIVER */}
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-semibold">How we deliver</h2>
-          <p className="mt-4 text-slate-600 max-w-4xl">
-            We run engagements as operating model builds with governance, implementation, and measurable outcomes.
+          <p className="mt-4 text-slate-600 max-w-3xl">
+            The same four stages whichever line the work sits in.
           </p>
 
           <div className="grid md:grid-cols-4 gap-8 mt-14">
             {[
-              ["Diagnose", "Clarify scope, priorities, current gaps, and what success means for stakeholders."],
-              ["Design", "Define owners, controls, workflows, and measurement definitions aligned to operating reality."],
-              ["Implement", "Hands-on configuration, enablement, documentation, and rollout support."],
-              ["Govern", "Cadence, quality checks, issue tracking, and continuous improvement."],
-            ].map(([t, d]) => (
-              <div key={t} className="bg-slate-50 border rounded-2xl p-8">
-                <div className="font-semibold text-slate-900">{t}</div>
-                <div className="mt-3 text-sm text-slate-600">{d}</div>
+              [
+                "Assess",
+                "What you are trying to do, what you already run and where the two do not meet.",
+              ],
+              [
+                "Decide",
+                "Options scored against your requirements, with the scoring handed over, not just the answer.",
+              ],
+              [
+                "Build",
+                "Configuration, integration, migration and testing, run by the people who scoped it.",
+              ],
+              [
+                "Hand over",
+                "Documentation, enablement and a defined point where your team owns it.",
+              ],
+            ].map(([title, detail]) => (
+              <div key={title} className="bg-slate-50 border rounded-2xl p-8">
+                <div className="font-semibold text-slate-900">{title}</div>
+                <div className="mt-3 text-sm text-slate-600 leading-relaxed">{detail}</div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* HOW WE ARE PAID */}
+      <section className="py-24 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl font-semibold">How we are paid</h2>
+          <p className="mt-4 text-slate-600 max-w-3xl leading-relaxed">
+            {site.positioning.independenceShort}
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-6 mt-12">
+            {site.positioning.independenceProof.map((point) => (
+              <div key={point} className="bg-white border rounded-2xl p-8 text-slate-700 leading-relaxed">
+                {point}
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 rounded-2xl border-2 border-slate-900 bg-white p-10">
+            <h3 className="text-xl font-semibold text-slate-900">What we do not do</h3>
+            <p className="mt-3 text-slate-600 max-w-3xl">
+              Every item here is a revenue line that would give us a reason to recommend one
+              thing over another.
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              {site.positioning.doesNotDo.map((item) => (
+                <span
+                  key={item}
+                  className="rounded-xl border border-slate-200 bg-slate-50 px-5 py-3 text-sm font-medium text-slate-700"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
           </div>
 
           <div className="mt-12 flex flex-col sm:flex-row gap-4">
@@ -238,11 +248,11 @@ export default function ServicesPage() {
               href="/contact"
               className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium text-center"
             >
-              Discuss scope and timeline
+              {site.assessment.label}
             </Link>
             <Link
               href="/about"
-              className="border px-6 py-3 rounded-lg font-medium text-center"
+              className="border bg-white px-6 py-3 rounded-lg font-medium text-center"
             >
               About {site.displayName}
             </Link>
@@ -251,21 +261,18 @@ export default function ServicesPage() {
       </section>
 
       {/* FAQs */}
-      <section className="py-24 bg-slate-50">
+      <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-semibold">FAQs</h2>
-          <p className="mt-4 text-slate-600 max-w-4xl">
-            Common questions about our services, engagement model, and how to start.
-          </p>
 
           <div className="mt-12 grid gap-6">
-            {faqSchema.mainEntity.map((q: any) => (
-              <details key={q.name} className="bg-white border rounded-2xl p-6">
+            {faqSchema.mainEntity.map((item) => (
+              <details key={item.name} className="bg-slate-50 border rounded-2xl p-6">
                 <summary className="cursor-pointer font-semibold text-slate-900">
-                  {q.name}
+                  {item.name}
                 </summary>
-                <div className="mt-3 text-sm text-slate-600">
-                  {q.acceptedAnswer.text}
+                <div className="mt-3 text-sm text-slate-600 leading-relaxed">
+                  {item.acceptedAnswer.text}
                 </div>
               </details>
             ))}
@@ -273,10 +280,18 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* JSON-LD */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
     </div>
   );
 }

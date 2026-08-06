@@ -1,12 +1,12 @@
 export const llmsManifest = {
-  "generatedAt": "2026-05-15T06:33:27.481Z",
-  "pageCount": 62,
+  "generatedAt": "2026-08-06T04:39:11.052Z",
+  "pageCount": 65,
   "pages": [
     {
       "route": "/",
       "url": "https://www.consult-ds.com",
-      "title": "ESG readiness and revenue visibility",
-      "description": "Governed ESG reporting, revenue visibility and AI governance for leadership teams. CSRD, BRSR, CRM governance and AI readiness audits.",
+      "title": "Technology consulting and delivery",
+      "description": "Consulting and implementation for mid-market technology projects. ERP, CRM, integration, data and AI, scoped against the business case and built by the people who scoped it.",
       "section": "home",
       "priority": 1,
       "changeFrequency": "weekly",
@@ -403,16 +403,6 @@ export const llmsManifest = {
       "source": "src\\app\\regulatory-hub\\what-is-sebi-brsr\\page.tsx"
     },
     {
-      "route": "/services",
-      "url": "https://www.consult-ds.com/services",
-      "title": "ESG and RevOps advisory services",
-      "description": "The full service catalogue. ESG reporting systems, CRM governance, marketing automation and revenue operations, with governance built into every engagement.",
-      "section": "services",
-      "priority": 0.9,
-      "changeFrequency": "monthly",
-      "source": "src\\app\\services\\page.tsx"
-    },
-    {
       "route": "/services/ai-governance",
       "url": "https://www.consult-ds.com/services/ai-governance",
       "title": "AI governance and readiness audit",
@@ -423,10 +413,20 @@ export const llmsManifest = {
       "source": "src\\app\\services\\ai-governance\\page.tsx"
     },
     {
+      "route": "/services/ai-in-operations",
+      "url": "https://www.consult-ds.com/services/ai-in-operations",
+      "title": "AI in operations",
+      "description": "Getting AI out of pilot and into operations for mid-market companies. Use case selection, data readiness, usage policy, accountability and a defined path to production.",
+      "section": "services",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\services\\ai-in-operations\\page.tsx"
+    },
+    {
       "route": "/services/esg-advisory",
       "url": "https://www.consult-ds.com/services/esg-advisory",
-      "title": "ESG advisory and reporting services",
-      "description": "ESG advisory spanning CSRD, BRSR, UK SECR, carbon accounting, net zero, climate risk, CDP, EcoVadis, supplier engagement and sustainability strategy.",
+      "title": "ESG and CSRD reporting systems",
+      "description": "Reporting treated as a systems problem. CSRD and ESRS, SEBI BRSR, UK SECR, carbon accounting and climate risk, with data ownership, controls and evidence trails underneath.",
       "section": "services",
       "priority": 0.9,
       "changeFrequency": "monthly",
@@ -583,10 +583,30 @@ export const llmsManifest = {
       "source": "src\\app\\services\\esg-advisory\\uk-secr-srs-reporting\\page.tsx"
     },
     {
+      "route": "/services/implementation-oversight",
+      "url": "https://www.consult-ds.com/services/implementation-oversight",
+      "title": "Implementation and delivery oversight",
+      "description": "Independent oversight of ERP and CRM implementations. Scope control against the business case, acceptance testing, risk reporting and go-live readiness for mid-market companies.",
+      "section": "services",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\services\\implementation-oversight\\page.tsx"
+    },
+    {
+      "route": "/services/integration",
+      "url": "https://www.consult-ds.com/services/integration",
+      "title": "Integration",
+      "description": "Systems integration for mid-market companies. Interface design across ERP, CRM and finance systems, middleware selection, data migration, error handling and reconciliation.",
+      "section": "services",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\services\\integration\\page.tsx"
+    },
+    {
       "route": "/services/marketing-automation",
       "url": "https://www.consult-ds.com/services/marketing-automation",
-      "title": "Marketing automation, RevOps and AI",
-      "description": "Marketing automation, CRM governance, lifecycle orchestration, AI-enabled content and revenue measurement leaders can trust, across B2B and B2C.",
+      "title": "CRM and revenue operations",
+      "description": "CRM architecture, lifecycle definitions, marketing automation and revenue reporting, built so the numbers in the board pack match the numbers in the system.",
       "section": "services",
       "priority": 0.9,
       "changeFrequency": "monthly",
@@ -621,6 +641,16 @@ export const llmsManifest = {
       "priority": 0.85,
       "changeFrequency": "monthly",
       "source": "src\\app\\services\\marketing-automation\\revenue-analytics\\page.tsx"
+    },
+    {
+      "route": "/services/systems-selection",
+      "url": "https://www.consult-ds.com/services/systems-selection",
+      "title": "Systems selection",
+      "description": "Independent ERP, CRM and business systems selection for mid-market companies. Requirements, scored shortlist, structured demos and contract review. No vendor commissions.",
+      "section": "services",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\services\\systems-selection\\page.tsx"
     }
   ]
 } as const;

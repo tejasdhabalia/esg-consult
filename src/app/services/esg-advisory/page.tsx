@@ -6,9 +6,9 @@ import { absUrl } from "@/lib/url";
 import { pageMetadata } from "@/lib/page-metadata";
 
 export const metadata = pageMetadata({
-  title: "ESG advisory and reporting services",
+  title: "ESG and CSRD reporting systems",
   description:
-    "ESG advisory spanning CSRD, BRSR, UK SECR, carbon accounting, net zero, climate risk, CDP, EcoVadis, supplier engagement and sustainability strategy.",
+    "Reporting treated as a systems problem. CSRD and ESRS, SEBI BRSR, UK SECR, carbon accounting and climate risk, with data ownership, controls and evidence trails underneath.",
   path: "/services/esg-advisory",
 });
 
@@ -127,9 +127,9 @@ export default function ESGAdvisoryPage() {
   return (
     <div>
       <PageHero
-        title="ESG advisory"
-        subtitle="Advisory plus implementation for organisations that need ESG readiness with stronger governance underneath it. We support climate, reporting, procurement, and sustainability operating model work with evidence trails, controls, and measurable execution."
-        primaryAction={{ label: "Book a consultation", href: "/contact" }}
+        title="ESG and CSRD reporting systems"
+        subtitle="Reporting treated as a systems problem rather than an annual scramble. Data ownership, controls and evidence trails, so disclosure becomes a report you run instead of a project you survive."
+        primaryAction={{ label: site.assessment.label, href: "/contact" }}
         secondaryAction={{ label: "Back to Services", href: "/services" }}
         note="Note: We do not provide statutory audit or assurance."
         imageSrc="/hero/esg.jpg"

@@ -203,7 +203,7 @@ export default function AIMarketingReadinessPage() {
                     <div className="text-xs text-slate-500 mb-2">Co-founder, DS Consulting</div>
                     <p className="text-xs text-slate-600 leading-relaxed">
                       IBM watsonx AI marketing practitioner. Former IBM mainframe engineer with hands-on AI governance
-                      experience across regulated enterprise environments. Leads the IBM watsonx AI practice at DS Consulting.
+                      experience across regulated enterprise environments. Co-founder of DS Consulting.
                     </p>
                     <a href={site.linkedin.tejas} target="_blank" rel="noopener noreferrer" className="inline-block mt-3 text-xs text-indigo-600 hover:underline font-medium">
                       LinkedIn profile →

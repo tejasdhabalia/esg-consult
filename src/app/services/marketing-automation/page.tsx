@@ -5,9 +5,9 @@ import { absUrl } from "@/lib/url";
 import { pageMetadata } from "@/lib/page-metadata";
 
 export const metadata = pageMetadata({
-  title: "Marketing automation, RevOps and AI",
+  title: "CRM and revenue operations",
   description:
-    "Marketing automation, CRM governance, lifecycle orchestration, AI-enabled content and revenue measurement leaders can trust, across B2B and B2C.",
+    "CRM architecture, lifecycle definitions, marketing automation and revenue reporting, built so the numbers in the board pack match the numbers in the system.",
   path: "/services/marketing-automation",
 });
 
@@ -110,11 +110,11 @@ export default function MarketingAutomationPage() {
       },
       {
         "@type": "Question",
-        name: "Do you work with IBM watsonx or only standard martech platforms?",
+        name: "Which platforms do you work on?",
         acceptedAnswer: {
           "@type": "Answer",
           text:
-            "Yes. We run an IBM watsonx AI marketing practice for regulated enterprises. We also work across HubSpot, Salesforce, Zoho, and in-house CRM builds. Most clients have a mix. We design the AI layer to work on top of the data and infrastructure already in place, not to replace it.",
+            "HubSpot, Salesforce, Zoho, enterprise stacks and in-house CRM builds. Most clients have a mix. We are not a reseller or implementation partner for any of them, so platform choice is assessed on fit rather than on what we are certified in.",
         },
       },
     ],
@@ -123,36 +123,40 @@ export default function MarketingAutomationPage() {
   return (
     <div>
       <PageHero
-        title="Marketing automation, RevOps, and AI marketing systems"
-        subtitle="We help leadership teams turn fragmented martech into a governed revenue system. Lifecycle orchestration, CRM discipline, omnichannel automation, AI marketing on IBM watsonx, and measurement that supports decision-making."
-        primaryAction={{ label: "Book a consultation", href: "/contact" }}
-        secondaryAction={{ label: "Back to Services", href: "/services" }}
+        title="CRM and revenue operations"
+        subtitle="Lifecycle definitions, CRM architecture and reporting that survives contact with the sales team. Built so the numbers in the board pack match the numbers in the system."
+        primaryAction={{ label: site.assessment.label, href: "/contact" }}
+        secondaryAction={{ label: "Back to services", href: "/services" }}
         imageSrc="/hero/marketing.jpg"
         imageAlt="Marketing automation and analytics theme"
       />
-	  <section className="py-16 bg-indigo-50 border-y border-indigo-100">
+      <section className="py-16 bg-indigo-50 border-y border-indigo-100">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <div>
               <div className="text-xs font-semibold text-indigo-600 uppercase tracking-widest mb-3">
-                AI marketing for regulated enterprises
+                Built on what you already run
               </div>
               <h2 className="text-2xl font-semibold text-slate-900">
-                AI-powered marketing built on your existing data
+                We work on your stack, not a preferred one
               </h2>
               <p className="mt-4 text-slate-600">
-                Whether that data lives in IBM infrastructure, HubSpot, Salesforce, or all three simultaneously, we design and implement AI marketing systems that work on top of what you already have.
+                Most mid-market companies have a mix. A CRM chosen years ago, a marketing tool
+                bought by a previous team, a warehouse someone built in between. We design around
+                that rather than proposing a rebuild you have no appetite for.
               </p>
               <p className="mt-4 text-slate-600">
-                We run an IBM watsonx AI marketing practice for enterprises where governance, auditability, and compliance are non-negotiable. This is not a generic AI bolt-on. It is governed adoption built on the infrastructure your teams already operate.
+                We hold no reseller agreement, certification or partner status with any of these
+                vendors. Where a platform is genuinely the wrong fit we will say so, and that
+                recommendation costs us nothing either way.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
               {[
-                ["IBM watsonx", "AI marketing on enterprise-grade infrastructure with auditability and compliance built in."],
-                ["HubSpot", "CRM architecture, lifecycle design, automation workflows, and governed reporting."],
-                ["Salesforce", "Data model discipline, lead management governance, and measurement frameworks."],
-                ["In-house and hybrid stacks", "360-degree customer view design integrating purchase history, survey data, and third-party sources like Nielsen."],
+                ["HubSpot", "CRM architecture, lifecycle design, automation workflows and governed reporting."],
+                ["Salesforce", "Data model discipline, lead management governance and measurement frameworks."],
+                ["Zoho and mid-market suites", "Practical configuration for teams without a dedicated admin function."],
+                ["In-house and hybrid stacks", "360-degree customer view design integrating purchase history, survey data and third-party sources."],
               ].map(([t, d]) => (
                 <div key={t} className="bg-white border rounded-2xl p-5 shadow-sm">
                   <div className="font-semibold text-indigo-700 text-sm">{t}</div>

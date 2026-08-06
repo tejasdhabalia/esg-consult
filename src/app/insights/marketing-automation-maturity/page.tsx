@@ -221,7 +221,7 @@ export default function MarketingAutomationMaturityPage() {
                     <div className="text-xs text-slate-500 mb-2">Co-founder, DS Consulting</div>
                     <p className="text-xs text-slate-600 leading-relaxed">
                       Former IBM mainframe engineer turned CMO-level marketing operator. Built customer
-                      intelligence and CRM systems at Tata-Tesco. Leads the IBM watsonx AI marketing practice at DS Consulting.
+                      intelligence and CRM systems at Tata-Tesco. Co-founder of DS Consulting.
                     </p>
                     <a href={site.linkedin.tejas} target="_blank" rel="noopener noreferrer" className="inline-block mt-3 text-xs text-indigo-600 hover:underline font-medium">
                       LinkedIn profile →

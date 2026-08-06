@@ -6,9 +6,9 @@ import { absUrl } from "@/lib/url";
 import { pageMetadata } from "@/lib/page-metadata";
 
 export const metadata = pageMetadata({
-  title: "About our ESG and RevOps advisory",
+  title: "About",
   description:
-    "Why DS Consulting exists, who leads the firm and how we pair ESG readiness with revenue visibility through governed advisory plus implementation.",
+    "Why DS Consulting exists, who runs it, and how we combine hands-on systems knowledge with business depth on mid-market technology projects.",
   path: "/about",
 });
 
@@ -27,6 +27,7 @@ export default function AboutPage() {
     "@type": "Organization",
     name: site.legalName,
     url: site.baseUrl,
+    description: site.ai.summary,
     sameAs: [site.linkedin.tejas, site.linkedin.jigar],
   };
 
@@ -58,17 +59,31 @@ export default function AboutPage() {
         name: `Why did ${site.displayName} start?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text:
-            "We started to close the gap between expensive, slow consulting and boutique execution that lacks governance and architecture depth. Tool sprawl across CRM, finance and service creates fragmented execution. AI increases expectations and risk. We help teams build governed systems with measurable outcomes.",
+          text: "Because the two halves of a technology project are usually bought from different people. One firm writes requirements it could not build. Another builds exactly what the requirements said, including the parts that made no commercial sense. We started to hold both ends of that.",
         },
       },
       {
         "@type": "Question",
-        name: "Do you provide advisory only or advisory plus implementation?",
+        name: "How big is the firm?",
         acceptedAnswer: {
           "@type": "Answer",
-          text:
-            "We provide advisory plus implementation. We define the operating model, implement workflows and governance, enable teams, and set a cadence that sustains outcomes after go-live.",
+          text: "Small, deliberately, with specialist freelancers brought in for delivery. Anyone who will work on your project is introduced to you during scoping, so you know who is doing the work before you commit.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do you do the consulting and the implementation?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Both. The people who scope your project are the people who deliver it. That is the point of the design surviving into the build.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How are you paid?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "By the client, always. We take no commissions, referral fees, reseller margin or partner incentives from any software vendor. We do not resell software and we do not provide IT support, help desk, networking or hardware.",
         },
       },
       {
@@ -76,17 +91,7 @@ export default function AboutPage() {
         name: "Do you provide statutory audit or assurance?",
         acceptedAnswer: {
           "@type": "Answer",
-          text:
-            "No. We do not provide statutory audit or assurance. We prepare organisations for assurance through governance, controls, documentation and evidence trail readiness.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What outcomes do you prioritise most strongly?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "Two outcomes are prioritised most strongly: ESG readiness and Revenue Visibility. ESG readiness means defensible reporting systems with governance, controls and evidence trails. Revenue Visibility means lifecycle definitions, CRM discipline, and dashboards leaders can trust.",
+          text: "No. On ESG and CSRD work we build the reporting system, the controls and the evidence trail so that assurance can be performed by someone else.",
         },
       },
     ],
@@ -95,41 +100,52 @@ export default function AboutPage() {
   return (
     <div>
       <PageHero
-        title="Why we exist"
-        subtitle="We built DS Consulting to help leaders turn fragmented tools and complex requirements into governed systems with measurable delivery. Advisory plus implementation across ESG readiness and revenue visibility."
-        primaryAction={{ label: "Talk to us", href: "/contact" }}
-        secondaryAction={{ label: "Explore services", href: "/services" }}
-        note="Note: We do not provide statutory audit or assurance."
+        title="About DS Consulting"
+        subtitle="We run technology projects for mid-market companies, from the decision through to the build. Small firm, deep on both the systems and the business they have to serve."
+        painLine={site.positioning.supporting}
+        primaryAction={{ label: site.assessment.label, href: "/contact" }}
+        secondaryAction={{ label: "See what we do", href: "/services" }}
         imageSrc="/hero/about.jpg"
-        imageAlt="Leadership and consulting collaboration"
+        imageAlt="DS Consulting, technology consulting and implementation"
       />
 
       {/* WHY */}
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold">The gap we saw</h2>
-          <p className="mt-4 text-slate-600 max-w-4xl">
-            Big consulting can be expensive and slow. Boutique agencies can execute, but often lack governance and architecture depth.
-            Tool sprawl across CRM, finance, service and contact centre signals creates fragmented execution.
-            AI increases expectations and risk for quality, compliance, and differentiation.
-          </p>
+          <h2 className="text-3xl font-semibold max-w-3xl">Why the firm exists</h2>
 
-          <div className="grid md:grid-cols-3 gap-8 mt-12">
-            {[
-              ["Governance, not just delivery", "Ownership, controls and cadence so work sustains beyond go-live."],
-              ["Systems architecture depth", "Data, workflows and measurement connected across teams and tools."],
-              ["AI with guardrails", "Speed and insight with governance to protect brand and stakeholder expectations."],
-            ].map(([t, d]) => (
-              <div key={t} className="bg-slate-50 border rounded-2xl p-8">
-                <div className="font-semibold text-slate-900">{t}</div>
-                <div className="mt-2 text-sm text-slate-600">{d}</div>
+          <div className="mt-6 max-w-3xl space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              A technology project has two halves and they are usually bought from different
+              people. A strategy firm writes the requirements. An implementation partner builds
+              against them. Each does its own half competently.
+            </p>
+            <p>
+              What nobody owns is the join. The requirements were written by people who would
+              not use the system. The build followed them faithfully, including the parts that
+              made no commercial sense. Neither party is at fault and the result is still a
+              system the business works around rather than through.
+            </p>
+            <p>
+              We started DS Consulting to hold both ends of that. Someone who can read an
+              interface specification and a month end close calendar, and who is still there
+              when the thing goes live.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 mt-14">
+            {site.positioning.depth.map((item) => (
+              <div key={item.title} className="bg-slate-50 border rounded-2xl p-8">
+                <div className="h-1 w-10 rounded-full bg-indigo-600" />
+                <h3 className="mt-5 text-lg font-semibold text-slate-900">{item.title}</h3>
+                <p className="mt-3 text-sm text-slate-600 leading-relaxed">{item.body}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* SANSKRIT */}
+      {/* PRINCIPLE */}
       <section className="py-16 bg-slate-50">
         <div className="max-w-6xl mx-auto px-6">
           <div className="bg-white border rounded-2xl p-10">
@@ -143,55 +159,80 @@ export default function AboutPage() {
             <div className="mt-1 text-slate-600">
               <span className="font-semibold">Meaning:</span> Excellence in execution
             </div>
-            <div className="mt-5 text-slate-600 max-w-4xl">
-              Strategy becomes real only when systems, governance, and teams can execute consistently.
+            <div className="mt-5 text-slate-600 max-w-3xl">
+              A decision is worth nothing until something has been built that reflects it.
             </div>
           </div>
         </div>
       </section>
 
-      {/* WHAT WE FOCUS ON */}
+      {/* HOW WE ARE PAID */}
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold">What we focus on</h2>
-          <p className="mt-4 text-slate-600 max-w-4xl">
-            Our work is designed around two outcomes leaders consistently demand: ESG readiness and revenue visibility.
+          <h2 className="text-3xl font-semibold">How we are paid</h2>
+          <p className="mt-4 text-slate-600 max-w-3xl leading-relaxed">
+            {site.positioning.independenceShort}
           </p>
 
-          <div className="grid md:grid-cols-2 gap-8 mt-12">
-            <div className="bg-slate-50 border rounded-2xl p-8">
-              <div className="text-xl font-semibold text-emerald-700">ESG readiness</div>
-              <p className="mt-3 text-sm text-slate-600">
-                Reporting systems, data governance, controls and evidence trails that stand up to leadership review.
-              </p>
-              <div className="mt-5 flex gap-4 text-sm">
-                <Link className="text-emerald-700 font-medium" href="/services/esg-advisory">
-                  ESG advisory →
-                </Link>
-                <Link className="underline text-slate-700" href="/regulatory-hub">
-                  Regulatory hub
-                </Link>
+          <div className="grid md:grid-cols-3 gap-6 mt-12">
+            {site.positioning.independenceProof.map((point) => (
+              <div key={point} className="bg-slate-50 border rounded-2xl p-8">
+                <p className="text-slate-700 leading-relaxed">{point}</p>
               </div>
-            </div>
-
-            <div className="bg-slate-50 border rounded-2xl p-8">
-              <div className="text-xl font-semibold text-indigo-700">Revenue visibility</div>
-              <p className="mt-3 text-sm text-slate-600">
-                Lifecycle, CRM governance, automation workflows, and measurement discipline so leaders can trust dashboards.
-              </p>
-              <div className="mt-5 flex gap-4 text-sm">
-                <Link className="text-indigo-700 font-medium" href="/services/marketing-automation">
-                  Marketing automation →
-                </Link>
-                <Link className="underline text-slate-700" href="/services/marketing-automation/revenue-analytics">
-                  Revenue analytics
-                </Link>
-              </div>
-            </div>
+            ))}
           </div>
 
-          <div className="mt-8 text-sm text-slate-600">
-            Note: We do not provide statutory audit or assurance. We prepare clients for assurance through controls, documentation and evidence trail readiness.
+          <div className="mt-10 rounded-2xl border-2 border-slate-900 p-10">
+            <h3 className="text-xl font-semibold text-slate-900">What we do not do</h3>
+            <p className="mt-3 text-slate-600 max-w-3xl">
+              Every item here is a revenue line that would give us a reason to recommend one
+              thing over another.
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              {site.positioning.doesNotDo.map((item) => (
+                <span
+                  key={item}
+                  className="rounded-xl border border-slate-200 bg-slate-50 px-5 py-3 text-sm font-medium text-slate-700"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* HOW WE ARE SET UP */}
+      <section className="py-24 bg-slate-900 text-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl font-semibold max-w-3xl">How the firm is set up</h2>
+          <p className="mt-5 text-slate-300 max-w-3xl leading-relaxed">
+            Worth being straight about, because it changes what you should expect from us.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-6 mt-12">
+            {[
+              [
+                "We are small",
+                "Two principals, with specialist freelancers brought in for delivery. If you need a hundred consultants on site next month, we are the wrong firm and we will say so.",
+              ],
+              [
+                "You meet everyone",
+                "Anyone who will work on your project is introduced to you during scoping. No handover to a delivery team you have never met.",
+              ],
+              [
+                "We turn work down",
+                "Where the work sits outside what we do, or where the honest answer is that you do not need it. That is easier to do without a licence quota to hit.",
+              ],
+            ].map(([title, body]) => (
+              <div
+                key={title}
+                className="rounded-2xl border border-slate-700 bg-slate-800/40 p-8"
+              >
+                <h3 className="text-lg font-semibold text-white">{title}</h3>
+                <p className="mt-3 text-sm text-slate-300 leading-relaxed">{body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -199,49 +240,10 @@ export default function AboutPage() {
       {/* LEADERSHIP */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold">Leadership</h2>
-          <p className="mt-4 text-slate-600 max-w-4xl">
-            DS Consulting is led by practitioners who combine consulting rigour with operator-level execution.
-          </p>
+          <h2 className="text-3xl font-semibold">Who runs it</h2>
 
           <div className="grid md:grid-cols-2 gap-10 mt-12">
-            {/* Jigar */}
-            <div className="bg-white border rounded-2xl p-8 shadow-sm">
-              <div className="flex items-start gap-5">
-                <Image
-                  src="/team/jigard.jpg"
-                  alt="Jigar Dhabalia"
-                  width={96}
-                  height={96}
-                  className="rounded-xl object-cover"
-                />
-                <div className="flex-1">
-                  <div className="text-xl font-semibold text-slate-900">Jigar Dhabalia</div>
-                  <div className="text-sm text-slate-600">Co-founder and Principal Consultant</div>
-                  <div className="mt-3 text-sm text-slate-600">
-                    Expert in Corporate Sustainability, partnering with leadership teams to build robust reporting capabilities, structured operating cadence, and measurable control systems. Brings cross-industry experience spanning B2B, Manufacturing, Oil & Gas, Chemical and Energy & Utilities.
-                  </div>
-
-                  <ul className="mt-4 text-sm text-slate-600 list-disc list-inside space-y-1">
-                    <li>Design Sustainability to enable repeatable and audit-ready Corporate reporting</li>
-                    <li>Translating ESG requirements into practical operating systems with clear ownership</li>
-                    <li>Strengthening leadership visibility through disciplined measurement frameworks</li>
-                  </ul>
-
-                  <div className="mt-5">
-                    <a
-                      href={site.linkedin.jigar}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-indigo-700 font-medium"
-                    >
-                      LinkedIn profile →
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-			{/* Tejas */}
+            {/* Tejas */}
             <div className="bg-white border rounded-2xl p-8 shadow-sm">
               <div className="flex items-start gap-5">
                 <Image
@@ -253,15 +255,34 @@ export default function AboutPage() {
                 />
                 <div className="flex-1">
                   <div className="text-xl font-semibold text-slate-900">Tejas Dhabalia</div>
-                  <div className="text-sm text-slate-600">Co-founder and Principal Consultant</div>
-                  <div className="mt-3 text-sm text-slate-600">
-                    Former IBM mainframe engineer (COBOL, DB2, CICS, VSAM) turned CMO. Operated at Tata-Tesco with an ₹800Cr revenue portfolio and built the customer intelligence and omnichannel systems at Nature&apos;s Basket across 1M+ customers and 25 markets. Now leading the IBM watsonx AI marketing practice at DS Consulting for regulated enterprises.
+                  <div className="text-sm text-slate-600">
+                    Co-founder and Principal Consultant
+                  </div>
+                  <div className="mt-3 text-sm text-slate-600 leading-relaxed">
+                    Started as a mainframe engineer at IBM, working in COBOL, DB2, CICS and
+                    VSAM, then moved into commercial roles and ended up running marketing at
+                    Tata-Tesco against an ₹800Cr revenue portfolio. Built the customer
+                    intelligence and omnichannel systems at Nature&apos;s Basket across more than
+                    a million customers and 25 markets.
+                  </div>
+                  <div className="mt-3 text-sm text-slate-600 leading-relaxed">
+                    That combination is the reason the firm looks the way it does. He has written
+                    the code and he has owned the P&amp;L the code was supposed to move.
                   </div>
 
                   <ul className="mt-4 text-sm text-slate-600 list-disc list-inside space-y-1">
-                    <li>Built in-house CRM and 360-degree customer view systems integrating purchase history, survey data, and Nielsen market share data at scale</li>
-                    <li>Led location strategy across 75+ cities in India, recommending store viability, optimal size, and category assortment for each market</li>
-                    <li>Created a premium gifting brand and restructured merchandise to shift from festival-driven to occasion-driven sales, sustaining revenue year-round</li>
+                    <li>
+                      Built in-house CRM and 360-degree customer view systems integrating
+                      purchase history, survey data and third-party market share data at scale
+                    </li>
+                    <li>
+                      Led location strategy across more than 75 cities in India, covering store
+                      viability, size and category assortment
+                    </li>
+                    <li>
+                      Restructured merchandise to shift from festival-driven to occasion-driven
+                      sales, sustaining revenue across the year
+                    </li>
                   </ul>
 
                   <div className="mt-5">
@@ -277,14 +298,72 @@ export default function AboutPage() {
                 </div>
               </div>
             </div>
+
+            {/* Jigar */}
+            <div className="bg-white border rounded-2xl p-8 shadow-sm">
+              <div className="flex items-start gap-5">
+                <Image
+                  src="/team/jigard.jpg"
+                  alt="Jigar Dhabalia"
+                  width={96}
+                  height={96}
+                  className="rounded-xl object-cover"
+                />
+                <div className="flex-1">
+                  <div className="text-xl font-semibold text-slate-900">Jigar Dhabalia</div>
+                  <div className="text-sm text-slate-600">
+                    Co-founder and Principal Consultant
+                  </div>
+                  <div className="mt-3 text-sm text-slate-600 leading-relaxed">
+                    Corporate sustainability, built as a reporting systems problem rather than a
+                    disclosure exercise. Works with leadership teams on data ownership, operating
+                    cadence and the control systems that make a number defensible when someone
+                    asks where it came from.
+                  </div>
+                  <div className="mt-3 text-sm text-slate-600 leading-relaxed">
+                    Cross-industry experience spanning B2B, manufacturing, oil and gas, chemicals
+                    and energy and utilities.
+                  </div>
+
+                  <ul className="mt-4 text-sm text-slate-600 list-disc list-inside space-y-1">
+                    <li>
+                      Designs sustainability reporting to be repeatable and ready for assurance
+                    </li>
+                    <li>
+                      Translates ESG requirements into operating systems with named owners
+                    </li>
+                    <li>
+                      Builds measurement frameworks leadership can actually review
+                    </li>
+                  </ul>
+
+                  <div className="mt-5">
+                    <a
+                      href={site.linkedin.jigar}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-indigo-700 font-medium"
+                    >
+                      LinkedIn profile →
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="mt-12 flex flex-col sm:flex-row gap-4">
-            <Link href="/services" className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium text-center">
-              Explore services
+            <Link
+              href="/contact"
+              className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium text-center"
+            >
+              {site.assessment.label}
             </Link>
-            <Link href="/insights" className="border px-6 py-3 rounded-lg font-medium text-center">
-              Read insights
+            <Link
+              href="/services"
+              className="border bg-white px-6 py-3 rounded-lg font-medium text-center"
+            >
+              See what we do
             </Link>
           </div>
         </div>
@@ -295,21 +374,36 @@ export default function AboutPage() {
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-semibold">FAQs</h2>
           <div className="mt-10 grid gap-6">
-            {faqSchema.mainEntity.map((q: any) => (
-              <details key={q.name} className="bg-slate-50 border rounded-2xl p-6">
-                <summary className="cursor-pointer font-semibold text-slate-900">{q.name}</summary>
-                <div className="mt-3 text-sm text-slate-600">{q.acceptedAnswer.text}</div>
+            {faqSchema.mainEntity.map((item) => (
+              <details key={item.name} className="bg-slate-50 border rounded-2xl p-6">
+                <summary className="cursor-pointer font-semibold text-slate-900">
+                  {item.name}
+                </summary>
+                <div className="mt-3 text-sm text-slate-600 leading-relaxed">
+                  {item.acceptedAnswer.text}
+                </div>
               </details>
             ))}
           </div>
         </div>
       </section>
 
-      {/* JSON-LD */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(foundersSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(foundersSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
     </div>
   );
 }

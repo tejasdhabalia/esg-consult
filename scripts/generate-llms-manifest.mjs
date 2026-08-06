@@ -23,6 +23,10 @@ const PAGE_OVERRIDES = {
 const PRIORITY_OVERRIDES = {
   '/': { priority: 1.0, changeFrequency: 'weekly' },
   '/services': { priority: 0.9, changeFrequency: 'monthly' },
+  '/services/systems-selection': { priority: 0.9, changeFrequency: 'monthly' },
+  '/services/implementation-oversight': { priority: 0.9, changeFrequency: 'monthly' },
+  '/services/integration': { priority: 0.9, changeFrequency: 'monthly' },
+  '/services/ai-in-operations': { priority: 0.9, changeFrequency: 'monthly' },
   '/services/esg-advisory': { priority: 0.9, changeFrequency: 'monthly' },
   '/services/esg-advisory/csrd-advisory': { priority: 0.85, changeFrequency: 'monthly' },
   '/services/esg-advisory/brsr-advisory': { priority: 0.85, changeFrequency: 'monthly' },
@@ -57,7 +61,7 @@ const PRIORITY_OVERRIDES = {
   '/terms': { priority: 0.3, changeFrequency: 'yearly' },
   '/cookies': { priority: 0.3, changeFrequency: 'yearly' },
   '/accessibility': { priority: 0.3, changeFrequency: 'yearly' },
-  '/case-studies': { priority: 0.3, changeFrequency: 'monthly' },
+  
 };
 
 const EXCLUDED_ROUTES = new Set(['/favicon.ico']);

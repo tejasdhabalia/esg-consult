@@ -3,7 +3,24 @@ import { getAllInsightsNewestFirst } from "@/lib/insights";
 import { site } from "@/lib/site";
 
 type ManifestPage = (typeof manifest.pages)[number];
-type SectionKey = ManifestPage["section"];
+
+/**
+ * Fixed list of section keys.
+ *
+ * Do not derive this from the generated manifest. If you do, deleting the
+ * last page in any section narrows the type and breaks the build, which is
+ * a confusing failure a long way from its cause.
+ */
+type SectionKey =
+  | "home"
+  | "services"
+  | "regulatory"
+  | "insights"
+  | "compare"
+  | "partners"
+  | "company"
+  | "legal"
+  | "other";
 
 const SECTION_LABELS: Record<SectionKey, string> = {
   home: "Overview",
@@ -20,8 +37,12 @@ const SECTION_LABELS: Record<SectionKey, string> = {
 const FEATURED_ROUTE_ORDER = [
   "/",
   "/services",
+  "/services/systems-selection",
+  "/services/implementation-oversight",
+  "/services/integration",
+  "/services/crm-and-revenue-operations",
+  "/services/ai-in-operations",
   "/services/esg-advisory",
-  "/services/marketing-automation",
   "/regulatory-hub",
   "/insights",
   "/about",
