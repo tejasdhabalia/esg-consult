@@ -27,6 +27,13 @@ const nextConfig: NextConfig = {
         destination: "/services/crm-and-revenue-operations/:slug",
         permanent: true,
       },
+      // AI service line renamed. The page now covers governance as well as
+      // adoption, which is where the demand actually is.
+      {
+        source: "/services/ai-in-operations",
+        destination: "/services/ai-governance-and-adoption",
+        permanent: true,
+      },
       // Case studies page retired. Placeholder engagements were published
       // without named client permission, so the page was removed rather
       // than rewritten. Restore a real page here when permission exists.

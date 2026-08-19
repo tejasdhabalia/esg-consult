@@ -229,7 +229,7 @@ export default function InhouseVsOutsourcedPage() {
           <p className="text-indigo-100 text-sm leading-relaxed max-w-3xl">
             In house governance is the best long term model when you have the right owner and enough runway to build.
             Outsourced governance is often the fastest stabilisation path when teams are firefighting and leaders need
-            reliable revenue visibility quickly. A common approach is external stabilisation first, then transition to in house ownership.
+            reliable revenue reporting quickly. A common approach is external stabilisation first, then transition to in house ownership.
           </p>
         </div>
 

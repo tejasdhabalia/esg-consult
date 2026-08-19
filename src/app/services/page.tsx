@@ -1,14 +1,14 @@
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
-import { serviceLines } from "@/lib/service-lines";
+import { pillars } from "@/lib/service-pillars";
 import { absUrl } from "@/lib/url";
 import { pageMetadata } from "@/lib/page-metadata";
 
 export const metadata = pageMetadata({
   title: "Services",
   description:
-    "Six service lines covering mid-market technology projects. Systems selection, delivery oversight, integration, CRM and revenue operations, AI in operations, and ESG reporting systems.",
+    "What DS Consulting does for mid-market companies. Business systems covering commerce, ERP, CRM, integration and AI. Sustainability and ESG reporting. Outsourced finance and accounting teams.",
   path: "/services",
 });
 
@@ -22,22 +22,18 @@ export default function ServicesPage() {
     ],
   };
 
-  const itemListSchema = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: `${site.displayName} Services`,
-    itemListElement: serviceLines.map((line, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: line.label,
-      url: absUrl(line.route),
-    })),
-  };
-
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: [
+      {
+        "@type": "Question",
+        name: "Why do technology, sustainability and finance operations sit in the same firm?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Because they meet in the finance function. A sustainability disclosure is a data problem before it is a reporting problem. An outsourced finance team is only as good as the systems it works in. And most technology projects are judged on numbers that come out of finance.",
+        },
+      },
       {
         "@type": "Question",
         name: "Do you do the consulting and the implementation, or just one?",
@@ -48,18 +44,10 @@ export default function ServicesPage() {
       },
       {
         "@type": "Question",
-        name: "What makes you different from a systems integrator?",
+        name: "Who delivers the finance and accounting work?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Depth on both sides. We have built these systems, so we can tell a configuration from a customisation and design an interface that survives contact with real data. We also read a business case, a close calendar and a board pack, so we can tell which requirement is load bearing and which is a preference.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Can you come in halfway through a project that has already gone wrong?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes. Implementation and delivery oversight is often bought mid-project, once scope has drifted from the original business case. We start by establishing what was actually agreed and what has been built against it.",
+          text: "Offshore delivery runs through a partner firm rather than through our own staff, and you are introduced to the team during scoping. We remain accountable for the systems the function runs in. Our partner is a technology-agnostic offshoring firm rather than a software vendor, so this arrangement does not affect any recommendation we make.",
         },
       },
       {
@@ -67,7 +55,7 @@ export default function ServicesPage() {
         name: "Will you tell us which system to buy?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes, and we will show you the scoring behind it. We take no commissions, referral fees, reseller margin or partner incentives from any software vendor, so there is nothing sitting between the recommendation and your interest.",
+          text: "Yes, and we will show you the scoring behind it. We take no commissions, referral fees, reseller margin or partner incentives from any software vendor.",
         },
       },
       {
@@ -80,18 +68,10 @@ export default function ServicesPage() {
       },
       {
         "@type": "Question",
-        name: "Do you provide statutory audit or assurance on ESG reports?",
+        name: "Do you provide statutory audit or assurance?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "No. We build the reporting system, the data ownership model, the controls and the evidence trail so that assurance can be performed by someone else.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "How does an engagement start?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "With an assessment. Two to four weeks at a fixed price, delivered as a decision document rather than a proposal. You own the output whether or not you continue with us.",
+          text: "No. On sustainability work we build the reporting system, the controls and the evidence trail so that assurance can be performed by someone else.",
         },
       },
     ],
@@ -100,109 +80,91 @@ export default function ServicesPage() {
   return (
     <div>
       <PageHero
-        title="Six service lines, one firm"
-        subtitle="Technology projects for mid-market companies. ERP, CRM, integration, data and AI. The same people take the work from the decision through to the build."
+        title="Three kinds of work, one firm"
+        subtitle="Technology systems, sustainability reporting and finance operations. They meet in the finance function, which is why running them separately is where things get lost."
         painLine={site.positioning.supporting}
         primaryAction={{ label: site.assessment.label, href: "/contact" }}
         secondaryAction={{ label: "Read our insights", href: "/insights" }}
         imageSrc="/hero/services.jpg"
-        imageAlt="DS Consulting services, technology consulting and implementation"
+        imageAlt="DS Consulting services across technology, sustainability and finance"
       />
 
-      {/* SERVICE LINES */}
-      <section className="py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold">What we do</h2>
-          <p className="mt-4 text-slate-600 max-w-3xl">
-            Each line covers both the thinking and the build. You are not handed to a delivery
-            team you have never met once the scope is signed.
-          </p>
+      {pillars.map((pillar, index) => (
+        <section
+          key={pillar.route}
+          className={index % 2 === 0 ? "py-24 bg-white" : "py-24 bg-slate-50"}
+        >
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="flex items-baseline gap-4">
+              <span className="text-sm font-semibold text-indigo-700">0{index + 1}</span>
+              <h2 className="text-3xl font-semibold text-slate-900">{pillar.title}</h2>
+            </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mt-14">
-            {serviceLines.map((line) => (
-              <div key={line.route} className="bg-slate-50 border rounded-2xl p-10">
-                <h3 className="text-2xl font-semibold text-slate-900">{line.label}</h3>
-                <p className="mt-4 text-slate-600 leading-relaxed">{line.summary}</p>
+            <p className="mt-4 text-slate-600 max-w-3xl leading-relaxed">{pillar.summary}</p>
+            <p className="mt-3 text-sm text-slate-500 max-w-3xl leading-relaxed">
+              {pillar.rationale}
+            </p>
 
-                <ul className="mt-6 text-sm text-slate-600 space-y-2">
-                  {line.bullets.map((bullet) => (
-                    <li key={bullet} className="flex gap-3">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-500" />
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
+            <div className="grid md:grid-cols-2 gap-6 mt-12">
+              {pillar.lines.map((line) => (
+                <div
+                  key={line.route}
+                  className={`rounded-2xl border p-8 ${
+                    index % 2 === 0 ? "bg-slate-50" : "bg-white"
+                  }`}
+                >
+                  <h3 className="text-xl font-semibold text-slate-900">{line.label}</h3>
+                  <p className="mt-3 text-sm text-slate-600 leading-relaxed">{line.summary}</p>
 
-                {line.live ? (
-                  <Link
-                    href={line.route}
-                    className="mt-7 inline-block text-indigo-700 font-medium hover:text-indigo-800"
-                  >
-                    Explore {line.label.toLowerCase()} →
-                  </Link>
-                ) : (
-                  <div className="mt-7 text-xs font-medium uppercase tracking-wide text-slate-400">
-                    Detail page in progress
-                  </div>
-                )}
-              </div>
-            ))}
+                  <ul className="mt-5 text-sm text-slate-600 space-y-2">
+                    {line.bullets.map((bullet) => (
+                      <li key={bullet} className="flex gap-3">
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-500" />
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {line.live ? (
+                    <Link
+                      href={line.route}
+                      className="mt-6 inline-block text-indigo-700 font-medium hover:text-indigo-800"
+                    >
+                      Read more →
+                    </Link>
+                  ) : (
+                    <div className="mt-6 text-xs font-medium uppercase tracking-wide text-slate-400">
+                      Page in progress
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* DEPTH */}
-      <section className="py-24 bg-slate-900 text-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold max-w-3xl">What you are actually buying</h2>
-          <p className="mt-5 text-slate-300 max-w-3xl leading-relaxed">
-            The service lines describe the work. This describes the people doing it.
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-6 mt-12">
-            {site.positioning.depth.map((item) => (
-              <div
-                key={item.title}
-                className="rounded-2xl border border-slate-700 bg-slate-800/40 p-8"
-              >
-                <h3 className="text-lg font-semibold text-white">{item.title}</h3>
-                <p className="mt-3 text-sm text-slate-300 leading-relaxed">{item.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
+      ))}
 
       {/* HOW WE DELIVER */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-slate-900 text-white">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-semibold">How we deliver</h2>
-          <p className="mt-4 text-slate-600 max-w-3xl">
-            The same four stages whichever line the work sits in.
+          <p className="mt-4 text-slate-300 max-w-3xl">
+            The same four stages whichever kind of work it is.
           </p>
 
-          <div className="grid md:grid-cols-4 gap-8 mt-14">
+          <div className="grid md:grid-cols-4 gap-6 mt-12">
             {[
-              [
-                "Assess",
-                "What you are trying to do, what you already run and where the two do not meet.",
-              ],
-              [
-                "Decide",
-                "Options scored against your requirements, with the scoring handed over, not just the answer.",
-              ],
-              [
-                "Build",
-                "Configuration, integration, migration and testing, run by the people who scoped it.",
-              ],
-              [
-                "Hand over",
-                "Documentation, enablement and a defined point where your team owns it.",
-              ],
+              ["Assess", "What you are trying to do, what you already run and where the two do not meet."],
+              ["Decide", "Options scored against your requirements, with the scoring handed over."],
+              ["Build", "Configuration, integration, migration and testing, run by the people who scoped it."],
+              ["Hand over", "Documentation, enablement and a defined point where your team owns it."],
             ].map(([title, detail]) => (
-              <div key={title} className="bg-slate-50 border rounded-2xl p-8">
-                <div className="font-semibold text-slate-900">{title}</div>
-                <div className="mt-3 text-sm text-slate-600 leading-relaxed">{detail}</div>
+              <div
+                key={title}
+                className="rounded-2xl border border-slate-700 bg-slate-800/40 p-8"
+              >
+                <div className="font-semibold text-white">{title}</div>
+                <div className="mt-3 text-sm text-slate-300 leading-relaxed">{detail}</div>
               </div>
             ))}
           </div>
@@ -210,27 +172,15 @@ export default function ServicesPage() {
       </section>
 
       {/* HOW WE ARE PAID */}
-      <section className="py-24 bg-slate-50">
+      <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-semibold">How we are paid</h2>
           <p className="mt-4 text-slate-600 max-w-3xl leading-relaxed">
             {site.positioning.independenceShort}
           </p>
 
-          <div className="grid md:grid-cols-3 gap-6 mt-12">
-            {site.positioning.independenceProof.map((point) => (
-              <div key={point} className="bg-white border rounded-2xl p-8 text-slate-700 leading-relaxed">
-                {point}
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-10 rounded-2xl border-2 border-slate-900 bg-white p-10">
+          <div className="mt-10 rounded-2xl border-2 border-slate-900 p-10">
             <h3 className="text-xl font-semibold text-slate-900">What we do not do</h3>
-            <p className="mt-3 text-slate-600 max-w-3xl">
-              Every item here is a revenue line that would give us a reason to recommend one
-              thing over another.
-            </p>
             <div className="mt-7 flex flex-wrap gap-3">
               {site.positioning.doesNotDo.map((item) => (
                 <span
@@ -250,10 +200,7 @@ export default function ServicesPage() {
             >
               {site.assessment.label}
             </Link>
-            <Link
-              href="/about"
-              className="border bg-white px-6 py-3 rounded-lg font-medium text-center"
-            >
+            <Link href="/about" className="border px-6 py-3 rounded-lg font-medium text-center">
               About {site.displayName}
             </Link>
           </div>
@@ -261,13 +208,12 @@ export default function ServicesPage() {
       </section>
 
       {/* FAQs */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-slate-50">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-semibold">FAQs</h2>
-
           <div className="mt-12 grid gap-6">
             {faqSchema.mainEntity.map((item) => (
-              <details key={item.name} className="bg-slate-50 border rounded-2xl p-6">
+              <details key={item.name} className="bg-white border rounded-2xl p-6">
                 <summary className="cursor-pointer font-semibold text-slate-900">
                   {item.name}
                 </summary>
@@ -283,10 +229,6 @@ export default function ServicesPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
       <script
         type="application/ld+json"

@@ -5,6 +5,8 @@ const ROOT = process.cwd();
 const APP_DIR = path.join(ROOT, 'src', 'app');
 const OUTPUT_DIR = path.join(ROOT, 'src', 'generated');
 const OUTPUT_FILE = path.join(OUTPUT_DIR, 'llms-manifest.ts');
+// The sitemap generator reads this JSON copy. Keep both in step.
+const OUTPUT_JSON = path.join(OUTPUT_DIR, 'llms-manifest.json');
 
 const SITE = {
   legalName: 'DS Consulting',
@@ -23,10 +25,18 @@ const PAGE_OVERRIDES = {
 const PRIORITY_OVERRIDES = {
   '/': { priority: 1.0, changeFrequency: 'weekly' },
   '/services': { priority: 0.9, changeFrequency: 'monthly' },
+  '/services/technology': { priority: 0.9, changeFrequency: 'monthly' },
+  '/services/sustainability': { priority: 0.9, changeFrequency: 'monthly' },
+  '/services/finance-and-accounting': { priority: 0.9, changeFrequency: 'monthly' },
+  '/services/erp-systems': { priority: 0.9, changeFrequency: 'monthly' },
+  '/services/commerce-and-digital-platforms': { priority: 0.9, changeFrequency: 'monthly' },
+  '/services/ai-governance-and-adoption': { priority: 0.9, changeFrequency: 'weekly' },
+  '/industries': { priority: 0.8, changeFrequency: 'monthly' },
+  '/industries/retail-and-d2c': { priority: 0.8, changeFrequency: 'monthly' },
+  '/industries/distribution-and-wholesale': { priority: 0.8, changeFrequency: 'monthly' },
   '/services/systems-selection': { priority: 0.9, changeFrequency: 'monthly' },
   '/services/implementation-oversight': { priority: 0.9, changeFrequency: 'monthly' },
   '/services/integration': { priority: 0.9, changeFrequency: 'monthly' },
-  '/services/ai-in-operations': { priority: 0.9, changeFrequency: 'monthly' },
   '/services/esg-advisory': { priority: 0.9, changeFrequency: 'monthly' },
   '/services/esg-advisory/csrd-advisory': { priority: 0.85, changeFrequency: 'monthly' },
   '/services/esg-advisory/brsr-advisory': { priority: 0.85, changeFrequency: 'monthly' },
@@ -61,7 +71,6 @@ const PRIORITY_OVERRIDES = {
   '/terms': { priority: 0.3, changeFrequency: 'yearly' },
   '/cookies': { priority: 0.3, changeFrequency: 'yearly' },
   '/accessibility': { priority: 0.3, changeFrequency: 'yearly' },
-  
 };
 
 const EXCLUDED_ROUTES = new Set(['/favicon.ico']);
@@ -237,6 +246,7 @@ async function main() {
 
   await fs.mkdir(OUTPUT_DIR, { recursive: true });
   await fs.writeFile(OUTPUT_FILE, toTsModule(manifest), 'utf8');
+  await fs.writeFile(OUTPUT_JSON, JSON.stringify(manifest, null, 2), 'utf8');
   console.log(`Generated ${path.relative(ROOT, OUTPUT_FILE)} with ${pages.length} pages.`);
 }
 

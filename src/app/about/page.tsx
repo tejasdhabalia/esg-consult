@@ -2,13 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
+import { pillars } from "@/lib/service-pillars";
 import { absUrl } from "@/lib/url";
 import { pageMetadata } from "@/lib/page-metadata";
 
 export const metadata = pageMetadata({
   title: "About",
   description:
-    "Why DS Consulting exists, who runs it, and how we combine hands-on systems knowledge with business depth on mid-market technology projects.",
+    "Why DS Consulting exists, who runs it, and how business systems, sustainability reporting and finance operations fit together in one firm.",
   path: "/about",
 });
 
@@ -60,6 +61,14 @@ export default function AboutPage() {
         acceptedAnswer: {
           "@type": "Answer",
           text: "Because the two halves of a technology project are usually bought from different people. One firm writes requirements it could not build. Another builds exactly what the requirements said, including the parts that made no commercial sense. We started to hold both ends of that.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What are the three areas you work in?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Business systems, covering commerce platforms, ERP, CRM, integration and AI governance. Sustainability and ESG reporting systems. And outsourced finance and accounting teams. They meet in the finance function, which is why running them separately creates the handoffs where things get lost.",
         },
       },
       {
@@ -145,8 +154,35 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* WHAT WE WORK ON */}
+      <section className="py-24 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl font-semibold max-w-3xl">What we work on</h2>
+          <p className="mt-5 text-slate-600 max-w-3xl leading-relaxed">
+            Three kinds of work, and they are less separate than they look. A sustainability
+            disclosure is a data problem before it is a reporting problem. An outsourced finance
+            team is only as good as the systems it works in. And a technology project is judged
+            on numbers that come out of finance.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-6 mt-12">
+            {pillars.map((pillar) => (
+              <Link
+                key={pillar.route}
+                href={pillar.route}
+                className="rounded-2xl border border-slate-200 bg-white p-8 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
+              >
+                <h3 className="text-lg font-semibold text-slate-900">{pillar.title}</h3>
+                <p className="mt-3 text-sm text-slate-600 leading-relaxed">{pillar.summary}</p>
+                <div className="mt-5 text-sm font-medium text-indigo-700">Read more →</div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* PRINCIPLE */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="bg-white border rounded-2xl p-10">
             <div className="text-sm font-semibold text-slate-500">Our principle</div>

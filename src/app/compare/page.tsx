@@ -7,7 +7,7 @@ import { pageMetadata } from "@/lib/page-metadata";
 export const metadata = pageMetadata({
   title: "Compare approaches and partners",
   description:
-    "Side-by-side comparisons to help leaders choose between approaches and partners for ESG readiness and revenue visibility. Clarity, tradeoffs, next steps.",
+    "Side-by-side comparisons to help leaders choose between approaches and partners on business systems, sustainability reporting and finance operations. Clarity, tradeoffs, next steps.",
   path: "/compare",
 });
 
@@ -83,11 +83,11 @@ export default function CompareHubPage() {
       },
       {
         "@type": "Question",
-        name: "Can you support both ESG readiness and revenue visibility at the same time?",
+        name: "Can you run more than one of these workstreams at the same time?",
         acceptedAnswer: {
           "@type": "Answer",
           text:
-            "Yes. We often run parallel workstreams so leaders get ESG readiness and revenue visibility without creating separate systems that conflict.",
+            "Yes, and it is often the reason to use one firm rather than three. Parallel workstreams share a data model and a set of definitions, so you do not end up with reporting systems that disagree with each other.",
         },
       },
       {

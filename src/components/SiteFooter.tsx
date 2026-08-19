@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
-import { serviceLines } from "@/lib/service-lines";
+import { allServiceLines as serviceLines } from "@/lib/service-pillars";
 
 function IconLinkedIn() {
   return (
@@ -73,6 +73,15 @@ export default function SiteFooter() {
                 Insights
               </Link>
             </li>
+            {/* Industries hidden from navigation until more than two pages
+                exist. The pages stay live at /industries. Uncomment to restore. */}
+            {/*
+            <li>
+              <Link href="/industries" className="hover:text-white">
+                Industries
+              </Link>
+            </li>
+            */}
             <li>
               <Link href="/regulatory-hub" className="hover:text-white">
                 Regulatory hub

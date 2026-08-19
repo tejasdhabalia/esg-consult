@@ -1,12 +1,12 @@
 export const llmsManifest = {
-  "generatedAt": "2026-08-06T05:55:48.137Z",
-  "pageCount": 65,
+  "generatedAt": "2026-08-19T06:26:50.780Z",
+  "pageCount": 73,
   "pages": [
     {
       "route": "/",
       "url": "https://www.consult-ds.com",
-      "title": "Technology consulting and delivery",
-      "description": "Consulting and implementation for mid-market technology projects. ERP, CRM, integration, data and AI, scoped against the business case and built by the people who scoped it.",
+      "title": "Technology, sustainability and finance operations",
+      "description": "Consulting and implementation for mid-market companies. Business systems, sustainability reporting and outsourced finance teams, run by people who have built systems and owned the numbers.",
       "section": "home",
       "priority": 1,
       "changeFrequency": "weekly",
@@ -16,7 +16,7 @@ export const llmsManifest = {
       "route": "/about",
       "url": "https://www.consult-ds.com/about",
       "title": "About",
-      "description": "Why DS Consulting exists, who runs it, and how we combine hands-on systems knowledge with business depth on mid-market technology projects.",
+      "description": "Why DS Consulting exists, who runs it, and how business systems, sustainability reporting and finance operations fit together in one firm.",
       "section": "company",
       "priority": 0.75,
       "changeFrequency": "monthly",
@@ -46,7 +46,7 @@ export const llmsManifest = {
       "route": "/compare",
       "url": "https://www.consult-ds.com/compare",
       "title": "Compare approaches and partners",
-      "description": "Side-by-side comparisons to help leaders choose between approaches and partners for ESG readiness and revenue visibility. Clarity, tradeoffs, next steps.",
+      "description": "Side-by-side comparisons to help leaders choose between approaches and partners on business systems, sustainability reporting and finance operations. Clarity, tradeoffs, next steps.",
       "section": "compare",
       "priority": 0.5,
       "changeFrequency": "monthly",
@@ -263,6 +263,36 @@ export const llmsManifest = {
       "source": "src\\app\\terms\\page.tsx"
     },
     {
+      "route": "/industries",
+      "url": "https://www.consult-ds.com/industries",
+      "title": "Industries",
+      "description": "Where technology projects break, by sector. Inventory truth in retail, the Tally ceiling in distribution, costing in manufacturing, and the integration layer underneath financial services.",
+      "section": "other",
+      "priority": 0.8,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\industries\\page.tsx"
+    },
+    {
+      "route": "/industries/distribution-and-wholesale",
+      "url": "https://www.consult-ds.com/industries/distribution-and-wholesale",
+      "title": "Distribution, wholesale and trading",
+      "description": "Five signs your business has outgrown Tally. Why multi-entity, credit control and scheme management break the tool, and what a migration actually involves.",
+      "section": "other",
+      "priority": 0.8,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\industries\\distribution-and-wholesale\\page.tsx"
+    },
+    {
+      "route": "/industries/retail-and-d2c",
+      "url": "https://www.consult-ds.com/industries/retail-and-d2c",
+      "title": "Retail, D2C and consumer brands",
+      "description": "One SKU, four inventory numbers. Why channel inventory truth and returns reconciliation break in retail and D2C, and what it takes to fix the systems underneath.",
+      "section": "other",
+      "priority": 0.8,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\industries\\retail-and-d2c\\page.tsx"
+    },
+    {
       "route": "/partners",
       "url": "https://www.consult-ds.com/partners",
       "title": "Partner with DS Consulting",
@@ -396,7 +426,7 @@ export const llmsManifest = {
       "route": "/services",
       "url": "https://www.consult-ds.com/services",
       "title": "Services",
-      "description": "Six service lines covering mid-market technology projects. Systems selection, delivery oversight, integration, CRM and revenue operations, AI in operations, and ESG reporting systems.",
+      "description": "What DS Consulting does for mid-market companies. Business systems covering commerce, ERP, CRM, integration and AI. Sustainability and ESG reporting. Outsourced finance and accounting teams.",
       "section": "services",
       "priority": 0.9,
       "changeFrequency": "monthly",
@@ -413,14 +443,24 @@ export const llmsManifest = {
       "source": "src\\app\\services\\ai-governance\\page.tsx"
     },
     {
-      "route": "/services/ai-in-operations",
-      "url": "https://www.consult-ds.com/services/ai-in-operations",
-      "title": "AI in operations",
-      "description": "Getting AI out of pilot and into operations for mid-market companies. Use case selection, data readiness, usage policy, accountability and a defined path to production.",
+      "route": "/services/ai-governance-and-adoption",
+      "url": "https://www.consult-ds.com/services/ai-governance-and-adoption",
+      "title": "AI governance and adoption",
+      "description": "AI governance and operational adoption for mid-market companies. Usage policy, human oversight, shadow AI discovery, EU AI Act transparency obligations and a defined path from pilot to production.",
+      "section": "services",
+      "priority": 0.9,
+      "changeFrequency": "weekly",
+      "source": "src\\app\\services\\ai-governance-and-adoption\\page.tsx"
+    },
+    {
+      "route": "/services/commerce-and-digital-platforms",
+      "url": "https://www.consult-ds.com/services/commerce-and-digital-platforms",
+      "title": "Commerce and digital platforms",
+      "description": "Ecommerce and D2C platform selection, build and replatforming. Channel inventory truth, order flow into finance and returns reconciliation for mid-market consumer businesses.",
       "section": "services",
       "priority": 0.9,
       "changeFrequency": "monthly",
-      "source": "src\\app\\services\\ai-in-operations\\page.tsx"
+      "source": "src\\app\\services\\commerce-and-digital-platforms\\page.tsx"
     },
     {
       "route": "/services/crm-and-revenue-operations",
@@ -461,6 +501,16 @@ export const llmsManifest = {
       "priority": 0.85,
       "changeFrequency": "monthly",
       "source": "src\\app\\services\\crm-and-revenue-operations\\revenue-analytics\\page.tsx"
+    },
+    {
+      "route": "/services/erp-systems",
+      "url": "https://www.consult-ds.com/services/erp-systems",
+      "title": "ERP systems",
+      "description": "ERP selection, implementation and delivery oversight for mid-market companies. Requirements, scored vendor comparison, data migration and cutover, from the Tally ceiling upward.",
+      "section": "services",
+      "priority": 0.9,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\services\\erp-systems\\page.tsx"
     },
     {
       "route": "/services/esg-advisory",
@@ -623,6 +673,16 @@ export const llmsManifest = {
       "source": "src\\app\\services\\esg-advisory\\uk-secr-srs-reporting\\page.tsx"
     },
     {
+      "route": "/services/finance-and-accounting",
+      "url": "https://www.consult-ds.com/services/finance-and-accounting",
+      "title": "Finance and accounting outsourcing",
+      "description": "Offshore finance and accounting teams for mid-market companies. Capacity that scales, with the systems the function runs in built and owned in the same place.",
+      "section": "services",
+      "priority": 0.9,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\services\\finance-and-accounting\\page.tsx"
+    },
+    {
       "route": "/services/implementation-oversight",
       "url": "https://www.consult-ds.com/services/implementation-oversight",
       "title": "Implementation and delivery oversight",
@@ -643,6 +703,16 @@ export const llmsManifest = {
       "source": "src\\app\\services\\integration\\page.tsx"
     },
     {
+      "route": "/services/sustainability",
+      "url": "https://www.consult-ds.com/services/sustainability",
+      "title": "Sustainability and ESG reporting",
+      "description": "CSRD, ESRS, SEBI BRSR and UK SECR reporting built as a system. Data ownership, controls and evidence trails, so a disclosed number can be traced to where it came from.",
+      "section": "services",
+      "priority": 0.9,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\services\\sustainability\\page.tsx"
+    },
+    {
       "route": "/services/systems-selection",
       "url": "https://www.consult-ds.com/services/systems-selection",
       "title": "Systems selection",
@@ -651,6 +721,16 @@ export const llmsManifest = {
       "priority": 0.9,
       "changeFrequency": "monthly",
       "source": "src\\app\\services\\systems-selection\\page.tsx"
+    },
+    {
+      "route": "/services/technology",
+      "url": "https://www.consult-ds.com/services/technology",
+      "title": "Technology",
+      "description": "Commerce platforms, ERP, CRM, integration and AI governance for mid-market companies. Selection, build and delivery by people who can read both the system and the business case.",
+      "section": "services",
+      "priority": 0.9,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\services\\technology\\page.tsx"
     }
   ]
 } as const;

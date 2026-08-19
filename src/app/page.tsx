@@ -1,42 +1,43 @@
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import ServiceCarousel from "@/components/ServiceCarousel";
 import { site } from "@/lib/site";
-import { serviceLines } from "@/lib/service-lines";
+import { pillars } from "@/lib/service-pillars";
 import { getLatestInsights } from "@/lib/insights";
 import { pageMetadata } from "@/lib/page-metadata";
 
 export const metadata = pageMetadata({
-  title: "Technology consulting and delivery",
+  title: "Technology, sustainability and finance operations",
   description:
-    "Consulting and implementation for mid-market technology projects. ERP, CRM, integration, data and AI, scoped against the business case and built by the people who scoped it.",
+    "Consulting and implementation for mid-market companies. Business systems, sustainability reporting and outsourced finance teams, run by people who have built systems and owned the numbers.",
   path: "/",
 });
 
 /**
  * VERIFY BEFORE PUBLISHING.
- * The brief supplies these figures without publication years. Add the year to
- * each source below before this page goes live, then delete this comment.
+ * Gartner and Panorama figures still need publication years added.
+ * The Everest Group figure carries its year and is publishable as written.
  */
 const evidence = [
   {
-    stat: "55 to 75%",
-    claim: "of ERP projects fail to meet their stated objectives",
-    source: "Gartner",
+    stat: "More than 70%",
+    claim: "of recently implemented ERP initiatives will fall short of their original business goals",
+    source: "Gartner forecast to 2027",
   },
   {
-    stat: "32%",
-    claim: "of implementations are completed on time",
-    source: "Panorama Consulting",
+    stat: "55%",
+    claim: "of over-budget projects needed technology nobody had scoped for",
+    source: "Panorama Consulting, 2026 ERP Report",
   },
   {
-    stat: "189%",
-    claim: "average budget overrun on implementations",
-    source: "Panorama Consulting",
+    stat: "58%",
+    claim: "of late projects blame organisational issues, ahead of technical ones",
+    source: "Panorama Consulting, 2026 ERP Report",
   },
   {
-    stat: "$450k",
-    claim: "average cost of a mid-market ERP implementation",
-    source: "Panorama Consulting",
+    stat: "15%",
+    claim: "of mid-market firms have AI genuinely operationalised",
+    source: "Everest Group, 2026",
   },
 ];
 
@@ -53,31 +54,21 @@ export default function HomePage() {
       { "@type": "Person", name: "Jigar Dhabalia", sameAs: site.linkedin.jigar },
       { "@type": "Person", name: "Tejas Dhabalia", sameAs: site.linkedin.tejas },
     ],
-    knowsAbout: [
-      "ERP Selection",
-      "Systems Selection",
-      "Implementation Oversight",
-      "Systems Integration",
-      "Data Migration",
-      "CRM Governance",
-      "Revenue Operations",
-      "Marketing Automation",
-      "AI in Operations",
-      "CSRD Compliance",
-      "SEBI BRSR Reporting",
-      "UK SECR and SRS Reporting",
-    ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "DS Consulting Services",
-      itemListElement: serviceLines.map((line) => ({
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: line.label,
-          description: line.summary,
-          url: `${site.baseUrl}${line.route}`,
-        },
+      itemListElement: pillars.map((pillar) => ({
+        "@type": "OfferCatalog",
+        name: pillar.title,
+        itemListElement: pillar.lines.map((line) => ({
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: line.label,
+            description: line.summary,
+            url: `${site.baseUrl}${line.route}`,
+          },
+        })),
       })),
     },
     sameAs: [site.linkedin.tejas, site.linkedin.jigar],
@@ -92,7 +83,15 @@ export default function HomePage() {
         name: `What does ${site.displayName} do?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: "We run technology projects for mid-market companies, covering both the consulting and the implementation. Systems selection, implementation and delivery oversight, integration, CRM and revenue operations, AI in operations, and ESG and CSRD reporting systems.",
+          text: "Three things for mid-market companies. We build and fix the business systems they run on, covering commerce platforms, ERP, CRM, integration and AI. We build sustainability and ESG reporting systems. And we provide outsourced finance and accounting teams.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Why do you do all three?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "They meet in the finance function. A sustainability disclosure is a data problem before it is a reporting problem. An outsourced finance team is only as good as the systems it works in. And most technology projects are judged on numbers that come out of finance. Buying them from three firms is what creates the handoffs where things get lost.",
         },
       },
       {
@@ -100,15 +99,7 @@ export default function HomePage() {
         name: "What makes you different from a systems integrator?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Depth on both sides. We have built these systems, so we can tell a configuration from a customisation and design an interface that survives contact with real data. We also read a business case, a close calendar and a board pack, so we can tell which requirement is load bearing and which is a preference. Most firms are strong at one of those two.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Who actually does the work?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "The people who scope your project are the people who deliver it. Anyone who will work on delivery is introduced to you during scoping.",
+          text: "Depth on both sides. We have built these systems, so we can tell a configuration from a customisation and design an interface that survives contact with real data. We also read a business case, a close calendar and a board pack, so we can tell which requirement is load bearing and which is a preference.",
         },
       },
       {
@@ -116,15 +107,7 @@ export default function HomePage() {
         name: "How are you paid?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "By the client, always. We take no commissions, referral fees, reseller margin or partner incentives from any software vendor. We still recommend software, and you get the scoring behind the recommendation rather than only the conclusion.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What do you not do?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "We do not provide IT support, help desk, networking or hardware, and we do not resell software.",
+          text: "By the client. We take no commissions, referral fees, reseller margin or partner incentives from any software vendor. We still recommend software, and you get the scoring behind the recommendation rather than only the conclusion.",
         },
       },
       {
@@ -142,15 +125,71 @@ export default function HomePage() {
     <div>
       <PageHero
         title="We understand the system and the business it has to run"
-        subtitle="Technology projects for mid-market companies. ERP, CRM, integration, data and AI. We scope the work against what the business actually needs, then we build it."
+        subtitle="Business systems, sustainability reporting and finance operations for mid-market companies. Built by people who have written the code and owned the numbers it was supposed to move."
         painLine={site.positioning.supporting}
         primaryAction={{ label: site.assessment.label, href: "/contact" }}
         secondaryAction={{ label: "See what we do", href: "/services" }}
         imageSrc="/hero/home.jpg"
-        imageAlt="DS Consulting, technology consulting and implementation for mid-market companies"
+        imageAlt="DS Consulting, technology, sustainability and finance operations"
       />
 
-      {/* CORE CLAIM. Technology knowledge with business depth. */}
+      {/* WHAT WE DO */}
+      <section className="py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl font-semibold">What we do</h2>
+          <p className="mt-4 text-slate-600 max-w-3xl leading-relaxed">
+            Three kinds of work, and they are less separate than they look. A sustainability
+            disclosure is a data problem before it is a reporting problem. An outsourced finance
+            team is only as good as the systems it works in. And a technology project is judged
+            on numbers that come out of finance.
+          </p>
+
+          <div className="mt-12">
+            <ServiceCarousel />
+          </div>
+        </div>
+      </section>
+
+      {/* THE GAP */}
+      <section className="py-24 bg-slate-900 text-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl font-semibold max-w-3xl">
+            The gap between the board decision and the built system
+          </h2>
+          <p className="mt-5 text-slate-300 max-w-3xl leading-relaxed">
+            A board approves a business case. Eighteen months later a system goes live that does
+            something adjacent to it. Nobody lied along the way. The requirements were written by
+            people who would not use the system, the scope moved in change requests nobody read
+            end to end, and the team that sold the project was not the team that built it.
+          </p>
+		            <p className="mt-4 text-slate-300 max-w-3xl leading-relaxed">
+            Most projects now land close to plan. Around three in five finish on time and half
+            come in on budget. Delivery discipline is not the problem it was a decade ago.
+          </p>
+          <p className="mt-8 max-w-3xl border-l-4 border-indigo-400 pl-6 text-xl md:text-2xl font-semibold leading-snug text-white">
+            A project can hit every date and still not produce what the board approved.
+          </p>
+          <p className="mt-4 text-slate-300 max-w-3xl leading-relaxed">
+            That gap is where we work. Not the software, the distance between the decision and
+            the delivery.
+          </p>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-14">
+            {evidence.map((item) => (
+              <div
+                key={item.claim}
+                className="rounded-2xl border border-slate-700 bg-slate-800/40 p-7"
+              >
+                <div className="text-3xl font-bold text-indigo-300">{item.stat}</div>
+                <div className="mt-3 text-sm text-slate-300 leading-snug">{item.claim}</div>
+                <div className="mt-4 text-xs text-slate-500">{item.source}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* DEPTH */}
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-semibold max-w-3xl">
@@ -174,91 +213,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* THE GAP */}
-      <section className="py-24 bg-slate-900 text-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold max-w-3xl">
-            The gap between the board decision and the built system
-          </h2>
-          <p className="mt-5 text-slate-300 max-w-3xl leading-relaxed">
-            A board approves a business case. Eighteen months later a system goes live that does
-            something adjacent to it. Nobody lied along the way. The requirements were written by
-            people who would not use the system, the scope moved in change requests nobody read
-            end to end, and the team that sold the project was not the team that built it.
-          </p>
-          <p className="mt-4 text-slate-300 max-w-3xl leading-relaxed">
-            That gap is where we work. Not the software, the distance between the decision and
-            the delivery.
-          </p>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-14">
-            {evidence.map((item) => (
-              <div
-                key={item.claim}
-                className="rounded-2xl border border-slate-700 bg-slate-800/40 p-7"
-              >
-                <div className="text-3xl font-bold text-indigo-300">{item.stat}</div>
-                <div className="mt-3 text-sm text-slate-300 leading-snug">{item.claim}</div>
-                <div className="mt-4 text-xs text-slate-500">{item.source}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SERVICE LINES */}
-      <section className="py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold">What we do</h2>
-          <p className="mt-4 text-slate-600 max-w-3xl">
-            Six service lines. Consulting and implementation in each of them, so the thinking and
-            the build do not sit with different firms.
-          </p>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-            {serviceLines.map((line) => {
-              const card = (
-                <>
-                  <h3 className="text-xl font-semibold text-slate-900">{line.label}</h3>
-                  <p className="mt-3 text-sm text-slate-600 leading-relaxed">{line.summary}</p>
-                  {line.live ? (
-                    <div className="mt-5 text-sm font-medium text-indigo-700">Read more →</div>
-                  ) : (
-                    <div className="mt-5 text-xs font-medium uppercase tracking-wide text-slate-400">
-                      Page in progress
-                    </div>
-                  )}
-                </>
-              );
-
-              return line.live ? (
-                <Link
-                  key={line.route}
-                  href={line.route}
-                  className="rounded-2xl border border-slate-200 bg-slate-50 p-8 transition-all duration-200 hover:-translate-y-1 hover:border-slate-300 hover:bg-white hover:shadow-lg"
-                >
-                  {card}
-                </Link>
-              ) : (
-                <div
-                  key={line.route}
-                  className="rounded-2xl border border-slate-200 bg-slate-50 p-8"
-                >
-                  {card}
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="mt-12">
-            <Link href="/services" className="text-indigo-700 font-medium hover:text-indigo-800">
-              See all six in detail →
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* HOW WE ARE PAID. Independence, stated plainly, not sold. */}
+      {/* HOW WE ARE PAID */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-semibold">How we are paid</h2>
@@ -296,7 +251,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* THE ASSESSMENT */}
+      {/* ASSESSMENT */}
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-start">
@@ -369,14 +324,11 @@ export default function HomePage() {
                 className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
               >
                 <div className="h-1.5 w-full bg-indigo-500" />
-
                 <div className="p-7">
                   <h3 className="text-xl font-semibold text-slate-900 leading-snug">
                     {item.title}
                   </h3>
-
                   <p className="mt-3 text-sm leading-relaxed text-slate-600">{item.summary}</p>
-
                   <div className="mt-6 flex items-center justify-between gap-4">
                     <div className="text-xs text-slate-500">
                       {item.readTime} · Updated {item.updated}

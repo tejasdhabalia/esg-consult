@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { site } from "@/lib/site";
-import { liveServiceLines } from "@/lib/service-lines";
+import { liveServiceLines } from "@/lib/service-pillars";
 
 export default function SiteHeader() {
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -32,8 +32,8 @@ export default function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <Link href="/" className="flex items-center gap-3">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-6">
+        <Link href="/" className="flex shrink-0 items-center gap-3">
           <Image
             src="/brand/DSConsulting-mark.png"
             alt="DS Consulting logo"
@@ -42,15 +42,17 @@ export default function SiteHeader() {
             priority
           />
 
-          <span className="text-xl font-semibold text-slate-900">DS Consulting</span>
+          <span className="whitespace-nowrap text-xl font-semibold text-slate-900">
+            DS Consulting
+          </span>
 
-          <span className="hidden items-center rounded-full border border-slate-200 px-3 py-1 text-xs font-semibold lg:inline-flex">
+          <span className="hidden items-center whitespace-nowrap rounded-full border border-slate-200 px-3 py-1 text-xs font-semibold xl:inline-flex">
             <span className="font-bold text-indigo-700">{site.taglinePrimary}</span>
             <span className="ml-1 font-bold text-slate-700">{site.taglineSecondary}</span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 text-sm text-slate-700 md:flex">
+        <nav className="hidden items-center gap-5 text-sm whitespace-nowrap text-slate-700 lg:flex xl:gap-6">
           <Link href="/" className="hover:text-slate-900">
             Home
           </Link>
@@ -92,6 +94,13 @@ export default function SiteHeader() {
             )}
           </div>
 
+          {/* Industries hidden from navigation until more than two pages exist.
+              The pages stay live at /industries. Uncomment to restore. */}
+          {/*
+          <Link href="/industries" className="hover:text-slate-900">
+            Industries
+          </Link>
+          */}
           <Link href="/regulatory-hub" className="hover:text-slate-900">
             Regulatory hub
           </Link>
@@ -108,14 +117,14 @@ export default function SiteHeader() {
 
         <Link
           href="/contact"
-          className="hidden rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 md:inline-flex"
+          className="hidden shrink-0 whitespace-nowrap rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 lg:inline-flex"
         >
           {site.assessment.label}
         </Link>
 
         <button
           type="button"
-          className="rounded-lg border px-3 py-2 text-sm md:hidden"
+          className="shrink-0 rounded-lg border px-3 py-2 text-sm lg:hidden"
           onClick={() => setMobileOpen((value) => !value)}
           aria-expanded={mobileOpen}
         >
@@ -124,7 +133,7 @@ export default function SiteHeader() {
       </div>
 
       {mobileOpen && (
-        <div className="border-t border-slate-200 bg-white md:hidden">
+        <div className="border-t border-slate-200 bg-white lg:hidden">
           <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-4 text-sm">
             <div className="text-xs font-semibold text-slate-700">
               <span className="font-bold text-indigo-700">{site.taglinePrimary}</span>{" "}
@@ -170,6 +179,12 @@ export default function SiteHeader() {
               )}
             </div>
 
+            {/* Industries hidden from navigation. Uncomment to restore. */}
+            {/*
+            <Link href="/industries" onClick={closeMobileMenu}>
+              Industries
+            </Link>
+            */}
             <Link href="/regulatory-hub" onClick={closeMobileMenu}>
               Regulatory hub
             </Link>

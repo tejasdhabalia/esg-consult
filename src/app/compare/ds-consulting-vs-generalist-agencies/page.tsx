@@ -144,13 +144,13 @@ export default function DSConsultingVsGeneralistPage() {
     <div className="bg-white">
       <PageHero
         title="DS Consulting vs Generalist Agencies"
-        subtitle="An honest comparison for buyers deciding between a specialist governance partner and a generalist agency, or a Big 4 practice, for ESG readiness and revenue operations."
+        subtitle="An honest comparison for buyers deciding between a firm that has built these systems and a generalist agency or large consultancy practice."
         painLine="If your metrics are disputed, routing is inconsistent, or reporting needs defensible evidence trails, foundations matter more than volume of activity."
         primaryAction={{ label: "Talk to us", href: "/contact" }}
         secondaryAction={{ label: "Explore services", href: "/services" }}
         note="Note: We do not provide statutory audit or assurance."
         imageSrc="/hero/services.jpg"
-        imageAlt="Comparison guide for selecting a partner for ESG readiness and revenue visibility"
+        imageAlt="Comparison guide for selecting a technology and reporting systems partner"
       />
 
       {/* Back link */}

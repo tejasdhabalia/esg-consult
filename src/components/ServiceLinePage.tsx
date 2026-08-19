@@ -40,6 +40,13 @@ export type ServiceLinePageProps = {
   signals: string[];
 
   faqs: ServiceFaq[];
+
+  /**
+   * Optional cross-cutting pages, shown as "how we engage" links.
+   * Used for systems selection and implementation oversight, which apply
+   * across ERP, CRM and commerce rather than sitting inside any one of them.
+   */
+  engagementModes?: { route: string; label: string; detail: string }[];
 };
 
 export default function ServiceLinePage({
@@ -56,6 +63,7 @@ export default function ServiceLinePage({
   deliverables,
   signals,
   faqs,
+  engagementModes,
 }: ServiceLinePageProps) {
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -180,6 +188,32 @@ export default function ServiceLinePage({
           </div>
         </div>
       </section>
+
+      {/* ENGAGEMENT MODES */}
+      {engagementModes && engagementModes.length > 0 && (
+        <section className="py-24 bg-slate-50">
+          <div className="max-w-6xl mx-auto px-6">
+            <h2 className="text-3xl font-semibold">How we engage</h2>
+            <p className="mt-4 text-slate-600 max-w-3xl leading-relaxed">
+              These apply across every system we work on, not just this one.
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-6 mt-12">
+              {engagementModes.map((mode) => (
+                <Link
+                  key={mode.route}
+                  href={mode.route}
+                  className="rounded-2xl border border-slate-200 bg-white p-8 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
+                >
+                  <h3 className="text-lg font-semibold text-slate-900">{mode.label}</h3>
+                  <p className="mt-3 text-sm text-slate-600 leading-relaxed">{mode.detail}</p>
+                  <div className="mt-5 text-sm font-medium text-indigo-700">Read more →</div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ASSESSMENT CTA */}
       <section className="py-20 bg-slate-900 text-white">

@@ -38,8 +38,8 @@ export const site = {
         body: "Month end close, order to cash, pipeline reporting, statutory disclosure. We can tell you which requirement is load bearing and which one is a preference somebody wrote down in a workshop.",
       },
       {
-        title: "The same people do both",
-        body: "The people who scope your project are the people who deliver it. Anyone who will work on delivery is introduced to you during scoping, so the knowledge does not get handed over and lost.",
+        title: "You meet the people who do the work",
+        body: "On technology projects the people who scope the work are the people who deliver it. Where delivery involves specialists or a partner firm, you are introduced to them during scoping rather than after you have signed.",
       },
     ],
 
