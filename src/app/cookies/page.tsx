@@ -1,4 +1,5 @@
 import PageHero from "@/components/PageHero";
+import OpenCookiePreferencesButton from "@/components/OpenCookiePreferencesButton";
 import { site } from "@/lib/site";
 import { pageMetadata } from "@/lib/page-metadata";
 
@@ -41,7 +42,10 @@ export default function CookiesPage() {
           <div>
             <h2 className="text-2xl font-semibold">Your choices</h2>
             <p className="mt-4">
-              You can manage cookie preferences using the consent prompt. If you need help, contact{" "}
+              <span className="mb-5 block">
+                <OpenCookiePreferencesButton />
+              </span>
+              You can change your choice at any time using the button above. If you need help, contact{" "}
               <span className="font-medium">{site.emails.general}</span>.
             </p>
           </div>

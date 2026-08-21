@@ -1,5 +1,5 @@
 export const llmsManifest = {
-  "generatedAt": "2026-08-19T06:26:50.780Z",
+  "generatedAt": "2026-08-21T12:44:17.010Z",
   "pageCount": 73,
   "pages": [
     {

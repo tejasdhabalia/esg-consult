@@ -6,6 +6,7 @@ import { site } from "@/lib/site";
 import { validateBusinessEmail } from "@/lib/businessEmail";
 import { getRecaptchaToken } from "@/lib/recaptcha-client";
 import { AVAILABLE_DAYS, MAX_DAYS_AHEAD } from "@/lib/booking-config";
+import { getAttribution } from "@/lib/attribution";
 
 type Step = "details" | "date" | "time" | "confirm" | "success";
 
@@ -51,9 +52,11 @@ export default function ContactFormClient() {
     surname: "",
     email: "",
     company: "",
-    interest: "ESG readiness",
+    interest: "Not sure yet",
     message: "",
     website: "",
+    hearAboutUs: "",
+    hearAboutUsOther: "",
   });
 
   const [availableDates] = useState(getAvailableDates);
@@ -80,10 +83,21 @@ export default function ContactFormClient() {
 
   const detailsComplete = useMemo(() => {
     if (!form.firstName || !form.surname || !form.email || !form.message) return false;
+    if (!form.hearAboutUs) return false;
+    if (form.hearAboutUs === "Other" && !form.hearAboutUsOther.trim()) return false;
     if (!emailValidation.ok) return false;
     if (!siteKey) return false;
     return true;
-  }, [form.firstName, form.surname, form.email, form.message, emailValidation.ok, siteKey]);
+  }, [
+    form.firstName,
+    form.surname,
+    form.email,
+    form.message,
+    form.hearAboutUs,
+    form.hearAboutUsOther,
+    emailValidation.ok,
+    siteKey,
+  ]);
 
   const fetchSlots = useCallback(async (dateStr: string) => {
     setSlotsLoading(true);
@@ -123,6 +137,9 @@ export default function ContactFormClient() {
     try {
       const captchaToken = await getRecaptchaToken(siteKey || "", action);
 
+      // Captured on the FIRST page of this session, not here.
+      const { landing_page, referrer } = getAttribution();
+
       // Fire both APIs in parallel
       const [contactRes, bookingRes] = await Promise.all([
         fetch("/api/contact", {
@@ -134,6 +151,10 @@ export default function ContactFormClient() {
             email: emailValidation.normalizedEmail,
             captchaToken,
             captchaAction: action,
+            hear_about_us: form.hearAboutUs,
+            hear_about_us_other: form.hearAboutUsOther,
+            landing_page,
+            referrer,
           }),
         }),
         fetch("/api/booking/create", {
@@ -145,6 +166,15 @@ export default function ContactFormClient() {
             email: emailValidation.normalizedEmail,
             slotUtc: selectedSlot?.utc,
             visitorTz,
+            company: form.company,
+            interest: form.interest,
+            message: form.message,
+            hearAboutUs:
+              form.hearAboutUs === "Other"
+                ? `Other: ${form.hearAboutUsOther}`
+                : form.hearAboutUs,
+            landingPage: landing_page,
+            referrer,
           }),
         }),
       ]);
@@ -157,6 +187,25 @@ export default function ContactFormClient() {
       }
       if (!bookingRes.ok || !bookingData?.ok) {
         throw new Error(bookingData?.error || "Booking failed. Please try again.");
+      }
+
+      // GA4 conversion event.
+      //
+      // Without this there is nothing in GA4 to mark as a key event. The form
+      // never navigates and never fires a native submit, so neither enhanced
+      // measurement nor a thank-you page URL would catch it.
+      //
+      // Safe under denied consent: gtag still sends a cookieless ping, so the
+      // count is right even when the visitor declined analytics.
+      try {
+        const w = window as unknown as { gtag?: (...args: unknown[]) => void };
+        w.gtag?.("event", "generate_lead", {
+          form_name: "contact_booking",
+          interest: form.interest,
+          hear_about_us: form.hearAboutUs,
+        });
+      } catch {
+        // Analytics must never break a completed booking.
       }
 
       setStep("success");
@@ -255,12 +304,45 @@ export default function ContactFormClient() {
               <select id="c-interest" value={form.interest}
                 onChange={(e) => setForm({ ...form, interest: e.target.value })}
                 className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                <option>ESG readiness</option>
-                <option>Marketing automation and RevOps</option>
-                <option>Both ESG and revenue systems</option>
+                <option>Not sure yet</option>
+                <option>Commerce and digital platforms</option>
+                <option>ERP systems</option>
+                <option>CRM and revenue operations</option>
+                <option>Integration</option>
+                <option>AI governance and adoption</option>
+                <option>ESG and CSRD reporting</option>
+                <option>Finance and accounting outsourcing</option>
                 <option>Partnership</option>
-				<option>Not sure yet</option>
               </select>
+            </div>
+
+            <div>
+              <label htmlFor="c-hear" className="text-sm font-medium text-slate-700">
+                How did you hear about us?*
+              </label>
+              <select
+                id="c-hear"
+                value={form.hearAboutUs}
+                onChange={(e) => setForm({ ...form, hearAboutUs: e.target.value })}
+                className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              >
+                <option value="">Please choose</option>
+                <option>Google or another search engine</option>
+                <option>LinkedIn</option>
+                <option>Referral or word of mouth</option>
+                <option>Event, podcast or webinar</option>
+                <option>Other</option>
+              </select>
+
+              {form.hearAboutUs === "Other" ? (
+                <input
+                  type="text"
+                  value={form.hearAboutUsOther}
+                  onChange={(e) => setForm({ ...form, hearAboutUsOther: e.target.value })}
+                  placeholder="Where did you hear about us?"
+                  className="mt-3 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              ) : null}
             </div>
 
             <div>

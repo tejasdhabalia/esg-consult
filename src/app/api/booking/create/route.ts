@@ -14,6 +14,14 @@ export async function POST(req: Request) {
       email = "",
       slotUtc = "",
       visitorTz = "UTC",
+      // Enquiry detail and attribution, forwarded to the internal
+      // notification email only. Never shown to the visitor.
+      company = "",
+      interest = "",
+      message = "",
+      hearAboutUs = "",
+      landingPage = "",
+      referrer = "",
     } = body || {};
 
     if (!firstName || !surname || !email || !slotUtc) {
@@ -70,14 +78,28 @@ export async function POST(req: Request) {
       },
     });
 
-    await sendBookingConfirmation({
-      firstName,
-      surname,
-      email: emailValidation.normalizedEmail ?? email,
-      localDisplay,
-      istDisplay,
-      visitorTz,
-    });
+    // The calendar event now exists and Google has already emailed the invite.
+    // If our own confirmation mail fails, that is not a failed booking, so it
+    // must not throw. Telling the visitor it failed would make them rebook and
+    // create a duplicate event.
+    try {
+      await sendBookingConfirmation({
+        firstName,
+        surname,
+        email: emailValidation.normalizedEmail ?? email,
+        localDisplay,
+        istDisplay,
+        visitorTz,
+        company,
+        interest,
+        message,
+        hearAboutUs,
+        landingPage,
+        referrer,
+      });
+    } catch (err) {
+      console.error("Booking confirmation email failed, booking itself is fine:", err);
+    }
 
     return NextResponse.json({ ok: true, localDisplay, istDisplay });
   } catch (err) {
