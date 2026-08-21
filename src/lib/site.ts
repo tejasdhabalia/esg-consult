@@ -12,7 +12,7 @@ export const site = {
   // Default SEO
   defaultTitle: "Technology consulting and delivery | DS Consulting",
   defaultDescription:
-    "Consulting and implementation for mid-market technology projects. ERP, CRM, integration, data and AI, scoped against the business case and built by the people who scoped it.",
+    "Consulting and implementation for mid-market companies. Technology and AI, sustainability reporting and finance operations, scoped against the business case and built by the people who scoped it.",
 
   /**
    * Positioning strings used across pages. Edit here, not in page files,
@@ -47,8 +47,16 @@ export const site = {
      * Supporting claim. Stated in plain words, never softened to
      * "vendor-agnostic approach", but not sold as the primary reason to hire us.
      */
+    /**
+      * Short form, used in the footer and in call-to-action panels.
+      *
+      * Deliberately does not mention software resale or how revenue is
+      * split. Those belong in the "How we are paid" section, which has room
+      * to state them properly. Three stacked negatives in a strapline read
+      * as defensive.
+      */
     independenceShort:
-      "No vendor commissions. No software resale. All of our revenue is paid by the client.",
+      "Software vendors do not pay us. Our recommendations come with the scoring behind them.",
     independenceProof: [
       "We take no commissions, referral fees, reseller margin or partner incentives from any software vendor.",
       "Every invoice we raise goes to a client. That is the whole revenue model.",
@@ -85,7 +93,7 @@ export const site = {
   // AI / agent discovery
   ai: {
     summary:
-      "Technology consulting and implementation firm for mid-market companies, combining hands-on systems knowledge with operational and financial business depth. DS Consulting covers systems selection, implementation and delivery oversight, integration, CRM and revenue operations, AI in operations, and ESG and CSRD reporting systems. The firm takes no commissions or reseller margin from software vendors, and does not provide IT support, help desk, networking, hardware or software resale.",
+      "Consulting and implementation firm for mid-market companies, combining hands-on systems knowledge with operational and financial business depth. DS Consulting works across three areas. Technology and AI, covering commerce and digital platforms, ERP systems, CRM and revenue operations, integration, and AI governance and adoption. Sustainability, covering ESG and CSRD reporting systems. And finance and accounting outsourcing. The firm is not paid by software vendors for its recommendations.",
     mcpServerUrl: process.env.NEXT_PUBLIC_MCP_SERVER_URL || "",
     mcpTransport: process.env.NEXT_PUBLIC_MCP_TRANSPORT || "streamable-http",
   },

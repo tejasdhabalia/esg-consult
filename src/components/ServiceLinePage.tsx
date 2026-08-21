@@ -237,9 +237,6 @@ export default function ServiceLinePage({
               <p className="text-slate-300 leading-relaxed">
                 {site.positioning.independenceShort}
               </p>
-              <p className="mt-4 text-sm text-slate-400 leading-relaxed">
-                We do not provide {site.positioning.doesNotDo.join(", ").toLowerCase()}.
-              </p>
             </div>
           </div>
         </div>

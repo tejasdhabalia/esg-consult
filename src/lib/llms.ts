@@ -63,7 +63,7 @@ const FEATURED_REGULATORY_ROUTES = [
 
 const aiSummary =
   site.ai?.summary ||
-  `${site.displayName} provides advisory and implementation support across ESG readiness, reporting systems, CRM governance, lifecycle management, and revenue visibility.`;
+  `${site.displayName} provides consulting and implementation for mid-market companies across technology and AI, sustainability reporting, and finance and accounting operations.`;
 
 const mcpServerUrl = site.ai?.mcpServerUrl || "";
 const mcpTransport = site.ai?.mcpTransport || "streamable-http";

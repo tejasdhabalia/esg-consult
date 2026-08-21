@@ -124,8 +124,8 @@ export default function ContactPage() {
               </div>
 
               <div className="mt-3 text-sm text-slate-500 leading-relaxed">
-                We do not provide IT support, help desk, networking or hardware, we do not resell
-                software, and we do not provide statutory audit or assurance.
+                We do not provide IT support, help desk, networking or hardware, and we do not
+                provide statutory audit or assurance.
               </div>
             </div>
           </div>

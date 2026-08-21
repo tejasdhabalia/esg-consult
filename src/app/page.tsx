@@ -7,9 +7,9 @@ import { getLatestInsights } from "@/lib/insights";
 import { pageMetadata } from "@/lib/page-metadata";
 
 export const metadata = pageMetadata({
-  title: "Technology, sustainability and finance operations",
+  title: "Tech & AI, Sustainability & Finance for Mid-Market",
   description:
-    "Consulting and implementation for mid-market companies. Business systems, sustainability reporting and outsourced finance teams, run by people who have built systems and owned the numbers.",
+    "Close the gap between board strategy and system execution. Technology and AI, audit-ready ESG systems, and outsourced finance operations for mid-market firms.",
   path: "/",
 });
 
@@ -124,9 +124,9 @@ export default function HomePage() {
   return (
     <div>
       <PageHero
-        title="We understand the system and the business it has to run"
-        subtitle="Business systems, sustainability reporting and finance operations for mid-market companies. Built by people who have written the code and owned the numbers it was supposed to move."
-        painLine={site.positioning.supporting}
+        title="Closing the gap between board strategy and system execution"
+        subtitle="We design and run the engine room for mid-market leaders: enterprise technology and AI integration, audit-ready ESG systems, and high-performing outsourced finance operations."
+        painLine="High-level strategy often gets lost when translated into technical workflows and daily financial operations. We work right in the middle, so what the board approved is what actually gets built."
         primaryAction={{ label: site.assessment.label, href: "/contact" }}
         secondaryAction={{ label: "See what we do", href: "/services" }}
         imageSrc="/hero/home.jpg"

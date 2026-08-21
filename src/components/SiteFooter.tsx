@@ -24,7 +24,8 @@ export default function SiteFooter() {
             <span className="text-white font-bold">{site.taglineSecondary}</span>
           </div>
           <p className="text-slate-400 mt-3 leading-relaxed">
-            Independent technology consulting and implementation for mid-market companies.
+            Consulting and implementation for mid-market companies. Technology and AI,
+            sustainability reporting and finance operations.
           </p>
           <p className="text-slate-400 mt-3 leading-relaxed">
             {site.positioning.independenceShort}
