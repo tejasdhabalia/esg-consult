@@ -136,6 +136,23 @@ export default function InsightEngagementPage({ config }: { config: EsgInsightPa
               {config.whyItMatters.map((paragraph) => (
                 <p key={paragraph} className="text-slate-600 leading-relaxed">{paragraph}</p>
               ))}
+              {/*
+                Contextual link into the supporting service page. A real
+                anchor, not a click handler, so it is crawlable.
+                Brief 2, Task 3a (SEO project).
+              */}
+              {config.contextualLink && (
+                <p className="text-slate-600 leading-relaxed">
+                  {config.contextualLink.before}{" "}
+                  <Link
+                    href={config.contextualLink.href}
+                    className="text-indigo-700 underline underline-offset-2 hover:text-indigo-900"
+                  >
+                    {config.contextualLink.anchor}
+                  </Link>
+                  {config.contextualLink.after}
+                </p>
+              )}
             </div>
 
             <div className="mt-14 pt-10 border-t border-slate-200">

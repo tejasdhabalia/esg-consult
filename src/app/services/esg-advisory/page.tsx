@@ -4,6 +4,7 @@ import { esgServicePathways } from "@/lib/esgServiceConfigs";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
 import { pageMetadata } from "@/lib/page-metadata";
+import RelatedResources from "@/components/RelatedResources";
 
 export const metadata = pageMetadata({
   title: "ESG and CSRD reporting systems",
@@ -270,6 +271,29 @@ export default function ESGAdvisoryPage() {
           </div>
         </div>
       </section>
+
+      <RelatedResources
+        resources={[
+          {
+            href: "/regulatory-hub/what-is-csrd",
+            label: "What is CSRD",
+            detail:
+              "Who falls in scope, on what timeline, and why the data question is harder than the scope question.",
+          },
+          {
+            href: "/insights/csrd-readiness-first-90-days",
+            label: "CSRD readiness in the first 90 days",
+            detail:
+              "What to settle early so the first reporting cycle is not assembled by hand.",
+          },
+          {
+            href: "/regulatory-hub/what-is-sebi-brsr",
+            label: "What is SEBI BRSR",
+            detail:
+              "The Indian disclosure regime, including which KPIs carry reasonable assurance.",
+          },
+        ]}
+      />
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />

@@ -56,6 +56,21 @@ export type EsgInsightPageConfig = {
   rightForYou: string[];
   sections: EsgInsightSection[];
   whyItMatters: string[];
+  /**
+   * One contextual body link into the service page this resource supports.
+   * Renders as a closing paragraph under "why it matters", so it reads as
+   * part of the argument rather than as a promotional block.
+   *
+   * The anchor text is the term the target page needs to rank for, so it is
+   * descriptive and fixed. Do not change it to "learn more" or "our
+   * services". One link per page. Brief 2, Task 3a (SEO project).
+   */
+  contextualLink?: {
+    before: string;
+    anchor: string;
+    href: string;
+    after: string;
+  };
   faqs: EsgInsightFaq[];
   resourceKey: InsightResourceKey;
   resourceCtaTitle: string;
@@ -209,6 +224,13 @@ export const esgInsightPages: Record<string, EsgInsightPageConfig> = {
       "Net zero plans often stall because they start with ambition statements and software demos rather than ownership, sequencing, and management rhythm. A roadmap becomes real only when operations and finance recognise it as a delivery programme, not a sustainability side project.",
       "A credible roadmap also protects external positioning. When customers, lenders, or boards ask how targets will be delivered, leadership needs more than a baseline and a slide. They need a workstream view, a decision log, and evidence that the programme can actually run.",
     ],
+    contextualLink: {
+      before:
+        "Turning a baseline into a programme with owners, sequencing and a reporting rhythm is",
+      anchor: "net zero and decarbonisation advisory",
+      href: "/services/esg-advisory/net-zero-and-decarbonisation",
+      after: ".",
+    },
     faqs: [
       { question: "Do we need perfect Scope 3 data before building a roadmap?", answer: "No. You need enough confidence to identify hotspot categories, major dependencies, and where the data quality still limits decision-making. Waiting for perfect data delays action and usually does not improve governance." },
       { question: "Who should own a decarbonisation roadmap?", answer: "Leadership sponsorship often sits with the CFO, COO, or CSO, but the roadmap itself needs distributed ownership across procurement, operations, facilities, logistics, and product teams. A sustainability team alone cannot deliver it." },
@@ -314,6 +336,13 @@ export const esgInsightPages: Record<string, EsgInsightPageConfig> = {
       "Climate risk is increasingly scrutinised by boards, lenders, customers, and reporting frameworks. A high-level narrative may look polished, but without a working register there is little evidence that the risk is being managed systematically.",
       "A good register also improves internal alignment. It gives finance, operations, procurement, and sustainability one shared format for discussing exposure, response cost, and ownership. That alone reduces a large amount of reporting friction.",
     ],
+    contextualLink: {
+      before:
+        "Where the register needs to connect to disclosure obligations and to the systems that hold the underlying evidence, that is",
+      anchor: "climate risk advisory",
+      href: "/services/esg-advisory/climate-risk",
+      after: ".",
+    },
     faqs: [
       { question: "Should climate risks sit in the main enterprise risk register?", answer: "Where possible, yes. Many organisations still maintain a supporting climate risk register first, but the goal should be to link material climate exposures into the main risk governance structure." },
       { question: "Do we need scenario analysis before creating a register?", answer: "Not necessarily. You can start with a practical risk register using current evidence and then deepen selected risks with scenario analysis where exposure is material." },
@@ -419,6 +448,13 @@ export const esgInsightPages: Record<string, EsgInsightPageConfig> = {
       "Scope 3 improvement usually depends on supplier engagement quality more than calculation sophistication. If supplier asks are late, unclear, or poorly owned, the reporting cycle becomes estimate-heavy and leadership confidence drops.",
       "A better request process also creates commercial value. It reduces internal firefighting, protects supplier relationships, and gives procurement a more structured way to engage on climate performance where it matters most.",
     ],
+    contextualLink: {
+      before:
+        "Designing the request process, the escalation path and the follow-up cycle across a supplier base is",
+      anchor: "supplier engagement",
+      href: "/services/esg-advisory/supplier-engagement",
+      after: " work, and it sits upstream of the reporting cycle rather than inside it.",
+    },
     faqs: [
       { question: "Should procurement or sustainability own supplier data requests?", answer: "The most effective model is usually shared. Sustainability defines the data logic and evidence expectations. Procurement anchors the supplier relationship and escalation path." },
       { question: "Do we need primary data from every supplier?", answer: "No. Start with material categories and suppliers where better data will most improve reporting quality or action planning. A targeted approach is usually more credible than an indiscriminate one." },
@@ -524,6 +560,13 @@ export const esgInsightPages: Record<string, EsgInsightPageConfig> = {
       "CDP scoring often reflects the quality of internal coordination as much as the maturity of the programme itself. Teams that assign ownership, evidence, and review steps early usually produce more coherent and defensible submissions.",
       "The process can also become a management tool. A well-run response cycle surfaces governance gaps, missing approvals, weak data, and programme dependencies that leadership should address beyond the submission window.",
     ],
+    contextualLink: {
+      before:
+        "Running the cycle with named owners, an evidence trail and a review step before submission is",
+      anchor: "CDP reporting support",
+      href: "/services/esg-advisory/cdp-reporting",
+      after: ".",
+    },
     faqs: [
       { question: "Can a first-time responder still build a strong CDP process?", answer: "Yes. A first response does not need to be perfect, but it does need clear ownership, evidence discipline, and realistic scoping of what can be supported this cycle." },
       { question: "Should CDP be owned by one person?", answer: "It needs one overall coordinator, but the content and evidence usually sit across multiple functions. Treating CDP as a one-person exercise is a common failure mode." },
@@ -629,6 +672,13 @@ export const esgInsightPages: Record<string, EsgInsightPageConfig> = {
       "EcoVadis rewards evidence maturity. Organisations that already have strong activity can still underperform when the supporting records are inconsistent, outdated, or poorly linked to the scoring themes.",
       "A matrix also helps leadership make sharper trade-offs. It shows which gaps are documentation issues, which are programme design issues, and where limited team capacity should be directed first.",
     ],
+    contextualLink: {
+      before:
+        "Working through the scoring themes, the evidence gaps and the sequence to close them is",
+      anchor: "EcoVadis readiness",
+      href: "/services/esg-advisory/ecovadis-readiness",
+      after: ".",
+    },
     faqs: [
       { question: "Can we improve our score without creating a lot of new policies?", answer: "Sometimes, yes. Many teams first need better evidence pairing, approvals, metric discipline, and document organisation before they need completely new policies." },
       { question: "Who should own the EcoVadis evidence matrix?", answer: "Usually one coordinator, often in sustainability, procurement, or compliance, with named contributors from the functions where the evidence actually sits." },
@@ -839,6 +889,13 @@ export const esgInsightPages: Record<string, EsgInsightPageConfig> = {
       "ESG questions now appear in sales processes, supplier onboarding, customer reviews, and formal tenders. Teams that answer them ad hoc waste time, make inconsistent claims, and create avoidable legal or reputational risk.",
       "A structured question bank shortens response time and improves quality. It also helps leadership see which external asks are becoming commercially important and where the underlying programme needs to catch up.",
     ],
+    contextualLink: {
+      before:
+        "Building the approved answer set and the ownership behind it is",
+      anchor: "RFP and tender support",
+      href: "/services/esg-advisory/rfp-tender-support",
+      after: ".",
+    },
     faqs: [
       { question: "Should sales teams answer ESG questionnaires on their own?", answer: "Usually no. Sales may coordinate the response, but factual claims, commitments, and evidence references should come from approved owners and standard answer blocks." },
       { question: "How often should a question bank be updated?", answer: "At minimum quarterly, and any time there is a significant change in policy, target, assurance status, or external disclosure language." },

@@ -56,10 +56,17 @@ export const site = {
       * as defensive.
       */
     independenceShort:
-      "Software vendors do not pay us. Our recommendations come with the scoring behind them.",
+      "We are an independent consulting firm. Software vendors do not pay us, so our recommendations come with the scoring behind them.",
     independenceProof: [
       "We take no commissions, referral fees, reseller margin or partner incentives from any software vendor.",
-      "Every invoice we raise goes to a client. That is the whole revenue model.",
+      // This card used to read "Every invoice we raise goes to a client. That
+      // is the whole revenue model." That claimed completeness, and the
+      // finance and accounting partnership interest sits outside it, so the
+      // claim was not literally true. Narrowed to the technology work, with
+      // the interest disclosed rather than left to be discovered. Volunteering
+      // it is what makes the software claim above credible. Do not restore
+      // the absolute version.
+      "Our technology work is paid for by the client and nobody else. We hold an interest in the finance and accounting partner firm, and would rather you heard that from us.",
       "We still recommend software. You get the scoring behind the recommendation, not only the conclusion.",
     ],
     /**
@@ -92,8 +99,19 @@ export const site = {
 
   // AI / agent discovery
   ai: {
+    /**
+     * The single description of the firm given to AI systems and agents.
+     * Used verbatim in llms.txt and llms-full.txt.
+     *
+     * Order matters. Core claim first, structure second, how we are paid
+     * last. Independence is a supporting claim in version 3.0 positioning
+     * and must not lead. Area names must match service-pillars.ts exactly,
+     * which means Technology, not "Technology and AI".
+     *
+     * Never use "three pillars" here. It is internal shorthand.
+     */
     summary:
-      "Consulting and implementation firm for mid-market companies, combining hands-on systems knowledge with operational and financial business depth. DS Consulting works across three areas. Technology and AI, covering commerce and digital platforms, ERP systems, CRM and revenue operations, integration, and AI governance and adoption. Sustainability, covering ESG and CSRD reporting systems. And finance and accounting outsourcing. The firm is not paid by software vendors for its recommendations.",
+      "Consulting and implementation firm for mid-market companies. DS Consulting understands the system and the business it has to run, where most firms are strong at one of those. Work covers three areas. Technology, spanning commerce and digital platforms, ERP systems, CRM and revenue operations, integration, and AI governance and adoption. Sustainability, covering ESG and CSRD reporting systems. And finance and accounting outsourcing, where offshore delivery runs through a partner firm rather than DS Consulting staff and clients meet that team during scoping. The firm takes no commissions, referral fees, reseller margin or partner incentives from any software vendor. Technology work is paid for by the client. DS Consulting holds an interest in the finance and accounting partner firm and states this openly.",
     mcpServerUrl: process.env.NEXT_PUBLIC_MCP_SERVER_URL || "",
     mcpTransport: process.env.NEXT_PUBLIC_MCP_TRANSPORT || "streamable-http",
   },

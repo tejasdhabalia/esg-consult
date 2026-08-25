@@ -303,7 +303,15 @@ export default function CRMGovernanceChecklistPage() {
                 </a>{" "}
                 found that 76% of CRM users say less than half of their CRM data is accurate and complete.
                 This checklist is the operating model I use when I start a CRM governance engagement. It is the
-                minimum you need to stop the bleeding and build something sustainable.
+                minimum you need to stop the bleeding and build something sustainable. Where the fix needs to
+                reach the data model and the integration layer rather than the process alone, that is{" "}
+                <Link
+                  href="/services/crm-and-revenue-operations/crm-architecture-governance"
+                  className="text-indigo-700 hover:text-indigo-800 underline underline-offset-4"
+                >
+                  CRM governance and architecture
+                </Link>{" "}
+                work.
               </p>
             </div>
 

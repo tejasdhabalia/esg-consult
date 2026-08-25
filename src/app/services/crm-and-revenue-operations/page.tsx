@@ -3,6 +3,7 @@ import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
 import { pageMetadata } from "@/lib/page-metadata";
+import RelatedResources from "@/components/RelatedResources";
 
 export const metadata = pageMetadata({
   title: "CRM and revenue operations",
@@ -253,6 +254,29 @@ export default function MarketingAutomationPage() {
           </div>
         </div>
       </section>
+
+      <RelatedResources
+        resources={[
+          {
+            href: "/insights/crm-governance-checklist",
+            label: "The CRM governance SOP template",
+            detail:
+              "The operating model that stops CRM data degrading again once it has been cleaned up.",
+          },
+          {
+            href: "/insights/marketing-automation-maturity",
+            label: "Marketing automation maturity scorecard",
+            detail:
+              "Four dimensions that separate a governed automation programme from a scheduled email tool.",
+          },
+          {
+            href: "/insights/revenue-attribution-readiness",
+            label: "Revenue attribution readiness",
+            detail:
+              "Whether the pipeline data can support an attribution model, before you buy one.",
+          },
+        ]}
+      />
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />

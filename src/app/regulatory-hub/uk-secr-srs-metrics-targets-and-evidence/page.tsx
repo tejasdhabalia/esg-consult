@@ -44,6 +44,19 @@ export default function Page() {
             <li>Evidence storage and change control for methodologies</li>
           </ul>
 
+          <p className="mt-8 text-slate-600 leading-relaxed max-w-3xl">
+            Most of the rework in a reporting cycle traces back to one of these five decisions being left open
+            until the numbers are already being assembled. Settling them early, and holding the evidence trail
+            that supports them, is what{" "}
+            <Link
+              href="/services/esg-advisory/uk-secr-srs-reporting"
+              className="text-indigo-700 hover:text-indigo-800 underline underline-offset-4"
+            >
+              UK SECR and SRS reporting
+            </Link>{" "}
+            work is for.
+          </p>
+
           <div className="mt-12 flex flex-col sm:flex-row gap-3">
             <Link href="/contact" className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium text-center">
               Discuss metrics and targets

@@ -42,7 +42,7 @@ export default function FinanceAndAccountingPillarPage() {
       problemParagraphs={[
         "A finance team that is two people short does not fail loudly. It absorbs. Reconciliations move to the end of the quarter, management accounts arrive late enough that nobody acts on them, and the controller spends their week on transaction processing rather than on the things they were hired for.",
         "The usual response is to buy something. A new system, a reporting layer, an automation tool. Sometimes that is right. Often the constraint is simply hours, and adding software to an under-resourced team makes the first six months worse rather than better.",
-        "This pillar exists because we kept finding that during technology assessments. The honest recommendation was frequently people rather than product, and being unable to offer that meant recommending a system we knew would not fix the actual problem.",
+        "This work exists because we kept finding that during technology assessments. The honest recommendation was frequently people rather than product, and being unable to offer that meant recommending a system we knew would not fix the actual problem.",
       ]}
       signals={[
         "The month end close takes longer than it did two years ago and nobody has said so out loud.",

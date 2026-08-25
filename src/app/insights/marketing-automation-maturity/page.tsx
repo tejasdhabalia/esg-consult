@@ -185,6 +185,17 @@ export default function MarketingAutomationMaturityPage() {
                 Each governance item in this scorecard, change control, naming conventions, campaign ownership, SLAs,
                 is a forcing function that makes every tool you already own more reliable.
               </p>
+              <p className="text-slate-600 leading-relaxed">
+                Putting that operating model in place across the systems that carry the pipeline, rather than inside
+                the marketing tool alone, is{" "}
+                <Link
+                  href="/services/crm-and-revenue-operations"
+                  className="text-indigo-700 hover:text-indigo-800 underline underline-offset-4"
+                >
+                  CRM and revenue operations
+                </Link>{" "}
+                work.
+              </p>
             </div>
 
             <div className="mt-14 pt-10 border-t border-slate-200">

@@ -319,8 +319,8 @@ export default function DSConsultingVsGeneralistPage() {
                 <Link className="underline" href="/services/esg-advisory/brsr-advisory">
                   BRSR advisory
                 </Link>
-                <Link className="underline" href="/services/esg-advisory/uk-climate-reporting">
-                  UK climate reporting
+                <Link className="underline" href="/services/esg-advisory/uk-secr-srs-reporting">
+                  UK SECR and SRS reporting
                 </Link>
               </div>
             </div>

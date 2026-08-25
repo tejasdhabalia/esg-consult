@@ -34,6 +34,19 @@ const nextConfig: NextConfig = {
         destination: "/services/ai-governance-and-adoption",
         permanent: true,
       },
+      // Two AI governance pages existed and were separately indexed, which
+      // split authority between them. The service actually sold is "AI
+      // governance and adoption", so that page is the target and the older
+      // audit page redirects into it. Brief 2, Task 1 (SEO project).
+      // The four week audit structure was folded into the target page as a
+      // phased engagement block before this redirect went in, so nothing
+      // was lost. Expect a few weeks of position noise while Google
+      // reprocesses. That is normal and not a reason to reverse it.
+      {
+        source: "/services/ai-governance",
+        destination: "/services/ai-governance-and-adoption",
+        permanent: true,
+      },
       // Case studies page retired. Placeholder engagements were published
       // without named client permission, so the page was removed rather
       // than rewritten. Restore a real page here when permission exists.

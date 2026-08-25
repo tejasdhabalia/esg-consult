@@ -188,6 +188,18 @@ export default function WhatIsCSRDPage() {
                   </div>
                 ))}
               </div>
+              <p className="text-slate-600 text-sm leading-relaxed mt-4">
+                Scope is usually the easy part. The harder question is whether the data behind each disclosure
+                exists in a system, with an owner and an audit trail, or gets assembled by hand each cycle.
+                Working through that is{" "}
+                <Link
+                  href="/services/esg-advisory/csrd-advisory"
+                  className="text-indigo-700 hover:text-indigo-800 underline underline-offset-4"
+                >
+                  CSRD advisory
+                </Link>{" "}
+                work.
+              </p>
             </div>
 
             {/* Reporting timeline */}
@@ -233,7 +245,7 @@ export default function WhatIsCSRDPage() {
                 Download our 5-section readiness checklist covering scoping, double materiality, data governance,
                 governance structure, and assurance readiness.
               </p>
-              <Link href="/insights/csrd-readiness-checklist" className="block bg-white text-indigo-700 text-xs font-bold text-center py-2 rounded-lg hover:bg-indigo-50">
+              <Link href="/insights/csrd-readiness-first-90-days" className="block bg-white text-indigo-700 text-xs font-bold text-center py-2 rounded-lg hover:bg-indigo-50">
                 Get the checklist
               </Link>
             </div>

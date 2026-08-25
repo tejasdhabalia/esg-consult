@@ -167,6 +167,17 @@ export default function WhatIsSEBIBRSRPage() {
                 For companies within scope, these KPIs require a robust evidence trail from the point of
                 data collection through to the published disclosure.
               </p>
+              <p className="text-slate-600 text-sm leading-relaxed mt-3">
+                Building that trail so it survives an assurance review, rather than reconstructing it in the
+                weeks before filing, is{" "}
+                <Link
+                  href="/services/esg-advisory/brsr-advisory"
+                  className="text-indigo-700 hover:text-indigo-800 underline underline-offset-4"
+                >
+                  BRSR advisory
+                </Link>{" "}
+                work.
+              </p>
             </div>
 
             {/* 9 Principles */}

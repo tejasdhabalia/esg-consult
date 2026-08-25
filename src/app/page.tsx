@@ -8,16 +8,16 @@ import { pageMetadata } from "@/lib/page-metadata";
 
 export const metadata = pageMetadata({
   title: "Tech & AI, Sustainability & Finance for Mid-Market",
+  // 146 characters. Keep under 155 or Google truncates it in results.
+  // AI stays deliberately: "ai governance consulting" is the highest value
+  // term available and the homepage description is prose, not a label.
+  // Brief 3, Task 6 (SEO project).
   description:
-    "Close the gap between board strategy and system execution. Technology and AI, audit-ready ESG systems, and outsourced finance operations for mid-market firms.",
+    "Close the gap between board strategy and system execution. Technology and AI, audit-ready ESG systems and outsourced finance for mid-market firms.",
   path: "/",
 });
 
-/**
- * VERIFY BEFORE PUBLISHING.
- * Gartner and Panorama figures still need publication years added.
- * The Everest Group figure carries its year and is publishable as written.
- */
+
 const evidence = [
   {
     stat: "More than 70%",

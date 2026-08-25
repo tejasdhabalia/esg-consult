@@ -2,6 +2,7 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import RelatedResources, { type RelatedResource } from "@/components/RelatedResources";
 
 export type ServiceScopeItem = {
   title: string;
@@ -47,6 +48,29 @@ export type ServiceLinePageProps = {
    * across ERP, CRM and commerce rather than sitting inside any one of them.
    */
   engagementModes?: { route: string; label: string; detail: string }[];
+
+  /**
+   * Optional phased engagement shape, for service lines sold as a defined
+   * piece of work rather than an open scope. Renders a numbered timeline
+   * plus the artefacts held at the end.
+   *
+   * Do not state a buyer headcount, revenue band or company size anywhere
+   * in here. Buyer profile is internal.
+   */
+  engagement?: {
+    heading: string;
+    intro: string;
+    phases: { period: string; title: string; detail: string }[];
+    /** Optional qualifier, e.g. when the engagement would be premature. */
+    note?: string;
+  };
+
+  /**
+   * Optional related insights or regulatory hub pages. Leave undefined where
+   * there is no supporting content rather than linking something unrelated.
+   * Brief 2, Task 3b (SEO project).
+   */
+  relatedResources?: RelatedResource[];
 };
 
 export default function ServiceLinePage({
@@ -64,6 +88,8 @@ export default function ServiceLinePage({
   signals,
   faqs,
   engagementModes,
+  engagement,
+  relatedResources,
 }: ServiceLinePageProps) {
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -189,6 +215,48 @@ export default function ServiceLinePage({
         </div>
       </section>
 
+      {/* PHASED ENGAGEMENT */}
+      {/*
+        Sits between the deliverables block (bg-white) and the engagement
+        modes block (bg-slate-50). No page currently uses both, so the
+        alternation holds. If one ever does, flip this to bg-white.
+      */}
+      {engagement && engagement.phases.length > 0 && (
+        <section className="py-24 bg-slate-50">
+          <div className="max-w-6xl mx-auto px-6">
+            <h2 className="text-3xl font-semibold">{engagement.heading}</h2>
+            <p className="mt-4 text-slate-600 max-w-3xl leading-relaxed">
+              {engagement.intro}
+            </p>
+
+            <div className="grid md:grid-cols-4 gap-6 mt-12">
+              {engagement.phases.map((phase) => (
+                <div
+                  key={phase.period}
+                  className="rounded-2xl border border-slate-200 bg-white p-6"
+                >
+                  <div className="text-xs font-semibold uppercase tracking-widest text-indigo-700">
+                    {phase.period}
+                  </div>
+                  <h3 className="mt-3 text-lg font-semibold text-slate-900">
+                    {phase.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                    {phase.detail}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {engagement.note && (
+              <p className="mt-10 max-w-3xl text-sm text-slate-600 leading-relaxed">
+                {engagement.note}
+              </p>
+            )}
+          </div>
+        </section>
+      )}
+
       {/* ENGAGEMENT MODES */}
       {engagementModes && engagementModes.length > 0 && (
         <section className="py-24 bg-slate-50">
@@ -241,6 +309,11 @@ export default function ServiceLinePage({
           </div>
         </div>
       </section>
+
+      {/* RELATED RESOURCES */}
+      {relatedResources && relatedResources.length > 0 && (
+        <RelatedResources resources={relatedResources} />
+      )}
 
       {/* FAQs */}
       <section className="py-24 bg-white">

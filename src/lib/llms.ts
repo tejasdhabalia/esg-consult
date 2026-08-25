@@ -61,9 +61,14 @@ const FEATURED_REGULATORY_ROUTES = [
   "/regulatory-hub/brsr-core-readiness-kpis-controls",
 ] as const;
 
+/**
+ * Fallback only. site.ai.summary is the maintained description and should
+ * be edited there. This exists so the route still renders if that field is
+ * ever emptied. Keep the two consistent in positioning and area names.
+ */
 const aiSummary =
   site.ai?.summary ||
-  `${site.displayName} provides consulting and implementation for mid-market companies across technology and AI, sustainability reporting, and finance and accounting operations.`;
+  `${site.displayName} provides consulting and implementation for mid-market companies across three areas: technology, sustainability and ESG reporting, and finance and accounting outsourcing.`;
 
 const mcpServerUrl = site.ai?.mcpServerUrl || "";
 const mcpTransport = site.ai?.mcpTransport || "streamable-http";
@@ -212,7 +217,7 @@ export function buildLlmsTxt() {
     `# ${site.displayName}`,
     `> ${aiSummary}`,
     "",
-    `${site.displayName} combines advisory plus implementation across ESG readiness and revenue visibility. The site covers services, regulatory explainers, practical checklists, comparison pages, and downloadable resources designed for CFOs, CSOs, CMOs, RevOps leaders, and executive teams.`,
+    `${site.displayName} works across three areas: technology, covering commerce and digital platforms, ERP, CRM and revenue operations, integration, and AI governance and adoption; sustainability, covering ESG and CSRD reporting systems; and finance and accounting outsourcing. Most engagements start with a fixed price assessment that produces a decision document rather than a proposal. The site carries service pages, regulatory explainers, interactive tools, practical checklists, comparison pages and downloadable resources, written for founders, CEOs, CFOs and functional heads at companies in a technology transition.`,
     "",
     "Use this file as the fastest overview. Use llms-full.txt when you need the broader page index or machine-readable discovery endpoints.",
     "",

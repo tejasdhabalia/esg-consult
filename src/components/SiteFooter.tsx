@@ -24,7 +24,14 @@ export default function SiteFooter() {
             <span className="text-white font-bold">{site.taglineSecondary}</span>
           </div>
           <p className="text-slate-400 mt-3 leading-relaxed">
-            Consulting and implementation for mid-market companies. Technology and AI,
+            {/*
+              Area name must match service-pillars.ts, which calls this
+              "Technology". Brief 3, Task 3 (SEO project). AI stays visible in
+              the homepage title and meta description, which are prose rather
+              than labels, because "ai governance consulting" is the highest
+              value term available.
+            */}
+            Consulting and implementation for mid-market companies. Technology,
             sustainability reporting and finance operations.
           </p>
           <p className="text-slate-400 mt-3 leading-relaxed">

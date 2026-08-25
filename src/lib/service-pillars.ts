@@ -143,7 +143,7 @@ export const pillars: Pillar[] = [
     summary:
       "Offshore finance and accounting teams for companies that need capacity rather than another tool. Delivered with a partner firm, with us accountable for the systems the function runs in.",
     rationale:
-      "Finance teams are where most system problems surface first. Running the function and running the systems underneath it in one place removes the handoff that usually loses both. Our partner here is a technology-agnostic offshoring firm, not a software vendor, so nothing about this arrangement changes what we recommend.",
+      "Finance teams are where most system problems surface first. Running the function and running the systems underneath it in one place removes the handoff that usually loses both. Our partner here is a technology-agnostic offshoring firm, not a software vendor, so nothing about this arrangement changes which software we recommend. We hold an interest in that firm and would rather say so than leave you to find out.",
     live: true,
     lines: [
       {
@@ -154,7 +154,12 @@ export const pillars: Pillar[] = [
         bullets: [
           "Structured commercial model for advisors and ERP partners",
           "Offshore accounting team build and management",
-          "Entry point at 10 or more employees, scaling toward 50",
+          // Replaced "Entry point at 10 or more employees, scaling toward 50".
+          // Buyer size range is internal and on the never-publish list.
+          // The replacement states the commission structure accurately:
+          // the partner firm pays the referring advisor, DS Consulting takes
+          // nothing for the introduction.
+          "Referral commission paid by the partner firm. We take no fee for the introduction",
         ],
         live: true,
       },

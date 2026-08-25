@@ -92,7 +92,50 @@ export default function AIGovernanceAndAdoptionPage() {
         "You deploy a chatbot or generate synthetic content and have not checked the transparency obligations that took effect in August 2026.",
         "A vendor has quoted for an AI module and you cannot assess whether it does anything your process needs.",
         "The board has asked what your AI strategy is and the honest answer is a list of experiments.",
+        "Licences are spread across several teams and nobody can total the AI spend or say what it produced.",
+        "When an AI step gets something wrong in a live workflow, no one owns the correction, the audit trail or the rollback.",
       ]}
+      relatedResources={[
+        {
+          href: "/insights/ai-marketing-readiness",
+          label: "AI marketing readiness assessment",
+          detail:
+            "Where the data, governance and audit trail have to be in place before a model touches a live workflow.",
+        },
+      ]}
+      engagement={{
+        heading: "How the readiness audit runs",
+        intro:
+          "Where the starting point is an unclear picture rather than a defined project, we run a four week audit first. Fixed scope, fixed price, and a handover to whoever owns AI from week five.",
+        phases: [
+          {
+            period: "Week 1",
+            title: "Readiness scan",
+            detail:
+              "Interviews with function heads, a tool inventory and a governance review across the business. This is where shadow usage surfaces.",
+          },
+          {
+            period: "Week 2",
+            title: "Priority deep dives",
+            detail:
+              "Two or three functions go further, with workflow walkthroughs and sessions with the people actually doing the work.",
+          },
+          {
+            period: "Week 3",
+            title: "Playbook drafting",
+            detail:
+              "Usage policy, the governance framework with named owners and review points, and a 90 day roadmap the board can track.",
+          },
+          {
+            period: "Week 4",
+            title: "Synthesis and handover",
+            detail:
+              "Board readout, then handover to the appointed owner. You end up holding a report and a playbook, not a slide deck.",
+          },
+        ],
+        note:
+          "The audit works where there is real usage, a mandate from the top and someone appointed to own the outcome. If the mandate has not been established yet, it is too early and a call is the better starting point.",
+      }}
       faqs={[
         {
           question: "Was the EU AI Act postponed?",
@@ -123,6 +166,16 @@ export default function AIGovernanceAndAdoptionPage() {
           question: "What if the answer is that AI is not the right tool here?",
           answer:
             "Then that is the recommendation. A meaningful share of proposed AI use cases are better solved by fixing the data, the process or an existing system's configuration. Those answers are cheaper and they hold up better.",
+        },
+        {
+          question: "How long does the readiness audit take?",
+          answer:
+            "Four weeks end to end. Week one is a readiness scan across functions, week two is deep dives into two or three of them, week three is drafting the policy and roadmap, week four is the board readout and handover. The scope is fixed before it starts, so it does not drift.",
+        },
+        {
+          question: "How is this different from generic AI consulting?",
+          answer:
+            "The scope is defined and the deliverables are named before the work begins. The focus is governance, data readiness and the path to production, not model selection or tool implementation. Most AI work in mid-market businesses stalls on governance and data access rather than on the model.",
         },
         {
           question: "Do you provide legal advice on compliance?",

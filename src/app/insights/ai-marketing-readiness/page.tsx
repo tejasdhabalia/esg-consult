@@ -166,6 +166,17 @@ export default function AIMarketingReadinessPage() {
                 explainability, and documentation capabilities that allow regulated enterprises to deploy AI
                 in marketing without creating compliance exposure.
               </p>
+              <p className="text-slate-600 leading-relaxed">
+                Deciding which controls you actually need, who owns them and what has to be evidenced before a
+                model goes anywhere near a live workflow is{" "}
+                <Link
+                  href="/services/ai-governance-and-adoption"
+                  className="text-indigo-700 hover:text-indigo-800 underline underline-offset-4"
+                >
+                  AI governance and adoption
+                </Link>{" "}
+                work. It runs ahead of tool selection, not after it.
+              </p>
             </div>
 
             <div className="mt-14 pt-10 border-t border-slate-200">

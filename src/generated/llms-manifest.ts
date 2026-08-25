@@ -1,12 +1,12 @@
 export const llmsManifest = {
-  "generatedAt": "2026-08-21T13:19:21.768Z",
-  "pageCount": 73,
+  "generatedAt": "2026-08-25T11:17:35.081Z",
+  "pageCount": 72,
   "pages": [
     {
       "route": "/",
       "url": "https://www.consult-ds.com",
-      "title": "Technology, sustainability and finance operations",
-      "description": "Consulting and implementation for mid-market companies. Business systems, sustainability reporting and outsourced finance teams, run by people who have built systems and owned the numbers.",
+      "title": "Tech & AI, Sustainability & Finance for Mid-Market",
+      "description": "Close the gap between board strategy and system execution. Technology and AI, audit-ready ESG systems and outsourced finance for mid-market firms.",
       "section": "home",
       "priority": 1,
       "changeFrequency": "weekly",
@@ -431,16 +431,6 @@ export const llmsManifest = {
       "priority": 0.9,
       "changeFrequency": "monthly",
       "source": "src\\app\\services\\page.tsx"
-    },
-    {
-      "route": "/services/ai-governance",
-      "url": "https://www.consult-ds.com/services/ai-governance",
-      "title": "AI governance and readiness audit",
-      "description": "A four-week AI readiness audit for mid-market leadership teams. Board-ready findings, governance gaps and three priorities for the next 90 days.",
-      "section": "services",
-      "priority": 0.5,
-      "changeFrequency": "monthly",
-      "source": "src\\app\\services\\ai-governance\\page.tsx"
     },
     {
       "route": "/services/ai-governance-and-adoption",
