@@ -173,11 +173,11 @@ export default function BRSRAdvisoryPage() {
 
           <div className="grid md:grid-cols-2 gap-8 mt-14">
             {[
-              ["Readiness and gap assessment", "Clarify scope, maturity, gaps, priorities, and a delivery roadmap for the reporting cycle."],
+              ["Readiness and gap assessment", "Clarify scope, maturity, gaps, priorities and a delivery roadmap for the reporting cycle."],
               ["KPI inventory and mapping", "Define KPI definitions aligned to indicators and map to owners and data sources."],
-              ["Data collection workflow", "Design collection workflow, templates, validations, and escalation paths."],
+              ["Data collection workflow", "Design collection workflow, templates, validations and escalation paths."],
               ["Controls and evidence trails", "Validation checks, approvals, documentation standards, and evidence trail expectations."],
-              ["Value chain approach", "Phased approach for supplier data, prioritisation, workflows, assumptions, and governance."],
+              ["Value chain approach", "Phased approach for supplier data, prioritisation, workflows, assumptions and governance."],
               ["Leadership review cadence", "Define review rhythm, sign-off model, change control, and continuous improvement."],
             ].map(([t, d]) => (
               <div key={t} className="bg-white border rounded-2xl p-8 shadow-sm">
@@ -212,7 +212,7 @@ export default function BRSRAdvisoryPage() {
             {[
               ["Diagnose", "Confirm scope, timeline, KPI gaps, data ownership, and control needs."],
               ["Design", "KPI inventory, owner model, controls and evidence standards, and workflow cadence."],
-              ["Implement", "Hands-on setup, enablement, documentation, and rollout support."],
+              ["Implement", "Hands-on setup, enablement, documentation and rollout support."],
               ["Govern", "Quality checks, issue tracking, leadership review rhythm, and improvements each cycle."],
             ].map(([t, d]) => (
               <div key={t} className="bg-slate-50 border rounded-2xl p-8">

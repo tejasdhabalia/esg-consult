@@ -66,7 +66,7 @@ export default function ESGAdvisoryPage() {
         acceptedAnswer: {
           "@type": "Answer",
           text:
-            "Our ESG advisory work covers readiness assessment, carbon accounting, reporting design, ESG data governance, policy and evidence mapping, supplier engagement, climate planning, training, and assurance readiness preparation across the relevant reporting standard or assessment framework.",
+            "Our ESG advisory work covers readiness assessment, carbon accounting, reporting design, ESG data governance, policy and evidence mapping, supplier engagement, climate planning, training and assurance readiness preparation across the relevant reporting standard or assessment framework.",
         },
       },
       {
@@ -75,7 +75,7 @@ export default function ESGAdvisoryPage() {
         acceptedAnswer: {
           "@type": "Answer",
           text:
-            "Yes. We support regulatory reporting such as CSRD, BRSR, SECR, and SRS, and buyer or procurement-driven assessments such as EcoVadis, supplier questionnaires, and sustainability tender responses.",
+            "Yes. We support regulatory reporting such as CSRD, BRSR, SECR and SRS, and buyer or procurement-driven assessments such as EcoVadis, supplier questionnaires, and sustainability tender responses.",
         },
       },
       {
@@ -84,7 +84,7 @@ export default function ESGAdvisoryPage() {
         acceptedAnswer: {
           "@type": "Answer",
           text:
-            "Yes. We support sustainability strategy, outsourced sustainability management, supplier engagement, training, and related operating model work where organisations need ESG capability that goes beyond one disclosure cycle.",
+            "Yes. We support sustainability strategy, outsourced sustainability management, supplier engagement, training and related operating model work where organisations need ESG capability that goes beyond one disclosure cycle.",
         },
       },
       {
@@ -102,7 +102,7 @@ export default function ESGAdvisoryPage() {
         acceptedAnswer: {
           "@type": "Answer",
           text:
-            "Yes. Ownership, controls, evidence trails, and reporting cadence can be standardised across multiple regulations, assessments, and buyer requirements. The detailed mapping changes, but the operating discipline can stay consistent.",
+            "Yes. Ownership, controls, evidence trails, and reporting cadence can be standardised across multiple regulations, assessments and buyer requirements. The detailed mapping changes, but the operating discipline can stay consistent.",
         },
       },
       {
@@ -139,7 +139,7 @@ export default function ESGAdvisoryPage() {
 
       <section className="py-24 bg-white">
         <div className="max-w-5xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold">Build ESG readiness that is defensible, repeatable, and useful to leadership</h2>
+          <h2 className="text-3xl font-semibold">Build ESG readiness that is defensible, repeatable and useful to leadership</h2>
           <p className="mt-6 text-slate-600">
             ESG work underperforms when policy, data, evidence, supplier inputs, and reporting cadence do not align. We help organisations move from fragmented activity to a structured operating model that leadership can rely on.
           </p>
@@ -165,7 +165,7 @@ export default function ESGAdvisoryPage() {
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-semibold">ESG service pathways</h2>
           <p className="mt-4 text-slate-600 max-w-4xl">
-            Choose the pathway that matches the disclosure, climate, procurement, or operating model challenge you need to solve first.
+            Choose the pathway that matches the disclosure, climate, procurement or operating model challenge you need to solve first.
           </p>
 
           <div className="mt-14 space-y-10">
@@ -232,9 +232,9 @@ export default function ESGAdvisoryPage() {
           <div className="grid md:grid-cols-4 gap-8 mt-12">
             {[
               ["Climate and carbon", "When leadership needs clearer emissions data, a reduction roadmap, or better climate disclosure inputs."],
-              ["Reporting and compliance", "When teams need stronger governance, ownership, and evidence for CSRD, BRSR, SECR, SRS, or CDP."],
+              ["Reporting and compliance", "When teams need stronger governance, ownership and evidence for CSRD, BRSR, SECR, SRS or CDP."],
               ["Buyer and procurement pressure", "When EcoVadis, supplier requests, or tenders are exposing gaps in evidence and operating discipline."],
-              ["Capability and execution", "When sustainability work needs strategy, training, or ongoing programme coordination to keep moving."],
+              ["Capability and execution", "When sustainability work needs strategy, training or ongoing programme coordination to keep moving."],
             ].map(([title, description]) => (
               <div key={title} className="bg-slate-800 border border-slate-700 rounded-2xl p-8">
                 <div className="font-semibold text-emerald-400">{title}</div>
@@ -249,7 +249,7 @@ export default function ESGAdvisoryPage() {
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-semibold">FAQs</h2>
           <p className="mt-4 text-slate-600 max-w-4xl">
-            Common questions about our ESG engagement model, scope, and how to start.
+            Common questions about our ESG engagement model, scope and how to start.
           </p>
 
           <div className="mt-12 grid gap-6">

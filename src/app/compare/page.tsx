@@ -60,7 +60,7 @@ export default function CompareHubPage() {
         acceptedAnswer: {
           "@type": "Answer",
           text:
-            "These pages are for leaders who must choose a delivery model. They clarify tradeoffs across in house delivery, agencies, and governance plus implementation partners.",
+            "These pages are for leaders who must choose a delivery model. They clarify tradeoffs across in house delivery, agencies and governance plus implementation partners.",
         },
       },
       {
@@ -69,7 +69,7 @@ export default function CompareHubPage() {
         acceptedAnswer: {
           "@type": "Answer",
           text:
-            "Agencies typically focus on output and execution. DS Consulting focuses on the operating model underneath so execution becomes repeatable. That includes definitions, governance, handoffs, controls, and measurement discipline.",
+            "Agencies typically focus on output and execution. DS Consulting focuses on the operating model underneath so execution becomes repeatable. That includes definitions, governance, handoffs, controls and measurement discipline.",
         },
       },
       {
@@ -123,7 +123,7 @@ export default function CompareHubPage() {
     <div>
       <PageHero
         title="Compare"
-        subtitle="Make confident choices between in house delivery, agencies, and governance plus implementation partners. These comparisons are designed to reduce ambiguity and help you decide the next best step."
+        subtitle="Make confident choices between in house delivery, agencies and governance plus implementation partners. These comparisons are designed to reduce ambiguity and help you decide the next best step."
         primaryAction={{ label: "Explore services", href: "/services" }}
         secondaryAction={{ label: "Talk to us", href: "/contact" }}
         imageSrc="/hero/services.jpg"

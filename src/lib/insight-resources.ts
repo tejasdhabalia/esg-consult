@@ -73,7 +73,7 @@ export const insightResources: Record<InsightResourceKey, InsightResource> = {
     title: "EcoVadis evidence matrix",
     shortLabel: "evidence matrix",
     description:
-      "A submission planning matrix covering policy, action, metrics, and evidence expectations across all four EcoVadis themes.",
+      "A submission planning matrix covering policy, action, metrics and evidence expectations across all four EcoVadis themes.",
     pdfPath: "/downloads/ecovadis-evidence-matrix.pdf",
     pdfFileName: "ecovadis-evidence-matrix.pdf",
     pdfAttachmentName: "DS-Consulting-EcoVadis-Evidence-Matrix.pdf",

@@ -50,7 +50,7 @@ export default function TeamPage() {
           name: "Jigar Dhabalia",
           jobTitle: "Co-founder and Principal Consultant",
           description:
-            "Corporate sustainability specialist building reporting systems with data ownership, operating cadence and measurable controls. Cross-industry experience spanning B2B, manufacturing, oil and gas, chemicals, and energy and utilities.",
+            "Corporate sustainability specialist building reporting systems with data ownership, operating cadence and measurable controls. Cross-industry experience spanning B2B, manufacturing, oil and gas, chemicals and energy and utilities.",
           worksFor: {
             "@type": "Organization",
             name: site.legalName,

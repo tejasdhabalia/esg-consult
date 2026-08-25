@@ -146,7 +146,7 @@ export default function AttributionTool() {
                 <div className="space-y-3">
                   <label className={chk(data.hasAttributionModel)}>
                     <input type="checkbox" checked={data.hasAttributionModel} onChange={e => set("hasAttributionModel", e.target.checked)} className="mt-0.5 accent-slate-800 w-4 h-4 flex-shrink-0" />
-                    <span className="text-sm text-slate-700">We have a documented attribution model that marketing, sales, and leadership have agreed on.</span>
+                    <span className="text-sm text-slate-700">We have a documented attribution model that marketing, sales and leadership have agreed on.</span>
                   </label>
                   <div className="pt-2">
                     <p className="text-sm font-medium text-slate-700 mb-3">Which model type best describes what you use?</p>
@@ -191,7 +191,7 @@ export default function AttributionTool() {
                   {([
                     { key: "hasCRMIntegration",  label: "MAP and CRM are bidirectionally integrated. Contact activity syncs across both systems.", icon: "🔗" },
                     { key: "hasOfflineTracking",  label: "Offline conversions (calls, events, referrals) are captured and connected to the originating digital channel.", icon: "📞" },
-                    { key: "hasChannelTagging",   label: "UTM parameters are enforced consistently across all paid, owned, and partner channels.", icon: "🏷️" },
+                    { key: "hasChannelTagging",   label: "UTM parameters are enforced consistently across all paid, owned and partner channels.", icon: "🏷️" },
                     { key: "hasCRMFinanceLink",   label: "CRM closed revenue is reconciled against the finance system on a monthly cadence.", icon: "💰" },
                   ] as const).map(({ key, label, icon }) => (
                     <label key={key} className={chk(data[key])}>

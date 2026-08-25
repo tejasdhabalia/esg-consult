@@ -26,7 +26,7 @@ export default function Page() {
     <div>
       <PageHero
         title="UK SECR and SRS governance and risk management"
-        subtitle="SECR and SRS reporting remains defensible when governance and risk processes are explicit: ownership, decision rights, cadence, escalation, and evidence trails."
+        subtitle="SECR and SRS reporting remains defensible when governance and risk processes are explicit: ownership, decision rights, cadence, escalation and evidence trails."
         primaryAction={{ label: "UK SECR and SRS reporting services", href: "/services/esg-advisory/uk-secr-srs-reporting" }}
         secondaryAction={{ label: "Back to Regulatory hub", href: "/regulatory-hub" }}
         imageSrc="/hero/uk-climate.jpg"
@@ -40,7 +40,7 @@ export default function Page() {
             {[
               ["Ownership and oversight", "Named owner, committee oversight, and defined decision rights for key disclosures."],
               ["Risk linkage", "SECR and SRS risks mapped into ERM with owners, monitoring cadence, and escalation paths."],
-              ["Evidence trail", "Evidence standards for risk processes, assumptions, and decisions."],
+              ["Evidence trail", "Evidence standards for risk processes, assumptions and decisions."],
               ["Change control", "A mechanism to track changes in assumptions and methodologies across cycles."],
             ].map(([t, d]) => (
               <div key={t} className="bg-slate-50 border rounded-2xl p-6">

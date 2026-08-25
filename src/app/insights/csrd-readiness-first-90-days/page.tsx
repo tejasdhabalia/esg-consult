@@ -36,7 +36,7 @@ const faqSchema = {
       name: "What does assurance readiness mean under CSRD?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Assurance readiness means being able to show an auditor how every number and disclosure was prepared, including source data, methodology, controls, approvals, and evidence trails. It is not enough to have the number; the process behind it must also be defensible.",
+        text: "Assurance readiness means being able to show an auditor how every number and disclosure was prepared, including source data, methodology, controls, approvals and evidence trails. It is not enough to have the number; the process behind it must also be defensible.",
       },
     },
   ],
@@ -116,7 +116,7 @@ const CHECKLIST_SECTIONS = [
     color: "bg-slate-50 border-slate-200",
     accentColor: "text-slate-700",
     intro:
-      "Double materiality is the conceptual core of CSRD. You must assess both your impact on sustainability matters and their effect on your financial performance independently, systematically, and with evidence.",
+      "Double materiality is the conceptual core of CSRD. You must assess both your impact on sustainability matters and their effect on your financial performance independently, systematically and with evidence.",
     items: [
       {
         item: "A double materiality assessment process has been designed and documented.",
@@ -200,14 +200,14 @@ const CHECKLIST_SECTIONS = [
     accentColor: "text-emerald-700",
     items: [
       {
-        item: "Board-level sustainability governance is documented: roles, responsibilities, and oversight frequency.",
+        item: "Board-level sustainability governance is documented: roles, responsibilities and oversight frequency.",
         detail:
           "You cannot disclose governance credibly unless the governance structure already exists and is documented.",
       },
       {
         item: "A sustainability reporting team has been identified with clear ownership of the reporting process.",
         detail:
-          "This usually spans finance, legal, operations, and sustainability. Reporting cannot sit inside one team alone.",
+          "This usually spans finance, legal, operations and sustainability. Reporting cannot sit inside one team alone.",
       },
       {
         item: "An internal review process exists for sustainability disclosures before publication.",
@@ -215,12 +215,12 @@ const CHECKLIST_SECTIONS = [
           "Review steps, approval checkpoints, and sign-off responsibilities should be documented before the first cycle.",
       },
       {
-        item: "Evidence trails are maintained for all material KPIs: source data, calculations, and approvals.",
+        item: "Evidence trails are maintained for all material KPIs: source data, calculations and approvals.",
         detail:
           "A reviewer should be able to trace any published number back to its original source without depending on the preparer being present.",
       },
       {
-        item: "A CSRD disclosure calendar has been created covering data collection, review, and filing milestones.",
+        item: "A CSRD disclosure calendar has been created covering data collection, review and filing milestones.",
         detail:
           "Work backward from the filing deadline. Most organisations underestimate the time needed for review and revision loops.",
       },
@@ -250,7 +250,7 @@ const CHECKLIST_SECTIONS = [
           "A dry run before the formal assurance cycle is one of the highest-value ways to surface gaps early.",
       },
       {
-        item: "All data collection processes, controls, and evidence trails are documented in a form an auditor can review.",
+        item: "All data collection processes, controls and evidence trails are documented in a form an auditor can review.",
         detail:
           "Documentation for internal operations and documentation for assurance are not the same. Prepare for external review standards.",
       },
@@ -260,9 +260,9 @@ const CHECKLIST_SECTIONS = [
           "Narrative claims that cannot be supported by the data will immediately create assurance friction.",
       },
       {
-        item: "A policy register exists covering all CSRD-relevant policies across environmental, social, and governance topics.",
+        item: "A policy register exists covering all CSRD-relevant policies across environmental, social and governance topics.",
         detail:
-          "Policies should be approved, dated, current, and accessible. If they do not exist yet, they need to be created before the reporting cycle begins.",
+          "Policies should be approved, dated, current and accessible. If they do not exist yet, they need to be created before the reporting cycle begins.",
       },
     ],
   },
@@ -487,7 +487,7 @@ export default function CSRDReadinessChecklistPage() {
               <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5">
                 <h4 className="font-semibold text-slate-900 text-sm mb-2">Need to discuss your first cycle?</h4>
                 <p className="text-xs text-slate-600 mb-3">
-                  If your team is still defining scope, ownership, controls, and evidence trails,
+                  If your team is still defining scope, ownership, controls and evidence trails,
                   start with a diagnostic conversation.
                 </p>
                 <Link

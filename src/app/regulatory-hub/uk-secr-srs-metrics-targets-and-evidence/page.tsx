@@ -15,7 +15,7 @@ export default function Page() {
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: "Metrics and targets: emissions, targets, and evidence trails",
+    headline: "Metrics and targets: emissions, targets and evidence trails",
     dateModified: "2026-02-26",
     author: { "@type": "Organization", name: site.legalName },
     publisher: { "@type": "Organization", name: site.legalName, url: site.baseUrl },

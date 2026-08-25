@@ -80,14 +80,14 @@ const CHECKLIST_SECTIONS = [
     items: [
       {
         item: "Define a single owner for each core object: Lead, Contact, Account, Opportunity.",
-        detail: "Ownership means accountability for field standards, required fields, and data quality within that object — not just admin access.",
+        detail: "Ownership means accountability for field standards, required fields, and data quality within that object, not just admin access.",
       },
       {
         item: "Publish a field glossary with approved definitions for all fields used in reporting.",
         detail: "Include: field name, object, definition, who populates it, and acceptable values. A field without a definition is a liability.",
       },
       {
-        item: "Agree on a single definition of 'qualified lead' across marketing, sales, and RevOps — in writing.",
+        item: "Agree on a single definition of 'qualified lead' across marketing, sales and RevOps, in writing.",
         detail: "Store it in the CRM description field and your internal wiki. If it is not written down, it does not exist.",
       },
       {
@@ -116,15 +116,15 @@ const CHECKLIST_SECTIONS = [
       },
       {
         item: "Define what happens to a record when it fails to progress past SLA.",
-        detail: "Recycle to nurture, reassign, or disqualify — it must be documented, automated, and owned.",
+        detail: "Recycle to nurture, reassign or disqualify. It must be documented, automated and owned.",
       },
       {
-        item: "Set up a weekly stage health report: volume, velocity, and SLA adherence by stage.",
+        item: "Set up a weekly stage health report: volume, velocity and SLA adherence by stage.",
         detail: "This report should go to the revenue leadership team without prompting. If it requires manual assembly, it will not survive.",
       },
       {
         item: "Document lead routing rules by geography, segment, account size, and product line.",
-        detail: "Routing exceptions must also be documented. Unrouted leads are invisible leads — they exist in your system but not in anyone's accountability.",
+        detail: "Routing exceptions must also be documented. Unrouted leads are invisible leads. They exist in your system but not in anyone's accountability.",
       },
     ],
   },
@@ -140,7 +140,7 @@ const CHECKLIST_SECTIONS = [
       },
       {
         item: "All workflow and automation changes logged in a change register before deployment to production.",
-        detail: "Log: change description, expected impact, deployment date, owner, and rollback plan. No exceptions for 'quick fixes.'",
+        detail: "Log: change description, expected impact, deployment date, owner and rollback plan. No exceptions for 'quick fixes.'",
       },
       {
         item: "A sandbox environment exists and all changes are tested there before production.",
@@ -164,7 +164,7 @@ const CHECKLIST_SECTIONS = [
     items: [
       {
         item: "Publish a single metric definition document that all teams sign off on.",
-        detail: "Include: MQL, SQL, SAL, Opportunity, Win Rate, CAC, LTV, Churn — and the exact CRM logic behind each definition.",
+        detail: "Include: MQL, SQL, SAL, Opportunity, Win Rate, CAC, LTV, Churn and the exact CRM logic behind each definition.",
       },
       {
         item: "All executive dashboards source from the same CRM reports, not from manual exports.",
@@ -175,7 +175,7 @@ const CHECKLIST_SECTIONS = [
         detail: "The further apart these reconciliations happen, the larger the discrepancy becomes, and the harder it is to trace.",
       },
       {
-        item: "All attribution rules are documented, versioned, and approved before any model change.",
+        item: "All attribution rules are documented, versioned and approved before any model change.",
         detail: "Changing attribution methodology mid-year without documentation makes all historical comparison invalid.",
       },
     ],
@@ -258,7 +258,7 @@ export default function CRMGovernanceChecklistPage() {
             {/* Author intro */}
             <div className="bg-indigo-50 border border-indigo-100 rounded-2xl p-6 mb-10">
               <p className="text-slate-700 text-sm leading-relaxed italic">
-                "I have spent fifteen years inside marketing ops and RevOps functions at Deloitte, Tesco, Tata, and Godrej.
+                "I have spent fifteen years inside marketing ops and RevOps functions at Deloitte, Tesco, Tata and Godrej.
                 The single most consistent failure I saw was not tool selection. It was governance. Teams would invest in Salesforce or HubSpot,
                 spend six months configuring it, and then watch it degrade within a year because nobody owned the data model,
                 nobody controlled field creation, and nobody could agree on what a qualified lead actually meant.
@@ -379,7 +379,7 @@ export default function CRMGovernanceChecklistPage() {
               <div className="bg-indigo-600 rounded-2xl p-6 text-white">
                 <h3 className="font-bold text-lg mb-2">Get the PDF checklist</h3>
                 <p className="text-indigo-200 text-sm mb-4">
-                  Download the complete CRM Governance SOP Template as a PDF — formatted for team use, with
+                  Download the complete CRM Governance SOP Template as a PDF, formatted for team use, with
                   fillable checkboxes and methodology notes.
                 </p>
                 <ChecklistDownloadForm
@@ -396,7 +396,7 @@ export default function CRMGovernanceChecklistPage() {
                     <div className="font-semibold text-slate-900 text-sm">Tejas Dhabalia</div>
                     <div className="text-xs text-slate-500 mb-2">Co-founder, DS Consulting</div>
                     <p className="text-xs text-slate-600 leading-relaxed">
-                      Marketing Ops and MarTech leader. Former Deloitte, Tata, Tesco, and Godrej.
+                      Marketing Ops and MarTech leader. Former Deloitte, Tata, Tesco and Godrej.
                       Specialises in CRM governance, lifecycle orchestration, and revenue operations.
                     </p>
                     <a

@@ -105,7 +105,7 @@ function listItem(page: ManifestPage, extra?: string) {
 function machineEndpointLines() {
   const lines = [
     `- [robots.txt](${site.baseUrl}/robots.txt): crawler access guidance.`,
-    `- [sitemap.xml](${site.baseUrl}/sitemap.xml): exhaustive URL inventory for search engines, agents, and site crawlers.`,
+    `- [sitemap.xml](${site.baseUrl}/sitemap.xml): exhaustive URL inventory for search engines, agents and site crawlers.`,
     `- [llms.txt](${site.baseUrl}/llms.txt): curated overview for AI systems.`,
     `- [llms-full.txt](${site.baseUrl}/llms-full.txt): expanded AI content index covering all major pages and resources.`,
   ];
@@ -217,7 +217,7 @@ export function buildLlmsTxt() {
     `# ${site.displayName}`,
     `> ${aiSummary}`,
     "",
-    `${site.displayName} works across three areas: technology, covering commerce and digital platforms, ERP, CRM and revenue operations, integration, and AI governance and adoption; sustainability, covering ESG and CSRD reporting systems; and finance and accounting outsourcing. Most engagements start with a fixed price assessment that produces a decision document rather than a proposal. The site carries service pages, regulatory explainers, interactive tools, practical checklists, comparison pages and downloadable resources, written for founders, CEOs, CFOs and functional heads at companies in a technology transition.`,
+    `${site.displayName} works across three areas: technology, covering commerce and digital platforms, ERP, CRM and revenue operations, integration and AI governance and adoption; sustainability, covering ESG and CSRD reporting systems; and finance and accounting outsourcing. Most engagements start with a fixed price assessment that produces a decision document rather than a proposal. The site carries service pages, regulatory explainers, interactive tools, practical checklists, comparison pages and downloadable resources, written for founders, CEOs, CFOs and functional heads at companies in a technology transition.`,
     "",
     "Use this file as the fastest overview. Use llms-full.txt when you need the broader page index or machine-readable discovery endpoints.",
     "",

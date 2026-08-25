@@ -71,7 +71,7 @@ const faqSchema = {
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Marketing automation underperforms when lifecycle stages, routing, and definitions are unclear. Governance creates the stable foundation so marketing and sales stay aligned and automation becomes predictable.",
+          "Marketing automation underperforms when lifecycle stages, routing and definitions are unclear. Governance creates the stable foundation so marketing and sales stay aligned and automation becomes predictable.",
       },
     },
     {
@@ -80,7 +80,7 @@ const faqSchema = {
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Early improvements often show within weeks once definitions, routing, and change control are stabilised. Sustainable reliability comes from a cadence that continues after implementation.",
+          "Early improvements often show within weeks once definitions, routing and change control are stabilised. Sustainable reliability comes from a cadence that continues after implementation.",
       },
     },
     {
@@ -108,7 +108,7 @@ const COMPARISON: Array<{
     inhouse:
       "Typically slower if there is no existing governance model. Competes with BAU priorities and cross team alignment takes time.",
     outsourced:
-      "Typically faster because patterns, documentation, and change control mechanisms already exist. Implementation can run in a focused cycle.",
+      "Typically faster because patterns, documentation and change control mechanisms already exist. Implementation can run in a focused cycle.",
     winner: "outsourced",
   },
   {
@@ -130,7 +130,7 @@ const COMPARISON: Array<{
   {
     factor: "Internal context and adoption",
     inhouse:
-      "Strong because internal owners know the culture, constraints, and edge cases. Adoption can be better when the owner is trusted.",
+      "Strong because internal owners know the culture, constraints and edge cases. Adoption can be better when the owner is trusted.",
     outsourced:
       "Can be strong when the partner runs enablement and co-creates decisions. Requires committed internal owners to sustain.",
     winner: "inhouse",
@@ -138,9 +138,9 @@ const COMPARISON: Array<{
   {
     factor: "Cross functional alignment",
     inhouse:
-      "Can stall if the owner lacks authority across marketing, sales, service, and finance. Disputes about definitions can linger.",
+      "Can stall if the owner lacks authority across marketing, sales, service and finance. Disputes about definitions can linger.",
     outsourced:
-      "Often faster because an external partner provides structure, facilitation, and a neutral frame for decision making.",
+      "Often faster because an external partner provides structure, facilitation and a neutral frame for decision making.",
     winner: "outsourced",
   },
   {
@@ -178,7 +178,7 @@ export default function InhouseVsOutsourcedPage() {
     <div className="bg-white">
       <PageHero
         title="In house vs Outsourced CRM Governance"
-        subtitle="A decision guide for leaders who want a CRM that teams trust. Use this page to choose the right model for speed, ownership, and long term reliability."
+        subtitle="A decision guide for leaders who want a CRM that teams trust. Use this page to choose the right model for speed, ownership and long term reliability."
         painLine="If teams do not trust dashboards and handoffs are inconsistent, stabilise governance before adding more automation."
         primaryAction={{ label: "Talk to us", href: "/contact" }}
         secondaryAction={{ label: "Marketing automation services", href: "/services/crm-and-revenue-operations" }}
@@ -265,13 +265,13 @@ export default function InhouseVsOutsourcedPage() {
         <div className="bg-white border border-slate-200 rounded-2xl p-8 mb-12">
           <h2 className="text-2xl font-bold text-slate-900 mb-4">What good CRM governance includes</h2>
           <p className="text-sm text-slate-600 max-w-3xl leading-relaxed">
-            Governance prevents drift. It protects lifecycle definitions, routing, and measurement over time so teams stop rework and leaders regain confidence.
+            Governance prevents drift. It protects lifecycle definitions, routing and measurement over time so teams stop rework and leaders regain confidence.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6 mt-8">
             {[
               "Lifecycle stages with entry and exit criteria",
-              "Routing rules, SLAs, and exception handling",
+              "Routing rules, SLAs and exception handling",
               "Data ownership and required fields",
               "Permissions model and change control",
               "Release cadence and approval workflow",
@@ -335,7 +335,7 @@ export default function InhouseVsOutsourcedPage() {
         <div className="bg-indigo-600 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Want a quick diagnostic?</h2>
           <p className="text-indigo-200 text-sm mb-6 max-w-lg mx-auto">
-            We will assess your governance gap, timeline, and whether external stabilisation makes sense.
+            We will assess your governance gap, timeline and whether external stabilisation makes sense.
           </p>
           <Link
             href="/contact"

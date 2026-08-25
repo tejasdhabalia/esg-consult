@@ -25,7 +25,7 @@ const partnerTypes = [
   {
     title: "Platform and implementation partners",
     body:
-      "For software, data, and workflow partners who want a governance-led consulting layer around implementation, adoption, and operating model design.",
+      "For software, data and workflow partners who want a governance-led consulting layer around implementation, adoption and operating model design.",
   },
 ];
 
@@ -128,7 +128,7 @@ export default function PartnersPage() {
     <div className="bg-white text-slate-900">
       <PageHero
         title="Partnerships built around real client needs"
-        subtitle="DS Consulting works with advisors, specialist firms, operators, and ecosystem partners who want a clearer way to collaborate. Some relationships start with referrals. Others grow into structured capability partnerships."
+        subtitle="DS Consulting works with advisors, specialist firms, operators and ecosystem partners who want a clearer way to collaborate. Some relationships start with referrals. Others grow into structured capability partnerships."
         painLine="Good partnerships need more than a logo exchange. They need a clear fit, a practical commercial model, and delivery that protects both brands."
         primaryAction={{ label: "Email our partnerships team", href: `mailto:${site.emails.partners}` }}
         secondaryAction={{ label: "Explore finance capacity partnership", href: "/partners/strategic-finance-partnership" }}
@@ -190,7 +190,7 @@ export default function PartnersPage() {
               {site.emails.partners}
             </a>
             <p className="mt-4 text-xs text-slate-400">
-              Best used for referral, capability, alliance, and ecosystem partnership enquiries.
+              Best used for referral, capability, alliance and ecosystem partnership enquiries.
             </p>
           </div>
         </div>
@@ -227,7 +227,7 @@ export default function PartnersPage() {
                 When clients need more finance capacity than our core advisory work provides, we can support a partner-led model around dedicated India-based finance teams. The offer is easy to position because it maps to familiar finance problems, clear process value streams, and a visible go-live path.
               </p>
               <p className="mt-4 text-slate-600 leading-relaxed">
-                The model covers end-to-end transactional finance work across Procure-to-Pay, Order-to-Cash, and Record-to-Report, then extends into close support, control, and planning. It is built for scaling corporates and typically starts as a 10+ seat design, not a one-role patch.
+                The model covers end-to-end transactional finance work across Procure-to-Pay, Order-to-Cash, and Record-to-Report, then extends into close support, control and planning. It is built for scaling corporates and typically starts as a 10+ seat design, not a one-role patch.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link
@@ -256,7 +256,7 @@ export default function PartnersPage() {
               <div className="col-span-2 rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
                 <div className="font-semibold text-slate-800">Dedicated India finance capacity for scaling corporates</div>
                 <p className="mt-3 text-sm leading-relaxed text-slate-500">
-                  Structured across 14 role profiles and organized by transaction, execution, and strategic layers. Built for companies dealing with close pressure, AP and AR growth, reporting complexity, ERP change, or broader India expansion.
+                  Structured across 14 role profiles and organized by transaction, execution and strategic layers. Built for companies dealing with close pressure, AP and AR growth, reporting complexity, ERP change, or broader India expansion.
                 </p>
                 <Link
                   href="/partners/strategic-finance-partnership#partnership-program"
@@ -292,7 +292,7 @@ export default function PartnersPage() {
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-semibold">Interested in forming a partnership with DS Consulting?</h2>
           <p className="mt-4 text-slate-300 leading-relaxed">
-            Start with a simple note. Tell us what kind of clients you work with, where you see overlap, and whether you want to explore a referral, capability, or strategic partner relationship.
+            Start with a simple note. Tell us what kind of clients you work with, where you see overlap, and whether you want to explore a referral, capability or strategic partner relationship.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a

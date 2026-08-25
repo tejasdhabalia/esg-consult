@@ -107,7 +107,7 @@ export default function CSRDAdvisoryPage() {
         acceptedAnswer: {
           "@type": "Answer",
           text:
-            "Yes. We support first-cycle readiness and reporting execution, then establish the operating model with ownership, cadence, controls, and continuous improvement so reporting remains sustainable.",
+            "Yes. We support first-cycle readiness and reporting execution, then establish the operating model with ownership, cadence, controls and continuous improvement so reporting remains sustainable.",
         },
       },
       {
@@ -116,7 +116,7 @@ export default function CSRDAdvisoryPage() {
         acceptedAnswer: {
           "@type": "Answer",
           text:
-            "No. We do not provide statutory audit or assurance. We prepare organisations for assurance by improving governance, controls, documentation, and evidence trails.",
+            "No. We do not provide statutory audit or assurance. We prepare organisations for assurance by improving governance, controls, documentation and evidence trails.",
         },
       },
     ],
@@ -144,7 +144,7 @@ export default function CSRDAdvisoryPage() {
           </p>
 
           <p className="mt-4 text-slate-600">
-            We focus on building a reporting system that can be repeated, reviewed, and improved each cycle.
+            We focus on building a reporting system that can be repeated, reviewed and improved each cycle.
             If you are navigating India listed reporting, see{" "}
             <Link className="underline" href="/services/esg-advisory/brsr-advisory">
               BRSR advisory
@@ -176,7 +176,7 @@ export default function CSRDAdvisoryPage() {
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-semibold">What we deliver</h2>
           <p className="mt-4 text-slate-600 max-w-4xl">
-            We convert CSRD obligations into a practical operating model with disclosures, owners, controls, and evidence trails.
+            We convert CSRD obligations into a practical operating model with disclosures, owners, controls and evidence trails.
           </p>
 
           <div className="grid md:grid-cols-2 gap-8 mt-14">
@@ -239,7 +239,7 @@ export default function CSRDAdvisoryPage() {
             {[
               ["Diagnose", "Scope, timeline, readiness gaps across disclosures, data sources, and controls."],
               ["Design", "Disclosure mapping, owner model, controls and evidence standards, and reporting workflow."],
-              ["Implement", "Hands-on delivery support, enablement, templates, and governance rollout."],
+              ["Implement", "Hands-on delivery support, enablement, templates and governance rollout."],
               ["Govern", "Cadence, quality checks, evidence trail discipline, and continuous improvement each cycle."],
             ].map(([title, desc]) => (
               <div key={title} className="bg-slate-50 border rounded-2xl p-8">

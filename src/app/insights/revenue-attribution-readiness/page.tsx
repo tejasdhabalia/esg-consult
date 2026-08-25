@@ -34,7 +34,7 @@ const faqSchema = {
     {
       "@type": "Question",
       name: "What does a board-ready attribution model look like?",
-      acceptedAnswer: { "@type": "Answer", text: "A board-ready model has sales and finance alignment, a CRM-to-finance reconciliation process, consistent UTM coverage, and a monthly reporting cadence that surfaces CAC, ROAS, and pipeline contribution in the same report. The model does not need to be data-driven to be credible, but it must be documented and agreed on." },
+      acceptedAnswer: { "@type": "Answer", text: "A board-ready model has sales and finance alignment, a CRM-to-finance reconciliation process, consistent UTM coverage, and a monthly reporting cadence that surfaces CAC, ROAS and pipeline contribution in the same report. The model does not need to be data-driven to be credible, but it must be documented and agreed on." },
     },
   ],
 };

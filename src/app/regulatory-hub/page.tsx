@@ -125,7 +125,7 @@ export default function RegulatoryHubPage() {
     {
       slug: "uk-secr-srs-metrics-targets-and-evidence",
       category: "UK SECR and SRS",
-      title: "Metrics and targets: emissions, targets, and evidence trails",
+      title: "Metrics and targets: emissions, targets and evidence trails",
       summary:
         "Practical decisions for metrics and targets, emissions data governance, controls and evidence trails that reduce late-cycle rework.",
       topics: ["Metrics", "Targets", "Emissions", "Controls"],

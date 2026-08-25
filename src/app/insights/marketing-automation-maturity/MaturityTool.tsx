@@ -87,7 +87,7 @@ function computeScores(d: MaturityData): MaturityScores {
     nextSteps.push("Implement a basic CRM and map your lead lifecycle stages before investing in a MAP.");
     nextSteps.push("Assign a single owner for marketing data and automation, even part-time.");
   } else if (maturityLevel === "Developing") {
-    nextSteps.push("Define and enforce naming conventions across all campaigns, lists, and automation workflows.");
+    nextSteps.push("Define and enforce naming conventions across all campaigns, lists and automation workflows.");
     nextSteps.push("Build a change log. Every workflow modification should be documented before going live.");
     nextSteps.push("Connect MAP and CRM bidirectionally and validate the data sync on a weekly cadence.");
   } else if (maturityLevel === "Governed") {
@@ -104,7 +104,7 @@ function computeScores(d: MaturityData): MaturityScores {
 }
 
 const LEVEL_CONFIG = {
-  Reactive:   { color: "text-red-600",     bg: "bg-red-50 border-red-200",         desc: "Automation is largely manual and ungoverned. Quick wins exist across data, platform, and ownership." },
+  Reactive:   { color: "text-red-600",     bg: "bg-red-50 border-red-200",         desc: "Automation is largely manual and ungoverned. Quick wins exist across data, platform and ownership." },
   Developing: { color: "text-amber-600",   bg: "bg-amber-50 border-amber-200",     desc: "Some automation in place but governance and measurement gaps are constraining performance." },
   Governed:   { color: "text-blue-600",    bg: "bg-blue-50 border-blue-200",       desc: "Strong foundations. The next step is closing attribution gaps and moving to revenue-stage reporting." },
   Optimised:  { color: "text-emerald-600", bg: "bg-emerald-50 border-emerald-200", desc: "Top quartile. Focus shifts to AI-assisted personalisation and predictive pipeline." },
@@ -199,7 +199,7 @@ export default function MaturityTool() {
                     { key: "hasCleanContactData",  label: "Our contact database is actively maintained: duplicates managed, fields standardised, bounce rates below 2%." },
                     { key: "hasUnifiedProfile",    label: "Each contact has a single unified record consolidating activity from all channels." },
                     { key: "hasConsentFramework",  label: "Consent records are captured at source, stored in our CRM, and auditable." },
-                    { key: "hasDataDictionary",    label: "A documented data dictionary covers field names, ownership, and allowed values." },
+                    { key: "hasDataDictionary",    label: "A documented data dictionary covers field names, ownership and allowed values." },
                   ] as const).map(({ key, label }) => (
                     <label key={key} className={chkCls(data[key])}>
                       <input type="checkbox" checked={data[key]} onChange={e => set(key, e.target.checked)} className="mt-0.5 accent-indigo-600 w-4 h-4 flex-shrink-0" />
@@ -241,7 +241,7 @@ export default function MaturityTool() {
                 <div className="space-y-3">
                   {([
                     { key: "hasChangeControl",     label: "All changes to workflows, scoring models, and nurture sequences are documented before going live." },
-                    { key: "hasNamingConventions",  label: "Campaigns, lists, assets, and workflows follow documented naming conventions enforced across the team." },
+                    { key: "hasNamingConventions",  label: "Campaigns, lists, assets and workflows follow documented naming conventions enforced across the team." },
                     { key: "hasCampaignOwner",     label: "Every active campaign and automation workflow has a named owner accountable for its performance and data hygiene." },
                     { key: "hasSLAs",              label: "Service Level Agreements for lead follow-up speed exist and are tracked in the CRM dashboard." },
                   ] as const).map(({ key, label }) => (

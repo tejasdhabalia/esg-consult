@@ -162,7 +162,7 @@ function buildInsightResourceEmail(resourceKey: keyof typeof insightResources): 
   const resource = insightResources[resourceKey];
   return buildEmailShell({
     headline: resource.title,
-    description: `${resource.description} Use it as a working document with your leadership, sustainability, procurement, finance, or operations teams.`,
+    description: `${resource.description} Use it as a working document with your leadership, sustainability, procurement, finance or operations teams.`,
     accentHex: resource.accentHex,
     links: [
       {
@@ -173,7 +173,7 @@ function buildInsightResourceEmail(resourceKey: keyof typeof insightResources): 
       {
         label: "EcoVadis evidence matrix",
         href: "https://www.consult-ds.com/insights/ecovadis-evidence-matrix",
-        desc: "Organise policy, action, and metrics before submission",
+        desc: "Organise policy, action and metrics before submission",
       },
       {
         label: "Scope 3 supplier data request pack",

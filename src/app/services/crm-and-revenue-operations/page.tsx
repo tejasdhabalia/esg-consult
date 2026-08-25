@@ -75,7 +75,7 @@ export default function MarketingAutomationPage() {
       },
       {
         "@type": "Question",
-        name: "How do you handle messy stacks like CRM plus finance, IVR, and support tools?",
+        name: "How do you handle messy stacks like CRM plus finance, IVR and support tools?",
         acceptedAnswer: {
           "@type": "Answer",
           text:
@@ -182,7 +182,7 @@ export default function MarketingAutomationPage() {
             >
               <div className="text-lg font-semibold text-indigo-700">CRM architecture and governance</div>
               <p className="mt-3 text-sm text-slate-600">
-                Data model discipline, definitions, permissions, hygiene rules, integrations, and governance cadence aligned across teams.
+                Data model discipline, definitions, permissions, hygiene rules, integrations and governance cadence aligned across teams.
               </p>
               <div className="mt-4 text-sm font-medium text-indigo-700">Explore CRM governance →</div>
             </Link>
@@ -193,7 +193,7 @@ export default function MarketingAutomationPage() {
             >
               <div className="text-lg font-semibold text-indigo-700">Lifecycle and lead management</div>
               <p className="mt-3 text-sm text-slate-600">
-                Lifecycle stages, routing and SLAs, journey orchestration, segmentation, and operational handoffs for B2B and B2C.
+                Lifecycle stages, routing and SLAs, journey orchestration, segmentation and operational handoffs for B2B and B2C.
               </p>
               <div className="mt-4 text-sm font-medium text-indigo-700">Explore lifecycle design →</div>
             </Link>
@@ -216,16 +216,16 @@ export default function MarketingAutomationPage() {
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-semibold">What we deliver</h2>
           <p className="mt-4 text-slate-600 max-w-4xl">
-            We link strategy to systems through governance, implementation, and measurable outcomes.
+            We link strategy to systems through governance, implementation and measurable outcomes.
           </p>
 
           <div className="grid md:grid-cols-2 gap-8 mt-14">
             {[
-              ["Operating model and governance", "Lifecycle definitions, ownership, routing, SLAs, and change control that keep execution stable."],
+              ["Operating model and governance", "Lifecycle definitions, ownership, routing, SLAs and change control that keep execution stable."],
               ["CRM discipline and data model", "Field standards, naming conventions, permissions, data hygiene rules, and source of truth alignment."],
               ["Omnichannel lifecycle orchestration", "Email, SMS, WhatsApp, web, app and service signals coordinated into journeys."],
               ["Content operations and AI workflows", "Faster content creation with brand guardrails, controlled personalisation, and measurable performance."],
-              ["Implementation and enablement", "Hands-on configuration, documentation, training, and rollout support. Platform experience includes IBM watsonx, HubSpot, Salesforce, Zoho, and in-house CRM builds with 360-degree customer view design."],
+              ["Implementation and enablement", "Hands-on configuration, documentation, training and rollout support. Platform experience includes IBM watsonx, HubSpot, Salesforce, Zoho and in-house CRM builds with 360-degree customer view design."],
               ["Measurement governance", "Metric definitions and reporting rules that remain stable across teams and cycles."],
             ].map(([t, d]) => (
               <div key={t} className="bg-white border rounded-2xl p-8 shadow-sm">

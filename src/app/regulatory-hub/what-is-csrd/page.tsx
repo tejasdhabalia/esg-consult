@@ -32,7 +32,7 @@ const faqSchema = {
       name: "What is CSRD?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "CSRD stands for Corporate Sustainability Reporting Directive (EU Directive 2022/2464). It is the European Union regulation that requires large companies and listed SMEs to report sustainability information under mandatory European Sustainability Reporting Standards (ESRS). It replaces the NFRD and applies a double materiality framework — companies must assess both their impact on sustainability matters and the financial impact of sustainability matters on the company.",
+        text: "CSRD stands for Corporate Sustainability Reporting Directive (EU Directive 2022/2464). It is the European Union regulation that requires large companies and listed SMEs to report sustainability information under mandatory European Sustainability Reporting Standards (ESRS). It replaces the NFRD and applies a double materiality framework. Companies must assess both their impact on sustainability matters and the financial impact of sustainability matters on the company.",
       },
     },
     {
@@ -40,7 +40,7 @@ const faqSchema = {
       name: "Who is in scope for CSRD?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "CSRD applies to: (1) Large EU companies meeting two of three criteria — 250+ employees, EUR 40M+ turnover, EUR 20M+ balance sheet — reporting from FY2024. (2) Listed SMEs on EU regulated markets reporting from FY2026 (with opt-out to FY2028). (3) Non-EU parent companies with significant EU activity (EUR 150M+ net turnover in EU and at least one EU subsidiary or branch) reporting from FY2028.",
+        text: "CSRD applies to: (1) Large EU companies meeting two of three criteria: 250+ employees, EUR 40M+ turnover, EUR 20M+ balance sheet, reporting from FY2024. (2) Listed SMEs on EU regulated markets reporting from FY2026 (with opt-out to FY2028). (3) Non-EU parent companies with significant EU activity (EUR 150M+ net turnover in EU and at least one EU subsidiary or branch) reporting from FY2028.",
       },
     },
     {
@@ -153,7 +153,7 @@ export default function WhatIsCSRDPage() {
             <div>
               <h2 className="text-xl font-bold text-slate-900 mb-4">Who is in scope?</h2>
               <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                CSRD scope is determined by entity size, listing status, and — for non-EU companies —
+                CSRD scope is determined by entity size, listing status and, for non-EU companies,
                 turnover within the EU. The criteria below determine which entities must report.
               </p>
               <div className="space-y-3">
@@ -268,7 +268,7 @@ export default function WhatIsCSRDPage() {
             <div className="bg-white border border-slate-200 rounded-2xl p-5">
               <h4 className="font-semibold text-slate-900 text-sm mb-2">CSRD advisory</h4>
               <p className="text-xs text-slate-500 mb-3 leading-relaxed">
-                We help CFOs and CSOs build the governance, data, and evidence trails required for CSRD compliance.
+                We help CFOs and CSOs build the governance, data and evidence trails required for CSRD compliance.
               </p>
               <Link href="/services/esg-advisory/csrd-advisory" className="block text-xs font-semibold text-indigo-600 hover:underline">
                 View CSRD advisory service →

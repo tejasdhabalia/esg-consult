@@ -34,7 +34,7 @@ const faqSchema = {
     {
       "@type": "Question",
       name: "Can IBM watsonx be used for regulated-sector marketing?",
-      acceptedAnswer: { "@type": "Answer", text: "IBM watsonx is designed for enterprise and regulated-sector deployments. watsonx.governance provides model monitoring, explainability, and audit trails, making it suitable for marketing use cases in financial services, healthcare, and other environments where model decisions must be documented and defensible." },
+      acceptedAnswer: { "@type": "Answer", text: "IBM watsonx is designed for enterprise and regulated-sector deployments. watsonx.governance provides model monitoring, explainability and audit trails, making it suitable for marketing use cases in financial services, healthcare and other environments where model decisions must be documented and defensible." },
     },
   ],
 };
@@ -87,8 +87,8 @@ export default function AIMarketingReadinessPage() {
             AI Marketing Readiness Assessment
           </h1>
           <p className="text-lg text-violet-200 max-w-2xl mb-8">
-            Before your team buys an AI tool, find out whether your data, stack, and governance are ready for it.
-            Three sections covering data quality, integration, and governance, with use-case readiness for lead scoring,
+            Before your team buys an AI tool, find out whether your data, stack and governance are ready for it.
+            Three sections covering data quality, integration and governance, with use-case readiness for lead scoring,
             personalisation, predictive analytics, and AI content.
           </p>
           <div className="flex items-center gap-4 text-sm text-violet-300">
@@ -149,14 +149,14 @@ export default function AIMarketingReadinessPage() {
             <div className="mt-14 pt-10 border-t border-slate-200 space-y-6">
               <h2 className="text-2xl font-bold text-slate-900">Why most marketing AI pilots fail</h2>
               <p className="text-slate-600 leading-relaxed">
-                AI models do not know when the data they are processing is dirty, duplicated, or incomplete.
+                AI models do not know when the data they are processing is dirty, duplicated or incomplete.
                 They produce outputs based on the patterns they find. If the patterns in your data reflect
                 three years of inconsistent field usage, incomplete contact records, and unmapped channel activity,
                 the AI will learn those patterns and replicate them at scale.
               </p>
               <h3 className="text-lg font-bold text-slate-900">Regulated industries carry additional risk</h3>
               <p className="text-slate-600 leading-relaxed">
-                In financial services, healthcare, and other regulated sectors, AI-driven marketing decisions
+                In financial services, healthcare and other regulated sectors, AI-driven marketing decisions
                 must be explainable. If a lead scoring model deprioritises a contact based on behavioural signals,
                 and that contact later raises a complaint, the business needs to explain what data drove that decision
                 and whether it constituted fair treatment. Without model governance and audit trails, that explanation does not exist.

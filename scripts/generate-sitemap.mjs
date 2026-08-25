@@ -6,7 +6,32 @@ const APP_DIR = path.join(ROOT, 'src', 'app');
 const SITE_FILE = path.join(ROOT, 'src', 'lib', 'site.ts');
 const OUT_FILE = path.join(ROOT, 'public', 'sitemap.xml');
 
-const EXCLUDED_ROUTES = new Set(['/favicon.ico']);
+/**
+ * Routes kept out of the sitemap.
+ *
+ * Industry pages: held back per Brief 2 (SEO project, 24 Aug 2026). Two pages
+ * read as thin, and they are commented out of navigation, so a visitor
+ * arriving from search cannot navigate the section. The pages stay live and
+ * indexable. When five or six exist with real depth they return to the
+ * sitemap and to navigation together, and it gets flagged to the SEO project.
+ *
+ * Partner pages are deliberately NOT excluded. Earlier project notes said
+ * they were; that was never true in this file.
+ * The strategic finance partnership page is excluded because it carries
+ * noindex. Brief 3, Task 4 (SEO project). It recruits introducers, and as
+ * the only live page under the finance and accounting area it was occupying
+ * a search position a buyer would reach. A noindex page listed in the
+ * sitemap is a contradiction, so the two changes belong together.
+ *
+ * The partners hub at /partners stays in. Only the child page is excluded.
+ */
+const EXCLUDED_ROUTES = new Set([
+  '/favicon.ico',
+  '/industries',
+  '/industries/distribution-and-wholesale',
+  '/industries/retail-and-d2c',
+  '/partners/strategic-finance-partnership',
+]);
 
 function walk(dir) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });

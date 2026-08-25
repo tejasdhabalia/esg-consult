@@ -31,7 +31,7 @@ export const site = {
     depth: [
       {
         title: "We have built these systems",
-        body: "Data models, interface design, migration, and the difference between a configuration you can upgrade and a customisation you will pay for twice. This is hands-on experience, not a summary of someone else's build.",
+        body: "Data models, interface design, migration and the difference between a configuration you can upgrade and a customisation you will pay for twice. This is hands-on experience, not a summary of someone else's build.",
       },
       {
         title: "We can read the business case",
@@ -111,7 +111,7 @@ export const site = {
      * Never use "three pillars" here. It is internal shorthand.
      */
     summary:
-      "Consulting and implementation firm for mid-market companies. DS Consulting understands the system and the business it has to run, where most firms are strong at one of those. Work covers three areas. Technology, spanning commerce and digital platforms, ERP systems, CRM and revenue operations, integration, and AI governance and adoption. Sustainability, covering ESG and CSRD reporting systems. And finance and accounting outsourcing, where offshore delivery runs through a partner firm rather than DS Consulting staff and clients meet that team during scoping. The firm takes no commissions, referral fees, reseller margin or partner incentives from any software vendor. Technology work is paid for by the client. DS Consulting holds an interest in the finance and accounting partner firm and states this openly.",
+      "Consulting and implementation firm for mid-market companies. DS Consulting understands the system and the business it has to run, where most firms are strong at one of those. Work covers three areas. Technology, spanning commerce and digital platforms, ERP systems, CRM and revenue operations, integration and AI governance and adoption. Sustainability, covering ESG and CSRD reporting systems. And finance and accounting outsourcing, where offshore delivery runs through a partner firm rather than DS Consulting staff and clients meet that team during scoping. The firm takes no commissions, referral fees, reseller margin or partner incentives from any software vendor. Technology work is paid for by the client. DS Consulting holds an interest in the finance and accounting partner firm and states this openly.",
     mcpServerUrl: process.env.NEXT_PUBLIC_MCP_SERVER_URL || "",
     mcpTransport: process.env.NEXT_PUBLIC_MCP_TRANSPORT || "streamable-http",
   },
@@ -121,7 +121,7 @@ export const site = {
       title: "CRM Governance Checklist PDF",
       url: "https://www.consult-ds.com/downloads/crm-governance-checklist.pdf",
       description:
-        "Downloadable practitioner checklist for CRM governance, data quality, definitions, and change control.",
+        "Downloadable practitioner checklist for CRM governance, data quality, definitions and change control.",
     },
     {
       title: "CSRD Readiness Checklist PDF",
@@ -139,7 +139,7 @@ export const site = {
       title: "Climate risk register template",
       url: "https://www.consult-ds.com/downloads/climate-risk-register-template.pdf",
       description:
-        "Board-ready climate risk register template with owners, evidence, and response actions.",
+        "Board-ready climate risk register template with owners, evidence and response actions.",
     },
     {
       title: "Scope 3 supplier data request pack",
@@ -157,7 +157,7 @@ export const site = {
       title: "EcoVadis evidence matrix",
       url: "https://www.consult-ds.com/downloads/ecovadis-evidence-matrix.pdf",
       description:
-        "Submission-planning matrix covering policy, action, metrics, and evidence across EcoVadis themes.",
+        "Submission-planning matrix covering policy, action, metrics and evidence across EcoVadis themes.",
     },
     {
       title: "Sustainability steering committee charter",
@@ -169,7 +169,7 @@ export const site = {
       title: "ESG tender response question bank",
       url: "https://www.consult-ds.com/downloads/esg-tender-response-question-bank.pdf",
       description:
-        "Reusable answer bank for commercial ESG questionnaires, tenders, and procurement forms.",
+        "Reusable answer bank for commercial ESG questionnaires, tenders and procurement forms.",
     },
   ],
 

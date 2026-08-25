@@ -118,7 +118,7 @@ export default function InsightsHubClient({ items }: { items: InsightItem[] }) {
               <h2 className="text-3xl font-semibold">Latest insights</h2>
               <p className="mt-3 text-slate-600 max-w-3xl">
                 Practical guidance for leaders building ESG readiness and revenue
-                visibility. Built to be readable, actionable, and governed.
+                visibility. Built to be readable, actionable and governed.
               </p>
             </div>
             <div className="text-sm text-slate-600">

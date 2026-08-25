@@ -63,7 +63,7 @@ export default function DistributionAndWholesalePage() {
         },
         {
           layer: "Sales and field",
-          platforms: "Zoho CRM, LeadSquared, Kylas, or a distributor portal built in-house",
+          platforms: "Zoho CRM, LeadSquared, Kylas or a distributor portal built in-house",
         },
       ]}
       relatedServices={[

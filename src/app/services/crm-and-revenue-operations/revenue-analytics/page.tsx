@@ -67,7 +67,7 @@ export default function RevenueAnalyticsPage() {
         name: "Is this relevant for B2C as well as B2B?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. B2B analytics focuses on pipeline, velocity, conversion and account retention. B2C analytics covers cohort retention, repeat purchase, LTV, and journey performance. We adapt the framework to your operating model.",
+          text: "Yes. B2B analytics focuses on pipeline, velocity, conversion and account retention. B2C analytics covers cohort retention, repeat purchase, LTV and journey performance. We adapt the framework to your operating model.",
         },
       },
       {
@@ -97,7 +97,7 @@ export default function RevenueAnalyticsPage() {
           <h2 className="text-3xl font-semibold">When metrics are disputed, execution slows down</h2>
           <p className="mt-6 text-slate-600">
             Dashboards fail when definitions are inconsistent, stage meanings drift, attribution rules change, and finance numbers do not reconcile with CRM performance.
-            We stabilise measurement through taxonomy, governance, and reporting controls.
+            We stabilise measurement through taxonomy, governance and reporting controls.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">

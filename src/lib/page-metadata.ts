@@ -31,6 +31,20 @@ type PageMetadataInput = {
    * Defaults to "website".
    */
   type?: "website" | "article";
+
+  /**
+   * Keep the page out of search results while leaving it reachable by anyone
+   * who has the link. Emits robots noindex, follow: links on the page are
+   * still crawled, the page itself is not listed.
+   *
+   * A page set noindex must also be added to EXCLUDED_ROUTES in
+   * scripts/generate-sitemap.mjs, or the sitemap invites Google to index a
+   * page that tells it not to.
+   *
+   * Used where a page has a legitimate audience but the wrong one for the
+   * search position it would occupy.
+   */
+  noindex?: boolean;
 };
 
 const DEFAULT_OG_IMAGE = "/og-default.png";
@@ -41,6 +55,7 @@ export function pageMetadata({
   path,
   ogImage = DEFAULT_OG_IMAGE,
   type = "website",
+  noindex = false,
 }: PageMetadataInput): Metadata {
   const fullTitle = `${title} | ${site.legalName}`;
   const url = absUrl(path);
@@ -50,6 +65,9 @@ export function pageMetadata({
     title: fullTitle,
     description,
     alternates: { canonical: url },
+    ...(noindex
+      ? { robots: { index: false, follow: true } }
+      : {}),
     openGraph: {
       type,
       siteName: site.legalName,

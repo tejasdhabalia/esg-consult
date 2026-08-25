@@ -40,7 +40,7 @@ export default function Page() {
             <li>Prioritise the highest-impact partners and categories</li>
             <li>Define data definitions and evidence expectations</li>
             <li>Design supplier collection workflows and responsibilities</li>
-            <li>Document assumptions, estimates, and boundary choices</li>
+            <li>Document assumptions, estimates and boundary choices</li>
             <li>Improve quality cycle by cycle through governance</li>
           </ol>
 

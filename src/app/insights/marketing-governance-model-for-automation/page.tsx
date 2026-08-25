@@ -41,7 +41,7 @@ export default function Page() {
     <div>
       <PageHero
         title="The governance model behind marketing automation that actually scales"
-        subtitle="Tools do not create scale. Governance does. This guide outlines what leadership should put in place so automation stays reliable as teams, channels, and journeys grow."
+        subtitle="Tools do not create scale. Governance does. This guide outlines what leadership should put in place so automation stays reliable as teams, channels and journeys grow."
         primaryAction={{ label: "Marketing automation services", href: "/services/crm-and-revenue-operations" }}
         secondaryAction={{ label: "Back to Insights", href: "/insights" }}
         imageSrc="/hero/marketing.jpg"
@@ -63,7 +63,7 @@ export default function Page() {
             {[
               ["Stage definitions and entry rules", "Define lifecycle stages, entry and exit rules, required fields, and ownership."],
               ["Routing and SLAs", "Document routing logic, SLAs, escalation rules, and how exceptions are handled."],
-              ["Change control", "A simple process to approve new fields, stages, journeys, and metric changes."],
+              ["Change control", "A simple process to approve new fields, stages, journeys and metric changes."],
               ["Measurement governance", "Metric definitions that remain stable, plus a review cadence leaders trust."],
             ].map(([t, d]) => (
               <div key={t} className="bg-slate-50 border rounded-2xl p-6">
@@ -75,7 +75,7 @@ export default function Page() {
 
           <h2 className="text-2xl font-semibold mt-14">A practical starting point</h2>
           <p className="mt-4 text-slate-700">
-            Start with a diagnostic audit across CRM governance, lifecycle definitions, routing, and reporting logic.
+            Start with a diagnostic audit across CRM governance, lifecycle definitions, routing and reporting logic.
             Then implement a phased plan that fixes foundation issues before adding new automation.
           </p>
 

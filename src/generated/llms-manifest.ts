@@ -1,5 +1,5 @@
 export const llmsManifest = {
-  "generatedAt": "2026-08-25T11:17:35.081Z",
+  "generatedAt": "2026-08-25T11:46:37.173Z",
   "pageCount": 72,
   "pages": [
     {
@@ -305,8 +305,8 @@ export const llmsManifest = {
     {
       "route": "/partners/strategic-finance-partnership",
       "url": "https://www.consult-ds.com/partners/strategic-finance-partnership",
-      "title": "Strategic finance partnership program | Partners | DS Consulting",
-      "description": "A strategic finance partnership program from DS Consulting for advisors, consultants, ERP partners, GCC advisors, and ecosystem operators who want structured referral fees or ongoing commission around dedicated India-based finance capacity.",
+      "title": "Strategic finance partnership program",
+      "description": "A partnership program for advisors, consultants, ERP partners and ecosystem operators building dedicated India-based finance capacity for their clients.",
       "section": "partners",
       "priority": 0.7,
       "changeFrequency": "monthly",

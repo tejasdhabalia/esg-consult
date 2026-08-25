@@ -39,7 +39,7 @@ export default function Page() {
           <ul className="mt-6 list-disc list-inside text-slate-700 space-y-2">
             <li>KPI inventory mapped to indicators with clear definitions</li>
             <li>Named data owners and source systems per KPI</li>
-            <li>Validation checks, approvals, and evidence standards</li>
+            <li>Validation checks, approvals and evidence standards</li>
             <li>Exceptions process and cycle-by-cycle improvement cadence</li>
           </ul>
 

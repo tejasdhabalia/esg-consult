@@ -26,7 +26,7 @@ export default function AccessibilityPage() {
           <div>
             <h2 className="text-2xl font-semibold">Our commitment</h2>
             <p className="mt-4">
-              We aim to follow good accessibility practices across structure, readability, and navigation. This is an evolving effort.
+              We aim to follow good accessibility practices across structure, readability and navigation. This is an evolving effort.
             </p>
           </div>
 

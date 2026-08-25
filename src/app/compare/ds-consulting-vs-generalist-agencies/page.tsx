@@ -35,7 +35,7 @@ const faqSchema = {
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "The primary difference is governance depth and implementation ownership. A generalist marketing agency focuses on campaigns, creative, and channels. DS Consulting focuses on the operating model underneath: CRM governance, lifecycle definitions, measurement discipline, and the data infrastructure that makes execution accountable.",
+          "The primary difference is governance depth and implementation ownership. A generalist marketing agency focuses on campaigns, creative and channels. DS Consulting focuses on the operating model underneath: CRM governance, lifecycle definitions, measurement discipline, and the data infrastructure that makes execution accountable.",
       },
     },
     {
@@ -62,7 +62,7 @@ const faqSchema = {
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Yes. We support carbon accounting and emissions data governance as part of ESG readiness. The goal is a repeatable system with ownership, controls, and an evidence trail, not just a one-time calculation.",
+          "Yes. We support carbon accounting and emissions data governance as part of ESG readiness. The goal is a repeatable system with ownership, controls and an evidence trail, not just a one-time calculation.",
       },
     },
     {
@@ -71,7 +71,7 @@ const faqSchema = {
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Choose an agency when your governance foundations are stable and you primarily need brand creative, media buying, or campaign execution. If definitions, routing, and measurement are unstable, agency activity can look busy while outcomes remain inconsistent.",
+          "Choose an agency when your governance foundations are stable and you primarily need brand creative, media buying, or campaign execution. If definitions, routing and measurement are unstable, agency activity can look busy while outcomes remain inconsistent.",
       },
     },
     {
@@ -127,13 +127,13 @@ const MATRIX = [
   },
   {
     factor: "Evidence trails and defensibility",
-    ds: "Designed in. Controls, documentation, and audit-ready evidence trails for ESG and for revenue measurement reliability.",
+    ds: "Designed in. Controls, documentation and audit-ready evidence trails for ESG and for revenue measurement reliability.",
     generalist:
       "Not typically designed in. Evidence trails are uncommon unless it is an assurance-led engagement.",
   },
   {
     factor: "Carbon accounting and emissions data governance",
-    ds: "Supported as part of ESG readiness. Focus is repeatable emissions data governance, controls, and reporting workflow.",
+    ds: "Supported as part of ESG readiness. Focus is repeatable emissions data governance, controls and reporting workflow.",
     generalist:
       "Often a one-time calculation or a report output without sustained governance model and controls.",
   },
@@ -229,8 +229,8 @@ export default function DSConsultingVsGeneralistPage() {
                 "Your CRM or ESG governance gap is costing you visibility, not just efficiency",
                 "You want the same senior practitioners on your project from diagnostic to delivery",
                 "You are a mid-market organisation that cannot justify Big 4 timelines or fees",
-                "You need CSRD, BRSR, or UK climate readiness inside one or two reporting cycles",
-                "You need carbon accounting with ownership, controls, and evidence trails",
+                "You need CSRD, BRSR or UK climate readiness inside one or two reporting cycles",
+                "You need carbon accounting with ownership, controls and evidence trails",
                 "You want AI adoption that is governed and integrated, not bolted on",
               ].map((item, i) => (
                 <li key={i} className="flex gap-2">
@@ -246,7 +246,7 @@ export default function DSConsultingVsGeneralistPage() {
             </h3>
             <ul className="space-y-2 text-sm text-slate-600">
               {[
-                "You primarily need brand, creative, or media buying capability",
+                "You primarily need brand, creative or media buying capability",
                 "Your brief is broad commercial strategy without a specific governance outcome",
                 "You need a large team of specialists across many disciplines simultaneously",
                 "You require statutory audit or independent assurance (we do not provide these)",
@@ -281,7 +281,7 @@ export default function DSConsultingVsGeneralistPage() {
               "What is the operating cadence leaders will run after implementation?",
               "What are the top failure modes you expect, and how will you mitigate them?",
               "How do you document decisions so teams can maintain the system?",
-              "What does success look like in 30, 60, and 90 days?",
+              "What does success look like in 30, 60 and 90 days?",
             ].map((q, idx) => (
               <div key={idx} className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
                 <div className="text-sm font-semibold text-slate-900">{q}</div>

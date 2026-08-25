@@ -15,7 +15,7 @@ const definitionSchema = {
   name: "SEBI BRSR",
   alternateName: "Business Responsibility and Sustainability Report",
   description:
-    "SEBI BRSR (Business Responsibility and Sustainability Report) is India's mandatory ESG disclosure framework introduced by the Securities and Exchange Board of India (SEBI). It replaced the Business Responsibility Report (BRR) and requires the top 1,000 listed companies by market capitalisation to disclose sustainability performance across 9 principles covering environment, social, and governance dimensions. BRSR Core is a subset of mandatory KPIs within BRSR that are subject to reasonable assurance.",
+    "SEBI BRSR (Business Responsibility and Sustainability Report) is India's mandatory ESG disclosure framework introduced by the Securities and Exchange Board of India (SEBI). It replaced the Business Responsibility Report (BRR) and requires the top 1,000 listed companies by market capitalisation to disclose sustainability performance across 9 principles covering environment, social and governance dimensions. BRSR Core is a subset of mandatory KPIs within BRSR that are subject to reasonable assurance.",
   inDefinedTermSet: {
     "@type": "DefinedTermSet",
     name: "DS Consulting Regulatory Dictionary",
@@ -32,7 +32,7 @@ const faqSchema = {
       name: "What is SEBI BRSR?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "SEBI BRSR (Business Responsibility and Sustainability Report) is India's mandatory sustainability disclosure framework required by the Securities and Exchange Board of India. It replaced the earlier Business Responsibility Report (BRR) and applies to the top 1,000 listed companies by market capitalisation. BRSR requires disclosures across 9 principles of the National Guidelines on Responsible Business Conduct (NGRBC), covering environment, social, and governance dimensions.",
+        text: "SEBI BRSR (Business Responsibility and Sustainability Report) is India's mandatory sustainability disclosure framework required by the Securities and Exchange Board of India. It replaced the earlier Business Responsibility Report (BRR) and applies to the top 1,000 listed companies by market capitalisation. BRSR requires disclosures across 9 principles of the National Guidelines on Responsible Business Conduct (NGRBC), covering environment, social and governance dimensions.",
       },
     },
     {
@@ -56,7 +56,7 @@ const faqSchema = {
       name: "What are the 9 principles of BRSR?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The 9 BRSR principles align to India's National Guidelines on Responsible Business Conduct (NGRBC): P1 — Businesses should conduct and govern themselves with integrity; P2 — Businesses should provide goods and services sustainably; P3 — Businesses should respect and promote the wellbeing of employees; P4 — Businesses should respect the interests of stakeholders; P5 — Businesses should respect and promote human rights; P6 — Businesses should respect and make efforts to protect the environment; P7 — Businesses should engage in policy advocacy responsibly; P8 — Businesses should promote inclusive growth; P9 — Businesses should engage with and provide value to their consumers.",
+        text: "The 9 BRSR principles align to India's National Guidelines on Responsible Business Conduct (NGRBC): P1: Businesses should conduct and govern themselves with integrity; P2: Businesses should provide goods and services sustainably; P3: Businesses should respect and promote the wellbeing of employees; P4: Businesses should respect the interests of stakeholders; P5: Businesses should respect and promote human rights; P6: Businesses should respect and make efforts to protect the environment; P7: Businesses should engage in policy advocacy responsibly; P8: Businesses should promote inclusive growth; P9: Businesses should engage with and provide value to their consumers.",
       },
     },
     {
@@ -64,7 +64,7 @@ const faqSchema = {
       name: "What is the difference between BRSR and BRSR Core?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "BRSR is the full sustainability disclosure report covering all 9 principles and both essential and leadership indicators. BRSR Core is a curated set of quantitative KPIs within BRSR that SEBI has identified as most critical for ESG assessment. BRSR Core indicators are subject to mandatory reasonable assurance — the rest of the BRSR report is not. BRSR Core therefore represents the highest-stakes portion of BRSR from a governance and evidence trail perspective.",
+        text: "BRSR is the full sustainability disclosure report covering all 9 principles and both essential and leadership indicators. BRSR Core is a curated set of quantitative KPIs within BRSR that SEBI has identified as most critical for ESG assessment. BRSR Core indicators are subject to mandatory reasonable assurance. The rest of the BRSR report is not. BRSR Core therefore represents the highest-stakes portion of BRSR from a governance and evidence trail perspective.",
       },
     },
   ],
@@ -81,7 +81,7 @@ const breadcrumbSchema = {
 };
 
 const PRINCIPLES = [
-  { num: "P1", title: "Integrity and governance", short: "Conduct and govern with integrity, ethics, and transparency." },
+  { num: "P1", title: "Integrity and governance", short: "Conduct and govern with integrity, ethics and transparency." },
   { num: "P2", title: "Sustainable products and services", short: "Provide goods and services in a sustainable and safe manner." },
   { num: "P3", title: "Employee wellbeing", short: "Respect and promote the wellbeing of all employees and workers." },
   { num: "P4", title: "Stakeholder responsiveness", short: "Respect the interests of and be responsive to all stakeholders." },
@@ -124,7 +124,7 @@ export default function WhatIsSEBIBRSRPage() {
             Securities and Exchange Board of India (SEBI). Required for the top 1,000 listed companies by market
             capitalisation, it mandates disclosures across 9 principles of the National Guidelines on Responsible
             Business Conduct (NGRBC). <strong>BRSR Core</strong> is the subset of quantitative KPIs subject to
-            mandatory reasonable assurance — the highest-stakes component of the framework from a governance
+            mandatory reasonable assurance, the highest-stakes component of the framework from a governance
             and evidence trail perspective.
           </p>
         </div>
@@ -158,7 +158,7 @@ export default function WhatIsSEBIBRSRPage() {
               <p className="text-slate-600 text-sm leading-relaxed mb-3">
                 BRSR Core is a curated set of quantitative KPIs that SEBI has identified as most critical for
                 ESG assessment. Unlike the rest of BRSR which is disclosed without independent verification,
-                BRSR Core indicators are subject to mandatory <strong>reasonable assurance</strong> — the
+                BRSR Core indicators are subject to mandatory <strong>reasonable assurance</strong>, the
                 highest level of assurance standard, equivalent to audit-level scrutiny.
               </p>
               <p className="text-slate-600 text-sm leading-relaxed">

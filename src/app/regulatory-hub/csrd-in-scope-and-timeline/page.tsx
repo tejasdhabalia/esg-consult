@@ -41,9 +41,9 @@ export default function Page() {
           <div className="grid md:grid-cols-2 gap-6 mt-8">
             {[
               ["Applicability and reporting boundary", "Confirm in-scope entities, group boundary decisions, and who owns boundary approvals."],
-              ["Timeline and internal deadlines", "Work backwards from reporting deadlines and set internal milestones for data collection, review, and sign-off."],
+              ["Timeline and internal deadlines", "Work backwards from reporting deadlines and set internal milestones for data collection, review and sign-off."],
               ["Disclosure readiness reality check", "Identify disclosures that require new data sources, new controls, or cross-functional ownership."],
-              ["Evidence trail expectations", "Define evidence storage, approvals, validations, and documentation standards early."],
+              ["Evidence trail expectations", "Define evidence storage, approvals, validations and documentation standards early."],
             ].map(([t, d]) => (
               <div key={t} className="bg-slate-50 border rounded-2xl p-6">
                 <div className="font-semibold text-slate-900">{t}</div>

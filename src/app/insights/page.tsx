@@ -31,7 +31,7 @@ export default function InsightsPage() {
     <div>
       <PageHero
         title="Insights"
-        subtitle="Practical guides and tools for leaders building ESG readiness and revenue visibility. Designed for decision-making, governance, and repeatable execution."
+        subtitle="Practical guides and tools for leaders building ESG readiness and revenue visibility. Designed for decision-making, governance and repeatable execution."
         primaryAction={{ label: "Explore services", href: "/services" }}
         secondaryAction={{ label: "Talk to us", href: "/contact" }}
         imageSrc="/hero/insights.jpg"

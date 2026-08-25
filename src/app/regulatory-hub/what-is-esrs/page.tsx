@@ -32,7 +32,7 @@ const faqSchema = {
       name: "What are ESRS?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "ESRS (European Sustainability Reporting Standards) are the mandatory standards under which companies report sustainability information under CSRD. Developed by EFRAG and adopted by the European Commission, they set out what companies must disclose, how disclosures should be structured, and what data points are required. The first set of ESRS includes cross-cutting standards (ESRS 1 and ESRS 2) and 10 topic-specific standards covering environment, social, and governance areas.",
+        text: "ESRS (European Sustainability Reporting Standards) are the mandatory standards under which companies report sustainability information under CSRD. Developed by EFRAG and adopted by the European Commission, they set out what companies must disclose, how disclosures should be structured, and what data points are required. The first set of ESRS includes cross-cutting standards (ESRS 1 and ESRS 2) and 10 topic-specific standards covering environment, social and governance areas.",
       },
     },
     {
@@ -40,7 +40,7 @@ const faqSchema = {
       name: "What is ESRS 1?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "ESRS 1 is the general requirements standard. It sets out the architecture of the ESRS framework, the reporting principles (including double materiality), how to apply materiality to determine which disclosures are required, and the relationship between the standards. ESRS 1 does not contain specific disclosure requirements — it establishes the rules for applying all other ESRS standards.",
+        text: "ESRS 1 is the general requirements standard. It sets out the architecture of the ESRS framework, the reporting principles (including double materiality), how to apply materiality to determine which disclosures are required, and the relationship between the standards. ESRS 1 does not contain specific disclosure requirements. It establishes the rules for applying all other ESRS standards.",
       },
     },
     {
@@ -48,7 +48,7 @@ const faqSchema = {
       name: "What is ESRS 2?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "ESRS 2 is the general disclosures standard and is mandatory for all in-scope companies regardless of their double materiality outcome. It covers governance (roles and responsibilities for sustainability), strategy (how sustainability is integrated), impact, risk and opportunity management (including the double materiality process), and metrics and targets. ESRS 2 is the backbone of the CSRD disclosure — all companies must complete it in full.",
+        text: "ESRS 2 is the general disclosures standard and is mandatory for all in-scope companies regardless of their double materiality outcome. It covers governance (roles and responsibilities for sustainability), strategy (how sustainability is integrated), impact, risk and opportunity management (including the double materiality process), and metrics and targets. ESRS 2 is the backbone of the CSRD disclosure. All companies must complete it in full.",
       },
     },
     {
@@ -56,7 +56,7 @@ const faqSchema = {
       name: "Which ESRS standards are mandatory and which are optional?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "ESRS 2 is mandatory for all in-scope companies. ESRS 1 establishes the framework rules and must be followed. The topic-specific standards (E1-E5, S1-S4, G1) are subject to the double materiality assessment — if a topic is assessed as material from either the impact or financial perspective, the corresponding disclosures become mandatory. Companies that determine a topic is not material must explain why in their report. ESRS E1 (climate change) has specific requirements that apply even if a company concludes it is not material.",
+        text: "ESRS 2 is mandatory for all in-scope companies. ESRS 1 establishes the framework rules and must be followed. The topic-specific standards (E1-E5, S1-S4, G1) are subject to the double materiality assessment. If a topic is assessed as material from either the impact or financial perspective, the corresponding disclosures become mandatory. Companies that determine a topic is not material must explain why in their report. ESRS E1 (climate change) has specific requirements that apply even if a company concludes it is not material.",
       },
     },
     {
@@ -64,7 +64,7 @@ const faqSchema = {
       name: "What is ESRS E1?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "ESRS E1 covers climate change. It is the environmental standard most companies will need to engage with regardless of their materiality outcome, because EFRAG has included a specific requirement: companies that determine climate is not material must provide a brief explanation of their reasoning. ESRS E1 requires disclosures on transition plans, physical and transition risks and opportunities, GHG emissions (Scope 1, 2, and 3), energy consumption, and climate-related targets.",
+        text: "ESRS E1 covers climate change. It is the environmental standard most companies will need to engage with regardless of their materiality outcome, because EFRAG has included a specific requirement: companies that determine climate is not material must provide a brief explanation of their reasoning. ESRS E1 requires disclosures on transition plans, physical and transition risks and opportunities, GHG emissions (Scope 1, 2 and 3), energy consumption, and climate-related targets.",
       },
     },
   ],
@@ -114,7 +114,7 @@ export default function WhatIsESRSPage() {
           <p className="text-indigo-200 text-xl font-medium mb-3">European Sustainability Reporting Standards</p>
           <p className="text-indigo-300 text-base max-w-2xl leading-relaxed">
             The mandatory standards under which companies report sustainability information under CSRD.
-            12 standards covering cross-cutting requirements, environment, social, and governance —
+            12 standards covering cross-cutting requirements, environment, social and governance,
             with disclosure obligations driven by your double materiality assessment.
           </p>
         </div>

@@ -26,7 +26,7 @@ export default function Page() {
     <div>
       <PageHero
         title="Double materiality and ESRS mapping"
-        subtitle="Materiality is useful only when it drives ownership, controls, and evidence. This guide shows how to convert outcomes into disclosures, KPIs, workflows, and governance."
+        subtitle="Materiality is useful only when it drives ownership, controls and evidence. This guide shows how to convert outcomes into disclosures, KPIs, workflows and governance."
         primaryAction={{ label: "CSRD advisory services", href: "/services/esg-advisory/csrd-advisory" }}
         secondaryAction={{ label: "Back to Regulatory hub", href: "/regulatory-hub" }}
         imageSrc="/hero/csrd.jpg"
@@ -39,7 +39,7 @@ export default function Page() {
           <ol className="mt-6 list-decimal list-inside text-slate-700 space-y-2">
             <li>Translate topics into a disclosure inventory and KPI set</li>
             <li>Assign owners and define data sources per disclosure and KPI</li>
-            <li>Define control checks, approvals, and evidence standards</li>
+            <li>Define control checks, approvals and evidence standards</li>
             <li>Design reporting workflow and leadership review cadence</li>
           </ol>
 

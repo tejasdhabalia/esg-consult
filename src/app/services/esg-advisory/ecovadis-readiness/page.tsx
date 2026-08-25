@@ -30,7 +30,7 @@ const faqSchema = {
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "EcoVadis assesses four themes: Environment, Labour and Human Rights, Ethics, and Sustainable Procurement. The score depends on the quality of policies, actions, results, and documentation provided as evidence.",
+          "EcoVadis assesses four themes: Environment, Labour and Human Rights, Ethics and Sustainable Procurement. The score depends on the quality of policies, actions, results and documentation provided as evidence.",
       },
     },
     {
@@ -57,7 +57,7 @@ const faqSchema = {
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "We support submission readiness, evidence mapping, drafting support, and final review. The process remains grounded in your organisation's actual policies, data, and operating reality.",
+          "We support submission readiness, evidence mapping, drafting support, and final review. The process remains grounded in your organisation's actual policies, data and operating reality.",
       },
     },
     {
@@ -75,7 +75,7 @@ const faqSchema = {
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "No. We do not provide statutory audit, assurance, or certification. We prepare organisations to submit with stronger documentation, data quality, and governance.",
+          "No. We do not provide statutory audit, assurance or certification. We prepare organisations to submit with stronger documentation, data quality, and governance.",
       },
     },
   ],
@@ -169,7 +169,7 @@ export default function EcoVadisReadinessPage() {
             {[
               [
                 "Baseline gap assessment",
-                "Assessment against all four EcoVadis themes: Environment, Labour and Human Rights, Ethics, and Sustainable Procurement.",
+                "Assessment against all four EcoVadis themes: Environment, Labour and Human Rights, Ethics and Sustainable Procurement.",
               ],
               [
                 "Policy and documentation review",
@@ -185,7 +185,7 @@ export default function EcoVadisReadinessPage() {
               ],
               [
                 "Submission review",
-                "Final review before submission so the package is complete, consistent, and aligned to the methodology.",
+                "Final review before submission so the package is complete, consistent and aligned to the methodology.",
               ],
               [
                 "Post-assessment roadmap",

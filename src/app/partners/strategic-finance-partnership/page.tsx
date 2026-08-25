@@ -2,13 +2,36 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: `Strategic finance partnership program | Partners | ${site.legalName}`,
+/*
+  Migrated from hand-rolled metadata to the shared helper, which was missing
+  OG tags and an image, so the page shared as a bare link.
+
+  noindex is deliberate. Brief 3, Task 4 (SEO project), decision 3 confirmed
+  25 Aug 2026. This page recruits introducers, and it was the only live page
+  under the finance and accounting area, so a buyer searching for finance
+  outsourcing could land on a page offering them commission. The commercial
+  arrangement is sound. The audience is wrong for that search position.
+
+  follow stays true, so links out of this page still pass value.
+
+  The footer link stays. Anyone arriving deliberately should still get here.
+  Buyers should reach /services/finance-and-accounting, which stays indexed.
+
+  Also excluded from the sitemap in scripts/generate-sitemap.mjs. The two go
+  together: a noindex page listed in the sitemap sends Google a contradiction.
+
+  Rewriting the page for a clearer audience is separate work and sits with
+  the DS Consulting project.
+*/
+export const metadata = pageMetadata({
+  title: "Strategic finance partnership program",
   description:
-    "A strategic finance partnership program from DS Consulting for advisors, consultants, ERP partners, GCC advisors, and ecosystem operators who want structured referral fees or ongoing commission around dedicated India-based finance capacity.",
-  alternates: { canonical: absUrl("/partners/strategic-finance-partnership") },
-};
+    "A partnership program for advisors, consultants, ERP partners and ecosystem operators building dedicated India-based finance capacity for their clients.",
+  path: "/partners/strategic-finance-partnership",
+  noindex: true,
+});
 const roles = [
   // Transaction Layer
   {
@@ -63,9 +86,9 @@ const partnerSchema = {
 };
 
 const idealClient = [
-  { label: "Company profile", value: "US, UK, Europe, UAE, or Singapore-based global corporate, typically 100 to 1,000+ employees" },
+  { label: "Company profile", value: "US, UK, Europe, UAE or Singapore-based global corporate, typically 100 to 1,000+ employees" },
   { label: "Stage", value: "Scaling fast, often Series B through mid-market growth" },
-  { label: "Geography", value: "HQ in the US, UK, Europe, UAE, or Singapore expanding into India or managing cross-border operations" },
+  { label: "Geography", value: "HQ in the US, UK, Europe, UAE or Singapore expanding into India or managing cross-border operations" },
   { label: "Finance state", value: "Lean or overloaded finance team, with no offshore finance function yet" },
   { label: "Buyer", value: "CFO, VP Finance, or COO, whoever controls the finance stack" },
   { label: "Common triggers", value: "ERP go-live, PE investment, GCC setup, rapid headcount growth, close pressure, AP and AR volume growth, or reporting complexity" },
@@ -85,7 +108,7 @@ const easyConversationCards = [
   {
     title: "The offer is concrete",
     body:
-      "This is not a vague BPO story. It is dedicated India-based finance capacity, by role, inside the client's ERP, SOPs, and reporting rhythm, with a clear onboarding path.",
+      "This is not a vague BPO story. It is dedicated India-based finance capacity, by role, inside the client's ERP, SOPs and reporting rhythm, with a clear onboarding path.",
   },
   {
     title: "You stay strategic",
@@ -98,12 +121,12 @@ const gdcBarriers = [
   {
     title: "Entity setup takes months",
     body:
-      "A full India entity takes time, approvals, counsel, and operating effort before a single finance hire is productive.",
+      "A full India entity takes time, approvals, counsel and operating effort before a single finance hire is productive.",
   },
   {
     title: "Finance hiring is hard to do remotely",
     body:
-      "Benchmarking, screening, fit, and retention are difficult for a US team trying to hire directly into India.",
+      "Benchmarking, screening, fit and retention are difficult for a US team trying to hire directly into India.",
   },
   {
     title: "Compliance and payroll are complex",
@@ -131,8 +154,8 @@ const whatClientGets = [
   "Dedicated roles, not generic outsourcing",
   "Interview-led selection with client control on final fit",
   "Structured onboarding and ramp-up into the client's systems",
-  "Clear role architecture across transaction, execution, and strategic layers",
-  "Measurable gains in speed, accuracy, and consistency",
+  "Clear role architecture across transaction, execution and strategic layers",
+  "Measurable gains in speed, accuracy and consistency",
 ];
 
 const processStreams = [
@@ -141,7 +164,7 @@ const processStreams = [
     summary:
       "For clients dealing with invoice growth, vendor reconciliation pressure, payment coordination, and approval bottlenecks.",
     items: [
-      "Invoice intake, coding, and validation support",
+      "Invoice intake, coding and validation support",
       "Two-way and three-way match support",
       "Vendor reconciliations and AP aging discipline",
       "Payments coordination and AP workflow management",
@@ -163,8 +186,8 @@ const processStreams = [
     summary:
       "For clients dealing with unstable close, reconciliation gaps, reporting complexity, and pressure on balance sheet integrity.",
     items: [
-      "Journal entries, accruals, and prepaid accounting",
-      "Reconciliations, intercompany, and ledger discipline",
+      "Journal entries, accruals and prepaid accounting",
+      "Reconciliations, intercompany and ledger discipline",
       "Close checklist execution, cut-off control, and variance commentary",
       "Audit-ready schedules, reporting support, and control visibility",
     ],
@@ -215,7 +238,7 @@ const whyEasyToSell = [
   {
     title: "It is structured by process and by layer",
     body:
-      "Partners can explain the offer through P2P, O2C, and R2R, then show how execution and strategic roles deepen the team where needed.",
+      "Partners can explain the offer through P2P, O2C and R2R, then show how execution and strategic roles deepen the team where needed.",
   },
   {
     title: "It preserves client control",
@@ -250,13 +273,13 @@ const onboardingSteps = [
     step: "02",
     title: "Design the 10+ seat starting model",
     body:
-      "Define the role mix, process ownership, control coverage, and first-phase deployment across P2P, O2C, R2R, and close support.",
+      "Define the role mix, process ownership, control coverage, and first-phase deployment across P2P, O2C, R2R and close support.",
   },
   {
     step: "03",
     title: "Validate fit with the client",
     body:
-      "Role matching, interviews, onboarding plan, SLAs, and operating expectations are aligned before launch.",
+      "Role matching, interviews, onboarding plan, SLAs and operating expectations are aligned before launch.",
   },
   {
     step: "04",
@@ -273,11 +296,11 @@ const faqs = [
   },
   {
     q: "What exactly is the client offer?",
-    a: "It is a structured India-based finance capacity model built around dedicated roles, process ownership, onboarding discipline, and clear integration into the client's ERP, SOPs, and reporting rhythm.",
+    a: "It is a structured India-based finance capacity model built around dedicated roles, process ownership, onboarding discipline, and clear integration into the client's ERP, SOPs and reporting rhythm.",
   },
   {
     q: "How should a partner explain it simply?",
-    a: "A clean shorthand is this: it gives scaling corporates dedicated India-based finance capacity across P2P, O2C, R2R, close support, control, and planning without forcing the client into a full captive setup on day one.",
+    a: "A clean shorthand is this: it gives scaling corporates dedicated India-based finance capacity across P2P, O2C, R2R, close support, control and planning without forcing the client into a full captive setup on day one.",
   },
   {
     q: "Why is this easier to sell than a generic outsourcing pitch?",
@@ -452,7 +475,7 @@ export default function StrategicFinancePartnerPage() {
               <p className="mt-5 text-slate-600 text-base leading-relaxed">
                 Our partner is an India-based outsourced accounting specialist with 19 years of
                 delivery experience, 300+ active clients, and a 200+ person team serving the US, UK,
-                Europe, UAE, and Singapore.
+                Europe, UAE and Singapore.
               </p>
               <p className="mt-4 text-slate-600 text-base leading-relaxed">
                 Their product places dedicated, named professionals inside your client's
@@ -536,7 +559,7 @@ export default function StrategicFinancePartnerPage() {
               {
                 heading: "Pre-certified on your client's ERP",
                 body:
-                  "Our partner professionals are certified across NetSuite, Sage Intacct, QuickBooks, Xero, Microsoft Dynamics, SAP, and Zoho. No technology ramp-up required.",
+                  "Our partner professionals are certified across NetSuite, Sage Intacct, QuickBooks, Xero, Microsoft Dynamics, SAP and Zoho. No technology ramp-up required.",
                 icon: "⊞",
               },
               {
@@ -585,7 +608,7 @@ export default function StrategicFinancePartnerPage() {
                   },
                   {
                     city: "Tier 1 and Tier 2 cities",
-                    note: "India produces over 100,000 chartered accountants annually through the ICAI. Beyond CAs, the pipeline of commerce graduates, cost accountants, and finance professionals is deep across Bangalore, Hyderabad, Chennai, and Ahmedabad.",
+                    note: "India produces over 100,000 chartered accountants annually through the ICAI. Beyond CAs, the pipeline of commerce graduates, cost accountants, and finance professionals is deep across Bangalore, Hyderabad, Chennai and Ahmedabad.",
                   },
                   {
                     city: "Real estate and infrastructure",
@@ -765,7 +788,7 @@ export default function StrategicFinancePartnerPage() {
           </h2>
           <p className="mt-4 text-slate-600 max-w-3xl">
             The client offer is practical. It gives scaling corporates dedicated, role-based
-            finance capacity integrated into their ERP, SOPs, and reporting rhythm, with defined
+            finance capacity integrated into their ERP, SOPs and reporting rhythm, with defined
             onboarding and measurable improvement in how the finance function runs.
           </p>
 
@@ -834,7 +857,7 @@ export default function StrategicFinancePartnerPage() {
           </h2>
           <p className="mt-4 text-slate-600 max-w-3xl">
             Partners do not need to sell this as generic offshore support. The offer can be framed
-            through P2P, O2C, and R2R, then extended into close, control, and planning. That makes
+            through P2P, O2C and R2R, then extended into close, control and planning. That makes
             the story faster for a CFO to grasp.
           </p>
 
@@ -863,7 +886,7 @@ export default function StrategicFinancePartnerPage() {
               Typical starting structure
             </div>
             <p className="mt-2 text-sm text-indigo-700 leading-relaxed">
-              The opening design is usually a 10+ seat model across P2P, O2C, and R2R, with enough
+              The opening design is usually a 10+ seat model across P2P, O2C and R2R, with enough
               role depth to stabilize transactional throughput, close discipline, and reporting
               reliability from the outset.
             </p>

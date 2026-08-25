@@ -349,7 +349,7 @@ export default function ContactFormClient() {
               <label htmlFor="c-message" className="text-sm font-medium text-slate-700">Message*</label>
               <textarea id="c-message" autoComplete="off"
                 value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })}
-                placeholder="Tell us what is happening, timeline, and what is not working today."
+                placeholder="Tell us what is happening, timeline and what is not working today."
                 className="mt-2 w-full min-h-[100px] rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
             </div>
 

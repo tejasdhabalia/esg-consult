@@ -75,7 +75,7 @@ export default function CRMGovernancePage() {
         name: "What is the difference between CRM architecture and CRM governance?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Architecture covers the structural design: objects, fields, relationships, and integrations. Governance covers the operational controls: who owns what, change approval, data quality rules, and how the system evolves. Both are required for lasting CRM reliability.",
+          text: "Architecture covers the structural design: objects, fields, relationships and integrations. Governance covers the operational controls: who owns what, change approval, data quality rules, and how the system evolves. Both are required for lasting CRM reliability.",
         },
       },
     ],
@@ -85,7 +85,7 @@ export default function CRMGovernancePage() {
     <div>
       <PageHero
         title="CRM architecture and governance"
-        subtitle="Build a CRM foundation leaders can trust. Data model discipline, source of truth, integrations across finance and service, controls, and reporting governance that keeps dashboards stable over time."
+        subtitle="Build a CRM foundation leaders can trust. Data model discipline, source of truth, integrations across finance and service, controls and reporting governance that keeps dashboards stable over time."
         primaryAction={{ label: "Book a consultation", href: "/contact" }}
         secondaryAction={{ label: "Back to Marketing Automation", href: "/services/crm-and-revenue-operations" }}
         imageSrc="/hero/crm.jpg"

@@ -14,7 +14,7 @@ const definitionSchema = {
   "@type": "DefinedTerm",
   name: "Double Materiality",
   description:
-    "Double materiality is the framework under CSRD and ESRS that requires companies to assess sustainability topics from two perspectives: (1) impact materiality — how the company's operations and value chain affect people, communities, and the environment; and (2) financial materiality — how sustainability-related risks and opportunities affect the company's financial performance, position, and prospects. A topic can be material from one or both perspectives.",
+    "Double materiality is the framework under CSRD and ESRS that requires companies to assess sustainability topics from two perspectives: (1) impact materiality, how the company's operations and value chain affect people, communities and the environment; and (2) financial materiality, how sustainability-related risks and opportunities affect the company's financial performance, position and prospects. A topic can be material from one or both perspectives.",
   inDefinedTermSet: {
     "@type": "DefinedTermSet",
     name: "DS Consulting Regulatory Dictionary",
@@ -39,7 +39,7 @@ const faqSchema = {
       name: "What is the difference between impact materiality and financial materiality?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Impact materiality looks outward: it asks whether the company has actual or potential, positive or negative impacts on sustainability topics — people, communities, ecosystems, climate. Financial materiality looks inward: it asks whether sustainability topics create risks or opportunities that could affect the company's financial performance, cashflows, access to finance, or cost of capital. These are genuinely different assessments requiring different evidence and stakeholder inputs.",
+        text: "Impact materiality looks outward: it asks whether the company has actual or potential, positive or negative impacts on sustainability topics: people, communities, ecosystems and climate. Financial materiality looks inward: it asks whether sustainability topics create risks or opportunities that could affect the company's financial performance, cashflows, access to finance, or cost of capital. These are genuinely different assessments requiring different evidence and stakeholder inputs.",
       },
     },
     {
@@ -47,7 +47,7 @@ const faqSchema = {
       name: "What is the difference between double materiality and single materiality?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Single materiality (used in financial reporting and standards like SASB) assesses sustainability topics only from the perspective of what matters to investors — i.e., the financial impact on the company. Double materiality adds the impact perspective: what the company does to the world, not just what the world does to the company's finances. This is what makes CSRD significantly more comprehensive than prior non-financial reporting frameworks.",
+        text: "Single materiality (used in financial reporting and standards like SASB) assesses sustainability topics only from the perspective of what matters to investors, meaning the financial impact on the company. Double materiality adds the impact perspective: what the company does to the world, not just what the world does to the company's finances. This is what makes CSRD significantly more comprehensive than prior non-financial reporting frameworks.",
       },
     },
     {
@@ -97,7 +97,7 @@ export default function WhatIsDoubleMaterialityPage() {
           <h1 className="text-3xl md:text-4xl font-bold mb-3">What is Double Materiality?</h1>
           <p className="text-indigo-300 text-base max-w-2xl leading-relaxed">
             The CSRD framework requiring companies to assess both their impact on sustainability topics
-            and how sustainability topics affect their financial performance — two independent assessments
+            and how sustainability topics affect their financial performance. Two independent assessments
             that together determine the scope of ESRS disclosure obligations.
           </p>
         </div>
@@ -111,7 +111,7 @@ export default function WhatIsDoubleMaterialityPage() {
             sustainability topics from two independent perspectives: <strong>impact materiality</strong> (how the company
             affects people and the environment through its operations and value chain) and <strong>financial materiality</strong>
             (how sustainability risks and opportunities affect the company's financial performance and prospects).
-            A topic can be material from one or both dimensions — disclosure obligations follow from material topics.
+            A topic can be material from one or both dimensions. Disclosure obligations follow from material topics.
           </p>
         </div>
 
@@ -126,8 +126,8 @@ export default function WhatIsDoubleMaterialityPage() {
                   <div className="text-blue-600 font-bold text-xs uppercase tracking-wide mb-2">Dimension 1</div>
                   <h3 className="font-bold text-slate-900 mb-3">Impact Materiality</h3>
                   <p className="text-slate-600 text-sm leading-relaxed mb-3">
-                    <strong>The outward lens.</strong> How does the company affect people, communities, and the
-                    environment through its own operations, products, services, and value chain?
+                    <strong>The outward lens.</strong> How does the company affect people, communities and the
+                    environment through its own operations, products, services and value chain?
                   </p>
                   <ul className="text-xs text-slate-600 space-y-1">
                     <li>• Actual negative impacts (e.g. GHG emissions, labour conditions)</li>
@@ -157,7 +157,7 @@ export default function WhatIsDoubleMaterialityPage() {
 
               <div className="mt-4 bg-indigo-50 border border-indigo-200 rounded-xl p-4 text-sm text-slate-700">
                 <strong>Key principle:</strong> The two assessments are independent. A topic that does not appear
-                financially material to the company may still be material from an impact perspective — and must
+                financially material to the company may still be material from an impact perspective, and must
                 be disclosed. You cannot use financial insignificance to dismiss impact materiality.
               </div>
             </div>

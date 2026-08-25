@@ -16,7 +16,7 @@ export const allInsights: SiteInsightItem[] = [
     category: "ESG",
     title: "Net zero roadmap starter",
     summary:
-      "A practical decision guide for leadership teams that need to move from emissions calculation to a credible decarbonisation roadmap with owners, sequencing, and delivery cadence.",
+      "A practical decision guide for leadership teams that need to move from emissions calculation to a credible decarbonisation roadmap with owners, sequencing and delivery cadence.",
     topics: ["Net zero", "Decarbonisation", "Roadmap", "Governance"],
     audience: "CFO, CSO, COO, Sustainability lead",
     readTime: "8 min read",
@@ -28,7 +28,7 @@ export const allInsights: SiteInsightItem[] = [
     category: "ESG",
     title: "Climate risk register template",
     summary:
-      "A practical guide to structuring climate risk in a form leadership, finance, and operations teams can review, prioritise, and connect to action planning.",
+      "A practical guide to structuring climate risk in a form leadership, finance and operations teams can review, prioritise and connect to action planning.",
     topics: ["Climate risk", "Risk register", "Governance", "Reporting"],
     audience: "CFO, CSO, Risk, Operations",
     readTime: "7 min read",
@@ -40,7 +40,7 @@ export const allInsights: SiteInsightItem[] = [
     category: "ESG",
     title: "Scope 3 supplier data request pack",
     summary:
-      "A working guide for leadership teams that need better supplier data without creating chaos across procurement, sustainability, and operations.",
+      "A working guide for leadership teams that need better supplier data without creating chaos across procurement, sustainability and operations.",
     topics: ["Scope 3", "Supplier engagement", "Carbon accounting", "Evidence"],
     audience: "Procurement, CSO, Operations, CFO",
     readTime: "9 min read",
@@ -64,7 +64,7 @@ export const allInsights: SiteInsightItem[] = [
     category: "ESG",
     title: "EcoVadis evidence matrix",
     summary:
-      "A practical submission-planning guide for teams that need to organise policy, action, metrics, and supporting evidence before they start uploading documents.",
+      "A practical submission-planning guide for teams that need to organise policy, action, metrics and supporting evidence before they start uploading documents.",
     topics: ["EcoVadis", "Evidence matrix", "Sustainable procurement", "Submission"],
     audience: "Procurement, CSO, Compliance, Operations",
     readTime: "8 min read",
@@ -100,7 +100,7 @@ export const allInsights: SiteInsightItem[] = [
     category: "ESG",
     title: "CSRD Readiness Checklist",
     summary:
-      "A practical checklist for CFOs, CSOs, and leadership teams preparing for their first CSRD reporting cycle, from scoping and double materiality to data governance and assurance readiness.",
+      "A practical checklist for CFOs, CSOs and leadership teams preparing for their first CSRD reporting cycle, from scoping and double materiality to data governance and assurance readiness.",
     topics: ["CSRD", "ESRS", "Double materiality", "Assurance readiness"],
     audience: "CFO, CSO, CEO, Legal",
     readTime: "12 min read",
@@ -136,7 +136,7 @@ export const allInsights: SiteInsightItem[] = [
     category: "Marketing",
     title: "The governance model behind marketing automation that actually scales",
     summary:
-      "Why automation breaks as teams grow, and how to implement ownership, definitions, SLAs, and change control that protects performance.",
+      "Why automation breaks as teams grow, and how to implement ownership, definitions, SLAs and change control that protects performance.",
     topics: ["Governance", "Operating model", "SLAs", "Change control"],
     audience: "CMO, CRO, RevOps, CEO",
     readTime: "3 min read",
@@ -172,7 +172,7 @@ export const allInsights: SiteInsightItem[] = [
     category: "Marketing",
     title: "AI Marketing Readiness Assessment",
     summary:
-      "Before your team buys an AI tool, find out whether your data, stack, and governance are ready for it. Covers lead scoring, personalisation, predictive analytics, and AI content use cases.",
+      "Before your team buys an AI tool, find out whether your data, stack and governance are ready for it. Covers lead scoring, personalisation, predictive analytics, and AI content use cases.",
     topics: ["AI readiness", "IBM watsonx", "Lead scoring", "Governance"],
     audience: "CMO, CTO, RevOps, Marketing Ops",
     readTime: "Interactive tool",

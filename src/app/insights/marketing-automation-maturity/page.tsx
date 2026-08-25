@@ -37,15 +37,15 @@ const faqSchema = {
       name: "What is a good marketing automation maturity score for a B2B company?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Top-quartile B2B teams score 75 or above across data quality, platform coverage, governance, and attribution. Most mid-market companies score between 30 and 55, with governance and attribution being the most common gaps.",
+        text: "Top-quartile B2B teams score 75 or above across data quality, platform coverage, governance and attribution. Most mid-market companies score between 30 and 55, with governance and attribution being the most common gaps.",
       },
     },
     {
       "@type": "Question",
-      name: "Does this scorecard apply to HubSpot, Marketo, and Pardot equally?",
+      name: "Does this scorecard apply to HubSpot, Marketo and Pardot equally?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. The maturity dimensions are platform-agnostic. Governance, data quality, attribution, and integration discipline apply regardless of which MAP or CRM your team runs.",
+        text: "Yes. The maturity dimensions are platform-agnostic. Governance, data quality, attribution and integration discipline apply regardless of which MAP or CRM your team runs.",
       },
     },
   ],
@@ -58,7 +58,7 @@ const toolSchema = {
   operatingSystem: "Web",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   name: "Marketing Automation Maturity Scorecard",
-  description: "Score your marketing automation maturity across data, platform, governance, and performance. Get your score vs top-quartile industry benchmarks in under 5 minutes.",
+  description: "Score your marketing automation maturity across data, platform, governance and performance. Get your score vs top-quartile industry benchmarks in under 5 minutes.",
   author: {
     "@type": "Person",
     name: "Tejas Dhabalia",
@@ -142,10 +142,10 @@ export default function MarketingAutomationMaturityPage() {
               </p>
               <div className="grid sm:grid-cols-2 gap-4 mt-6">
                 {[
-                  { label: "Data foundation", weight: "30%", desc: "Contact quality, unified profiles, consent, and data dictionary coverage" },
+                  { label: "Data foundation", weight: "30%", desc: "Contact quality, unified profiles, consent and data dictionary coverage" },
                   { label: "Platform coverage", weight: "25%", desc: "MAP, CRM, bidirectional integration, and BI layer" },
                   { label: "Automation governance", weight: "25%", desc: "Change control, naming conventions, campaign ownership, and SLAs" },
-                  { label: "Performance measurement", weight: "20%", desc: "Attribution model, revenue reporting, benchmarking, and A/B testing" },
+                  { label: "Performance measurement", weight: "20%", desc: "Attribution model, revenue reporting, benchmarking and A/B testing" },
                 ].map(({ label, weight, desc }) => (
                   <div key={label} className="bg-slate-50 border border-slate-200 rounded-xl p-4">
                     <div className="flex items-baseline gap-2 mb-1">

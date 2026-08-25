@@ -41,7 +41,7 @@ function computeScores(d: AIData) {
   if (!d.hasCleanData)       blockers.push("Data quality is the primary blocker. AI trained on dirty data produces unreliable outputs in marketing: wrong segments, wrong scores, wrong sends.");
   if (!d.hasUnifiedProfile)  blockers.push("No unified contact profile means AI cannot see the full customer picture. Personalisation based on partial data performs worse than rule-based segmentation.");
   if (!d.hasConsent)         blockers.push("Consent framework is incomplete. Using personal data for AI personalisation without auditable consent records creates regulatory exposure.");
-  if (!d.hasDataGovernance)  blockers.push("No data governance means AI outputs cannot be explained, audited, or challenged. This is a compliance risk in regulated industries.");
+  if (!d.hasDataGovernance)  blockers.push("No data governance means AI outputs cannot be explained, audited or challenged. This is a compliance risk in regulated industries.");
   if (!d.hasAPIAccess)       blockers.push("Without API access to your marketing stack, AI tools cannot read or write data programmatically. Integration is a prerequisite, not an optional extra.");
 
   const useCases = [
@@ -65,7 +65,7 @@ function computeScores(d: AIData) {
     nextSteps.push("Assign a named AI owner. Someone needs accountability for model performance, data quality inputs, and the change control process as you expand AI coverage.");
     nextSteps.push("Document your first AI use case end-to-end: the data inputs, the model logic, the output action, and how results are measured. This becomes your governance template.");
   } else {
-    nextSteps.push("Move from single-model to multi-model orchestration. Combine lead scoring, personalisation, and content optimisation into a governed AI workflow with a shared data layer.");
+    nextSteps.push("Move from single-model to multi-model orchestration. Combine lead scoring, personalisation and content optimisation into a governed AI workflow with a shared data layer.");
     nextSteps.push("Build a model monitoring process. Track model drift quarterly and retrain on fresh conversion data. AI models degrade when their training data goes stale.");
     nextSteps.push("Extend AI governance to partner and agency workflows. If external teams create content or run campaigns, your AI policy must cover their work as well as your own.");
   }
@@ -77,7 +77,7 @@ const LEVEL_CFG = {
   "Not ready":           { color: "text-red-600",     bg: "bg-red-50 border-red-200",         icon: "⛔", desc: "Critical data and governance foundations are missing. AI tools deployed now will produce unreliable outputs and create compliance risk." },
   "Foundation building": { color: "text-amber-600",   bg: "bg-amber-50 border-amber-200",     icon: "🔧", desc: "The building blocks are partially in place. Focus on data quality and integration before selecting AI tools." },
   "Ready to pilot":      { color: "text-blue-600",    bg: "bg-blue-50 border-blue-200",       icon: "🚀", desc: "Your stack can support a controlled AI pilot. Start with one use case, measure rigorously, and build governance before expanding." },
-  "Ready to scale":      { color: "text-emerald-600", bg: "bg-emerald-50 border-emerald-200", icon: "✅", desc: "You have the data, integration, and governance foundations to scale AI across marketing workflows." },
+  "Ready to scale":      { color: "text-emerald-600", bg: "bg-emerald-50 border-emerald-200", icon: "✅", desc: "You have the data, integration and governance foundations to scale AI across marketing workflows." },
 };
 
 export default function AIReadinessTool() {
@@ -139,7 +139,7 @@ export default function AIReadinessTool() {
                 <div className="space-y-3">
                   {([
                     { key: "hasCleanData",       label: "Our contact database is actively maintained: deduplication runs regularly, field formats are standardised, and bounce rates are below 2%." },
-                    { key: "hasUnifiedProfile",  label: "Every contact has a single unified record consolidating activity from all channels including email, web, CRM, and offline sources." },
+                    { key: "hasUnifiedProfile",  label: "Every contact has a single unified record consolidating activity from all channels including email, web, CRM and offline sources." },
                     { key: "hasBehaviouralData", label: "We capture and store behavioural data: website visits, email engagement, product activity, and event attendance at the contact level." },
                     { key: "hasHistoricalData",  label: "We have at least 12 months of structured campaign performance and conversion data stored in a queryable system." },
                   ] as const).map(({ key, label }) => (
@@ -174,7 +174,7 @@ export default function AIReadinessTool() {
                   ))}
                 </div>
                 <div className="mt-4 bg-amber-50 border border-amber-200 rounded-xl p-4">
-                  <p className="text-xs text-amber-800"><strong>Regulated industry note:</strong> In financial services, healthcare, and other regulated sectors, AI-driven marketing decisions must be explainable and auditable. Data governance is a compliance prerequisite for AI deployment, not a nice-to-have.</p>
+                  <p className="text-xs text-amber-800"><strong>Regulated industry note:</strong> In financial services, healthcare and other regulated sectors, AI-driven marketing decisions must be explainable and auditable. Data governance is a compliance prerequisite for AI deployment, not a nice-to-have.</p>
                 </div>
               </div>
             )}
@@ -187,7 +187,7 @@ export default function AIReadinessTool() {
                   {([
                     { key: "hasDataSkills",    label: "At least one person in the marketing team can interpret model outputs, validate data quality, and identify when an AI result is wrong." },
                     { key: "hasAIPolicy",      label: "A documented AI usage policy covers what AI can be used for in marketing, who approves AI-generated content, and how model decisions are reviewed." },
-                    { key: "hasChangeProcess", label: "A change control process exists for AI and automation: proposed changes are logged, reviewed, and deployed through a structured approval." },
+                    { key: "hasChangeProcess", label: "A change control process exists for AI and automation: proposed changes are logged, reviewed and deployed through a structured approval." },
                     { key: "hasOwner",         label: "There is a named owner accountable for AI performance, data quality inputs, model monitoring, and compliance." },
                   ] as const).map(({ key, label }) => (
                     <label key={key} className={chk(data[key])}>
@@ -201,7 +201,7 @@ export default function AIReadinessTool() {
                   <div className="space-y-2">
                     {([
                       { val: "scoring",         label: "AI-driven lead scoring and propensity modelling" },
-                      { val: "personalisation", label: "Personalisation at scale across email, web, and in-product" },
+                      { val: "personalisation", label: "Personalisation at scale across email, web and in-product" },
                       { val: "content",         label: "AI-assisted content generation and optimisation" },
                       { val: "analytics",       label: "Predictive campaign analytics and budget allocation" },
                       { val: "none",            label: "We are still evaluating what AI could do for us" },

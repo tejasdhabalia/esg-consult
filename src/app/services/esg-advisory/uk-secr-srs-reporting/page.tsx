@@ -39,7 +39,7 @@ const faqSchema = {
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Yes. We support Scope 1, 2, and where relevant Scope 3 calculations using appropriate methodologies and documented assumptions.",
+          "Yes. We support Scope 1, 2 and where relevant Scope 3 calculations using appropriate methodologies and documented assumptions.",
       },
     },
     {
@@ -66,7 +66,7 @@ const faqSchema = {
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "No. We do not provide statutory audit or assurance. We strengthen methodology, governance, controls, and evidence trails so reporting is more defensible.",
+          "No. We do not provide statutory audit or assurance. We strengthen methodology, governance, controls and evidence trails so reporting is more defensible.",
       },
     },
     {
@@ -127,12 +127,12 @@ export default function UKSecrSrsReportingPage() {
     <div>
       <PageHero
         title="UK SECR and SRS reporting"
-        subtitle="Accurate, auditable, and done properly. We support the full reporting cycle so you are not scrambling at year-end and your numbers hold up to scrutiny."
+        subtitle="Accurate, auditable and done properly. We support the full reporting cycle so you are not scrambling at year-end and your numbers hold up to scrutiny."
         primaryAction={{ label: "Book a consultation", href: "/contact" }}
         secondaryAction={{ label: "Back to ESG advisory", href: "/services/esg-advisory" }}
         note="Note: We do not provide statutory audit or assurance."
         imageSrc="/hero/uk-climate.jpg"
-        imageAlt="UK SECR and SRS reporting support with methodology, evidence, and board-ready drafting"
+        imageAlt="UK SECR and SRS reporting support with methodology, evidence and board-ready drafting"
       />
 
       <section className="py-24 bg-white">
@@ -168,8 +168,8 @@ export default function UKSecrSrsReportingPage() {
               <div className="text-lg font-semibold text-slate-900">For SECR</div>
               <div className="mt-4 grid gap-4 text-sm text-slate-600">
                 <p>Eligibility and scoping, confirming what applies to your organisation.</p>
-                <p>Energy and carbon data collection, cleansing, and validation.</p>
-                <p>Scope 1, 2, and 3 emissions calculation using appropriate methodologies.</p>
+                <p>Energy and carbon data collection, cleansing and validation.</p>
+                <p>Scope 1, 2 and 3 emissions calculation using appropriate methodologies.</p>
                 <p>Intensity ratio development and year-on-year comparability.</p>
                 <p>Energy efficiency narrative and actions disclosure.</p>
                 <p>Director's report drafting, ready for audit and filing.</p>
@@ -198,7 +198,7 @@ export default function UKSecrSrsReportingPage() {
             {[
               [
                 "First cycle reporting",
-                "When you need to establish methodology, boundaries, and a data framework that can be repeated next year.",
+                "When you need to establish methodology, boundaries and a data framework that can be repeated next year.",
               ],
               [
                 "Disclosure tightening",

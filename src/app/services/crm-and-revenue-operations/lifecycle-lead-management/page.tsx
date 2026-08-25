@@ -51,7 +51,7 @@ export default function LifecycleLeadManagementPage() {
         name: "What is lifecycle and lead management consulting?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Lifecycle and lead management consulting defines the stages, routing rules, SLAs, and journey logic that govern how leads and customers move through your systems. We implement the operating model, automation triggers, and measurement so execution becomes predictable.",
+          text: "Lifecycle and lead management consulting defines the stages, routing rules, SLAs and journey logic that govern how leads and customers move through your systems. We implement the operating model, automation triggers, and measurement so execution becomes predictable.",
         },
       },
       {
@@ -67,7 +67,7 @@ export default function LifecycleLeadManagementPage() {
         name: "What platforms do you work with?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "We are platform-agnostic. We design the operating model and governance framework, then implement within your existing tools including Salesforce, HubSpot, Marketo, Braze, and others.",
+          text: "We are platform-agnostic. We design the operating model and governance framework, then implement within your existing tools including Salesforce, HubSpot, Marketo, Braze and others.",
         },
       },
       {
@@ -116,12 +116,12 @@ export default function LifecycleLeadManagementPage() {
           <h2 className="text-3xl font-semibold">What we deliver</h2>
           <div className="grid md:grid-cols-2 gap-8 mt-14">
             {[
-              ["Lifecycle stages and governance", "Stage definitions, entry and exit rules, ownership, SLAs, and escalation paths."],
+              ["Lifecycle stages and governance", "Stage definitions, entry and exit rules, ownership, SLAs and escalation paths."],
               ["Routing and SLAs", "Routing rules by segment, territory, account priority and product line with exception handling."],
               ["Journey orchestration framework", "Trigger events, journey logic, frequency rules, suppression and channel coordination."],
               ["Segmentation and personalisation governance", "Segmentation model, data requirements, consent handling, and targeting discipline."],
               ["Prioritisation logic", "Scoring or prioritisation that reduces noise and focuses teams on what matters."],
-              ["Measurement and cadence", "Stage KPIs, velocity metrics, SLA adherence, conversion, and stable reporting definitions."],
+              ["Measurement and cadence", "Stage KPIs, velocity metrics, SLA adherence, conversion and stable reporting definitions."],
             ].map(([t, d]) => (
               <div key={t} className="bg-white border rounded-2xl p-8 shadow-sm">
                 <div className="font-semibold text-slate-900">{t}</div>

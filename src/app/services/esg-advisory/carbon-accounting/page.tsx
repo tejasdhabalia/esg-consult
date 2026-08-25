@@ -63,7 +63,7 @@ export default function CarbonAccountingPage() {
         acceptedAnswer: {
           "@type": "Answer",
           text:
-            "A complete GHG inventory covers Scope 1 (direct emissions), Scope 2 (purchased energy), and Scope 3 (value chain emissions) aligned with the GHG Protocol Corporate Standard. We handle data collection, activity mapping, emissions factor application, and produce a structured, defensible carbon baseline suitable for investors, regulators, and public disclosure.",
+            "A complete GHG inventory covers Scope 1 (direct emissions), Scope 2 (purchased energy), and Scope 3 (value chain emissions) aligned with the GHG Protocol Corporate Standard. We handle data collection, activity mapping, emissions factor application, and produce a structured, defensible carbon baseline suitable for investors, regulators and public disclosure.",
         },
       },
       {
@@ -72,7 +72,7 @@ export default function CarbonAccountingPage() {
         acceptedAnswer: {
           "@type": "Answer",
           text:
-            "We provide compliance guidance across TCFD, CSRD, UK SECR, and ISO 14064. Disclosures are structured to be accurate, consistent, and ready for third-party verification.",
+            "We provide compliance guidance across TCFD, CSRD, UK SECR, and ISO 14064. Disclosures are structured to be accurate, consistent and ready for third-party verification.",
         },
       },
       {
@@ -99,7 +99,7 @@ export default function CarbonAccountingPage() {
         acceptedAnswer: {
           "@type": "Answer",
           text:
-            "This service is designed for SMEs and mid-market businesses building their first carbon inventory, regulated businesses facing SECR, CSRD, or other obligations, organisations under investor or supply chain scrutiny, and companies working toward SBTi or net zero commitments.",
+            "This service is designed for SMEs and mid-market businesses building their first carbon inventory, regulated businesses facing SECR, CSRD or other obligations, organisations under investor or supply chain scrutiny, and companies working toward SBTi or net zero commitments.",
         },
       },
       {
@@ -108,7 +108,7 @@ export default function CarbonAccountingPage() {
         acceptedAnswer: {
           "@type": "Answer",
           text:
-            "Every engagement produces structured methodology notes, clear evidence trails, validation checks, and documentation standards so your carbon accounts can withstand scrutiny from auditors, investors, or regulators. We also prepare clients for third-party verification readiness where required.",
+            "Every engagement produces structured methodology notes, clear evidence trails, validation checks, and documentation standards so your carbon accounts can withstand scrutiny from auditors, investors or regulators. We also prepare clients for third-party verification readiness where required.",
         },
       },
       {
@@ -140,7 +140,7 @@ export default function CarbonAccountingPage() {
         <div className="max-w-5xl mx-auto px-6">
           <h2 className="text-3xl font-semibold">Carbon accounts you can trust and explain</h2>
           <p className="mt-6 text-slate-600">
-            Most organisations struggle not because they lack commitment to reducing emissions, but because their carbon data is incomplete, inconsistently measured, or not structured for the audiences that matter: regulators, investors, boards, and supply chain partners.
+            Most organisations struggle not because they lack commitment to reducing emissions, but because their carbon data is incomplete, inconsistently measured, or not structured for the audiences that matter: regulators, investors, boards and supply chain partners.
           </p>
           <p className="mt-4 text-slate-600">
             We build carbon inventories with technical rigour and practical clarity. Every engagement starts with understanding your business model and data landscape. We then work systematically to produce carbon accounts you can stand behind in any forum.
@@ -193,7 +193,7 @@ export default function CarbonAccountingPage() {
           <div className="grid md:grid-cols-4 gap-6">
             {[
               ["SMEs and mid-market", "Building their first carbon inventory and need a defensible, structured baseline."],
-              ["Regulated businesses", "Facing SECR, CSRD, or other obligations and need compliance-ready reporting."],
+              ["Regulated businesses", "Facing SECR, CSRD or other obligations and need compliance-ready reporting."],
               ["ESG due diligence", "Under investor or supply chain scrutiny requiring verified emissions data."],
               ["Net zero pledgers", "Working toward SBTi or net zero commitments and need a credible roadmap."],
             ].map(([title, desc]) => (
@@ -222,11 +222,11 @@ export default function CarbonAccountingPage() {
               ],
               [
                 "Regulatory compliance guidance",
-                "Structured compliance guidance across TCFD, CSRD, UK SECR, and ISO 14064. Disclosures are accurate, consistent, and ready for third-party verification.",
+                "Structured compliance guidance across TCFD, CSRD, UK SECR, and ISO 14064. Disclosures are accurate, consistent and ready for third-party verification.",
               ],
               [
                 "Carbon reporting and documentation",
-                "Structured emissions reports for stakeholders, investors, or regulators. Clear methodology notes included for full transparency and auditability.",
+                "Structured emissions reports for stakeholders, investors or regulators. Clear methodology notes included for full transparency and auditability.",
               ],
               [
                 "Sustainability strategy and net zero roadmap",
@@ -277,7 +277,7 @@ export default function CarbonAccountingPage() {
               ],
               [
                 "03 Carbon inventory",
-                "Apply GHG Protocol methodology to build your complete baseline. Emissions factor selection, calculation, and quality review with full methodology documentation.",
+                "Apply GHG Protocol methodology to build your complete baseline. Emissions factor selection, calculation and quality review with full methodology documentation.",
               ],
               [
                 "04 Report and strategy",
