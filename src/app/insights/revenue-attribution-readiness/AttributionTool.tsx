@@ -4,6 +4,7 @@ import Link from "next/link";
 import Script from "next/script";
 import { validateBusinessEmail } from "@/lib/businessEmail";
 import { getRecaptchaToken } from "@/lib/recaptcha-client";
+import { trackGenerateLead } from "@/lib/analytics";
 
 type ModelType = "none" | "first" | "last" | "linear" | "multitouch" | "datadriven";
 
@@ -117,6 +118,7 @@ export default function AttributionTool() {
       const json = await res.json();
       if (!res.ok || !json?.ok) { setEmailStatus("error"); setEmailError(json?.error || "Failed to send. Please try again."); return; }
       setEmailSent(true); setEmailStatus("idle");
+      trackGenerateLead("revenue_attribution_readiness");
     } catch (err: unknown) { setEmailStatus("error"); setEmailError(err instanceof Error ? err.message : "Failed to send. Please try again."); }
   }
 

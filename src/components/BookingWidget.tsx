@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { AVAILABLE_DAYS, MAX_DAYS_AHEAD } from "@/lib/booking-config";
+import { trackGenerateLead } from "@/lib/analytics";
 
 interface Props {
   firstName: string;
@@ -117,6 +118,7 @@ export default function BookingWidget({ firstName, surname, email }: Props) {
       if (!data.ok) throw new Error(data.error);
       setConfirmedDisplay(data.localDisplay);
       setStep("success");
+      trackGenerateLead("booking_widget");
     } catch (err) {
       setSubmitError(err instanceof Error ? err.message : "Booking failed. Please try again.");
     } finally {

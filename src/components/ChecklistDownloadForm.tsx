@@ -4,6 +4,7 @@ import Script from "next/script";
 import { useMemo, useState } from "react";
 import { validateBusinessEmail } from "@/lib/businessEmail";
 import { getRecaptchaToken } from "@/lib/recaptcha-client";
+import { trackGenerateLead } from "@/lib/analytics";
 
 interface Props {
   checklistType?: "crm" | "csrd";
@@ -90,6 +91,7 @@ export default function ChecklistDownloadForm({ checklistType = "csrd", theme = 
       }
 
       setStatus("done");
+      trackGenerateLead("checklist_download", { resource: checklistType });
     } catch (err: unknown) {
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Submission failed. Please try again.");

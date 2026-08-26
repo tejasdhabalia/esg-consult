@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { validateBusinessEmail } from "@/lib/businessEmail";
 import { getRecaptchaToken } from "@/lib/recaptcha-client";
 import { insightResources, type InsightResourceKey } from "@/lib/insight-resources";
+import { trackGenerateLead } from "@/lib/analytics";
 
 interface Props {
   resourceKey: InsightResourceKey;
@@ -77,6 +78,7 @@ export default function InsightResourceForm({ resourceKey, theme = "light" }: Pr
       }
 
       setStatus("done");
+      trackGenerateLead("insight_resource", { resource: resourceKey });
     } catch (err: unknown) {
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Submission failed. Please try again.");

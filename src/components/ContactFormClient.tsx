@@ -7,6 +7,7 @@ import { validateBusinessEmail } from "@/lib/businessEmail";
 import { getRecaptchaToken } from "@/lib/recaptcha-client";
 import { AVAILABLE_DAYS, MAX_DAYS_AHEAD } from "@/lib/booking-config";
 import { getAttribution } from "@/lib/attribution";
+import { trackGenerateLead } from "@/lib/analytics";
 
 type Step = "details" | "date" | "time" | "confirm" | "success";
 
@@ -189,24 +190,12 @@ export default function ContactFormClient() {
         throw new Error(bookingData?.error || "Booking failed. Please try again.");
       }
 
-      // GA4 conversion event.
-      //
-      // Without this there is nothing in GA4 to mark as a key event. The form
-      // never navigates and never fires a native submit, so neither enhanced
-      // measurement nor a thank-you page URL would catch it.
-      //
-      // Safe under denied consent: gtag still sends a cookieless ping, so the
-      // count is right even when the visitor declined analytics.
-      try {
-        const w = window as unknown as { gtag?: (...args: unknown[]) => void };
-        w.gtag?.("event", "generate_lead", {
-          form_name: "contact_booking",
-          interest: form.interest,
-          hear_about_us: form.hearAboutUs,
-        });
-      } catch {
-        // Analytics must never break a completed booking.
-      }
+      // GA4 conversion event. See src/lib/analytics.ts for why this is
+      // explicit rather than measured automatically.
+      trackGenerateLead("contact_booking", {
+        interest: form.interest,
+        hear_about_us: form.hearAboutUs,
+      });
 
       setStep("success");
     } catch (err: unknown) {

@@ -4,6 +4,7 @@ import Link from "next/link";
 import Script from "next/script";
 import { validateBusinessEmail } from "@/lib/businessEmail";
 import { getRecaptchaToken } from "@/lib/recaptcha-client";
+import { trackGenerateLead } from "@/lib/analytics";
 
 // ─── Types ────────────────────────────────────────────────────────────────
 interface AuditData {
@@ -184,6 +185,7 @@ export default function LeakyFunnelAuditTool() {
 
       setEmailSent(true);
       setEmailStatus("idle");
+      trackGenerateLead("leaky_funnel_audit");
     } catch (err: unknown) {
       setEmailStatus("error");
       setEmailError(err instanceof Error ? err.message : "Failed to send report. Please try again.");

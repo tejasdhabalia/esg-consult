@@ -4,6 +4,7 @@ import Script from "next/script";
 import { useMemo, useState } from "react";
 import { validateBusinessEmail } from "@/lib/businessEmail";
 import { getRecaptchaToken } from "@/lib/recaptcha-client";
+import { trackGenerateLead } from "@/lib/analytics";
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
@@ -55,6 +56,7 @@ export default function NewsletterSignup({ className = "" }: { className?: strin
       }
 
       setStatus("success");
+      trackGenerateLead("newsletter_signup");
     } catch (err: unknown) {
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Subscription failed. Please try again.");
