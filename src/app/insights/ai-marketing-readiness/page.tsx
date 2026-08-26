@@ -177,6 +177,26 @@ export default function AIMarketingReadinessPage() {
                 </Link>{" "}
                 work. It runs ahead of tool selection, not after it.
               </p>
+              <p className="text-slate-600 leading-relaxed">
+                It also runs ahead of itself. Before you can decide which controls apply, you need to know
+                where AI is already running, which for most organisations is a longer list than anyone
+                expects. The{" "}
+                <Link
+                  href="/insights/ai-use-case-register"
+                  className="text-indigo-700 hover:text-indigo-800 underline underline-offset-4"
+                >
+                  AI use case register
+                </Link>{" "}
+                is the artefact that answers that question. If any of that output reaches users in the
+                EU, the{" "}
+                <Link
+                  href="/regulatory-hub/eu-ai-act-in-scope-and-timeline"
+                  className="text-indigo-700 hover:text-indigo-800 underline underline-offset-4"
+                >
+                  EU AI Act transparency obligations
+                </Link>{" "}
+                have applied since August 2026, whatever you may have read about the Act being delayed.
+              </p>
             </div>
 
             <div className="mt-14 pt-10 border-t border-slate-200">

@@ -97,6 +97,18 @@ export default function AIGovernanceAndAdoptionPage() {
       ]}
       relatedResources={[
         {
+          href: "/insights/ai-use-case-register",
+          label: "AI use case register template",
+          detail:
+            "A register recording where AI already runs, who owns each use and which obligations attach.",
+        },
+        {
+          href: "/regulatory-hub/eu-ai-act-in-scope-and-timeline",
+          label: "EU AI Act timeline",
+          detail:
+            "What applies now, what moved to December 2027 and what the Digital Omnibus left untouched.",
+        },
+        {
           href: "/insights/ai-marketing-readiness",
           label: "AI marketing readiness assessment",
           detail:

@@ -3,7 +3,11 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
-export type RegulatoryCategory = "CSRD" | "BRSR" | "UK SECR and SRS";
+export type RegulatoryCategory =
+  | "EU AI Act"
+  | "CSRD"
+  | "BRSR"
+  | "UK SECR and SRS";
 
 export type RegulatoryContentItem = {
   slug: string;
@@ -28,6 +32,7 @@ export default function RegulatoryHubClient({
 
   const categories: Array<RegulatoryCategory | "All"> = [
     "All",
+    "EU AI Act",
     "CSRD",
     "BRSR",
     "UK SECR and SRS",

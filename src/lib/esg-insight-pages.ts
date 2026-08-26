@@ -1,5 +1,5 @@
 // Authors are shared with the regulatory hub bylines. See src/lib/authors.ts
-import { jigar } from "@/lib/authors";
+import { tejas, jigar } from "@/lib/authors";
 import type { InsightResourceKey } from "@/lib/insight-resources";
 
 export type EsgInsightSectionItem = {
@@ -26,6 +26,20 @@ export type EsgInsightPageConfig = {
   title: string;
   breadcrumbLabel?: string;
   description: string;
+  /**
+   * Hero standfirst, when it should differ from the meta description.
+   *
+   * These serve different jobs: the description is written for a search
+   * result and is length-capped, the standfirst is written to hold a reader
+   * who has already arrived. Most pages are fine with one text, so this is
+   * optional and falls back to description.
+   *
+   * Where a page sets both, they are deliberately different sentences. Do
+   * not "fix" them to match. Brief 3 asked for a match on the climate risk
+   * page because that was an accidental drift between two copies of the
+   * same sentence, which is a different situation.
+   */
+  standfirst?: string;
   badge: string;
   displayDate: string;
   datePublished: string;
@@ -119,6 +133,236 @@ const applySectionStyles = (sections: EsgInsightSection[]): EsgInsightSection[] 
 
 
 export const esgInsightPages: Record<string, EsgInsightPageConfig> = {
+  "ai-use-case-register": {
+    slug: "ai-use-case-register",
+    title: "AI use case register template",
+    // 153 characters. Brief 3 set a 155 limit so Google does not truncate.
+    description:
+      "A register that records where AI is used, who owns each use and which obligations attach. Structured around EU AI Act risk tiers and Article 50 triggers.",
+    standfirst:
+      "A practical way to record where AI is already running in the business, who owns each use and which obligations attach, in a form that survives a board question or a customer questionnaire.",
+    badge: "Downloadable template",
+    // REGULATORY CONTENT, position at 25 August 2026.
+    // Two dates appear in the body of this page: 2 August 2026 and
+    // 2 December 2026. Both are Article 50 dates under Regulation (EU)
+    // 2026/1744, the Digital Omnibus on AI, in force 27 July 2026.
+    //   Article 50 transparency: applies from 2 August 2026, NOT deferred
+    //   Article 50(2) marking: transitional to 2 December 2026, and only
+    //     for systems already on the EU market before 2 August 2026
+    // The full timetable, including the Annex I and Annex III deferrals,
+    // lives on the workbook's Obligation dates tab and on the EU AI Act
+    // timeline page in the regulatory hub. Re-verify all three together
+    // before republishing. This timetable has moved more than once.
+    displayDate: "25 August 2026",
+    datePublished: "2026-08-25",
+    dateModified: "2026-08-25",
+    readTime: "8 min read",
+    ...standardInsightTheme,
+    quote: {
+      text:
+        "Most organisations discover their AI obligations backwards. They read about the regulation first and only then start asking which systems they actually run. The register is the work that should have come first.",
+      attribution: "Tejas Dhabalia, Co-founder, DS Consulting",
+    },
+    author: tejas,
+    whatYouGetIntro:
+      "The template is built for teams that need to answer the question of where AI is used before they can answer any question about compliance, procurement or customer assurance.",
+    whatYouGetCards: [
+      {
+        title: "Use case structure",
+        description:
+          "One row per use, with the fields that matter. What it does, which system runs it, whether you are the provider or the deployer and whether output reaches EU users.",
+      },
+      {
+        title: "Risk classification",
+        description:
+          "A guide tab covering the EU AI Act tiers and the four Article 50 triggers, so classification follows the purpose rather than the vendor.",
+      },
+      {
+        title: "Owner logic",
+        description:
+          "Prompts to assign a business owner and a technical owner separately, because the person who runs the system is rarely the person accountable for it.",
+      },
+      {
+        title: "Obligation dates",
+        description:
+          "The current compliance timetable built in as a lookup, so each row shows when its obligation becomes live rather than requiring a separate check.",
+      },
+    ],
+    rightForYou: [
+      "You have been asked where AI is used across the business and the honest answer is that nobody has a complete list.",
+      "AI has arrived as features inside tools you already bought, rather than as a project anyone approved.",
+      "A customer or an insurer has sent you an AI questionnaire and you are assembling the answer from memory.",
+      "You know the EU AI Act applies to you somewhere but not to which systems.",
+    ],
+    sections: applySectionStyles([
+      {
+        id: "discovery",
+        title: "Find what is already running",
+        colorClass: "",
+        accentClass: "",
+        items: [
+          {
+            item: "Separate what was bought from what arrived.",
+            detail:
+              "Approved AI projects are the easy half. The harder half is AI that appeared inside software you already licensed, where nobody made a decision because nobody was asked.",
+          },
+          {
+            item: "Ask procurement, not just IT.",
+            detail:
+              "Expense reports and card statements surface tools that never went through a technical review. This is usually where the marketing and sales use cases are found.",
+          },
+          {
+            item: "Record shadow use rather than punishing it.",
+            detail:
+              "People using a public model to draft copy or summarise calls are a use case, not a disciplinary matter. A register that people are afraid to complete is worse than no register.",
+          },
+          {
+            item: "Include what is planned, not only what is live.",
+            detail:
+              "A use case logged at pilot stage can be classified before it is embedded. One logged after go live is a remediation project.",
+          },
+        ],
+      },
+      {
+        id: "role",
+        title: "Establish your role for each use",
+        colorClass: "",
+        accentClass: "",
+        items: [
+          {
+            item: "Decide whether you are the provider or the deployer.",
+            detail:
+              "The provider develops the system or places it on the market. The deployer uses it. Most organisations are deployers, and deployers carry obligations in their own right.",
+          },
+          {
+            item: "Do not assume the vendor's compliance covers you.",
+            detail:
+              "Responsibility does not transfer automatically. Marking generated output is the provider's duty, but disclosing a deepfake or labelling AI written text on matters of public interest falls on whoever puts it in front of the reader.",
+          },
+          {
+            item: "Record where the output lands, not where the team sits.",
+            detail:
+              "Scope follows the output. A team outside the EU running a campaign aimed at European audiences is in scope. This is the field most often filled in wrongly.",
+          },
+          {
+            item: "Note when a system was placed on the market.",
+            detail:
+              "Systems already on the market before 2 August 2026 have until 2 December 2026 for the Article 50(2) marking duties. That distinction only matters if you recorded the date.",
+          },
+        ],
+      },
+      {
+        id: "classification",
+        title: "Classify by purpose, not by tool",
+        colorClass: "",
+        accentClass: "",
+        items: [
+          {
+            item: "The same model can sit in two tiers.",
+            detail:
+              "A general purpose model summarising internal documents is minimal risk. The same model ranking job candidates is high risk. Classification follows what the system is used for.",
+          },
+          {
+            item: "Check the Article 50 triggers separately from the risk tier.",
+            detail:
+              "Transparency duties apply regardless of tier. An organisation with no high risk AI at all can still have significant obligations because it runs a chatbot or publishes generated content.",
+          },
+          {
+            item: "Log the reasoning, not just the answer.",
+            detail:
+              "A classification with no recorded basis cannot be defended when someone asks in a year why a use case was judged minimal risk.",
+          },
+          {
+            item: "Flag anything you are unsure about rather than guessing.",
+            detail:
+              "An honest unsure field is a work item. A confident wrong classification is a control failure that nobody will look at again.",
+          },
+        ],
+      },
+      {
+        id: "governance",
+        title: "Make it a control rather than a list",
+        colorClass: "",
+        accentClass: "",
+        items: [
+          {
+            item: "Assign a business owner for every row.",
+            detail:
+              "Not a reviewer and not the IT contact. The person accountable when the obligation lands. A row with no named owner is the commonest failure in an AI register.",
+          },
+          {
+            item: "Record where the evidence lives.",
+            detail:
+              "Disclosure wording, vendor documentation, the classification rationale, human oversight arrangements. A register that points at nothing is a list.",
+          },
+          {
+            item: "Set a review cadence per row.",
+            detail:
+              "Not every use case needs quarterly review, but each one needs an intentional rhythm. Vendors add AI features to existing products without asking, so a classification ages whether or not the use case changes.",
+          },
+          {
+            item: "Connect it to procurement.",
+            detail:
+              "The register only stays current if new tools are added when they are bought rather than at the next audit.",
+          },
+        ],
+      },
+    ]),
+    whyItMatters: [
+      "The regulatory timetable has moved more than once, and it will probably move again. That makes the register more useful, not less. Whatever the dates turn out to be, the work of knowing which systems you run, what they are used for and who owns them is the same work, and it is the input to every obligation that follows.",
+      "There is also a commercial reason that has nothing to do with regulators. Customer questionnaires, insurance renewals and procurement reviews have all started asking where AI touches a supplier's process. An organisation that can answer in a week looks different from one that needs a month, and the difference is usually whether somebody kept a register.",
+    ],
+    contextualLink: {
+      before:
+        "Turning the register from a completed spreadsheet into a control with named owners, a review rhythm and a path into procurement is",
+      anchor: "AI governance and adoption",
+      href: "/services/ai-governance-and-adoption",
+      after: " work.",
+    },
+    faqs: [
+      {
+        question: "Do we need a register if we are not using high risk AI?",
+        answer:
+          "Yes, for two reasons. The Article 50 transparency obligations apply regardless of risk tier, so an organisation running a chatbot or publishing generated content has duties without any high risk AI at all. And the AI literacy duty under Article 4 applies across the board. A register is also how you demonstrate that you assessed the question rather than assumed the answer.",
+      },
+      {
+        question: "Who should own the register?",
+        answer:
+          "Someone in operations, technology or risk usually coordinates it, but every row should carry a named business owner. A register maintained entirely by one function becomes a document that describes the business rather than a control that governs it.",
+      },
+      {
+        question: "How is this different from an asset or software inventory?",
+        answer:
+          "An asset inventory records what you have licensed. A use case register records what those systems are used for, which is what determines obligations. One vendor tool can generate several use cases in different risk tiers, and an inventory organised by vendor cannot show that.",
+      },
+    ],
+    resourceKey: "ai_use_case_register",
+    resourceCtaTitle: "Get the template",
+    resourceCtaBody:
+      "Receive the AI use case register with fields for role, classification, Article 50 trigger, owner, evidence and review cadence, plus a classification guide and the current obligation dates.",
+    relatedServices: [
+      { label: "AI governance and adoption", href: "/services/ai-governance-and-adoption" },
+      { label: "Implementation oversight", href: "/services/implementation-oversight" },
+      { label: "Integration", href: "/services/integration" },
+    ],
+    relatedInsights: [
+      {
+        label: "AI marketing readiness",
+        href: "/insights/ai-marketing-readiness",
+        description: "Where AI touches the funnel and who owns it",
+      },
+      {
+        label: "EU AI Act timeline",
+        href: "/regulatory-hub/eu-ai-act-in-scope-and-timeline",
+        description: "What applies now and what comes later",
+      },
+      {
+        label: "CRM governance checklist",
+        href: "/insights/crm-governance-checklist",
+        description: "Structure ownership before the system sprawls",
+      },
+    ],
+  },
   "net-zero-roadmap-starter": {
     slug: "net-zero-roadmap-starter",
     title: "Net zero roadmap starter",

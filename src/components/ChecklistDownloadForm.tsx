@@ -13,12 +13,12 @@ interface Props {
 const CONTENT = {
   crm: {
     title: "CRM Governance SOP Template",
-    pdfPath: "/downloads/crm-governance-checklist.pdf",
+    filePath: "/downloads/crm-governance-checklist.pdf",
     emailNote: "You will also receive it at your email shortly.",
   },
   csrd: {
     title: "CSRD Readiness Checklist",
-    pdfPath: "/downloads/csrd-readiness-checklist.pdf",
+    filePath: "/downloads/csrd-readiness-checklist.pdf",
     emailNote: "You will also receive it at your email shortly.",
   },
 };
@@ -106,7 +106,7 @@ export default function ChecklistDownloadForm({ checklistType = "csrd", theme = 
           {content.emailNote}
         </p>
         <a
-          href={content.pdfPath}
+          href={content.filePath}
           download
           className="inline-block bg-white text-indigo-700 font-semibold text-sm px-5 py-2.5 rounded-lg hover:bg-indigo-50 transition-colors"
         >

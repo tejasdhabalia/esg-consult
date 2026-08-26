@@ -93,7 +93,7 @@ export default function InsightResourceForm({ resourceKey, theme = "light" }: Pr
           Your {resource.shortLabel} is ready. You will also receive it at your email shortly.
         </p>
         <a
-          href={resource.pdfPath}
+          href={resource.filePath}
           download
           className="inline-block bg-white text-slate-900 font-semibold text-sm px-5 py-2.5 rounded-lg hover:bg-slate-100 transition-colors"
         >

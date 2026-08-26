@@ -2,6 +2,30 @@ import nodemailer from "nodemailer";
 import path from "path";
 import { insightResources } from "@/lib/insight-resources";
 
+/**
+ * MIME type for an email attachment, derived from the filename.
+ *
+ * Lead magnets were all PDFs until the AI use case register, which is a
+ * workbook. The content type used to be hardcoded to application/pdf, which
+ * would mislabel a spreadsheet and can stop some mail clients opening it.
+ *
+ * Deriving it from the extension means adding a new format is a matter of
+ * dropping the file in public/downloads, not editing the send path.
+ */
+const CONTENT_TYPES: Record<string, string> = {
+  pdf: "application/pdf",
+  xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  pptx: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+  csv: "text/csv",
+  zip: "application/zip",
+};
+
+function contentTypeFor(fileName: string): string {
+  const ext = fileName.split(".").pop()?.toLowerCase() ?? "";
+  return CONTENT_TYPES[ext] ?? "application/octet-stream";
+}
+
 function getTransporter() {
   return nodemailer.createTransport({
     host: process.env.SMTP_HOST,
@@ -18,8 +42,8 @@ interface ReportConfig {
   subject: string;
   headline: string;
   description: string;
-  pdfFileName: string;
-  pdfAttachmentName: string;
+  fileName: string;
+  attachmentName: string;
   accentHex: string;
   notifySubject: string;
 }
@@ -30,8 +54,8 @@ const REPORT_CONFIGS: Record<string, ReportConfig> = {
     headline: "Your Marketing Automation Maturity Report",
     description:
       "Your full benchmark report is attached. It includes the complete maturity framework, top-quartile industry benchmarks across all four dimensions, and the action framework for your maturity level. Share it with your leadership team as a briefing document.",
-    pdfFileName: "marketing-automation-maturity-report.pdf",
-    pdfAttachmentName: "DS-Consulting-Marketing-Automation-Maturity-Report.pdf",
+    fileName: "marketing-automation-maturity-report.pdf",
+    attachmentName: "DS-Consulting-Marketing-Automation-Maturity-Report.pdf",
     accentHex: "#4338CA",
     notifySubject: "New lead: Marketing Automation Maturity Scorecard",
   },
@@ -40,8 +64,8 @@ const REPORT_CONFIGS: Record<string, ReportConfig> = {
     headline: "Your Revenue Attribution Readiness Report",
     description:
       "Your full readiness report is attached. It covers the complete attribution model comparison, the board-confidence framework, and the implementation roadmap for your readiness level. Use it to build the business case for attribution investment or to brief a new RevOps hire.",
-    pdfFileName: "revenue-attribution-readiness-report.pdf",
-    pdfAttachmentName: "DS-Consulting-Revenue-Attribution-Readiness-Report.pdf",
+    fileName: "revenue-attribution-readiness-report.pdf",
+    attachmentName: "DS-Consulting-Revenue-Attribution-Readiness-Report.pdf",
     accentHex: "#0f172a",
     notifySubject: "New lead: Revenue Attribution Readiness Check",
   },
@@ -50,8 +74,8 @@ const REPORT_CONFIGS: Record<string, ReportConfig> = {
     headline: "Your AI Marketing Readiness Report",
     description:
       "Your full readiness report is attached. It covers the complete readiness framework, use-case requirements for each AI application in marketing, the governance requirements for regulated industries, and a sequenced implementation roadmap. Includes IBM watsonx.governance coverage for regulated-sector deployments.",
-    pdfFileName: "ai-marketing-readiness-report.pdf",
-    pdfAttachmentName: "DS-Consulting-AI-Marketing-Readiness-Report.pdf",
+    fileName: "ai-marketing-readiness-report.pdf",
+    attachmentName: "DS-Consulting-AI-Marketing-Readiness-Report.pdf",
     accentHex: "#7c3aed",
     notifySubject: "New lead: AI Marketing Readiness Assessment",
   },
@@ -60,8 +84,8 @@ const REPORT_CONFIGS: Record<string, ReportConfig> = {
     headline: "Your Leaky Funnel Audit Report",
     description:
       "Your revenue visibility score and audit results are summarised above. For the full CRM governance checklist and a 30-day action plan, download our CRM Governance SOP Template at the link below.",
-    pdfFileName: "crm-governance-checklist.pdf",
-    pdfAttachmentName: "DS-Consulting-CRM-Governance-Checklist.pdf",
+    fileName: "crm-governance-checklist.pdf",
+    attachmentName: "DS-Consulting-CRM-Governance-Checklist.pdf",
     accentHex: "#4338CA",
     notifySubject: "New lead: Leaky Funnel Audit",
   },
@@ -232,7 +256,7 @@ export async function sendReportEmail({ formType, email }: SendReportEmailParams
   const transporter = getTransporter();
   const from = process.env.SMTP_FROM ?? process.env.SMTP_USER;
   const notify = process.env.SMTP_NOTIFY ?? process.env.SMTP_USER;
-  const pdfPath = path.join(process.cwd(), "public", "downloads", config.pdfFileName);
+  const filePath = path.join(process.cwd(), "public", "downloads", config.fileName);
 
   await transporter.sendMail({
     from,
@@ -241,9 +265,9 @@ export async function sendReportEmail({ formType, email }: SendReportEmailParams
     html: buildReportEmail(config),
     attachments: [
       {
-        filename: config.pdfAttachmentName,
-        path: pdfPath,
-        contentType: "application/pdf",
+        filename: config.attachmentName,
+        path: filePath,
+        contentType: contentTypeFor(config.fileName),
       },
     ],
   });
@@ -276,7 +300,7 @@ export async function sendInsightResourceEmail({ resourceKey, email }: SendInsig
   const transporter = getTransporter();
   const from = process.env.SMTP_FROM ?? process.env.SMTP_USER;
   const notify = process.env.SMTP_NOTIFY ?? process.env.SMTP_USER;
-  const pdfPath = path.join(process.cwd(), "public", "downloads", resource.pdfFileName);
+  const filePath = path.join(process.cwd(), "public", "downloads", resource.fileName);
 
   await transporter.sendMail({
     from,
@@ -285,9 +309,9 @@ export async function sendInsightResourceEmail({ resourceKey, email }: SendInsig
     html: buildInsightResourceEmail(resourceKey),
     attachments: [
       {
-        filename: resource.pdfAttachmentName,
-        path: pdfPath,
-        contentType: "application/pdf",
+        filename: resource.attachmentName,
+        path: filePath,
+        contentType: contentTypeFor(resource.fileName),
       },
     ],
   });

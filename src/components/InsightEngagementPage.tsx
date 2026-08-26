@@ -61,7 +61,7 @@ export default function InsightEngagementPage({ config }: { config: EsgInsightPa
           </div>
 
           <h1 className="text-3xl md:text-4xl font-bold leading-tight mb-4">{config.title}</h1>
-          <p className={`text-lg max-w-2xl mb-8 ${config.heroSummaryClass}`}>{config.description}</p>
+          <p className={`text-lg max-w-2xl mb-8 ${config.heroSummaryClass}`}>{config.standfirst ?? config.description}</p>
 
           <div className={`flex items-center gap-4 text-sm ${config.heroMetaClass}`}>
             <div className="flex items-center gap-2">

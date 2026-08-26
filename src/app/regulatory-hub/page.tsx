@@ -14,6 +14,18 @@ export const metadata = pageMetadata({
 
 export default function RegulatoryHubPage() {
   const items: RegulatoryContentItem[] = [
+    // EU AI Act
+    {
+      slug: "eu-ai-act-in-scope-and-timeline",
+      category: "EU AI Act",
+      title: "EU AI Act timeline: what applies and when",
+      summary:
+        "The staggered timetable, the July 2026 Digital Omnibus amendment and why the high-risk delay does not move the transparency duties.",
+      topics: ["EU AI Act", "Timeline", "Scope", "Article 50"],
+      audience: "CEO, COO, Technology lead",
+      readTime: "7 min read",
+      updated: "Aug 2026",
+    },
     // CSRD foundations
     {
       slug: "what-is-csrd",

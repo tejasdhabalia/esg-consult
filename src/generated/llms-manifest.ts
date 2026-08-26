@@ -1,6 +1,6 @@
 export const llmsManifest = {
-  "generatedAt": "2026-08-25T11:46:37.173Z",
-  "pageCount": 72,
+  "generatedAt": "2026-08-26T04:28:36.810Z",
+  "pageCount": 74,
   "pages": [
     {
       "route": "/",
@@ -91,6 +91,16 @@ export const llmsManifest = {
       "priority": 0.5,
       "changeFrequency": "monthly",
       "source": "src\\app\\insights\\ai-marketing-readiness\\page.tsx"
+    },
+    {
+      "route": "/insights/ai-use-case-register",
+      "url": "https://www.consult-ds.com/insights/ai-use-case-register",
+      "title": "AI use case register template",
+      "description": "A register that records where AI is used, who owns each use and which obligations attach. Structured around EU AI Act risk tiers and Article 50 triggers.",
+      "section": "insights",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\insights\\ai-use-case-register\\page.tsx"
     },
     {
       "route": "/insights/cdp-response-planning-pack",
@@ -361,6 +371,16 @@ export const llmsManifest = {
       "priority": 0.8,
       "changeFrequency": "monthly",
       "source": "src\\app\\regulatory-hub\\csrd-in-scope-and-timeline\\page.tsx"
+    },
+    {
+      "route": "/regulatory-hub/eu-ai-act-in-scope-and-timeline",
+      "url": "https://www.consult-ds.com/regulatory-hub/eu-ai-act-in-scope-and-timeline",
+      "title": "EU AI Act timeline: what applies and when",
+      "description": "The high-risk delay to December 2027 is real but narrow. Article 50 transparency duties applied from 2 August 2026. What is live now and what comes next.",
+      "section": "regulatory",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\regulatory-hub\\eu-ai-act-in-scope-and-timeline\\page.tsx"
     },
     {
       "route": "/regulatory-hub/uk-secr-srs-governance-and-risk-management",
