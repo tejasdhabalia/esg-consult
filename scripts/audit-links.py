@@ -103,6 +103,56 @@ def collect_links():
     return found
 
 
+def check_hub_listings():
+    """
+    Pages that exist but are not listed on their hub.
+
+    The insights hub and the regulatory hub each render from a registry
+    (src/lib/insights.ts and the items array in the regulatory hub page)
+    rather than from the filesystem. Creating a page under src/app does not
+    put it on the hub, and nothing fails: the page builds, deploys, sits in
+    the sitemap and is reachable by search, but a visitor browsing the hub
+    never sees it.
+
+    That is invisible to the broken-link check above, because the page is
+    real. Caught it once by hand after shipping. Now it is checked.
+    """
+    checks = [
+        ("insights", "src/app/insights", "src/lib/insights.ts"),
+        ("regulatory-hub", "src/app/regulatory-hub", "src/app/regulatory-hub/page.tsx"),
+    ]
+    problems = 0
+    print("\n" + "=" * 70)
+    print("HUB LISTING COVERAGE")
+    print("=" * 70)
+
+    for label, app_dir, registry in checks:
+        if not os.path.isdir(app_dir) or not os.path.isfile(registry):
+            continue
+        on_disk = {
+            d for d in os.listdir(app_dir)
+            if os.path.isdir(os.path.join(app_dir, d))
+            and os.path.isfile(os.path.join(app_dir, d, "page.tsx"))
+        }
+        with open(registry, encoding="utf-8", errors="ignore") as f:
+            listed = set(re.findall(r'slug:\s*"([^"]+)"', f.read()))
+
+        missing = sorted(on_disk - listed)
+        orphan = sorted(listed - on_disk)
+
+        if not missing and not orphan:
+            print(f"  {label}: {len(on_disk)} page(s), all listed")
+            continue
+
+        problems += len(missing) + len(orphan)
+        for slug in missing:
+            print(f"  {label}: /{label}/{slug} exists but is NOT on the hub")
+        for slug in orphan:
+            print(f"  {label}: '{slug}' is listed but has no page")
+
+    return problems
+
+
 def main():
     pages, handlers = discover_routes()
     redirects = discover_redirects()
@@ -183,8 +233,13 @@ def main():
     except FileNotFoundError:
         pass
 
+    hub_problems = check_hub_listings()
+
     print()
-    print("FAIL" if broken else "PASS: no broken internal links")
+    if broken or hub_problems:
+        print("FAIL")
+    else:
+        print("PASS: no broken internal links, all pages listed on their hub")
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 export type SiteInsightItem = {
   slug: string;
-  category: "Marketing" | "ESG";
+  category: "AI" | "Marketing" | "ESG";
   title: string;
   summary: string;
   topics: string[];
@@ -11,6 +11,20 @@ export type SiteInsightItem = {
 };
 
 export const allInsights: SiteInsightItem[] = [
+  // Newest first. This registry is what /insights renders; adding a page
+  // under src/app/insights does not put it on the hub.
+  {
+    slug: "ai-use-case-register",
+    category: "AI",
+    title: "AI use case register template",
+    summary:
+      "A register that records where AI is used across the business, who owns each use and which obligations attach, structured around the EU AI Act risk tiers and Article 50 triggers.",
+    topics: ["AI governance", "EU AI Act", "Risk register", "Ownership"],
+    audience: "CEO, COO, Technology lead, Risk",
+    readTime: "8 min read",
+    updated: "Aug 2026",
+    updatedAt: "2026-08-25",
+  },
   {
     slug: "net-zero-roadmap-starter",
     category: "ESG",

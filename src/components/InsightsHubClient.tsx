@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
-export type InsightCategory = "Marketing" | "ESG";
+export type InsightCategory = "AI" | "Marketing" | "ESG";
 
 export type InsightItem = {
   slug: string;
@@ -22,7 +22,7 @@ export default function InsightsHubClient({ items }: { items: InsightItem[] }) {
     "All"
   );
 
-  const categories: Array<InsightCategory | "All"> = ["All", "Marketing", "ESG"];
+  const categories: Array<InsightCategory | "All"> = ["All", "AI", "Marketing", "ESG"];
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
