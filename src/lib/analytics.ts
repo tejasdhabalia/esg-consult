@@ -28,6 +28,7 @@
 export type LeadFormName =
   | "contact_booking"
   | "booking_widget"
+  | "direct_booking"
   | "insight_resource"
   | "checklist_download"
   | "newsletter_signup"
@@ -36,6 +37,22 @@ export type LeadFormName =
   | "revenue_attribution_readiness"
   | "leaky_funnel_audit";
 
+/**
+ * Event parameters registered as custom dimensions in GA4 Admin.
+ *
+ * GA4 matches custom dimensions on the exact parameter name. A dimension
+ * registered as `resource_key` will report (not set) for every event if the
+ * code sends `resource`. Renaming a parameter here without renaming the
+ * dimension breaks reporting silently, with no error anywhere.
+ *
+ * Registered, both event-scoped:
+ *   form_name     which form converted. Sent on every event.
+ *   resource_key  which asset was requested. Sent by the resource and
+ *                 checklist download forms only.
+ *
+ * Custom dimensions are not retroactive, so a new one only populates from
+ * the day it is created in GA4.
+ */
 export function trackGenerateLead(
   formName: LeadFormName,
   params: Record<string, string | undefined> = {},

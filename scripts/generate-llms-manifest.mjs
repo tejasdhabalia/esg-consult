@@ -73,7 +73,10 @@ const PRIORITY_OVERRIDES = {
   '/accessibility': { priority: 0.3, changeFrequency: 'yearly' },
 };
 
-const EXCLUDED_ROUTES = new Set(['/favicon.ico']);
+// /meet is the unlisted direct booking link. It is kept out of llms.txt for
+// the same reason it is kept out of the sitemap: it has an audience, but not
+// one that arrives by discovery.
+const EXCLUDED_ROUTES = new Set(['/favicon.ico', '/meet']);
 
 function normalizeTemplateLiteral(raw) {
   return raw

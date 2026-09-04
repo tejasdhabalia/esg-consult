@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { execFileSync } from 'node:child_process';
 
 const ROOT = process.cwd();
 const APP_DIR = path.join(ROOT, 'src', 'app');
@@ -24,9 +25,15 @@ const OUT_FILE = path.join(ROOT, 'public', 'sitemap.xml');
  * sitemap is a contradiction, so the two changes belong together.
  *
  * The partners hub at /partners stays in. Only the child page is excluded.
+ *
+ * /meet is the direct booking link, sent by hand over WhatsApp, LinkedIn or
+ * after meeting somebody. It is not linked from anywhere on the site and
+ * carries noindex. It is excluded here for the same reason as the partner
+ * page: listing a noindex page in the sitemap is a contradiction.
  */
 const EXCLUDED_ROUTES = new Set([
   '/favicon.ico',
+  '/meet',
   '/industries',
   '/industries/distribution-and-wholesale',
   '/industries/retail-and-d2c',
@@ -87,12 +94,43 @@ function extractBaseUrl() {
   return 'http://localhost:3000';
 }
 
-function toSitemapXml(urls) {
-  const lastmod = new Date().toISOString().slice(0, 10);
+/**
+ * Date of the last commit that touched a page file, as YYYY-MM-DD.
+ *
+ * Returns null rather than guessing. Until September 2026 this file stamped
+ * every URL with the date of the build, which told search engines all 70
+ * pages changed on every deploy. A lastmod that is always today is treated
+ * as noise and discounted, which costs more than having none at all.
+ *
+ * Null is expected in two normal cases: a page added but not yet committed,
+ * and a shallow clone on the build server where the commit that last touched
+ * the file is outside the fetched history. Both produce an omitted lastmod,
+ * which is correct. Set VERCEL_DEEP_CLONE or increase the fetch depth if
+ * fuller coverage is wanted.
+ */
+function lastCommitDate(filePath) {
+  try {
+    const out = execFileSync('git', ['log', '-1', '--format=%cs', '--', filePath], {
+      cwd: ROOT,
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'ignore'],
+    }).trim();
+
+    return /^\d{4}-\d{2}-\d{2}$/.test(out) ? out : null;
+  } catch {
+    return null;
+  }
+}
+
+function toSitemapXml(entries) {
   const lines = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-    ...urls.map((url) => `  <url><loc>${url}</loc><lastmod>${lastmod}</lastmod></url>`),
+    ...entries.map(({ url, lastmod }) =>
+      lastmod
+        ? `  <url><loc>${url}</loc><lastmod>${lastmod}</lastmod></url>`
+        : `  <url><loc>${url}</loc></url>`,
+    ),
     '</urlset>',
     '',
   ];
@@ -107,19 +145,29 @@ function main() {
     /\/page\.(tsx|ts|jsx|js)$/.test(filePath.replaceAll('\\', '/')),
   );
 
-  const routes = pageFiles
-    .map(routeFromPageFile)
-    .filter(shouldIncludeRoute)
-    .filter((route, index, all) => all.indexOf(route) === index);
+  const seen = new Set();
+  const entries = [];
 
-  const urls = routes
-    .map((route) => (route === '/' ? `${baseUrl}/` : `${baseUrl}${route}`))
-    .sort();
+  for (const filePath of pageFiles) {
+    const route = routeFromPageFile(filePath);
+    if (!shouldIncludeRoute(route) || seen.has(route)) continue;
+    seen.add(route);
+
+    entries.push({
+      url: route === '/' ? `${baseUrl}/` : `${baseUrl}${route}`,
+      lastmod: lastCommitDate(filePath),
+    });
+  }
+
+  entries.sort((a, b) => a.url.localeCompare(b.url));
 
   fs.mkdirSync(path.dirname(OUT_FILE), { recursive: true });
-  fs.writeFileSync(OUT_FILE, toSitemapXml(urls), 'utf8');
+  fs.writeFileSync(OUT_FILE, toSitemapXml(entries), 'utf8');
 
-  console.log(`Generated sitemap.xml with ${urls.length} URLs -> ${OUT_FILE}`);
+  const dated = entries.filter((entry) => entry.lastmod).length;
+  console.log(
+    `Generated sitemap.xml with ${entries.length} URLs, ${dated} with lastmod -> ${OUT_FILE}`,
+  );
 }
 
 main();

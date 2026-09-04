@@ -1,6 +1,6 @@
 import {
   SLOT_DURATION_MINS,
-  SLOT_SPACING_MINS,
+  spacingFor,
   AVAILABLE_WINDOWS,
   MIN_ADVANCE_HOURS,
   BOOKING_TZ,
@@ -13,20 +13,31 @@ function istMidnightMs(dateStr: string): number {
   return Date.UTC(y, m - 1, d, 0, 0, 0) - 330 * 60 * 1000;
 }
 
-// Generate all possible slot start times as Date objects for a given IST date
-export function generateSlots(dateStr: string): Date[] {
+/**
+ * All possible slot start times for a given IST date.
+ *
+ * durationMins defaults to the standard consultation length so the contact
+ * page flow is unaffected. The direct booking link at /meet passes its own
+ * length, which changes both how much room a slot needs inside a window and
+ * how far apart consecutive slots sit.
+ */
+export function generateSlots(
+  dateStr: string,
+  durationMins: number = SLOT_DURATION_MINS
+): Date[] {
   const midnight = istMidnightMs(dateStr);
   const minStart = Date.now() + MIN_ADVANCE_HOURS * 60 * 60 * 1000;
+  const spacing = spacingFor(durationMins);
   const slots: Date[] = [];
 
   for (const [winStart, winEnd] of AVAILABLE_WINDOWS) {
     let cursor = winStart;
-    while (cursor + SLOT_DURATION_MINS <= winEnd) {
+    while (cursor + durationMins <= winEnd) {
       const slotMs = midnight + cursor * 60 * 1000;
       if (slotMs >= minStart) {
         slots.push(new Date(slotMs));
       }
-      cursor += SLOT_SPACING_MINS;
+      cursor += spacing;
     }
   }
   return slots;
@@ -35,9 +46,10 @@ export function generateSlots(dateStr: string): Date[] {
 // Remove slots that overlap with any busy period from Google Calendar
 export function filterBusySlots(
   slots: Date[],
-  busyPeriods: { start: string; end: string }[]
+  busyPeriods: { start: string; end: string }[],
+  durationMins: number = SLOT_DURATION_MINS
 ): Date[] {
-  const durationMs = SLOT_DURATION_MINS * 60 * 1000;
+  const durationMs = durationMins * 60 * 1000;
   return slots.filter((slot) => {
     const slotStart = slot.getTime();
     const slotEnd = slotStart + durationMs;

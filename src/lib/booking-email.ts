@@ -31,6 +31,15 @@ interface BookingEmailParams {
   hearAboutUs?: string;
   landingPage?: string;
   referrer?: string;
+  /**
+   * Direct booking fields. Set by us when a /meet link is sent, not by the
+   * person booking. The defaults reproduce the contact page email exactly,
+   * so that flow is unchanged by their presence.
+   */
+  durationMins?: number;
+  subject?: string;
+  source?: string;
+  isDirect?: boolean;
 }
 
 export async function sendBookingConfirmation(params: BookingEmailParams) {
@@ -41,12 +50,11 @@ export async function sendBookingConfirmation(params: BookingEmailParams) {
     localDisplay,
     istDisplay,
     visitorTz,
-    company = "",
     interest = "",
-    message = "",
-    hearAboutUs = "",
-    landingPage = "",
-    referrer = "",
+    durationMins = 45,
+    subject = "",
+    source = "",
+    isDirect = false,
   } = params;
 
   // Escape anything the visitor typed before it goes into an HTML email.
@@ -71,25 +79,19 @@ export async function sendBookingConfirmation(params: BookingEmailParams) {
   const from = process.env.SMTP_FROM ?? process.env.SMTP_USER;
   const notify = process.env.SMTP_NOTIFY ?? process.env.SMTP_USER;
 
-  // Confirmation to visitor
-  await transporter.sendMail({
-    from,
-    to: email,
-    subject: "Your DS Consulting consultation is confirmed",
-    html: `
-      <div style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:24px;color:#1e293b;">
-        <h2 style="margin:0 0 16px">Consultation confirmed</h2>
-        <p>Hi ${firstName},</p>
-        <p>Your 45-minute consultation with DS Consulting has been confirmed.</p>
-        <div style="background:#f8fafc;border-radius:8px;padding:20px;margin:24px 0;border-left:4px solid #4f46e5;">
-          <p style="margin:0 0 10px"><strong>Your local time:</strong><br>${localDisplay} (${visitorTz})</p>
-          <p style="margin:0"><strong>IST:</strong><br>${istDisplay}</p>
-        </div>
-        <p>A Google Meet link and calendar invitation have been sent to your calendar separately.</p>
+  // A direct booking goes to somebody already spoken to, so the confirmation
+  // states the detail and stops. The website agenda block is written to tell
+  // a stranger what the session is, and reads as boilerplate to anyone else.
+  const visitorSubject = isDirect
+    ? subject
+      ? `Confirmed: ${subject}`
+      : "Your call with DS Consulting is confirmed"
+    : "Your DS Consulting consultation is confirmed";
 
+  const agendaBlock = `
         <div style="background:#f8fafc;border-radius:8px;padding:20px;margin:24px 0;border-left:4px solid #4f46e5;">
           <p style="margin:0 0 12px;font-weight:600;color:#1e293b;">What to expect in the session</p>
-          <p style="margin:0 0 6px;color:#475569;">This is a 45-minute working session, not a sales call.</p>
+          <p style="margin:0 0 6px;color:#475569;">This is a ${durationMins}-minute working session, not a sales call.</p>
           <p style="margin:0 0 12px;font-weight:600;color:#1e293b;">Agenda</p>
           <ol style="margin:0;padding-left:20px;color:#475569;line-height:1.8;">
             <li>Your current challenge and where execution is breaking down</li>
@@ -97,8 +99,30 @@ export async function sendBookingConfirmation(params: BookingEmailParams) {
             <li>An honest view on where to start and what is realistic</li>
           </ol>
           <p style="margin:16px 0 0;color:#475569;">To make the most of the session, come prepared with a rough sense of your priority, whether that is a regulatory deadline you are working toward, a CRM or reporting system that is not delivering, or an AI adoption initiative that needs governance.</p>
-        </div>
+        </div>`;
 
+  const openingLine = isDirect
+    ? subject
+      ? `Your ${durationMins}-minute call on ${esc(subject)} is confirmed.`
+      : `Your ${durationMins}-minute call with DS Consulting is confirmed.`
+    : `Your ${durationMins}-minute consultation with DS Consulting has been confirmed.`;
+
+  // Confirmation to visitor
+  await transporter.sendMail({
+    from,
+    to: email,
+    subject: visitorSubject,
+    html: `
+      <div style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:24px;color:#1e293b;">
+        <h2 style="margin:0 0 16px">${isDirect ? "Call confirmed" : "Consultation confirmed"}</h2>
+        <p>Hi ${esc(firstName)},</p>
+        <p>${openingLine}</p>
+        <div style="background:#f8fafc;border-radius:8px;padding:20px;margin:24px 0;border-left:4px solid #4f46e5;">
+          <p style="margin:0 0 10px"><strong>Your local time:</strong><br>${localDisplay} (${visitorTz})</p>
+          <p style="margin:0"><strong>IST:</strong><br>${istDisplay}</p>
+        </div>
+        <p>A Google Meet link and calendar invitation have been sent to your calendar separately.</p>
+${isDirect ? "" : agendaBlock}
         <p>If you need to reschedule, reply to this email.</p>
         <p style="margin-top:32px;color:#64748b;font-size:13px;">
           DS Consulting &nbsp;·&nbsp; Strategy to Systems. Delivered.<br>
@@ -112,25 +136,35 @@ export async function sendBookingConfirmation(params: BookingEmailParams) {
   await transporter.sendMail({
     from,
     to: notify,
-    subject: `New consultation booked: ${firstName} ${surname}`,
+    replyTo: email,
+    subject: isDirect
+      ? `Direct booking: ${firstName} ${surname}${subject ? ` (${subject})` : ""}`
+      : `New consultation booked: ${firstName} ${surname}`,
     html: `
       <div style="font-family:sans-serif;padding:20px;">
-        <h3>New consultation booking</h3>
+        <h3>${isDirect ? "Direct link booking" : "New consultation booking"}</h3>
         <table style="border-collapse:collapse;width:100%;max-width:400px;">
-          <tr><td style="padding:6px 12px 6px 0;color:#64748b;">Name</td><td style="padding:6px 0;font-weight:600;">${firstName} ${surname}</td></tr>
-          <tr><td style="padding:6px 12px 6px 0;color:#64748b;">Email</td><td style="padding:6px 0;">${email}</td></tr>
+          <tr><td style="padding:6px 12px 6px 0;color:#64748b;">Name</td><td style="padding:6px 0;font-weight:600;">${esc(firstName)} ${esc(surname)}</td></tr>
+          <tr><td style="padding:6px 12px 6px 0;color:#64748b;">Email</td><td style="padding:6px 0;">${esc(email)}</td></tr>
           <tr><td style="padding:6px 12px 6px 0;color:#64748b;">Time (IST)</td><td style="padding:6px 0;font-weight:600;">${istDisplay}</td></tr>
           <tr><td style="padding:6px 12px 6px 0;color:#64748b;">Their timezone</td><td style="padding:6px 0;">${localDisplay} (${visitorTz})</td></tr>
+          <tr><td style="padding:6px 12px 6px 0;color:#64748b;">Duration</td><td style="padding:6px 0;">${durationMins} minutes</td></tr>
+          ${row("Subject", subject)}
+          ${row("Arranged via", source)}
           ${row("Topic", interest)}
         </table>
         <p style="color:#94a3b8;font-size:12px;margin-top:12px;">
-          Their message and where they came from are in the separate
-          "New enquiry" email for this person.
+          ${
+            isDirect
+              ? "Booked from a direct link. There is no separate enquiry email for this person, because they did not fill in the contact form."
+              : 'Their message and where they came from are in the separate "New enquiry" email for this person.'
+          }
         </p>
       </div>
     `,
   });
 }
+
 interface EnquiryEmailParams {
   name: string;
   email: string;

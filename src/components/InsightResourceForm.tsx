@@ -78,7 +78,7 @@ export default function InsightResourceForm({ resourceKey, theme = "light" }: Pr
       }
 
       setStatus("done");
-      trackGenerateLead("insight_resource", { resource: resourceKey });
+      trackGenerateLead("insight_resource", { resource_key: resourceKey });
     } catch (err: unknown) {
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Submission failed. Please try again.");

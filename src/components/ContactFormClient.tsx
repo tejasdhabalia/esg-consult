@@ -17,6 +17,21 @@ interface Slot {
   ist: string;
 }
 
+/**
+ * Build a YYYY-MM-DD string from the local calendar date.
+ *
+ * Not toISOString().slice(0, 10). That converts to UTC first, so anywhere east
+ * of Greenwich, including India, local midnight is the previous day in UTC and
+ * the button labelled Friday quietly asks the API for Thursday's availability.
+ * The visitor then sees a short list or an empty one and assumes we are busy.
+ */
+function toLocalDateStr(d: Date): string {
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
 function getAvailableDates() {
   const results: { dateStr: string; display: string; dayName: string }[] = [];
   const today = new Date();
@@ -26,7 +41,7 @@ function getAvailableDates() {
     const d = new Date(today);
     d.setDate(today.getDate() + i);
     if (AVAILABLE_DAYS.includes(d.getDay())) {
-      const dateStr = d.toISOString().slice(0, 10);
+      const dateStr = toLocalDateStr(d);
       const display = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" }).format(d);
       const dayName = new Intl.DateTimeFormat("en-US", { weekday: "short" }).format(d);
       results.push({ dateStr, display, dayName });
@@ -43,6 +58,7 @@ const STEP_LABELS = ["Your details", "Select date", "Select time", "Confirm"];
 export default function ContactFormClient() {
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
   const action = "contact_submit";
+  const BOOKING_ACTION = "booking_submit";
 
   const [step, setStep] = useState<Step>("details");
   const [submitting, setSubmitting] = useState(false);
@@ -136,7 +152,13 @@ export default function ContactFormClient() {
     setSubmitError("");
 
     try {
-      const captchaToken = await getRecaptchaToken(siteKey || "", action);
+      // Each endpoint verifies its own token. A reCAPTCHA v3 token can only
+      // be checked with Google once, so sharing one across two parallel
+      // requests would fail whichever arrived second.
+      const [captchaToken, bookingCaptchaToken] = await Promise.all([
+        getRecaptchaToken(siteKey || "", action),
+        getRecaptchaToken(siteKey || "", BOOKING_ACTION),
+      ]);
 
       // Captured on the FIRST page of this session, not here.
       const { landing_page, referrer } = getAttribution();
@@ -176,6 +198,9 @@ export default function ContactFormClient() {
                 : form.hearAboutUs,
             landingPage: landing_page,
             referrer,
+            captchaToken: bookingCaptchaToken,
+            captchaAction: BOOKING_ACTION,
+            website: form.website,
           }),
         }),
       ]);

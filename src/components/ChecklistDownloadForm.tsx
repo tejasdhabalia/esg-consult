@@ -91,7 +91,7 @@ export default function ChecklistDownloadForm({ checklistType = "csrd", theme = 
       }
 
       setStatus("done");
-      trackGenerateLead("checklist_download", { resource: checklistType });
+      trackGenerateLead("checklist_download", { resource_key: checklistType });
     } catch (err: unknown) {
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Submission failed. Please try again.");
