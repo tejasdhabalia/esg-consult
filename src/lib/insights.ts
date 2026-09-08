@@ -14,6 +14,18 @@ export const allInsights: SiteInsightItem[] = [
   // Newest first. This registry is what /insights renders; adding a page
   // under src/app/insights does not put it on the hub.
   {
+    slug: "nist-ai-rmf-starter-profile",
+    category: "AI",
+    title: "NIST AI RMF starter profile",
+    summary:
+      "The four functions of the NIST AI Risk Management Framework, written for a company that has no AI risk team, with a workbook to rate where you actually stand and a crosswalk to the obligations that are not voluntary.",
+    topics: ["AI governance", "NIST AI RMF", "ISO 42001", "Operating model"],
+    audience: "CEO, CFO, COO, Technology lead, Risk",
+    readTime: "9 min read",
+    updated: "Sep 2026",
+    updatedAt: "2026-09-08",
+  },
+  {
     slug: "ai-use-case-register",
     category: "AI",
     title: "AI use case register template",

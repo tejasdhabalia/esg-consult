@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-09-04T05:54:39.347Z",
-  "pageCount": 74,
+  "generatedAt": "2026-09-08T07:36:31.596Z",
+  "pageCount": 75,
   "pages": [
     {
       "route": "/",
@@ -201,6 +201,16 @@
       "priority": 0.5,
       "changeFrequency": "monthly",
       "source": "src\\app\\insights\\net-zero-roadmap-starter\\page.tsx"
+    },
+    {
+      "route": "/insights/nist-ai-rmf-starter-profile",
+      "url": "https://www.consult-ds.com/insights/nist-ai-rmf-starter-profile",
+      "title": "NIST AI RMF starter profile",
+      "description": "The four functions of the NIST AI Risk Management Framework, and a workbook to rate where your business actually stands against each one.",
+      "section": "insights",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\insights\\nist-ai-rmf-starter-profile\\page.tsx"
     },
     {
       "route": "/insights/revenue-attribution-readiness",

@@ -87,6 +87,18 @@ export type EsgInsightPageConfig = {
     after: string;
   };
   faqs: EsgInsightFaq[];
+  /**
+   * Primary sources, rendered as a linked list under the FAQs.
+   *
+   * Optional, because most resource pages carry their evidence inline. Use
+   * it where a page describes an external framework and every claim needs to
+   * be traceable to the body that publishes it. Link the publisher directly
+   * rather than a summary or an explainer, however convenient the summary is.
+   */
+  sources?: {
+    intro?: string;
+    items: Array<{ label: string; href: string; note: string }>;
+  };
   resourceKey: InsightResourceKey;
   resourceCtaTitle: string;
   resourceCtaBody: string;
@@ -133,6 +145,303 @@ const applySectionStyles = (sections: EsgInsightSection[]): EsgInsightSection[] 
 
 
 export const esgInsightPages: Record<string, EsgInsightPageConfig> = {
+  "nist-ai-rmf-starter-profile": {
+    slug: "nist-ai-rmf-starter-profile",
+    title: "NIST AI RMF starter profile",
+    breadcrumbLabel: "NIST AI RMF",
+    // 136 characters. Brief 3 set a 155 limit so Google does not truncate.
+    description:
+      "The four functions of the NIST AI Risk Management Framework, and a workbook to rate where your business actually stands against each one.",
+    standfirst:
+      "Nobody makes you adopt it and nobody certifies you against it. Your customers, your insurer and your enterprise procurement team will still ask you questions in its vocabulary.",
+    badge: "Downloadable workbook",
+    // REGULATORY CONTENT, position at 8 September 2026.
+    // Every date and status claim on this page and in the workbook was
+    // verified against nist.gov and airc.nist.gov on 8 September 2026:
+    //   AI RMF 1.0 (NIST AI 100-1) published 26 January 2023, still current
+    //   Generative AI Profile (NIST AI 600-1) published 26 July 2024
+    //   Critical Infrastructure Profile concept note published 7 April 2026
+    //   AI RMF 1.0 under revision following the White House AI Action Plan
+    //     of 23 July 2025. No revised version published as at this date
+    // The revision is the fragile claim here. If NIST publishes a revised
+    // framework, this page, the workbook and the Sources block all move
+    // together. Re-verify at nist.gov/itl/ai-risk-management-framework
+    // before republishing or promoting this page.
+    displayDate: "8 September 2026",
+    datePublished: "2026-09-08",
+    dateModified: "2026-09-08",
+    readTime: "9 min read",
+    ...standardInsightTheme,
+    quote: {
+      text:
+        "Most companies answer an AI governance question by writing a policy. The framework asks a harder question first, which is what you are actually running. Almost nobody can answer it, because the AI arrived inside software they had already bought.",
+      attribution: "Tejas Dhabalia, Co-founder, DS Consulting",
+    },
+    author: tejas,
+    whatYouGetIntro:
+      "NIST calls a tailored application of the framework a Profile. This workbook is a starter profile. It turns the four functions into outcomes you can rate, own and evidence, without needing a risk function to run it.",
+    whatYouGetCards: [
+      {
+        title: "Twenty six outcomes",
+        description:
+          "The four functions broken into statements about your business rather than about AI in general. Seven on Govern, seven on Map, six on Measure, six on Manage.",
+      },
+      {
+        title: "A rating scale that resists flattery",
+        description:
+          "Zero to three, with the steps defined. The gap between one and two is documentation. The gap between two and three is rhythm and evidence.",
+      },
+      {
+        title: "An owner and an evidence field on every row",
+        description:
+          "A rating with no owner is not operating and a rating with no evidence is an opinion. The summary counts both and tells you where they are missing.",
+      },
+      {
+        title: "A crosswalk to the parts that are not voluntary",
+        description:
+          "Each function set against the EU AI Act, ISO/IEC 42001 and the DPDP Act, so you can see which document carries an actual obligation.",
+      },
+    ],
+    rightForYou: [
+      "A customer, an insurer or an enterprise procurement team has sent you an AI questionnaire written in this vocabulary.",
+      "You have an AI policy and no way of telling whether anything changed on the ground after it was signed.",
+      "Somebody has offered to certify you against the NIST AI RMF and you want to know whether that is a real thing.",
+      "You are choosing between NIST AI RMF and ISO/IEC 42001 and nobody has explained why they are not alternatives.",
+    ],
+    sections: applySectionStyles([
+      {
+        id: "what-it-is",
+        title: "What the framework is, and what it is not",
+        intro:
+          "Four things are worth knowing before you spend a day on it, and three of them are usually got wrong in the summaries.",
+        colorClass: "",
+        accentClass: "",
+        items: [
+          {
+            item: "Voluntary, and that is the design rather than a weakness.",
+            detail:
+              "NIST published AI RMF 1.0 in January 2023 under the National AI Initiative Act of 2020. It is voluntary, rights preserving, not sector specific and not tied to a use case. It describes outcomes to aim at rather than duties to discharge, which is why it travels across jurisdictions that have nothing else in common.",
+          },
+          {
+            item: "Nobody certifies you against it.",
+            detail:
+              "There is no NIST audit and no NIST certificate. Anyone offering to certify you against the AI RMF is selling ISO/IEC 42001 under another name, or selling nothing. Self attestation is the only status available, which is exactly why the evidence behind your claims matters.",
+          },
+          {
+            item: "It is two documents, and the useful half is the second one.",
+            detail:
+              "The framework itself is around forty pages of principle. The companion Playbook carries the suggested actions and documentation practices for each subcategory. Teams that read only the framework come away thinking it is too abstract to act on, which is a reading problem rather than a framework problem.",
+          },
+          {
+            item: "Version 1.0 is still current, and it is being revised.",
+            detail:
+              "NIST has stated that AI RMF 1.0 is under revision following the White House AI Action Plan of July 2025, and that the Playbook will be updated once the revision lands. There is no 2.0. The four functions have been stable since 2023 and are the part least likely to move, so build on those rather than on particular wording.",
+          },
+        ],
+      },
+      {
+        id: "functions",
+        title: "The four functions in plain terms",
+        intro:
+          "Govern runs across everything. Map, Measure and Manage apply to a specific system at a specific point in its life.",
+        colorClass: "",
+        accentClass: "",
+        items: [
+          {
+            item: "Govern: who answers for this.",
+            detail:
+              "Accountability, policy, risk tolerance, staff capability and the rules that cover third party AI. The test is not whether a policy exists. It is whether one named person answers for AI risk, and whether a member of staff who thinks an output is wrong has somewhere to take it that is not the person who deployed it.",
+          },
+          {
+            item: "Map: what are we actually running.",
+            detail:
+              "Context. What each use is for, who it affects including people who are not customers, and what a wrong output costs in business terms. This is the function almost nobody has completed, and everything downstream depends on it.",
+          },
+          {
+            item: "Measure: would we know if it stopped working.",
+            detail:
+              "Testing and monitoring on a stated rhythm, checked across the groups the system affects rather than only in aggregate. The uncomfortable version of the question is whether you would notice if your vendor changed the model underneath you, because they will and they will not ask.",
+          },
+          {
+            item: "Manage: what happens when it goes wrong.",
+            detail:
+              "Prioritising by consequence, a tested fallback, human review that is real, an incident path with a named owner, and risk acceptance that is written down. Manage is where a policy either becomes visible in how the business runs or stays a document.",
+          },
+        ],
+      },
+      {
+        id: "unstuck",
+        title: "Where mid-market companies come unstuck",
+        intro:
+          "These four patterns account for most of what we see. None of them is a failure of intent.",
+        colorClass: "",
+        accentClass: "",
+        items: [
+          {
+            item: "The policy arrives before the inventory.",
+            detail:
+              "A two page AI policy is quick to write and impossible to apply, because nobody has the list of systems it is meant to govern. Govern scores well, Map scores nothing, and the business runs exactly as it did before.",
+          },
+          {
+            item: "AI arrived through procurement rather than through technology.",
+            detail:
+              "The ERP shipped a copilot. The CRM added scoring. The marketing tool started generating copy. None of it went through an approval, so none of it is on a list. Expense reports and card statements usually find more of it than the asset register does.",
+          },
+          {
+            item: "Human oversight is recorded but is not real.",
+            detail:
+              "A reviewer with forty cases an hour, no context and no practical authority to overrule is providing a signature rather than a control. This is the row that fails first when a customer starts asking follow up questions.",
+          },
+          {
+            item: "Measurement stopped at go live.",
+            detail:
+              "The system was tested once, in the fortnight before launch, against data from before launch. Two model updates later nobody has looked again, and the first signal that quality moved is a complaint.",
+          },
+        ],
+      },
+      {
+        id: "proportionate",
+        title: "What proportionate looks like",
+        intro:
+          "The framework is written to be applied in varying degrees. A company of 300 people is not expected to build what a bank builds.",
+        colorClass: "",
+        accentClass: "",
+        items: [
+          {
+            item: "You do not need a model risk committee.",
+            detail:
+              "At two hundred to two thousand people the whole governance function is usually one accountable person, a maintained register, a quarterly review and a short list of uses that need sign off before output leaves the building. That is a legitimate answer and the framework supports it.",
+          },
+          {
+            item: "Depth should follow consequence.",
+            detail:
+              "A spam filter and a credit decisioning model do not deserve the same scrutiny. Rank the uses by what a wrong output costs, then spend the effort at the top of that list and accept a light touch at the bottom.",
+          },
+          {
+            item: "Start where you are weakest and most exposed.",
+            detail:
+              "Those are often two different functions. A low Map score usually matters more than a low Measure score, because measuring an estate you have not listed is not possible.",
+          },
+          {
+            item: "Write down what you have decided not to do.",
+            detail:
+              "Accepted risk is a legitimate position and the framework treats it as one. Unrecorded accepted risk turns into an argument about what everyone thought had been agreed, usually at the worst moment.",
+          },
+        ],
+      },
+    ]),
+    whyItMatters: [
+      "The commercial reason arrives before the regulatory one. Customer questionnaires, insurance renewals and enterprise procurement reviews have all started asking where AI touches a supplier's process, and a growing number of them borrow this vocabulary because it is the one available. A company that can answer in a week looks different from one that needs a month.",
+      "The framework is also the most portable thing in this space. The EU AI Act applies where it applies. The DPDP Act governs personal data. ISO/IEC 42001 costs money and takes an auditor. The four functions cost nothing, apply anywhere and give you a structure that still makes sense when the law you are subject to changes.",
+      "That is worth holding on to while NIST revises the framework. The wording will move. The questions of who answers for this, what are we running, would we know if it broke and what happens when it does are the same questions in every version, and they are the same questions your customers are asking.",
+    ],
+    contextualLink: {
+      before:
+        "Turning a completed profile into a working control set, with named owners, a review rhythm and a route into procurement, is",
+      anchor: "AI governance and adoption",
+      href: "/services/ai-governance-and-adoption",
+      after: " work.",
+    },
+    faqs: [
+      {
+        question: "Is the NIST AI RMF mandatory for us?",
+        answer:
+          "No. It is voluntary, it is issued by a United States agency, and no regulator anywhere requires it of a private company. It reaches most organisations commercially rather than legally, through customer questionnaires, insurance renewals and procurement reviews that borrow its vocabulary because there is no widely used alternative.",
+      },
+      {
+        question: "Is there a NIST AI RMF 2.0?",
+        answer:
+          "Not as at September 2026. AI RMF 1.0 from January 2023 is still the core framework, and NIST has said a revision is in progress. What confuses a search is that NIST extends the framework through Profiles rather than version numbers. The Generative AI Profile, NIST AI 600-1 from July 2024, is the document people usually mean when they ask about a newer version.",
+      },
+      {
+        question: "Should we do NIST AI RMF or ISO/IEC 42001?",
+        answer:
+          "They do different jobs. The AI RMF gives you a risk taxonomy and a shared vocabulary, costs nothing and produces no certificate. ISO/IEC 42001 is a certifiable management system standard, which is what you need when a customer wants proof rather than a statement. Organisations that have to demonstrate something to a third party usually end up with both, using NIST to work out what to do and ISO to prove they did it.",
+      },
+      {
+        question: "We operate in India. Does any of this apply to us?",
+        answer:
+          "Not as law. Your binding obligations on most AI uses come from the DPDP Act where personal data is involved, and from sector regulators where they have spoken. The framework still earns its place for two reasons. Questionnaires from European and American customers arrive written in this language, and the underlying work of knowing what you run and who owns it is identical whichever rulebook you end up answering to.",
+      },
+    ],
+    sources: {
+      intro:
+        "Everything on this page is drawn from documents published by NIST rather than from secondary summaries, which is deliberate. The framework is being revised, and summaries age faster than the source does.",
+      items: [
+        {
+          label: "AI Risk Management Framework (AI RMF 1.0), NIST AI 100-1, January 2023",
+          href: "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf",
+          note: "The framework itself. The four functions and the trustworthiness characteristics are here.",
+        },
+        {
+          label: "NIST AI Risk Management Framework programme page",
+          href: "https://www.nist.gov/itl/ai-risk-management-framework",
+          note: "The page to check for current status, including the revision now in progress. Check this before quoting anything from the framework.",
+        },
+        {
+          label: "AI RMF Playbook",
+          href: "https://airc.nist.gov/airmf-resources/playbook/",
+          note: "Suggested actions and documentation practices for each subcategory. NIST has said it will be updated after the framework revision.",
+        },
+        {
+          label: "AI RMF Core: the four functions and their categories",
+          href: "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/",
+          note: "Where Govern, Map, Measure and Manage are broken down, and where the statement that Govern applies across all stages comes from.",
+        },
+        {
+          label: "AI RMF Profiles",
+          href: "https://airc.nist.gov/airmf-resources/airmf/6-sec-profile/",
+          note: "NIST's own description of what a Profile is. The workbook on this page is a starter profile in that sense.",
+        },
+        {
+          label: "Generative AI Profile, NIST AI 600-1, July 2024",
+          href: "https://doi.org/10.6028/NIST.AI.600-1",
+          note: "Applies the four functions to generative AI risk. The one to read if staff are using language models on real work.",
+        },
+        {
+          label: "Crosswalk documents",
+          href: "https://airc.nist.gov/airmf-resources/crosswalks/",
+          note: "NIST's formal mappings to other frameworks. Go here rather than to our crosswalk if you need a control level mapping.",
+        },
+        {
+          label: "Executive summary and revision notice, AI RMF 1.0",
+          href: "https://airc.nist.gov/airmf-resources/airmf/0-ai-rmf-1-0/",
+          note: "Source for the framework being voluntary and use case agnostic, and for the revision following the White House AI Action Plan of 23 July 2025.",
+        },
+        {
+          label: "Concept note: AI RMF Profile on Trustworthy AI in Critical Infrastructure, April 2026",
+          href: "https://www.nist.gov/programs-projects/concept-note-ai-rmf-profile-trustworthy-ai-critical-infrastructure",
+          note: "Relevant if you operate in energy, water, healthcare, transport or financial infrastructure.",
+        },
+      ],
+    },
+    resourceKey: "nist_ai_rmf_profile",
+    resourceCtaTitle: "Get the workbook",
+    resourceCtaBody:
+      "Receive the NIST AI RMF starter profile with twenty six rateable outcomes across the four functions, an owner and evidence field on every row, a summary that finds the gaps, and a crosswalk to the EU AI Act, ISO/IEC 42001 and the DPDP Act.",
+    relatedServices: [
+      { label: "AI governance and adoption", href: "/services/ai-governance-and-adoption" },
+      { label: "Implementation oversight", href: "/services/implementation-oversight" },
+      { label: "Integration", href: "/services/integration" },
+    ],
+    relatedInsights: [
+      {
+        label: "AI use case register",
+        href: "/insights/ai-use-case-register",
+        description: "The Map function as a working template",
+      },
+      {
+        label: "EU AI Act timeline",
+        href: "/regulatory-hub/eu-ai-act-in-scope-and-timeline",
+        description: "The obligations that are not voluntary",
+      },
+      {
+        label: "AI marketing readiness",
+        href: "/insights/ai-marketing-readiness",
+        description: "Where AI touches the funnel and who owns it",
+      },
+    ],
+  },
   "ai-use-case-register": {
     slug: "ai-use-case-register",
     title: "AI use case register template",
@@ -355,6 +664,11 @@ export const esgInsightPages: Record<string, EsgInsightPageConfig> = {
         label: "EU AI Act timeline",
         href: "/regulatory-hub/eu-ai-act-in-scope-and-timeline",
         description: "What applies now and what comes later",
+      },
+      {
+        label: "NIST AI RMF starter profile",
+        href: "/insights/nist-ai-rmf-starter-profile",
+        description: "The operating model this register feeds",
       },
       {
         label: "CRM governance checklist",

@@ -6,7 +6,8 @@ export type InsightResourceKey =
   | "ecovadis_evidence_matrix"
   | "steering_committee_charter"
   | "esg_tender_question_bank"
-  | "ai_use_case_register";
+  | "ai_use_case_register"
+  | "nist_ai_rmf_profile";
 
 export type InsightResource = {
   key: InsightResourceKey;
@@ -116,5 +117,17 @@ export const insightResources: Record<InsightResourceKey, InsightResource> = {
     attachmentName: "DS-Consulting-AI-Use-Case-Register-Template.xlsx",
     accentHex: "#4F46E5",
     notifySubject: "New lead: AI use case register template",
+  },
+  nist_ai_rmf_profile: {
+    key: "nist_ai_rmf_profile",
+    title: "NIST AI RMF starter profile",
+    shortLabel: "workbook",
+    description:
+      "A self assessment across the four functions of the NIST AI Risk Management Framework, with a rating scale, an owner and evidence field per outcome, a crosswalk to the EU AI Act, ISO/IEC 42001 and the DPDP Act, and every source linked back to NIST.",
+    filePath: "/downloads/nist-ai-rmf-starter-profile.xlsx",
+    fileName: "nist-ai-rmf-starter-profile.xlsx",
+    attachmentName: "DS-Consulting-NIST-AI-RMF-Starter-Profile.xlsx",
+    accentHex: "#4F46E5",
+    notifySubject: "New lead: NIST AI RMF starter profile",
   },
 };

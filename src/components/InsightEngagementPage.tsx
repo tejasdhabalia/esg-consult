@@ -166,6 +166,37 @@ export default function InsightEngagementPage({ config }: { config: EsgInsightPa
                 ))}
               </div>
             </div>
+
+            {/*
+              Optional primary source list. Added for the NIST AI RMF page,
+              where every claim on the page has to be traceable to a document
+              published by the standards body itself rather than to a summary.
+              Links open in a new tab and carry no tracking parameters, since
+              some of these are DOI resolvers that pass query strings through.
+            */}
+            {config.sources && (
+              <div className="mt-14 pt-10 border-t border-slate-200">
+                <h2 className="text-2xl font-bold text-slate-900 mb-4">Sources</h2>
+                {config.sources.intro ? (
+                  <p className="text-slate-600 leading-relaxed mb-6">{config.sources.intro}</p>
+                ) : null}
+                <ul className="space-y-5">
+                  {config.sources.items.map((source) => (
+                    <li key={source.href}>
+                      <a
+                        href={source.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-indigo-700 hover:text-indigo-800 underline underline-offset-4 font-medium text-sm"
+                      >
+                        {source.label}
+                      </a>
+                      <p className="text-sm text-slate-600 leading-relaxed mt-1">{source.note}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
 
           <div className="lg:col-span-1">
