@@ -160,28 +160,26 @@ export default function InsightResourceForm({ resourceKey, theme = "light" }: Pr
         </div>
 
         {status === "error" && errorMsg ? <p className={errorCls}>{errorMsg}</p> : null}
+
+        {/*
+          Consent notice. Rendered unconditionally: it describes what we do
+          with the address and must not depend on whether an unrelated
+          environment variable is set.
+        */}
+        <p className={helperCls}>
+          We use your email to send this document and to follow up once. We will not add you to a mailing
+          list. Held for 24 months. You can request a copy or deletion at any time from our{" "}
+          <a href="/privacy/request" className="underline underline-offset-2">data request page</a>.
+        </p>
+
         {!siteKey ? (
           <p className={helperCls}>
             reCAPTCHA is not configured yet. Add NEXT_PUBLIC_RECAPTCHA_SITE_KEY and RECAPTCHA_SECRET_KEY.
           </p>
         ) : (
-          <>
-            {/*
-              Consent has to be specific to the purpose, and the purpose here
-              is sending the document. Bundling a newsletter subscription into
-              a download is exactly the pattern the Act treats as invalid
-              consent, so this says plainly that we are not doing it.
-            */}
-            <p className={helperCls}>
-              We use your email to send this document and to follow up once about whether it was useful.
-              Nothing else, and no mailing list unless you ask for one. Kept for 24 months. Ask for a copy
-              or deletion any time at{" "}
-              <a href="/privacy/request" className="underline underline-offset-2">consult-ds.com/privacy/request</a>.
-            </p>
-            <p className={helperCls}>
-              Protected by reCAPTCHA. Google Privacy Policy and Terms of Service apply.
-            </p>
-          </>
+          <p className={helperCls}>
+            Protected by reCAPTCHA. Google Privacy Policy and Terms of Service apply.
+          </p>
         )}
 
         <button
@@ -192,7 +190,7 @@ export default function InsightResourceForm({ resourceKey, theme = "light" }: Pr
           {status === "loading" ? "Sending…" : `Get the ${resource.shortLabel}`}
         </button>
         <p className={`text-center text-xs ${isDark ? "text-slate-400" : "text-slate-400"}`}>
-          No spam. Unsubscribe any time.
+          No mailing list. No spam.
         </p>
       </form>
     </div>
