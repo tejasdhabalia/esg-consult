@@ -321,6 +321,17 @@ export default function AIReadinessTool() {
                   </div>
                   {email && !emailVal.ok && <p className="text-sm text-violet-200">{emailVal.message}</p>}
                   {emailStatus === "error" && emailError && <p className="text-sm text-violet-200">{emailError}</p>}
+                  {/* Consent copy. Same rule as the DPDP tool: an assessment
+                      collects answers as well as an email, so both are named. */}
+                  <p className="text-xs text-violet-300 leading-relaxed">
+                    We use your email to send this result and to follow up once. Your answers are
+                    self-reported, are never shared or sold, and help us see which questions people
+                    struggle with. Kept for 24 months. Ask for a copy or deletion any time at{" "}
+                    <a href="/privacy/request" className="underline underline-offset-2 hover:text-white">
+                      consult-ds.com/privacy/request
+                    </a>
+                    .
+                  </p>
                   <p className="text-xs text-violet-300">{!siteKey ? "reCAPTCHA not configured." : "Protected by reCAPTCHA. Google Privacy Policy and Terms of Service apply."}</p>
                 </div>
               )}

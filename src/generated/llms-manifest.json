@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-09-08T07:36:31.596Z",
-  "pageCount": 75,
+  "generatedAt": "2026-09-11T12:36:32.654Z",
+  "pageCount": 79,
   "pages": [
     {
       "route": "/",
@@ -143,6 +143,16 @@
       "source": "src\\app\\insights\\csrd-readiness-first-90-days\\page.tsx"
     },
     {
+      "route": "/insights/dpdp-exposure-assessment",
+      "url": "https://www.consult-ds.com/insights/dpdp-exposure-assessment",
+      "title": "DPDP exposure assessment",
+      "description": "Eighteen questions, five minutes, a straight read on where your business stands against India's DPDP obligations before they commence on 13 May 2027.",
+      "section": "insights",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\insights\\dpdp-exposure-assessment\\page.tsx"
+    },
+    {
       "route": "/insights/ecovadis-evidence-matrix",
       "url": "https://www.consult-ds.com/insights/ecovadis-evidence-matrix",
       "title": "EcoVadis evidence matrix",
@@ -265,12 +275,32 @@
     {
       "route": "/privacy",
       "url": "https://www.consult-ds.com/privacy",
-      "title": "Privacy policy",
-      "description": "How DS Consulting handles personal data, cookies and website analytics. Includes your rights and how to request access, correction or deletion.",
+      "title": "Privacy notice",
+      "description": "How DS Consulting collects and uses personal data, the basis for each use, how long it is kept, and how to exercise your rights.",
       "section": "legal",
       "priority": 0.3,
       "changeFrequency": "yearly",
       "source": "src\\app\\privacy\\page.tsx"
+    },
+    {
+      "route": "/privacy/request",
+      "url": "https://www.consult-ds.com/privacy/request",
+      "title": "Request your data",
+      "description": "Request a copy of your personal data, ask for it to be corrected or erased, withdraw consent, or raise a grievance.",
+      "section": "legal",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\privacy\\request\\page.tsx"
+    },
+    {
+      "route": "/privacy/subprocessors",
+      "url": "https://www.consult-ds.com/privacy/subprocessors",
+      "title": "Subprocessors",
+      "description": "Every third party that processes personal data on behalf of DS Consulting, what each one receives, and where it is processed.",
+      "section": "legal",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\privacy\\subprocessors\\page.tsx"
     },
     {
       "route": "/terms",
@@ -335,8 +365,8 @@
     {
       "route": "/regulatory-hub",
       "url": "https://www.consult-ds.com/regulatory-hub",
-      "title": "CSRD, BRSR and UK SECR regulatory hub",
-      "description": "Practical guides for CSRD and ESRS, SEBI BRSR and UK SECR and SRS reporting. Covers scoping, governance, evidence trails and repeatable reporting workflows.",
+      "title": "CSRD, BRSR, DPDP and UK SECR regulatory hub",
+      "description": "Practical guides for the EU AI Act, India's DPDP Act, CSRD and ESRS, SEBI BRSR and UK SECR and SRS. Covers scoping, commencement dates, governance and evidence trails.",
       "section": "regulatory",
       "priority": 0.85,
       "changeFrequency": "weekly",
@@ -381,6 +411,16 @@
       "priority": 0.8,
       "changeFrequency": "monthly",
       "source": "src\\app\\regulatory-hub\\csrd-in-scope-and-timeline\\page.tsx"
+    },
+    {
+      "route": "/regulatory-hub/dpdp-in-scope-and-timeline",
+      "url": "https://www.consult-ds.com/regulatory-hub/dpdp-in-scope-and-timeline",
+      "title": "India's DPDP Act: what commences when",
+      "description": "November 2026 is the consent manager framework, not the compliance deadline. The obligations that bind your business commence on 13 May 2027.",
+      "section": "regulatory",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\regulatory-hub\\dpdp-in-scope-and-timeline\\page.tsx"
     },
     {
       "route": "/regulatory-hub/eu-ai-act-in-scope-and-timeline",

@@ -176,9 +176,18 @@ export default function ChecklistDownloadForm({ checklistType = "csrd", theme = 
             reCAPTCHA is not configured yet. Add NEXT_PUBLIC_RECAPTCHA_SITE_KEY and RECAPTCHA_SECRET_KEY.
           </p>
         ) : (
-          <p className={helperCls}>
-            This form is protected by reCAPTCHA. Google Privacy Policy and Terms of Service apply.
-          </p>
+          <>
+            {/* See the note in InsightResourceForm. Same rule, same wording. */}
+            <p className={helperCls}>
+              We use your email to send this checklist and to follow up once about whether it was useful.
+              Nothing else, and no mailing list unless you ask for one. Kept for 24 months. Ask for a copy
+              or deletion any time at{" "}
+              <a href="/privacy/request" className="underline underline-offset-2">consult-ds.com/privacy/request</a>.
+            </p>
+            <p className={helperCls}>
+              Protected by reCAPTCHA. Google Privacy Policy and Terms of Service apply.
+            </p>
+          </>
         )}
         <button
           type="submit"

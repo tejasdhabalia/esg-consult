@@ -38,6 +38,8 @@ const EXCLUDED_ROUTES = new Set([
   '/industries/distribution-and-wholesale',
   '/industries/retail-and-d2c',
   '/partners/strategic-finance-partnership',
+  // Unlisted. Shared on request, noindex set in the page metadata.
+  '/privacy/subprocessors',
 ]);
 
 function walk(dir) {

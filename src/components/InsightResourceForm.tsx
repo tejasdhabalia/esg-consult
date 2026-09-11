@@ -165,9 +165,23 @@ export default function InsightResourceForm({ resourceKey, theme = "light" }: Pr
             reCAPTCHA is not configured yet. Add NEXT_PUBLIC_RECAPTCHA_SITE_KEY and RECAPTCHA_SECRET_KEY.
           </p>
         ) : (
-          <p className={helperCls}>
-            This form is protected by reCAPTCHA. Google Privacy Policy and Terms of Service apply.
-          </p>
+          <>
+            {/*
+              Consent has to be specific to the purpose, and the purpose here
+              is sending the document. Bundling a newsletter subscription into
+              a download is exactly the pattern the Act treats as invalid
+              consent, so this says plainly that we are not doing it.
+            */}
+            <p className={helperCls}>
+              We use your email to send this document and to follow up once about whether it was useful.
+              Nothing else, and no mailing list unless you ask for one. Kept for 24 months. Ask for a copy
+              or deletion any time at{" "}
+              <a href="/privacy/request" className="underline underline-offset-2">consult-ds.com/privacy/request</a>.
+            </p>
+            <p className={helperCls}>
+              Protected by reCAPTCHA. Google Privacy Policy and Terms of Service apply.
+            </p>
+          </>
         )}
 
         <button

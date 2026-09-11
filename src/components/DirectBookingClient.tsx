@@ -415,8 +415,24 @@ export default function DirectBookingClient() {
                 ))}
               </div>
             </div>
-            <p className="mb-5 text-xs text-slate-500">
+            <p className="mb-3 text-xs text-slate-500">
               A Google Meet link and calendar invitation will be sent to {email.trim()}.
+            </p>
+            {/*
+              DPDP consent copy, shown at the point of collection rather than
+              buried in a policy. Booking creates a Google Calendar event, so
+              the third party is named here rather than left to be discovered.
+            */}
+            <p className="mb-5 text-xs leading-relaxed text-slate-500">
+              We use your name and email to create this calendar event and to hold the call. Google
+              Calendar sends the invitation, so they receive those details too. We keep booking records
+              for 24 months. No mailing list, and nothing sold or shared. Ask for a copy or deletion any
+              time at{" "}
+              <a href="/privacy/request" className="underline underline-offset-2 hover:text-slate-700">
+                consult-ds.com/privacy/request
+              </a>
+              , or read our{" "}
+              <a href="/privacy" className="underline underline-offset-2 hover:text-slate-700">privacy notice</a>.
             </p>
             {submitError && <p className="mb-4 text-sm text-red-600">{submitError}</p>}
             <button

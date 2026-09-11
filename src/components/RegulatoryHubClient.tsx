@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 
 export type RegulatoryCategory =
   | "EU AI Act"
+  | "India DPDP"
   | "CSRD"
   | "BRSR"
   | "UK SECR and SRS";
@@ -33,6 +34,7 @@ export default function RegulatoryHubClient({
   const categories: Array<RegulatoryCategory | "All"> = [
     "All",
     "EU AI Act",
+    "India DPDP",
     "CSRD",
     "BRSR",
     "UK SECR and SRS",

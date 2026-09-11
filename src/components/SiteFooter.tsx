@@ -111,6 +111,16 @@ export default function SiteFooter() {
                 Privacy
               </Link>
             </li>
+            {/*
+              The Rules expect the route to exercise rights to be easy to
+              find, so it sits in the footer on every page rather than only
+              inside the privacy notice.
+            */}
+            <li>
+              <Link href="/privacy/request" className="hover:text-white">
+                Request your data
+              </Link>
+            </li>
             <li>
               <Link href="/terms" className="hover:text-white">
                 Terms

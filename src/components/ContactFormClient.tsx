@@ -374,8 +374,24 @@ export default function ContactFormClient() {
               Next: choose a time →
             </button>
 
+            {/*
+              DPDP consent copy. Three things it has to do: name the specific
+              purpose, be separate from any other agreement, and show the way
+              out. Vague reassurance is not consent.
+            */}
+            <p className="text-xs text-slate-500 leading-relaxed text-center max-w-md mx-auto">
+              We use your name, email, company and message to answer this enquiry and nothing else. We do
+              not add you to a mailing list from here, and we do not sell or share your details. We keep
+              enquiries for 24 months. You can ask for a copy or ask us to delete it at any time, without
+              giving a reason, at{" "}
+              <a href="/privacy/request" className="underline underline-offset-2 hover:text-slate-700">
+                consult-ds.com/privacy/request
+              </a>
+              . Full detail in our{" "}
+              <a href="/privacy" className="underline underline-offset-2 hover:text-slate-700">privacy notice</a>.
+            </p>
             <p className="text-xs text-slate-400 text-center">
-              This site is protected by reCAPTCHA. Google Privacy Policy and Terms of Service apply.
+              Protected by reCAPTCHA. Google Privacy Policy and Terms of Service apply.
             </p>
           </div>
         </div>

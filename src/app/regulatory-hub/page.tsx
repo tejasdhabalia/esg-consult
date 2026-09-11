@@ -6,9 +6,9 @@ import { absUrl } from "@/lib/url";
 import { pageMetadata } from "@/lib/page-metadata";
 
 export const metadata = pageMetadata({
-  title: "CSRD, BRSR and UK SECR regulatory hub",
+  title: "CSRD, BRSR, DPDP and UK SECR regulatory hub",
   description:
-    "Practical guides for CSRD and ESRS, SEBI BRSR and UK SECR and SRS reporting. Covers scoping, governance, evidence trails and repeatable reporting workflows.",
+    "Practical guides for the EU AI Act, India's DPDP Act, CSRD and ESRS, SEBI BRSR and UK SECR and SRS. Covers scoping, commencement dates, governance and evidence trails.",
   path: "/regulatory-hub",
 });
 
@@ -26,6 +26,19 @@ export default function RegulatoryHubPage() {
       readTime: "7 min read",
       updated: "Aug 2026",
     },
+    // India DPDP
+    {
+      slug: "dpdp-in-scope-and-timeline",
+      category: "India DPDP",
+      title: "India's DPDP Act: what commences when",
+      summary:
+        "The three commencement phases, why November 2026 is not the deadline most commentary says it is, and what actually binds you from 13 May 2027.",
+      topics: ["DPDP Act", "Timeline", "Scope", "Penalties"],
+      audience: "CEO, CFO, Legal, Technology lead",
+      readTime: "8 min read",
+      updated: "Sep 2026",
+    },
+
     // CSRD foundations
     {
       slug: "what-is-csrd",
@@ -163,7 +176,7 @@ export default function RegulatoryHubPage() {
     <div>
       <PageHero
         title="Regulatory hub"
-        subtitle="Searchable guides for CSRD and ESRS, SEBI BRSR, and UK SECR and SRS reporting. Built for leaders who need scoping clarity, governance, evidence trails, and repeatable reporting workflows."
+        subtitle="Searchable guides for the EU AI Act, India's DPDP Act, CSRD and ESRS, SEBI BRSR, and UK SECR and SRS. Built for leaders who need scoping clarity, commencement dates, governance and evidence trails."
         primaryAction={{ label: "ESG advisory services", href: "/services/esg-advisory" }}
         secondaryAction={{ label: "Talk to us", href: "/contact" }}
         note="Note: We do not provide statutory audit or assurance."

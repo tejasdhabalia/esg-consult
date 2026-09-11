@@ -1,6 +1,6 @@
 export type SiteInsightItem = {
   slug: string;
-  category: "AI" | "Marketing" | "ESG";
+  category: "AI" | "Data protection" | "Marketing" | "ESG";
   title: string;
   summary: string;
   topics: string[];
@@ -13,6 +13,18 @@ export type SiteInsightItem = {
 export const allInsights: SiteInsightItem[] = [
   // Newest first. This registry is what /insights renders; adding a page
   // under src/app/insights does not put it on the hub.
+  {
+    slug: "dpdp-exposure-assessment",
+    category: "Data protection",
+    title: "DPDP exposure assessment",
+    summary:
+      "Eighteen questions across notice and consent, rights, breach readiness, retention, children's data and vendors. Scored against what India's DPDP framework requires when the substantive obligations commence on 13 May 2027.",
+    topics: ["DPDP Act", "Data protection", "Consent", "Breach readiness"],
+    audience: "CEO, CFO, COO, Legal, Technology lead",
+    readTime: "Interactive tool",
+    updated: "Sep 2026",
+    updatedAt: "2026-09-11",
+  },
   {
     slug: "nist-ai-rmf-starter-profile",
     category: "AI",
