@@ -171,9 +171,9 @@ export default function DpdpExposureAssessmentPage() {
               <div className="space-y-3 mt-6">
                 {[
                   { label: "Notice and consent", weight: "20 pts", color: "bg-indigo-100 text-indigo-700", desc: "Standalone notice, itemised purposes, affirmative consent, working withdrawal" },
-                  { label: "Data principal rights", weight: "15 pts", color: "bg-slate-100 text-slate-700", desc: "Access, correction and erasure, and a named owner for requests" },
+                  { label: "Data principal rights", weight: "15 pts", color: "bg-slate-100 text-slate-700", desc: "Access, correction and erasure, and a published grievance contact" },
                   { label: "Breach readiness", weight: "20 pts", color: "bg-red-100 text-red-700", desc: "Written response plan, detection speed, and whether it has ever been tested" },
-                  { label: "Retention and erasure", weight: "10 pts", color: "bg-slate-100 text-slate-700", desc: "Defined retention periods, and a process that actually deletes" },
+                  { label: "Retention, logs and erasure", weight: "10 pts", color: "bg-slate-100 text-slate-700", desc: "Defined retention periods, and a year of logs you could reconstruct an incident from" },
                   { label: "Children's data", weight: "10 pts", color: "bg-amber-100 text-amber-700", desc: "Verifiable parental consent, and no targeted advertising to minors" },
                   { label: "Vendors and accountability", weight: "25 pts", color: "bg-red-100 text-red-700", desc: "DPDP terms in processor contracts, and someone designated as responsible" },
                 ].map(({ label, weight, color, desc }) => (

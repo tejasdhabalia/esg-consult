@@ -113,12 +113,12 @@ const GAP_TEXT: Record<ScoreKey, string> = {
   easyWithdrawal: "No working withdrawal route. Withdrawal has to be as easy as giving consent, and processing has to stop after it.",
   canProduceData: "You could not produce a complete answer to an access request. The ninety day maximum is spent finding the data, not deciding what to do with it.",
   correctionErasure: "No documented process for correction or erasure. These are separate rights from access and need their own path.",
-  namedOwner: "Nobody is named as responsible for rights requests. A request with no owner becomes a request nobody answers.",
-  incidentPlan: "No written incident response plan for personal data breaches. Breach notification carries a ceiling of ₹200 crore and the clock starts when you become aware.",
+  namedOwner: "No published grievance officer or privacy contact. The Rules require the contact details of the person who answers questions about your processing to be published where people can find them, and this applies to every data fiduciary.",
+  incidentPlan: "No written incident response plan for personal data breaches. The clock starts when you become aware, not when you finish investigating: immediate intimation, then a detailed report to the regulator within 72 hours, and six hours to CERT-In where that applies.",
   wouldDetect: "You would not know quickly if personal data had been accessed without authorisation. You cannot notify a breach you have not detected.",
   ranDrill: "The breach process has never been tested, not even as a tabletop exercise. An untested plan is a document.",
   retentionPeriods: "No defined retention periods. Keeping everything indefinitely is the default state and it is not a defensible one.",
-  deletionWorks: "No working deletion process. Most organisations have a retention policy and no mechanism that actually deletes.",
+  deletionWorks: "Logs are not retained for a year, or could not reconstruct an incident. One year of logs and traffic data sits inside the security safeguards duty, which carries the highest ceiling in the Schedule at 250 crore.",
   parentalConsent: "No verifiable parental consent where your product or marketing could reach someone under 18. This carries a ceiling of ₹200 crore.",
   noMinorTargeting: "You cannot confirm that marketing does not target minors. Targeted advertising to children is prohibited outright rather than restricted.",
   vendorContracts: "Vendor contracts do not carry DPDP obligations. Your processors hold your data, and accountability stays with you when they fail.",
@@ -211,13 +211,13 @@ const STEPS = [
     questions: [
       { key: "canProduceData", label: "If someone emailed asking what personal data you hold on them, could you produce a complete answer within a defined timeframe?", labels: ["Yes", "We would manage it manually", "No process exists"] },
       { key: "correctionErasure", label: "Do you have a documented process for correcting or erasing a person's data on request?" },
-      { key: "namedOwner", label: "Is there a named person or role responsible for handling these requests?", labels: ["Yes", "Informally", "No"] },
+      { key: "namedOwner", label: "Is there a named grievance officer or privacy contact published somewhere people can find it?", labels: ["Yes, published", "Named but not published", "No"] },
     ],
   },
   {
     id: "C",
     title: "Breach readiness",
-    intro: "Failure to notify a breach carries a ceiling of ₹200 crore. Failure to have taken reasonable safeguards carries ₹250 crore.",
+    intro: "On becoming aware you owe an immediate intimation and a detailed report to the regulator within 72 hours. Where CERT-In also applies, the first clock is six hours.",
     questions: [
       { key: "incidentPlan", label: "Do you have a written incident response plan naming who to notify and when, specifically for personal data breaches?" },
       { key: "wouldDetect", label: "Would you know, within hours, if personal data in one of your systems had been accessed without authorisation?", labels: ["Yes", "Probably not quickly", "No"] },
@@ -226,11 +226,11 @@ const STEPS = [
   },
   {
     id: "D",
-    title: "Retention and erasure",
-    intro: "A retention policy without a deletion mechanism is the commonest gap on this whole assessment.",
+    title: "Retention, logs and erasure",
+    intro: "Retention periods and the log trail that lets you prove what happened. Both sit behind the two highest penalties in the Schedule.",
     questions: [
       { key: "retentionPeriods", label: "Do you have defined retention periods for different categories of personal data, rather than keeping everything indefinitely?" },
-      { key: "deletionWorks", label: "Do you have a working process to actually delete data once its retention period ends?", labels: ["Yes", "Partially automated", "No"] },
+      { key: "deletionWorks", label: "Do you retain access and activity logs for at least a year, and could you actually reconstruct an incident from them?", labels: ["Yes", "We keep some logs", "No"] },
     ],
   },
   {
@@ -555,7 +555,15 @@ export default function DpdpExposureTool() {
               <p className="text-sm text-slate-600 leading-relaxed mb-3">
                 The obligations behind every question above commence on 13 May 2027, at the eighteen month
                 mark from the notification of the DPDP Rules 2025. November 2026 is the consent manager
-                framework and is not your deadline, whatever else you have read.
+                framework and is not your deadline, whatever else you have read. That leaves roughly eight
+                months.
+              </p>
+              <p className="text-sm text-slate-600 leading-relaxed mb-3">
+                One exemption worth raising if it applies to you. Where an Indian business processes the
+                personal data of people outside India under a contract with a company outside India, most of
+                the Act&rsquo;s obligations do not reach that work. If all your processing is outsourced
+                delivery for an overseas client, your real exposure may be narrower than this score
+                suggests. It is a boundary question rather than something a scored tool can settle.
               </p>
               <Link href="/regulatory-hub/dpdp-in-scope-and-timeline" className="text-sm font-semibold text-indigo-600 hover:underline">
                 The three commencement phases, set out in full →

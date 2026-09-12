@@ -191,7 +191,7 @@ const SCOPE = [
     badge: "ON DESIGNATION",
     badgeClass: "bg-red-100 text-red-800",
     description:
-      "Designated by the Central Government on volume, sensitivity and risk. Extra structural duties follow: an India-based DPO, impact assessments, independent audits and algorithmic due diligence.",
+      "Designated by the Central Government on volume, sensitivity and risk. Extra structural duties follow: an India-based DPO, annual impact assessments, annual independent audits and algorithmic due diligence.",
   },
   {
     name: "Consent managers",
@@ -222,9 +222,9 @@ const TIMELINE = [
 
 const OBLIGATIONS = [
   {
-    title: "Give a real notice",
+    title: "Give a real notice, in the right language",
     body:
-      "Standalone, separate from your terms of service, in plain language, with an itemised description of the personal data collected and the specific purpose for each. A privacy policy saying data is collected to improve the service does not satisfy this.",
+      "Standalone, separate from your terms of service, in plain language, with an itemised description of the personal data collected and the specific purpose for each. It must be available in English or any language in the Eighth Schedule to the Constitution. For a pan-India consumer product that is an operational commitment, not a footnote.",
   },
   {
     title: "Get consent that means something",
@@ -232,24 +232,29 @@ const OBLIGATIONS = [
       "Free, specific, informed, unconditional and unambiguous, given by a clear affirmative action. No pre-ticked boxes. No bundling with unrelated terms. Withdrawal must be as easy as giving it.",
   },
   {
-    title: "Answer rights requests",
+    title: "Answer rights requests, and publish who handles them",
     body:
-      "Access, correction, completion, updating, erasure, grievance redressal and nomination. The Rules set a maximum of ninety days to respond. Most of a first attempt is spent finding the data rather than deciding what to do with it.",
+      "Access, correction, completion, updating, erasure, grievance redressal and nomination. You must also publish the contact details of the person who answers questions about your processing. That applies to every data fiduciary, not only the large ones.",
   },
   {
-    title: "Report breaches to two audiences",
+    title: "Report breaches on two clocks",
     body:
-      "Affected individuals must be told promptly and in plain language: what happened, the likely consequences, what you have done about it and who to contact. The Data Protection Board of India must be informed as well.",
+      "On becoming aware, tell affected individuals and the Data Protection Board of India without delay, then file a detailed report with the Board within 72 hours. Awareness starts the clock, not the end of your investigation, and there is no materiality threshold: a breach affecting ten records carries the same duty as one affecting ten million.",
+  },
+  {
+    title: "Keep logs for a year",
+    body:
+      "Logs and traffic data retained for at least one year, so a breach can be reconstructed after the fact. This sits inside the security safeguards duty, which is why it is backed by the highest penalty in the Schedule rather than a lesser one.",
   },
   {
     title: "Set retention limits and honour them",
     body:
-      "A defined reason for how long you hold data, and a process that actually deletes it when the reason ends. Specified classes of e-commerce, social media and online gaming intermediary face a fixed retention limit, with advance notice to the individual before erasure.",
+      "A defined reason for how long you hold data, and a process that actually deletes it when the reason ends. Specified classes of large e-commerce, social media and online gaming intermediary face a three-year clock from last user engagement, with at least 48 hours notice to the individual before erasure.",
   },
   {
-    title: "Treat children's data as a separate problem",
+    title: "Treat children and vulnerable users as a separate problem",
     body:
-      "Verifiable parental consent before processing a child's data, with narrow exemptions for purposes such as healthcare, education and real-time safety. Tracking, behavioural monitoring and targeted advertising directed at children are prohibited.",
+      "Verifiable parental consent before processing a child's data, with narrow exemptions for purposes such as healthcare, education and real-time safety. Tracking, behavioural monitoring and targeted advertising directed at children are prohibited outright. The same verifiable consent standard applies through a lawful guardian for a person with a disability who cannot consent themselves.",
   },
 ];
 
@@ -409,6 +414,40 @@ export default function DpdpTimelinePage() {
               </div>
             </div>
 
+            {/* Lawful bases */}
+            <div>
+              <h2 className="text-xl font-bold text-slate-900 mb-4">Consent is not the only door in</h2>
+              <p className="text-slate-600 text-sm leading-relaxed mb-3">
+                Most explanations of this law read as though consent is the only lawful basis. It is not.
+                The Act sets out specific legitimate uses that permit processing without asking each time:
+                data a person voluntarily provided for a stated purpose and has not objected to, processing
+                needed to deliver a state benefit or service, compliance with a court order or a legal
+                obligation, and response to a medical emergency or a threat to public health.
+              </p>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                These are narrow and enumerated, not a general route around consent. They matter for the
+                ordinary case where a customer hands over a phone number to receive a delivery update, and
+                they are worth knowing before you build a consent flow around every interaction you have.
+              </p>
+            </div>
+
+            {/* Outsourcing exemption */}
+            <div>
+              <h2 className="text-xl font-bold text-slate-900 mb-4">If you process data for an overseas client</h2>
+              <p className="text-slate-600 text-sm leading-relaxed mb-3">
+                Worth knowing if you run BPO, ITeS, SaaS backend or any outsourced processing. Where an
+                Indian business processes the personal data of people outside India under a contract with
+                a company outside India, most of the Act&rsquo;s obligations do not apply to that work. The
+                notice, consent and rights machinery is exempted.
+              </p>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Two cautions. The exemption is scoped to that specific arrangement, so mixed operations
+                serving both Indian customers and overseas clients need the boundary drawn carefully and
+                documented. And your client&rsquo;s own obligations under their law, usually GDPR, reach you
+                through the contract whatever DPDP says.
+              </p>
+            </div>
+
             {/* Cross-border */}
             <div>
               <h2 className="text-xl font-bold text-slate-900 mb-4">Where the data can sit</h2>
@@ -459,10 +498,29 @@ export default function DpdpTimelinePage() {
                 ))}
               </div>
               <p className="text-xs text-slate-500 leading-relaxed mt-4">
-                Two points that matter more than the headline number. The ceilings attach per failure, so a
-                single incident handled badly can engage more than one line of the Schedule. And enforcement
-                runs exclusively through that regulator, so your exposure is regulatory rather than litigation
-                driven. There is no private right of action.
+                Three points that matter more than the headline number. The ceilings attach per failure, so
+                a single incident handled badly can engage more than one line of the Schedule. Enforcement
+                runs exclusively through that regulator, so your exposure is regulatory rather than
+                litigation driven. And penalties are paid into the Consolidated Fund of India rather than to
+                the person whose data was affected: the Act gives no compensation route through the Board.
+                Civil and consumer claims remain available, but they run through the ordinary courts rather
+                than through this law.
+              </p>
+            </div>
+
+            {/* CERT-In */}
+            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+              <h2 className="text-xl font-bold text-slate-900 mb-3">The clock most breach plans get wrong</h2>
+              <p className="text-slate-600 text-sm leading-relaxed mb-3">
+                DPDP is not the only reporting duty. The CERT-In Directions of April 2022 already require
+                specified cyber incidents to be reported within six hours of being noticed, and they require
+                ICT system logs to be maintained for 180 days within India.
+              </p>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                From May 2027 you are running two clocks on the same incident: six hours to CERT-In where the
+                incident is notifiable, and under DPDP an immediate intimation plus a detailed report to the
+                Data Protection Board of India within 72 hours. A response plan built to 72 hours alone is
+                already late on the first one.
               </p>
             </div>
 
