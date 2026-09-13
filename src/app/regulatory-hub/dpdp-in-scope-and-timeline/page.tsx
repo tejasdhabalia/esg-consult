@@ -448,6 +448,63 @@ export default function DpdpTimelinePage() {
               </p>
             </div>
 
+            {/* Employee and vendor data */}
+            <div>
+              <h2 className="text-xl font-bold text-slate-900 mb-4">It is not only customer data</h2>
+              <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                Most conversations about this law start and stay with customers, because that is where the
+                marketing team&rsquo;s data sits. Two other places carry as much exposure and get almost none
+                of the attention.
+              </p>
+
+              <h3 className="font-semibold text-slate-900 text-sm mb-2">HR and payroll</h3>
+              <p className="text-slate-600 text-sm leading-relaxed mb-3">
+                Employees are data principals. The Act gives employers a specific shortcut: employment
+                purposes, and safeguarding the employer from loss or liability, are a legitimate use that
+                does not require consent. That covers most of what payroll, attendance and performance
+                systems already do.
+              </p>
+              <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                It is not a blanket exemption. Security safeguards, accuracy, deletion when the purpose ends
+                and a published grievance contact all still apply. An HR system holding PAN numbers, bank
+                details, biometric attendance or insurance records attracts the same 72-hour clock and the
+                same penalty ceilings as a customer database. In practice it is often the least audited
+                store in the company, precisely because everyone assumes the employment relationship puts it
+                outside the law.
+              </p>
+
+              <h3 className="font-semibold text-slate-900 text-sm mb-2">Vendor and supplier files</h3>
+              <p className="text-slate-600 text-sm leading-relaxed mb-3">
+                Most of a vendor file is company data. A GSTIN, a bank account, a registered address: none of
+                that belongs to a natural person and none of it is in scope. But nearly every vendor file
+                also carries the name, phone number and email of the person you actually deal with, and KYC
+                documents for a proprietor or partner in a smaller firm. Legal and supply chain teams tend to
+                treat the whole file as a business record and miss the slice inside it.
+              </p>
+              <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                A freelancer or individual contractor paid with TDS deducted does not fit that pattern at
+                all. There is no company wrapper, so the entire record is personal data rather than a slice
+                of one. It is tempting to lean on the employment ground that covers payroll, but that ground
+                is written for employees and whether it stretches to someone not on your payroll is
+                genuinely unsettled rather than a safe default. Two other grounds hold up better: the
+                freelancer voluntarily provided the PAN and bank details for the specific purpose of being
+                paid, and retaining the records to meet TDS filing obligations is processing necessary to
+                comply with a law in force. Retention resolves the same way, because the default duty to
+                delete gives way where another law requires keeping.
+              </p>
+
+              <h3 className="font-semibold text-slate-900 text-sm mb-2">Vendors who process data for you</h3>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                A payroll bureau, a background verification firm, a recruitment platform, a logistics partner
+                handling delivery data. That is not a vendor record question, it is a processor question. The
+                Act makes you responsible for what happens to that data even though someone else&rsquo;s
+                system holds it, and it requires a real contract carrying security obligations equivalent to
+                your own rather than a purchase order that is silent on data. A well-drafted MSA signed
+                before this law existed usually says none of it, and renewal is the practical moment to fix
+                that.
+              </p>
+            </div>
+
             {/* Cross-border */}
             <div>
               <h2 className="text-xl font-bold text-slate-900 mb-4">Where the data can sit</h2>

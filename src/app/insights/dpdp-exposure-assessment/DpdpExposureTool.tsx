@@ -11,8 +11,9 @@ import { trackGenerateLead } from "@/lib/analytics";
 
   Scoring design, so nobody has to reverse engineer it later:
 
-  - Sixteen of the eighteen questions score, for 100 points total.
-  - Questions 16 and 17 (record volume, platform type) carry no points.
+  - Twenty of the twenty-two questions score, for 120 points available.
+    The headline number is a percentage of that, not a raw total.
+  - The record volume and platform type questions carry no points.
     They set the significant data fiduciary flag instead, because volume
     is not a readiness measure. A large company that has done the work is
     ready; a small one that has not is exposed.
@@ -71,6 +72,11 @@ interface DpdpData {
   // F. Vendors and accountability
   vendorContracts: Maybe;
   dataProtectionOwner: Maybe;
+  // G. Employee and vendor records
+  employeeBasis: Maybe;
+  hrCovered: Maybe;
+  vendorPersonalData: Maybe;
+  processorContracts: Maybe;
   // Profile, unscored
   volume: Volume | null;
   largePlatform: Maybe;
@@ -83,6 +89,7 @@ const DEFAULT: DpdpData = {
   retentionPeriods: null, deletionWorks: null,
   parentalConsent: null, noMinorTargeting: null,
   vendorContracts: null, dataProtectionOwner: null,
+  employeeBasis: null, hrCovered: null, vendorPersonalData: null, processorContracts: null,
   volume: null, largePlatform: null,
 };
 
@@ -93,6 +100,7 @@ const WEIGHTS: Record<keyof Omit<DpdpData, "volume" | "largePlatform">, number> 
   retentionPeriods: 6, deletionWorks: 4,
   parentalConsent: 5, noMinorTargeting: 5,
   vendorContracts: 15, dataProtectionOwner: 10,
+  employeeBasis: 4, hrCovered: 6, vendorPersonalData: 4, processorContracts: 6,
 };
 
 const CATEGORIES = [
@@ -102,6 +110,7 @@ const CATEGORIES = [
   { id: "D", name: "Retention and erasure", keys: ["retentionPeriods", "deletionWorks"] },
   { id: "E", name: "Children's data", keys: ["parentalConsent", "noMinorTargeting"] },
   { id: "F", name: "Vendors and accountability", keys: ["vendorContracts", "dataProtectionOwner"] },
+  { id: "G", name: "Employee and vendor records", keys: ["employeeBasis", "hrCovered", "vendorPersonalData", "processorContracts"] },
 ] as const;
 
 type ScoreKey = keyof typeof WEIGHTS;
@@ -123,6 +132,10 @@ const GAP_TEXT: Record<ScoreKey, string> = {
   noMinorTargeting: "You cannot confirm that marketing does not target minors. Targeted advertising to children is prohibited outright rather than restricted.",
   vendorContracts: "Vendor contracts do not carry DPDP obligations. Your processors hold your data, and accountability stays with you when they fail.",
   dataProtectionOwner: "Nobody is designated as responsible for data protection, even part time. Every other gap on this list needs an owner before it closes.",
+  employeeBasis: "No clear basis for the employee data you hold. Employment purposes, and protecting the employer from loss or liability, are a legitimate use that covers most of payroll, attendance and performance. Anything outside that, such as optional benefits or wellness programmes, still needs consent, and treating it all the same way means neither is defensible.",
+  hrCovered: "HR and payroll sit outside your security and breach process. An HR system holding PAN numbers, bank details, biometric attendance or insurance records is the same kind of target as a customer database, carries the same 72-hour clock and the same penalty ceiling, and is usually the least audited store in the company because everyone assumes employment puts it out of scope.",
+  vendorPersonalData: "Vendor and supplier files have not been checked for personal data. Most of a vendor file is company data and is not in scope, but the contact person's name, phone and email, and KYC for a proprietor or partner, are personal data carrying the same retention and access duties as anything customer-facing.",
+  processorContracts: "Vendors who process personal data for you are not under contracts carrying security obligations equivalent to your own. Section 8 requires that, and makes you responsible for what happens in their systems. An MSA signed before this law existed is almost always silent on it, and renewal is the practical moment to fix it.",
 };
 
 const SDF_NOTE =
@@ -155,8 +168,16 @@ function computeScores(d: DpdpData) {
     return { id: cat.id, name: cat.name, points: got, max, pct: Math.round((got / max) * 100) };
   });
 
+  /*
+    Category G took the available points from 100 to 120, so the headline
+    number is a percentage of what is available rather than a raw total.
+    The bands are percentages already, so nothing else moves. Category rows
+    keep showing raw points against their own maximum, which is what makes
+    the weighting visible.
+  */
   const points = categoryScores.reduce((sum, c) => sum + c.points, 0);
-  const overall = Math.round(points);
+  const maxPoints = categoryScores.reduce((sum, c) => sum + c.max, 0);
+  const overall = maxPoints > 0 ? Math.round((points / maxPoints) * 100) : 0;
 
   const band =
     overall >= 70 ? "On track" : overall >= 40 ? "Partial readiness" : "High exposure";
@@ -251,12 +272,28 @@ const STEPS = [
       { key: "dataProtectionOwner", label: "Do you currently have anyone designated as responsible for data protection compliance, even part time?", labels: ["Yes, formally", "Informally", "No"] },
     ],
   },
+  {
+    id: "G",
+    title: "Employee and vendor records",
+    intro: "The part most companies do not expect to be asked about. Employees and the people named in your supplier files are data principals too.",
+    questions: [
+      { key: "employeeBasis", label: "Do you have a clear basis for the employee data you hold, employment purposes for the operational things and actual consent for anything unrelated such as optional benefits, rather than treating it all the same?" },
+      { key: "hrCovered", label: "If an HR system holding PAN details, bank information, biometric attendance or health insurance data were breached, would your existing security and breach process cover it?", labels: ["Yes, HR is covered", "Not sure", "No, it runs separately and unaudited"] },
+      { key: "vendorPersonalData", label: "Have you checked which of your vendor and supplier files contain personal data, including freelancers and individual contractors paid with TDS deducted, and does that data get the same treatment as customer data?", labels: ["Yes", "We have not checked", "No"] },
+      { key: "processorContracts", label: "Where a vendor processes personal data on your behalf, such as payroll, background verification, recruitment or logistics, do those contracts carry security obligations equivalent to your own?" },
+    ],
+  },
 ] as const;
 
 /*
-  Questions 16 and 17 live on the last step but carry no points. They set
-  the significant data fiduciary flag. Keeping them unscored is deliberate:
-  holding a lot of records is not a readiness failure.
+  The record volume and platform type questions live on the last step but
+  carry no points. They set the significant data fiduciary flag. Keeping
+  them unscored is deliberate: holding a lot of records is not a readiness
+  failure.
+
+  VERIFY BEFORE PUBLISHING: the significant data fiduciary flag is
+  indicative only. The Central Government has not published designation
+  criteria, so this must never be worded as a determination.
 */
 
 export default function DpdpExposureTool() {
@@ -503,6 +540,23 @@ export default function DpdpExposureTool() {
                 cannot afford to get wrong.
               </p>
             </div>
+
+            {unlocked && s.sdfFlag === false && s.categoryScores.find((c) => c.id === "G" && c.pct < 50) && (
+              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5">
+                <h3 className="font-bold text-slate-900 mb-2">Two different problems inside your vendor files</h3>
+                <p className="text-sm text-slate-600 leading-relaxed mb-2">
+                  A company vendor file is mostly business data and out of scope, but the contact
+                  person&rsquo;s name, phone and email are personal data. The fix there is contact-detail
+                  hygiene: know which fields they are, and apply the same retention you apply elsewhere.
+                </p>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  A freelancer or individual contractor paid with TDS deducted is a different case. There
+                  is no company wrapper, so the entire record is personal data. The fix is a written legal
+                  basis and a retention note, not field hygiene. Do not assume the employment ground that
+                  covers payroll stretches to someone who is not on your payroll.
+                </p>
+              </div>
+            )}
 
             {unlocked && s.gaps.length > 0 && (
               <div className="bg-red-50 border border-red-200 rounded-2xl p-5">

@@ -27,7 +27,7 @@ import DpdpExposureTool from "./DpdpExposureTool";
 export const metadata = pageMetadata({
   title: "DPDP exposure assessment",
   description:
-    "Eighteen questions, five minutes, a straight read on where your business stands against India's DPDP obligations before they commence on 13 May 2027.",
+    "Twenty-two questions, six minutes, a straight read on where your business stands against India's DPDP obligations across customer, employee and vendor data.",
   path: "/insights/dpdp-exposure-assessment",
 });
 
@@ -121,8 +121,9 @@ export default function DpdpExposureAssessmentPage() {
             How exposed is your business under India&rsquo;s DPDP Act?
           </h1>
           <p className="text-lg text-indigo-200 max-w-2xl mb-8">
-            Eighteen questions across six areas, in under five minutes. You get a score, a breakdown by
-            area and your three biggest gaps named specifically rather than described in general terms.
+            Twenty-two questions across seven areas, in under six minutes. You get a score, a breakdown by
+            area and your three biggest gaps named specifically. It covers customer data, and also employee
+            and vendor records, which is where most companies do not expect to be asked.
           </p>
           <div className="flex items-center gap-4 text-sm text-indigo-300">
             <div className="flex items-center gap-2">
@@ -176,6 +177,7 @@ export default function DpdpExposureAssessmentPage() {
                   { label: "Retention, logs and erasure", weight: "10 pts", color: "bg-slate-100 text-slate-700", desc: "Defined retention periods, and a year of logs you could reconstruct an incident from" },
                   { label: "Children's data", weight: "10 pts", color: "bg-amber-100 text-amber-700", desc: "Verifiable parental consent, and no targeted advertising to minors" },
                   { label: "Vendors and accountability", weight: "25 pts", color: "bg-red-100 text-red-700", desc: "DPDP terms in processor contracts, and someone designated as responsible" },
+                  { label: "Employee and vendor records", weight: "20 pts", color: "bg-amber-100 text-amber-700", desc: "HR and payroll, supplier files, freelancers, and Section 8 processor contracts" },
                 ].map(({ label, weight, color, desc }) => (
                   <div key={label} className="flex items-start gap-4 bg-slate-50 border border-slate-200 rounded-xl p-4">
                     <div className={`text-xs font-bold px-2 py-1 rounded-full flex-shrink-0 ${color}`}>{weight}</div>

@@ -18,7 +18,7 @@ export const allInsights: SiteInsightItem[] = [
     category: "Data protection",
     title: "DPDP exposure assessment",
     summary:
-      "Eighteen questions across notice and consent, rights, breach readiness, retention and logs, children's data and vendors. Scored against what India's DPDP framework requires when the substantive obligations commence on 13 May 2027.",
+      "Twenty-two questions across notice and consent, rights, breach readiness, retention and logs, children's data, vendors, and the employee and supplier records most companies forget. Scored against what India's DPDP framework requires from 13 May 2027.",
     topics: ["DPDP Act", "Data protection", "Consent", "Breach readiness"],
     audience: "CEO, CFO, COO, Legal, Technology lead",
     readTime: "Interactive tool",

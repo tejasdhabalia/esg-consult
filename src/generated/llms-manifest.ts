@@ -1,5 +1,5 @@
 export const llmsManifest = {
-  "generatedAt": "2026-09-12T04:29:57.754Z",
+  "generatedAt": "2026-09-13T12:50:28.083Z",
   "pageCount": 79,
   "pages": [
     {
@@ -146,7 +146,7 @@ export const llmsManifest = {
       "route": "/insights/dpdp-exposure-assessment",
       "url": "https://www.consult-ds.com/insights/dpdp-exposure-assessment",
       "title": "DPDP exposure assessment",
-      "description": "Eighteen questions, five minutes, a straight read on where your business stands against India's DPDP obligations before they commence on 13 May 2027.",
+      "description": "Twenty-two questions, six minutes, a straight read on where your business stands against India's DPDP obligations across customer, employee and vendor data.",
       "section": "insights",
       "priority": 0.5,
       "changeFrequency": "monthly",
