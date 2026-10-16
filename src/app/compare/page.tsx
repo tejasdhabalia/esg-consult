@@ -7,7 +7,7 @@ import { pageMetadata } from "@/lib/page-metadata";
 export const metadata = pageMetadata({
   title: "Compare approaches and partners",
   description:
-    "Side-by-side comparisons to help leaders choose between approaches and partners on business systems, sustainability reporting and finance operations. Clarity, tradeoffs, next steps.",
+    "Side-by-side comparisons that help mid-market leaders choose between approaches and partners, with the tradeoffs and next steps set out plainly.",
   path: "/compare",
 });
 

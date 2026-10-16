@@ -9,13 +9,14 @@ import { pageMetadata } from "@/lib/page-metadata";
 export const metadata = pageMetadata({
   title: "Tech & AI, ESG, Finance and Market Entry",
   // Under 155 characters, or Google truncates it in results.
-  // Fourth area (sourcing and market entry) added October 2026. Flag back
-  // to the SEO project: title and description changed from Brief 3.
+  // Fourth area (sourcing and market entry) added October 2026. Title and
+  // description confirmed by the SEO project on 16 October 2026: "for
+  // Mid-Market" stays out of the title to keep it under 60 characters.
   // AI stays deliberately: "ai governance consulting" is the highest value
   // term available and the homepage description is prose, not a label.
   // Brief 3, Task 6 (SEO project).
   description:
-    "Close the gap between board strategy and system execution. Technology and AI, ESG systems, outsourced finance, and sourcing and market entry for India.",
+    "Close the gap between board strategy and system execution. Technology and AI, audit-ready ESG systems, outsourced finance and India market entry.",
   path: "/",
 });
 

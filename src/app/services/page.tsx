@@ -8,7 +8,7 @@ import { pageMetadata } from "@/lib/page-metadata";
 export const metadata = pageMetadata({
   title: "Services",
   description:
-    "What we do. Business systems covering commerce, ERP, CRM, integration and AI. ESG reporting. Outsourced finance. Sourcing and market entry for India.",
+    "Business systems covering commerce, ERP, CRM, integration and AI. ESG reporting. Outsourced finance. Overseas sourcing and India market entry.",
   path: "/services",
 });
 

@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-16T09:57:30.707Z",
+  "generatedAt": "2026-10-16T10:30:18.981Z",
   "pageCount": 80,
   "pages": [
     {
       "route": "/",
       "url": "https://www.consult-ds.com",
       "title": "Tech & AI, ESG, Finance and Market Entry",
-      "description": "Close the gap between board strategy and system execution. Technology and AI, ESG systems, outsourced finance, and sourcing and market entry for India.",
+      "description": "Close the gap between board strategy and system execution. Technology and AI, audit-ready ESG systems, outsourced finance and India market entry.",
       "section": "home",
       "priority": 1,
       "changeFrequency": "weekly",
@@ -46,7 +46,7 @@
       "route": "/compare",
       "url": "https://www.consult-ds.com/compare",
       "title": "Compare approaches and partners",
-      "description": "Side-by-side comparisons to help leaders choose between approaches and partners on business systems, sustainability reporting and finance operations. Clarity, tradeoffs, next steps.",
+      "description": "Side-by-side comparisons that help mid-market leaders choose between approaches and partners, with the tradeoffs and next steps set out plainly.",
       "section": "compare",
       "priority": 0.5,
       "changeFrequency": "monthly",
@@ -496,7 +496,7 @@
       "route": "/services",
       "url": "https://www.consult-ds.com/services",
       "title": "Services",
-      "description": "What DS Consulting does. Business systems covering commerce, ERP, CRM, integration and AI. ESG reporting. Outsourced finance. Sourcing and market entry for India.",
+      "description": "Business systems covering commerce, ERP, CRM, integration and AI. ESG reporting. Outsourced finance. Overseas sourcing and India market entry.",
       "section": "services",
       "priority": 0.9,
       "changeFrequency": "monthly",
@@ -765,7 +765,7 @@
     {
       "route": "/services/sourcing-and-market-entry",
       "url": "https://www.consult-ds.com/services/sourcing-and-market-entry",
-      "title": "Sourcing and market entry for India",
+      "title": "India market entry and overseas sourcing",
       "description": "We take overseas manufacturers to qualified Indian industrial buyers and help Indian firms qualify overseas suppliers. Samples, tenders and channel CRM.",
       "section": "services",
       "priority": 0.9,

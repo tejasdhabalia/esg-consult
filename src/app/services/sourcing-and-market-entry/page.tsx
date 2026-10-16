@@ -24,10 +24,14 @@ import { pageMetadata } from "@/lib/page-metadata";
 const pillar = pillars.find((item) => item.route === "/services/sourcing-and-market-entry")!;
 
 export const metadata = pageMetadata({
-  title: "Sourcing and market entry for India",
+  // Title leads with "India market entry", the stronger search term. Most
+  // visitors arrive from the email signature, so the OG image matters more
+  // than usual: mail clients and LinkedIn preview the link.
+  title: "India market entry and overseas sourcing",
   description:
     "We take overseas manufacturers to qualified Indian industrial buyers and help Indian firms qualify overseas suppliers. Samples, tenders and channel CRM.",
   path: "/services/sourcing-and-market-entry",
+  ogImage: "/og/sourcing.jpg",
 });
 
 export default function SourcingAndMarketEntryPillarPage() {
