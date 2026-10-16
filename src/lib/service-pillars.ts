@@ -1,12 +1,19 @@
 /**
- * Three pillars, with service lines beneath them.
+ * Four areas of work, with service lines beneath them.
  *
- * Replaces the flat list of six service lines. The pillars are how the firm
+ * Replaces the flat list of six service lines. The areas are how the firm
  * is described. The lines beneath are what gets sold and what has pages.
+ * Internal code still calls an area a "pillar". Never use that word, or
+ * "four pillars", in visitor-facing copy.
  *
  * `live` gates a link. False renders plain text instead, so the full
  * structure can be shown before every page exists. Never set it true for a
  * route that has no page, or the build ships a 404.
+ *
+ * A line's route may be an anchor on its own area hub, for example
+ * "/services/sourcing-and-market-entry#market-entry". PillarHub gives that
+ * card the matching id and drops its "Read more" link. Use this when the
+ * lines are described in full on the hub and do not need pages of their own.
  */
 
 export type ServiceLine = {
@@ -160,6 +167,45 @@ export const pillars: Pillar[] = [
           // the partner firm pays the referring advisor, DS Consulting takes
           // nothing for the introduction.
           "Referral commission paid by the partner firm. We take no fee for the introduction",
+        ],
+        live: true,
+      },
+    ],
+  },
+  {
+    route: "/services/sourcing-and-market-entry",
+    label: "Sourcing and market entry",
+    title: "Sourcing and market entry",
+    summary:
+      "Cross-border sourcing and India market entry. We take overseas manufacturers to qualified Indian buyers, find and qualify overseas suppliers for Indian companies, and build the systems that run the channel.",
+    rationale:
+      "A channel is a system before it is a relationship. Supplier records, sample status, qualification evidence and the buyer pipeline either live somewhere structured or they live in one person's inbox. That is why this work sits in a firm that builds CRM and reporting systems. On any piece of sourcing work we are paid by the company we act for, and manufacturers we contact for samples pay us nothing.",
+    live: true,
+    lines: [
+      {
+        route: "/services/sourcing-and-market-entry#market-entry",
+        label: "India market entry for overseas manufacturers",
+        summary:
+          "For manufacturers that want Indian industrial buyers and do not yet have a channel they trust. We work out where the product fits, take it through the buyer's qualification and make the introductions.",
+        bullets: [
+          "Buyer, indenting house and distributor mapping by sector",
+          "Sample and qualification management against Indian buyer specifications",
+          "Introductions to qualified buyers and channel partners",
+          "Tender and public procurement support",
+          "Location planning for factories, capability centres and retail stores",
+        ],
+        live: true,
+      },
+      {
+        route: "/services/sourcing-and-market-entry#overseas-sourcing",
+        label: "Overseas sourcing for Indian companies",
+        summary:
+          "For Indian manufacturers, distributors and indenting houses that need a new source, a second source or a supplier that can meet a tender specification. We find candidates, check they are real and run samples to a documented decision.",
+        bullets: [
+          "Supplier discovery across Asia, Europe and North America",
+          "Due diligence on capacity, certifications and export record",
+          "Sample requests, testing coordination and qualification records",
+          "CRM, supplier pipeline and reporting set up to run the channel",
         ],
         live: true,
       },

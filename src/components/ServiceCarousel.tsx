@@ -8,7 +8,7 @@ import { pillars } from "@/lib/service-pillars";
 const SLIDE_DURATION = 7000;
 
 /**
- * Auto-advancing carousel for the three service areas.
+ * Auto-advancing carousel for the service areas.
  *
  * Auto-advance is a hostile pattern if done carelessly, so this one:
  *   - pauses on hover, on keyboard focus, and when the browser tab is hidden

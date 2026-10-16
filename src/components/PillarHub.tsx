@@ -26,6 +26,16 @@ export type PillarHubProps = {
   signals: string[];
 
   faqs: PillarFaq[];
+
+  /**
+   * Optional override for the hero and "When to call us" call to action.
+   * Defaults to the assessment. Used where the reader is not a buyer of an
+   * assessment, for example a manufacturer arriving from sourcing outreach.
+   */
+  primaryAction?: { label: string; href: string };
+
+  /** Optional replacement for the line under "When to call us". */
+  signalsIntro?: string;
 };
 
 export default function PillarHub({
@@ -39,7 +49,11 @@ export default function PillarHub({
   problemParagraphs,
   signals,
   faqs,
+  primaryAction,
+  signalsIntro,
 }: PillarHubProps) {
+  const cta = primaryAction ?? { label: site.assessment.label, href: "/contact" };
+
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -89,7 +103,7 @@ export default function PillarHub({
       <PageHero
         title={heroTitle}
         subtitle={heroSubtitle}
-        primaryAction={{ label: site.assessment.label, href: "/contact" }}
+        primaryAction={cta}
         secondaryAction={{ label: "All services", href: "/services" }}
         note={heroNote}
         imageSrc={heroImage}
@@ -117,8 +131,20 @@ export default function PillarHub({
           <p className="mt-4 text-slate-600 max-w-3xl leading-relaxed">{pillar.rationale}</p>
 
           <div className="grid md:grid-cols-2 gap-6 mt-12">
-            {pillar.lines.map((line) => (
-              <div key={line.route} className="bg-white border rounded-2xl p-8">
+            {pillar.lines.map((line) => {
+              // A line whose route is an anchor on this hub is described in
+              // full here. Give the card the anchor id and no outbound link.
+              const anchorPrefix = `${pillar.route}#`;
+              const anchor = line.route.startsWith(anchorPrefix)
+                ? line.route.slice(anchorPrefix.length)
+                : undefined;
+
+              return (
+              <div
+                key={line.route}
+                id={anchor}
+                className="bg-white border rounded-2xl p-8 scroll-mt-24"
+              >
                 <h3 className="text-xl font-semibold text-slate-900">{line.label}</h3>
                 <p className="mt-3 text-sm text-slate-600 leading-relaxed">{line.summary}</p>
 
@@ -131,7 +157,7 @@ export default function PillarHub({
                   ))}
                 </ul>
 
-                {line.live ? (
+                {anchor ? null : line.live ? (
                   <Link
                     href={line.route}
                     className="mt-6 inline-block text-indigo-700 font-medium hover:text-indigo-800"
@@ -144,7 +170,8 @@ export default function PillarHub({
                   </div>
                 )}
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -156,14 +183,14 @@ export default function PillarHub({
             <div>
               <h2 className="text-2xl font-semibold text-slate-900">When to call us</h2>
               <p className="mt-3 text-slate-600 leading-relaxed">
-                Any one of these is enough. You do not need a defined project first, and the
-                assessment exists partly to work out whether there is one.
+                {signalsIntro ??
+                  "Any one of these is enough. You do not need a defined project first, and the assessment exists partly to work out whether there is one."}
               </p>
               <Link
-                href="/contact"
+                href={cta.href}
                 className="mt-7 inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium"
               >
-                {site.assessment.label}
+                {cta.label}
               </Link>
             </div>
 

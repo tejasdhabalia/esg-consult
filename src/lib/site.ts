@@ -12,7 +12,7 @@ export const site = {
   // Default SEO
   defaultTitle: "Technology consulting and delivery | DS Consulting",
   defaultDescription:
-    "Consulting and implementation for mid-market companies. Technology and AI, sustainability reporting and finance operations, scoped against the business case and built by the people who scoped it.",
+    "Consulting and implementation for mid-market companies. Technology and AI, sustainability reporting, finance operations, and sourcing and market entry, scoped against the business case and run by the people who scoped it.",
 
   /**
    * Positioning strings used across pages. Edit here, not in page files,
@@ -66,7 +66,7 @@ export const site = {
       // the interest disclosed rather than left to be discovered. Volunteering
       // it is what makes the software claim above credible. Do not restore
       // the absolute version.
-      "Our technology work is paid for by the client and nobody else. We hold an interest in the finance and accounting partner firm, and would rather you heard that from us.",
+      "Our technology and sourcing work is paid for by the client and nobody else. We hold an interest in the finance and accounting partner firm, and would rather you heard that from us.",
       "We still recommend software. You get the scoring behind the recommendation, not only the conclusion.",
     ],
     /**
@@ -111,7 +111,7 @@ export const site = {
      * Never use "three pillars" here. It is internal shorthand.
      */
     summary:
-      "Consulting and implementation firm for mid-market companies. DS Consulting understands the system and the business it has to run, where most firms are strong at one of those. Work covers three areas. Technology, spanning commerce and digital platforms, ERP systems, CRM and revenue operations, integration and AI governance and adoption. Sustainability, covering ESG and CSRD reporting systems. And finance and accounting outsourcing, where offshore delivery runs through a partner firm rather than DS Consulting staff and clients meet that team during scoping. The firm takes no commissions, referral fees, reseller margin or partner incentives from any software vendor. Technology work is paid for by the client. DS Consulting holds an interest in the finance and accounting partner firm and states this openly.",
+      "Consulting and implementation firm for mid-market companies. DS Consulting understands the system and the business it has to run, where most firms are strong at one of those. Work covers four areas. Technology, spanning commerce and digital platforms, ERP systems, CRM and revenue operations, integration and AI governance and adoption. Sustainability, covering ESG and CSRD reporting systems. Finance and accounting outsourcing, where offshore delivery runs through a partner firm rather than DS Consulting staff and clients meet that team during scoping. And sourcing and market entry, which takes overseas manufacturers to qualified Indian industrial buyers, helps Indian companies find and qualify overseas suppliers, and sets up the CRM and reporting that run the channel. The firm takes no commissions, referral fees, reseller margin or partner incentives from any software vendor. Technology and sourcing work is paid for by the client, and manufacturers contacted for samples pay nothing. DS Consulting holds an interest in the finance and accounting partner firm and states this openly.",
     mcpServerUrl: process.env.NEXT_PUBLIC_MCP_SERVER_URL || "",
     mcpTransport: process.env.NEXT_PUBLIC_MCP_TRANSPORT || "streamable-http",
   },

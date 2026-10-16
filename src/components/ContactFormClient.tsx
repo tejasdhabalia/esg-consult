@@ -326,6 +326,7 @@ export default function ContactFormClient() {
                 <option>AI governance and adoption</option>
                 <option>ESG and CSRD reporting</option>
                 <option>Finance and accounting outsourcing</option>
+                <option>Sourcing and market entry</option>
                 <option>Partnership</option>
               </select>
             </div>

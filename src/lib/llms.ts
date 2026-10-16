@@ -68,7 +68,7 @@ const FEATURED_REGULATORY_ROUTES = [
  */
 const aiSummary =
   site.ai?.summary ||
-  `${site.displayName} provides consulting and implementation for mid-market companies across three areas: technology, sustainability and ESG reporting, and finance and accounting outsourcing.`;
+  `${site.displayName} provides consulting and implementation for mid-market companies across four areas: technology, sustainability and ESG reporting, finance and accounting outsourcing, and sourcing and market entry.`;
 
 const mcpServerUrl = site.ai?.mcpServerUrl || "";
 const mcpTransport = site.ai?.mcpTransport || "streamable-http";
@@ -217,7 +217,7 @@ export function buildLlmsTxt() {
     `# ${site.displayName}`,
     `> ${aiSummary}`,
     "",
-    `${site.displayName} works across three areas: technology, covering commerce and digital platforms, ERP, CRM and revenue operations, integration and AI governance and adoption; sustainability, covering ESG and CSRD reporting systems; and finance and accounting outsourcing. Most engagements start with a fixed price assessment that produces a decision document rather than a proposal. The site carries service pages, regulatory explainers, interactive tools, practical checklists, comparison pages and downloadable resources, written for founders, CEOs, CFOs and functional heads at companies in a technology transition.`,
+    `${site.displayName} works across four areas: technology, covering commerce and digital platforms, ERP, CRM and revenue operations, integration and AI governance and adoption; sustainability, covering ESG and CSRD reporting systems; finance and accounting outsourcing; and sourcing and market entry, covering India market entry for overseas manufacturers and overseas supplier qualification for Indian companies. Most engagements start with a fixed price assessment that produces a decision document rather than a proposal. The site carries service pages, regulatory explainers, interactive tools, practical checklists, comparison pages and downloadable resources, written for founders, CEOs, CFOs and functional heads at companies in a technology transition.`,
     "",
     "Use this file as the fastest overview. Use llms-full.txt when you need the broader page index or machine-readable discovery endpoints.",
     "",

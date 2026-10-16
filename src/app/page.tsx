@@ -7,13 +7,15 @@ import { getLatestInsights } from "@/lib/insights";
 import { pageMetadata } from "@/lib/page-metadata";
 
 export const metadata = pageMetadata({
-  title: "Tech & AI, Sustainability & Finance for Mid-Market",
-  // 146 characters. Keep under 155 or Google truncates it in results.
+  title: "Tech & AI, ESG, Finance and Market Entry",
+  // Under 155 characters, or Google truncates it in results.
+  // Fourth area (sourcing and market entry) added October 2026. Flag back
+  // to the SEO project: title and description changed from Brief 3.
   // AI stays deliberately: "ai governance consulting" is the highest value
   // term available and the homepage description is prose, not a label.
   // Brief 3, Task 6 (SEO project).
   description:
-    "Close the gap between board strategy and system execution. Technology and AI, audit-ready ESG systems and outsourced finance for mid-market firms.",
+    "Close the gap between board strategy and system execution. Technology and AI, ESG systems, outsourced finance, and sourcing and market entry for India.",
   path: "/",
 });
 
@@ -40,6 +42,8 @@ const evidence = [
     source: "Everest Group, 2026",
   },
 ];
+
+const sourcing = pillars.find((item) => item.route === "/services/sourcing-and-market-entry")!;
 
 export default function HomePage() {
   const latestInsights = getLatestInsights(3);
@@ -83,15 +87,15 @@ export default function HomePage() {
         name: `What does ${site.displayName} do?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Three things for mid-market companies. We build and fix the business systems they run on, covering commerce platforms, ERP, CRM, integration and AI. We build sustainability and ESG reporting systems. And we provide outsourced finance and accounting teams.",
+          text: "Four things. We build and fix the business systems mid-market companies run on, covering commerce platforms, ERP, CRM, integration and AI. We build sustainability and ESG reporting systems. We provide outsourced finance and accounting teams. And we run sourcing and market entry between India and overseas manufacturers, from supplier qualification to buyer introductions.",
         },
       },
       {
         "@type": "Question",
-        name: "Why do you do all three?",
+        name: "Why do these sit in one firm?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "They meet in the finance function. A sustainability disclosure is a data problem before it is a reporting problem. An outsourced finance team is only as good as the systems it works in. And most technology projects are judged on numbers that come out of finance. Buying them from three firms is what creates the handoffs where things get lost.",
+          text: "Each one depends on the system underneath it. A sustainability disclosure is a data problem before it is a reporting problem. An outsourced finance team is only as good as the systems it works in. A sourcing channel is a pipeline before it is a relationship. And most technology projects are judged on numbers that come out of finance. Buying them from separate firms is what creates the handoffs where things get lost.",
         },
       },
       {
@@ -125,12 +129,12 @@ export default function HomePage() {
     <div>
       <PageHero
         title="Closing the gap between board strategy and system execution"
-        subtitle="We design and run the engine room for mid-market leaders: enterprise technology and AI integration, audit-ready ESG systems, and high-performing outsourced finance operations."
+        subtitle="We design and run the engine room for mid-market leaders: enterprise technology and AI integration, audit-ready ESG systems, outsourced finance operations, and sourcing channels between India and overseas manufacturers."
         painLine="High-level strategy often gets lost when translated into technical workflows and daily financial operations. We work right in the middle, so what the board approved is what actually gets built."
         primaryAction={{ label: site.assessment.label, href: "/contact" }}
         secondaryAction={{ label: "See what we do", href: "/services" }}
         imageSrc="/hero/home.jpg"
-        imageAlt="DS Consulting, technology, sustainability and finance operations"
+        imageAlt="DS Consulting, technology, sustainability, finance operations and sourcing"
       />
 
       {/* WHAT WE DO */}
@@ -138,15 +142,41 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-semibold">What we do</h2>
           <p className="mt-4 text-slate-600 max-w-3xl leading-relaxed">
-            Three kinds of work, and they are less separate than they look. A sustainability
+            Four kinds of work, and they are less separate than they look. A sustainability
             disclosure is a data problem before it is a reporting problem. An outsourced finance
-            team is only as good as the systems it works in. And a technology project is judged
-            on numbers that come out of finance.
+            team is only as good as the systems it works in. A sourcing channel is a pipeline
+            before it is a relationship. And a technology project is judged on numbers that come
+            out of finance.
           </p>
 
           <div className="mt-12">
             <ServiceCarousel />
           </div>
+
+          {/*
+            Direct route for overseas manufacturers arriving from sourcing
+            outreach. The carousel reaches this area on slide four, which is
+            too late for someone who clicked through from an email signature.
+          */}
+          <Link
+            href={sourcing.route}
+            className="group mt-8 flex flex-col gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-8 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg md:flex-row md:items-center md:justify-between"
+          >
+            <div>
+              <div className="text-xs font-semibold uppercase tracking-widest text-indigo-600">
+                For overseas manufacturers and Indian buyers
+              </div>
+              <h3 className="mt-3 text-xl font-semibold text-slate-900">{sourcing.title}</h3>
+              <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-600">
+                We take overseas manufacturers to qualified Indian industrial buyers, and help
+                Indian companies find and qualify overseas suppliers. Samples, qualification,
+                tenders and the CRM that runs the channel.
+              </p>
+            </div>
+            <div className="shrink-0 text-sm font-medium text-indigo-700 transition-transform duration-200 group-hover:translate-x-1">
+              How we work →
+            </div>
+          </Link>
         </div>
       </section>
 

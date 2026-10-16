@@ -28,6 +28,7 @@ const PRIORITY_OVERRIDES = {
   '/services/technology': { priority: 0.9, changeFrequency: 'monthly' },
   '/services/sustainability': { priority: 0.9, changeFrequency: 'monthly' },
   '/services/finance-and-accounting': { priority: 0.9, changeFrequency: 'monthly' },
+  '/services/sourcing-and-market-entry': { priority: 0.9, changeFrequency: 'monthly' },
   '/services/erp-systems': { priority: 0.9, changeFrequency: 'monthly' },
   '/services/commerce-and-digital-platforms': { priority: 0.9, changeFrequency: 'monthly' },
   '/services/ai-governance-and-adoption': { priority: 0.9, changeFrequency: 'weekly' },

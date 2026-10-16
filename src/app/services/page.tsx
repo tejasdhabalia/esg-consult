@@ -8,7 +8,7 @@ import { pageMetadata } from "@/lib/page-metadata";
 export const metadata = pageMetadata({
   title: "Services",
   description:
-    "What DS Consulting does for mid-market companies. Business systems covering commerce, ERP, CRM, integration and AI. Sustainability and ESG reporting. Outsourced finance and accounting teams.",
+    "What we do. Business systems covering commerce, ERP, CRM, integration and AI. ESG reporting. Outsourced finance. Sourcing and market entry for India.",
   path: "/services",
 });
 
@@ -28,10 +28,10 @@ export default function ServicesPage() {
     mainEntity: [
       {
         "@type": "Question",
-        name: "Why do technology, sustainability and finance operations sit in the same firm?",
+        name: "Why do these four kinds of work sit in the same firm?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Because they meet in the finance function. A sustainability disclosure is a data problem before it is a reporting problem. An outsourced finance team is only as good as the systems it works in. And most technology projects are judged on numbers that come out of finance.",
+          text: "Because each one depends on the system underneath it. A sustainability disclosure is a data problem before it is a reporting problem. An outsourced finance team is only as good as the systems it works in. A sourcing channel needs a supplier pipeline and qualification records, not an inbox. And most technology projects are judged on numbers that come out of finance.",
         },
       },
       {
@@ -48,6 +48,14 @@ export default function ServicesPage() {
         acceptedAnswer: {
           "@type": "Answer",
           text: "Offshore delivery runs through a partner firm rather than through our own staff, and you are introduced to the team during scoping. We remain accountable for the systems the function runs in. Our partner is a technology-agnostic offshoring firm rather than a software vendor, so this arrangement does not affect any recommendation we make.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do suppliers pay you on sourcing work?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No. We are paid by the company we act for. When we contact a manufacturer for samples on behalf of an Indian buyer or channel partner, the manufacturer pays us nothing, so no supplier payment decides which product qualifies.",
         },
       },
       {
@@ -80,13 +88,13 @@ export default function ServicesPage() {
   return (
     <div>
       <PageHero
-        title="Three kinds of work, one firm"
-        subtitle="Technology systems, sustainability reporting and finance operations. They meet in the finance function, which is why running them separately is where things get lost."
+        title="Four kinds of work, one firm"
+        subtitle="Technology systems, sustainability reporting, finance operations, and sourcing and market entry. Each one breaks the same way when the system underneath it is an afterthought, which is why we run them together."
         painLine={site.positioning.supporting}
         primaryAction={{ label: site.assessment.label, href: "/contact" }}
         secondaryAction={{ label: "Read our insights", href: "/insights" }}
         imageSrc="/hero/services.jpg"
-        imageAlt="DS Consulting services across technology, sustainability and finance"
+        imageAlt="DS Consulting services across technology, sustainability, finance and sourcing"
       />
 
       {pillars.map((pillar, index) => (

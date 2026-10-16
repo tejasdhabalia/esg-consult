@@ -1,12 +1,12 @@
 export const llmsManifest = {
-  "generatedAt": "2026-09-13T12:50:28.083Z",
-  "pageCount": 79,
+  "generatedAt": "2026-10-16T09:57:30.707Z",
+  "pageCount": 80,
   "pages": [
     {
       "route": "/",
       "url": "https://www.consult-ds.com",
-      "title": "Tech & AI, Sustainability & Finance for Mid-Market",
-      "description": "Close the gap between board strategy and system execution. Technology and AI, audit-ready ESG systems and outsourced finance for mid-market firms.",
+      "title": "Tech & AI, ESG, Finance and Market Entry",
+      "description": "Close the gap between board strategy and system execution. Technology and AI, ESG systems, outsourced finance, and sourcing and market entry for India.",
       "section": "home",
       "priority": 1,
       "changeFrequency": "weekly",
@@ -16,7 +16,7 @@ export const llmsManifest = {
       "route": "/about",
       "url": "https://www.consult-ds.com/about",
       "title": "About",
-      "description": "Why DS Consulting exists, who runs it, and how business systems, sustainability reporting and finance operations fit together in one firm.",
+      "description": "Why DS Consulting exists, who runs it, and how business systems, sustainability reporting, finance operations and sourcing fit together in one firm.",
       "section": "company",
       "priority": 0.75,
       "changeFrequency": "monthly",
@@ -496,7 +496,7 @@ export const llmsManifest = {
       "route": "/services",
       "url": "https://www.consult-ds.com/services",
       "title": "Services",
-      "description": "What DS Consulting does for mid-market companies. Business systems covering commerce, ERP, CRM, integration and AI. Sustainability and ESG reporting. Outsourced finance and accounting teams.",
+      "description": "What DS Consulting does. Business systems covering commerce, ERP, CRM, integration and AI. ESG reporting. Outsourced finance. Sourcing and market entry for India.",
       "section": "services",
       "priority": 0.9,
       "changeFrequency": "monthly",
@@ -761,6 +761,16 @@ export const llmsManifest = {
       "priority": 0.9,
       "changeFrequency": "monthly",
       "source": "src\\app\\services\\integration\\page.tsx"
+    },
+    {
+      "route": "/services/sourcing-and-market-entry",
+      "url": "https://www.consult-ds.com/services/sourcing-and-market-entry",
+      "title": "Sourcing and market entry for India",
+      "description": "We take overseas manufacturers to qualified Indian industrial buyers and help Indian firms qualify overseas suppliers. Samples, tenders and channel CRM.",
+      "section": "services",
+      "priority": 0.9,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\services\\sourcing-and-market-entry\\page.tsx"
     },
     {
       "route": "/services/sustainability",

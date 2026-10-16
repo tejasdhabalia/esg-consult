@@ -9,7 +9,7 @@ import { pageMetadata } from "@/lib/page-metadata";
 export const metadata = pageMetadata({
   title: "About",
   description:
-    "Why DS Consulting exists, who runs it, and how business systems, sustainability reporting and finance operations fit together in one firm.",
+    "Why DS Consulting exists, who runs it, and how business systems, sustainability reporting, finance operations and sourcing fit together in one firm.",
   path: "/about",
 });
 
@@ -65,10 +65,10 @@ export default function AboutPage() {
       },
       {
         "@type": "Question",
-        name: "What are the three areas you work in?",
+        name: "What kinds of work do you do?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Business systems, covering commerce platforms, ERP, CRM, integration and AI governance. Sustainability and ESG reporting systems. And outsourced finance and accounting teams. They meet in the finance function, which is why running them separately creates the handoffs where things get lost.",
+          text: "Four. Business systems, covering commerce platforms, ERP, CRM, integration and AI governance. Sustainability and ESG reporting systems. Outsourced finance and accounting teams. And sourcing and market entry between India and overseas manufacturers. Each depends on the system underneath it, which is why running them separately creates the handoffs where things get lost.",
         },
       },
       {
@@ -159,13 +159,14 @@ export default function AboutPage() {
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-semibold max-w-3xl">What we work on</h2>
           <p className="mt-5 text-slate-600 max-w-3xl leading-relaxed">
-            Three kinds of work, and they are less separate than they look. A sustainability
+            Four kinds of work, and they are less separate than they look. A sustainability
             disclosure is a data problem before it is a reporting problem. An outsourced finance
-            team is only as good as the systems it works in. And a technology project is judged
-            on numbers that come out of finance.
+            team is only as good as the systems it works in. A sourcing channel is a pipeline
+            before it is a relationship. And a technology project is judged on numbers that come
+            out of finance.
           </p>
 
-          <div className="grid md:grid-cols-3 gap-6 mt-12">
+          <div className="grid md:grid-cols-2 gap-6 mt-12">
             {pillars.map((pillar) => (
               <Link
                 key={pillar.route}

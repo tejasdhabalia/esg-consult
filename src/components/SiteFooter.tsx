@@ -32,7 +32,7 @@ export default function SiteFooter() {
               value term available.
             */}
             Consulting and implementation for mid-market companies. Technology,
-            sustainability reporting and finance operations.
+            sustainability reporting, finance operations, and sourcing and market entry.
           </p>
           <p className="text-slate-400 mt-3 leading-relaxed">
             {site.positioning.independenceShort}
