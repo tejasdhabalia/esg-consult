@@ -70,6 +70,15 @@ export default function ImplementationOversightPage() {
         "User acceptance testing is scheduled for two weeks, right at the end, and it has already been shortened once.",
         "The people running the build are not the people who sold the project.",
       ]}
+      callouts={[
+        {
+          eyebrow: "Already stalled?",
+          heading: "Finish the move you started",
+          body: "If the project went half live and two systems are still running, the work is recovery rather than oversight.",
+          href: "/migrations/implementation-recovery",
+          label: "Recovering a stalled project",
+        },
+      ]}
       faqs={[
         {
           question: "Does this make things adversarial with our implementation partner?",

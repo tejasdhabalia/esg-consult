@@ -154,6 +154,12 @@ export default function MarketingAutomationPage() {
               new CRM to what the business agreed.
             </p>
           </div>
+          <p className="mt-6 text-slate-600">
+            <Link href="/migrations/crm" className="text-indigo-700 underline underline-offset-2 hover:text-indigo-900">
+              See how we run a CRM switch
+            </Link>
+            , step by step.
+          </p>
         </div>
       </section>
       <section className="py-16 bg-indigo-50 border-y border-indigo-100">

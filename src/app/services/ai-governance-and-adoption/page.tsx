@@ -109,6 +109,22 @@ export default function AIGovernanceAndAdoptionPage() {
         "Licences are spread across several teams and nobody can total the AI spend or say what it produced.",
         "When an AI step gets something wrong in a live workflow, no one owns the correction, the audit trail or the rollback.",
       ]}
+      callouts={[
+        {
+          eyebrow: "The first step",
+          heading: "Get the data ready",
+          body: "Most AI plans wait on data spread across systems that do not talk to each other. Start there, before the governance.",
+          href: "/migrations/ai-ready-data",
+          label: "Getting your data AI-ready",
+        },
+        {
+          eyebrow: "Putting the plan into practice",
+          heading: "A forward deployed engineer for your AI plan",
+          body: "Someone to sit with your functional teams and make the CTO's plan land, on retainer or per project, without a full-time hire.",
+          href: "/services/forward-deployed-engineer",
+          label: "See the FDE service",
+        },
+      ]}
       relatedResources={[
         {
           href: "/insights/ai-use-case-register",

@@ -9,6 +9,7 @@ export default function PageHero({
   title,
   subtitle,
   painLine,
+  eyebrow,
   leadLine,
   primaryAction,
   secondaryAction,
@@ -19,6 +20,8 @@ export default function PageHero({
   title: string;
   subtitle: string;
   painLine?: string;
+  /** Optional label above the H1, e.g. the one-line offer on the FDE page. */
+  eyebrow?: string;
   /** Optional second paragraph directly under the subtitle. */
   leadLine?: string;
   primaryAction?: HeroAction;
@@ -37,7 +40,13 @@ export default function PageHero({
           <div className="md:col-span-7">
             <TaglineBadge />
 
-            <h1 className="mt-8 text-5xl font-bold leading-tight max-w-4xl">{title}</h1>
+            {eyebrow && (
+              <div className="mt-8 text-sm font-semibold uppercase tracking-widest text-indigo-300">
+                {eyebrow}
+              </div>
+            )}
+
+            <h1 className={`${eyebrow ? "mt-3" : "mt-8"} text-5xl font-bold leading-tight max-w-4xl`}>{title}</h1>
 
             <p className="mt-6 text-lg text-slate-300 max-w-4xl">{subtitle}</p>
 

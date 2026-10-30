@@ -113,7 +113,7 @@ export default function IntegrationPage() {
         {
           question: "Do you build the interfaces yourselves?",
           answer:
-            "Yes. The people who design the interfaces build and test them. That is the point of the design surviving into the build. Where we can build the interfaces ourselves, we tell you before the platform decision and share the full scoring, so you can see the recommendation doesn't depend on who builds it. You are free to use another builder.",
+            "Yes. The people who design the interfaces build and test them. That is the point of the design surviving into the build. Where we can build an interface ourselves, we say so before the design is agreed, and you are free to use another builder.",
         },
       ]}
     />

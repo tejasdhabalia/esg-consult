@@ -25,7 +25,7 @@ export default function TeamPage() {
           name: "Tejas Dhabalia",
           jobTitle: "Co-founder and Principal Consultant",
           description:
-            "Former mainframe engineer turned commercial operator. Works across systems selection, integration, CRM and revenue operations, and AI in operations, with prior experience at Deloitte, Tata, Tesco and Godrej.",
+            "Former mainframe engineer turned commercial operator. Works across systems selection, integration, CRM and revenue operations, and AI in operations, with prior experience at Deloitte, Tata, Tesco and Godrej. Acts as forward deployed engineer for clients' AI strategy.",
           worksFor: {
             "@type": "Organization",
             name: site.legalName,
@@ -103,7 +103,11 @@ export default function TeamPage() {
                     Systems selection, integration, CRM and revenue operations, and AI in
                     operations. Started in mainframe engineering, moved into commercial roles,
                     and has since run marketing operations and customer systems at scale across
-                    B2B and B2C. Previously at Deloitte, Tata, Tesco and Godrej.
+                    B2B and B2C. Previously at Deloitte, Tata, Tesco and Godrej. Acts as{" "}
+                    <Link href="/services/forward-deployed-engineer" className="text-indigo-700 underline underline-offset-2 hover:text-indigo-900">
+                      forward deployed engineer
+                    </Link>{" "}
+                    for clients&apos; AI strategy.
                   </div>
                   <div className="mt-4">
                     <a

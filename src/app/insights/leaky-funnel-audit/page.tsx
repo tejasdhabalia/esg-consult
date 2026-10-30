@@ -163,6 +163,13 @@ export default function LeakyFunnelAuditPage() {
                 The audit is designed to put a number on that cost and surface the largest gap first,
                 so leadership teams can sequence the fix rather than trying to remediate everything at once.
               </p>
+              <p className="text-slate-600 leading-relaxed">
+                If the leak traces back to a CRM nobody trusts, a{" "}
+                <Link href="/migrations/crm" className="text-indigo-700 hover:text-indigo-800 underline underline-offset-4">
+                  well-run CRM switch
+                </Link>{" "}
+                is the moment to fix the definitions underneath it.
+              </p>
             </div>
 
             <div className="mt-14 pt-10 border-t border-slate-200">

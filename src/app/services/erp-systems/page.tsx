@@ -75,6 +75,15 @@ export default function ErpSystemsPage() {
         "Change requests keep arriving and nobody can tell you what they add up to against the original business case.",
         "Month end close takes longer than it did two years ago.",
       ]}
+      callouts={[
+        {
+          eyebrow: "Coming from Tally?",
+          heading: "Outgrown Tally or spreadsheets",
+          body: "If your books are in Tally and your operations are in Excel, the move has its own risks: masters, opening balances and the processes that live in spreadsheets.",
+          href: "/migrations/tally-to-erp",
+          label: "Plan the move off Tally",
+        },
+      ]}
       faqs={[
         {
           question: "Do you have preferred ERP vendors?",

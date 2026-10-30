@@ -14,6 +14,7 @@ type ManifestPage = (typeof manifest.pages)[number];
 type SectionKey =
   | "home"
   | "services"
+  | "migrations"
   | "regulatory"
   | "insights"
   | "compare"
@@ -25,6 +26,7 @@ type SectionKey =
 const SECTION_LABELS: Record<SectionKey, string> = {
   home: "Overview",
   services: "Services",
+  migrations: "Migrations",
   regulatory: "Regulatory hub",
   insights: "Insights and tools",
   compare: "Comparison pages",
@@ -43,6 +45,8 @@ const FEATURED_ROUTE_ORDER = [
   "/services/crm-and-revenue-operations",
   "/services/integration",
   "/services/ai-governance-and-adoption",
+  "/services/forward-deployed-engineer",
+  "/migrations",
   "/services/sustainability",
   "/services/esg-advisory",
   "/services/finance-and-accounting",
@@ -230,6 +234,12 @@ export function buildLlmsTxt() {
     "## Services",
     ...renderAllServices(),
     "",
+    "## Migrations",
+    ...manifest.pages
+      .filter((page) => page.section === "migrations")
+      .sort(sortByHierarchy)
+      .map((page) => listItem(page)),
+    "",
     "## Regulatory hub",
     ...regulatoryPages.map((page) => listItem(page)),
     "",
@@ -275,6 +285,7 @@ export function buildLlmsFullTxt() {
   const sectionOrder: SectionKey[] = [
     "home",
     "services",
+    "migrations",
     "regulatory",
     "insights",
     "compare",

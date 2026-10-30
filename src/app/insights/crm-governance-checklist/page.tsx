@@ -58,7 +58,7 @@ const articleSchema = {
   publisher: { "@type": "Organization", name: site.legalName, url: site.baseUrl },
   url: absUrl("/insights/crm-governance-checklist"),
   datePublished: "2025-01-10",
-  dateModified: "2025-01-10",
+  dateModified: "2026-10-30",
 };
 
 const breadcrumbSchema = {
@@ -148,7 +148,7 @@ const CHECKLIST_SECTIONS = [
       },
       {
         item: "A quarterly audit of unused fields, inactive workflows, and orphaned records.",
-        detail: "CRM entropy compounds. Without scheduled cleanup, technical debt becomes a migration project within three years.",
+        detail: "CRM entropy compounds. Without scheduled cleanup, technical debt becomes a rebuild project within three years.",
       },
       {
         item: "A named admin owns the CRM change control process.",
@@ -241,7 +241,7 @@ export default function CRMGovernanceChecklistPage() {
               </div>
             </div>
             <span>·</span>
-            <span>10 January 2025</span>
+            <span>Updated 30 October 2026</span>
             <span>·</span>
             <span>12 min read</span>
           </div>
@@ -312,6 +312,13 @@ export default function CRMGovernanceChecklistPage() {
                   CRM governance and architecture
                 </Link>{" "}
                 work.
+              </p>
+              <p className="text-slate-600 leading-relaxed">
+                Planning to switch CRMs? Set this governance first, then{" "}
+                <Link href="/migrations/crm" className="text-indigo-700 hover:text-indigo-800 underline underline-offset-4">
+                  plan the switch
+                </Link>
+                , so the new system does not inherit the old arguments.
               </p>
             </div>
 

@@ -26,7 +26,7 @@ export const tejas: Author = {
   roleShort: "Co-founder, DS Consulting",
   imageSrc: "/team/tejas.jpg",
   linkedin: site.linkedin.tejas,
-  bio: "Former IBM mainframe engineer turned operator across Tata and Tata-Tesco. Works at the seam between systems, governance and commercial execution.",
+  bio: "Former IBM mainframe engineer turned operator across Tata and Tata-Tesco. Works at the seam between systems, governance and commercial execution. Acts as forward deployed engineer for clients' AI strategy.",
 };
 
 export const jigar: Author = {

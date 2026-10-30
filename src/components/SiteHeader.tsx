@@ -6,6 +6,16 @@ import { useEffect, useRef, useState } from "react";
 import { site } from "@/lib/site";
 import { liveServiceLines } from "@/lib/service-pillars";
 
+/**
+ * Ways of working that apply across the technology service lines. Added
+ * 30 October 2026 with the forward deployed engineer page (SEO answer 8).
+ */
+const WAYS_WE_WORK = [
+  { label: "Forward deployed engineer", href: "/services/forward-deployed-engineer" },
+  { label: "Systems selection", href: "/services/systems-selection" },
+  { label: "Implementation oversight", href: "/services/implementation-oversight" },
+];
+
 export default function SiteHeader() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -69,7 +79,7 @@ export default function SiteHeader() {
             </button>
 
             {servicesOpen && (
-              <div className="absolute left-0 top-full mt-3 w-[340px] max-w-[calc(100vw-2rem)] rounded-2xl border border-slate-200 bg-white p-3 shadow-lg">
+              <div className="absolute left-0 top-full mt-3 w-[400px] max-w-[calc(100vw-2rem)] rounded-2xl border border-slate-200 bg-white p-3 shadow-lg">
                 <div className="grid gap-1">
                   <Link
                     href="/services"
@@ -87,6 +97,20 @@ export default function SiteHeader() {
                       onClick={() => setServicesOpen(false)}
                     >
                       {line.label}
+                    </Link>
+                  ))}
+
+                  <div className="mt-2 border-t border-slate-100 px-4 pt-3 pb-1 text-xs font-semibold uppercase tracking-widest text-slate-400">
+                    Ways we work
+                  </div>
+                  {WAYS_WE_WORK.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="block rounded-xl px-4 py-3 font-medium text-slate-900 hover:bg-slate-50"
+                      onClick={() => setServicesOpen(false)}
+                    >
+                      {item.label}
                     </Link>
                   ))}
                 </div>
@@ -173,6 +197,20 @@ export default function SiteHeader() {
                       onClick={closeMobileMenu}
                     >
                       {line.label}
+                    </Link>
+                  ))}
+
+                  <div className="mt-2 border-t border-slate-200 px-3 pt-3 pb-1 text-xs font-semibold uppercase tracking-widest text-slate-400">
+                    Ways we work
+                  </div>
+                  {WAYS_WE_WORK.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="block rounded-lg px-3 py-2 font-medium text-slate-900 hover:bg-white"
+                      onClick={closeMobileMenu}
+                    >
+                      {item.label}
                     </Link>
                   ))}
                 </div>

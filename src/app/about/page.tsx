@@ -306,6 +306,13 @@ export default function AboutPage() {
                     That combination is the reason the firm looks the way it does. He has written
                     the code and he has owned the P&amp;L the code was supposed to move.
                   </div>
+                  <div className="mt-3 text-sm text-slate-600 leading-relaxed">
+                    He also acts as{" "}
+                    <Link href="/services/forward-deployed-engineer" className="text-indigo-700 underline underline-offset-2 hover:text-indigo-900">
+                      forward deployed engineer
+                    </Link>{" "}
+                    for clients&apos; AI strategy.
+                  </div>
 
                   <ul className="mt-4 text-sm text-slate-600 list-disc list-inside space-y-1">
                     <li>

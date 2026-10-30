@@ -82,6 +82,15 @@ export default function CommerceAndDigitalPlatformsPage() {
         "You are adding quick commerce and the replenishment planning was built for weekly cycles.",
         "Your commerce platform was chosen for the storefront and is now the accidental system of record for stock.",
       ]}
+      callouts={[
+        {
+          eyebrow: "Already chosen the platform?",
+          heading: "Moving your store",
+          body: "Orders, customer accounts, URLs and the feeds to the warehouse and marketplaces all have to come across. That is a move in its own right.",
+          href: "/migrations/ecommerce-migration",
+          label: "How we run a store move",
+        },
+      ]}
       faqs={[
         {
           question: "Do you build websites?",

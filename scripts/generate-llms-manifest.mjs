@@ -145,6 +145,8 @@ function sectionFromRoute(route) {
       return 'insights';
     case 'compare':
       return 'compare';
+    case 'migrations':
+      return 'migrations';
     case 'partners':
       return 'partners';
     case 'about':

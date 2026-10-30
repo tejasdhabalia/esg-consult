@@ -1,4 +1,5 @@
 import Link from "next/link";
+import PairCallout, { type PairCalloutProps } from "@/components/PairCallout";
 import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
@@ -36,6 +37,11 @@ export type PillarHubProps = {
 
   /** Optional replacement for the line under "When to call us". */
   signalsIntro?: string;
+  /**
+   * Optional links to matching move pages or the FDE page, shown under the
+   * problem section. SEO brief for Batches 3 and 4, 30 October 2026.
+   */
+  callouts?: PairCalloutProps[];
 };
 
 export default function PillarHub({
@@ -51,6 +57,7 @@ export default function PillarHub({
   faqs,
   primaryAction,
   signalsIntro,
+  callouts,
 }: PillarHubProps) {
   const cta = primaryAction ?? { label: site.assessment.label, href: "/contact" };
 
@@ -121,6 +128,13 @@ export default function PillarHub({
               </p>
             ))}
           </div>
+          {callouts && callouts.length > 0 && (
+            <div className="mt-10 grid gap-4">
+              {callouts.map((c) => (
+                <PairCallout key={c.href} {...c} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

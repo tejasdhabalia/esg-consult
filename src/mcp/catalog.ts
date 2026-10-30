@@ -5,6 +5,7 @@ import { site } from "@/lib/site";
 export const PAGE_SECTIONS = [
   "home",
   "services",
+  "migrations",
   "regulatory",
   "insights",
   "compare",

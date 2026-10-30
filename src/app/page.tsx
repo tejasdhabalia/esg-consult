@@ -216,6 +216,59 @@ export default function HomePage() {
               How we work →
             </div>
           </Link>
+
+          {/* FORWARD DEPLOYED ENGINEER. Heading confirmed by the SEO
+              project, 30 October 2026. */}
+          <Link
+            href="/services/forward-deployed-engineer"
+            className="group mt-6 flex flex-col gap-4 rounded-2xl border border-indigo-100 bg-indigo-50 p-8 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg md:flex-row md:items-center md:justify-between"
+          >
+            <div>
+              <div className="text-xs font-semibold uppercase tracking-widest text-indigo-600">
+                Without the full-time hire
+              </div>
+              <h3 className="mt-3 text-xl font-semibold text-slate-900">
+                Your forward deployed engineer for AI
+              </h3>
+              <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-600">
+                Your CTO has set the AI strategy. We embed with your functional teams, put the plan
+                into practice and check the strategy as it lands, on retainer or per project.
+              </p>
+            </div>
+            <div className="shrink-0 text-sm font-medium text-indigo-700 transition-transform duration-200 group-hover:translate-x-1">
+              How it works →
+            </div>
+          </Link>
+
+          {/* COMMON MOVES. SEO brief for Batches 3 and 4, 30 October 2026. */}
+          <div className="mt-10">
+            <div className="text-xs font-semibold uppercase tracking-widest text-slate-500">
+              Common moves
+            </div>
+            <div className="mt-4 flex flex-wrap gap-3">
+              {[
+                ["Outgrown Tally", "/migrations/tally-to-erp"],
+                ["Changing CRM", "/migrations/crm"],
+                ["A stalled move", "/migrations/implementation-recovery"],
+                ["Data for AI", "/migrations/ai-ready-data"],
+                ["Replatforming your store", "/migrations/ecommerce-migration"],
+              ].map(([label, href]) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:border-indigo-300 hover:text-indigo-700"
+                >
+                  {label}
+                </Link>
+              ))}
+              <Link
+                href="/migrations"
+                className="rounded-full px-4 py-2 text-sm font-medium text-indigo-700 hover:underline"
+              >
+                All moves →
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 

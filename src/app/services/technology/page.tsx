@@ -35,6 +35,22 @@ export default function TechnologyPillarPage() {
         "Staff are already using AI tools with company data and there is no policy covering it.",
         "Finance and sales report different numbers for the same thing and both are reading their own system correctly.",
       ]}
+      callouts={[
+        {
+          eyebrow: "Moves we plan",
+          heading: "Most technology work is a move",
+          body: "Off Tally, between CRMs, finishing a stalled move, getting data ready for AI or moving a store to a new platform.",
+          href: "/migrations",
+          label: "See the five moves",
+        },
+        {
+          eyebrow: "Forward deployed engineer",
+          heading: "Your forward deployed engineer for AI",
+          body: "When the CTO has set the AI strategy, Tejas Dhabalia embeds with your functional teams and makes it land, on retainer or per project.",
+          href: "/services/forward-deployed-engineer",
+          label: "How the FDE role works",
+        },
+      ]}
       faqs={[
         {
           question: "Do you implement, or only advise?",
