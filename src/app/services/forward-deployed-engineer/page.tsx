@@ -287,6 +287,16 @@ export default function ForwardDeployedEngineerPage() {
               Remote, on site or hybrid, in India, the UK, the US and elsewhere. The fee depends on
               the mix. This is not staff augmentation, and we do not supply engineers.
             </p>
+            <p>
+              Not sure whether you need this role or an implementation consultant?{" "}
+              <Link
+                href="/insights/forward-deployed-engineer-vs-implementation-consultant"
+                className={linkClass}
+              >
+                Read the comparison
+              </Link>
+              .
+            </p>
           </div>
         </div>
       </section>

@@ -14,6 +14,18 @@ export const allInsights: SiteInsightItem[] = [
   // Newest first. This registry is what /insights renders; adding a page
   // under src/app/insights does not put it on the hub.
   {
+    slug: "forward-deployed-engineer-vs-implementation-consultant",
+    category: "AI",
+    title: "Forward deployed engineer or implementation consultant",
+    summary:
+      "How each role puts an AI strategy into practice, a side-by-side comparison, and when to hire full-time, fractional or per project.",
+    topics: ["AI strategy", "Forward deployed engineer", "Implementation", "Operating model"],
+    audience: "CEO, CTO, COO, CFO",
+    readTime: "6 min read",
+    updated: "Oct 2026",
+    updatedAt: "2026-10-30",
+  },
+  {
     slug: "access-and-vendor-risk-checklist",
     category: "Data protection",
     title: "Access and vendor risk checklist",
