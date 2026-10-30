@@ -182,18 +182,6 @@ export const allInsights: SiteInsightItem[] = [
     updatedAt: "2026-03-05",
   },
   {
-    slug: "marketing-governance-model-for-automation",
-    category: "Marketing",
-    title: "The governance model behind marketing automation that actually scales",
-    summary:
-      "Why automation breaks as teams grow, and how to implement ownership, definitions, SLAs and change control that protects performance.",
-    topics: ["Governance", "Operating model", "SLAs", "Change control"],
-    audience: "CMO, CRO, RevOps, CEO",
-    readTime: "3 min read",
-    updated: "Feb 2026",
-    updatedAt: "2026-02-14",
-  },
-  {
     slug: "marketing-automation-maturity",
     category: "Marketing",
     title: "Marketing Automation Maturity Scorecard",

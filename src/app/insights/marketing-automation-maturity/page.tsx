@@ -185,6 +185,31 @@ export default function MarketingAutomationMaturityPage() {
                 Each governance item in this scorecard, change control, naming conventions, campaign ownership, SLAs,
                 is a forcing function that makes every tool you already own more reliable.
               </p>
+              {/* Merged from /insights/marketing-governance-model-for-automation,
+                  which now 301 redirects here. SEO brief, 30 October 2026. */}
+              <h3 className="text-lg font-bold text-slate-900">The governance model that keeps automation stable</h3>
+              <p className="text-slate-600 leading-relaxed">
+                The symptoms leaders see are consistent: routing breaks and follow-up SLAs drift, dashboards do not
+                reconcile with pipeline reality, journeys multiply without ownership, and personalisation starts to
+                feel random. Four pieces of governance stop it.
+              </p>
+              <div className="grid md:grid-cols-2 gap-4">
+                {[
+                  ["Stage definitions and entry rules", "Define lifecycle stages, entry and exit rules, required fields and ownership."],
+                  ["Routing and SLAs", "Document routing logic, SLAs, escalation rules and how exceptions are handled."],
+                  ["Change control", "A simple process to approve new fields, stages, journeys and metric changes."],
+                  ["Measurement governance", "Metric definitions that remain stable, plus a review cadence leaders trust."],
+                ].map(([t, d]) => (
+                  <div key={t} className="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                    <div className="font-semibold text-slate-900 text-sm">{t}</div>
+                    <div className="mt-2 text-sm text-slate-600 leading-relaxed">{d}</div>
+                  </div>
+                ))}
+              </div>
+              <p className="text-slate-600 leading-relaxed">
+                Start with a diagnostic across CRM governance, lifecycle definitions, routing and reporting logic.
+                Then fix the foundations before adding new automation.
+              </p>
               <p className="text-slate-600 leading-relaxed">
                 Putting that operating model in place across the systems that carry the pipeline, rather than inside
                 the marketing tool alone, is{" "}

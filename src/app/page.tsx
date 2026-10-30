@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import ServiceCarousel from "@/components/ServiceCarousel";
@@ -6,8 +7,8 @@ import { pillars } from "@/lib/service-pillars";
 import { getLatestInsights } from "@/lib/insights";
 import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = pageMetadata({
-  title: "Tech & AI, ESG, Finance and Market Entry",
+const homeMetadata = pageMetadata({
+  title: "DS Consulting: independent technology, AI and ESG delivery",
   // Under 155 characters, or Google truncates it in results.
   // Fourth area (sourcing and market entry) added October 2026. Title and
   // description confirmed by the SEO project on 16 October 2026: "for
@@ -16,9 +17,22 @@ export const metadata = pageMetadata({
   // term available and the homepage description is prose, not a label.
   // Brief 3, Task 6 (SEO project).
   description:
-    "Close the gap between board strategy and system execution. Technology and AI, audit-ready ESG systems, outsourced finance and India market entry.",
+    "Close the gap between board strategy and system execution. Tech and AI, ESG systems, outsourced finance, market entry. Free 45-minute working session.",
   path: "/",
 });
+
+// Title set by the SEO brief of 30 October 2026 to compete on the branded
+// query "ds consulting". It already starts with the firm name, so the
+// helper's " | DS Consulting" suffix is dropped. Finance and sourcing are
+// left out of the title deliberately (Tejas, 30 October 2026); they stay in
+// the description and the Organization schema.
+const HOME_TITLE = "DS Consulting: independent technology, AI and ESG delivery";
+export const metadata: Metadata = {
+  ...homeMetadata,
+  title: { absolute: HOME_TITLE },
+  openGraph: { ...homeMetadata.openGraph, title: HOME_TITLE },
+  twitter: { ...homeMetadata.twitter, title: HOME_TITLE },
+};
 
 
 /*
@@ -97,7 +111,9 @@ export default function HomePage() {
         })),
       })),
     },
-    sameAs: [site.linkedin.tejas, site.linkedin.jigar],
+    // Company profile first. Add Crunchbase and Clutch here as each profile
+    // goes live, with the same name, address and phone as the listing.
+    sameAs: [site.linkedin.company, site.linkedin.tejas, site.linkedin.jigar],
   };
 
   const faqSchema = {

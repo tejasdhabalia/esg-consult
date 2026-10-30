@@ -2,9 +2,11 @@ import ServiceLinePage from "@/components/ServiceLinePage";
 import { pageMetadata } from "@/lib/page-metadata";
 
 export const metadata = pageMetadata({
-  title: "Commerce and digital platforms",
+  // Title, description and H1 from the SEO brief for Batches 3 and 4,
+  // 30 October 2026. The helper appends " | DS Consulting".
+  title: "Ecommerce platform selection advisory",
   description:
-    "Ecommerce and D2C platform selection, build and replatforming. Channel inventory truth, order flow into finance and returns reconciliation for mid-market consumer businesses.",
+    "Independent ecommerce platform selection for retail, D2C and luxury brands. Free 45-minute session and a one-page move plan.",
   path: "/services/commerce-and-digital-platforms",
 });
 
@@ -13,7 +15,7 @@ export default function CommerceAndDigitalPlatformsPage() {
     <ServiceLinePage
       route="/services/commerce-and-digital-platforms"
       label="Commerce and digital platforms"
-      heroTitle="The storefront is where it starts, not where it ends"
+      heroTitle="Choose the commerce platform your next three years need"
       heroSubtitle="Websites, ecommerce and D2C platforms, built with the part most people leave out. Inventory truth across channels, order flow into finance, and the returns reconciliation nobody scopes until the margin has gone."
       heroImage="/hero/crm.jpg"
       heroImageAlt="Commerce and digital platform systems"

@@ -2,9 +2,11 @@ import ServiceLinePage from "@/components/ServiceLinePage";
 import { pageMetadata } from "@/lib/page-metadata";
 
 export const metadata = pageMetadata({
-  title: "ERP systems",
+  // Title, description and H1 from the SEO brief for Batches 3 and 4,
+  // 30 October 2026. The helper appends " | DS Consulting".
+  title: "ERP selection and migration advisory",
   description:
-    "ERP selection, delivery leadership and oversight for mid-market companies. Requirements, scored vendor comparison, data migration and cutover, from the Tally ceiling upward.",
+    "Independent ERP selection and migration advice for mid-market firms. Start with a free 45-minute session and leave with a one-page move plan.",
   path: "/services/erp-systems",
 });
 
@@ -13,7 +15,7 @@ export default function ErpSystemsPage() {
     <ServiceLinePage
       route="/services/erp-systems"
       label="ERP systems"
-      heroTitle="The ERP decision is cheap to get right and expensive to get wrong"
+      heroTitle="Choose the right ERP and move to it without surprises"
       heroSubtitle="Selection, then leading delivery so the build stays tied to the business case. We run the evaluation, you make the decision, and the same people are still there at cutover."
       heroImage="/hero/lifecycle.jpg"
       heroImageAlt="ERP selection and delivery leadership for mid-market companies"

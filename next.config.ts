@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
       {
         source: "/services/marketing-automation",
         destination: "/services/crm-and-revenue-operations",
-        permanent: true,
+        statusCode: 301,
       },
       // The three child pages move with it. ":slug" forwards whatever
       // follows, so crm-architecture-governance, lifecycle-lead-management
@@ -25,14 +25,14 @@ const nextConfig: NextConfig = {
       {
         source: "/services/marketing-automation/:slug",
         destination: "/services/crm-and-revenue-operations/:slug",
-        permanent: true,
+        statusCode: 301,
       },
       // AI service line renamed. The page now covers governance as well as
       // adoption, which is where the demand actually is.
       {
         source: "/services/ai-in-operations",
         destination: "/services/ai-governance-and-adoption",
-        permanent: true,
+        statusCode: 301,
       },
       // Two AI governance pages existed and were separately indexed, which
       // split authority between them. The service actually sold is "AI
@@ -45,7 +45,7 @@ const nextConfig: NextConfig = {
       {
         source: "/services/ai-governance",
         destination: "/services/ai-governance-and-adoption",
-        permanent: true,
+        statusCode: 301,
       },
       // Case studies page retired. Placeholder engagements were published
       // without named client permission, so the page was removed rather
@@ -53,7 +53,14 @@ const nextConfig: NextConfig = {
       {
         source: "/case-studies",
         destination: "/services",
-        permanent: true,
+        statusCode: 301,
+      },
+      // Thin governance page merged into the maturity scorecard.
+      // SEO brief, 30 October 2026.
+      {
+        source: "/insights/marketing-governance-model-for-automation",
+        destination: "/insights/marketing-automation-maturity",
+        statusCode: 301,
       },
     ];
   },

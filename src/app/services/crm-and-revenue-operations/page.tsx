@@ -6,9 +6,11 @@ import { pageMetadata } from "@/lib/page-metadata";
 import RelatedResources from "@/components/RelatedResources";
 
 export const metadata = pageMetadata({
-  title: "CRM and revenue operations",
+  // Title, description and H1 from the SEO brief for Batches 3 and 4,
+  // 30 October 2026. The helper appends " | DS Consulting".
+  title: "CRM and revenue operations consulting",
   description:
-    "CRM architecture, lifecycle definitions, marketing automation and revenue reporting, built so the numbers in the board pack match the numbers in the system.",
+    "CRM and revenue operations for mid-market teams: architecture, governance and reporting, including moves off spreadsheets or another CRM.",
   path: "/services/crm-and-revenue-operations",
 });
 
@@ -124,7 +126,7 @@ export default function MarketingAutomationPage() {
   return (
     <div>
       <PageHero
-        title="CRM and revenue operations"
+        title="Get your CRM and revenue reporting to agree"
         subtitle="Lifecycle definitions, CRM architecture and reporting that survives contact with the sales team. Built so the numbers in the board pack match the numbers in the system."
         primaryAction={{ label: site.movePlan.label, href: "/contact" }}
         secondaryAction={{ label: "Back to services", href: "/services" }}

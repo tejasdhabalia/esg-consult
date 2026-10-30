@@ -2,9 +2,11 @@ import ServiceLinePage from "@/components/ServiceLinePage";
 import { pageMetadata } from "@/lib/page-metadata";
 
 export const metadata = pageMetadata({
-  title: "Integration",
+  // Title, description and H1 from the SEO brief for Batches 3 and 4,
+  // 30 October 2026. The helper appends " | DS Consulting".
+  title: "Integration platform selection and migration",
   description:
-    "Systems integration for mid-market companies. Interface design across ERP, CRM and finance systems, middleware selection, data migration, error handling and reconciliation.",
+    "Independent integration platform advice, including moves off platforms that changed owners. Free 45-minute session and a one-page move plan.",
   path: "/services/integration",
 });
 
@@ -13,7 +15,7 @@ export default function IntegrationPage() {
     <ServiceLinePage
       route="/services/integration"
       label="Integration"
-      heroTitle="Systems that pass data to each other without a person in the middle"
+      heroTitle="Move your integrations without breaking what depends on them"
       heroSubtitle="Interface design across ERP, CRM, finance and operational systems. Middleware selection, data migration, and the error handling that nobody scopes until the night it matters."
       heroImage="/hero/revenue.jpg"
       heroImageAlt="Systems integration across ERP, CRM and finance platforms"

@@ -285,11 +285,6 @@ export const proposals: Record<string, SeoProposal> = {
       "Score your marketing automation against top-quartile benchmarks across data, platform, governance and attribution. Free interactive tool from DS Consulting.",
     isInteractiveTool: true,
   },
-  "/insights/marketing-governance-model-for-automation": {
-    title: "Marketing automation governance model",
-    description:
-      "Why marketing automation breaks as teams grow, and how governance with ownership, definitions, SLAs and change control protects performance.",
-  },
   "/insights/net-zero-roadmap-starter": {
     title: "Net zero roadmap starter",
     description:

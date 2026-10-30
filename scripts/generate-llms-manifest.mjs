@@ -61,7 +61,6 @@ const PRIORITY_OVERRIDES = {
   '/insights/csrd-readiness-first-90-days': { priority: 0.8, changeFrequency: 'monthly' },
   '/insights/crm-governance-checklist': { priority: 0.8, changeFrequency: 'monthly' },
   '/insights/leaky-funnel-audit': { priority: 0.8, changeFrequency: 'monthly' },
-  '/insights/marketing-governance-model-for-automation': { priority: 0.8, changeFrequency: 'monthly' },
   '/compare/ds-consulting-vs-generalist-agencies': { priority: 0.75, changeFrequency: 'monthly' },
   '/compare/in-house-vs-outsourced-crm-governance': { priority: 0.75, changeFrequency: 'monthly' },
   '/partners': { priority: 0.75, changeFrequency: 'monthly' },

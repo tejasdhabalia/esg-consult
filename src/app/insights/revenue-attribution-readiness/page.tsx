@@ -154,6 +154,16 @@ export default function RevenueAttributionReadinessPage() {
                 The reconciliation between CRM pipeline and finance revenue is the final step that most teams skip,
                 and the step that most directly determines whether marketing is treated as a cost centre or a growth function.
               </p>
+              <p className="text-slate-600 leading-relaxed">
+                Closing that loop between the CRM, the marketing platform and finance is the core of{" "}
+                <Link
+                  href="/services/crm-and-revenue-operations"
+                  className="text-indigo-700 hover:text-indigo-800 underline underline-offset-4"
+                >
+                  our CRM and revenue operations work
+                </Link>
+                .
+              </p>
             </div>
 
             <div className="mt-14 pt-10 border-t border-slate-200">
@@ -205,7 +215,7 @@ export default function RevenueAttributionReadinessPage() {
                   {[
                     { label: "Revenue Analytics",               href: "/services/crm-and-revenue-operations/revenue-analytics" },
                     { label: "CRM Architecture and Governance", href: "/services/crm-and-revenue-operations/crm-architecture-governance" },
-                    { label: "Marketing Automation Services",   href: "/services/crm-and-revenue-operations" },
+                    { label: "CRM and revenue operations",      href: "/services/crm-and-revenue-operations" },
                   ].map((link) => (
                     <Link key={link.href} href={link.href} className="block text-sm text-indigo-600 hover:underline">{link.label} →</Link>
                   ))}

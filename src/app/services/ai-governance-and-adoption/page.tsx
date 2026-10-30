@@ -23,9 +23,13 @@ import { pageMetadata } from "@/lib/page-metadata";
  */
 
 export const metadata = pageMetadata({
-  title: "AI governance and adoption",
+  // Title, description and H1 from the SEO brief for Batches 3 and 4,
+  // 30 October 2026. The helper appends " | DS Consulting".
+  // Target changed from "ai governance consulting", which the page does not
+  // rank for, to "ai and data governance consulting".
+  title: "AI and data governance consulting",
   description:
-    "AI governance and operational adoption for mid-market companies. Usage policy, human oversight, shadow AI discovery, EU AI Act transparency obligations and a defined path from pilot to production.",
+    "AI and data governance for mid-market firms: data readiness, use case registers and EU AI Act duties. Free 45-minute session and a one-page move plan.",
   path: "/services/ai-governance-and-adoption",
 });
 
@@ -41,7 +45,7 @@ export default function AIGovernanceAndAdoptionPage() {
     <ServiceLinePage
       route="/services/ai-governance-and-adoption"
       label="AI governance and adoption"
-      heroTitle="The pilot worked. That was never the hard part"
+      heroTitle="Get your data ready, then govern the AI built on it"
       heroSubtitle="Most AI work stalls between the pilot and the day job, and most policies were written before anyone read the regulation. We handle both ends: what to build, and what has to be true before it runs."
       heroImage="/hero/insights.jpg"
       heroImageAlt="AI governance and adoption for mid-market companies"
