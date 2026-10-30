@@ -1,0 +1,44 @@
+# IndexNow notification after each production deploy.
+# SEO brief for Batches 3 and 4, IndexNow section, 30 October 2026.
+#
+# Vercel reports every deployment back to GitHub. This runs only when a
+# Production deployment succeeds, so previews never notify anyone, and the
+# new pages are already live when the search engines are told.
+# It can never fail or block a deploy: the deploy has finished before it starts.
+name: IndexNow
+
+on:
+  deployment_status:
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    if: github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Production'
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # The sitemap as it was after the previous production deploy.
+      - name: Restore previous sitemap
+        uses: actions/cache/restore@v4
+        with:
+          path: .indexnow/previous-sitemap.xml
+          key: indexnow-sitemap-${{ github.run_id }}
+          restore-keys: indexnow-sitemap-
+
+      - name: Send changed URLs to IndexNow
+        run: node scripts/indexnow-notify.mjs
+
+      - name: Save sitemap for the next deploy
+        if: hashFiles('.indexnow/previous-sitemap.xml') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: .indexnow/previous-sitemap.xml
+          key: indexnow-sitemap-${{ github.run_id }}
