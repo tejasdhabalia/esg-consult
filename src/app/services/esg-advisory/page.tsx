@@ -29,7 +29,7 @@ export default function ESGAdvisoryPage() {
     "@type": "Service",
     name: "ESG advisory",
     description:
-      "Advisory plus implementation for ESG readiness across carbon accounting, net zero, climate risk, CSRD, BRSR, EcoVadis, CDP, supplier engagement, sustainability strategy, and UK SECR and SRS reporting.",
+      "Advisory and delivery leadership for ESG readiness across carbon accounting, net zero, climate risk, CSRD, BRSR, EcoVadis, CDP, supplier engagement, sustainability strategy, and UK SECR and SRS reporting.",
     provider: {
       "@type": "Organization",
       name: site.legalName,

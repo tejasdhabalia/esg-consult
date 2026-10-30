@@ -19,7 +19,7 @@ export default function SustainabilityPillarPage() {
       heroSubtitle="Reporting treated as a data and controls problem rather than an annual scramble. Owners, validation rules and evidence trails, so the number holds when somebody asks where it came from."
       heroImage="/hero/esg.jpg"
       heroImageAlt="Sustainability and ESG reporting systems"
-      heroNote="We build the reporting system. We do not provide assurance or statutory audit."
+      heroNote="We lead the set-up of the reporting system. We do not provide assurance or statutory audit."
       problemHeading="The first report is survivable. The third one is not"
       problemParagraphs={[
         "Most organisations get their first disclosure out by force. A small group assembles numbers from spreadsheets and inboxes, chases suppliers directly, and reconciles by hand in the last fortnight. It works once, because people are willing to do it once.",
@@ -37,7 +37,7 @@ export default function SustainabilityPillarPage() {
         {
           question: "Do you provide assurance or statutory audit?",
           answer:
-            "No. We build the reporting system, the data ownership model, the controls and the evidence trail so that assurance can be performed by someone else. Doing both would defeat the purpose of either.",
+            "No. We lead the set-up of the reporting system, the data ownership model, the controls and the evidence trail, so that assurance can be performed by someone else. Doing both would defeat the purpose of either.",
         },
         {
           question: "Which frameworks do you cover?",

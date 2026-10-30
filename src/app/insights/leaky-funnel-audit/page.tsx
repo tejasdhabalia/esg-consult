@@ -34,7 +34,7 @@ const faqSchema = {
     {
       "@type": "Question",
       name: "Is this a replacement for a full revenue operations review?",
-      acceptedAnswer: { "@type": "Answer", text: "No. This audit is a diagnostic, not a remediation plan. It surfaces where the largest gaps are so leadership teams can prioritise. A full revenue operations engagement includes data audit, architecture review, governance framework design, implementation and change control. The audit is a starting point for that conversation, not a substitute." },
+      acceptedAnswer: { "@type": "Answer", text: "No. This audit is a diagnostic, not a remediation plan. It surfaces where the largest gaps are so leadership teams can prioritise. A full revenue operations engagement includes data audit, architecture review, governance framework design, rollout and change control. The audit is a starting point for that conversation, not a substitute." },
     },
   ],
 };

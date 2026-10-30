@@ -109,7 +109,7 @@ export default function HomePage() {
         name: `What does ${site.displayName} do?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Four things. We build and fix the business systems mid-market companies run on, covering commerce platforms, ERP, CRM, integration and AI. We build sustainability and ESG reporting systems. We provide outsourced finance and accounting teams. And we run sourcing and market entry between India and overseas manufacturers, from supplier qualification to buyer introductions.",
+          text: "Four things. We lead technology projects on your side of the table, across commerce platforms, ERP, CRM, integration and AI. Your implementation partner builds. We make sure what gets built is what the board approved, and that it gets finished. We lead the set-up of sustainability and ESG reporting systems. We provide outsourced finance and accounting teams. And we run sourcing and market entry between India and overseas manufacturers, from supplier qualification to buyer introductions.",
         },
       },
       {

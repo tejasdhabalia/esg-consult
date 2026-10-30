@@ -77,7 +77,7 @@ export const esgServiceConfigs = {
       { title: "How is this different from carbon accounting?", description: "Carbon accounting establishes the emissions baseline. Net zero and decarbonisation advisory uses that baseline to prioritise reduction actions, targets, sequencing and governance." },
       { title: "Do you support science-based target planning?", description: "Yes. We help organisations evaluate ambition, data readiness, and reduction feasibility so targets are grounded in operational reality." },
       { title: "Can you help prioritise initiatives across functions?", description: "Yes. We compare initiatives across operations, procurement, logistics, facilities and other areas so leadership can focus on the levers with the strongest combination of impact and practicality." },
-      { title: "Do you implement the roadmap too?", description: "Yes. Our model is advisory plus implementation. We can help define governance, working rhythms, reporting and documentation so the roadmap is used rather than archived." },
+      { title: "Do you help put the roadmap in place too?", description: "Yes. We advise, then lead delivery. We can help define governance, working rhythms, reporting and documentation so the roadmap is used rather than archived." },
       { title: "Is this only for large enterprises?", description: "No. It is useful for mid-market and enterprise organisations alike when climate action needs clearer structure, ownership and decision support." },
       { title: "Do you provide assurance or certification?", description: "No. We do not provide statutory audit, assurance or certification." },
     ],
@@ -407,7 +407,7 @@ export const esgServiceConfigs = {
       { title: "How is this different from reporting support?", description: "Reporting support focuses on disclosure readiness and evidence. Sustainability strategy focuses on the broader direction, priorities, operating model, and delivery path behind the programme." },
       { title: "Do you work with leadership teams directly?", description: "Yes. This work is most effective when leadership is involved in the priority and governance decisions, not only informed after the fact." },
       { title: "Can this include climate, supply chain, and people topics together?", description: "Yes. The strategy should reflect the organisation's real material issues and stakeholder pressures, not treat sustainability as a single-topic programme." },
-      { title: "Do you also help implement the strategy?", description: "Yes. Our model is advisory plus implementation, so we can support governance, workstream setup, and operating discipline after the strategy is agreed." },
+      { title: "Do you also help put the strategy in place?", description: "Yes. We advise, then lead delivery, so we can support governance, workstream setup, and operating discipline after the strategy is agreed." },
       { title: "Is this relevant for mid-market firms?", description: "Yes. Mid-market organisations often need strategy work precisely because sustainability responsibilities are spread thinly and priorities need sharper focus." },
       { title: "Do you set public commitments for us?", description: "We can support the thinking and governance behind commitments, but public commitments need to reflect your organisation's actual readiness and decisions." },
     ],
@@ -475,7 +475,7 @@ export const esgServiceConfigs = {
     introHeading: "Add sustainability capacity without waiting to build the full internal team",
     introParagraphs: [
       "Many organisations know sustainability work matters, but they do not yet have the internal capacity to coordinate strategy, reporting, supplier requests, stakeholder communication, and programme governance at the level required.",
-      "Our outsourced sustainability management offer provides structured support to keep the programme moving, with advisory plus implementation discipline rather than ad hoc task support.",
+      "Our outsourced sustainability management offer provides structured support to keep the programme moving, with advisory and delivery discipline rather than ad hoc task support.",
     ],
     introLinks: [
       { href: "/services/esg-advisory/sustainability-strategy", label: "Sustainability strategy" },

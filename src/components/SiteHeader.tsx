@@ -119,7 +119,7 @@ export default function SiteHeader() {
           href="/contact"
           className="hidden shrink-0 whitespace-nowrap rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 lg:inline-flex"
         >
-          {site.assessment.label}
+          {site.headerCta.label}
         </Link>
 
         <button
@@ -203,7 +203,7 @@ export default function SiteHeader() {
               className="mt-2 inline-flex justify-center rounded-lg bg-indigo-600 px-4 py-2 font-medium text-white hover:bg-indigo-700"
               onClick={closeMobileMenu}
             >
-              {site.assessment.label}
+              {site.headerCta.label}
             </Link>
           </div>
         </div>

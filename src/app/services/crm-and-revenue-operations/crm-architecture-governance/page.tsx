@@ -28,7 +28,7 @@ export default function CRMGovernancePage() {
     "@type": "Service",
     name: "CRM Architecture and Governance",
     description:
-      "Advisory plus implementation for CRM architecture and governance including data model discipline, integrations across finance and service, controls, evidence trails, and reporting definitions leaders can trust.",
+      "Advisory and delivery leadership for CRM architecture and governance including data model discipline, integrations across finance and service, controls, evidence trails, and reporting definitions leaders can trust.",
     provider: { "@type": "Organization", name: site.legalName, url: site.baseUrl },
     areaServed: ["EU", "United Kingdom", "India"],
     serviceType: [
@@ -51,7 +51,7 @@ export default function CRMGovernancePage() {
         name: "What does CRM governance consulting involve?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "CRM governance consulting defines and implements the data model, taxonomy, change control process, and reporting standards that keep your CRM accurate and trustworthy over time. We fix the root causes of dirty data and unreliable dashboards.",
+          text: "CRM governance consulting defines and puts in place the data model, taxonomy, change control process, and reporting standards that keep your CRM accurate and trustworthy over time. We fix the root causes of dirty data and unreliable dashboards.",
         },
       },
       {
@@ -59,7 +59,7 @@ export default function CRMGovernancePage() {
         name: "Which CRM platforms do you work with?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "We are platform-agnostic. We design the governance framework and data model, then implement within your existing CRM including Salesforce, HubSpot, Microsoft Dynamics, and others.",
+          text: "We are platform-agnostic. We design the governance framework and data model, then put it in place within your existing CRM including Salesforce, HubSpot, Microsoft Dynamics, and others.",
         },
       },
       {
@@ -67,7 +67,7 @@ export default function CRMGovernancePage() {
         name: "How long does a CRM governance engagement take?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Most engagements begin with a diagnostic to assess current data quality, definition gaps, and integration issues. A phased implementation typically runs over 8 to 16 weeks depending on complexity and the number of integrated systems.",
+          text: "Most engagements begin with a diagnostic to assess current data quality, definition gaps, and integration issues. A phased rollout typically runs over 8 to 16 weeks depending on complexity and the number of integrated systems.",
         },
       },
       {

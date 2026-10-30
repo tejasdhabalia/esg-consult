@@ -45,7 +45,7 @@ export const pillars: Pillar[] = [
     label: "Technology",
     title: "Technology",
     summary:
-      "The systems a company runs on, from the platform that takes the order to the reporting the board reads. Selection, build, integration and the governance around AI.",
+      "The systems a company runs on, from the platform that takes the order to the reporting the board reads. Selection, delivery leadership, integration and the governance around AI.",
     rationale:
       "This is the core of the firm. We have built these systems and we can read the business case behind them, which is the combination most technology projects are missing.",
     live: true,
@@ -68,10 +68,10 @@ export const pillars: Pillar[] = [
         route: "/services/erp-systems",
         label: "ERP systems",
         summary:
-          "Selection, implementation and the oversight that keeps the build tied to the business case. From the Tally ceiling upward.",
+          "Selection, then leading delivery so the build stays tied to the business case. From the Tally ceiling upward.",
         bullets: [
           "Requirements, scored vendor comparison and contract review",
-          "Implementation delivery, or oversight of somebody else's",
+          "Delivery leadership, holding the implementation partner to the business case",
           "Data migration, cutover and reconciliation",
           "Multi-entity, multi-warehouse and scheme management complexity",
         ],
@@ -86,7 +86,7 @@ export const pillars: Pillar[] = [
           "CRM data model, hygiene rules and change control",
           "Lifecycle stages, routing and service levels",
           "Revenue reporting and definitions governance",
-          "Marketing automation build and handover to your team",
+          "Marketing automation set-up and handover to your team",
         ],
         live: true,
       },
@@ -177,9 +177,9 @@ export const pillars: Pillar[] = [
     label: "Sourcing and market entry",
     title: "Sourcing and market entry",
     summary:
-      "Cross-border sourcing and India market entry. We take overseas manufacturers to qualified Indian buyers, find and qualify overseas suppliers for Indian companies, and build the systems that run the channel.",
+      "Cross-border sourcing and India market entry. We take overseas manufacturers to qualified Indian buyers, find and qualify overseas suppliers for Indian companies, and set up the systems that run the channel.",
     rationale:
-      "A channel is a system before it is a relationship. Supplier records, sample status, qualification evidence and the buyer pipeline either live somewhere structured or they live in one person's inbox. That is why this work sits in a firm that builds CRM and reporting systems. On any piece of sourcing work we are paid by the company we act for, and manufacturers we contact for samples pay us nothing.",
+      "A channel is a system before it is a relationship. Supplier records, sample status, qualification evidence and the buyer pipeline either live somewhere structured or they live in one person's inbox. That is why this work sits in a firm that sets up CRM and reporting systems. On any piece of sourcing work we are paid by the company we act for, and manufacturers we contact for samples pay us nothing.",
     live: true,
     lines: [
       {

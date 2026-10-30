@@ -33,7 +33,7 @@ export default function CSRDAdvisoryPage() {
     "@type": "Service",
     name: "CSRD and ESRS Advisory",
     description:
-      "Advisory plus implementation for CSRD and ESRS readiness including scoping, double materiality support, ESRS disclosure mapping, ESG data governance, controls, evidence trails and assurance readiness preparation.",
+      "Advisory and delivery leadership for CSRD and ESRS readiness including scoping, double materiality support, ESRS disclosure mapping, ESG data governance, controls, evidence trails and assurance readiness preparation.",
     provider: {
       "@type": "Organization",
       name: site.legalName,
@@ -126,7 +126,7 @@ export default function CSRDAdvisoryPage() {
     <div>
       <PageHero
         title="CSRD and ESRS advisory"
-        subtitle="Advisory plus implementation to make CSRD delivery repeatable. We turn ESRS disclosures into ownership, data governance, controls and evidence trails so leadership can rely on the reporting system year after year."
+        subtitle="Advisory and delivery leadership to make CSRD delivery repeatable. We turn ESRS disclosures into ownership, data governance, controls and evidence trails so leadership can rely on the reporting system year after year."
         primaryAction={{ label: "Book a CSRD consultation", href: "/contact" }}
         secondaryAction={{ label: "Back to ESG Advisory", href: "/services/esg-advisory" }}
         note="Note: We do not provide statutory audit or assurance."
@@ -239,7 +239,7 @@ export default function CSRDAdvisoryPage() {
             {[
               ["Diagnose", "Scope, timeline, readiness gaps across disclosures, data sources, and controls."],
               ["Design", "Disclosure mapping, owner model, controls and evidence standards, and reporting workflow."],
-              ["Implement", "Hands-on delivery support, enablement, templates and governance rollout."],
+              ["Deliver", "Hands-on delivery leadership, enablement, templates and governance rollout."],
               ["Govern", "Cadence, quality checks, evidence trail discipline, and continuous improvement each cycle."],
             ].map(([title, desc]) => (
               <div key={title} className="bg-slate-50 border rounded-2xl p-8">

@@ -393,8 +393,8 @@ export default function CSRDReadinessChecklistPage() {
                 have the longest lead times and should be prioritised first.
               </p>
               <p className="text-slate-300 text-sm leading-relaxed mb-4">
-                DS Consulting helps leadership teams close these gaps through advisory and implementation:
-                scoping, data governance design, evidence trail build, and assurance readiness preparation.
+                DS Consulting helps leadership teams close these gaps through advisory and delivery leadership:
+                scoping, data governance design, setting up the evidence trail and preparing for assurance.
                 We do not provide statutory audit or assurance services.
               </p>
               <p className="text-slate-300 text-sm leading-relaxed">

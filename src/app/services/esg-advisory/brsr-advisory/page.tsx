@@ -28,7 +28,7 @@ export default function BRSRAdvisoryPage() {
     "@type": "Service",
     name: "SEBI BRSR Advisory",
     description:
-      "Advisory plus implementation for SEBI BRSR readiness including KPI mapping, ESG data governance, controls, evidence trails, value chain approach and repeatable reporting workflows for India listed companies.",
+      "Advisory and delivery leadership for SEBI BRSR readiness including KPI mapping, ESG data governance, controls, evidence trails, value chain approach and repeatable reporting workflows for India listed companies.",
     provider: {
       "@type": "Organization",
       name: site.legalName,
@@ -121,7 +121,7 @@ export default function BRSRAdvisoryPage() {
     <div>
       <PageHero
         title="BRSR advisory"
-        subtitle="Advisory plus implementation to make BRSR delivery repeatable. We convert indicators into a KPI system with owners, controls, evidence trails, and governance cadence so leadership can rely on the reporting cycle."
+        subtitle="Advisory and delivery leadership to make BRSR delivery repeatable. We convert indicators into a KPI system with owners, controls, evidence trails, and governance cadence so leadership can rely on the reporting cycle."
         primaryAction={{ label: "Book a BRSR consultation", href: "/contact" }}
         secondaryAction={{ label: "Back to ESG Advisory", href: "/services/esg-advisory" }}
         note="Note: We do not provide statutory audit or assurance."
@@ -212,7 +212,7 @@ export default function BRSRAdvisoryPage() {
             {[
               ["Diagnose", "Confirm scope, timeline, KPI gaps, data ownership, and control needs."],
               ["Design", "KPI inventory, owner model, controls and evidence standards, and workflow cadence."],
-              ["Implement", "Hands-on setup, enablement, documentation and rollout support."],
+              ["Deliver", "We lead the set-up and rollout, with hands-on work, enablement and documentation."],
               ["Govern", "Quality checks, issue tracking, leadership review rhythm, and improvements each cycle."],
             ].map(([t, d]) => (
               <div key={t} className="bg-slate-50 border rounded-2xl p-8">

@@ -103,7 +103,7 @@ export default function UKSecrSrsReportingPage() {
     "@type": "Service",
     name: "UK SECR and SRS reporting",
     description:
-      "Advisory plus implementation for UK SECR and SRS reporting, covering scoping, carbon and energy data, emissions methodology, KPI development, evidence mapping, board-ready drafting, and future-cycle improvement roadmap.",
+      "Advisory and delivery leadership for UK SECR and SRS reporting, covering scoping, carbon and energy data, emissions methodology, KPI development, evidence mapping, board-ready drafting, and future-cycle improvement roadmap.",
     provider: {
       "@type": "Organization",
       name: site.legalName,

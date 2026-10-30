@@ -68,7 +68,7 @@ const FEATURED_REGULATORY_ROUTES = [
  */
 const aiSummary =
   site.ai?.summary ||
-  `${site.displayName} provides consulting and implementation for mid-market companies across four areas: technology, sustainability and ESG reporting, finance and accounting outsourcing, and sourcing and market entry.`;
+  `${site.displayName} provides independent delivery leadership for mid-market companies across four areas: technology, sustainability and ESG reporting, finance and accounting outsourcing, and sourcing and market entry.`;
 
 const mcpServerUrl = site.ai?.mcpServerUrl || "";
 const mcpTransport = site.ai?.mcpTransport || "streamable-http";

@@ -60,7 +60,7 @@ export default function CompareHubPage() {
         acceptedAnswer: {
           "@type": "Answer",
           text:
-            "These pages are for leaders who must choose a delivery model. They clarify tradeoffs across in house delivery, agencies and governance plus implementation partners.",
+            "These pages are for leaders who must choose a delivery model. They clarify tradeoffs across in house delivery, agencies and governance plus delivery partners.",
         },
       },
       {
@@ -96,7 +96,7 @@ export default function CompareHubPage() {
         acceptedAnswer: {
           "@type": "Answer",
           text:
-            "Choose based on outcomes and constraints. If you need repeatable systems with governance and measurable delivery, prioritize a partner that designs the operating model and implements it end to end.",
+            "Choose based on outcomes and constraints. If you need repeatable systems with governance and measurable delivery, prioritise a partner that designs the operating model and leads it through to go-live.",
         },
       },
       {
@@ -123,7 +123,7 @@ export default function CompareHubPage() {
     <div>
       <PageHero
         title="Compare"
-        subtitle="Make confident choices between in house delivery, agencies and governance plus implementation partners. These comparisons are designed to reduce ambiguity and help you decide the next best step."
+        subtitle="Make confident choices between in house delivery, agencies and governance plus delivery partners. These comparisons are designed to reduce ambiguity and help you decide the next best step."
         primaryAction={{ label: "Explore services", href: "/services" }}
         secondaryAction={{ label: "Talk to us", href: "/contact" }}
         imageSrc="/hero/services.jpg"

@@ -35,7 +35,7 @@ const faqSchema = {
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "The primary difference is governance depth and implementation ownership. A generalist marketing agency focuses on campaigns, creative and channels. DS Consulting focuses on the operating model underneath: CRM governance, lifecycle definitions, measurement discipline, and the data infrastructure that makes execution accountable.",
+          "The primary difference is governance depth and delivery ownership. A generalist marketing agency focuses on campaigns, creative and channels. DS Consulting focuses on the operating model underneath: CRM governance, lifecycle definitions, measurement discipline, and the data infrastructure that makes execution accountable.",
       },
     },
     {
@@ -44,7 +44,7 @@ const faqSchema = {
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Three differences: speed, implementation depth, and cost. Big 4 ESG engagements often run longer with larger teams. DS Consulting operates in shorter implementation cycles focused on specific governance gaps, with senior practitioners who implement directly. For mid-market organisations this improves time to value while keeping governance rigour.",
+          "Three differences: speed, delivery depth, and cost. Big 4 ESG engagements often run longer with larger teams. DS Consulting operates in shorter delivery cycles focused on specific governance gaps, with senior practitioners who implement directly. For mid-market organisations this improves time to value while keeping governance rigour.",
       },
     },
     {
@@ -53,7 +53,7 @@ const faqSchema = {
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "We do advisory plus implementation. We design the operating model and then build it. We document it, set cadence, and enable internal teams to run it.",
+          "Neither, quite. We lead delivery on your side of the table. We plan and run the project, hold the implementation partner to the business case the board approved, do hands-on work where it helps, and stay until the system is live and working. We are not anyone's implementation partner and we do not resell software.",
       },
     },
     {
@@ -97,13 +97,13 @@ const faqSchema = {
 const MATRIX = [
   {
     factor: "Primary focus",
-    ds: "Governance design and implementation: CRM, lifecycle, measurement, ESG reporting systems. We fix the operating model.",
+    ds: "Governance design and delivery leadership: CRM, lifecycle, measurement, ESG reporting systems. We fix the operating model.",
     generalist:
-      "Campaign execution, creative production, channel management, or broad strategy advisory without implementation depth.",
+      "Campaign execution, creative production, channel management, or broad strategy advisory without delivery depth.",
   },
   {
-    factor: "Advisory plus implementation",
-    ds: "Both. We define the operating model and then build it. The same practitioners who designed it implement it.",
+    factor: "Advisory and delivery",
+    ds: "Both: advice, then leading delivery to go-live. The same practitioners who designed it lead it to go-live.",
     generalist:
       "Often advisory only, or implementation without governance design. Rarely both with the same depth.",
   },
@@ -296,7 +296,7 @@ export default function DSConsultingVsGeneralistPage() {
             Where this comparison connects to our services
           </h2>
           <p className="text-sm text-slate-600 max-w-3xl leading-relaxed">
-            If you want the governance plus implementation model, start from the
+            If you want the governance plus delivery model, start from the
             service hub that matches your immediate outcome. Each page links to
             subpages that go deeper into delivery.
           </p>

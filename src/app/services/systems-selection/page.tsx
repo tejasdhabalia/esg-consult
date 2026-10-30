@@ -83,7 +83,7 @@ export default function SystemsSelectionPage() {
         {
           question: "Can you help with the implementation afterwards?",
           answer:
-            "Yes, either delivering it ourselves or overseeing the vendor's implementation partner. We will tell you honestly which of those makes more sense for the system you have chosen. We are not paid differently either way.",
+            "Yes. We lead delivery on your side, hold the implementation partner to the requirements we selected against, and do hands-on work where it helps. We are not paid differently either way.",
         },
         {
           question: "What if the answer is to keep the system we have?",

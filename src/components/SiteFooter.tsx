@@ -31,7 +31,7 @@ export default function SiteFooter() {
               than labels, because "ai governance consulting" is the highest
               value term available.
             */}
-            Consulting and implementation for mid-market companies. Technology,
+            Independent delivery lead for mid-market companies. Technology,
             sustainability reporting, finance operations, and sourcing and market entry.
           </p>
           <p className="text-slate-400 mt-3 leading-relaxed">

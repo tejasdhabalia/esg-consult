@@ -28,7 +28,7 @@ export default function MarketingAutomationPage() {
     "@type": "Service",
     name: "Marketing Automation and Revenue Operations",
     description:
-      "Advisory plus implementation for marketing automation and revenue operations including lifecycle orchestration, CRM governance, omnichannel automation, AI-enabled content workflows, and measurement leaders can trust across B2B and B2C.",
+      "Advisory and delivery leadership for marketing automation and revenue operations including lifecycle orchestration, CRM governance, omnichannel automation, AI-enabled content workflows, and measurement leaders can trust across B2B and B2C.",
     provider: { "@type": "Organization", name: site.legalName, url: site.baseUrl },
     areaServed: ["EU", "United Kingdom", "India"],
     serviceType: [
@@ -66,11 +66,11 @@ export default function MarketingAutomationPage() {
       },
       {
         "@type": "Question",
-        name: "Do you implement, or do you only advise?",
+        name: "Do you implement, or only advise?",
         acceptedAnswer: {
           "@type": "Answer",
           text:
-            "We provide advisory plus implementation. We define the operating model, implement workflows and governance, enable teams, and set a cadence that sustains outcomes after go-live.",
+            "Neither, quite. We lead delivery on your side of the table. We plan and run the project, hold the implementation partner to the business case the board approved, do hands-on work where it helps, and stay until the system is live and working. We are not anyone's implementation partner and we do not resell software.",
         },
       },
       {
@@ -79,7 +79,7 @@ export default function MarketingAutomationPage() {
         acceptedAnswer: {
           "@type": "Answer",
           text:
-            "We map systems, define source of truth, standardise definitions, and design integrations and workflows so marketing, sales, finance and service signals work together. We then implement governance so the system stays stable.",
+            "We map systems, define source of truth, standardise definitions, and design integrations and workflows so marketing, sales, finance and service signals work together. We then put governance in place so the system stays stable.",
         },
       },
       {
@@ -156,7 +156,7 @@ export default function MarketingAutomationPage() {
               {[
                 ["HubSpot", "CRM architecture, lifecycle design, automation workflows and governed reporting."],
                 ["Salesforce", "Data model discipline, lead management governance and measurement frameworks."],
-                ["Zoho and mid-market suites", "Practical configuration for teams without a dedicated admin function."],
+                ["Zoho and mid-market suites", "Practical set-up and hands-on help for teams without a dedicated admin."],
                 ["In-house and hybrid stacks", "360-degree customer view design integrating purchase history, survey data and third-party sources."],
               ].map(([t, d]) => (
                 <div key={t} className="bg-white border rounded-2xl p-5 shadow-sm">
@@ -216,7 +216,7 @@ export default function MarketingAutomationPage() {
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-semibold">What we deliver</h2>
           <p className="mt-4 text-slate-600 max-w-4xl">
-            We link strategy to systems through governance, implementation and measurable outcomes.
+            We link strategy to systems through governance, delivery and measurable outcomes.
           </p>
 
           <div className="grid md:grid-cols-2 gap-8 mt-14">
@@ -225,7 +225,7 @@ export default function MarketingAutomationPage() {
               ["CRM discipline and data model", "Field standards, naming conventions, permissions, data hygiene rules, and source of truth alignment."],
               ["Omnichannel lifecycle orchestration", "Email, SMS, WhatsApp, web, app and service signals coordinated into journeys."],
               ["Content operations and AI workflows", "Faster content creation with brand guardrails, controlled personalisation, and measurable performance."],
-              ["Implementation and enablement", "Hands-on configuration, documentation, training and rollout support. Platform experience includes IBM watsonx, HubSpot, Salesforce, Zoho and in-house CRM builds with 360-degree customer view design."],
+              ["Delivery and enablement", "We lead the rollout, do hands-on work where it helps, and leave documentation and trained owners behind. Platform experience includes IBM watsonx, HubSpot, Salesforce, Zoho and in-house CRM builds with 360-degree customer view design."],
               ["Measurement governance", "Metric definitions and reporting rules that remain stable across teams and cycles."],
             ].map(([t, d]) => (
               <div key={t} className="bg-white border rounded-2xl p-8 shadow-sm">

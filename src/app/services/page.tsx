@@ -36,10 +36,18 @@ export default function ServicesPage() {
       },
       {
         "@type": "Question",
-        name: "Do you do the consulting and the implementation, or just one?",
+        name: "Do you implement, or only advise?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Both. We scope the work and we deliver it. The people who scope your project are the people who deliver it, and anyone who will work on delivery is introduced to you during scoping.",
+          text: "Neither, quite. We lead delivery on your side of the table. We plan and run the project, hold the implementation partner to the business case the board approved, do hands-on work where it helps, and stay until the system is live and working. We are not anyone's implementation partner and we do not resell software.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do you build storefronts yourselves?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, where it helps. Where we can build the storefront ourselves, we tell you before the platform decision and share the full scoring, so you can see the recommendation doesn't depend on who builds it. You are free to use another builder.",
         },
       },
       {
@@ -79,7 +87,7 @@ export default function ServicesPage() {
         name: "Do you provide statutory audit or assurance?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "No. On sustainability work we build the reporting system, the controls and the evidence trail so that assurance can be performed by someone else.",
+          text: "No. On sustainability work we lead the set-up of the reporting system, the controls and the evidence trail so that assurance can be performed by someone else.",
         },
       },
     ],
@@ -164,7 +172,7 @@ export default function ServicesPage() {
             {[
               ["Assess", "What you are trying to do, what you already run and where the two do not meet."],
               ["Decide", "Options scored against your requirements, with the scoring handed over."],
-              ["Build", "Configuration, integration, migration and testing, run by the people who scoped it."],
+              ["Deliver", "Configuration, integration, moving data and testing, led on your side by the people who scoped it."],
               ["Hand over", "Documentation, enablement and a defined point where your team owns it."],
             ].map(([title, detail]) => (
               <div

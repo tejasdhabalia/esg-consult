@@ -81,10 +81,10 @@ export default function AboutPage() {
       },
       {
         "@type": "Question",
-        name: "Do you do the consulting and the implementation?",
+        name: "Do you implement, or only advise?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Both. The people who scope your project are the people who deliver it. That is the point of the design surviving into the build.",
+          text: "Neither, quite. We lead delivery on your side of the table. We plan and run the project, hold the implementation partner to the business case the board approved, do hands-on work where it helps, and stay until the system is live and working. We are not anyone's implementation partner and we do not resell software.",
         },
       },
       {
@@ -100,7 +100,7 @@ export default function AboutPage() {
         name: "Do you provide statutory audit or assurance?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "No. On ESG and CSRD work we build the reporting system, the controls and the evidence trail so that assurance can be performed by someone else.",
+          text: "No. On ESG and CSRD work we lead the set-up of the reporting system, the controls and the evidence trail so that assurance can be performed by someone else.",
         },
       },
     ],
@@ -115,7 +115,7 @@ export default function AboutPage() {
         primaryAction={{ label: site.assessment.label, href: "/contact" }}
         secondaryAction={{ label: "See what we do", href: "/services" }}
         imageSrc="/hero/about.jpg"
-        imageAlt="DS Consulting, technology consulting and implementation"
+        imageAlt="DS Consulting, technology consulting and delivery leadership"
       />
 
       {/* WHY */}

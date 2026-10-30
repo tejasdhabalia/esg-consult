@@ -80,7 +80,12 @@ export default function CommerceAndDigitalPlatformsPage() {
         {
           question: "Do you build websites?",
           answer:
-            "Yes. Storefronts, marketing sites and the commerce systems behind them. A website is often the first place a systems problem becomes visible, so it is a sensible place to start even when the eventual work turns out to sit further back in the stack.",
+            "Yes. Storefronts and marketing sites we can build ourselves. For the commerce systems behind them, we lead delivery on your side. A website is often the first place a systems problem becomes visible, so it is a sensible place to start even when the eventual work turns out to sit further back in the stack.",
+        },
+        {
+          question: "Do you build storefronts yourselves?",
+          answer:
+            "Yes, where it helps. Where we can build the storefront ourselves, we tell you before the platform decision and share the full scoring, so you can see the recommendation doesn't depend on who builds it. You are free to use another builder.",
         },
         {
           question: "Do we need to replace our platform?",

@@ -53,16 +53,16 @@ const faqSchema = {
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Outsourced governance works when teams are firefighting, definitions are disputed, routing changes frequently, dashboards are not trusted, or you need fast stabilisation with implementation accountability.",
+          "Outsourced governance works when teams are firefighting, definitions are disputed, routing changes frequently, dashboards are not trusted, or you need fast stabilisation with delivery accountability.",
       },
     },
     {
       "@type": "Question",
-      name: "Does DS Consulting implement or only advise?",
+      name: "Do you implement, or only advise?",
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "We do advisory plus implementation. We design the governance model, implement it, document it, and enable internal owners to run the cadence after go live.",
+          "Neither, quite. We lead delivery on your side of the table. We plan and run the project, hold the implementation partner to the business case the board approved, do hands-on work where it helps, and stay until the system is live and working. We are not anyone's implementation partner and we do not resell software. On CRM governance, we design the governance model, lead its rollout, document it and hand it to internal owners.",
       },
     },
     {
@@ -89,7 +89,7 @@ const faqSchema = {
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "No. We do not sell software licenses. We design and implement the operating model and systems around your stack.",
+          "No. We do not sell software licenses. We design the operating model and lead its rollout around your stack.",
       },
     },
   ],
@@ -108,7 +108,7 @@ const COMPARISON: Array<{
     inhouse:
       "Typically slower if there is no existing governance model. Competes with BAU priorities and cross team alignment takes time.",
     outsourced:
-      "Typically faster because patterns, documentation and change control mechanisms already exist. Implementation can run in a focused cycle.",
+      "Typically faster because patterns, documentation and change control mechanisms already exist. Rollout can run in a focused cycle.",
     winner: "outsourced",
   },
   {
@@ -156,7 +156,7 @@ const COMPARISON: Array<{
     inhouse:
       "Possible, but requires disciplined definitions and reconciliation with finance. Many teams struggle to maintain this under pressure.",
     outsourced:
-      "Often faster to stabilise because measurement discipline is designed as part of governance and implemented with controls.",
+      "Often faster to stabilise because measurement discipline is designed as part of governance and put in place with controls.",
     winner: "outsourced",
   },
   {
@@ -164,7 +164,7 @@ const COMPARISON: Array<{
     inhouse:
       "Strong when you can enforce approvals, release notes, and governance rituals. Weak when changes happen ad hoc.",
     outsourced:
-      "Strong when the partner implements change control, documentation standards, and a governance calendar with owners.",
+      "Strong when the partner puts in place change control, documentation standards, and a governance calendar with owners.",
     winner: "depends",
   },
 ];

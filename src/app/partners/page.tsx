@@ -33,7 +33,7 @@ const fitSignals = [
   "You already advise CEOs, CFOs, CSOs, RevOps leaders, or operations teams.",
   "You want a clearer commercial structure for collaboration, not an informal referral arrangement.",
   "You value governed delivery, measurable execution, and practical operating models.",
-  "You want a partner who can work from advisory through implementation without overselling software or generic transformation language.",
+  "You want a partner who can work from advisory through delivery without overselling software or generic transformation language.",
 ];
 
 const collaborationPaths = [

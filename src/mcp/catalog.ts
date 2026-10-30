@@ -73,7 +73,7 @@ export function getSiteOverview() {
     baseUrl: site.baseUrl,
     summary:
       site.ai?.summary ||
-      `${site.displayName} provides advisory and implementation support across ESG readiness and revenue visibility.`,
+      `${site.displayName} provides advisory and delivery leadership across ESG readiness and revenue visibility.`,
     generatedAt: manifest.generatedAt,
     pageCount: manifest.pageCount,
     sections: PAGE_SECTIONS,

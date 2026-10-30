@@ -163,8 +163,8 @@ export default function TeamPage() {
               rather than staffing it and hoping.
             </p>
             <p className="mt-4 text-sm text-slate-500">
-              On ESG work we do not provide statutory audit or assurance. We build the reporting
-              system that makes assurance possible.
+              On ESG work we do not provide statutory audit or assurance. We lead the set-up of the
+              reporting system that makes assurance possible.
             </p>
           </div>
 

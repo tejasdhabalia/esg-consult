@@ -26,7 +26,7 @@ export default function TermsPage() {
           <div>
             <h2 className="text-2xl font-semibold">No professional assurance</h2>
             <p className="mt-4">
-              We do not provide statutory audit or assurance. Any ESG readiness support is advisory plus implementation for governance,
+              We do not provide statutory audit or assurance. Any ESG readiness support is advisory and delivery leadership for governance,
               controls, documentation and evidence trail readiness.
             </p>
           </div>

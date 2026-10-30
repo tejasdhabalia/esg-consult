@@ -4,7 +4,7 @@ import { pageMetadata } from "@/lib/page-metadata";
 export const metadata = pageMetadata({
   title: "ERP systems",
   description:
-    "ERP selection, implementation and delivery oversight for mid-market companies. Requirements, scored vendor comparison, data migration and cutover, from the Tally ceiling upward.",
+    "ERP selection, delivery leadership and oversight for mid-market companies. Requirements, scored vendor comparison, data migration and cutover, from the Tally ceiling upward.",
   path: "/services/erp-systems",
 });
 
@@ -14,9 +14,9 @@ export default function ErpSystemsPage() {
       route="/services/erp-systems"
       label="ERP systems"
       heroTitle="The ERP decision is cheap to get right and expensive to get wrong"
-      heroSubtitle="Selection, implementation and the oversight that keeps the build tied to the business case. We run the evaluation, you make the decision, and the same people are still there at cutover."
+      heroSubtitle="Selection, then leading delivery so the build stays tied to the business case. We run the evaluation, you make the decision, and the same people are still there at cutover."
       heroImage="/hero/lifecycle.jpg"
-      heroImageAlt="ERP selection and implementation for mid-market companies"
+      heroImageAlt="ERP selection and delivery leadership for mid-market companies"
       problemHeading="Most selections are decided before the evaluation starts"
       problemParagraphs={[
         "A shortlist arrives from somewhere. Three vendors demo for two hours each, all impressive, all showing the parts of the product they are strongest at. A scoring sheet gets completed afterwards to justify a decision that was already leaning one way.",
@@ -41,9 +41,9 @@ export default function ErpSystemsPage() {
             "Licence structure, implementation estimate, what is excluded, and what the price does at renewal. This is where a good decision is most often undone.",
         },
         {
-          title: "Implementation delivery or oversight",
+          title: "Delivery leadership",
           detail:
-            "We either run the build or hold the implementation partner to the business case the board approved. Scope movement logged cumulatively, acceptance criteria written from requirements rather than from the design.",
+            "We run the project on your side and hold the implementation partner to the business case the board approved. Scope movement logged cumulatively, acceptance criteria written from requirements rather than from the design.",
         },
         {
           title: "Data migration and cutover",

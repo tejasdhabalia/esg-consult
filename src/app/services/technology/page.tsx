@@ -8,7 +8,7 @@ const pillar = pillars.find((item) => item.route === "/services/technology")!;
 export const metadata = pageMetadata({
   title: "Technology",
   description:
-    "Commerce platforms, ERP, CRM, integration and AI governance for mid-market companies. Selection, build and delivery by people who can read both the system and the business case.",
+    "Commerce platforms, ERP, CRM, integration and AI governance for mid-market companies. Selection and delivery leadership by people who can read both the system and the business case.",
   path: "/services/technology",
 });
 
@@ -37,9 +37,14 @@ export default function TechnologyPillarPage() {
       ]}
       faqs={[
         {
-          question: "Do you do the consulting and the implementation, or just one?",
+          question: "Do you implement, or only advise?",
           answer:
-            "Both. We scope the work and we deliver it. Where a project needs specialists we do not hold in house, they are introduced to you during scoping rather than after you have signed.",
+            "Neither, quite. We lead delivery on your side of the table. We plan and run the project, hold the implementation partner to the business case the board approved, do hands-on work where it helps, and stay until the system is live and working. We are not anyone's implementation partner and we do not resell software.",
+        },
+        {
+          question: "Do you build storefronts yourselves?",
+          answer:
+            "Yes, where it helps. Where we can build the storefront ourselves, we tell you before the platform decision and share the full scoring, so you can see the recommendation doesn't depend on who builds it. You are free to use another builder.",
         },
         {
           question: "What makes you different from a systems integrator?",

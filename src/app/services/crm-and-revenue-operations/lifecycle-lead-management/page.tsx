@@ -28,7 +28,7 @@ export default function LifecycleLeadManagementPage() {
     "@type": "Service",
     name: "Lifecycle and Lead Management",
     description:
-      "Advisory plus implementation for lifecycle and lead management including journey orchestration, routing and SLAs, segmentation, prioritisation, omnichannel triggers, and governance for predictable execution across B2B and B2C.",
+      "Advisory and delivery leadership for lifecycle and lead management including journey orchestration, routing and SLAs, segmentation, prioritisation, omnichannel triggers, and governance for predictable execution across B2B and B2C.",
     provider: { "@type": "Organization", name: site.legalName, url: site.baseUrl },
     areaServed: ["EU", "United Kingdom", "India"],
     serviceType: [
@@ -67,15 +67,15 @@ export default function LifecycleLeadManagementPage() {
         name: "What platforms do you work with?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "We are platform-agnostic. We design the operating model and governance framework, then implement within your existing tools including Salesforce, HubSpot, Marketo, Braze and others.",
+          text: "We are platform-agnostic. We design the operating model and governance framework, then put it in place within your existing tools including Salesforce, HubSpot, Marketo, Braze and others.",
         },
       },
       {
         "@type": "Question",
-        name: "How long does a lifecycle implementation take?",
+        name: "How long does a lifecycle rollout take?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Most engagements begin with a diagnostic to clarify scope and gaps, followed by a phased design and implementation. Timelines vary by complexity, but most teams see an operational model within 8 to 16 weeks.",
+          text: "Most engagements begin with a diagnostic to clarify scope and gaps, followed by a phased design and rollout. Timelines vary by complexity, but most teams see an operational model within 8 to 16 weeks.",
         },
       },
     ],
@@ -85,7 +85,7 @@ export default function LifecycleLeadManagementPage() {
     <div>
       <PageHero
         title="Lifecycle and lead management"
-        subtitle="Design and implementation of lifecycle stages, routing and SLAs, journey orchestration, segmentation and measurement so execution becomes predictable across marketing, sales and service."
+        subtitle="Design and rollout of lifecycle stages, routing and SLAs, journey orchestration, segmentation and measurement so execution becomes predictable across marketing, sales and service."
         primaryAction={{ label: "Book a consultation", href: "/contact" }}
         secondaryAction={{ label: "Back to Marketing Automation", href: "/services/crm-and-revenue-operations" }}
         imageSrc="/hero/lifecycle.jpg"

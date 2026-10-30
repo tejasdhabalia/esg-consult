@@ -12,7 +12,7 @@ export const site = {
   // Default SEO
   defaultTitle: "Technology consulting and delivery | DS Consulting",
   defaultDescription:
-    "Consulting and implementation for mid-market companies. Technology and AI, sustainability reporting, finance operations, and sourcing and market entry, scoped against the business case and run by the people who scoped it.",
+    "Independent delivery lead for mid-market companies. Technology and AI, sustainability reporting, finance operations, and sourcing and market entry, scoped against the business case and run by the people who scoped it.",
 
   /**
    * Positioning strings used across pages. Edit here, not in page files,
@@ -31,7 +31,7 @@ export const site = {
     depth: [
       {
         title: "We have built these systems",
-        body: "Data models, interface design, migration and the difference between a configuration you can upgrade and a customisation you will pay for twice. This is hands-on experience, not a summary of someone else's build.",
+        body: "Data models, interface design, moving data and the difference between a configuration you can upgrade and a customisation you will pay for twice. This is hands-on experience, not a summary of someone else's build. So we know what to ask the people building yours, and when the answer is wrong.",
       },
       {
         title: "We can read the business case",
@@ -99,6 +99,12 @@ export const site = {
     week1Fee: "From ₹15,000",
   },
 
+  /** Header button. Neutral across both entry offers. Agreed 30 October 2026. */
+  headerCta: {
+    label: "Book a working session",
+    href: "/contact",
+  },
+
   /** Entry offer for sustainability, finance, sourcing and firm-wide pages. */
   assessment: {
     label: "Start with an assessment",
@@ -128,7 +134,7 @@ export const site = {
      * Never use "three pillars" here. It is internal shorthand.
      */
     summary:
-      "Consulting and implementation firm for mid-market companies. DS Consulting understands the system and the business it has to run, where most firms are strong at one of those. Work covers four areas. Technology, spanning commerce and digital platforms, ERP systems, CRM and revenue operations, integration and AI governance and adoption. Sustainability, covering ESG and CSRD reporting systems. Finance and accounting outsourcing, where offshore delivery runs through a partner firm rather than DS Consulting staff and clients meet that team during scoping. And sourcing and market entry, which takes overseas manufacturers to qualified Indian industrial buyers, helps Indian companies find and qualify overseas suppliers, and sets up the CRM and reporting that run the channel. The firm takes no commissions, referral fees, reseller margin or partner incentives from any software vendor. Technology and sourcing work is paid for by the client, and manufacturers contacted for samples pay nothing. DS Consulting holds an interest in the finance and accounting partner firm and states this openly.",
+      "Independent technology delivery lead for mid-market companies. We run technology and AI projects on the client's side, from the board decision to a working system. DS Consulting understands the system and the business it has to run, where most firms are strong at one of those. Work covers four areas. Technology, spanning commerce and digital platforms, ERP systems, CRM and revenue operations, integration and AI governance and adoption. Sustainability, covering ESG and CSRD reporting systems. Finance and accounting outsourcing, where offshore delivery runs through a partner firm rather than DS Consulting staff and clients meet that team during scoping. And sourcing and market entry, which takes overseas manufacturers to qualified Indian industrial buyers, helps Indian companies find and qualify overseas suppliers, and sets up the CRM and reporting that run the channel. The firm takes no commissions, referral fees, reseller margin or partner incentives from any software vendor. Technology and sourcing work is paid for by the client, and manufacturers contacted for samples pay nothing. DS Consulting holds an interest in the finance and accounting partner firm and states this openly.",
     mcpServerUrl: process.env.NEXT_PUBLIC_MCP_SERVER_URL || "",
     mcpTransport: process.env.NEXT_PUBLIC_MCP_TRANSPORT || "streamable-http",
   },

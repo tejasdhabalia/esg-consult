@@ -28,7 +28,7 @@ export default function RevenueAnalyticsPage() {
     "@type": "Service",
     name: "Revenue Analytics and Measurement",
     description:
-      "Advisory plus implementation for revenue analytics and measurement. Funnel and lifecycle definitions, metric governance, CRM to finance alignment, retention analytics, and dashboards leaders can trust.",
+      "Advisory and delivery leadership for revenue analytics and measurement. Funnel and lifecycle definitions, metric governance, CRM to finance alignment, retention analytics, and dashboards leaders can trust.",
     provider: { "@type": "Organization", name: site.legalName, url: site.baseUrl },
     areaServed: ["EU", "United Kingdom", "India"],
     serviceType: [
@@ -59,7 +59,7 @@ export default function RevenueAnalyticsPage() {
         name: "What does revenue analytics consulting involve?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "We define funnel stages, metric taxonomy, and reporting rules. We align CRM data to finance systems, implement retention and pipeline views, and establish a governance cadence so dashboards remain accurate as the business changes.",
+          text: "We define funnel stages, metric taxonomy, and reporting rules. We align CRM data to finance systems, set up retention and pipeline views, and establish a governance cadence so dashboards remain accurate as the business changes.",
         },
       },
       {
@@ -75,7 +75,7 @@ export default function RevenueAnalyticsPage() {
         name: "Do you build dashboards or govern existing ones?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Both. We define the measurement model and can implement within your existing BI tools, CRM reporting layers, or help you select and configure the right tooling. Governance of existing dashboards is often the fastest path to reliable reporting.",
+          text: "Both. We define the measurement model and can set it up within your existing BI tools, CRM reporting layers, or help you select and set up the right tooling. Governance of existing dashboards is often the fastest path to reliable reporting.",
         },
       },
     ],
