@@ -34,6 +34,7 @@ export type LeadFormName =
   | "newsletter_signup"
   | "ai_readiness_tool"
   | "dpdp_exposure_tool"
+  | "ai_roi_calculator"
   | "marketing_automation_maturity"
   | "revenue_attribution_readiness"
   | "leaky_funnel_audit";

@@ -139,10 +139,10 @@ export default function AIGovernanceAndAdoptionPage() {
             "What applies now, what moved to December 2027 and what the Digital Omnibus left untouched.",
         },
         {
-          href: "/insights/ai-marketing-readiness",
-          label: "AI marketing readiness assessment",
+          href: "/insights/ai-roi-calculator",
+          label: "AI ROI calculator",
           detail:
-            "Where the data, governance and audit trail have to be in place before a model touches a live workflow.",
+            "Payback, three-year value and a scale, fix or stop recommendation for one AI use case.",
         },
       ]}
       engagement={{

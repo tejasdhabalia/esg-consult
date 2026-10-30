@@ -61,6 +61,12 @@ export default function AiReadyDataPage() {
           after: ".",
         },
         {
+          before: "Once the data is ready, check whether each use case pays back with the",
+          anchor: "AI ROI calculator",
+          href: "/insights/ai-roi-calculator",
+          after: ".",
+        },
+        {
           before: "Need someone to sit with your teams and make the CTO's AI plan land?",
           anchor: "See the forward deployed engineer service",
           href: "/services/forward-deployed-engineer",

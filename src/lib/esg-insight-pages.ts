@@ -25,6 +25,15 @@ export type EsgInsightPageConfig = {
   slug: string;
   title: string;
   breadcrumbLabel?: string;
+  /**
+   * Optional answer-first summary shown at the top of the page, before the
+   * quote. For pages that rank for a "how to" query.
+   */
+  summary?: {
+    heading: string;
+    steps: Array<{ title: string; body: string }>;
+    link?: { before: string; anchor: string; href: string; after: string };
+  };
   description: string;
   /**
    * Hero standfirst, when it should differ from the meta description.
@@ -444,7 +453,41 @@ export const esgInsightPages: Record<string, EsgInsightPageConfig> = {
   },
   "ai-use-case-register": {
     slug: "ai-use-case-register",
-    title: "AI use case register template",
+    // H1 adds "AI tools register" (SEO brief, 30 October 2026). The
+    // breadcrumb keeps the short name.
+    title: "AI use case register and AI tools register template",
+    breadcrumbLabel: "AI use case register",
+    summary: {
+      heading: "How to create an AI use case register",
+      steps: [
+        {
+          title: "List every AI use.",
+          body: "Approved projects, AI features inside software you already licensed, and shadow use. Ask procurement and check expense records, not only IT.",
+        },
+        {
+          title: "Record your role for each.",
+          body: "Provider or deployer, and where the output lands.",
+        },
+        {
+          title: "Classify by purpose.",
+          body: "The risk tier and any Article 50 triggers, with the reasoning written down.",
+        },
+        {
+          title: "Make every row a control.",
+          body: "A named business owner, where the evidence lives and a review cadence.",
+        },
+        {
+          title: "Keep it current and costed.",
+          body: "Attach it to procurement so new tools enter when they are bought, and estimate the return on each row.",
+        },
+      ],
+      link: {
+        before: "The register says what you run. To check whether each use case is worth running, use the",
+        anchor: "AI ROI calculator",
+        href: "/insights/ai-roi-calculator",
+        after: ".",
+      },
+    },
     // 153 characters. Brief 3 set a 155 limit so Google does not truncate.
     description:
       "A register that records where AI is used, who owns each use and which obligations attach. Structured around EU AI Act risk tiers and Article 50 triggers.",
@@ -612,7 +655,40 @@ export const esgInsightPages: Record<string, EsgInsightPageConfig> = {
           {
             item: "Connect it to procurement.",
             detail:
-              "The register only stays current if new tools are added when they are bought rather than at the next audit.",
+              "The register only stays current if new tools are added when they are bought rather than at the next audit. The next section sets out how.",
+          },
+          {
+            item: "Estimate the return on each row.",
+            detail:
+              "Once a row has an owner, run it through the AI ROI calculator. The register says what you run. The calculator says whether it is worth running.",
+          },
+        ],
+      },
+      {
+        id: "procurement",
+        title: "Keep it current through procurement",
+        colorClass: "",
+        accentClass: "",
+        items: [
+          {
+            item: "Add a register check to software spend approval.",
+            detail:
+              "Any request to buy software, or to renew one that adds features, asks one question: does this use AI? A yes creates a register row before the purchase order is raised.",
+          },
+          {
+            item: "Ask at vendor onboarding.",
+            detail:
+              "Onboarding forms already ask what data a vendor will process. Add whether the product uses AI on that data and where the output goes.",
+          },
+          {
+            item: "Re-ask at every renewal.",
+            detail:
+              "Vendors add AI features without asking. A renewal is the moment to check, and the price conversation gives you leverage to get an answer.",
+          },
+          {
+            item: "Look at card and expense spend.",
+            detail:
+              "Small tools bought on a card never reach procurement. A monthly look at expense lines catches what the other three miss.",
           },
         ],
       },
@@ -655,6 +731,11 @@ export const esgInsightPages: Record<string, EsgInsightPageConfig> = {
       { label: "Integration", href: "/services/integration" },
     ],
     relatedInsights: [
+      {
+        label: "AI ROI calculator",
+        href: "/insights/ai-roi-calculator",
+        description: "Whether each register row is worth running",
+      },
       {
         label: "Access and vendor risk checklist",
         href: "/insights/access-and-vendor-risk-checklist",

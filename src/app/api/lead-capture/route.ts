@@ -1,7 +1,14 @@
 import { NextResponse } from "next/server";
 import { validateBusinessEmail } from "@/lib/businessEmail";
 import { verifyRecaptchaToken } from "@/lib/recaptcha-server";
-import { sendReportEmail, sendInsightResourceEmail, type AssessmentResult } from "@/lib/lead-email";
+import {
+  sendReportEmail,
+  sendInsightResourceEmail,
+  sendAiRoiAccessNotification,
+  sendAiRoiReportEmail,
+  type AssessmentResult,
+} from "@/lib/lead-email";
+import { computeAiRoi, sanitiseInputs } from "@/lib/ai-roi";
 import { insightResources, type InsightResourceKey } from "@/lib/insight-resources";
 
 type FormType =
@@ -12,7 +19,9 @@ type FormType =
   | "attribution_report"
   | "ai_readiness_report"
   | "dpdp_exposure_report"
-  | "insight_resource_download";
+  | "insight_resource_download"
+  | "ai_roi_access"
+  | "ai_roi_report";
 
 const FORM_ACTIONS: Record<FormType, string> = {
   newsletter_subscribe: "newsletter_subscribe",
@@ -23,6 +32,8 @@ const FORM_ACTIONS: Record<FormType, string> = {
   ai_readiness_report: "ai_readiness_report",
   dpdp_exposure_report: "dpdp_exposure_report",
   insight_resource_download: "insight_resource_download",
+  ai_roi_access: "ai_roi_access",
+  ai_roi_report: "ai_roi_report",
 };
 
 const REPORT_FORM_TYPES = new Set<FormType>([
@@ -115,7 +126,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ ok: false, error: "Work email is required." }, { status: 400 });
     }
 
-    if ((formType === "checklist_download" || formType === "insight_resource_download") && !name) {
+    if ((formType === "checklist_download" || formType === "insight_resource_download" || formType === "ai_roi_access") && !name) {
       return NextResponse.json({ ok: false, error: "Name is required." }, { status: 400 });
     }
 
@@ -157,6 +168,37 @@ export async function POST(req: Request) {
         });
       } catch (emailErr) {
         console.error("sendReportEmail failed:", emailErr);
+      }
+    }
+
+    /*
+      AI ROI calculator (lead-gated, 30 October 2026). The gate notifies
+      Tejas that someone opened it. The report recomputes the result from
+      the inputs here, so the email carries only numbers this server made.
+    */
+    if (formType === "ai_roi_access") {
+      try {
+        await sendAiRoiAccessNotification({
+          name: name.slice(0, 120),
+          email: emailValidation.normalizedEmail,
+          company: String(body?.company || "").replace(/\s+/g, " ").trim().slice(0, 160),
+        });
+      } catch (emailErr) {
+        console.error("sendAiRoiAccessNotification failed:", emailErr);
+      }
+    }
+
+    if (formType === "ai_roi_report") {
+      const inputs = sanitiseInputs(body?.roiInputs);
+      try {
+        await sendAiRoiReportEmail({
+          name: name.slice(0, 120),
+          email: emailValidation.normalizedEmail,
+          inputs,
+          result: computeAiRoi(inputs),
+        });
+      } catch (emailErr) {
+        console.error("sendAiRoiReportEmail failed:", emailErr);
       }
     }
 

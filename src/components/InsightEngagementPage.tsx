@@ -82,6 +82,38 @@ export default function InsightEngagementPage({ config }: { config: EsgInsightPa
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="grid lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2">
+            {/*
+              Optional answer-first summary, for pages that rank for a
+              "how to" query. Added for the AI use case register upgrade,
+              SEO brief 30 October 2026.
+            */}
+            {config.summary && (
+              <section className="mb-10 rounded-2xl border border-slate-200 bg-white p-6">
+                <h2 className="text-2xl font-bold text-slate-900 mb-4">{config.summary.heading}</h2>
+                <ol className="space-y-3">
+                  {config.summary.steps.map((step, index) => (
+                    <li key={step.title} className="flex gap-4">
+                      <div className={`w-7 h-7 rounded-full ${config.numberPillClass} text-white text-xs font-bold flex items-center justify-center flex-shrink-0`}>
+                        {index + 1}
+                      </div>
+                      <p className="text-sm text-slate-700 leading-relaxed">
+                        <strong className="text-slate-900">{step.title}</strong> {step.body}
+                      </p>
+                    </li>
+                  ))}
+                </ol>
+                {config.summary.link && (
+                  <p className="mt-5 text-sm text-slate-600 leading-relaxed">
+                    {config.summary.link.before}{" "}
+                    <Link href={config.summary.link.href} className="text-indigo-700 underline underline-offset-2 hover:text-indigo-900">
+                      {config.summary.link.anchor}
+                    </Link>
+                    {config.summary.link.after}
+                  </p>
+                )}
+              </section>
+            )}
+
             <div className={`${config.quoteBoxClass} border rounded-2xl p-6 mb-10`}>
               <p className="text-slate-700 text-sm leading-relaxed italic">&ldquo;{config.quote.text}&rdquo;</p>
               <p className="mt-3 text-sm font-semibold text-slate-700">{config.quote.attribution}</p>

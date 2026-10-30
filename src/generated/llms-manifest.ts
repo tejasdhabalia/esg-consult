@@ -1,6 +1,6 @@
 export const llmsManifest = {
-  "generatedAt": "2026-10-30T13:48:56.812Z",
-  "pageCount": 87,
+  "generatedAt": "2026-10-30T15:33:40.782Z",
+  "pageCount": 90,
   "pages": [
     {
       "route": "/",
@@ -103,9 +103,29 @@ export const llmsManifest = {
       "source": "src/app/insights/ai-marketing-readiness/page.tsx"
     },
     {
+      "route": "/insights/ai-roi",
+      "url": "https://www.consult-ds.com/insights/ai-roi",
+      "title": "AI ROI: framework and calculator",
+      "description": "Most AI pilots stall before they pay back. A practical way to measure the ROI of AI in a mid-market business, with a free calculator to use.",
+      "section": "insights",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src/app/insights/ai-roi/page.tsx"
+    },
+    {
+      "route": "/insights/ai-roi-calculator",
+      "url": "https://www.consult-ds.com/insights/ai-roi-calculator",
+      "title": "AI ROI calculator: scale, fix or stop",
+      "description": "Work out whether an AI use case pays back: payback in months, three-year value and a scale, fix or stop recommendation. Results emailed to you.",
+      "section": "insights",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src/app/insights/ai-roi-calculator/page.tsx"
+    },
+    {
       "route": "/insights/ai-use-case-register",
       "url": "https://www.consult-ds.com/insights/ai-use-case-register",
-      "title": "AI use case register template",
+      "title": "AI use case register (registry) template",
       "description": "A register that records where AI is used, who owns each use and which obligations attach. Structured around EU AI Act risk tiers and Article 50 triggers.",
       "section": "insights",
       "priority": 0.5,
@@ -181,6 +201,16 @@ export const llmsManifest = {
       "priority": 0.5,
       "changeFrequency": "monthly",
       "source": "src/app/insights/esg-tender-response-question-bank/page.tsx"
+    },
+    {
+      "route": "/insights/forward-deployed-engineer-vs-implementation-consultant",
+      "url": "https://www.consult-ds.com/insights/forward-deployed-engineer-vs-implementation-consultant",
+      "title": "Forward deployed engineer vs consultant",
+      "description": "A forward deployed engineer, an implementation consultant or a hire? How each role puts an AI strategy into practice, and how to choose.",
+      "section": "insights",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src/app/insights/forward-deployed-engineer-vs-implementation-consultant/page.tsx"
     },
     {
       "route": "/insights/leaky-funnel-audit",

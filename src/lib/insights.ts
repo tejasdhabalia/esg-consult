@@ -14,6 +14,30 @@ export const allInsights: SiteInsightItem[] = [
   // Newest first. This registry is what /insights renders; adding a page
   // under src/app/insights does not put it on the hub.
   {
+    slug: "ai-roi-calculator",
+    category: "AI",
+    title: "AI ROI calculator",
+    summary:
+      "Payback in months, three-year value and a scale, fix or stop recommendation for one AI use case, at half, planned and one and a half times planned adoption. Results emailed to you.",
+    topics: ["AI ROI", "Business case", "AI governance", "Payback"],
+    audience: "CEO, CFO, COO, CTO",
+    readTime: "Interactive tool",
+    updated: "Oct 2026",
+    updatedAt: "2026-10-30",
+  },
+  {
+    slug: "ai-roi",
+    category: "AI",
+    title: "Why your AI pilot is not paying back",
+    summary:
+      "Most AI pilots stall before they pay back. The four patterns behind it, the costs people leave out, the value a CFO will accept and the rules for scaling, fixing or stopping.",
+    topics: ["AI ROI", "AI pilots", "Business case", "Operating model"],
+    audience: "CEO, CFO, COO, CTO",
+    readTime: "8 min read",
+    updated: "Oct 2026",
+    updatedAt: "2026-10-30",
+  },
+  {
     slug: "forward-deployed-engineer-vs-implementation-consultant",
     category: "AI",
     title: "Forward deployed engineer or implementation consultant",

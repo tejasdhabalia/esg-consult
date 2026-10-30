@@ -1,6 +1,8 @@
 import nodemailer from "nodemailer";
 import path from "path";
 import { insightResources } from "@/lib/insight-resources";
+import type { AiRoiInputs, AiRoiResult } from "@/lib/ai-roi";
+import { formatMoney, formatPayback } from "@/lib/ai-roi";
 
 /**
  * MIME type for an email attachment, derived from the filename.
@@ -492,5 +494,151 @@ export async function sendInsightResourceEmail({ resourceKey, email }: SendInsig
     to: notify,
     subject: resource.notifySubject,
     html: buildInternalNotification(resource.notifySubject, email, [["Resource", resourceKey]]),
+  });
+}
+
+/* ------------------------------------------------------------------------
+   AI ROI calculator. Lead-gated page, agreed 30 October 2026.
+   The results are recomputed on the server from the inputs (see
+   src/lib/ai-roi.ts), so these emails never carry numbers from a browser.
+------------------------------------------------------------------------- */
+
+
+const AI_ROI_ACCENT = "#4F46E5";
+
+export async function sendAiRoiAccessNotification({
+  name,
+  email,
+  company,
+}: {
+  name: string;
+  email: string;
+  company: string;
+}): Promise<void> {
+  if (!process.env.SMTP_HOST || !process.env.SMTP_USER) {
+    console.log(`SMTP not configured. Would notify AI ROI calculator access by ${email}`);
+    return;
+  }
+  const transporter = getTransporter();
+  const from = process.env.SMTP_FROM ?? process.env.SMTP_USER;
+  const notify = process.env.SMTP_NOTIFY ?? process.env.SMTP_USER;
+  await transporter.sendMail({
+    from,
+    to: notify,
+    subject: "New lead: AI ROI calculator opened",
+    html: buildInternalNotification("New lead: AI ROI calculator opened", escapeHtml(email), [
+      ["Name", escapeHtml(name)],
+      ["Company", escapeHtml(company || "Not given")],
+      ["Next", "Their result arrives in a second email if they run the calculator."],
+    ]),
+  });
+}
+
+function roiResultHtml(inputs: AiRoiInputs, r: AiRoiResult): string {
+  const c = inputs.currency;
+  const rows: Array<[string, (s: AiRoiResult["planned"]) => string]> = [
+    ["Share of tasks the AI handles", (s) => `${Math.round(s.share * 100)}%`],
+    ["Value per month", (s) => formatMoney(s.totalValue, c)],
+    ["Recurring cost per month", (s) => formatMoney(s.totalRecurring, c)],
+    ["Net value per month", (s) => formatMoney(s.netMonthly, c)],
+    ["One-off cost", (s) => formatMoney(s.oneOff, c)],
+    ["Payback", (s) => formatPayback(s.paybackMonths)],
+    ["Net value over three years", (s) => formatMoney(s.net3Years, c)],
+  ];
+  const cell = "padding:8px 10px;border-bottom:1px solid #e2e8f0;font-size:13px;";
+  return `
+<table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background-color:#1e1b4b;border-radius:6px;margin:0 0 20px;">
+  <tr><td style="padding:18px 20px;">
+    <p style="margin:0;font-size:11px;font-weight:700;color:#a5b4fc;text-transform:uppercase;letter-spacing:0.08em;">Recommendation</p>
+    <p style="margin:4px 0 6px;font-size:26px;font-weight:700;color:#ffffff;">${r.decision}</p>
+    <p style="margin:0;font-size:14px;line-height:1.5;color:#cbd5e1;">${escapeHtml(r.decisionReason)}</p>
+  </td></tr>
+</table>
+<p style="margin:0 0 8px;font-size:13px;color:#64748b;">${escapeHtml(inputs.useCase)} &middot; ${escapeHtml(inputs.process)} &middot; ${c}</p>
+<table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;margin:0 0 20px;">
+  <tr>
+    <th align="left" style="${cell}color:#64748b;font-weight:600;"></th>
+    <th align="right" style="${cell}color:#334155;">Half planned</th>
+    <th align="right" style="${cell}color:#0f172a;">Planned</th>
+    <th align="right" style="${cell}color:#334155;">1.5x planned</th>
+  </tr>
+  ${rows
+    .map(
+      ([label, fmt]) => `
+  <tr>
+    <td style="${cell}color:#334155;">${label}</td>
+    <td align="right" style="${cell}color:#334155;">${fmt(r.half)}</td>
+    <td align="right" style="${cell}color:#0f172a;font-weight:700;">${fmt(r.planned)}</td>
+    <td align="right" style="${cell}color:#334155;">${fmt(r.stretch)}</td>
+  </tr>`,
+    )
+    .join("")}
+</table>`;
+}
+
+function roiInputRows(i: AiRoiInputs): Array<[string, string]> {
+  const c = i.currency;
+  const pct = (v: number) => `${Math.round(v * 1000) / 10}%`;
+  return [
+    ["Use case", escapeHtml(i.useCase)],
+    ["Process", escapeHtml(i.process)],
+    ["Baseline", `${i.tasksPerMonth.toLocaleString("en-IN")} tasks/month, ${i.minutesBefore} min each, ${pct(i.errorRateBefore)} errors, ${formatMoney(i.costPerError, c)} per error, ${formatMoney(i.hourlyCost, c)}/hour`],
+    ["With AI", `${pct(i.plannedAdoption)} adoption, ${i.minutesWithAi} min per task, ${pct(i.errorRateWithAi)} errors, revenue lift ${formatMoney(i.revenueLift, c)}/month`],
+    ["Confidence", `time ${pct(i.confTime)}, errors ${pct(i.confErrors)}, revenue ${pct(i.confRevenue)}`],
+    ["One-off", `data ${formatMoney(i.oneOffData, c)}, integration ${formatMoney(i.oneOffIntegration, c)}, change ${formatMoney(i.oneOffChange, c)}`],
+    ["Recurring", `licences ${formatMoney(i.licences, c)}, usage ${formatMoney(i.usagePerTask, c)}/task, review ${pct(i.reviewShare)} x ${i.reviewMinutes} min, governance ${formatMoney(i.governance, c)}`],
+  ];
+}
+
+export async function sendAiRoiReportEmail({
+  name,
+  email,
+  inputs,
+  result,
+}: {
+  name: string;
+  email: string;
+  inputs: AiRoiInputs;
+  result: AiRoiResult;
+}): Promise<void> {
+  if (!process.env.SMTP_HOST || !process.env.SMTP_USER) {
+    console.log(`SMTP not configured. Would send AI ROI result (${result.decision}) to ${email}`);
+    return;
+  }
+  const transporter = getTransporter();
+  const from = process.env.SMTP_FROM ?? process.env.SMTP_USER;
+  const notify = process.env.SMTP_NOTIFY ?? process.env.SMTP_USER;
+
+  const html = buildEmailShell({
+    headline: `Your AI ROI result: ${result.decision}`,
+    description: `${name ? `Hello ${escapeHtml(name)}. ` : ""}Here are the results you calculated, so you have them after you close the page. They are a management estimate, only as good as the baseline entered.`,
+    accentHex: AI_ROI_ACCENT,
+    resultHtml: roiResultHtml(inputs, result),
+    deliveryHtml: `<p style="margin:0 0 16px;font-size:15px;line-height:1.6;color:#334155;">Why the rules are this strict, and the costs most pilots leave out: <a href="https://www.consult-ds.com/insights/ai-roi" style="color:${AI_ROI_ACCENT};">why your AI pilot is not paying back</a>. To test another use case, <a href="https://www.consult-ds.com/insights/ai-roi-calculator" style="color:${AI_ROI_ACCENT};">open the calculator again</a>. If you want to talk it through, reply to this email.</p>`,
+    links: [
+      { label: "AI use case register", href: "https://www.consult-ds.com/insights/ai-use-case-register", desc: "Know what you run before you ask whether it pays" },
+      { label: "Getting your data AI-ready", href: "https://www.consult-ds.com/migrations/ai-ready-data", desc: "Where most AI plans actually stall" },
+      { label: "Forward deployed engineer for AI", href: "https://www.consult-ds.com/services/forward-deployed-engineer", desc: "Someone to make the plan land in your teams" },
+    ],
+  });
+
+  await transporter.sendMail({
+    from,
+    to: email,
+    subject: `Your AI ROI result: ${result.decision}, payback ${formatPayback(result.planned.paybackMonths)}`,
+    html,
+  });
+
+  await transporter.sendMail({
+    from,
+    to: notify,
+    subject: `New lead: AI ROI result (${result.decision}, ${formatPayback(result.planned.paybackMonths)})`,
+    html: buildInternalNotification("New lead: AI ROI calculator result", escapeHtml(email), [
+      ["Name", escapeHtml(name || "Not given")],
+      ["Recommendation", `${result.decision}: ${escapeHtml(result.decisionReason)}`],
+      ["Payback (planned)", formatPayback(result.planned.paybackMonths)],
+      ["3-year net (planned)", formatMoney(result.planned.net3Years, inputs.currency)],
+      ...roiInputRows(inputs),
+    ]),
   });
 }
