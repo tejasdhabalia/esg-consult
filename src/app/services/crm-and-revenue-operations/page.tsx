@@ -126,7 +126,7 @@ export default function MarketingAutomationPage() {
       <PageHero
         title="CRM and revenue operations"
         subtitle="Lifecycle definitions, CRM architecture and reporting that survives contact with the sales team. Built so the numbers in the board pack match the numbers in the system."
-        primaryAction={{ label: site.assessment.label, href: "/contact" }}
+        primaryAction={{ label: site.movePlan.label, href: "/contact" }}
         secondaryAction={{ label: "Back to services", href: "/services" }}
         imageSrc="/hero/marketing.jpg"
         imageAlt="Marketing automation and analytics theme"

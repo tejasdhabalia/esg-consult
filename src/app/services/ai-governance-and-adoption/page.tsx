@@ -29,6 +29,13 @@ export const metadata = pageMetadata({
   path: "/services/ai-governance-and-adoption",
 });
 
+/*
+  EVIDENCE. Verified 30 October 2026.
+  Netrio, mid-market AI survey, 15 Jun 2026. Tier 2 (91 to 180 days) until
+  mid-December 2026, then older: replace when a newer study appears.
+  401 IT leaders at US organisations with 200 to 5,000 employees, fielded
+  by Censuswide. Replaced Everest Group (Mar 2026, older than 180 days).
+*/
 export default function AIGovernanceAndAdoptionPage() {
   return (
     <ServiceLinePage
@@ -40,7 +47,7 @@ export default function AIGovernanceAndAdoptionPage() {
       heroImageAlt="AI governance and adoption for mid-market companies"
       problemHeading="Two problems that are usually treated as one"
       problemParagraphs={[
-        "The first is adoption. Everest Group's 2026 mid-market research found 57 percent of firms sitting in the pilot stage and 15 percent with something genuinely operationalised. That gap is not a technology gap. A pilot runs on curated data with an enthusiast watching the output. Production runs on whatever the source system holds that day, with someone who has a queue to clear and no reason to check.",
+        "The first is adoption. Netrio's June 2026 survey of 401 US mid-market IT leaders found 82 percent with AI in production somewhere in the business, and only 26 percent with it scaled and governed across the company. That gap is not a technology gap. A pilot runs on curated data with an enthusiast watching the output. Production runs on whatever the source system holds that day, with someone who has a queue to clear and no reason to check.",
         "The second is governance, and it usually arrives as a surprise. Staff are already using AI tools with company data. Nobody wrote a policy, so there is no record of what went into which tool. Then a customer or an auditor asks a question that requires one.",
         "These get treated as one problem and they are not. Governance without adoption is a document nobody reads. Adoption without governance is a liability that compounds quietly. The work is to do both at a pace the business can actually absorb.",
         "The regulatory position is also more specific than most current commentary suggests, and getting it wrong in either direction costs money. Rushing to comply with a requirement that has moved wastes budget. Assuming the whole regime was postponed misses obligations that are already live.",

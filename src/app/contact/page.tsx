@@ -5,9 +5,11 @@ import { absUrl } from "@/lib/url";
 import { pageMetadata } from "@/lib/page-metadata";
 
 export const metadata = pageMetadata({
-  title: "Start with an assessment",
+  title: "Book a working session",
+  // Two offers since October 2026: a free move plan session for technology
+  // work, a fixed-price assessment for everything else.
   description:
-    "Two to four weeks at a fixed price, delivered as a decision document rather than a proposal. Tell us what you are working on and we will come prepared.",
+    "Changing a system? Book a free 45-minute working session and leave with a one-page move plan. Other work starts with a fixed-price assessment.",
   path: "/contact",
 });
 
@@ -18,7 +20,7 @@ export default function ContactPage() {
     name: `Contact ${site.legalName}`,
     url: absUrl("/contact"),
     about:
-      "Contact DS Consulting about a technology assessment, systems selection, implementation oversight, integration, CRM and revenue operations, AI in operations, or ESG reporting systems.",
+      "Contact DS Consulting about moving to a new system, systems selection, implementation oversight, integration, CRM and revenue operations, AI in operations, or ESG reporting systems.",
     mainEntity: {
       "@type": "Organization",
       name: site.legalName,
@@ -29,39 +31,48 @@ export default function ContactPage() {
   return (
     <div>
       <PageHero
-        title="Start with an assessment"
-        subtitle="Two to four weeks at a fixed price, delivered as a decision document rather than a proposal. Book a time below and tell us what you are working on, and we will come prepared."
+        title="Book a working session"
+        subtitle="Changing a system? The first session is free, and you leave with a one-page plan of the move. Book a time below and tell us what you are working on, and we will come prepared."
         primaryAction={{ label: "See what we do", href: "/services" }}
         secondaryAction={{ label: "About the firm", href: "/about" }}
         imageSrc="/hero/contact.jpg"
         imageAlt="Contact DS Consulting"
       />
 
-      {/* THE ASSESSMENT */}
+      {/* HOW WE START. Two offers since October 2026. */}
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold">What an assessment is</h2>
-          <p className="mt-4 text-slate-600 max-w-3xl leading-relaxed">
-            A piece of work with its own price, not a sales exercise dressed as one. We look at
-            what you are trying to do, what you already run and where the two do not meet. You
-            own the output whether or not you carry on with us.
-          </p>
+          <h2 className="text-3xl font-semibold">How we start</h2>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-            {[
-              ["Two to four weeks", "Long enough to see the problem, short enough to act on it"],
-              ["Fixed price", "Agreed before we start, no time and materials creep"],
-              [
-                "A decision document",
-                "What to do, what it costs, what happens if you do nothing",
-              ],
-              ["Yours to keep", "Including the scoring, whoever you go on to work with"],
-            ].map(([label, detail]) => (
-              <div key={label} className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
-                <div className="font-semibold text-slate-900">{label}</div>
-                <div className="mt-2 text-sm text-slate-600 leading-snug">{detail}</div>
+          <div className="grid md:grid-cols-2 gap-8 mt-12">
+            <div className="rounded-2xl border border-indigo-200 bg-indigo-50 p-8">
+              <div className="text-sm font-semibold text-indigo-700 uppercase tracking-widest">
+                Technology
               </div>
-            ))}
+              <h3 className="mt-3 text-xl font-semibold text-slate-900">{site.movePlan.label}</h3>
+              <ul className="mt-5 space-y-3 text-sm text-slate-700 leading-relaxed">
+                <li>{site.movePlan.session} with the person who would run the move.</li>
+                <li>A one-page plan: what moves, in what order and what breaks. Yours to keep.</li>
+                <li>Week 1, if you go ahead: the full move plan and a check on the strategy behind it.</li>
+                <li>
+                  If you stop after week 1, a fixed fee {site.movePlan.week1Fee.toLowerCase()}, agreed
+                  in writing first. You keep the plan.
+                </li>
+              </ul>
+            </div>
+
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-8">
+              <div className="text-sm font-semibold text-slate-500 uppercase tracking-widest">
+                Sustainability, finance and sourcing
+              </div>
+              <h3 className="mt-3 text-xl font-semibold text-slate-900">{site.assessment.label}</h3>
+              <ul className="mt-5 space-y-3 text-sm text-slate-700 leading-relaxed">
+                <li>{site.assessment.duration} at a fixed price, agreed before we start.</li>
+                <li>We look at what you are trying to do, what you already run and where the two do not meet.</li>
+                <li>A decision document: what to do, what it costs and what happens if you do nothing.</li>
+                <li>Yours to keep, whoever you go on to work with.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -85,28 +96,27 @@ export default function ContactPage() {
 
               <div className="mt-5 grid gap-4">
                 <div className="bg-slate-50 border rounded-2xl p-6">
-                  <div className="font-semibold text-slate-900">1) A 45-minute call</div>
+                  <div className="font-semibold text-slate-900">1) A 45-minute working session</div>
                   <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-                    What you are trying to do, what is in the way, and who else needs to be in
-                    the room. No deck.
+                    What you run today, what you are changing and who else needs to be in the
+                    room. For a technology move, you leave with a one-page plan. No deck.
                   </p>
                 </div>
 
                 <div className="bg-slate-50 border rounded-2xl p-6">
-                  <div className="font-semibold text-slate-900">
-                    2) A scope and a price for the assessment
-                  </div>
+                  <div className="font-semibold text-slate-900">2) A scope and a fixed price</div>
                   <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-                    One page. What we will look at, who we need access to, how long it takes and
-                    what it costs. Fixed before we start.
+                    One page. For a move, week 1 and what follows it. For an assessment, what we
+                    will look at and how long it takes. Fixed before we start.
                   </p>
                 </div>
 
                 <div className="bg-slate-50 border rounded-2xl p-6">
-                  <div className="font-semibold text-slate-900">3) The decision document</div>
+                  <div className="font-semibold text-slate-900">3) The plan or the decision document</div>
                   <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-                    Findings, options with the scoring attached, a recommendation and the case
-                    against it. Written to be taken to a board.
+                    Week 1 produces the full move plan and a check on the strategy behind it. An
+                    assessment produces findings, options with the scoring attached and a
+                    recommendation.
                   </p>
                 </div>
 
@@ -114,7 +124,7 @@ export default function ContactPage() {
                   <div className="font-semibold text-slate-900">4) Your decision</div>
                   <p className="mt-2 text-sm text-slate-600 leading-relaxed">
                     Carry on with us, take it to someone else, or do nothing. All three are
-                    reasonable outcomes and the document works for each of them.
+                    reasonable outcomes and the output works for each of them.
                   </p>
                 </div>
               </div>

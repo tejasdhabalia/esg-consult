@@ -9,6 +9,7 @@ export default function PageHero({
   title,
   subtitle,
   painLine,
+  leadLine,
   primaryAction,
   secondaryAction,
   note,
@@ -18,6 +19,8 @@ export default function PageHero({
   title: string;
   subtitle: string;
   painLine?: string;
+  /** Optional second paragraph directly under the subtitle. */
+  leadLine?: string;
   primaryAction?: HeroAction;
   secondaryAction?: HeroAction;
   note?: string;
@@ -37,6 +40,8 @@ export default function PageHero({
             <h1 className="mt-8 text-5xl font-bold leading-tight max-w-4xl">{title}</h1>
 
             <p className="mt-6 text-lg text-slate-300 max-w-4xl">{subtitle}</p>
+
+            {leadLine && <p className="mt-4 text-lg text-white max-w-4xl">{leadLine}</p>}
 
             {painLine && (
               <p className="mt-5 text-base text-indigo-300 font-medium max-w-2xl border-l-2 border-indigo-500 pl-4">

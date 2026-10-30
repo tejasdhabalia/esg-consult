@@ -21,26 +21,47 @@ export const metadata = pageMetadata({
 });
 
 
+/*
+  EVIDENCE. Verified 30 October 2026 under the recency rule in the
+  migration-led positioning brief. Windows roll from the date of checking:
+    Tier 1: published in the last 90 days
+    Tier 2: 91 to 180 days
+    Older:  kept only until something newer exists, then replaced
+
+  ADAPTOVATE with Wakefield Research, The Execution Gap, 15 Sep 2026.
+    Tier 1 until mid-December 2026. 300 C-suite executives, US and Canada
+    only, companies with USD 10m+ revenue. ADAPTOVATE is a consultancy that
+    sells the services its survey supports, so the source is always named.
+  ServiceNow Enterprise AI Maturity Index 2026, India, 8 Sep 2026, with
+    ThoughtLab. Tier 1 until early December 2026. 350 Indian respondents.
+  Panorama Consulting, The 2026 ERP Report, 4 Mar 2026. OLDER THAN 180
+    DAYS. Replace first when a newer ERP outcomes study appears. The 55%
+    and 58% figures previously shown here could not be found in the report
+    text and were removed. "More than a quarter" is stated in Panorama's
+    own release.
+
+  Removed: Gartner "more than 70%" (2025) and Everest Group (Mar 2026).
+*/
 const evidence = [
   {
-    stat: "More than 70%",
-    claim: "of recently implemented ERP initiatives will fall short of their original business goals",
-    source: "Gartner forecast to 2027",
+    stat: "19%",
+    claim: "have a company-wide plan to scale AI, though 78% say they know what needs to be done",
+    source: "ADAPTOVATE with Wakefield Research, Sep 2026. US and Canadian executives",
   },
   {
-    stat: "55%",
-    claim: "of over-budget projects needed technology nobody had scoped for",
-    source: "Panorama Consulting, 2026 ERP Report",
+    stat: "20%",
+    claim: "say consultants' advice was implemented effectively, though 96% have hired consultants",
+    source: "ADAPTOVATE with Wakefield Research, Sep 2026. US and Canadian executives",
   },
   {
-    stat: "58%",
-    claim: "of late projects blame organisational issues, ahead of technical ones",
-    source: "Panorama Consulting, 2026 ERP Report",
+    stat: "18%",
+    claim: "of Indian organisations have replaced disconnected legacy systems with an integrated platform",
+    source: "ServiceNow Enterprise AI Maturity Index, India, Sep 2026",
   },
   {
-    stat: "15%",
-    claim: "of mid-market firms have AI genuinely operationalised",
-    source: "Everest Group, 2026",
+    stat: "More than 1 in 4",
+    claim: "ERP projects went over budget, most often on technology nobody had scoped",
+    source: "Panorama Consulting, 2026 ERP Report, Mar 2026",
   },
 ];
 
@@ -120,7 +141,7 @@ export default function HomePage() {
         name: "How do engagements start?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "With an assessment. Two to four weeks at a fixed price, delivered as a decision document rather than a proposal. You own the output whether or not you continue with us.",
+          text: `Technology work starts with ${site.movePlan.session.toLowerCase()}, and you leave with a one-page plan of the move. If you go ahead, week 1 turns it into the full move plan and checks the strategy behind it. Week 1 is included if you continue, and a fixed fee ${site.movePlan.week1Fee.toLowerCase()} if you stop, and you keep the plan. Sustainability, finance and sourcing work starts with a fixed-price assessment.`,
         },
       },
     ],
@@ -132,7 +153,8 @@ export default function HomePage() {
         title="Closing the gap between board strategy and system execution"
         subtitle="We design and run the engine room for mid-market leaders: enterprise technology and AI integration, audit-ready ESG systems, outsourced finance operations, and sourcing channels between India and overseas manufacturers."
         painLine="High-level strategy often gets lost when translated into technical workflows and daily financial operations. We work right in the middle, so what the board approved is what actually gets built."
-        primaryAction={{ label: site.assessment.label, href: "/contact" }}
+        leadLine="You have decided what to change. In one free working session we map what moves, in what order and what breaks if nobody plans for it."
+        primaryAction={{ label: site.movePlan.label, href: "/contact" }}
         secondaryAction={{ label: "See what we do", href: "/services" }}
         imageSrc="/hero/home.jpg"
         imageAlt="DS Consulting, technology, sustainability, finance operations and sourcing"
@@ -193,9 +215,14 @@ export default function HomePage() {
             people who would not use the system, the scope moved in change requests nobody read
             end to end, and the team that sold the project was not the team that built it.
           </p>
-		            <p className="mt-4 text-slate-300 max-w-3xl leading-relaxed">
-            Most projects now land close to plan. Around three in five finish on time and half
-            come in on budget. Delivery discipline is not the problem it was a decade ago.
+          {/* Panorama Consulting, The 2026 ERP Report, 4 Mar 2026: "almost a
+              quarter" of organisations over schedule. Same source and expiry as
+              the evidence block below. Replaced an unsourced "three in five on
+              time, half on budget" line, 30 October 2026. */}
+          <p className="mt-4 text-slate-300 max-w-3xl leading-relaxed">
+            Most projects now finish on time. In Panorama Consulting&apos;s 2026 ERP Report,
+            fewer than one in four ran over schedule. Delivery discipline is not the problem it
+            was a decade ago.
           </p>
           <p className="mt-8 max-w-3xl border-l-4 border-indigo-400 pl-6 text-xl md:text-2xl font-semibold leading-snug text-white">
             A project can hit every date and still not produce what the board approved.
@@ -282,7 +309,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ASSESSMENT */}
+      {/* HOW ENGAGEMENTS START. Technology offer, October 2026. */}
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-start">
@@ -291,31 +318,36 @@ export default function HomePage() {
                 How engagements start
               </p>
               <h2 className="text-3xl font-semibold text-slate-900 leading-tight">
-                An assessment, not a proposal
+                A free working session, then a plan you can act on
               </h2>
               <p className="mt-5 text-slate-600 leading-relaxed">
-                Two to four weeks at a fixed price. We look at what you are trying to do, what
-                you already run and where the two do not meet. You get a decision document you
-                can take to the board.
+                You have decided what to change. In one 45-minute working session we go through
+                what you run today, what you are moving to and what usually breaks at that step.
+                You leave with a one-page plan of the move, whoever runs it.
               </p>
               <p className="mt-4 text-slate-600 leading-relaxed">
-                It is a piece of work with its own price, not a sales exercise dressed as one.
-                You own the output whether or not you carry on with us.
+                If you want us to run it, week 1 turns that page into the full move plan and
+                checks the strategy behind it. It is included if you go ahead. If you stop after
+                week 1, you pay a fixed fee and keep the plan.
+              </p>
+              <p className="mt-4 text-sm text-slate-500 leading-relaxed">
+                For sustainability, finance and sourcing work, we still start with a fixed-price
+                assessment.
               </p>
               <Link
                 href="/contact"
                 className="mt-8 inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium"
               >
-                {site.assessment.label}
+                {site.movePlan.label}
               </Link>
             </div>
 
             <div className="grid gap-5">
               {[
-                ["Two to four weeks", "Long enough to see the problem, short enough to act on it"],
-                ["Fixed price", "Agreed before we start, no time and materials creep"],
-                ["A decision document", "What to do, what it costs, what happens if you do nothing"],
-                ["Yours to keep", "Including the scoring, whoever you go on to work with"],
+                ["45 minutes, free", "One working session with the person who would run the move"],
+                ["A one-page move plan", "What moves, in what order and what breaks. Yours to keep"],
+                ["Week 1, the full plan", "Data, cutover sequence and a check on the strategy behind it"],
+                ["Fixed fee if you stop", `${site.movePlan.week1Fee}, agreed in writing before week 1 starts`],
               ].map(([label, detail]) => (
                 <div key={label} className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
                   <div className="font-semibold text-slate-900">{label}</div>
@@ -379,18 +411,17 @@ export default function HomePage() {
       <section className="bg-slate-900 text-white py-20 text-center">
         <div className="max-w-3xl mx-auto px-6">
           <h2 className="text-3xl font-semibold">
-            Bring us in before the decision, not after it goes wrong
+            Bring us in before the move, not after it goes wrong
           </h2>
           <p className="mt-4 text-slate-300">
-            Selecting a system, part way through an implementation that has drifted, or trying to
-            work out why two systems still do not talk to each other. Any of those is a
-            reasonable place to start.
+            Moving off Tally or spreadsheets, changing CRM, or part way through a move that has
+            drifted and left two systems running. Any of those is a reasonable place to start.
           </p>
           <Link
             href="/contact"
             className="mt-8 inline-block bg-indigo-600 hover:bg-indigo-700 px-8 py-3 rounded-lg font-medium"
           >
-            {site.assessment.label}
+            {site.movePlan.label}
           </Link>
         </div>
       </section>

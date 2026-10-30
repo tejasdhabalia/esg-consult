@@ -82,7 +82,24 @@ export const site = {
     ],
   },
 
-  /** Entry offer. Referenced by every primary call to action. */
+  /**
+   * Technology entry offer, October 2026 (migration-led positioning brief,
+   * Option A). Used on the homepage, the technology hub, every technology
+   * service line page and the CRM page. Sustainability, finance, sourcing
+   * and firm-wide pages keep the assessment below.
+   *
+   * The session length matches SLOT_DURATION_MINS in booking-config.ts,
+   * because the contact form books that length. Change both together.
+   *
+   * VERIFY BEFORE PUBLISHING: week1Fee confirmed by Tejas 30 October 2026.
+   */
+  movePlan: {
+    label: "Get your move plan",
+    session: "A free 45-minute working session",
+    week1Fee: "From ₹15,000",
+  },
+
+  /** Entry offer for sustainability, finance, sourcing and firm-wide pages. */
   assessment: {
     label: "Start with an assessment",
     duration: "Two to four weeks",

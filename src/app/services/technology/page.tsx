@@ -1,6 +1,7 @@
 import PillarHub from "@/components/PillarHub";
 import { pillars } from "@/lib/service-pillars";
 import { pageMetadata } from "@/lib/page-metadata";
+import { site } from "@/lib/site";
 
 const pillar = pillars.find((item) => item.route === "/services/technology")!;
 
@@ -15,6 +16,8 @@ export default function TechnologyPillarPage() {
   return (
     <PillarHub
       pillar={pillar}
+      primaryAction={{ label: site.movePlan.label, href: "/contact" }}
+      signalsIntro="Any one of these is enough. You do not need a defined project first. The free working session exists partly to work out whether there is one."
       heroTitle="The systems the company actually runs on"
       heroSubtitle="From the platform that takes the order to the reporting the board reads. We select, build, integrate and govern them, and we are paid only by you."
       heroImage="/hero/services.jpg"

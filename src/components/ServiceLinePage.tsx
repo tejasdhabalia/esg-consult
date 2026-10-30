@@ -139,7 +139,7 @@ export default function ServiceLinePage({
       <PageHero
         title={heroTitle}
         subtitle={heroSubtitle}
-        primaryAction={{ label: site.assessment.label, href: "/contact" }}
+        primaryAction={{ label: site.movePlan.label, href: "/contact" }}
         secondaryAction={{ label: "Back to services", href: "/services" }}
         note={heroNote}
         imageSrc={heroImage}
@@ -283,21 +283,25 @@ export default function ServiceLinePage({
         </section>
       )}
 
-      {/* ASSESSMENT CTA */}
+      {/* ENTRY OFFER CTA. Every ServiceLinePage is a technology page, so this
+          carries the technology offer. If a non-technology page ever adopts
+          this component, make the offer a prop. */}
       <section className="py-20 bg-slate-900 text-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-semibold">An assessment, not a proposal</h2>
+              <h2 className="text-3xl font-semibold">A free working session, then a plan you can act on</h2>
               <p className="mt-4 text-slate-300 leading-relaxed">
-                {site.assessment.duration} at a fixed price, delivered as a decision document.
-                You own the output whether or not you carry on with us.
+                {site.movePlan.session}, and you leave with a one-page plan of the move. Week 1
+                turns it into the full plan and checks the strategy behind it. Included if you go
+                ahead, a fixed fee {site.movePlan.week1Fee.toLowerCase()} if you stop, and you
+                keep the plan.
               </p>
               <Link
                 href="/contact"
                 className="mt-8 inline-block bg-indigo-600 hover:bg-indigo-700 px-6 py-3 rounded-lg font-medium"
               >
-                {site.assessment.label}
+                {site.movePlan.label}
               </Link>
             </div>
 
