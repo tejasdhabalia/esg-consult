@@ -16,11 +16,14 @@ export default function CommerceAndDigitalPlatformsPage() {
       route="/services/commerce-and-digital-platforms"
       label="Commerce and digital platforms"
       heroTitle="Choose the commerce platform your next three years need"
-      heroSubtitle="Websites, ecommerce and D2C platforms, built with the part most people leave out. Inventory truth across channels, order flow into finance, and the returns reconciliation nobody scopes until the margin has gone."
+      // Body copy leads with the move. Batch 7, approved 30 October 2026.
+      heroSubtitle="Replatform your store without losing orders, search rankings or customer history, and fix what usually breaks behind it: inventory truth across channels, order flow into finance and returns reconciliation."
       heroImage="/hero/crm.jpg"
       heroImageAlt="Commerce and digital platform systems"
-      problemHeading="Adding a channel adds a version of the truth"
+      problemHeading="A replatform is a data move with a storefront on top"
       problemParagraphs={[
+        "Most commerce work now is a move. The platform you launched on no longer fits your channels, volumes or fulfilment model. The new storefront can be live in weeks. Whether the move works depends on everything that has to come across with it.",
+        "Orders in flight, customer accounts, product URLs that carry your search rankings, gift cards, subscriptions, and returns still to come back against orders placed on the old platform. Each is a small decision. Missed, each becomes a customer service problem the week after launch.",
         "A storefront can be launched in weeks, and that is where most of the market stops. We build them too. The difference is what we do about everything downstream, which is where the eighteen month problems live.",
         "The storefront reserves stock at checkout. The marketplace panel holds its own buffer and updates on its own schedule. The warehouse knows what has been picked but not what has been promised. The store knows what is on the shelf and tells nobody. None of them is wrong. They are answering different questions, and no system was ever given the job of deciding.",
         "The damage lands twice. At the front, in oversells and cancellations that cost a customer rather than a sale. At the back, in returns reconciliation, where a return not matched to its original order is stock you have paid for twice and can no longer sell at full price.",
@@ -28,14 +31,14 @@ export default function CommerceAndDigitalPlatformsPage() {
       ]}
       scope={[
         {
+          title: "Replatforming and platform selection",
+          detail:
+            "Which commerce platform fits your channel mix, order volumes and fulfilment model. Scored against your requirements, with the scoring handed over. Replatforming plans that account for catalogue, orders, customer accounts, URLs and redirects, and SEO continuity.",
+        },
+        {
           title: "Website and storefront build",
           detail:
             "Design and build for the customer-facing side, from a marketing site through to a full transactional storefront. Built so the catalogue, customer records and order data behind it are usable by everything downstream rather than trapped in the front end.",
-        },
-        {
-          title: "Platform selection and replatforming",
-          detail:
-            "Which commerce platform fits your channel mix, order volumes and fulfilment model. Scored against your requirements, with the scoring handed over. Replatforming plans that account for catalogue, customer accounts and SEO continuity.",
         },
         {
           title: "Inventory and order management",
@@ -72,6 +75,7 @@ export default function CommerceAndDigitalPlatformsPage() {
         "Cutover plan and post go-live reconciliation reports",
       ]}
       signals={[
+        "You are moving to a new platform and nobody has listed what has to come across with it.",
         "The website, the marketplace, the warehouse and the store each hold a different number for the same product.",
         "Oversells and cancellations are frequent enough that someone monitors them manually.",
         "Returns are reconciled at quarter end, if at all, and nobody can state true margin by channel.",

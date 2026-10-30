@@ -72,7 +72,7 @@ export const pillars: Pillar[] = [
         bullets: [
           "Requirements, scored vendor comparison and contract review",
           "Delivery leadership, holding the implementation partner to the business case",
-          "Data migration, cutover and reconciliation",
+          "Moving data, cutover and reconciliation",
           "Multi-entity, multi-warehouse and scheme management complexity",
         ],
         live: true,

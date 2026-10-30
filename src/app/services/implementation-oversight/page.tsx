@@ -42,7 +42,7 @@ export default function ImplementationOversightPage() {
         {
           title: "Data migration assurance",
           detail:
-            "Migration is the most common cause of a delayed go-live and the least likely thing to be tested properly. We check reconciliation, volumes and the exception handling before cutover weekend, not during it.",
+            "Moving data is the most common cause of a delayed go-live and the least likely thing to be tested properly. We check reconciliation, volumes and the exception handling before cutover weekend, not during it.",
         },
         {
           title: "Go-live readiness review",
@@ -59,7 +59,7 @@ export default function ImplementationOversightPage() {
         "Acceptance criteria mapped to the original requirements",
         "Cumulative scope movement log, business case impact stated in plain terms",
         "Risk and issue register with named owners and escalation triggers",
-        "Data migration reconciliation and exception reports",
+        "Reconciliation and exception reports for the data move",
         "Go-live readiness assessment with a go or no go recommendation",
         "Handover checklist and post go-live benefit review",
       ]}

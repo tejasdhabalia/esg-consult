@@ -46,17 +46,24 @@ export default function AIGovernanceAndAdoptionPage() {
       route="/services/ai-governance-and-adoption"
       label="AI governance and adoption"
       heroTitle="Get your data ready, then govern the AI built on it"
-      heroSubtitle="Most AI work stalls between the pilot and the day job, and most policies were written before anyone read the regulation. We handle both ends: what to build, and what has to be true before it runs."
+      // Body copy leads with the move. Batch 7, approved 30 October 2026.
+      heroSubtitle="Your AI plans depend on the data, and the data sits in systems that do not talk to each other. Fix that first, ideally during a system move you are already planning, then govern the AI built on it."
       heroImage="/hero/insights.jpg"
       heroImageAlt="AI governance and adoption for mid-market companies"
-      problemHeading="Two problems that are usually treated as one"
+      problemHeading="Most AI plans are waiting on the data"
       problemParagraphs={[
+        "You have picked the use cases. The data they need is spread across a CRM, an ERP, spreadsheets and a support tool, each with its own idea of what a customer is. A pilot hides this, because someone cleaned a sample by hand. Production does not.",
         "The first is adoption. Netrio's June 2026 survey of 401 US mid-market IT leaders found 82 percent with AI in production somewhere in the business, and only 26 percent with it scaled and governed across the company. That gap is not a technology gap. A pilot runs on curated data with an enthusiast watching the output. Production runs on whatever the source system holds that day, with someone who has a queue to clear and no reason to check.",
-        "The second is governance, and it usually arrives as a surprise. Staff are already using AI tools with company data. Nobody wrote a policy, so there is no record of what went into which tool. Then a customer or an auditor asks a question that requires one.",
-        "These get treated as one problem and they are not. Governance without adoption is a document nobody reads. Adoption without governance is a liability that compounds quietly. The work is to do both at a pace the business can actually absorb.",
+        "A system move is the cheapest moment to fix it. When data is being extracted, mapped and reconciled anyway, agreeing definitions and owners costs a fraction of what it costs later. Copy it across unchanged and the AI plans inherit the mess.",
+        "Then there is governance, and it usually arrives as a surprise. Staff are already using AI tools with company data. Nobody wrote a policy, so there is no record of what went into which tool. Then a customer or an auditor asks a question that requires one.",
         "The regulatory position is also more specific than most current commentary suggests, and getting it wrong in either direction costs money. Rushing to comply with a requirement that has moved wastes budget. Assuming the whole regime was postponed misses obligations that are already live.",
       ]}
       scope={[
+        {
+          title: "Data readiness and integration",
+          detail:
+            "What the process needs, where it sits, what state it is in and who may see it. Frequently this is the whole project, and it is worth doing whether or not the AI part proceeds.",
+        },
         {
           title: "Shadow AI discovery",
           detail:
@@ -78,11 +85,6 @@ export default function AIGovernanceAndAdoptionPage() {
             "Where the EU AI Act applies, which duties are live now and which have moved. Transparency and disclosure obligations, plus data protection interaction under GDPR or DPDP depending on where you operate.",
         },
         {
-          title: "Data readiness and integration",
-          detail:
-            "What the process needs, where it sits, what state it is in and who may see it. Frequently this is the whole project, and it is worth doing whether or not the AI part proceeds.",
-        },
-        {
           title: "Pilot to production path",
           detail:
             "Exit criteria agreed before the pilot starts, including the criteria that mean you stop. That clause is the one most pilots are missing, which is why so many neither ship nor die.",
@@ -97,6 +99,7 @@ export default function AIGovernanceAndAdoptionPage() {
         "Pilot design with exit criteria in both directions, then the production build",
       ]}
       signals={[
+        "You have chosen AI use cases, and the data they need is spread across systems that do not talk.",
         "Staff are already using AI tools with company data and there is no policy covering it.",
         "You have run a pilot that worked and nobody can explain why it has not been rolled out.",
         "A customer or insurer has asked what AI you use and you had to go and find out.",

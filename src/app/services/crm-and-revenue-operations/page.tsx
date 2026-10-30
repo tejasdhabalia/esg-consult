@@ -127,12 +127,35 @@ export default function MarketingAutomationPage() {
     <div>
       <PageHero
         title="Get your CRM and revenue reporting to agree"
-        subtitle="Lifecycle definitions, CRM architecture and reporting that survives contact with the sales team. Built so the numbers in the board pack match the numbers in the system."
+        subtitle="Moving CRM, or moving off spreadsheets, is the chance to fix what a qualified lead means, not only to copy records. We lead the move on your side, then set up the definitions and reporting so the board pack matches the system."
         primaryAction={{ label: site.movePlan.label, href: "/contact" }}
         secondaryAction={{ label: "Back to services", href: "/services" }}
         imageSrc="/hero/marketing.jpg"
         imageAlt="Marketing automation and analytics theme"
       />
+
+      {/* CHANGING CRM. Leads with the move. Batch 7, approved 30 October 2026. */}
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-xs font-semibold text-indigo-600 uppercase tracking-widest mb-3">
+            Changing CRM
+          </div>
+          <h2 className="text-3xl font-semibold text-slate-900">Switch CRMs without losing your pipeline</h2>
+          <div className="mt-6 grid md:grid-cols-2 gap-8 text-slate-600 leading-relaxed">
+            <p>
+              Most CRM moves copy the records and call it done. Duplicates come across, stage
+              definitions come across, and the argument about what counts as a qualified lead comes
+              across with them. Six months later the new system reports the same disputed numbers as
+              the old one.
+            </p>
+            <p>
+              We run the move on your side. Agree the definitions first, clean and map the data, plan
+              the cutover so the pipeline is never in two places at once, and hold whoever sets up the
+              new CRM to what the business agreed.
+            </p>
+          </div>
+        </div>
+      </section>
       <section className="py-16 bg-indigo-50 border-y border-indigo-100">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-10 items-center">

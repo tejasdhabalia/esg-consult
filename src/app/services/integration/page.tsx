@@ -16,13 +16,15 @@ export default function IntegrationPage() {
       route="/services/integration"
       label="Integration"
       heroTitle="Move your integrations without breaking what depends on them"
-      heroSubtitle="Interface design across ERP, CRM, finance and operational systems. Middleware selection, data migration, and the error handling that nobody scopes until the night it matters."
+      // Body copy leads with the move. Batch 7, approved 30 October 2026.
+      heroSubtitle="Moving integrations off a platform that changed owner or pricing, or off the spreadsheet in the middle. We lead the move on your side and keep everything that depends on them running."
       heroImage="/hero/revenue.jpg"
       heroImageAlt="Systems integration across ERP, CRM and finance platforms"
-      problemHeading="The spreadsheet between two systems is a permanent employee"
+      problemHeading="Every integration move is a list of things that quietly depend on it"
       problemParagraphs={[
-        "Every mid-market company has one. An export from one system, a transformation someone built years ago, an import into another. It runs monthly, it takes a day, and one person understands it.",
-        "It survives because integration projects get scoped around the happy path. Two systems, one direction, matching records. Then real data arrives: the duplicate customer, the credit note with no matching invoice, the record that fails validation at three in the morning with nobody watching.",
+        "Integration moves usually start with a decision someone else made. The middleware changed owner, the pricing changed with it, or the vendor retired the connector. The interfaces still work. The question is how to move them without anyone noticing.",
+        "What breaks is rarely the main flow. It is the nightly job nobody documented, the report that reads from a staging table, the retry logic someone added after an incident three years ago. A move that copies the happy path loses all of it.",
+        "Every mid-market company also has the other kind of integration: an export from one system, a transformation someone built years ago, an import into another. It runs monthly, it takes a day, and one person understands it. A move is the right time to retire it.",
         "The interesting engineering in integration is not moving the data. It is deciding what happens when the data is wrong, who finds out, and how the two systems get back into agreement afterwards.",
       ]}
       scope={[
@@ -30,6 +32,11 @@ export default function IntegrationPage() {
           title: "Interface mapping",
           detail:
             "Which systems need to know what, in which direction, and how quickly. Most integration backlogs shrink at this stage, because a good share of proposed interfaces turn out to be reporting problems.",
+        },
+        {
+          title: "Moving data",
+          detail:
+            "Extract, cleanse, map, load, reconcile. Including the decision about how much history to bring, which is a business decision that gets made by default far too often.",
         },
         {
           title: "Middleware and iPaaS selection",
@@ -47,11 +54,6 @@ export default function IntegrationPage() {
             "What happens to a record that fails, who is told, how it is retried, and how you prove at month end that both systems agree. This is the part that determines whether an integration is trusted.",
         },
         {
-          title: "Data migration",
-          detail:
-            "Extract, cleanse, map, load, reconcile. Including the decision about how much history to bring, which is a business decision that gets made by default far too often.",
-        },
-        {
           title: "Monitoring and handover",
           detail:
             "Alerting that reaches a named person, documentation your team can act on, and a support arrangement that does not depend on us being available.",
@@ -62,10 +64,11 @@ export default function IntegrationPage() {
         "Field level mapping and transformation specifications",
         "Error handling design, including retry, alerting and manual intervention paths",
         "Reconciliation reports that prove the systems agree",
-        "Migration plan with cutover sequence and rollback position",
+        "Move plan with cutover sequence and rollback position",
         "Monitoring dashboards and runbook documentation for your team",
       ]}
       signals={[
+        "Your integration platform changed owner or pricing, and you need to move before the renewal.",
         "Someone spends a day a month moving data between two systems by hand.",
         "Finance and sales report different numbers for the same thing and both are reading their own system correctly.",
         "An integration was built by a contractor who has left, and nobody wants to touch it.",
@@ -103,14 +106,14 @@ export default function IntegrationPage() {
             "Your team, with documentation and monitoring built for that. If you would rather we ran them, that is a separate support conversation and we will be clear that it is a different commercial arrangement.",
         },
         {
-          question: "How do you handle data quality problems found during migration?",
+          question: "How do you handle data quality problems found while moving data?",
           answer:
-            "We surface them early and put the decisions in front of the business rather than resolving them quietly in the mapping. Migration is usually the first time anyone has looked at the whole data set at once, and what it finds is often worth acting on independently of the project.",
+            "We surface them early and put the decisions in front of the business rather than resolving them quietly in the mapping. Moving data is usually the first time anyone has looked at the whole data set at once, and what it finds is often worth acting on independently of the project.",
         },
         {
           question: "Do you build the interfaces yourselves?",
           answer:
-            "Yes. The people who design the interfaces build and test them. That is the point of the design surviving into the build.",
+            "Yes. The people who design the interfaces build and test them. That is the point of the design surviving into the build. Where we can build the interfaces ourselves, we tell you before the platform decision and share the full scoring, so you can see the recommendation doesn't depend on who builds it. You are free to use another builder.",
         },
       ]}
     />
