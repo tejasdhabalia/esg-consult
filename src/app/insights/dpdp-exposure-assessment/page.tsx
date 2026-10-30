@@ -320,6 +320,10 @@ export default function DpdpExposureAssessmentPage() {
               <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5">
                 <h4 className="font-semibold text-slate-900 text-sm mb-3">Related insights</h4>
                 <div className="space-y-3">
+                  <Link href="/insights/access-and-vendor-risk-checklist" className="block group">
+                    <span className="block text-sm font-medium text-slate-900 group-hover:text-indigo-700">Access and vendor risk checklist →</span>
+                    <span className="block text-xs text-slate-500">How far one compromised account or vendor could reach</span>
+                  </Link>
                   <Link href="/insights/ai-use-case-register" className="block group">
                     <span className="block text-sm font-medium text-slate-900 group-hover:text-indigo-700">AI use case register →</span>
                     <span className="block text-xs text-slate-500">Where AI meets the personal data question</span>

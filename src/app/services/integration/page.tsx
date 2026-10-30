@@ -70,6 +70,20 @@ export default function IntegrationPage() {
         "You are about to buy a system and nobody has asked how it will talk to the ones you keep.",
         "An interface fails silently, and you find out from a customer rather than from an alert.",
       ]}
+      relatedResources={[
+        {
+          href: "/insights/access-and-vendor-risk-checklist",
+          label: "Access and vendor risk checklist",
+          detail:
+            "Twenty questions on how far one compromised device, account or vendor could reach, including the service accounts and API keys that integrations run on.",
+        },
+        {
+          href: "/insights/dpdp-exposure-assessment",
+          label: "DPDP exposure assessment",
+          detail:
+            "Where personal data moves between your systems and vendors, scored against India's DPDP obligations.",
+        },
+      ]}
       faqs={[
         {
           question: "Do we need an integration platform, or will point to point do?",

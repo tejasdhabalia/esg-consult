@@ -656,6 +656,11 @@ export const esgInsightPages: Record<string, EsgInsightPageConfig> = {
     ],
     relatedInsights: [
       {
+        label: "Access and vendor risk checklist",
+        href: "/insights/access-and-vendor-risk-checklist",
+        description: "Owners and permissions for agents and service accounts",
+      },
+      {
         label: "AI marketing readiness",
         href: "/insights/ai-marketing-readiness",
         description: "Where AI touches the funnel and who owns it",

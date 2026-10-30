@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-16T10:30:18.981Z",
-  "pageCount": 80,
+  "generatedAt": "2026-10-30T08:09:55.628Z",
+  "pageCount": 81,
   "pages": [
     {
       "route": "/",
@@ -81,6 +81,16 @@
       "priority": 0.85,
       "changeFrequency": "weekly",
       "source": "src\\app\\insights\\page.tsx"
+    },
+    {
+      "route": "/insights/access-and-vendor-risk-checklist",
+      "url": "https://www.consult-ds.com/insights/access-and-vendor-risk-checklist",
+      "title": "Access and vendor risk checklist: 20 questions for leaders",
+      "description": "Twenty questions on privileged access, devices, vendors, money movement and incident response. A 15-minute test written after the Binance breach.",
+      "section": "insights",
+      "priority": 0.5,
+      "changeFrequency": "monthly",
+      "source": "src\\app\\insights\\access-and-vendor-risk-checklist\\page.tsx"
     },
     {
       "route": "/insights/ai-marketing-readiness",

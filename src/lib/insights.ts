@@ -14,6 +14,18 @@ export const allInsights: SiteInsightItem[] = [
   // Newest first. This registry is what /insights renders; adding a page
   // under src/app/insights does not put it on the hub.
   {
+    slug: "access-and-vendor-risk-checklist",
+    category: "Data protection",
+    title: "Access and vendor risk checklist",
+    summary:
+      "Twenty questions on privileged access, devices, vendors, money movement and incident response. A 15-minute test of how far one compromised device, account or vendor could reach into your business.",
+    topics: ["Access control", "Vendor risk", "Incident response", "Data protection"],
+    audience: "CEO, CFO, COO, Technology lead, Risk",
+    readTime: "9 min read",
+    updated: "Oct 2026",
+    updatedAt: "2026-10-30",
+  },
+  {
     slug: "dpdp-exposure-assessment",
     category: "Data protection",
     title: "DPDP exposure assessment",
