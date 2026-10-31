@@ -18,15 +18,24 @@
  *   payback        = one-off cost / (value - recurring), "never" if not positive
  *   three years    = (value - recurring) x 36 - one-off cost
  *
- * Decision rules, stated on the page and in the article:
- *   Scale  payback within 12 months at planned adoption, and three-year net
- *          still positive at half adoption
- *   Fix    payback within 36 months at planned adoption
- *   Stop   otherwise
+ * Decision rules, stated on the page and in the article. Labels agreed by
+ * Tejas 31 October 2026, replacing scale, fix and stop:
+ *   Ready to scale    payback within 12 months at planned adoption, and
+ *                     three-year net still positive at half adoption
+ *   Needs work first  payback within 36 months at planned adoption, scale
+ *                     test not met
+ *   Not yet           otherwise
  */
 
-export const CURRENCIES = ["INR", "GBP", "USD"] as const;
+export const CURRENCIES = ["INR", "USD", "GBP", "EUR"] as const;
 export type Currency = (typeof CURRENCIES)[number];
+
+export const CURRENCY_LABELS: Record<Currency, string> = {
+  INR: "INR (\u20b9)",
+  USD: "USD ($)",
+  GBP: "GBP (\u00a3)",
+  EUR: "EUR (\u20ac)",
+};
 
 export type AiRoiInputs = {
   currency: Currency;
@@ -101,7 +110,49 @@ export type Scenario = {
   net3Years: number;
 };
 
-export type Decision = "Scale" | "Fix" | "Stop";
+export type Decision = "Ready to scale" | "Needs work first" | "Not yet";
+
+/**
+ * What to do next, by result. Shown under the results and in the email.
+ */
+export const NEXT_STEPS: Record<Decision, { heading: string; body: string }> = {
+  "Ready to scale": {
+    heading: "Before you scale",
+    body: "Scaling is where integration, ownership and support break. Before the rollout, agree who owns the process, how the AI connects to the systems it touches and how you will know if it stops working.",
+  },
+  "Needs work first": {
+    heading: "What usually needs the work",
+    body: "Usually one of three things. Adoption, because the team works around the tool. Data, because the inputs sit in systems that do not agree. Or ownership, because nobody is accountable for the result. The work is finding which one it is for this use case and what fixing it costs.",
+  },
+  "Not yet": {
+    heading: "Not yet is still a useful result",
+    body: "Keep the use case in your AI use case register with today's numbers and revisit it when costs fall or volume grows. Meanwhile, test the next idea on your list. The one that passes is often less ambitious and closer to a process you already measure.",
+  },
+};
+
+/**
+ * The limits of the estimate. Shown under the results and in the email,
+ * each pointing at a question the calculator cannot answer on its own.
+ */
+export const ESTIMATE_LIMITS_HEADING = "What this estimate cannot tell you";
+export const ESTIMATE_LIMITS: Array<{ title: string; text: string }> = [
+  {
+    title: "Whether your adoption figure is realistic.",
+    text: "It is the number the result moves on most. Compare the planned and half planned columns to see how much rides on it.",
+  },
+  {
+    title: "Whether your data will support it.",
+    text: "Use cases that pass on paper often stall because the data sits in systems that do not agree.",
+  },
+  {
+    title: "Whether this is the right use case to fund first.",
+    text: "The calculator scores one idea. Most companies have several, and the order matters more than any single score.",
+  },
+  {
+    title: "What the quote leaves out.",
+    text: "Integration, the time people spend checking output and the cost of keeping it running after go live are the lines most often missing.",
+  },
+];
 
 export type AiRoiResult = {
   half: Scenario;
@@ -200,27 +251,44 @@ export function computeAiRoi(inputs: AiRoiInputs): AiRoiResult {
   const planned = scenario(inputs, 1);
   const stretch = scenario(inputs, 1.5);
   const p = planned.paybackMonths;
+  const money = (v: number) => formatMoney(v, inputs.currency);
+  const plannedPayback = formatPayback(p);
+  const halfPayback = formatPayback(half.paybackMonths);
+  const halfAhead = half.net3Years > 0;
+  const halfPaybackText =
+    half.paybackMonths === null ? "it never pays back" : `payback ${halfPayback.toLowerCase()}`;
   let decision: Decision;
   let decisionReason: string;
-  if (p !== null && p <= 12 && half.net3Years > 0) {
-    decision = "Scale";
-    decisionReason =
-      "Pays back within 12 months at planned adoption, and stays ahead over three years at half that adoption.";
+  // The reason quotes the actual figures, so the 12 and 36 month lines read
+  // as thresholds and never as the payback itself.
+  if (p !== null && p <= 12 && halfAhead) {
+    decision = "Ready to scale";
+    decisionReason = `Pays back in ${plannedPayback} at planned adoption, inside the 12 month line for scaling. At half adoption it is still ${money(half.net3Years)} ahead over three years, so the case does not depend on everyone using it.`;
   } else if (p !== null && p <= 36) {
-    decision = "Fix";
-    decisionReason =
-      "Pays back within 36 months at planned adoption but not at half. The case depends on people using it, so fix adoption, data or ownership before spending more.";
+    decision = "Needs work first";
+    const speed =
+      p > 12
+        ? `Pays back in ${plannedPayback} at planned adoption. That is inside the 36 month limit, so the use case is worth keeping, but slower than the 12 months needed to scale.`
+        : `Pays back in ${plannedPayback} at planned adoption, fast enough to scale on that test alone.`;
+    const adoption = halfAhead
+      ? " It still comes out ahead at half adoption, so the work is on cost: reduce the one-off or running cost before spending more."
+      : ` At half adoption it does not pay back within three years (${halfPaybackText}), so the case depends on people using it. Fix adoption, data or ownership before spending more.`;
+    decisionReason = speed + adoption;
   } else {
-    decision = "Stop";
-    decisionReason =
-      "Does not pay back within 36 months even at planned adoption. Record the decision in your AI use case register and move the budget to a use case that passes.";
+    decision = "Not yet";
+    const why =
+      p === null
+        ? "Does not pay back at planned adoption: the running cost is higher than the value it produces."
+        : `Pays back in ${plannedPayback} at planned adoption, beyond the 36 month limit.`;
+    decisionReason = `${why} Keep it in your AI use case register and revisit it when costs fall or volume grows.`;
   }
   return { half, planned, stretch, decision, decisionReason };
 }
 
 /** Money in the chosen currency. Rupees use Indian digit grouping. */
 export function formatMoney(value: number, currency: Currency): string {
-  const locale = currency === "INR" ? "en-IN" : currency === "GBP" ? "en-GB" : "en-US";
+  const locale =
+    currency === "INR" ? "en-IN" : currency === "GBP" ? "en-GB" : currency === "EUR" ? "en-IE" : "en-US";
   return new Intl.NumberFormat(locale, {
     style: "currency",
     currency,

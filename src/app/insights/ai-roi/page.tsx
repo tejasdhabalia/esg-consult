@@ -59,7 +59,7 @@ const EXAMPLE_ROWS: [string, string, string][] = [
 const FAQS = [
   {
     q: "How long should AI take to pay back?",
-    a: "For a mid-market business, aim for 12 months or less on a single use case, which is the line the calculator uses to recommend scaling. Up to 36 months can still be worth fixing. Longer is possible for strategic work, but the case should then rest on something other than savings, and say so.",
+    a: "For a mid-market business, aim for 12 months or less on a single use case, which is the line the calculator uses for ready to scale. Up to 36 months can still be worth the work. Longer is possible for strategic work, but the case should then rest on something other than savings, and say so.",
   },
   {
     q: "How do you measure the ROI of copilot-style tools?",
@@ -250,7 +250,7 @@ export default function AiRoiArticlePage() {
                   confident you are in each kind of value, and the costs. It returns payback in months,
                   net value over three years, the same figures at half and one and a half times the
                   adoption you planned, and a recommendation, and emails you the results. Amounts can be
-                  in rupees, pounds or dollars.
+                  in rupees, dollars, pounds or euros.
                 </p>
                 <p>
                   <strong className={strong}>A worked example.</strong>{" "}
@@ -284,7 +284,7 @@ export default function AiRoiArticlePage() {
                 </table>
               </div>
               <p className="mt-4">
-                The recommendation is <strong className={strong}>fix</strong>. At planned adoption the use
+                The recommendation is <strong className={strong}>needs work first</strong>. At planned adoption the use
                 case pays back in 15 months, inside the 36-month line but outside 12. At half adoption it
                 barely covers its running costs, because the licences and governance cost the same
                 whether people use it or not. The case lives or dies on adoption, so that is what to fix
@@ -294,19 +294,19 @@ export default function AiRoiArticlePage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">Scale, fix or stop</h2>
+              <h2 className="text-2xl font-bold text-slate-900 mb-4">Ready to scale, needs work first or not yet</h2>
               <div className="space-y-4">
                 <p>
                   The calculator applies three rules. They are deliberately strict, because a pilot that
                   only pays back in the best case will not pay back.
                 </p>
                 <ul className="list-disc pl-5 space-y-2">
-                  <li><strong className={strong}>Scale</strong> when the use case pays back within 12 months at the adoption you planned, and still comes out ahead over three years at half that adoption.</li>
-                  <li><strong className={strong}>Fix</strong> when it pays back within 36 months at planned adoption but not at half. The case depends on people using it, so fix adoption, data or ownership before spending more.</li>
-                  <li><strong className={strong}>Stop</strong> when it does not pay back within 36 months even at planned adoption. Keep the lessons, record the decision in the register and put the money somewhere it works.</li>
+                  <li><strong className={strong}>Ready to scale</strong> when the use case pays back within 12 months at the adoption you planned, and still comes out ahead over three years at half that adoption.</li>
+                  <li><strong className={strong}>Needs work first</strong> when it pays back within 36 months at planned adoption but fails the scale test: slower than 12 months, or behind over three years at half adoption. Fix adoption, data, ownership or cost before spending more.</li>
+                  <li><strong className={strong}>Not yet</strong> when it does not pay back within 36 months even at planned adoption. Keep the lessons, record the numbers in the register and put the money somewhere it works.</li>
                 </ul>
                 <p>
-                  Stopping is a good outcome. A pilot that ends with a clear no has done its job, and it
+                  Not yet is a good outcome. A pilot that ends with a clear answer has done its job, and it
                   frees the budget for a use case that passes.
                 </p>
               </div>
@@ -353,7 +353,7 @@ export default function AiRoiArticlePage() {
               <div className="bg-indigo-900 rounded-2xl p-6 text-white">
                 <h3 className="font-bold text-base mb-2">AI ROI calculator</h3>
                 <p className="text-sm mb-4 opacity-90 leading-relaxed">
-                  Payback, three-year value and a scale, fix or stop recommendation for one use case.
+                  Payback, three-year value and whether one use case is ready to scale.
                   Results emailed to you.
                 </p>
                 <Link

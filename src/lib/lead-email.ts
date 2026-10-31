@@ -2,7 +2,13 @@ import nodemailer from "nodemailer";
 import path from "path";
 import { insightResources } from "@/lib/insight-resources";
 import type { AiRoiInputs, AiRoiResult } from "@/lib/ai-roi";
-import { formatMoney, formatPayback } from "@/lib/ai-roi";
+import {
+  ESTIMATE_LIMITS,
+  ESTIMATE_LIMITS_HEADING,
+  NEXT_STEPS,
+  formatMoney,
+  formatPayback,
+} from "@/lib/ai-roi";
 
 /**
  * MIME type for an email attachment, derived from the filename.
@@ -558,8 +564,8 @@ function roiResultHtml(inputs: AiRoiInputs, r: AiRoiResult): string {
 <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;margin:0 0 20px;">
   <tr>
     <th align="left" style="${cell}color:#64748b;font-weight:600;"></th>
-    <th align="right" style="${cell}color:#334155;">Half planned</th>
     <th align="right" style="${cell}color:#0f172a;">Planned</th>
+    <th align="right" style="${cell}color:#334155;">Half planned</th>
     <th align="right" style="${cell}color:#334155;">1.5x planned</th>
   </tr>
   ${rows
@@ -567,13 +573,35 @@ function roiResultHtml(inputs: AiRoiInputs, r: AiRoiResult): string {
       ([label, fmt]) => `
   <tr>
     <td style="${cell}color:#334155;">${label}</td>
-    <td align="right" style="${cell}color:#334155;">${fmt(r.half)}</td>
     <td align="right" style="${cell}color:#0f172a;font-weight:700;">${fmt(r.planned)}</td>
+    <td align="right" style="${cell}color:#334155;">${fmt(r.half)}</td>
     <td align="right" style="${cell}color:#334155;">${fmt(r.stretch)}</td>
   </tr>`,
     )
     .join("")}
 </table>`;
+}
+
+/** Next step for this result, the limits of the estimate and the offer. */
+function roiNextStepsHtml(r: AiRoiResult): string {
+  const next = NEXT_STEPS[r.decision];
+  const p = "margin:0 0 16px;font-size:15px;line-height:1.6;color:#334155;";
+  const a = `color:${AI_ROI_ACCENT};`;
+  const limits = ESTIMATE_LIMITS.map(
+    (l) =>
+      `<li style="margin:0 0 8px;font-size:14px;line-height:1.55;color:#334155;"><strong style="color:#0f172a;">${escapeHtml(l.title)}</strong> ${escapeHtml(l.text)}</li>`,
+  ).join("");
+  return `
+<p style="margin:0 0 6px;font-size:16px;font-weight:700;color:#0f172a;">${escapeHtml(next.heading)}</p>
+<p style="${p}">${escapeHtml(next.body)}</p>
+<table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background-color:#eef2ff;border:1px solid #c7d2fe;border-radius:6px;margin:0 0 20px;">
+  <tr><td style="padding:16px 18px;">
+    <p style="margin:0 0 10px;font-size:15px;font-weight:700;color:#0f172a;">${ESTIMATE_LIMITS_HEADING}</p>
+    <ul style="margin:0 0 12px;padding-left:18px;">${limits}</ul>
+    <p style="margin:0;font-size:14px;line-height:1.55;color:#334155;">These are the questions a working session answers. <a href="https://www.consult-ds.com/contact" style="${a}font-weight:600;">Book a working session</a>, or reply to this email.</p>
+  </td></tr>
+</table>
+<p style="${p}">Why the rules are this strict, and the costs most pilots leave out: <a href="https://www.consult-ds.com/insights/ai-roi" style="${a}">why your AI pilot is not paying back</a>. To test another use case, <a href="https://www.consult-ds.com/insights/ai-roi-calculator" style="${a}">open the calculator again</a>.</p>`;
 }
 
 function roiInputRows(i: AiRoiInputs): Array<[string, string]> {
@@ -610,11 +638,11 @@ export async function sendAiRoiReportEmail({
   const notify = process.env.SMTP_NOTIFY ?? process.env.SMTP_USER;
 
   const html = buildEmailShell({
-    headline: `Your AI ROI result: ${result.decision}`,
+    headline: `Your AI ROI result: ${result.decision.toLowerCase()}`,
     description: `${name ? `Hello ${escapeHtml(name)}. ` : ""}Here are the results you calculated, so you have them after you close the page. They are a management estimate, only as good as the baseline entered.`,
     accentHex: AI_ROI_ACCENT,
     resultHtml: roiResultHtml(inputs, result),
-    deliveryHtml: `<p style="margin:0 0 16px;font-size:15px;line-height:1.6;color:#334155;">Why the rules are this strict, and the costs most pilots leave out: <a href="https://www.consult-ds.com/insights/ai-roi" style="color:${AI_ROI_ACCENT};">why your AI pilot is not paying back</a>. To test another use case, <a href="https://www.consult-ds.com/insights/ai-roi-calculator" style="color:${AI_ROI_ACCENT};">open the calculator again</a>. If you want to talk it through, reply to this email.</p>`,
+    deliveryHtml: roiNextStepsHtml(result),
     links: [
       { label: "AI use case register", href: "https://www.consult-ds.com/insights/ai-use-case-register", desc: "Know what you run before you ask whether it pays" },
       { label: "Getting your data AI-ready", href: "https://www.consult-ds.com/migrations/ai-ready-data", desc: "Where most AI plans actually stall" },
@@ -625,7 +653,7 @@ export async function sendAiRoiReportEmail({
   await transporter.sendMail({
     from,
     to: email,
-    subject: `Your AI ROI result: ${result.decision}, payback ${formatPayback(result.planned.paybackMonths)}`,
+    subject: `Your AI ROI result: ${result.decision.toLowerCase()}, payback ${formatPayback(result.planned.paybackMonths).toLowerCase()}`,
     html,
   });
 

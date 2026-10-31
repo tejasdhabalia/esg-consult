@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T15:33:40.782Z",
+  "generatedAt": "2026-10-31T05:13:59.437Z",
   "pageCount": 90,
   "pages": [
     {
@@ -115,8 +115,8 @@
     {
       "route": "/insights/ai-roi-calculator",
       "url": "https://www.consult-ds.com/insights/ai-roi-calculator",
-      "title": "AI ROI calculator: scale, fix or stop",
-      "description": "Work out whether an AI use case pays back: payback in months, three-year value and a scale, fix or stop recommendation. Results emailed to you.",
+      "title": "AI ROI calculator: is your AI paying back?",
+      "description": "Work out whether an AI use case pays back: payback in months, three-year value and whether it is ready to scale. Results emailed to you.",
       "section": "insights",
       "priority": 0.5,
       "changeFrequency": "monthly",

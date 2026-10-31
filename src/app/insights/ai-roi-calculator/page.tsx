@@ -12,9 +12,9 @@ import AiRoiTool from "./AiRoiTool";
   read what the tool does. The companion article is /insights/ai-roi.
 */
 export const metadata = pageMetadata({
-  title: "AI ROI calculator: scale, fix or stop",
+  title: "AI ROI calculator: is your AI paying back?",
   description:
-    "Work out whether an AI use case pays back: payback in months, three-year value and a scale, fix or stop recommendation. Results emailed to you.",
+    "Work out whether an AI use case pays back: payback in months, three-year value and whether it is ready to scale. Results emailed to you.",
   path: "/insights/ai-roi-calculator",
 });
 
@@ -27,7 +27,7 @@ export default function AiRoiCalculatorPage() {
     "@type": "WebApplication",
     name: "AI ROI calculator",
     description:
-      "Calculates payback, three-year net value and a scale, fix or stop recommendation for one AI use case, at half, planned and one and a half times planned adoption.",
+      "Calculates payback, three-year net value and whether one AI use case is ready to scale, needs work first or is not yet worth it, at half, planned and one and a half times planned adoption.",
     url: absUrl(PATH),
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
@@ -64,7 +64,7 @@ export default function AiRoiCalculatorPage() {
           </div>
           <h1 className="text-3xl md:text-4xl font-bold leading-tight mb-4">AI ROI calculator</h1>
           <p className="text-lg max-w-2xl text-indigo-100">
-            Is this AI use case paying back, and should you scale it, fix it or stop it? Enter one use
+            Is this AI use case paying back, and is it ready to scale? Enter one use
             case and get payback in months, three-year value and a recommendation.
           </p>
           <a
@@ -82,7 +82,8 @@ export default function AiRoiCalculatorPage() {
           <p>
             You enter the baseline for one process: how often the task happens, how long it takes and
             how often it goes wrong. Then what changes with AI, how confident you are in each kind of
-            value, and the one-off and running costs. Amounts can be in rupees, pounds or dollars.
+            value, and the one-off and running costs. Amounts can be in rupees, dollars, pounds or
+            euros.
           </p>
           <p>
             It returns the value per month, the running cost, payback in months and net value over
@@ -92,18 +93,19 @@ export default function AiRoiCalculatorPage() {
         </section>
 
         <section className="space-y-4 text-slate-600 leading-relaxed">
-          <h2 className="text-2xl font-bold text-slate-900">Scale, fix or stop</h2>
+          <h2 className="text-2xl font-bold text-slate-900">Ready to scale, needs work first or not yet</h2>
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              <strong className="text-slate-900">Scale</strong> when it pays back within 12 months at
+              <strong className="text-slate-900">Ready to scale</strong> when it pays back within 12 months at
               the adoption you planned, and still comes out ahead over three years at half that adoption.
             </li>
             <li>
-              <strong className="text-slate-900">Fix</strong> when it pays back within 36 months at
-              planned adoption but not at half. Fix adoption, data or ownership before spending more.
+              <strong className="text-slate-900">Needs work first</strong> when it pays back within 36 months at
+              planned adoption but fails the scale test: slower than 12 months, or behind over three
+              years at half adoption. Fix adoption, data, ownership or cost before spending more.
             </li>
             <li>
-              <strong className="text-slate-900">Stop</strong> when it does not pay back within 36
+              <strong className="text-slate-900">Not yet</strong> when it does not pay back within 36
               months even at planned adoption.
             </li>
           </ul>

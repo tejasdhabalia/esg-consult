@@ -142,7 +142,7 @@ export default function AIGovernanceAndAdoptionPage() {
           href: "/insights/ai-roi-calculator",
           label: "AI ROI calculator",
           detail:
-            "Payback, three-year value and a scale, fix or stop recommendation for one AI use case.",
+            "Payback, three-year value and whether one AI use case is ready to scale.",
         },
       ]}
       engagement={{

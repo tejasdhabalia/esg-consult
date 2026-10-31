@@ -2,12 +2,17 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { site } from "@/lib/site";
 import Script from "next/script";
 import { validateBusinessEmail } from "@/lib/businessEmail";
 import { getRecaptchaToken } from "@/lib/recaptcha-client";
 import { trackGenerateLead } from "@/lib/analytics";
 import {
   CURRENCIES,
+  CURRENCY_LABELS,
+  ESTIMATE_LIMITS,
+  ESTIMATE_LIMITS_HEADING,
+  NEXT_STEPS,
   DEFAULT_INPUTS,
   computeAiRoi,
   formatMoney,
@@ -310,12 +315,12 @@ export default function AiRoiTool() {
             <label className="block">
               <span className="text-sm font-medium text-slate-700">Currency</span>
               <select
-                className={`${inputClass} mt-1 w-32`}
+                className={`${inputClass} mt-1 w-36`}
                 value={form.currency}
                 onChange={(e) => setForm({ ...form, currency: e.target.value })}
               >
                 {CURRENCIES.map((c) => (
-                  <option key={c} value={c}>{c}</option>
+                  <option key={c} value={c}>{CURRENCY_LABELS[c]}</option>
                 ))}
               </select>
             </label>
@@ -362,7 +367,7 @@ export default function AiRoiTool() {
         <section id="roi-results" className="mt-12 scroll-mt-24">
           <div className="rounded-2xl bg-slate-900 p-8 text-white">
             <div className="text-xs font-semibold uppercase tracking-widest text-indigo-300">Recommendation</div>
-            <div className="mt-2 text-4xl font-bold">{result.decision}</div>
+            <div className="mt-2 text-3xl md:text-4xl font-bold">{result.decision}</div>
             <p className="mt-3 max-w-2xl text-slate-300 leading-relaxed">{result.decisionReason}</p>
             {sendStatus === "sent" && (
               <p className="mt-4 text-sm text-indigo-200">Your results have also been sent to {email}.</p>
@@ -406,6 +411,29 @@ export default function AiRoiTool() {
             A management estimate, not financial advice. It is only as good as the baseline you put in.
             Licences and governance are treated as fixed; value, usage and review time scale with adoption.
           </p>
+
+          <div className="mt-10 rounded-2xl border border-slate-200 p-6">
+            <h3 className="text-lg font-semibold text-slate-900">{NEXT_STEPS[result.decision].heading}</h3>
+            <p className="mt-2 text-slate-600 leading-relaxed">{NEXT_STEPS[result.decision].body}</p>
+          </div>
+
+          <div className="mt-6 rounded-2xl border border-indigo-200 bg-indigo-50 p-6">
+            <h3 className="text-lg font-semibold text-slate-900">{ESTIMATE_LIMITS_HEADING}</h3>
+            <ul className="mt-3 space-y-3">
+              {ESTIMATE_LIMITS.map((l) => (
+                <li key={l.title} className="text-slate-600 leading-relaxed">
+                  <strong className="text-slate-900">{l.title}</strong> {l.text}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4 text-slate-700">These are the questions a working session answers.</p>
+            <Link
+              href={site.headerCta.href}
+              className="mt-4 inline-block rounded-lg bg-indigo-700 px-5 py-3 text-sm font-semibold text-white hover:bg-indigo-800"
+            >
+              {site.headerCta.label}
+            </Link>
+          </div>
         </section>
       )}
     </div>

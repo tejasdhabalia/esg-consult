@@ -18,7 +18,7 @@ export const allInsights: SiteInsightItem[] = [
     category: "AI",
     title: "AI ROI calculator",
     summary:
-      "Payback in months, three-year value and a scale, fix or stop recommendation for one AI use case, at half, planned and one and a half times planned adoption. Results emailed to you.",
+      "Payback in months, three-year value and whether one AI use case is ready to scale, at half, planned and one and a half times planned adoption. Results emailed to you.",
     topics: ["AI ROI", "Business case", "AI governance", "Payback"],
     audience: "CEO, CFO, COO, CTO",
     readTime: "Interactive tool",
@@ -30,7 +30,7 @@ export const allInsights: SiteInsightItem[] = [
     category: "AI",
     title: "Why your AI pilot is not paying back",
     summary:
-      "Most AI pilots stall before they pay back. The four patterns behind it, the costs people leave out, the value a CFO will accept and the rules for scaling, fixing or stopping.",
+      "Most AI pilots stall before they pay back. The four patterns behind it, the costs people leave out, the value a CFO will accept and how to tell whether a use case is ready to scale.",
     topics: ["AI ROI", "AI pilots", "Business case", "Operating model"],
     audience: "CEO, CFO, COO, CTO",
     readTime: "8 min read",
