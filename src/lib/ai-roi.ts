@@ -343,8 +343,8 @@ export function formatPayback(months: number | null): string {
  *   outside value  = outside spend x share replaceable x (share / planned adoption)
  *   recurring      = licences + other running costs (both fixed)
  * Payback, three years and the decision use the same rules as the detailed
- * calculator. The AI effect bands are the visitor's assumption, not a
- * benchmark, and the page says so.
+ * calculator. The share of time saved is the visitor's assumption, set on a
+ * slider, not a benchmark, and the page says so.
  * --------------------------------------------------------------------- */
 
 export const DEPARTMENTS = [
@@ -361,17 +361,6 @@ export const DEPARTMENTS = [
 ] as const;
 export type DepartmentId = (typeof DEPARTMENTS)[number]["id"];
 
-export const SHARE_OF_TIME_BANDS = [
-  { value: 0.1, label: "A little, about a tenth" },
-  { value: 0.25, label: "About a quarter" },
-  { value: 0.5, label: "About half" },
-  { value: 0.75, label: "Most of it, about three quarters" },
-];
-export const AI_EFFECT_BANDS = [
-  { value: 0.2, label: "Light: saves about a fifth of that time" },
-  { value: 0.35, label: "Moderate: saves about a third" },
-  { value: 0.5, label: "Strong: saves about half" },
-];
 export const REST_VALUE_OPTIONS = [
   { value: 0, label: "Nothing we can count" },
   { value: 0.5, label: "Other useful work: count it at half" },

@@ -16,9 +16,7 @@ import {
   DEFAULT_INPUTS,
   DEFAULT_QUICK_INPUTS,
   DEPARTMENTS,
-  AI_EFFECT_BANDS,
   REST_VALUE_OPTIONS,
-  SHARE_OF_TIME_BANDS,
   computeAiRoi,
   computeQuickRoi,
   resultRows,
@@ -146,8 +144,9 @@ type QuickField = {
   key: keyof QuickInputs;
   label: string;
   hint: string;
-  kind: FieldKind | "select";
+  kind: FieldKind | "select" | "slider";
   options?: { value: string | number; label: string }[];
+  max?: number; // sliders, in percent
 };
 
 const QUICK_GROUPS: { title: string; fields: QuickField[] }[] = [
@@ -169,14 +168,14 @@ const QUICK_GROUPS: { title: string; fields: QuickField[] }[] = [
     fields: [
       { key: "teamSize", label: "People doing this work", hint: "Count everyone who does it, even for part of their week.", kind: "number" },
       { key: "costPerPerson", label: "Cost per person per month", hint: "Salary plus on-costs, from payroll.", kind: "money" },
-      { key: "shareOfTime", label: "Share of their week on this work", hint: "A rough answer is fine.", kind: "select", options: SHARE_OF_TIME_BANDS },
+      { key: "shareOfTime", label: "Share of their week on this work", hint: "A rough answer is fine.", kind: "slider", max: 100 },
     ],
   },
   {
     title: "With AI",
     fields: [
-      { key: "aiEffect", label: "Time the AI saves on this work", hint: "Your assumption, not a benchmark. Net of time spent checking its output.", kind: "select", options: AI_EFFECT_BANDS },
-      { key: "plannedAdoption", label: "Share of the team using it (%)", hint: "Who you expect to use it in normal work.", kind: "percent" },
+      { key: "aiEffect", label: "Time the AI saves on this work", hint: "Your assumption, not a benchmark. Net of time spent checking its output.", kind: "slider", max: 80 },
+      { key: "plannedAdoption", label: "Share of the team using it", hint: "Who you expect to use it in normal work.", kind: "slider", max: 100 },
     ],
   },
   {
@@ -185,7 +184,7 @@ const QUICK_GROUPS: { title: string; fields: QuickField[] }[] = [
       { key: "hiresNeeded", label: "Extra people needed without AI", hint: "For this work in the next 12 months. Use 0.5 for part-time or overtime, 0 if none.", kind: "number" },
       { key: "restValue", label: "The rest of the time freed", hint: "Time freed beyond those hires only counts if it goes somewhere.", kind: "select", options: REST_VALUE_OPTIONS },
       { key: "outsideSpend", label: "Spend outside the team per month", hint: "", kind: "money" },
-      { key: "outsideReplace", label: "Share of that spend replaced (%)", hint: "What the AI could take over. 0 if none.", kind: "percent" },
+      { key: "outsideReplace", label: "Share of that spend replaced", hint: "What the AI could take over. 0% if none.", kind: "slider", max: 100 },
     ],
   },
   {
@@ -205,7 +204,8 @@ function toQuickForm(i: QuickInputs): QuickFormValues {
   for (const group of QUICK_GROUPS) {
     for (const f of group.fields) {
       const v = i[f.key];
-      out[f.key] = f.kind === "percent" ? String(Math.round((v as number) * 1000) / 10) : String(v);
+      out[f.key] =
+        f.kind === "percent" || f.kind === "slider" ? String(Math.round((v as number) * 100)) : String(v);
     }
   }
   out.currency = i.currency;
@@ -218,7 +218,11 @@ function fromQuickForm(v: QuickFormValues): QuickInputs {
     for (const f of group.fields) {
       const s = v[f.key];
       raw[f.key] =
-        f.kind === "text" || f.key === "department" ? s : f.kind === "percent" ? Number(s) / 100 : Number(s);
+        f.kind === "text" || f.key === "department"
+          ? s
+          : f.kind === "percent" || f.kind === "slider"
+            ? Number(s) / 100
+            : Number(s);
     }
   }
   return sanitiseQuickInputs(raw);
@@ -486,11 +490,27 @@ export default function AiRoiTool() {
                               : f.hint;
                           return (
                             <label key={f.key} className="block">
-                              <span className="text-sm font-medium text-slate-700">
-                                {f.label}
-                                {f.kind === "money" ? ` (${quickForm.currency})` : ""}
+                              <span className="flex items-baseline justify-between gap-3 text-sm font-medium text-slate-700">
+                                <span>
+                                  {f.label}
+                                  {f.kind === "money" ? ` (${quickForm.currency})` : ""}
+                                </span>
+                                {f.kind === "slider" && (
+                                  <span className="text-base font-semibold text-indigo-700">{quickForm[f.key]}%</span>
+                                )}
                               </span>
-                              {f.kind === "select" ? (
+                              {f.kind === "slider" ? (
+                                <input
+                                  className="mt-3 w-full accent-indigo-600"
+                                  type="range"
+                                  min={0}
+                                  max={f.max ?? 100}
+                                  step={5}
+                                  value={quickForm[f.key]}
+                                  aria-valuetext={`${quickForm[f.key]}%`}
+                                  onChange={(e) => setQuickForm({ ...quickForm, [f.key]: e.target.value })}
+                                />
+                              ) : f.kind === "select" ? (
                                 <select
                                   className={`${inputClass} mt-1`}
                                   value={quickForm[f.key]}
