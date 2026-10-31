@@ -14,13 +14,21 @@ import {
   ESTIMATE_LIMITS_HEADING,
   NEXT_STEPS,
   DEFAULT_INPUTS,
+  DEFAULT_QUICK_INPUTS,
+  DEPARTMENTS,
+  AI_EFFECT_BANDS,
+  REST_VALUE_OPTIONS,
+  SHARE_OF_TIME_BANDS,
   computeAiRoi,
-  formatMoney,
-  formatPayback,
+  computeQuickRoi,
+  resultRows,
   sanitiseInputs,
+  sanitiseQuickInputs,
   type AiRoiInputs,
   type AiRoiResult,
   type Currency,
+  type QuickInputs,
+  type RoiMode,
 } from "@/lib/ai-roi";
 
 /*
@@ -31,6 +39,11 @@ import {
      work address (form type "ai_roi_report"). The server recomputes the
      results from the inputs; the browser never sends numbers to email.
   generate_lead fires once, on the gate, so a person is one lead in GA4.
+
+  Two calculators, added 31 October 2026: after the gate the visitor says
+  what numbers they have. "Team and spend figures" opens the quick estimate
+  (people, cost, share of time, hiring and outside spend). "Task-level
+  numbers" opens the detailed calculator (volumes, minutes, error rates).
 */
 
 type FieldKind = "money" | "percent" | "number" | "text";
@@ -116,6 +129,101 @@ function fromForm(v: FormValues): AiRoiInputs {
   return sanitiseInputs(raw);
 }
 
+const MODE_CHOICES: { mode: RoiMode; title: string; text: string }[] = [
+  {
+    mode: "quick",
+    title: "Team and spend figures",
+    text: "You know how many people do this work, what they cost and what you spend outside the team. Takes about two minutes.",
+  },
+  {
+    mode: "detailed",
+    title: "Task-level numbers",
+    text: "You know how often the task happens, how long it takes and how often it goes wrong. Usually from a process or quality team.",
+  },
+];
+
+type QuickField = {
+  key: keyof QuickInputs;
+  label: string;
+  hint: string;
+  kind: FieldKind | "select";
+  options?: { value: string | number; label: string }[];
+};
+
+const QUICK_GROUPS: { title: string; fields: QuickField[] }[] = [
+  {
+    title: "The use case",
+    fields: [
+      {
+        key: "department",
+        label: "Department",
+        hint: "Where the work happens today.",
+        kind: "select",
+        options: DEPARTMENTS.map((d) => ({ value: d.id, label: d.label })),
+      },
+      { key: "useCase", label: "Use case", hint: "Pick a suggestion or type your own.", kind: "text" },
+    ],
+  },
+  {
+    title: "The team doing this work today",
+    fields: [
+      { key: "teamSize", label: "People doing this work", hint: "Count everyone who does it, even for part of their week.", kind: "number" },
+      { key: "costPerPerson", label: "Cost per person per month", hint: "Salary plus on-costs, from payroll.", kind: "money" },
+      { key: "shareOfTime", label: "Share of their week on this work", hint: "A rough answer is fine.", kind: "select", options: SHARE_OF_TIME_BANDS },
+    ],
+  },
+  {
+    title: "With AI",
+    fields: [
+      { key: "aiEffect", label: "Time the AI saves on this work", hint: "Your assumption, not a benchmark. Net of time spent checking its output.", kind: "select", options: AI_EFFECT_BANDS },
+      { key: "plannedAdoption", label: "Share of the team using it (%)", hint: "Who you expect to use it in normal work.", kind: "percent" },
+    ],
+  },
+  {
+    title: "Where the value shows up",
+    fields: [
+      { key: "hiresNeeded", label: "Extra people needed without AI", hint: "For this work in the next 12 months. Use 0.5 for part-time or overtime, 0 if none.", kind: "number" },
+      { key: "restValue", label: "The rest of the time freed", hint: "Time freed beyond those hires only counts if it goes somewhere.", kind: "select", options: REST_VALUE_OPTIONS },
+      { key: "outsideSpend", label: "Spend outside the team per month", hint: "", kind: "money" },
+      { key: "outsideReplace", label: "Share of that spend replaced (%)", hint: "What the AI could take over. 0 if none.", kind: "percent" },
+    ],
+  },
+  {
+    title: "Costs",
+    fields: [
+      { key: "oneOff", label: "One-off cost", hint: "Setup, integration, data preparation and training.", kind: "money" },
+      { key: "licences", label: "Licences per month", hint: "Seats or platform fees.", kind: "money" },
+      { key: "otherRunning", label: "Other running costs per month", hint: "Usage fees, monitoring and upkeep.", kind: "money" },
+    ],
+  },
+];
+
+type QuickFormValues = Record<keyof QuickInputs, string>;
+
+function toQuickForm(i: QuickInputs): QuickFormValues {
+  const out = {} as QuickFormValues;
+  for (const group of QUICK_GROUPS) {
+    for (const f of group.fields) {
+      const v = i[f.key];
+      out[f.key] = f.kind === "percent" ? String(Math.round((v as number) * 1000) / 10) : String(v);
+    }
+  }
+  out.currency = i.currency;
+  return out;
+}
+
+function fromQuickForm(v: QuickFormValues): QuickInputs {
+  const raw: Record<string, unknown> = { currency: v.currency };
+  for (const group of QUICK_GROUPS) {
+    for (const f of group.fields) {
+      const s = v[f.key];
+      raw[f.key] =
+        f.kind === "text" || f.key === "department" ? s : f.kind === "percent" ? Number(s) / 100 : Number(s);
+    }
+  }
+  return sanitiseQuickInputs(raw);
+}
+
 const ACCESS_KEY = "ds_ai_roi_access";
 
 export default function AiRoiTool() {
@@ -131,7 +239,9 @@ export default function AiRoiTool() {
   const [gateError, setGateError] = useState("");
 
   // Calculator
+  const [mode, setMode] = useState<RoiMode | null>(null);
   const [form, setForm] = useState<FormValues>(() => toForm(DEFAULT_INPUTS));
+  const [quickForm, setQuickForm] = useState<QuickFormValues>(() => toQuickForm(DEFAULT_QUICK_INPUTS));
   const [result, setResult] = useState<AiRoiResult | null>(null);
   const [currency, setCurrency] = useState<Currency>(DEFAULT_INPUTS.currency);
   const [sendStatus, setSendStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
@@ -208,9 +318,10 @@ export default function AiRoiTool() {
 
   async function calculate(e: React.FormEvent) {
     e.preventDefault();
-    const inputs = fromForm(form);
+    const isQuick = mode === "quick";
+    const inputs = isQuick ? fromQuickForm(quickForm) : fromForm(form);
     setCurrency(inputs.currency);
-    setResult(computeAiRoi(inputs));
+    setResult(isQuick ? computeQuickRoi(inputs as QuickInputs) : computeAiRoi(inputs as AiRoiInputs));
     setSendStatus("sending");
     setSendError("");
     try {
@@ -225,6 +336,7 @@ export default function AiRoiTool() {
           email,
           captchaToken,
           captchaAction: action,
+          roiMode: isQuick ? "quick" : "detailed",
           roiInputs: inputs,
         }),
       });
@@ -304,63 +416,159 @@ export default function AiRoiTool() {
           </form>
         </div>
       ) : (
-        <form onSubmit={calculate} className="space-y-8">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <h2 className="text-2xl font-bold text-slate-900">Your use case</h2>
-              <p className="mt-1 text-sm text-slate-600">
-                Filled with an illustrative example. Replace every value with your own.
-              </p>
+        <div className="space-y-8">
+          <div>
+            <h2 className="text-2xl font-bold text-slate-900">What numbers do you have?</h2>
+            <p className="mt-1 text-sm text-slate-600">
+              Pick the one closer to what you know. You can switch at any time.
+            </p>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              {MODE_CHOICES.map((m) => (
+                <button
+                  key={m.mode}
+                  type="button"
+                  aria-pressed={mode === m.mode}
+                  onClick={() => {
+                    setMode(m.mode);
+                    setResult(null);
+                    setSendStatus("idle");
+                  }}
+                  className={`rounded-2xl border p-5 text-left transition ${
+                    mode === m.mode
+                      ? "border-indigo-600 bg-indigo-50 ring-1 ring-indigo-600"
+                      : "border-slate-200 bg-white hover:border-indigo-300"
+                  }`}
+                >
+                  <span className="block text-base font-semibold text-slate-900">{m.title}</span>
+                  <span className="mt-1 block text-sm leading-relaxed text-slate-600">{m.text}</span>
+                </button>
+              ))}
             </div>
-            <label className="block">
-              <span className="text-sm font-medium text-slate-700">Currency</span>
-              <select
-                className={`${inputClass} mt-1 w-36`}
-                value={form.currency}
-                onChange={(e) => setForm({ ...form, currency: e.target.value })}
-              >
-                {CURRENCIES.map((c) => (
-                  <option key={c} value={c}>{CURRENCY_LABELS[c]}</option>
-                ))}
-              </select>
-            </label>
           </div>
 
-          {GROUPS.map((group) => (
-            <fieldset key={group.title} className="rounded-2xl border border-slate-200 p-6">
-              <legend className="px-2 text-sm font-semibold text-slate-900">{group.title}</legend>
-              <div className="grid gap-4 sm:grid-cols-2">
-                {group.fields.map((f) => (
-                  <label key={f.key} className="block">
-                    <span className="text-sm font-medium text-slate-700">
-                      {f.label}
-                      {f.kind === "money" ? ` (${form.currency})` : ""}
-                    </span>
-                    <input
-                      className={`${inputClass} mt-1`}
-                      type={f.kind === "text" ? "text" : "number"}
-                      inputMode={f.kind === "text" ? undefined : "decimal"}
-                      min={f.kind === "text" ? undefined : 0}
-                      max={f.kind === "percent" ? 100 : undefined}
-                      step="any"
-                      value={form[f.key]}
-                      onChange={(e) => setForm({ ...form, [f.key]: e.target.value })}
-                    />
-                    <span className="mt-1 block text-xs text-slate-500">{f.hint}</span>
-                  </label>
-                ))}
+          {mode && (
+            <form onSubmit={calculate} className="space-y-8">
+              <div className="flex flex-wrap items-end justify-between gap-4">
+                <div>
+                  <h2 className="text-2xl font-bold text-slate-900">Your use case</h2>
+                  <p className="mt-1 text-sm text-slate-600">
+                    Filled with an illustrative example. Replace every value with your own.
+                  </p>
+                </div>
+                <label className="block">
+                  <span className="text-sm font-medium text-slate-700">Currency</span>
+                  <select
+                    className={`${inputClass} mt-1 w-36`}
+                    value={mode === "quick" ? quickForm.currency : form.currency}
+                    onChange={(e) =>
+                      mode === "quick"
+                        ? setQuickForm({ ...quickForm, currency: e.target.value })
+                        : setForm({ ...form, currency: e.target.value })
+                    }
+                  >
+                    {CURRENCIES.map((c) => (
+                      <option key={c} value={c}>{CURRENCY_LABELS[c]}</option>
+                    ))}
+                  </select>
+                </label>
               </div>
-            </fieldset>
-          ))}
 
-          <button
-            type="submit"
-            disabled={sendStatus === "sending"}
-            className="rounded-lg bg-indigo-700 px-6 py-3 text-sm font-semibold text-white hover:bg-indigo-800 disabled:opacity-60"
-          >
-            {sendStatus === "sending" ? "Calculating..." : "Calculate and email my results"}
-          </button>
-        </form>
+              {mode === "quick"
+                ? QUICK_GROUPS.map((group) => (
+                    <fieldset key={group.title} className="rounded-2xl border border-slate-200 p-6">
+                      <legend className="px-2 text-sm font-semibold text-slate-900">{group.title}</legend>
+                      <div className="grid gap-4 sm:grid-cols-2">
+                        {group.fields.map((f) => {
+                          const dept = DEPARTMENTS.find((d) => d.id === quickForm.department);
+                          const hint =
+                            f.key === "outsideSpend"
+                              ? `On ${dept?.outside ?? "contractors, agencies or temps"} for this work. 0 if none.`
+                              : f.hint;
+                          return (
+                            <label key={f.key} className="block">
+                              <span className="text-sm font-medium text-slate-700">
+                                {f.label}
+                                {f.kind === "money" ? ` (${quickForm.currency})` : ""}
+                              </span>
+                              {f.kind === "select" ? (
+                                <select
+                                  className={`${inputClass} mt-1`}
+                                  value={quickForm[f.key]}
+                                  onChange={(e) => setQuickForm({ ...quickForm, [f.key]: e.target.value })}
+                                >
+                                  {f.options?.map((o) => (
+                                    <option key={String(o.value)} value={String(o.value)}>{o.label}</option>
+                                  ))}
+                                </select>
+                              ) : (
+                                <input
+                                  className={`${inputClass} mt-1`}
+                                  type={f.kind === "text" ? "text" : "number"}
+                                  inputMode={f.kind === "text" ? undefined : "decimal"}
+                                  min={f.kind === "text" ? undefined : 0}
+                                  max={f.kind === "percent" ? 100 : undefined}
+                                  step="any"
+                                  list={f.key === "useCase" ? "roi-use-cases" : undefined}
+                                  value={quickForm[f.key]}
+                                  onChange={(e) => setQuickForm({ ...quickForm, [f.key]: e.target.value })}
+                                />
+                              )}
+                              {f.key === "useCase" && (
+                                <datalist id="roi-use-cases">
+                                  {dept?.useCases.map((u) => <option key={u} value={u} />)}
+                                </datalist>
+                              )}
+                              <span className="mt-1 block text-xs text-slate-500">{hint}</span>
+                            </label>
+                          );
+                        })}
+                      </div>
+                    </fieldset>
+                  ))
+                : null}
+
+              {mode === "detailed" && (
+                <>
+              {GROUPS.map((group) => (
+                <fieldset key={group.title} className="rounded-2xl border border-slate-200 p-6">
+                  <legend className="px-2 text-sm font-semibold text-slate-900">{group.title}</legend>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    {group.fields.map((f) => (
+                      <label key={f.key} className="block">
+                        <span className="text-sm font-medium text-slate-700">
+                          {f.label}
+                          {f.kind === "money" ? ` (${form.currency})` : ""}
+                        </span>
+                        <input
+                          className={`${inputClass} mt-1`}
+                          type={f.kind === "text" ? "text" : "number"}
+                          inputMode={f.kind === "text" ? undefined : "decimal"}
+                          min={f.kind === "text" ? undefined : 0}
+                          max={f.kind === "percent" ? 100 : undefined}
+                          step="any"
+                          value={form[f.key]}
+                          onChange={(e) => setForm({ ...form, [f.key]: e.target.value })}
+                        />
+                        <span className="mt-1 block text-xs text-slate-500">{f.hint}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+              ))}
+
+                </>
+              )}
+
+              <button
+                type="submit"
+                disabled={sendStatus === "sending"}
+                className="rounded-lg bg-indigo-700 px-6 py-3 text-sm font-semibold text-white hover:bg-indigo-800 disabled:opacity-60"
+              >
+                {sendStatus === "sending" ? "Calculating..." : "Calculate and email my results"}
+              </button>
+            </form>
+          )}
+        </div>
       )}
 
       {unlocked && result && (
@@ -386,17 +594,7 @@ export default function AiRoiTool() {
                 </tr>
               </thead>
               <tbody>
-                {(
-                  [
-                    ["Share of tasks the AI handles", (s) => `${Math.round(s.share * 100)}%`],
-                    ["Value", (s) => formatMoney(s.totalValue, currency)],
-                    ["Recurring cost", (s) => formatMoney(s.totalRecurring, currency)],
-                    ["Net value per month", (s) => formatMoney(s.netMonthly, currency)],
-                    ["One-off cost", (s) => formatMoney(s.oneOff, currency)],
-                    ["Payback", (s) => formatPayback(s.paybackMonths)],
-                    ["Net value over three years", (s) => formatMoney(s.net3Years, currency)],
-                  ] as [string, (s: AiRoiResult["planned"]) => string][]
-                ).map(([label, fmt]) => (
+                {resultRows(result, currency).map(({ label, get: fmt }) => (
                   <tr key={label} className="border-b border-slate-200">
                     <th scope="row" className="py-3 pr-4 font-medium text-slate-900">{label}</th>
                     <td className="py-3 pr-4 text-slate-900 font-semibold">{fmt(result.planned)}</td>
@@ -408,8 +606,10 @@ export default function AiRoiTool() {
             </table>
           </div>
           <p className="mt-4 text-xs text-slate-500">
-            A management estimate, not financial advice. It is only as good as the baseline you put in.
-            Licences and governance are treated as fixed; value, usage and review time scale with adoption.
+            A management estimate, not financial advice. It is only as good as the baseline you put in.{" "}
+            {result.mode === "quick"
+              ? "Licences and running costs are treated as fixed; value scales with how many of the team use it."
+              : "Licences and governance are treated as fixed; value, usage and review time scale with adoption."}
           </p>
 
           <div className="mt-10 rounded-2xl border border-slate-200 p-6">

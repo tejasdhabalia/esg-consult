@@ -80,10 +80,15 @@ export default function AiRoiCalculatorPage() {
         <section className="space-y-4 text-slate-600 leading-relaxed">
           <h2 className="text-2xl font-bold text-slate-900">What it works out</h2>
           <p>
-            You enter the baseline for one process: how often the task happens, how long it takes and
-            how often it goes wrong. Then what changes with AI, how confident you are in each kind of
-            value, and the one-off and running costs. Amounts can be in rupees, dollars, pounds or
-            euros.
+            There are two ways in, depending on the numbers you have. Most companies start with the
+            quick estimate: how many people do the work, what they cost, roughly how much of their
+            week it takes, whether you plan to hire and what you spend outside the team. Nobody needs
+            to time a task.
+          </p>
+          <p>
+            If a process or quality team already measures the work, the detailed calculator uses
+            task volumes, handling times and error rates instead. Both add the one-off and running
+            costs. Amounts can be in rupees, dollars, pounds or euros.
           </p>
           <p>
             It returns the value per month, the running cost, payback in months and net value over

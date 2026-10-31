@@ -246,8 +246,10 @@ export default function AiRoiArticlePage() {
               <div className="space-y-4">
                 <p>
                   The <Link href="/insights/ai-roi-calculator" className={linkClass}>AI ROI calculator</Link>{" "}
-                  takes one use case at a time. You enter the baseline, what changes with AI, how
-                  confident you are in each kind of value, and the costs. It returns payback in months,
+                  takes one use case at a time. Most companies use the quick estimate, built from what
+                  they already know: the people doing the work, what they cost, whether they plan to
+                  hire and what they spend outside the team. Where task-level numbers exist, a
+                  detailed version uses volumes, handling times and error rates. It returns payback in months,
                   net value over three years, the same figures at half and one and a half times the
                   adoption you planned, and a recommendation, and emails you the results. Amounts can be
                   in rupees, dollars, pounds or euros.

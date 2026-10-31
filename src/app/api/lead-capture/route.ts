@@ -8,7 +8,8 @@ import {
   sendAiRoiReportEmail,
   type AssessmentResult,
 } from "@/lib/lead-email";
-import { computeAiRoi, sanitiseInputs } from "@/lib/ai-roi";
+import { computeAiRoi, computeQuickRoi, sanitiseInputs, sanitiseQuickInputs } from "@/lib/ai-roi";
+import type { RoiReport } from "@/lib/lead-email";
 import { insightResources, type InsightResourceKey } from "@/lib/insight-resources";
 
 type FormType =
@@ -189,13 +190,19 @@ export async function POST(req: Request) {
     }
 
     if (formType === "ai_roi_report") {
-      const inputs = sanitiseInputs(body?.roiInputs);
+      // The browser sends inputs only; results are recomputed here.
+      const report: RoiReport =
+        body?.roiMode === "quick"
+          ? { mode: "quick", inputs: sanitiseQuickInputs(body?.roiInputs) }
+          : { mode: "detailed", inputs: sanitiseInputs(body?.roiInputs) };
+      const result =
+        report.mode === "quick" ? computeQuickRoi(report.inputs) : computeAiRoi(report.inputs);
       try {
         await sendAiRoiReportEmail({
           name: name.slice(0, 120),
           email: emailValidation.normalizedEmail,
-          inputs,
-          result: computeAiRoi(inputs),
+          report,
+          result,
         });
       } catch (emailErr) {
         console.error("sendAiRoiReportEmail failed:", emailErr);

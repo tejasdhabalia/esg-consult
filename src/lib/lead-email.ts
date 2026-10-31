@@ -1,14 +1,24 @@
 import nodemailer from "nodemailer";
 import path from "path";
 import { insightResources } from "@/lib/insight-resources";
-import type { AiRoiInputs, AiRoiResult } from "@/lib/ai-roi";
+import type { AiRoiInputs, AiRoiResult, Currency, QuickInputs } from "@/lib/ai-roi";
 import {
   ESTIMATE_LIMITS,
   ESTIMATE_LIMITS_HEADING,
   NEXT_STEPS,
+  AI_EFFECT_BANDS,
+  REST_VALUE_OPTIONS,
+  SHARE_OF_TIME_BANDS,
+  departmentLabel,
   formatMoney,
   formatPayback,
+  resultRows,
 } from "@/lib/ai-roi";
+
+/** What the visitor entered, in whichever calculator they used. */
+export type RoiReport =
+  | { mode: "detailed"; inputs: AiRoiInputs }
+  | { mode: "quick"; inputs: QuickInputs };
 
 /**
  * MIME type for an email attachment, derived from the filename.
@@ -540,17 +550,8 @@ export async function sendAiRoiAccessNotification({
   });
 }
 
-function roiResultHtml(inputs: AiRoiInputs, r: AiRoiResult): string {
-  const c = inputs.currency;
-  const rows: Array<[string, (s: AiRoiResult["planned"]) => string]> = [
-    ["Share of tasks the AI handles", (s) => `${Math.round(s.share * 100)}%`],
-    ["Value per month", (s) => formatMoney(s.totalValue, c)],
-    ["Recurring cost per month", (s) => formatMoney(s.totalRecurring, c)],
-    ["Net value per month", (s) => formatMoney(s.netMonthly, c)],
-    ["One-off cost", (s) => formatMoney(s.oneOff, c)],
-    ["Payback", (s) => formatPayback(s.paybackMonths)],
-    ["Net value over three years", (s) => formatMoney(s.net3Years, c)],
-  ];
+function roiResultHtml(context: string, c: Currency, r: AiRoiResult): string {
+  const rows = resultRows(r, c);
   const cell = "padding:8px 10px;border-bottom:1px solid #e2e8f0;font-size:13px;";
   return `
 <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background-color:#1e1b4b;border-radius:6px;margin:0 0 20px;">
@@ -560,7 +561,7 @@ function roiResultHtml(inputs: AiRoiInputs, r: AiRoiResult): string {
     <p style="margin:0;font-size:14px;line-height:1.5;color:#cbd5e1;">${escapeHtml(r.decisionReason)}</p>
   </td></tr>
 </table>
-<p style="margin:0 0 8px;font-size:13px;color:#64748b;">${escapeHtml(inputs.useCase)} &middot; ${escapeHtml(inputs.process)} &middot; ${c}</p>
+<p style="margin:0 0 8px;font-size:13px;color:#64748b;">${escapeHtml(context)} &middot; ${c}</p>
 <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;margin:0 0 20px;">
   <tr>
     <th align="left" style="${cell}color:#64748b;font-weight:600;"></th>
@@ -570,7 +571,7 @@ function roiResultHtml(inputs: AiRoiInputs, r: AiRoiResult): string {
   </tr>
   ${rows
     .map(
-      ([label, fmt]) => `
+      ({ label, get: fmt }) => `
   <tr>
     <td style="${cell}color:#334155;">${label}</td>
     <td align="right" style="${cell}color:#0f172a;font-weight:700;">${fmt(r.planned)}</td>
@@ -604,10 +605,29 @@ function roiNextStepsHtml(r: AiRoiResult): string {
 <p style="${p}">Why the rules are this strict, and the costs most pilots leave out: <a href="https://www.consult-ds.com/insights/ai-roi" style="${a}">why your AI pilot is not paying back</a>. To test another use case, <a href="https://www.consult-ds.com/insights/ai-roi-calculator" style="${a}">open the calculator again</a>.</p>`;
 }
 
+function bandLabel(bands: { value: number; label: string }[], v: number): string {
+  return bands.find((b) => b.value === v)?.label ?? `${Math.round(v * 100)}%`;
+}
+
+function quickInputRows(i: QuickInputs): Array<[string, string]> {
+  const c = i.currency;
+  const pct = (v: number) => `${Math.round(v * 1000) / 10}%`;
+  return [
+    ["Calculator", "Quick estimate (team and spend figures)"],
+    ["Department", escapeHtml(departmentLabel(i.department))],
+    ["Use case", escapeHtml(i.useCase)],
+    ["Team", `${i.teamSize} people at ${formatMoney(i.costPerPerson, c)}/month, ${escapeHtml(bandLabel(SHARE_OF_TIME_BANDS, i.shareOfTime).toLowerCase())} of their week`],
+    ["With AI", `${escapeHtml(bandLabel(AI_EFFECT_BANDS, i.aiEffect))}, ${pct(i.plannedAdoption)} of the team using it`],
+    ["Value", `${i.hiresNeeded} extra people needed without AI; rest of time: ${escapeHtml(bandLabel(REST_VALUE_OPTIONS, i.restValue).toLowerCase())}; outside spend ${formatMoney(i.outsideSpend, c)}/month, ${pct(i.outsideReplace)} replaced`],
+    ["Costs", `one-off ${formatMoney(i.oneOff, c)}, licences ${formatMoney(i.licences, c)}/month, other ${formatMoney(i.otherRunning, c)}/month`],
+  ];
+}
+
 function roiInputRows(i: AiRoiInputs): Array<[string, string]> {
   const c = i.currency;
   const pct = (v: number) => `${Math.round(v * 1000) / 10}%`;
   return [
+    ["Calculator", "Detailed (task-level numbers)"],
     ["Use case", escapeHtml(i.useCase)],
     ["Process", escapeHtml(i.process)],
     ["Baseline", `${i.tasksPerMonth.toLocaleString("en-IN")} tasks/month, ${i.minutesBefore} min each, ${pct(i.errorRateBefore)} errors, ${formatMoney(i.costPerError, c)} per error, ${formatMoney(i.hourlyCost, c)}/hour`],
@@ -621,14 +641,20 @@ function roiInputRows(i: AiRoiInputs): Array<[string, string]> {
 export async function sendAiRoiReportEmail({
   name,
   email,
-  inputs,
+  report,
   result,
 }: {
   name: string;
   email: string;
-  inputs: AiRoiInputs;
+  report: RoiReport;
   result: AiRoiResult;
 }): Promise<void> {
+  const currency = report.inputs.currency;
+  const context =
+    report.mode === "quick"
+      ? `${report.inputs.useCase} \u00b7 ${departmentLabel(report.inputs.department)}`
+      : `${report.inputs.useCase} \u00b7 ${report.inputs.process}`;
+  const inputRows = report.mode === "quick" ? quickInputRows(report.inputs) : roiInputRows(report.inputs);
   if (!process.env.SMTP_HOST || !process.env.SMTP_USER) {
     console.log(`SMTP not configured. Would send AI ROI result (${result.decision}) to ${email}`);
     return;
@@ -641,7 +667,7 @@ export async function sendAiRoiReportEmail({
     headline: `Your AI ROI result: ${result.decision.toLowerCase()}`,
     description: `${name ? `Hello ${escapeHtml(name)}. ` : ""}Here are the results you calculated, so you have them after you close the page. They are a management estimate, only as good as the baseline entered.`,
     accentHex: AI_ROI_ACCENT,
-    resultHtml: roiResultHtml(inputs, result),
+    resultHtml: roiResultHtml(context, currency, result),
     deliveryHtml: roiNextStepsHtml(result),
     links: [
       { label: "AI use case register", href: "https://www.consult-ds.com/insights/ai-use-case-register", desc: "Know what you run before you ask whether it pays" },
@@ -665,8 +691,8 @@ export async function sendAiRoiReportEmail({
       ["Name", escapeHtml(name || "Not given")],
       ["Recommendation", `${result.decision}: ${escapeHtml(result.decisionReason)}`],
       ["Payback (planned)", formatPayback(result.planned.paybackMonths)],
-      ["3-year net (planned)", formatMoney(result.planned.net3Years, inputs.currency)],
-      ...roiInputRows(inputs),
+      ["3-year net (planned)", formatMoney(result.planned.net3Years, currency)],
+      ...inputRows,
     ]),
   });
 }

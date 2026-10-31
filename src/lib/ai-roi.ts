@@ -154,10 +154,27 @@ export const ESTIMATE_LIMITS: Array<{ title: string; text: string }> = [
   },
 ];
 
+/** Which calculator produced a result. Chosen by the visitor after the gate. */
+export type RoiMode = "quick" | "detailed";
+
+/** The figures both calculators produce, and all the results table needs. */
+export type ScenarioCore = {
+  multiplier: number;
+  share: number;
+  totalValue: number;
+  totalRecurring: number;
+  netMonthly: number;
+  oneOff: number;
+  paybackMonths: number | null;
+  net3Years: number;
+  fteFreed?: number; // quick estimate only
+};
+
 export type AiRoiResult = {
-  half: Scenario;
-  planned: Scenario;
-  stretch: Scenario;
+  mode: RoiMode;
+  half: ScenarioCore;
+  planned: ScenarioCore;
+  stretch: ScenarioCore;
   decision: Decision;
   decisionReason: string;
 };
@@ -247,11 +264,19 @@ function scenario(i: AiRoiInputs, multiplier: number): Scenario {
 }
 
 export function computeAiRoi(inputs: AiRoiInputs): AiRoiResult {
-  const half = scenario(inputs, 0.5);
-  const planned = scenario(inputs, 1);
-  const stretch = scenario(inputs, 1.5);
+  return decide("detailed", scenario(inputs, 0.5), scenario(inputs, 1), scenario(inputs, 1.5), inputs.currency);
+}
+
+/** The same rules for both calculators. */
+function decide(
+  mode: RoiMode,
+  half: ScenarioCore,
+  planned: ScenarioCore,
+  stretch: ScenarioCore,
+  currency: Currency,
+): AiRoiResult {
   const p = planned.paybackMonths;
-  const money = (v: number) => formatMoney(v, inputs.currency);
+  const money = (v: number) => formatMoney(v, currency);
   const plannedPayback = formatPayback(p);
   const halfPayback = formatPayback(half.paybackMonths);
   const halfAhead = half.net3Years > 0;
@@ -282,7 +307,7 @@ export function computeAiRoi(inputs: AiRoiInputs): AiRoiResult {
         : `Pays back in ${plannedPayback} at planned adoption, beyond the 36 month limit.`;
     decisionReason = `${why} Keep it in your AI use case register and revisit it when costs fall or volume grows.`;
   }
-  return { half, planned, stretch, decision, decisionReason };
+  return { mode, half, planned, stretch, decision, decisionReason };
 }
 
 /** Money in the chosen currency. Rupees use Indian digit grouping. */
@@ -300,4 +325,175 @@ export function formatPayback(months: number | null): string {
   if (months === null) return "Never";
   if (months > 120) return `About ${Math.round(months / 12)} years`;
   return `${months.toFixed(1)} months`;
+}
+
+/* ------------------------------------------------------------------------
+ * Quick estimate. Added 31 October 2026 at Tejas's request: most mid-market
+ * companies do not know minutes per task or error rates, but they do know
+ * headcount, what people cost, what they spend outside the team and whether
+ * they plan to hire. The quick estimate works from those.
+ *
+ * Per month, for each scenario:
+ *   share          = min(1, planned adoption x multiplier)   share of the team using it
+ *   fte freed      = team size x share of their time on this work
+ *                    x time the AI saves on that work x share
+ *   hires value    = min(extra people needed, fte freed) x cost per person
+ *   rest value     = (fte freed - the part used for hires) x cost per person
+ *                    x how the rest is counted (0, half or full)
+ *   outside value  = outside spend x share replaceable x (share / planned adoption)
+ *   recurring      = licences + other running costs (both fixed)
+ * Payback, three years and the decision use the same rules as the detailed
+ * calculator. The AI effect bands are the visitor's assumption, not a
+ * benchmark, and the page says so.
+ * --------------------------------------------------------------------- */
+
+export const DEPARTMENTS = [
+  { id: "marketing", label: "Marketing", outside: "agency and freelancer fees", useCases: ["Campaign and content drafts", "Ad copy and creative variants", "Lead scoring and routing"] },
+  { id: "sales", label: "Sales", outside: "sales support contractors", useCases: ["Proposal and quote drafts", "CRM notes and follow-ups", "Account research before meetings"] },
+  { id: "finance", label: "Finance and accounting", outside: "temps and outsourced bookkeeping", useCases: ["Supplier invoice processing", "Bank and intercompany reconciliations", "Month end close commentary"] },
+  { id: "supply-chain", label: "Supply chain", outside: "contractors and outsourced planning", useCases: ["Purchase order follow-up", "Demand forecasting", "Supplier document checks"] },
+  { id: "tech", label: "Technology and IT", outside: "contractors and managed service fees", useCases: ["First-line IT tickets", "Code review and testing", "System documentation"] },
+  { id: "hr", label: "HR", outside: "recruiting agency fees", useCases: ["CV screening", "Employee policy questions", "Onboarding paperwork"] },
+  { id: "legal", label: "Legal", outside: "outside counsel", useCases: ["First review of contracts", "NDAs and standard agreements", "Compliance checks"] },
+  { id: "admin", label: "Administration", outside: "temps and outsourced admin", useCases: ["Data entry and filing", "Vendor bills and records", "Meeting notes and minutes"] },
+  { id: "travel", label: "Travel", outside: "travel agent fees", useCases: ["Trip booking and changes", "Expense claim checks", "Travel policy questions"] },
+  { id: "other", label: "Other", outside: "contractors, agencies or temps", useCases: [] as string[] },
+] as const;
+export type DepartmentId = (typeof DEPARTMENTS)[number]["id"];
+
+export const SHARE_OF_TIME_BANDS = [
+  { value: 0.1, label: "A little, about a tenth" },
+  { value: 0.25, label: "About a quarter" },
+  { value: 0.5, label: "About half" },
+  { value: 0.75, label: "Most of it, about three quarters" },
+];
+export const AI_EFFECT_BANDS = [
+  { value: 0.2, label: "Light: saves about a fifth of that time" },
+  { value: 0.35, label: "Moderate: saves about a third" },
+  { value: 0.5, label: "Strong: saves about half" },
+];
+export const REST_VALUE_OPTIONS = [
+  { value: 0, label: "Nothing we can count" },
+  { value: 0.5, label: "Other useful work: count it at half" },
+  { value: 1, label: "Revenue work we can value: count it in full" },
+];
+
+export type QuickInputs = {
+  currency: Currency;
+  department: DepartmentId;
+  useCase: string;
+  teamSize: number;
+  costPerPerson: number; // per month, salary plus on-costs
+  shareOfTime: number; // 0 to 1
+  aiEffect: number; // 0 to 1, net of checking
+  plannedAdoption: number; // 0 to 1, share of the team using it
+  hiresNeeded: number; // extra people in the next 12 months without AI
+  restValue: number; // 0, 0.5 or 1
+  outsideSpend: number; // per month
+  outsideReplace: number; // 0 to 1
+  oneOff: number;
+  licences: number; // per month, fixed
+  otherRunning: number; // per month, fixed
+};
+
+/** Worked example: supplier invoice processing in a growing finance team. */
+export const DEFAULT_QUICK_INPUTS: QuickInputs = {
+  currency: "INR",
+  department: "finance",
+  useCase: "Supplier invoice processing",
+  teamSize: 4,
+  costPerPerson: 60000,
+  shareOfTime: 0.75,
+  aiEffect: 0.35,
+  plannedAdoption: 0.7,
+  hiresNeeded: 1,
+  restValue: 0.5,
+  outsideSpend: 30000,
+  outsideReplace: 0.5,
+  oneOff: 500000,
+  licences: 20000,
+  otherRunning: 5000,
+};
+
+export function sanitiseQuickInputs(raw: unknown): QuickInputs {
+  const r = (raw && typeof raw === "object" ? raw : {}) as Record<string, unknown>;
+  const d = DEFAULT_QUICK_INPUTS;
+  const currency = CURRENCIES.includes(r.currency as Currency) ? (r.currency as Currency) : d.currency;
+  const department = DEPARTMENTS.some((x) => x.id === r.department) ? (r.department as DepartmentId) : d.department;
+  return {
+    currency,
+    department,
+    useCase: text(r.useCase, "AI use case"),
+    teamSize: num(r.teamSize, 0, 100000, d.teamSize),
+    costPerPerson: num(r.costPerPerson, 0, MAX_MONEY, d.costPerPerson),
+    shareOfTime: num(r.shareOfTime, 0, 1, d.shareOfTime),
+    aiEffect: num(r.aiEffect, 0, 1, d.aiEffect),
+    plannedAdoption: num(r.plannedAdoption, 0, 1, d.plannedAdoption),
+    hiresNeeded: num(r.hiresNeeded, 0, 100000, d.hiresNeeded),
+    restValue: num(r.restValue, 0, 1, d.restValue),
+    outsideSpend: num(r.outsideSpend, 0, MAX_MONEY, d.outsideSpend),
+    outsideReplace: num(r.outsideReplace, 0, 1, d.outsideReplace),
+    oneOff: num(r.oneOff, 0, MAX_MONEY, d.oneOff),
+    licences: num(r.licences, 0, MAX_MONEY, d.licences),
+    otherRunning: num(r.otherRunning, 0, MAX_MONEY, d.otherRunning),
+  };
+}
+
+function quickScenario(i: QuickInputs, multiplier: number): ScenarioCore {
+  const share = Math.min(1, i.plannedAdoption * multiplier);
+  const fteFreed = i.teamSize * i.shareOfTime * i.aiEffect * share;
+  const hireFte = Math.min(i.hiresNeeded, fteFreed);
+  const valueHires = hireFte * i.costPerPerson;
+  const valueRest = (fteFreed - hireFte) * i.costPerPerson * i.restValue;
+  const valueOutside =
+    i.plannedAdoption > 0 ? i.outsideSpend * i.outsideReplace * (share / i.plannedAdoption) : 0;
+  const totalValue = valueHires + valueRest + valueOutside;
+  const totalRecurring = i.licences + i.otherRunning;
+  const netMonthly = totalValue - totalRecurring;
+  return {
+    multiplier,
+    share,
+    fteFreed,
+    totalValue,
+    totalRecurring,
+    netMonthly,
+    oneOff: i.oneOff,
+    paybackMonths: netMonthly > 0 ? i.oneOff / netMonthly : null,
+    net3Years: netMonthly * 36 - i.oneOff,
+  };
+}
+
+export function computeQuickRoi(inputs: QuickInputs): AiRoiResult {
+  return decide(
+    "quick",
+    quickScenario(inputs, 0.5),
+    quickScenario(inputs, 1),
+    quickScenario(inputs, 1.5),
+    inputs.currency,
+  );
+}
+
+export function departmentLabel(id: DepartmentId): string {
+  return DEPARTMENTS.find((d) => d.id === id)?.label ?? "Other";
+}
+
+/** Rows of the results table, shared by the page and the email. */
+export function resultRows(r: AiRoiResult, currency: Currency): Array<{ label: string; get: (s: ScenarioCore) => string }> {
+  const money = (v: number) => formatMoney(v, currency);
+  const first =
+    r.mode === "quick"
+      ? [
+          { label: "Share of the team using it", get: (s: ScenarioCore) => `${Math.round(s.share * 100)}%` },
+          { label: "Time freed, in full-time people", get: (s: ScenarioCore) => (s.fteFreed ?? 0).toFixed(2) },
+        ]
+      : [{ label: "Share of tasks the AI handles", get: (s: ScenarioCore) => `${Math.round(s.share * 100)}%` }];
+  return [
+    ...first,
+    { label: "Value", get: (s) => money(s.totalValue) },
+    { label: "Recurring cost", get: (s) => money(s.totalRecurring) },
+    { label: "Net value per month", get: (s) => money(s.netMonthly) },
+    { label: "One-off cost", get: (s) => money(s.oneOff) },
+    { label: "Payback", get: (s) => formatPayback(s.paybackMonths) },
+    { label: "Net value over three years", get: (s) => money(s.net3Years) },
+  ];
 }
