@@ -1,6 +1,6 @@
 export type SiteInsightItem = {
   slug: string;
-  category: "AI" | "Data protection" | "Marketing" | "ESG" | "Systems";
+  category: "AI" | "Data protection" | "Marketing" | "ESG";
   title: string;
   summary: string;
   topics: string[];
@@ -13,30 +13,6 @@ export type SiteInsightItem = {
 export const allInsights: SiteInsightItem[] = [
   // Newest first. This registry is what /insights renders; adding a page
   // under src/app/insights does not put it on the hub.
-  {
-    slug: "signs-you-have-outgrown-tally",
-    category: "Systems",
-    title: "Five signs your business has outgrown Tally",
-    summary:
-      "Entities consolidated in Excel, stock moved by journal entry, credit control in one person's head. The five signs Tally has become the constraint, and why the move keeps getting deferred.",
-    topics: ["Tally", "ERP", "Moving systems", "Distribution"],
-    audience: "CFO, CEO, finance controller",
-    readTime: "5 min read",
-    updated: "Nov 2026",
-    updatedAt: "2026-11-21",
-  },
-  {
-    slug: "one-sku-four-inventory-numbers",
-    category: "Systems",
-    title: "One SKU, four inventory numbers",
-    summary:
-      "The website, the marketplace, the warehouse and the store each hold a different number for the same product. Why it happens, where the margin goes and which system should decide.",
-    topics: ["Inventory", "Retail", "D2C", "Integration"],
-    audience: "COO, CFO, ecommerce head",
-    readTime: "5 min read",
-    updated: "Nov 2026",
-    updatedAt: "2026-11-21",
-  },
   {
     slug: "ai-roi-calculator",
     category: "AI",

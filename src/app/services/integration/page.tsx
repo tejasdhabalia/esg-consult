@@ -77,12 +77,6 @@ export default function IntegrationPage() {
       ]}
       relatedResources={[
         {
-          href: "/insights/one-sku-four-inventory-numbers",
-          label: "Why each channel shows a different stock number",
-          detail:
-            "One SKU, four inventory numbers: which system should decide, and where unmatched returns take the margin.",
-        },
-        {
           href: "/insights/access-and-vendor-risk-checklist",
           label: "Access and vendor risk checklist",
           detail:

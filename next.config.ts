@@ -62,17 +62,30 @@ const nextConfig: NextConfig = {
         destination: "/insights/marketing-automation-maturity",
         statusCode: 301,
       },
-      // Industry articles moved to insights so they can be indexed without
-      // releasing a two-page industry section. Brief 4, SEO project,
-      // 21 November 2026. The page files stay in place; these win.
+      // The Tally and retail articles were removed after review: they
+      // described standard product features as gaps and stated sweeping
+      // claims about categories of system as fact. Brief 5, SEO project,
+      // 21 November 2026. Each old URL goes straight to its final page, with
+      // no chain through the removed insights URLs. The industry page files
+      // were deleted with them.
+      {
+        source: "/insights/signs-you-have-outgrown-tally",
+        destination: "/migrations/tally-to-erp",
+        statusCode: 301,
+      },
       {
         source: "/industries/distribution-and-wholesale",
-        destination: "/insights/signs-you-have-outgrown-tally",
+        destination: "/migrations/tally-to-erp",
+        statusCode: 301,
+      },
+      {
+        source: "/insights/one-sku-four-inventory-numbers",
+        destination: "/services/integration",
         statusCode: 301,
       },
       {
         source: "/industries/retail-and-d2c",
-        destination: "/insights/one-sku-four-inventory-numbers",
+        destination: "/services/integration",
         statusCode: 301,
       },
     ];

@@ -23,6 +23,12 @@
  *
  * Local test, sends nothing:
  *   node scripts/indexnow-notify.mjs --dry-run
+ *
+ * Manual mode, for URLs the sitemap comparison cannot see, such as routes
+ * that redirect but were never in the sitemap. Sends exactly the paths
+ * given, after the deploy is live, and leaves the saved sitemap alone.
+ * Added for Brief 5, 21 November 2026:
+ *   node scripts/indexnow-notify.mjs --url /insights/x --url /industries/y
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -35,6 +41,9 @@ const SITEMAP_URL = `https://${HOST}/sitemap.xml`;
 const ENDPOINT = 'https://api.indexnow.org/indexnow';
 const STATE_FILE = path.join(process.cwd(), '.indexnow', 'previous-sitemap.xml');
 const DRY_RUN = process.argv.includes('--dry-run');
+const MANUAL_URLS = process.argv
+  .flatMap((arg, i, all) => (arg === '--url' && all[i + 1] ? [all[i + 1]] : []))
+  .map((u) => (u.startsWith('/') ? `https://${HOST}${u}` : u));
 
 function parseSitemap(xml) {
   const map = new Map();
@@ -75,7 +84,29 @@ async function fetchLiveSitemap() {
   return null;
 }
 
+async function sendManual() {
+  const urlList = MANUAL_URLS.filter(onOurHost);
+  console.log(`Manual mode: ${urlList.length} URL(s) to send:`);
+  for (const u of urlList) console.log(`  ${u}`);
+  if (urlList.length === 0 || DRY_RUN) {
+    console.log(DRY_RUN ? 'Dry run: nothing sent.' : 'Nothing to send.');
+    return;
+  }
+  const res = await fetch(ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json; charset=utf-8' },
+    body: JSON.stringify({ host: HOST, key: KEY, keyLocation: KEY_LOCATION, urlList }),
+  });
+  const ok = res.status === 200 || res.status === 202;
+  console.log(`IndexNow responded ${res.status}${ok ? ' (success)' : ''}`);
+  if (!ok) console.log(await res.text().catch(() => ''));
+}
+
 async function main() {
+  if (MANUAL_URLS.length > 0) {
+    await sendManual();
+    return;
+  }
   const liveXml = await fetchLiveSitemap();
   if (!liveXml) {
     console.log('Could not read the live sitemap. Nothing sent.');

@@ -29,7 +29,7 @@ export const industries: Industry[] = [
     label: "Retail, D2C and consumer brands",
     fracture:
       "The website, the marketplace, the warehouse and the store each believe a different number.",
-    // Redirects to /insights/one-sku-four-inventory-numbers. Brief 4, 21 November 2026.
+    // Page removed; the route redirects to /services/integration. Brief 5, 21 November 2026.
     live: false,
   },
   {
@@ -37,7 +37,7 @@ export const industries: Industry[] = [
     label: "Distribution, wholesale and trading",
     fracture:
       "The business outgrew Tally years ago and the migration keeps getting deferred.",
-    // Redirects to /insights/signs-you-have-outgrown-tally. Brief 4, 21 November 2026.
+    // Page removed; the route redirects to /migrations/tally-to-erp. Brief 5, 21 November 2026.
     live: false,
   },
   {
