@@ -4,7 +4,7 @@ import PageHero from "@/components/PageHero";
 import ServiceCarousel from "@/components/ServiceCarousel";
 import { site } from "@/lib/site";
 import { pillars } from "@/lib/service-pillars";
-import { getLatestInsights } from "@/lib/insights";
+import { getHomepageInsights } from "@/lib/insights";
 import { pageMetadata } from "@/lib/page-metadata";
 
 const homeMetadata = pageMetadata({
@@ -82,7 +82,7 @@ const evidence = [
 const sourcing = pillars.find((item) => item.route === "/services/sourcing-and-market-entry")!;
 
 export default function HomePage() {
-  const latestInsights = getLatestInsights(3);
+  const latestInsights = getHomepageInsights(3);
 
   const organizationSchema = {
     "@context": "https://schema.org",

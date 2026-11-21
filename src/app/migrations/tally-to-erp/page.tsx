@@ -55,6 +55,12 @@ export default function TallyToErpPage() {
       ]}
       links={[
         {
+          before: "Not sure it is time yet? Start with",
+          anchor: "the five signs you have outgrown Tally",
+          href: "/insights/signs-you-have-outgrown-tally",
+          after: ".",
+        },
+        {
           before: "Choosing the system is its own decision.",
           anchor: "How we run an ERP selection",
           href: "/services/erp-systems",

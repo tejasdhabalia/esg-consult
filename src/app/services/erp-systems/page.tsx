@@ -84,6 +84,14 @@ export default function ErpSystemsPage() {
           label: "Plan the move off Tally",
         },
       ]}
+      relatedResources={[
+        {
+          href: "/insights/signs-you-have-outgrown-tally",
+          label: "Five signs your business has outgrown Tally",
+          detail:
+            "Entities consolidated in Excel, stock moved by journal entry, credit control in one person's head, and why the move keeps getting deferred.",
+        },
+      ]}
       faqs={[
         {
           question: "Do you have preferred ERP vendors?",

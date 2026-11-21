@@ -91,6 +91,14 @@ export default function CommerceAndDigitalPlatformsPage() {
           label: "How we run a store move",
         },
       ]}
+      relatedResources={[
+        {
+          href: "/insights/one-sku-four-inventory-numbers",
+          label: "Why each channel shows a different stock number",
+          detail:
+            "The website, the marketplace, the warehouse and the store each hold a different number for the same product. Why it happens and which system should decide.",
+        },
+      ]}
       faqs={[
         {
           question: "Do you build websites?",

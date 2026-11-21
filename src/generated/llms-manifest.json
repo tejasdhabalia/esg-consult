@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-31T05:13:59.437Z",
+  "generatedAt": "2026-11-21T07:18:51.148Z",
   "pageCount": 90,
   "pages": [
     {
@@ -253,6 +253,16 @@
       "source": "src/app/insights/nist-ai-rmf-starter-profile/page.tsx"
     },
     {
+      "route": "/insights/one-sku-four-inventory-numbers",
+      "url": "https://www.consult-ds.com/insights/one-sku-four-inventory-numbers",
+      "title": "One SKU, four inventory numbers",
+      "description": "Your website, marketplace, warehouse and store each show a different stock number. Why multichannel inventory breaks, and where the margin goes.",
+      "section": "insights",
+      "priority": 0.8,
+      "changeFrequency": "monthly",
+      "source": "src/app/insights/one-sku-four-inventory-numbers/page.tsx"
+    },
+    {
       "route": "/insights/revenue-attribution-readiness",
       "url": "https://www.consult-ds.com/insights/revenue-attribution-readiness",
       "title": "Revenue attribution readiness check",
@@ -271,6 +281,16 @@
       "priority": 0.5,
       "changeFrequency": "monthly",
       "source": "src/app/insights/scope-3-supplier-data-request-pack/page.tsx"
+    },
+    {
+      "route": "/insights/signs-you-have-outgrown-tally",
+      "url": "https://www.consult-ds.com/insights/signs-you-have-outgrown-tally",
+      "title": "Five signs your business has outgrown Tally",
+      "description": "Multi-entity consolidation in Excel, stock moved by journal entry, credit control in one person's head. Five signs Tally has become the constraint.",
+      "section": "insights",
+      "priority": 0.8,
+      "changeFrequency": "monthly",
+      "source": "src/app/insights/signs-you-have-outgrown-tally/page.tsx"
     },
     {
       "route": "/insights/sustainability-steering-committee-charter",
@@ -411,26 +431,6 @@
       "priority": 0.8,
       "changeFrequency": "monthly",
       "source": "src/app/industries/page.tsx"
-    },
-    {
-      "route": "/industries/distribution-and-wholesale",
-      "url": "https://www.consult-ds.com/industries/distribution-and-wholesale",
-      "title": "Distribution, wholesale and trading",
-      "description": "Five signs your business has outgrown Tally. Why multi-entity, credit control and scheme management break the tool, and what a migration actually involves.",
-      "section": "other",
-      "priority": 0.8,
-      "changeFrequency": "monthly",
-      "source": "src/app/industries/distribution-and-wholesale/page.tsx"
-    },
-    {
-      "route": "/industries/retail-and-d2c",
-      "url": "https://www.consult-ds.com/industries/retail-and-d2c",
-      "title": "Retail, D2C and consumer brands",
-      "description": "One SKU, four inventory numbers. Why channel inventory truth and returns reconciliation break in retail and D2C, and what it takes to fix the systems underneath.",
-      "section": "other",
-      "priority": 0.8,
-      "changeFrequency": "monthly",
-      "source": "src/app/industries/retail-and-d2c/page.tsx"
     },
     {
       "route": "/partners",

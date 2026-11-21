@@ -132,7 +132,7 @@ export default function AiRoiArticlePage() {
 
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="grid lg:grid-cols-3 gap-12">
-          <article className="lg:col-span-2 space-y-12 text-slate-600 leading-relaxed">
+          <article className="lg:col-span-2 min-w-0 space-y-12 text-slate-600 leading-relaxed">
             <section>
               <h2 className="text-2xl font-bold text-slate-900 mb-4">The short answer</h2>
               <div className="space-y-4">

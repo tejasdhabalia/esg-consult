@@ -33,8 +33,8 @@ const PRIORITY_OVERRIDES = {
   '/services/commerce-and-digital-platforms': { priority: 0.9, changeFrequency: 'monthly' },
   '/services/ai-governance-and-adoption': { priority: 0.9, changeFrequency: 'weekly' },
   '/industries': { priority: 0.8, changeFrequency: 'monthly' },
-  '/industries/retail-and-d2c': { priority: 0.8, changeFrequency: 'monthly' },
-  '/industries/distribution-and-wholesale': { priority: 0.8, changeFrequency: 'monthly' },
+  '/insights/signs-you-have-outgrown-tally': { priority: 0.8, changeFrequency: 'monthly' },
+  '/insights/one-sku-four-inventory-numbers': { priority: 0.8, changeFrequency: 'monthly' },
   '/services/systems-selection': { priority: 0.9, changeFrequency: 'monthly' },
   '/services/implementation-oversight': { priority: 0.9, changeFrequency: 'monthly' },
   '/services/integration': { priority: 0.9, changeFrequency: 'monthly' },
@@ -76,7 +76,14 @@ const PRIORITY_OVERRIDES = {
 // /meet is the unlisted direct booking link. It is kept out of llms.txt for
 // the same reason it is kept out of the sitemap: it has an audience, but not
 // one that arrives by discovery.
-const EXCLUDED_ROUTES = new Set(['/favicon.ico', '/meet']);
+// The two industry routes redirect to insights articles (Brief 4, 21 November
+// 2026), so llms.txt should not list them.
+const EXCLUDED_ROUTES = new Set([
+  '/favicon.ico',
+  '/meet',
+  '/industries/distribution-and-wholesale',
+  '/industries/retail-and-d2c',
+]);
 
 function normalizeTemplateLiteral(raw) {
   return raw

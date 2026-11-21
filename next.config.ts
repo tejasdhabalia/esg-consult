@@ -62,6 +62,19 @@ const nextConfig: NextConfig = {
         destination: "/insights/marketing-automation-maturity",
         statusCode: 301,
       },
+      // Industry articles moved to insights so they can be indexed without
+      // releasing a two-page industry section. Brief 4, SEO project,
+      // 21 November 2026. The page files stay in place; these win.
+      {
+        source: "/industries/distribution-and-wholesale",
+        destination: "/insights/signs-you-have-outgrown-tally",
+        statusCode: 301,
+      },
+      {
+        source: "/industries/retail-and-d2c",
+        destination: "/insights/one-sku-four-inventory-numbers",
+        statusCode: 301,
+      },
     ];
   },
 };
