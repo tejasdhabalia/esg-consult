@@ -55,6 +55,22 @@ export type LeadFormName =
  * Custom dimensions are not retroactive, so a new one only populates from
  * the day it is created in GA4.
  */
+/**
+ * Use of a free on-page tool that is not a lead form, such as the ERP demo
+ * scorecard. Never fires generate_lead. Brief 7 (SEO project), 22 November
+ * 2026: event "tool_use" with tool_key, plus tool_action to tell the first
+ * score from a print.
+ */
+export function trackToolUse(toolKey: string, action: string): void {
+  try {
+    if (typeof window === "undefined") return;
+    const w = window as unknown as { gtag?: (...args: unknown[]) => void };
+    w.gtag?.("event", "tool_use", { tool_key: toolKey, tool_action: action });
+  } catch {
+    // Analytics must never break the tool.
+  }
+}
+
 export function trackGenerateLead(
   formName: LeadFormName,
   params: Record<string, string | undefined> = {},

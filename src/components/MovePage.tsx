@@ -23,7 +23,11 @@ import type { Author } from "@/lib/authors";
  * - The breadcrumb shows "Moves", not "Migrations", agreed 30 October 2026.
  */
 
-export type MoveBreak = { title: string; detail: string };
+/**
+ * A break or a step can carry one optional sentence with an internal link,
+ * shown after its text. Added for Brief 7 (SEO project, 22 November 2026).
+ */
+export type MoveBreak = { title: string; detail: string; link?: MoveLink };
 
 export type MoveLink = {
   before: string;
@@ -44,6 +48,8 @@ export type MovePageProps = {
   breaks: MoveBreak[];
   stepsHeading: string;
   steps: string[];
+  /** Optional link sentence after a step, keyed by the step's index from 0. */
+  stepLinks?: Record<number, MoveLink>;
   /** Links to the matching service page and related pages. Vary the anchor text. */
   links: MoveLink[];
   /** Show the week 1 fee. India-facing pages only (Tally). */
@@ -86,6 +92,7 @@ export default function MovePage(props: MovePageProps) {
     breaks,
     stepsHeading,
     steps,
+    stepLinks = {},
     links,
     showPrice = false,
     areaServed,
@@ -229,7 +236,19 @@ export default function MovePage(props: MovePageProps) {
             {breaks.map((item) => (
               <div key={item.title} className="rounded-2xl border border-slate-200 bg-white p-6">
                 <h3 className="font-semibold text-slate-900">{item.title}</h3>
-                <p className="mt-2 text-sm text-slate-600 leading-relaxed">{item.detail}</p>
+                <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                  {item.detail}
+                  {item.link && (
+                    <>
+                      {" "}
+                      {item.link.before}{" "}
+                      <Link href={item.link.href} className="text-indigo-700 underline underline-offset-2 hover:text-indigo-900">
+                        {item.link.anchor}
+                      </Link>
+                      {item.link.after}
+                    </>
+                  )}
+                </p>
               </div>
             ))}
           </div>
@@ -246,7 +265,19 @@ export default function MovePage(props: MovePageProps) {
                 <div className="w-8 h-8 rounded-full bg-indigo-600 text-white text-sm font-bold flex items-center justify-center flex-shrink-0">
                   {index + 1}
                 </div>
-                <p className="text-slate-700 leading-relaxed pt-1">{step}</p>
+                <p className="text-slate-700 leading-relaxed pt-1">
+                  {step}
+                  {stepLinks[index] && (
+                    <>
+                      {" "}
+                      {stepLinks[index].before}{" "}
+                      <Link href={stepLinks[index].href} className="text-indigo-700 underline underline-offset-2 hover:text-indigo-900">
+                        {stepLinks[index].anchor}
+                      </Link>
+                      {stepLinks[index].after}
+                    </>
+                  )}
+                </p>
               </li>
             ))}
           </ol>

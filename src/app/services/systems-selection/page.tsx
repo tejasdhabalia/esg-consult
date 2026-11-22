@@ -44,6 +44,12 @@ export default function SystemsSelectionPage() {
           title: "Structured demos",
           detail:
             "Scripts written around your processes. Same script for every vendor, so you are comparing like with like instead of comparing sales teams.",
+          link: {
+            before: "Start from our",
+            anchor: "demo script and scorecard",
+            href: "/insights/erp-demo-script-and-scorecard",
+            after: ".",
+          },
         },
         {
           title: "Reference and viability checks",

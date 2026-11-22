@@ -8,6 +8,12 @@ import RelatedResources, { type RelatedResource } from "@/components/RelatedReso
 export type ServiceScopeItem = {
   title: string;
   detail: string;
+  /**
+   * Optional sentence with one internal link, shown after the detail.
+   * Added for Brief 7 (SEO project, 22 November 2026) so a scope item can
+   * point to a resource without turning the detail into markup.
+   */
+  link?: { before: string; anchor: string; href: string; after: string };
 };
 
 export type ServiceFaq = {
@@ -186,7 +192,19 @@ export default function ServiceLinePage({
             {scope.map((item) => (
               <div key={item.title} className="bg-white border rounded-2xl p-8">
                 <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
-                <p className="mt-3 text-sm text-slate-600 leading-relaxed">{item.detail}</p>
+                <p className="mt-3 text-sm text-slate-600 leading-relaxed">
+                  {item.detail}
+                  {item.link && (
+                    <>
+                      {" "}
+                      {item.link.before}{" "}
+                      <Link href={item.link.href} className="text-indigo-700 underline underline-offset-2 hover:text-indigo-900">
+                        {item.link.anchor}
+                      </Link>
+                      {item.link.after}
+                    </>
+                  )}
+                </p>
               </div>
             ))}
           </div>

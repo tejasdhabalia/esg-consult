@@ -58,6 +58,14 @@ export default function TallyToErpPage() {
         },
       ]}
       stepsHeading="How we run the move"
+      stepLinks={{
+        0: {
+          before: "Use one script for every vendor and",
+          anchor: "score the vendor demos",
+          href: "/insights/erp-demo-script-and-scorecard",
+          after: ".",
+        },
+      }}
       steps={[
         "Agree what the business needs from the ERP, then choose it with the scoring handed to you.",
         "Clean the masters before they move: customers, items, ledgers and the opening balances.",

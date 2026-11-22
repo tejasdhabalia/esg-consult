@@ -1,6 +1,8 @@
 export type SiteInsightItem = {
   slug: string;
-  category: "AI" | "Data protection" | "Marketing" | "ESG";
+  // "Technology" added for Brief 7 (22 November 2026): ERP and business systems
+  // resources. None of the other categories fitted.
+  category: "AI" | "Technology" | "Data protection" | "Marketing" | "ESG";
   title: string;
   summary: string;
   topics: string[];
@@ -13,6 +15,18 @@ export type SiteInsightItem = {
 export const allInsights: SiteInsightItem[] = [
   // Newest first. This registry is what /insights renders; adding a page
   // under src/app/insights does not put it on the hub.
+  {
+    slug: "erp-demo-script-and-scorecard",
+    category: "Technology",
+    title: "ERP demo script and scorecard",
+    summary:
+      "Make vendors show your hardest days: the same exception scenarios for every vendor, scored live against weights agreed in advance. With a free interactive scorecard.",
+    topics: ["ERP selection", "Vendor demos", "Scorecard", "Systems selection"],
+    audience: "CFO, COO, CIO, finance controller",
+    readTime: "13 min read",
+    updated: "Nov 2026",
+    updatedAt: "2026-11-22",
+  },
   {
     slug: "ai-roi-calculator",
     category: "AI",

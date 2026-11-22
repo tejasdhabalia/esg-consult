@@ -38,6 +38,12 @@ export default function ImplementationRecoveryPage() {
           title: "Change requests nobody reads together",
           detail:
             "Scope moves one request at a time, each reasonable on its own, and nobody checks the total against the business case the board approved.",
+          link: {
+            before: "Many trace back to a selection that never tested the exceptions. Read",
+            anchor: "why demos hide the hard cases",
+            href: "/insights/erp-demo-script-and-scorecard",
+            after: ".",
+          },
         },
         {
           title: "An argument about whose fault it is",

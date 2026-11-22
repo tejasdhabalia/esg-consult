@@ -47,6 +47,12 @@ export default function ErpSystemsPage() {
           title: "Scored vendor comparison",
           detail:
             "Weighted scoring against your requirements, with weightings agreed by you before anyone demos. Demo scripts written around your processes, the same script for every vendor, so you compare products rather than sales teams.",
+          link: {
+            before: "See",
+            anchor: "how to run a scripted ERP demo",
+            href: "/insights/erp-demo-script-and-scorecard",
+            after: ".",
+          },
         },
         {
           title: "Commercial and contract review",
