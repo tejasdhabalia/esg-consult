@@ -71,7 +71,16 @@ const FOLLOW_UP_TYPES = [
 
 type Scenario = { id: string; area: AreaId; name: string; show: string; scores: Scores; note: string };
 type Criterion = { id: string; name: string; good: string; weight: number; scores: Scores; note: string };
-type FollowUp = { id: string; vendor: 0 | 1 | 2; item: string; type: string; answered: boolean };
+type FollowUp = {
+  id: string;
+  vendor: 0 | 1 | 2;
+  item: string;
+  type: string;
+  owner: string;
+  asked: string; // yyyy-mm-dd
+  answered: boolean;
+  summary: string;
+};
 
 type State = {
   v: 1;
@@ -80,7 +89,7 @@ type State = {
   scenarios: Scenario[];
   criteria: Criterion[];
   followUps: FollowUp[];
-  decisions: { product: string; implementer: string; gaps: string };
+  decisions: { product: string; implementer: string; gaps: string; signoff: string };
 };
 
 const EMPTY: Scores = [null, null, null];
@@ -135,7 +144,7 @@ function defaultState(): State {
       note: "",
     })),
     followUps: [],
-    decisions: { product: "", implementer: "", gaps: "" },
+    decisions: { product: "", implementer: "", gaps: "", signoff: "" },
   };
 }
 
@@ -187,13 +196,17 @@ function revive(raw: unknown): State | null {
           vendor: ([0, 1, 2].includes(f.vendor) ? f.vendor : 0) as 0 | 1 | 2,
           item: String(f.item ?? ""),
           type: FOLLOW_UP_TYPES.includes(f.type) ? f.type : FOLLOW_UP_TYPES[0],
+          owner: String(f.owner ?? ""),
+          asked: /^\d{4}-\d{2}-\d{2}$/.test(String(f.asked ?? "")) ? String(f.asked) : "",
           answered: Boolean(f.answered),
+          summary: String(f.summary ?? ""),
         }))
       : [],
     decisions: {
       product: String(r.decisions?.product ?? ""),
       implementer: String(r.decisions?.implementer ?? ""),
       gaps: String(r.decisions?.gaps ?? ""),
+      signoff: String(r.decisions?.signoff ?? ""),
     },
   };
 }
@@ -211,7 +224,24 @@ function points(score: Score, weight: number) {
   return score === null ? null : (score / 3) * weight;
 }
 
-const TABS = ["Setup", "Product scorecard", "Implementer scorecard", "Summary", "Follow-ups"] as const;
+const TABS = ["How to use", "Setup", "Product scorecard", "Implementer scorecard", "Summary", "Follow-ups"] as const;
+
+// From the "How to use" tab of ERP-demo-scorecard-template.xlsx, adapted
+// only where the spreadsheet refers to its own cells or copies.
+const STEPS = [
+  "Setup: enter up to three vendor names and agree the weight of each evaluation area before the first demo. Do not change the weights afterwards.",
+  "Product scorecard: edit the scenarios so they describe your business. Delete the ones you do not need and add your own exceptions. Send the scenario list to every vendor with your sample data.",
+  "During each demo: every attendee scores on their own device, or in their own copy of the Excel template, before the team discusses anything.",
+  "Implementer scorecard: score the people who will deliver the project, not the presenter.",
+  "After the demos: agree scores in one master copy, record the reasons for big differences in the notes and log anything not shown on the Follow-ups tab.",
+  "Summary: read the product and implementer results side by side. Check the count of scenarios scored 0 or 1 before looking at the totals.",
+];
+const RULES = [
+  "What is not shown live scores zero. A promise is not a passing score.",
+  "Weights are set before the first demo and never changed to help a vendor.",
+  "Everyone scores alone before the team discusses.",
+  "The product and the implementer get separate scores and separate decisions.",
+];
 
 const inputClass =
   "w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-indigo-500 focus:outline-none";
@@ -302,6 +332,11 @@ export default function ErpDemoScorecard() {
     area: "o2c",
     name: "",
     show: "",
+  });
+  const [newCriterion, setNewCriterion] = useState<{ name: string; good: string; weight: string }>({
+    name: "",
+    good: "",
+    weight: "0",
   });
   const tracked = useRef(false);
 
@@ -411,6 +446,29 @@ export default function ErpDemoScorecard() {
     setNewScenario({ area: newScenario.area, name: "", show: "" });
   }
 
+  function addCriterion() {
+    if (!newCriterion.name.trim()) return;
+    update((s) => ({
+      ...s,
+      criteria: [
+        ...s.criteria,
+        {
+          id: uid("c"),
+          name: newCriterion.name.trim(),
+          good: newCriterion.good.trim(),
+          weight: Math.max(0, Number(newCriterion.weight) || 0),
+          scores: [...EMPTY] as Scores,
+          note: "",
+        },
+      ],
+    }));
+    setNewCriterion({ name: "", good: "", weight: "0" });
+  }
+
+  function editCriterion(id: string, patch: Partial<Criterion>) {
+    update((s) => ({ ...s, criteria: s.criteria.map((c) => (c.id === id ? { ...c, ...patch } : c)) }));
+  }
+
   function reset() {
     try {
       localStorage.removeItem(STORAGE_KEY);
@@ -486,6 +544,12 @@ export default function ErpDemoScorecard() {
           ))}
         </div>
         <div className="flex items-center gap-2">
+          <a
+            href="#download"
+            className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700 hover:border-indigo-400"
+          >
+            Excel template
+          </a>
           <button
             type="button"
             onClick={print}
@@ -527,9 +591,79 @@ export default function ErpDemoScorecard() {
       </p>
 
       <div className="mt-6">
-        {/* SETUP */}
+        {/* HOW TO USE */}
         <section className={`${panelClass(0)} scorecard-panel`}>
           {printTitle(0)}
+          <p className="text-sm text-slate-500">
+            A free template from DS Consulting. Use it, copy it and adapt it.
+          </p>
+          <div>
+            <h4 className="font-semibold text-slate-900">What this is</h4>
+            <p className="mt-1 text-slate-600">
+              A weighted scorecard for scripted ERP demos. Every shortlisted vendor runs the same scenarios from
+              your business, mostly exceptions, in the same time. Your team scores each scenario live, then
+              compares the product and the implementer separately.
+            </p>
+          </div>
+          <div>
+            <h4 className="font-semibold text-slate-900">Steps</h4>
+            <ol className="mt-2 list-decimal space-y-2 pl-5 text-slate-600">
+              {STEPS.map((step) => (
+                <li key={step}>{step}</li>
+              ))}
+            </ol>
+          </div>
+          <div>
+            <h4 className="font-semibold text-slate-900">Scoring scale</h4>
+            <div className="mt-2">
+              <ScaleLegend />
+            </div>
+          </div>
+          <div>
+            <h4 className="font-semibold text-slate-900">Four rules</h4>
+            <ol className="mt-2 list-decimal space-y-2 pl-5 text-slate-600">
+              {RULES.map((rule) => (
+                <li key={rule}>{rule}</li>
+              ))}
+            </ol>
+          </div>
+          <div>
+            <h4 className="font-semibold text-slate-900">What to fill in</h4>
+            <p className="mt-1 text-slate-600">
+              Vendor names, area weights, scenarios, scores and notes. Everything else is calculated.
+            </p>
+          </div>
+          <div>
+            <h4 className="font-semibold text-slate-900">Example of a completed row</h4>
+            <div className="mt-2 rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-700">
+              <p>
+                <strong className="text-slate-900">Order to cash:</strong> Partial shipment and backorder.
+                Weight 6.3. Vendor A score 2 (6.3 x 2 / 3 = 4.2 points).
+              </p>
+              <p className="mt-1">
+                Note: backorder created, but the price change on the balance needed a manual credit note.
+              </p>
+            </div>
+          </div>
+          <div>
+            <h4 className="font-semibold text-slate-900">About</h4>
+            <p className="mt-1 text-slate-600">
+              We are an independent consulting firm. Software vendors do not pay us, so our recommendations come
+              with the scoring behind them.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => setTab(1)}
+            className="no-print rounded-lg bg-indigo-700 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-800"
+          >
+            Start with setup
+          </button>
+        </section>
+
+        {/* SETUP */}
+        <section className={`${panelClass(1)} scorecard-panel`}>
+          {printTitle(1)}
           <p className="text-slate-600">Agree all of this before the first demo.</p>
           <div>
             <h4 className="font-semibold text-slate-900">Vendors</h4>
@@ -558,6 +692,10 @@ export default function ErpDemoScorecard() {
               Illustrative weights only. Set yours with finance, operations and IT.
             </p>
             <div className="mt-3 divide-y divide-slate-200 rounded-xl border border-slate-200">
+              <div className="flex items-center justify-between gap-4 bg-slate-50 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                <span>Area</span>
+                <span>Weight (points out of 100)</span>
+              </div>
               {AREAS.map((a) => (
                 <label key={a.id} className="flex items-center justify-between gap-4 px-4 py-3">
                   <span className="text-sm text-slate-800">{a.name}</span>
@@ -595,8 +733,8 @@ export default function ErpDemoScorecard() {
         </section>
 
         {/* PRODUCT SCORECARD */}
-        <section className={`${panelClass(1)} scorecard-panel`}>
-          {printTitle(1)}
+        <section className={`${panelClass(2)} scorecard-panel`}>
+          {printTitle(2)}
           <p className="text-slate-600">Score only what is shown live. Not shown = 0.</p>
           <div className="no-print">
             <ScaleLegend />
@@ -757,7 +895,8 @@ export default function ErpDemoScorecard() {
                   <div className="truncate text-sm font-semibold text-slate-800">{vendorName(v)}</div>
                   <div className="mt-1 text-sm text-red-700">Scored 0 (not shown): {product[v].zeros}</div>
                   <div className="text-sm text-slate-700">Scored 1 (partial): {product[v].ones}</div>
-                  <div className="mt-1 text-2xl font-bold text-slate-900">
+                  <div className="mt-2 text-xs text-slate-500">Total (out of 100)</div>
+                  <div className="text-2xl font-bold text-slate-900">
                     {one(product[v].total)}
                     <span className="text-sm font-medium text-slate-500"> / 100</span>
                   </div>
@@ -768,8 +907,8 @@ export default function ErpDemoScorecard() {
         </section>
 
         {/* IMPLEMENTER SCORECARD */}
-        <section className={`${panelClass(2)} scorecard-panel`}>
-          {printTitle(2)}
+        <section className={`${panelClass(3)} scorecard-panel`}>
+          {printTitle(3)}
           <p className="text-slate-600">Score the people who will deliver the project, not the presenter.</p>
           <WeightCheck
             total={criteriaWeightTotal}
@@ -779,10 +918,23 @@ export default function ErpDemoScorecard() {
           {vendorSwitcher}
           {state.criteria.map((c) => (
             <div key={c.id} className="rounded-xl border border-slate-200 p-4 break-inside-avoid">
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <div className="font-semibold text-slate-900">{c.name}</div>
-                  <p className="mt-1 text-sm text-slate-600">{c.good}</p>
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div className="min-w-0 flex-1 basis-full sm:basis-auto">
+                  <input
+                    aria-label="Criterion"
+                    className="w-full rounded-md border border-transparent px-1 py-0.5 font-semibold text-slate-900 hover:border-slate-200 focus:border-indigo-500 focus:outline-none"
+                    value={c.name}
+                    onChange={(e) => editCriterion(c.id, { name: e.target.value })}
+                  />
+                  <label className="mt-1 block">
+                    <span className="text-xs font-medium uppercase tracking-wide text-slate-500">What good looks like</span>
+                    <textarea
+                      rows={2}
+                      className="mt-1 w-full resize-y rounded-md border border-slate-200 px-2 py-1.5 text-sm text-slate-700 focus:border-indigo-500 focus:outline-none"
+                      value={c.good}
+                      onChange={(e) => editCriterion(c.id, { good: e.target.value })}
+                    />
+                  </label>
                 </div>
                 <label className="flex items-center gap-2 text-xs text-slate-500">
                   Weight
@@ -795,16 +947,17 @@ export default function ErpDemoScorecard() {
                     aria-label={`Weight for ${c.name}`}
                     className="w-16 rounded-md border border-slate-300 px-2 py-1 text-right text-sm text-slate-900"
                     value={c.weight}
-                    onChange={(e) =>
-                      update((s) => ({
-                        ...s,
-                        criteria: s.criteria.map((x) =>
-                          x.id === c.id ? { ...x, weight: Math.max(0, Number(e.target.value) || 0) } : x,
-                        ),
-                      }))
-                    }
+                    onChange={(e) => editCriterion(c.id, { weight: Math.max(0, Number(e.target.value) || 0) })}
                   />
                 </label>
+                <button
+                  type="button"
+                  aria-label={`Delete criterion ${c.name}`}
+                  onClick={() => update((s) => ({ ...s, criteria: s.criteria.filter((x) => x.id !== c.id) }))}
+                  className="no-print rounded-md px-2 py-1 text-sm text-slate-400 hover:bg-red-50 hover:text-red-700"
+                >
+                  Delete
+                </button>
               </div>
               <div className="mt-3 grid gap-3 md:grid-cols-3">
                 {[0, 1, 2].map((v) => {
@@ -840,13 +993,57 @@ export default function ErpDemoScorecard() {
               />
             </div>
           ))}
+          <div className="rounded-xl border border-dashed border-slate-300 p-4 no-print">
+            <h4 className="font-semibold text-slate-900">Add your own criterion</h4>
+            <div className="mt-3 grid gap-3 md:grid-cols-[1fr_8rem]">
+              <label className="block">
+                <span className="text-sm text-slate-600">Criterion</span>
+                <input
+                  className={`${inputClass} mt-1`}
+                  value={newCriterion.name}
+                  onChange={(e) => setNewCriterion({ ...newCriterion, name: e.target.value })}
+                />
+              </label>
+              <label className="block">
+                <span className="text-sm text-slate-600">Weight</span>
+                <input
+                  type="number"
+                  min={0}
+                  max={100}
+                  inputMode="numeric"
+                  className={`${inputClass} mt-1`}
+                  value={newCriterion.weight}
+                  onChange={(e) => setNewCriterion({ ...newCriterion, weight: e.target.value })}
+                />
+              </label>
+              <label className="block md:col-span-2">
+                <span className="text-sm text-slate-600">What good looks like</span>
+                <input
+                  className={`${inputClass} mt-1`}
+                  value={newCriterion.good}
+                  onChange={(e) => setNewCriterion({ ...newCriterion, good: e.target.value })}
+                />
+              </label>
+            </div>
+            <p className="mt-2 text-xs text-slate-500">Adjust the other weights so the total stays at 100.</p>
+            <button
+              type="button"
+              onClick={addCriterion}
+              disabled={!newCriterion.name.trim()}
+              className="mt-3 rounded-lg bg-indigo-700 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-800 disabled:opacity-50"
+            >
+              Add criterion
+            </button>
+          </div>
+
           <div className="rounded-xl bg-indigo-50 p-4">
             <h4 className="font-semibold text-slate-900">Implementer totals</h4>
             <div className="mt-3 grid gap-3 sm:grid-cols-3">
               {[0, 1, 2].map((v) => (
                 <div key={v} className="rounded-lg bg-white p-3">
                   <div className="truncate text-sm font-semibold text-slate-800">{vendorName(v)}</div>
-                  <div className="mt-1 text-2xl font-bold text-slate-900">
+                  <div className="mt-2 text-xs text-slate-500">Total (out of 100)</div>
+                  <div className="text-2xl font-bold text-slate-900">
                     {one(implementer[v])}
                     <span className="text-sm font-medium text-slate-500"> / 100</span>
                   </div>
@@ -857,8 +1054,8 @@ export default function ErpDemoScorecard() {
         </section>
 
         {/* SUMMARY */}
-        <section className={`${panelClass(3)} scorecard-panel`}>
-          {printTitle(3)}
+        <section className={`${panelClass(4)} scorecard-panel`}>
+          {printTitle(4)}
           <p className="text-slate-600">
             Two decisions: the product and the implementer. Read the gaps before the totals.
           </p>
@@ -903,14 +1100,17 @@ export default function ErpDemoScorecard() {
             </table>
           </div>
           <p className="rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-900">
-            A high total can hide a weak score on a critical scenario. Check every 0 and 1 before deciding.
+            A high total can hide a weak score on a critical scenario. Check every 0 and 1 on the Product
+            scorecard before deciding.
           </p>
+          <h4 className="font-semibold text-slate-900">Decisions</h4>
           <div className="grid gap-4">
             {(
               [
                 ["product", "Preferred product"],
                 ["implementer", "Preferred implementer"],
                 ["gaps", "Critical gaps to close before signing"],
+                ["signoff", "Decision date and who signed off"],
               ] as const
             ).map(([key, label]) => (
               <label key={key} className="block">
@@ -929,8 +1129,8 @@ export default function ErpDemoScorecard() {
         </section>
 
         {/* FOLLOW-UPS */}
-        <section className={`${panelClass(4)} scorecard-panel`}>
-          {printTitle(4)}
+        <section className={`${panelClass(5)} scorecard-panel`}>
+          {printTitle(5)}
           <p className="text-slate-600">
             Everything not shown, every limitation and every promise, answered in writing.
           </p>
@@ -943,7 +1143,7 @@ export default function ErpDemoScorecard() {
               const patch = (p: Partial<FollowUp>) =>
                 update((s) => ({ ...s, followUps: s.followUps.map((x) => (x.id === f.id ? { ...x, ...p } : x)) }));
               return (
-                <div key={f.id} className="grid gap-3 rounded-xl border border-slate-200 p-4 md:grid-cols-[10rem_1fr_14rem_auto] break-inside-avoid">
+                <div key={f.id} className="grid gap-3 rounded-xl border border-slate-200 p-4 md:grid-cols-[10rem_1fr_14rem] break-inside-avoid">
                   <label className="block">
                     <span className="text-xs text-slate-500">Vendor</span>
                     <select
@@ -968,7 +1168,19 @@ export default function ErpDemoScorecard() {
                       ))}
                     </select>
                   </label>
-                  <div className="flex items-end justify-between gap-3 md:flex-col md:items-end">
+                  <label className="block">
+                    <span className="text-xs text-slate-500">Owner on our side</span>
+                    <input className={`${inputClass} mt-1`} value={f.owner} onChange={(e) => patch({ owner: e.target.value })} />
+                  </label>
+                  <label className="block">
+                    <span className="text-xs text-slate-500">Answer summary</span>
+                    <input className={`${inputClass} mt-1`} value={f.summary} onChange={(e) => patch({ summary: e.target.value })} />
+                  </label>
+                  <label className="block">
+                    <span className="text-xs text-slate-500">Date asked</span>
+                    <input type="date" className={`${inputClass} mt-1`} value={f.asked} onChange={(e) => patch({ asked: e.target.value })} />
+                  </label>
+                  <div className="flex items-center justify-between gap-3 md:col-span-3">
                     <label className="flex items-center gap-2 text-sm text-slate-700">
                       <input
                         type="checkbox"
@@ -997,7 +1209,16 @@ export default function ErpDemoScorecard() {
                 ...s,
                 followUps: [
                   ...s.followUps,
-                  { id: uid("f"), vendor: 0, item: "", type: FOLLOW_UP_TYPES[0], answered: false },
+                  {
+                    id: uid("f"),
+                    vendor: 0,
+                    item: "",
+                    type: FOLLOW_UP_TYPES[0],
+                    owner: "",
+                    asked: "",
+                    answered: false,
+                    summary: "",
+                  },
                 ],
               }))
             }

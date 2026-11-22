@@ -344,9 +344,12 @@ function buildInsightResourceEmail(resourceKey: keyof typeof insightResources): 
   const resource = insightResources[resourceKey];
   return buildEmailShell({
     headline: resource.title,
-    description: `${resource.description} Use it as a working document with your leadership, sustainability, procurement, finance or operations teams.`,
+    description: `${resource.description} ${
+      resource.emailUseLine ??
+      "Use it as a working document with your leadership, sustainability, procurement, finance or operations teams."
+    }`,
     accentHex: resource.accentHex,
-    links: [
+    links: resource.emailLinks ?? [
       {
         label: "CSRD Readiness Checklist",
         href: "https://www.consult-ds.com/insights/csrd-readiness-first-90-days",

@@ -1,7 +1,7 @@
 "use client";
 
 import Script from "next/script";
-import { useMemo, useState } from "react";
+import { useId, useMemo, useState } from "react";
 import { validateBusinessEmail } from "@/lib/businessEmail";
 import { getRecaptchaToken } from "@/lib/recaptcha-client";
 import { insightResources, type InsightResourceKey } from "@/lib/insight-resources";
@@ -105,7 +105,9 @@ export default function InsightResourceForm({ resourceKey, theme = "light" }: Pr
     );
   }
 
-  const idPrefix = `resource-${resource.key}`;
+  // Unique per instance, so two forms on one page never share field ids.
+  const instanceId = useId();
+  const idPrefix = `resource-${resource.key}-${instanceId.replace(/:/g, "")}`;
   const canSubmit = !!form.name.trim() && emailValidation.ok && !!siteKey && status !== "loading";
 
   return (

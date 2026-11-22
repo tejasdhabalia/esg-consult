@@ -7,6 +7,7 @@ import { articleSchema } from "@/lib/article-schema";
 import { tejas } from "@/lib/authors";
 import { site } from "@/lib/site";
 import InsightSidebar from "@/components/InsightSidebar";
+import InsightResourceForm from "@/components/InsightResourceForm";
 import ErpDemoScorecard from "./ErpDemoScorecard";
 
 /*
@@ -16,8 +17,12 @@ import ErpDemoScorecard from "./ErpDemoScorecard";
   were changed. Passed the SEO project's pre-publish check.
 
   The interactive scorecard is built from ERP-demo-scorecard-template.xlsx.
-  It has no download, no gate and no account, so it fires tool_use, never
-  generate_lead.
+  It needs no sign-up and fires tool_use, never generate_lead.
+
+  Download, agreed with Tejas 22 November 2026 (after Brief 7, which had
+  ruled one out): the same template as an Excel file, behind the standard
+  insight resource form (resource key erp_demo_scorecard). That form fires
+  generate_lead with form_name insight_resource.
 */
 const PATH = "/insights/erp-demo-script-and-scorecard";
 const H1 = "ERP demo script and scorecard: make vendors show your hardest days";
@@ -178,14 +183,23 @@ export default function ErpDemoScriptPage() {
             <p className="font-semibold text-slate-900">Ready to score your vendors?</p>
             <p className="mt-1 text-sm">
               The interactive scorecard on this page holds the scenarios, weights and 0 to 3 scale from this
-              guide. Free, no sign-up, and your entries stay in your browser.
+              guide. Free, no sign-up, and your entries stay in your browser. Prefer a spreadsheet? Get the
+              same scorecard as an Excel template.
             </p>
-            <a
-              href="#scorecard"
-              className="mt-3 inline-block bg-indigo-700 text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-indigo-800"
-            >
-              Open the scorecard
-            </a>
+            <div className="mt-3 flex flex-wrap gap-3">
+              <a
+                href="#scorecard"
+                className="inline-block bg-indigo-700 text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-indigo-800"
+              >
+                Open the scorecard
+              </a>
+              <a
+                href="#download"
+                className="inline-block border border-indigo-300 bg-white text-indigo-700 text-sm font-semibold px-4 py-2 rounded-lg hover:border-indigo-500"
+              >
+                Get the Excel template
+              </a>
+            </div>
           </div>
         </section>
 
@@ -857,15 +871,28 @@ export default function ErpDemoScriptPage() {
             Use it as a starting point. Adapt the scenarios and weights to your business before inviting
             vendors to demonstrate their systems.
           </p>
+          <p>
+            Prefer to work in a spreadsheet, or want every attendee to score in their own copy? The same
+            scorecard is available as an <a href="#download" className={linkClass}>Excel template</a>, with the
+            formulas built in.
+          </p>
         </section>
       </article>
 
           <InsightSidebar
             cta={{
-              title: "Interactive ERP demo scorecard",
-              body: "Score up to three vendors live against weights you agree first, with the product and the implementer scored separately. Free, no sign-up.",
-              href: "#scorecard",
-              label: "Open the scorecard",
+              title: "Get the Excel scorecard template",
+              body: (
+                <>
+                  Setup, 16 exception scenarios, the implementer scorecard, summary and follow-ups, with the
+                  formulas built in. Or{" "}
+                  <a href="#scorecard" className="underline underline-offset-2">
+                    use the scorecard on this page
+                  </a>
+                  .
+                </>
+              ),
+              children: <InsightResourceForm resourceKey="erp_demo_scorecard" theme="dark" />,
             }}
             author={tejas}
             relatedServices={[
@@ -885,6 +912,25 @@ export default function ErpDemoScriptPage() {
 
       <div id="scorecard" className="max-w-6xl mx-auto px-4 sm:px-6 py-10 scroll-mt-24">
         <ErpDemoScorecard />
+      </div>
+
+      <div id="download" className="max-w-6xl mx-auto px-6 pb-12 scroll-mt-24">
+        <div className="grid gap-8 rounded-2xl border border-slate-200 bg-slate-50 p-6 md:grid-cols-2 md:p-8">
+          <div>
+            <h2 className="text-2xl font-bold text-slate-900">Download the Excel template</h2>
+            <p className="mt-3 text-slate-600 leading-relaxed">
+              The same scorecard as a workbook, so every attendee can score in their own copy and you can
+              keep one master version for the decision. It has six tabs: how to use, setup, product
+              scorecard, implementer scorecard, summary and follow-ups.
+            </p>
+            <p className="mt-3 text-slate-600 leading-relaxed">
+              We email it to your work address straight away.
+            </p>
+          </div>
+          <div>
+            <InsightResourceForm resourceKey="erp_demo_scorecard" />
+          </div>
+        </div>
       </div>
 
       <div className="max-w-6xl mx-auto px-6 pb-20">

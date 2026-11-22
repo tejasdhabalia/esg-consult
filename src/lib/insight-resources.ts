@@ -7,7 +7,8 @@ export type InsightResourceKey =
   | "steering_committee_charter"
   | "esg_tender_question_bank"
   | "ai_use_case_register"
-  | "nist_ai_rmf_profile";
+  | "nist_ai_rmf_profile"
+  | "erp_demo_scorecard";
 
 export type InsightResource = {
   key: InsightResourceKey;
@@ -19,7 +20,20 @@ export type InsightResource = {
   attachmentName: string;
   accentHex: string;
   notifySubject: string;
+  /**
+   * Links in the delivery email. Without them the email falls back to the
+   * ESG links, which only suit the sustainability resources.
+   */
+  emailLinks?: { label: string; href: string; desc: string }[];
+  /** Sentence after the description in the delivery email. */
+  emailUseLine?: string;
 };
+
+const AI_EMAIL_LINKS = [
+  { label: "AI ROI calculator", href: "https://www.consult-ds.com/insights/ai-roi-calculator", desc: "Check whether an AI use case pays back" },
+  { label: "AI use case register", href: "https://www.consult-ds.com/insights/ai-use-case-register", desc: "Know what AI you run and who owns it" },
+  { label: "AI governance and adoption", href: "https://www.consult-ds.com/services/ai-governance-and-adoption", desc: "How we help put AI to work safely" },
+];
 
 export const insightResources: Record<InsightResourceKey, InsightResource> = {
   net_zero_roadmap: {
@@ -117,6 +131,8 @@ export const insightResources: Record<InsightResourceKey, InsightResource> = {
     attachmentName: "DS-Consulting-AI-Use-Case-Register-Template.xlsx",
     accentHex: "#4F46E5",
     notifySubject: "New lead: AI use case register template",
+    emailLinks: AI_EMAIL_LINKS,
+    emailUseLine: "Use it as a working document with your technology, risk, legal and functional teams.",
   },
   nist_ai_rmf_profile: {
     key: "nist_ai_rmf_profile",
@@ -129,5 +145,27 @@ export const insightResources: Record<InsightResourceKey, InsightResource> = {
     attachmentName: "DS-Consulting-NIST-AI-RMF-Starter-Profile.xlsx",
     accentHex: "#4F46E5",
     notifySubject: "New lead: NIST AI RMF starter profile",
+    emailLinks: AI_EMAIL_LINKS,
+    emailUseLine: "Use it as a working document with your technology, risk, legal and functional teams.",
+  },
+  // Brief 7 follow-up, agreed with Tejas 22 November 2026: the scorecard
+  // template from the SEO project, offered behind the standard form.
+  erp_demo_scorecard: {
+    key: "erp_demo_scorecard",
+    title: "ERP demo scorecard template",
+    shortLabel: "template",
+    description:
+      "The ERP demo scorecard as an Excel workbook: setup and weights, 16 exception scenarios, the 0 to 3 scale, the implementer scorecard, a summary and a follow-up log, with the formulas built in.",
+    filePath: "/downloads/erp-demo-scorecard-template.xlsx",
+    fileName: "erp-demo-scorecard-template.xlsx",
+    attachmentName: "DS-Consulting-ERP-Demo-Scorecard-Template.xlsx",
+    accentHex: "#4F46E5",
+    notifySubject: "New lead: ERP demo scorecard template",
+    emailUseLine: "Give every attendee their own copy before the first demo, and agree the weights first.",
+    emailLinks: [
+      { label: "ERP demo script and scorecard", href: "https://www.consult-ds.com/insights/erp-demo-script-and-scorecard", desc: "The guide to running scripted demos" },
+      { label: "Systems selection", href: "https://www.consult-ds.com/services/systems-selection", desc: "Independent selection with structured demos" },
+      { label: "Moving off Tally", href: "https://www.consult-ds.com/migrations/tally-to-erp", desc: "Plan the move to an ERP" },
+    ],
   },
 };

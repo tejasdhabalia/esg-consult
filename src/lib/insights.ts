@@ -20,7 +20,7 @@ export const allInsights: SiteInsightItem[] = [
     category: "Technology",
     title: "ERP demo script and scorecard",
     summary:
-      "Make vendors show your hardest days: the same exception scenarios for every vendor, scored live against weights agreed in advance. With a free interactive scorecard.",
+      "Make vendors show your hardest days: the same exception scenarios for every vendor, scored live against weights agreed in advance. With a free interactive scorecard and Excel template.",
     topics: ["ERP selection", "Vendor demos", "Scorecard", "Systems selection"],
     audience: "CFO, COO, CIO, finance controller",
     readTime: "13 min read",
