@@ -5,6 +5,7 @@ import { absUrl } from "@/lib/url";
 import { pageMetadata, DEFAULT_OG_IMAGE } from "@/lib/page-metadata";
 import { articleSchema } from "@/lib/article-schema";
 import { tejas } from "@/lib/authors";
+import InsightSidebar from "@/components/InsightSidebar";
 
 /*
   Brief 1, technology content plan. Article companion to the lead-gated AI
@@ -349,33 +350,24 @@ export default function AiRoiArticlePage() {
             </section>
           </article>
 
-          <aside className="lg:col-span-1">
-            <div className="sticky top-8 space-y-6">
-              <div className="bg-indigo-900 rounded-2xl p-6 text-white">
-                <h3 className="font-bold text-base mb-2">AI ROI calculator</h3>
-                <p className="text-sm mb-4 opacity-90 leading-relaxed">
-                  Payback, three-year value and whether one use case is ready to scale.
-                  Results emailed to you.
-                </p>
-                <Link
-                  href="/insights/ai-roi-calculator"
-                  className="block bg-white text-indigo-700 text-xs font-bold text-center py-2 rounded-lg hover:bg-indigo-50"
-                >
-                  Open the calculator
-                </Link>
-              </div>
-              <div className="bg-slate-50 rounded-2xl p-5 border border-slate-100">
-                <div className="flex items-start gap-4">
-                  <Image src={tejas.imageSrc} alt={tejas.name} width={64} height={64} className="rounded-xl object-cover flex-shrink-0" />
-                  <div>
-                    <div className="font-semibold text-slate-900">{tejas.name}</div>
-                    <div className="text-xs text-slate-500 mb-2">{tejas.roleShort}</div>
-                    <p className="text-xs text-slate-600 leading-relaxed">{tejas.bio}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </aside>
+          <InsightSidebar
+            cta={{
+              title: "AI ROI calculator",
+              body: "Payback, three-year value and whether one use case is ready to scale. Results emailed to you.",
+              href: "/insights/ai-roi-calculator",
+              label: "Open the calculator",
+            }}
+            author={tejas}
+            relatedServices={[
+              { label: "AI governance and adoption", href: "/services/ai-governance-and-adoption" },
+              { label: "Forward deployed engineer", href: "/services/forward-deployed-engineer" },
+            ]}
+            related={[
+              { label: "AI use case register", href: "/insights/ai-use-case-register", description: "Know what you run before you ask whether it pays" },
+              { label: "FDE or implementation consultant", href: "/insights/forward-deployed-engineer-vs-implementation-consultant", description: "Who makes the AI plan land in your teams" },
+              { label: "NIST AI RMF starter profile", href: "/insights/nist-ai-rmf-starter-profile", description: "The governance model around AI use" },
+            ]}
+          />
         </div>
       </div>
 

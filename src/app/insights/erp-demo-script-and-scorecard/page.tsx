@@ -6,6 +6,7 @@ import { pageMetadata } from "@/lib/page-metadata";
 import { articleSchema } from "@/lib/article-schema";
 import { tejas } from "@/lib/authors";
 import { site } from "@/lib/site";
+import InsightSidebar from "@/components/InsightSidebar";
 import ErpDemoScorecard from "./ErpDemoScorecard";
 
 /*
@@ -152,7 +153,9 @@ export default function ErpDemoScriptPage() {
         </div>
       </div>
 
-      <div className="max-w-3xl mx-auto px-6 pt-16 space-y-12 text-slate-600 leading-relaxed">
+      <div className="max-w-6xl mx-auto px-6 pt-16">
+        <div className="grid lg:grid-cols-3 gap-12">
+      <article className="lg:col-span-2 min-w-0 space-y-12 text-slate-600 leading-relaxed">
         <section className="space-y-6">
           <Image
             src={IMAGE}
@@ -171,6 +174,19 @@ export default function ErpDemoScriptPage() {
             implement it are scored separately. This guide sets out the ERP demo script, the scoring rules
             and a free interactive scorecard to help you compare what vendors actually show.
           </p>
+          <div className="rounded-2xl border border-indigo-200 bg-indigo-50 p-5">
+            <p className="font-semibold text-slate-900">Ready to score your vendors?</p>
+            <p className="mt-1 text-sm">
+              The interactive scorecard on this page holds the scenarios, weights and 0 to 3 scale from this
+              guide. Free, no sign-up, and your entries stay in your browser.
+            </p>
+            <a
+              href="#scorecard"
+              className="mt-3 inline-block bg-indigo-700 text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-indigo-800"
+            >
+              Open the scorecard
+            </a>
+          </div>
         </section>
 
         <section className="space-y-4">
@@ -842,13 +858,38 @@ export default function ErpDemoScriptPage() {
             vendors to demonstrate their systems.
           </p>
         </section>
+      </article>
+
+          <InsightSidebar
+            cta={{
+              title: "Interactive ERP demo scorecard",
+              body: "Score up to three vendors live against weights you agree first, with the product and the implementer scored separately. Free, no sign-up.",
+              href: "#scorecard",
+              label: "Open the scorecard",
+            }}
+            author={tejas}
+            relatedServices={[
+              { label: "ERP systems", href: "/services/erp-systems" },
+              { label: "Systems selection", href: "/services/systems-selection" },
+              { label: "Implementation and delivery oversight", href: "/services/implementation-oversight" },
+            ]}
+            relatedHeading="Related reading"
+            related={[
+              { label: "Moving off Tally", href: "/migrations/tally-to-erp", description: "Plan the move to an ERP" },
+              { label: "When an implementation stalls", href: "/migrations/implementation-recovery", description: "Finish the move you started" },
+              { label: "Access and vendor risk checklist", href: "/insights/access-and-vendor-risk-checklist", description: "Questions on vendor access and data risk" },
+            ]}
+          />
+        </div>
       </div>
 
       <div id="scorecard" className="max-w-6xl mx-auto px-4 sm:px-6 py-10 scroll-mt-24">
         <ErpDemoScorecard />
       </div>
 
-      <div className="max-w-3xl mx-auto px-6 pb-20 space-y-12 text-slate-600 leading-relaxed">
+      <div className="max-w-6xl mx-auto px-6 pb-20">
+        <div className="grid lg:grid-cols-3 gap-12">
+      <div className="lg:col-span-2 min-w-0 space-y-12 text-slate-600 leading-relaxed">
         <p>
           The scorecard works alongside this ERP demo script to help finance, operations and IT assess vendors
           consistently, rather than relying on presentation quality or unsupported promises.
@@ -907,19 +948,8 @@ export default function ErpDemoScriptPage() {
           </div>
         </section>
 
-        <section className="rounded-2xl border border-slate-100 bg-slate-50 p-5">
-          <div className="flex items-start gap-4">
-            <Image src={tejas.imageSrc} alt={tejas.name} width={64} height={64} className="rounded-xl object-cover flex-shrink-0" />
-            <div>
-              <Link href="/team" className="font-semibold text-slate-900 hover:underline">{tejas.name}</Link>
-              <div className="text-xs text-slate-500 mb-2">{tejas.roleShort}</div>
-              <p className="text-sm text-slate-600 leading-relaxed">{tejas.bio}</p>
-              <a href={tejas.linkedin} target="_blank" rel="noopener noreferrer" className="inline-block mt-3 text-sm text-indigo-600 hover:underline font-medium">
-                LinkedIn profile →
-              </a>
-            </div>
-          </div>
-        </section>
+      </div>
+        </div>
       </div>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />

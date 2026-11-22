@@ -5,6 +5,7 @@ import { absUrl } from "@/lib/url";
 import { pageMetadata, DEFAULT_OG_IMAGE } from "@/lib/page-metadata";
 import { articleSchema } from "@/lib/article-schema";
 import { tejas } from "@/lib/authors";
+import InsightSidebar from "@/components/InsightSidebar";
 
 /*
   Brief 6, technology content plan. Approved by Tejas 30 October 2026.
@@ -365,36 +366,24 @@ export default function FdeVsImplementationConsultantPage() {
             </section>
           </article>
 
-          <aside className="lg:col-span-1">
-            <div className="sticky top-8 space-y-6">
-              <div className="bg-indigo-900 rounded-2xl p-6 text-white">
-                <h3 className="font-bold text-base mb-2">Forward deployed engineer, without the full-time hire</h3>
-                <p className="text-sm mb-4 opacity-90 leading-relaxed">
-                  On retainer or per project, embedded with your teams to put your AI plan to work.
-                </p>
-                <Link
-                  href="/services/forward-deployed-engineer"
-                  className="block bg-white text-indigo-700 text-xs font-bold text-center py-2 rounded-lg hover:bg-indigo-50"
-                >
-                  How it works
-                </Link>
-              </div>
-
-              <div className="bg-slate-50 rounded-2xl p-5 border border-slate-100">
-                <div className="flex items-start gap-4">
-                  <Image src={tejas.imageSrc} alt={tejas.name} width={64} height={64} className="rounded-xl object-cover flex-shrink-0" />
-                  <div>
-                    <div className="font-semibold text-slate-900">{tejas.name}</div>
-                    <div className="text-xs text-slate-500 mb-2">{tejas.roleShort}</div>
-                    <p className="text-xs text-slate-600 leading-relaxed">{tejas.bio}</p>
-                    <a href={tejas.linkedin} target="_blank" rel="noopener noreferrer" className="inline-block mt-3 text-xs text-indigo-600 hover:underline font-medium">
-                      LinkedIn profile →
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </aside>
+          <InsightSidebar
+            cta={{
+              title: "Forward deployed engineer, without the full-time hire",
+              body: "On retainer or per project, embedded with your teams to put your AI plan to work.",
+              href: "/services/forward-deployed-engineer",
+              label: "How it works",
+            }}
+            author={tejas}
+            relatedServices={[
+              { label: "AI governance and adoption", href: "/services/ai-governance-and-adoption" },
+              { label: "Integration", href: "/services/integration" },
+            ]}
+            related={[
+              { label: "AI ROI calculator", href: "/insights/ai-roi-calculator", description: "Check whether an AI use case pays back" },
+              { label: "Why your AI pilot is not paying back", href: "/insights/ai-roi", description: "The four patterns behind stalled pilots" },
+              { label: "AI use case register", href: "/insights/ai-use-case-register", description: "Know what AI you run and who owns it" },
+            ]}
+          />
         </div>
       </div>
 

@@ -196,7 +196,7 @@ export default function RevenueAttributionReadinessPage() {
           </div>
 
           <div className="lg:col-span-1">
-            <div className="sticky top-8 space-y-6">
+            <div className="sticky top-24 space-y-6">
 
               <div className="bg-slate-800 rounded-2xl p-6 text-white">
                 <h3 className="font-bold text-base mb-2">Get the full readiness report</h3>

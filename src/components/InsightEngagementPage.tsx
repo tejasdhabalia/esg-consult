@@ -232,7 +232,7 @@ export default function InsightEngagementPage({ config }: { config: EsgInsightPa
           </div>
 
           <div className="lg:col-span-1">
-            <div className="sticky top-8 space-y-6">
+            <div className="sticky top-24 space-y-6">
               <div className={`${config.sidebarCtaClass} rounded-2xl p-6 text-white`}>
                 <h3 className="font-bold text-base mb-2">{config.resourceCtaTitle}</h3>
                 <p className="text-sm mb-4 opacity-90">{config.resourceCtaBody}</p>

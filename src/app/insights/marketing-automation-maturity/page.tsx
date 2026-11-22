@@ -253,7 +253,7 @@ export default function MarketingAutomationMaturityPage() {
           </div>
 
           <div className="lg:col-span-1">
-            <div className="sticky top-8 space-y-6">
+            <div className="sticky top-24 space-y-6">
 
               <div className="bg-indigo-600 rounded-2xl p-6 text-white">
                 <h3 className="font-bold text-base mb-2">Get the full benchmark report</h3>

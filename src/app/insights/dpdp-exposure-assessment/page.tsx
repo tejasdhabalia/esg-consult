@@ -6,6 +6,7 @@ import { pageMetadata, DEFAULT_OG_IMAGE } from "@/lib/page-metadata";
 import { articleSchema } from "@/lib/article-schema";
 import { tejas } from "@/lib/authors";
 import DpdpExposureTool from "./DpdpExposureTool";
+import InsightSidebar from "@/components/InsightSidebar";
 
 /*
   REGULATORY CONTENT. Verified 11 September 2026.
@@ -302,60 +303,26 @@ export default function DpdpExposureAssessmentPage() {
             </div>
           </div>
 
-          <div className="lg:col-span-1">
-            <div className="sticky top-8 space-y-6">
-              <div className="bg-indigo-900 rounded-2xl p-6 text-white">
-                <h3 className="font-bold text-base mb-2">The commencement timeline</h3>
-                <p className="text-sm mb-4 opacity-90 leading-relaxed">
-                  Three phases, and the one most commentary gets wrong. What is in force now, what
-                  November 2026 actually brings, and what commences on 13 May 2027.
-                </p>
-                <Link
-                  href="/regulatory-hub/dpdp-in-scope-and-timeline"
-                  className="block bg-white text-indigo-700 text-xs font-bold text-center py-2 rounded-lg hover:bg-indigo-50"
-                >
-                  Read the timeline
-                </Link>
-              </div>
-
-              <div className="bg-white border border-slate-100 rounded-2xl p-5">
-                <h4 className="font-semibold text-slate-900 text-sm mb-3">Related services</h4>
-                <div className="space-y-2">
-                  <Link href="/services/crm-and-revenue-operations" className="block text-sm text-indigo-600 hover:underline">
-                    CRM and revenue operations →
-                  </Link>
-                  <Link href="/services/integration" className="block text-sm text-indigo-600 hover:underline">
-                    Integration →
-                  </Link>
-                  <Link href="/services/ai-governance-and-adoption" className="block text-sm text-indigo-600 hover:underline">
-                    AI governance and adoption →
-                  </Link>
-                </div>
-              </div>
-
-              <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5">
-                <h4 className="font-semibold text-slate-900 text-sm mb-3">Related insights</h4>
-                <div className="space-y-3">
-                  <Link href="/insights/access-and-vendor-risk-checklist" className="block group">
-                    <span className="block text-sm font-medium text-slate-900 group-hover:text-indigo-700">Access and vendor risk checklist →</span>
-                    <span className="block text-xs text-slate-500">How far one compromised account or vendor could reach</span>
-                  </Link>
-                  <Link href="/insights/ai-use-case-register" className="block group">
-                    <span className="block text-sm font-medium text-slate-900 group-hover:text-indigo-700">AI use case register →</span>
-                    <span className="block text-xs text-slate-500">Where AI meets the personal data question</span>
-                  </Link>
-                  <Link href="/insights/nist-ai-rmf-starter-profile" className="block group">
-                    <span className="block text-sm font-medium text-slate-900 group-hover:text-indigo-700">NIST AI RMF starter profile →</span>
-                    <span className="block text-xs text-slate-500">The governance operating model around it</span>
-                  </Link>
-                  <Link href="/insights/crm-governance-checklist" className="block group">
-                    <span className="block text-sm font-medium text-slate-900 group-hover:text-indigo-700">CRM governance checklist →</span>
-                    <span className="block text-xs text-slate-500">Most personal data sits in the CRM</span>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
+          <InsightSidebar
+            cta={{
+              title: "The commencement timeline",
+              body: "Three phases, and the one most commentary gets wrong. What is in force now, what November 2026 actually brings, and what commences on 13 May 2027.",
+              href: "/regulatory-hub/dpdp-in-scope-and-timeline",
+              label: "Read the timeline",
+            }}
+            author={tejas}
+            relatedServices={[
+              { label: "CRM and revenue operations", href: "/services/crm-and-revenue-operations" },
+              { label: "Integration", href: "/services/integration" },
+              { label: "AI governance and adoption", href: "/services/ai-governance-and-adoption" },
+            ]}
+            related={[
+              { label: "Access and vendor risk checklist", href: "/insights/access-and-vendor-risk-checklist", description: "How far one compromised account or vendor could reach" },
+              { label: "AI use case register", href: "/insights/ai-use-case-register", description: "Where AI meets the personal data question" },
+              { label: "NIST AI RMF starter profile", href: "/insights/nist-ai-rmf-starter-profile", description: "The governance operating model around it" },
+              { label: "CRM governance checklist", href: "/insights/crm-governance-checklist", description: "Most personal data sits in the CRM" },
+            ]}
+          />
         </div>
       </div>
 

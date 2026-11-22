@@ -5,6 +5,7 @@ import { absUrl } from "@/lib/url";
 import { pageMetadata, DEFAULT_OG_IMAGE } from "@/lib/page-metadata";
 import { articleSchema } from "@/lib/article-schema";
 import { tejas } from "@/lib/authors";
+import InsightSidebar from "@/components/InsightSidebar";
 
 const meta = {
   title: "Access and vendor risk checklist: 20 questions for leaders",
@@ -487,22 +488,14 @@ export default function AccessAndVendorRiskChecklistPage() {
             </section>
           </div>
 
-          <div className="lg:col-span-1">
-            <div className="sticky top-8 space-y-6">
-              <div className="bg-indigo-900 rounded-2xl p-6 text-white">
-                <h3 className="font-bold text-base mb-2">If your answers show gaps</h3>
-                <p className="text-sm mb-4 opacity-90 leading-relaxed">
-                  A fixed price assessment over two to four weeks. You own the output whether or not you
-                  carry on with us.
-                </p>
-                <Link
-                  href="/contact"
-                  className="block bg-white text-indigo-700 text-xs font-bold text-center py-2 rounded-lg hover:bg-indigo-50"
-                >
-                  Start with an assessment
-                </Link>
-              </div>
-
+          <InsightSidebar
+            cta={{
+              title: "If your answers show gaps",
+              body: "A fixed price assessment over two to four weeks. You own the output whether or not you carry on with us.",
+              href: "/contact",
+              label: "Start with an assessment",
+            }}
+            extra={
               <div className="bg-white border border-slate-100 rounded-2xl p-5">
                 <h4 className="font-semibold text-slate-900 text-sm mb-3">The five areas</h4>
                 <div className="space-y-2">
@@ -513,22 +506,18 @@ export default function AccessAndVendorRiskChecklistPage() {
                   ))}
                 </div>
               </div>
-
-              <div className="bg-slate-50 rounded-2xl p-5 border border-slate-100">
-                <div className="flex items-start gap-4">
-                  <Image src={tejas.imageSrc} alt={tejas.name} width={64} height={64} className="rounded-xl object-cover flex-shrink-0" />
-                  <div>
-                    <div className="font-semibold text-slate-900">{tejas.name}</div>
-                    <div className="text-xs text-slate-500 mb-2">{tejas.roleShort}</div>
-                    <p className="text-xs text-slate-600 leading-relaxed">{tejas.bio}</p>
-                    <a href={tejas.linkedin} target="_blank" rel="noopener noreferrer" className="inline-block mt-3 text-xs text-indigo-600 hover:underline font-medium">
-                      LinkedIn profile →
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+            }
+            author={tejas}
+            relatedServices={[
+              { label: "Integration", href: "/services/integration" },
+              { label: "AI governance and adoption", href: "/services/ai-governance-and-adoption" },
+            ]}
+            related={[
+              { label: "DPDP exposure assessment", href: "/insights/dpdp-exposure-assessment", description: "Score your exposure under India's DPDP Act" },
+              { label: "AI use case register", href: "/insights/ai-use-case-register", description: "Where AI tools touch your data" },
+              { label: "ERP demo script and scorecard", href: "/insights/erp-demo-script-and-scorecard", description: "Test vendors on your processes before you sign" },
+            ]}
+          />
         </div>
       </div>
 

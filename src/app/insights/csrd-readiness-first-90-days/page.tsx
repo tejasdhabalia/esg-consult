@@ -3,6 +3,8 @@ import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
 import { pageMetadata } from "@/lib/page-metadata";
 import ChecklistDownloadForm from "@/components/ChecklistDownloadForm";
+import InsightSidebar from "@/components/InsightSidebar";
+import { jigar } from "@/lib/authors";
 
 export const metadata = pageMetadata({
   title: "CSRD readiness: the first 90 days",
@@ -434,71 +436,21 @@ export default function CSRDReadinessChecklistPage() {
             </div>
           </div>
 
-          <div className="lg:col-span-1">
-            <div className="sticky top-8 space-y-6">
-              <div className="bg-slate-50 rounded-2xl p-5 border border-slate-100">
-                <div className="flex items-start gap-3">
-                  <div className="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold text-base flex-shrink-0">
-                    J
-                  </div>
-                  <div>
-                    <div className="font-semibold text-slate-900 text-sm">Jigar Dhabalia</div>
-                    <div className="text-xs text-slate-500 mb-2">Co-founder, DS Consulting</div>
-                    <p className="text-xs text-slate-600 leading-relaxed">
-                      ESG reporting and governance advisor focused on CSRD readiness,
-                      data governance, evidence trails, and assurance preparation.
-                    </p>
-                    <a
-                      href={site.linkedin.jigar}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block mt-2 text-xs text-indigo-600 hover:underline"
-                    >
-                      LinkedIn →
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white border border-slate-100 rounded-2xl p-5">
-                <h4 className="font-semibold text-slate-900 text-sm mb-3">Related links</h4>
-                <div className="space-y-2">
-                  <Link
-                    href="/services/esg-advisory/csrd-advisory"
-                    className="block text-sm text-indigo-600 hover:underline"
-                  >
-                    CSRD advisory →
-                  </Link>
-                  <Link
-                    href="/regulatory-hub/csrd-double-materiality-and-esrs-mapping"
-                    className="block text-sm text-indigo-600 hover:underline"
-                  >
-                    Double materiality and ESRS mapping →
-                  </Link>
-                  <Link
-                    href="/regulatory-hub/csrd-in-scope-and-timeline"
-                    className="block text-sm text-indigo-600 hover:underline"
-                  >
-                    CSRD in scope and timeline →
-                  </Link>
-                </div>
-              </div>
-
-              <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5">
-                <h4 className="font-semibold text-slate-900 text-sm mb-2">Need to discuss your first cycle?</h4>
-                <p className="text-xs text-slate-600 mb-3">
-                  If your team is still defining scope, ownership, controls and evidence trails,
-                  start with a diagnostic conversation.
-                </p>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center bg-slate-900 hover:bg-slate-800 text-white no-underline text-xs font-medium px-4 py-2 rounded-lg transition-colors"
-                >
-                  Discuss CSRD readiness
-                </Link>
-              </div>
-            </div>
-          </div>
+          <InsightSidebar
+            cta={{
+              title: "Need to discuss your first cycle?",
+              body: "If your team is still defining scope, ownership, controls and evidence trails, start with a diagnostic conversation.",
+              href: "/contact",
+              label: "Discuss CSRD readiness",
+            }}
+            author={jigar}
+            relatedServices={[{ label: "CSRD advisory", href: "/services/esg-advisory/csrd-advisory" }]}
+            relatedHeading="Related reading"
+            related={[
+              { label: "Double materiality and ESRS mapping", href: "/regulatory-hub/csrd-double-materiality-and-esrs-mapping" },
+              { label: "CSRD in scope and timeline", href: "/regulatory-hub/csrd-in-scope-and-timeline" },
+            ]}
+          />
         </div>
       </div>
 

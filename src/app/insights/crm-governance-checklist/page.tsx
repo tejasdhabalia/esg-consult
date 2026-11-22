@@ -3,6 +3,8 @@ import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
 import { pageMetadata } from "@/lib/page-metadata";
 import ChecklistDownloadForm from "@/components/ChecklistDownloadForm";
+import InsightSidebar from "@/components/InsightSidebar";
+import { tejas } from "@/lib/authors";
 
 export const metadata = pageMetadata({
   title: "The CRM governance SOP template",
@@ -389,80 +391,22 @@ export default function CRMGovernanceChecklistPage() {
           </div>
 
           {/* Sidebar */}
-          <div className="lg:col-span-1">
-            <div className="sticky top-8 space-y-6">
-
-              {/* Download CTA */}
-              <div className="bg-indigo-600 rounded-2xl p-6 text-white">
-                <h3 className="font-bold text-lg mb-2">Get the PDF checklist</h3>
-                <p className="text-indigo-200 text-sm mb-4">
-                  Download the complete CRM Governance SOP Template as a PDF, formatted for team use, with
-                  fillable checkboxes and methodology notes.
-                </p>
-                <ChecklistDownloadForm
-                  checklistType="crm"
-                  theme="dark"
-                />
-              </div>
-
-              {/* Author card */}
-              <div className="bg-slate-50 rounded-2xl p-5 border border-slate-100">
-                <div className="flex items-start gap-3">
-                  <div className="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold text-base flex-shrink-0">T</div>
-                  <div>
-                    <div className="font-semibold text-slate-900 text-sm">Tejas Dhabalia</div>
-                    <div className="text-xs text-slate-500 mb-2">Co-founder, DS Consulting</div>
-                    <p className="text-xs text-slate-600 leading-relaxed">
-                      Marketing Ops and MarTech leader. Former Deloitte, Tata, Tesco and Godrej.
-                      Specialises in CRM governance, lifecycle orchestration, and revenue operations.
-                    </p>
-                    <a
-                      href={site.linkedin.tejas}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block mt-2 text-xs text-indigo-600 hover:underline"
-                    >
-                      LinkedIn →
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* Related */}
-              <div className="bg-white border border-slate-100 rounded-2xl p-5">
-                <h4 className="font-semibold text-slate-900 text-sm mb-3">Related services</h4>
-                <div className="space-y-2">
-                  {[
-                    { label: "CRM Architecture and Governance", href: "/services/crm-and-revenue-operations/crm-architecture-governance" },
-                    { label: "Lifecycle and Lead Management", href: "/services/crm-and-revenue-operations/lifecycle-lead-management" },
-                    { label: "Revenue Analytics", href: "/services/crm-and-revenue-operations/revenue-analytics" },
-                  ].map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className="block text-sm text-indigo-600 hover:underline"
-                    >
-                      {link.label} →
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              {/* Audit tool CTA */}
-              <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5">
-				  <h4 className="font-semibold text-slate-900 text-sm mb-2">Not sure where you stand?</h4>
-				  <p className="text-xs text-slate-600 mb-3">
-					Take the Leaky Funnel Audit to get your Revenue Visibility Score in under 5 minutes.
-				  </p>
-				  <Link
-					href="/insights/leaky-funnel-audit"
-					className="inline-flex items-center justify-center bg-slate-900 hover:bg-slate-800 text-white no-underline text-xs font-medium px-4 py-2 rounded-lg transition-colors"
-				  >
-					Take the audit
-				  </Link>
-				</div>
-            </div>
-          </div>
+          <InsightSidebar
+            cta={{
+              title: "Get the PDF checklist",
+              body: "Download the complete CRM Governance SOP Template as a PDF, formatted for team use, with fillable checkboxes and methodology notes.",
+              children: <ChecklistDownloadForm checklistType="crm" theme="dark" />,
+            }}
+            author={tejas}
+            relatedServices={[
+              { label: "CRM architecture and governance", href: "/services/crm-and-revenue-operations/crm-architecture-governance" },
+              { label: "Lifecycle and lead management", href: "/services/crm-and-revenue-operations/lifecycle-lead-management" },
+              { label: "Revenue analytics", href: "/services/crm-and-revenue-operations/revenue-analytics" },
+            ]}
+            related={[
+              { label: "Leaky funnel audit", href: "/insights/leaky-funnel-audit", description: "Not sure where you stand? Your revenue visibility score in under 5 minutes" },
+            ]}
+          />
         </div>
       </div>
 
