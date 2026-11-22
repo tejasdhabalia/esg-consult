@@ -95,6 +95,13 @@ export default function SiteFooter() {
                 Regulatory hub
               </Link>
             </li>
+            {/* Brief 6, Task 4 (SEO project): /partners was in the sitemap
+                with no internal link pointing to it. */}
+            <li>
+              <Link href="/partners" className="hover:text-white">
+                Partners
+              </Link>
+            </li>
             <li>
               <Link href="/contact" className="hover:text-white">
                 Contact

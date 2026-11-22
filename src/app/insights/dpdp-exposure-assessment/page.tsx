@@ -2,7 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
-import { pageMetadata } from "@/lib/page-metadata";
+import { pageMetadata, DEFAULT_OG_IMAGE } from "@/lib/page-metadata";
+import { articleSchema } from "@/lib/article-schema";
+import { tejas } from "@/lib/authors";
 import DpdpExposureTool from "./DpdpExposureTool";
 
 /*
@@ -24,11 +26,25 @@ import DpdpExposureTool from "./DpdpExposureTool";
   Schedule to the DPDP Act 2023.
 */
 
+// Article schema, Brief 6 Task 2 (SEO project). Dates match the visible
+// byline: datePublished as stored on the page, dateModified from git.
+const ARTICLE_DESCRIPTION =
+  "Twenty-two questions, six minutes, a straight read on where your business stands against India's DPDP obligations across customer, employee and vendor data.";
+
 export const metadata = pageMetadata({
   title: "DPDP exposure assessment",
-  description:
-    "Twenty-two questions, six minutes, a straight read on where your business stands against India's DPDP obligations across customer, employee and vendor data.",
+  description: ARTICLE_DESCRIPTION,
   path: "/insights/dpdp-exposure-assessment",
+});
+
+const articleLd = articleSchema({
+  path: "/insights/dpdp-exposure-assessment",
+  headline: "How exposed is your business under India’s DPDP Act?",
+  description: ARTICLE_DESCRIPTION,
+  image: DEFAULT_OG_IMAGE,
+  datePublished: "2026-09-11",
+  dateModified: "2026-10-30",
+  author: tejas,
 });
 
 const faqSchema = {
@@ -343,6 +359,7 @@ export default function DpdpExposureAssessmentPage() {
         </div>
       </div>
 
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(toolSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />

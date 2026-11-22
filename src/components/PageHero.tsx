@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import TaglineBadge from "@/components/TaglineBadge";
@@ -16,6 +17,7 @@ export default function PageHero({
   note,
   imageSrc,
   imageAlt,
+  byline,
 }: {
   title: string;
   subtitle: string;
@@ -29,6 +31,12 @@ export default function PageHero({
   note?: string;
   imageSrc: string;
   imageAlt: string;
+  /**
+   * Optional author byline, rendered under the pain line. Pass
+   * <ArticleByline variant="hero" />. Used where a page carries Article
+   * schema, so the visible author matches the schema author.
+   */
+  byline?: ReactNode;
 }) {
   return (
     <section className="relative bg-slate-900 text-white py-28">
@@ -57,6 +65,8 @@ export default function PageHero({
                 {painLine}
               </p>
             )}
+
+            {byline}
 
             {(primaryAction || secondaryAction) && (
               <div className="mt-10 flex flex-col sm:flex-row gap-4">

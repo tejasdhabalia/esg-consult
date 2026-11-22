@@ -2,14 +2,30 @@ import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
-import { pageMetadata } from "@/lib/page-metadata";
+import { pageMetadata, DEFAULT_OG_IMAGE } from "@/lib/page-metadata";
+import { articleSchema } from "@/lib/article-schema";
+import { tejas } from "@/lib/authors";
 import MaturityTool from "./MaturityTool";
+
+// Article schema, Brief 6 Task 2 (SEO project). Dates match the visible
+// byline: datePublished as stored on the page, dateModified from git.
+const ARTICLE_DESCRIPTION =
+  "Score your marketing automation against top-quartile benchmarks across data, platform, governance and attribution. Free interactive tool from DS Consulting.";
 
 export const metadata = pageMetadata({
   title: "Marketing automation maturity scorecard",
-  description:
-    "Score your marketing automation against top-quartile benchmarks across data, platform, governance and attribution. Free interactive tool from DS Consulting.",
+  description: ARTICLE_DESCRIPTION,
   path: "/insights/marketing-automation-maturity",
+});
+
+const articleLd = articleSchema({
+  path: "/insights/marketing-automation-maturity",
+  headline: "Marketing Automation Maturity Scorecard",
+  description: ARTICLE_DESCRIPTION,
+  image: DEFAULT_OG_IMAGE,
+  datePublished: "2026-04-01",
+  dateModified: "2026-10-30",
+  author: tejas,
 });
 
 const faqSchema = {
@@ -302,6 +318,7 @@ export default function MarketingAutomationMaturityPage() {
         </div>
       </div>
 
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(toolSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />

@@ -3,8 +3,9 @@ import { pageMetadata } from "@/lib/page-metadata";
 
 export const metadata = pageMetadata({
   title: "Systems selection",
+  // Brief 6, Task 3 (SEO project): shortened so Google does not truncate it.
   description:
-    "Independent ERP, CRM and business systems selection for mid-market companies. Requirements, scored shortlist, structured demos and contract review. No vendor commissions.",
+    "Independent ERP, CRM and business systems selection for mid-market firms: requirements, scored shortlist, structured demos and contract review.",
   path: "/services/systems-selection",
 });
 

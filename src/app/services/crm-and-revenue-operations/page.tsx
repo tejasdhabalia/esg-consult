@@ -182,6 +182,15 @@ export default function MarketingAutomationPage() {
                 vendors. Where a platform is genuinely the wrong fit we will say so, and that
                 recommendation costs us nothing either way.
               </p>
+              {/* Brief 6, Task 5 (SEO project): second internal link to
+                  systems selection. */}
+              <p className="mt-4 text-slate-600">
+                Choosing a new CRM rather than fixing the one you have?{" "}
+                <Link href="/services/systems-selection" className="text-indigo-700 underline underline-offset-2 hover:text-indigo-900">
+                  See how we run a scored CRM selection
+                </Link>
+                , from requirements to contract review.
+              </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
               {[
@@ -240,6 +249,16 @@ export default function MarketingAutomationPage() {
               <div className="mt-4 text-sm font-medium text-indigo-700">Explore measurement →</div>
             </Link>
           </div>
+
+          {/* Brief 6, Task 5 (SEO project): second internal link to the
+              in-house vs outsourced comparison. */}
+          <p className="mt-10 text-slate-600 max-w-4xl">
+            Deciding whether to build CRM governance in house or bring in outside help?{" "}
+            <Link href="/compare/in-house-vs-outsourced-crm-governance" className="text-indigo-700 underline underline-offset-2 hover:text-indigo-900">
+              Compare the two models on speed, cost and ownership
+            </Link>
+            .
+          </p>
         </div>
       </section>
 

@@ -7,8 +7,9 @@ import { pageMetadata } from "@/lib/page-metadata";
 
 export const metadata = pageMetadata({
   title: "CSRD, BRSR, DPDP and UK SECR regulatory hub",
+  // Brief 6, Task 3 (SEO project): shortened so Google does not truncate it.
   description:
-    "Practical guides for the EU AI Act, India's DPDP Act, CSRD and ESRS, SEBI BRSR and UK SECR and SRS. Covers scoping, commencement dates, governance and evidence trails.",
+    "Practical guides to the EU AI Act, India's DPDP Act, CSRD, ESRS, SEBI BRSR and UK SECR and SRS: scope, commencement dates, governance and evidence.",
   path: "/regulatory-hub",
 });
 

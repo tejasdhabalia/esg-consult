@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { absUrl } from "@/lib/url";
-import { pageMetadata } from "@/lib/page-metadata";
+import { pageMetadata, DEFAULT_OG_IMAGE } from "@/lib/page-metadata";
+import { articleSchema } from "@/lib/article-schema";
 import ArticleByline from "@/components/ArticleByline";
 import { tejas, personSchema } from "@/lib/authors";
 
@@ -38,11 +39,24 @@ import { tejas, personSchema } from "@/lib/authors";
   right about it is the entire value of this page.
 */
 
+// Article schema, Brief 6 Task 2 (SEO project). Dates match the visible
+// byline: datePublished as stored on the page, dateModified from git.
+const ARTICLE_DESCRIPTION =
+  "The high-risk delay to December 2027 is real but narrow. Article 50 transparency duties applied from 2 August 2026. What is live now and what comes next.";
+
 export const metadata = pageMetadata({
   title: "EU AI Act timeline: what applies and when",
-  description:
-    "The high-risk delay to December 2027 is real but narrow. Article 50 transparency duties applied from 2 August 2026. What is live now and what comes next.",
+  description: ARTICLE_DESCRIPTION,
   path: "/regulatory-hub/eu-ai-act-in-scope-and-timeline",
+});
+
+const articleLd = articleSchema({
+  path: "/regulatory-hub/eu-ai-act-in-scope-and-timeline",
+  headline: "EU AI Act timeline",
+  description: ARTICLE_DESCRIPTION,
+  image: DEFAULT_OG_IMAGE,
+  datePublished: "2026-08-26",
+  author: tejas,
 });
 
 const definitionText =
@@ -393,6 +407,7 @@ export default function EuAiActTimelinePage() {
         </div>
       </div>
 
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(definitionSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />

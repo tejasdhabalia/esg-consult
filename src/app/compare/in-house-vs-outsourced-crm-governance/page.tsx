@@ -2,12 +2,35 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { absUrl } from "@/lib/url";
 import { pageMetadata } from "@/lib/page-metadata";
+import ArticleByline from "@/components/ArticleByline";
+import { tejas } from "@/lib/authors";
+import { articleSchema } from "@/lib/article-schema";
+
+const PATH = "/compare/in-house-vs-outsourced-crm-governance";
+const H1 = "In house vs Outsourced CRM Governance";
+const DESCRIPTION =
+  "Building CRM governance in-house vs outsourcing it. Speed, cost, ownership, cross-functional alignment and how to stop CRM firefighting for good.";
+
+// Byline and Article schema, Brief 6 Task 2 (SEO project). No publish date
+// was stored, so these come from git: first commit of this page file and
+// its last content change.
+const PUBLISHED_ISO = "2026-03-11";
+const MODIFIED_ISO = "2026-10-30";
 
 export const metadata = pageMetadata({
   title: "In-house vs outsourced CRM governance",
-  description:
-    "Building CRM governance in-house vs outsourcing it. Speed, cost, ownership, cross-functional alignment and how to stop CRM firefighting for good.",
+  description: DESCRIPTION,
   path: "/compare/in-house-vs-outsourced-crm-governance",
+});
+
+const articleLd = articleSchema({
+  path: PATH,
+  headline: H1,
+  description: DESCRIPTION,
+  image: "/hero/crm.jpg",
+  datePublished: PUBLISHED_ISO,
+  dateModified: MODIFIED_ISO,
+  author: tejas,
 });
 
 const breadcrumbSchema = {
@@ -177,13 +200,21 @@ export default function InhouseVsOutsourcedPage() {
   return (
     <div className="bg-white">
       <PageHero
-        title="In house vs Outsourced CRM Governance"
+        title={H1}
         subtitle="A decision guide for leaders who want a CRM that teams trust. Use this page to choose the right model for speed, ownership and long term reliability."
         painLine="If teams do not trust dashboards and handoffs are inconsistent, stabilise governance before adding more automation."
         primaryAction={{ label: "Talk to us", href: "/contact" }}
         secondaryAction={{ label: "Marketing automation services", href: "/services/crm-and-revenue-operations" }}
         imageSrc="/hero/crm.jpg"
         imageAlt="CRM governance comparison for in house versus outsourced delivery"
+        byline={
+          <ArticleByline
+            author={tejas}
+            datePublished={PUBLISHED_ISO}
+            dateModified={MODIFIED_ISO}
+            variant="hero"
+          />
+        }
       />
 
       {/* Back to compare */}
@@ -346,6 +377,7 @@ export default function InhouseVsOutsourcedPage() {
         </div>
       </div>
 
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     </div>

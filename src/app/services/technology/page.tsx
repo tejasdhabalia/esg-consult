@@ -7,8 +7,9 @@ const pillar = pillars.find((item) => item.route === "/services/technology")!;
 
 export const metadata = pageMetadata({
   title: "Technology",
+  // Brief 6, Task 3 (SEO project): shortened so Google does not truncate it.
   description:
-    "Commerce platforms, ERP, CRM, integration and AI governance for mid-market companies. Selection and delivery leadership by people who can read both the system and the business case.",
+    "ERP, CRM, commerce, integration and AI governance for mid-market firms. Independent selection and delivery leadership tied to the business case.",
   path: "/services/technology",
 });
 

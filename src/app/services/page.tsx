@@ -184,6 +184,19 @@ export default function ServicesPage() {
               </div>
             ))}
           </div>
+
+          {/* Brief 6, Task 5 (SEO project): second internal link to the
+              generalist agencies comparison. */}
+          <p className="mt-10 text-slate-300 max-w-3xl">
+            Weighing us against a full-service agency?{" "}
+            <Link
+              href="/compare/ds-consulting-vs-generalist-agencies"
+              className="text-indigo-300 underline underline-offset-2 hover:text-white"
+            >
+              How a delivery lead differs from a generalist agency
+            </Link>
+            , point by point.
+          </p>
         </div>
       </section>
 

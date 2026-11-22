@@ -1,13 +1,16 @@
 import MovePage from "@/components/MovePage";
-import { pageMetadata } from "@/lib/page-metadata";
+import { pageMetadata, DEFAULT_OG_IMAGE } from "@/lib/page-metadata";
+import { tejas } from "@/lib/authors";
 
 // Title, description and H1 from the SEO brief for Batches 3 and 4,
 // 30 October 2026. Never write "tally migration" on this page: people
 // search it for upgrading Tally, not for leaving it.
+const DESCRIPTION =
+  "Outgrown Tally or spreadsheets? Independent advice on choosing an ERP and moving your data, for Indian mid-market firms. Free 45-minute move plan session.";
+
 export const metadata = pageMetadata({
   title: "Outgrown Tally? When to move to an ERP",
-  description:
-    "Outgrown Tally or spreadsheets? Independent advice on choosing an ERP and moving your data, for Indian mid-market firms. Free 45-minute move plan session.",
+  description: DESCRIPTION,
   path: "/migrations/tally-to-erp",
 });
 
@@ -15,6 +18,15 @@ export default function TallyToErpPage() {
   return (
     <MovePage
       route="/migrations/tally-to-erp"
+      // Byline and Article schema, Brief 6 Task 2. No publish date was
+      // stored, so both dates are the page file's first commit (30 October
+      // 2026). The 21 November commits added and then removed one link.
+      article={{
+        author: tejas,
+        description: DESCRIPTION,
+        image: DEFAULT_OG_IMAGE,
+        datePublished: "2026-10-30",
+      }}
       breadcrumbLabel="Outgrown Tally"
       eyebrow="Moving off Tally"
       h1="Outgrown Tally? Plan the move to an ERP"

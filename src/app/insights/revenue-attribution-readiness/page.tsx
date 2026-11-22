@@ -2,14 +2,30 @@ import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
-import { pageMetadata } from "@/lib/page-metadata";
+import { pageMetadata, DEFAULT_OG_IMAGE } from "@/lib/page-metadata";
+import { articleSchema } from "@/lib/article-schema";
+import { tejas } from "@/lib/authors";
 import AttributionTool from "./AttributionTool";
+
+// Article schema, Brief 6 Task 2 (SEO project). Dates match the visible
+// byline: datePublished as stored on the page, dateModified from git.
+const ARTICLE_DESCRIPTION =
+  "Can your marketing team prove its contribution to revenue? Three sections on attribution model, data connectivity and reporting, with a board-ready rating.";
 
 export const metadata = pageMetadata({
   title: "Revenue attribution readiness check",
-  description:
-    "Can your marketing team prove its contribution to revenue? Three sections on attribution model, data connectivity and reporting, with a board-ready rating.",
+  description: ARTICLE_DESCRIPTION,
   path: "/insights/revenue-attribution-readiness",
+});
+
+const articleLd = articleSchema({
+  path: "/insights/revenue-attribution-readiness",
+  headline: "Revenue Attribution Readiness Check",
+  description: ARTICLE_DESCRIPTION,
+  image: DEFAULT_OG_IMAGE,
+  datePublished: "2026-04-01",
+  dateModified: "2026-10-30",
+  author: tejas,
 });
 
 const faqSchema = {
@@ -244,6 +260,7 @@ export default function RevenueAttributionReadinessPage() {
         </div>
       </div>
 
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(toolSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />

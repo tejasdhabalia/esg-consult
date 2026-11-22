@@ -6,6 +6,8 @@ import { site } from "@/lib/site";
 import { pillars } from "@/lib/service-pillars";
 import { getHomepageInsights } from "@/lib/insights";
 import { pageMetadata } from "@/lib/page-metadata";
+import { absUrl } from "@/lib/url";
+import { LOGO_PATH } from "@/lib/article-schema";
 
 const homeMetadata = pageMetadata({
   title: "DS Consulting: independent technology, AI and ESG delivery",
@@ -86,10 +88,26 @@ export default function HomePage() {
 
   const organizationSchema = {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: site.legalName,
+    // Organization, not ProfessionalService. ProfessionalService is a
+    // LocalBusiness subtype, so Google's rich results test demanded a street
+    // address. The firm works without a public address. Do not add address,
+    // telephone or opening hours. Brief 6, Task 1 (SEO project).
+    "@type": "Organization",
+    name: site.displayName,
+    legalName: site.legalName,
     url: site.baseUrl,
     description: site.ai.summary,
+    logo: absUrl(LOGO_PATH),
+    email: site.emails.general,
+    areaServed: [
+      "India",
+      "United Kingdom",
+      "Ireland",
+      "Europe",
+      "Middle East",
+      "Asia Pacific",
+      "Americas",
+    ],
     founder: [
       { "@type": "Person", name: "Jigar Dhabalia", sameAs: site.linkedin.jigar },
       { "@type": "Person", name: "Tejas Dhabalia", sameAs: site.linkedin.tejas },
@@ -111,9 +129,10 @@ export default function HomePage() {
         })),
       })),
     },
-    // Company profile first. Add Crunchbase and Clutch here as each profile
-    // goes live, with the same name, address and phone as the listing.
-    sameAs: [site.linkedin.company, site.linkedin.tejas, site.linkedin.jigar],
+    // The firm's own profiles only. The founders' LinkedIn profiles sit on
+    // their Person entries under founder, not here. Add Crunchbase and Clutch
+    // as each company profile goes live, with the same name as the listing.
+    sameAs: [site.linkedin.company],
   };
 
   const faqSchema = {

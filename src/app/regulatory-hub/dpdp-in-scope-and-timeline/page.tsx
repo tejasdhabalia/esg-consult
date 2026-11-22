@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { absUrl } from "@/lib/url";
-import { pageMetadata } from "@/lib/page-metadata";
+import { pageMetadata, DEFAULT_OG_IMAGE } from "@/lib/page-metadata";
+import { articleSchema } from "@/lib/article-schema";
 import ArticleByline from "@/components/ArticleByline";
 import { tejas, personSchema } from "@/lib/authors";
 
@@ -56,11 +57,25 @@ import { tejas, personSchema } from "@/lib/authors";
        for shortening. Nothing formally amended as at this date.
 */
 
+// Article schema, Brief 6 Task 2 (SEO project). Dates match the visible
+// byline: datePublished as stored on the page, dateModified from git.
+const ARTICLE_DESCRIPTION =
+  "November 2026 is the consent manager framework, not the compliance deadline. The obligations that bind your business commence on 13 May 2027.";
+
 export const metadata = pageMetadata({
   title: "India's DPDP Act: what commences when",
-  description:
-    "November 2026 is the consent manager framework, not the compliance deadline. The obligations that bind your business commence on 13 May 2027.",
+  description: ARTICLE_DESCRIPTION,
   path: "/regulatory-hub/dpdp-in-scope-and-timeline",
+});
+
+const articleLd = articleSchema({
+  path: "/regulatory-hub/dpdp-in-scope-and-timeline",
+  headline: "India’s DPDP Act: what commences when",
+  description: ARTICLE_DESCRIPTION,
+  image: DEFAULT_OG_IMAGE,
+  datePublished: "2026-09-11",
+  dateModified: "2026-09-13",
+  author: tejas,
 });
 
 const definitionText =
@@ -290,7 +305,7 @@ export default function DpdpTimelinePage() {
             November 2026 is the consent manager framework. It is not the compliance deadline, whatever
             you have read. The obligations that bind your business commence on 13 May 2027.
           </p>
-          <ArticleByline author={tejas} datePublished="2026-09-11" variant="hero" />
+          <ArticleByline author={tejas} datePublished="2026-09-11" dateModified="2026-09-13" variant="hero" />
         </div>
       </div>
 
@@ -755,6 +770,7 @@ export default function DpdpTimelinePage() {
         </div>
       </div>
 
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(definitionSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />

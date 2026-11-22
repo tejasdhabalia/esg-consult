@@ -320,6 +320,16 @@ export default function CRMGovernanceChecklistPage() {
                 </Link>
                 , so the new system does not inherit the old arguments.
               </p>
+              <p className="text-slate-600 leading-relaxed">
+                Not sure who should own it?{" "}
+                <Link
+                  href="/compare/in-house-vs-outsourced-crm-governance"
+                  className="text-indigo-700 hover:text-indigo-800 underline underline-offset-4"
+                >
+                  Weigh in-house ownership against outside help
+                </Link>{" "}
+                before you assign the work.
+              </p>
             </div>
 
             {/* Checklist sections */}

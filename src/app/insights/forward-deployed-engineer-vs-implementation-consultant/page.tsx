@@ -2,8 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
-import { pageMetadata } from "@/lib/page-metadata";
-import { tejas, personSchema } from "@/lib/authors";
+import { pageMetadata, DEFAULT_OG_IMAGE } from "@/lib/page-metadata";
+import { articleSchema } from "@/lib/article-schema";
+import { tejas } from "@/lib/authors";
 
 /*
   Brief 6, technology content plan. Approved by Tejas 30 October 2026.
@@ -15,10 +16,12 @@ import { tejas, personSchema } from "@/lib/authors";
   - No services pitch in the body. The closing block carries the links.
   - Visible copy never says "migration".
 */
+const DESCRIPTION =
+  "A forward deployed engineer, an implementation consultant or a hire? How each role puts an AI strategy into practice, and how to choose.";
+
 export const metadata = pageMetadata({
   title: "Forward deployed engineer vs consultant",
-  description:
-    "A forward deployed engineer, an implementation consultant or a hire? How each role puts an AI strategy into practice, and how to choose.",
+  description: DESCRIPTION,
   path: "/insights/forward-deployed-engineer-vs-implementation-consultant",
   type: "article",
 });
@@ -29,7 +32,8 @@ const PUBLISHED_ISO = "2026-10-30";
 const PUBLISHED_DISPLAY = "30 October 2026";
 const linkClass = "text-indigo-700 underline underline-offset-2 hover:text-indigo-900";
 
-const A16Z = "https://www.a16z.com/the-palantirization-of-everything";
+// Final URL after the 301 from www.a16z.com. Brief 6, Task 6.
+const A16Z = "https://a16z.com/the-palantirization-of-everything/";
 
 const COMPARISON: [string, string, string][] = [
   ["Sits with", "Your functional teams: finance, operations, sales, service", "Your project team and the vendor's product specialists"],
@@ -64,24 +68,20 @@ const SOURCES = [
   },
   {
     label: "Everest Group on forward deployed software engineers",
-    href: "https://www.everestgrp.com/?p=151273",
+    href: "https://www.everestgrp.com/palantir-inside-the-category-of-one-forward-deployed-software-engineers-blog/",
     note: "How the role differs from post-sales support and advisory consulting.",
   },
 ];
 
 export default function FdeVsImplementationConsultantPage() {
-  const articleSchema = {
-    "@context": "https://schema.org",
-    "@type": "Article",
+  const articleLd = articleSchema({
+    path: PATH,
     headline: H1,
-    description: metadata.description,
-    author: personSchema(tejas),
-    publisher: { "@type": "Organization", name: site.legalName, url: site.baseUrl },
-    url: absUrl(PATH),
-    mainEntityOfPage: absUrl(PATH),
+    description: DESCRIPTION,
+    image: DEFAULT_OG_IMAGE,
     datePublished: PUBLISHED_ISO,
-    dateModified: PUBLISHED_ISO,
-  };
+    author: tejas,
+  });
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -398,7 +398,7 @@ export default function FdeVsImplementationConsultantPage() {
         </div>
       </div>
 
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     </div>
   );

@@ -3,8 +3,9 @@ import { pageMetadata } from "@/lib/page-metadata";
 
 export const metadata = pageMetadata({
   title: "Implementation and delivery oversight",
+  // Brief 6, Task 3 (SEO project): shortened so Google does not truncate it.
   description:
-    "Independent oversight of ERP and CRM implementations. Scope control against the business case, acceptance testing, risk reporting and go-live readiness for mid-market companies.",
+    "Independent oversight of ERP and CRM implementations: scope control, acceptance testing, risk reporting and go-live readiness for mid-market firms.",
   path: "/services/implementation-oversight",
 });
 

@@ -47,7 +47,7 @@ type PageMetadataInput = {
   noindex?: boolean;
 };
 
-const DEFAULT_OG_IMAGE = "/og-default.png";
+export const DEFAULT_OG_IMAGE = "/og-default.png";
 
 export function pageMetadata({
   title,

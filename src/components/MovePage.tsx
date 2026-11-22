@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
+import ArticleByline from "@/components/ArticleByline";
+import { articleSchema } from "@/lib/article-schema";
+import type { Author } from "@/lib/authors";
 
 /**
  * Shared layout for the move pages under /migrations. SEO brief for
@@ -54,6 +57,22 @@ export type MovePageProps = {
    * file exists in /public: the slot is hidden while it is empty.
    */
   videoSrc?: string;
+  /**
+   * Byline and Article schema, for move pages that read as articles.
+   * Brief 6, Task 2 (SEO project). When set, the visible byline and the
+   * Article schema render together, so they always agree. Leave undefined
+   * on pages without a byline.
+   */
+  article?: {
+    author: Author;
+    /** The page's meta description, word for word. */
+    description: string;
+    /** Open Graph or hero image path, beginning with "/". */
+    image: string;
+    /** ISO dates. */
+    datePublished: string;
+    dateModified?: string;
+  };
 };
 
 export default function MovePage(props: MovePageProps) {
@@ -73,6 +92,7 @@ export default function MovePage(props: MovePageProps) {
     serviceName,
     serviceDescription,
     videoSrc,
+    article,
   } = props;
 
   const [lead, ...restSituation] = situation;
@@ -94,6 +114,18 @@ export default function MovePage(props: MovePageProps) {
       { "@type": "ListItem", position: 3, name: breadcrumbLabel, item: absUrl(route) },
     ],
   };
+
+  const articleLd = article
+    ? articleSchema({
+        path: route,
+        headline: h1,
+        description: article.description,
+        image: article.image,
+        datePublished: article.datePublished,
+        dateModified: article.dateModified,
+        author: article.author,
+      })
+    : null;
 
   // Offer only when the price is in the visible copy (SEO brief).
   const serviceSchema = {
@@ -136,6 +168,14 @@ export default function MovePage(props: MovePageProps) {
           <div className="text-xs font-semibold uppercase tracking-widest text-indigo-300">{eyebrow}</div>
           <h1 className="mt-4 text-4xl md:text-5xl font-bold leading-tight">{h1}</h1>
           <p className="mt-6 text-lg text-slate-300 max-w-3xl leading-relaxed">{lead}</p>
+          {article && (
+            <ArticleByline
+              author={article.author}
+              datePublished={article.datePublished}
+              dateModified={article.dateModified}
+              variant="hero"
+            />
+          )}
           <div className="mt-10 flex flex-col sm:flex-row gap-4">
             <Link
               href="/contact"
@@ -255,6 +295,9 @@ export default function MovePage(props: MovePageProps) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      {articleLd && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
+      )}
     </div>
   );
 }

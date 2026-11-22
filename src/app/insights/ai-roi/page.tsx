@@ -2,8 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
-import { pageMetadata } from "@/lib/page-metadata";
-import { tejas, personSchema } from "@/lib/authors";
+import { pageMetadata, DEFAULT_OG_IMAGE } from "@/lib/page-metadata";
+import { articleSchema } from "@/lib/article-schema";
+import { tejas } from "@/lib/authors";
 
 /*
   Brief 1, technology content plan. Article companion to the lead-gated AI
@@ -15,10 +16,12 @@ import { tejas, personSchema } from "@/lib/authors";
   example is labelled illustrative and matches DEFAULT_INPUTS in
   src/lib/ai-roi.ts, so the calculator reproduces it exactly.
 */
+const DESCRIPTION =
+  "Most AI pilots stall before they pay back. A practical way to measure the ROI of AI in a mid-market business, with a free calculator to use.";
+
 export const metadata = pageMetadata({
   title: "AI ROI: framework and calculator",
-  description:
-    "Most AI pilots stall before they pay back. A practical way to measure the ROI of AI in a mid-market business, with a free calculator to use.",
+  description: DESCRIPTION,
   path: "/insights/ai-roi",
   type: "article",
 });
@@ -72,18 +75,14 @@ const FAQS = [
 ];
 
 export default function AiRoiArticlePage() {
-  const articleSchema = {
-    "@context": "https://schema.org",
-    "@type": "Article",
+  const articleLd = articleSchema({
+    path: PATH,
     headline: H1,
-    description: metadata.description,
-    author: personSchema(tejas),
-    publisher: { "@type": "Organization", name: site.legalName, url: site.baseUrl },
-    url: absUrl(PATH),
-    mainEntityOfPage: absUrl(PATH),
+    description: DESCRIPTION,
+    image: DEFAULT_OG_IMAGE,
     datePublished: PUBLISHED_ISO,
-    dateModified: PUBLISHED_ISO,
-  };
+    author: tejas,
+  });
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -380,7 +379,7 @@ export default function AiRoiArticlePage() {
         </div>
       </div>
 
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     </div>
   );

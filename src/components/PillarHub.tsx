@@ -78,8 +78,11 @@ export default function PillarHub({
     serviceType: pillar.title,
     url: absUrl(pillar.route),
     description: pillar.summary,
+    // Organization, not ProfessionalService. ProfessionalService is a
+    // LocalBusiness subtype and Google then requires a street address, which
+    // the firm does not publish. Brief 6, Task 1 (SEO project).
     provider: {
-      "@type": "ProfessionalService",
+      "@type": "Organization",
       name: site.legalName,
       url: site.baseUrl,
     },

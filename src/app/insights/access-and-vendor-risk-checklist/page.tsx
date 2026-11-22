@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { site } from "@/lib/site";
 import { absUrl } from "@/lib/url";
-import { pageMetadata } from "@/lib/page-metadata";
-import { tejas, personSchema } from "@/lib/authors";
+import { pageMetadata, DEFAULT_OG_IMAGE } from "@/lib/page-metadata";
+import { articleSchema } from "@/lib/article-schema";
+import { tejas } from "@/lib/authors";
 
 const meta = {
   title: "Access and vendor risk checklist: 20 questions for leaders",
@@ -240,18 +240,14 @@ const SOURCES = [
   },
 ];
 
-const articleSchema = {
-  "@context": "https://schema.org",
-  "@type": "Article",
+const articleLd = articleSchema({
+  path: PATH,
   headline: "Access and vendor risk checklist",
   description: meta.description,
-  author: personSchema(tejas),
-  publisher: { "@type": "Organization", name: site.legalName, url: site.baseUrl },
-  url: absUrl(PATH),
-  mainEntityOfPage: absUrl(PATH),
+  image: DEFAULT_OG_IMAGE,
   datePublished: PUBLISHED_ISO,
-  dateModified: PUBLISHED_ISO,
-};
+  author: tejas,
+});
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -536,7 +532,7 @@ export default function AccessAndVendorRiskChecklistPage() {
         </div>
       </div>
 
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     </div>
   );
